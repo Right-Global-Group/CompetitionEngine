@@ -13,7 +13,13 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
+            },
+            colors: {
+                'accent-purple': '#6A3FF4',
+                'accent-orange': '#FF9900',
+                'dark-purple': '#1B142C',
+                'darker-purple': '#11052C',
             },
         },
     },

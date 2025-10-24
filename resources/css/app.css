@@ -1,3 +1,156 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #1B142C;
+        color: #F3F4F6;
+        overflow-x: hidden;
+    }
+}
+
+@layer components {
+    .glass-effect {
+        background: rgba(27, 20, 44, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .liquid-glass {
+        background: rgba(41, 31, 66, 0.5);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: background 0.3s ease, border 0.3s ease;
+    }
+
+    .liquid-glass:hover {
+        background: rgba(55, 41, 89, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .feature-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(106, 63, 244, 0.1), 0 10px 10px -5px rgba(106, 63, 244, 0.04);
+    }
+
+    .gradient-text {
+        background: linear-gradient(to right, #6A3FF4, #FF9900, #6A3FF4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .keyword-animate {
+        background: linear-gradient(to right, #6A3FF4, #FF9900, #6A3FF4);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradient-flow 4s linear infinite;
+    }
+
+    .glow-button {
+        box-shadow: 0 0 5px #6A3FF4, 0 0 10px #6A3FF4, 0 0 15px #6A3FF4;
+    }
+
+    /* Animated Blobs */
+    .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.3;
+    }
+
+    .blob1 {
+        width: 400px;
+        height: 400px;
+        background-color: rgba(106, 63, 244, 0.5);
+        animation: blob-move 20s infinite alternate;
+        top: 10%;
+        left: 10%;
+    }
+
+    .blob2 {
+        width: 300px;
+        height: 300px;
+        background-color: rgba(255, 153, 0, 0.5);
+        animation: blob-move 25s infinite alternate-reverse;
+        bottom: 10%;
+        right: 10%;
+    }
+
+    /* Timeline for Launch Section */
+    .timeline-item {
+        position: relative;
+        padding-bottom: 2.5rem;
+        padding-left: 2.5rem;
+    }
+
+    .timeline-item:last-child {
+        padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.5rem;
+        width: 2px;
+        height: 100%;
+        background-color: #4a3b64;
+    }
+
+    .timeline-item:last-child::before {
+        display: none;
+    }
+
+    .timeline-dot {
+        position: absolute;
+        left: -0.7rem;
+        top: 0.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        background-color: #11052C;
+        border: 2px solid #6A3FF4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+    }
+
+    /* Scroll Animations */
+    .reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@layer utilities {
+    @keyframes blob-move {
+        0% { transform: translate(0, 0); }
+        50% { transform: translate(300px, 400px) scale(1.5); }
+        100% { transform: translate(-100px, -200px); }
+    }
+    
+    @keyframes gradient-flow {
+        to {
+            background-position: 200% center;
+        }
+    }
+}
