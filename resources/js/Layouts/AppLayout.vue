@@ -29,7 +29,7 @@ onMounted(() => {
             <div class="blob blob2"></div>
         </div>
 
-        <!-- Mouse Follower -->
+        <!-- Mouse Follower (now with correct z-index) -->
         <div id="mouse-follower" ref="mouseFollower"></div>
 
         <!-- Header -->
@@ -86,8 +86,9 @@ onMounted(() => {
     background: radial-gradient(circle, rgba(106, 63, 244, 0.15) 0%, rgba(106, 63, 244, 0) 70%);
     border-radius: 50%;
     pointer-events: none;
-    z-index: -1;
+    z-index: 9999; /* Changed from -1 to 9999 */
     transform: translate(-50%, -50%);
     will-change: transform;
+    mix-blend-mode: screen; /* Added for better blending */
 }
 </style>

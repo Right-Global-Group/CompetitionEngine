@@ -1,7 +1,9 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { gsap } from 'gsap';
 
 const mobileMenuOpen = ref(false);
+const cogRef = ref(null);
 
 const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -10,6 +12,18 @@ const scrollToSection = (sectionId) => {
         mobileMenuOpen.value = false;
     }
 };
+
+onMounted(() => {
+    // Continuous rotation animation for the cog
+    if (cogRef.value) {
+        gsap.to(cogRef.value, {
+            rotation: 360,
+            duration: 20,
+            repeat: -1,
+            ease: 'none'
+        });
+    }
+});
 </script>
 
 <template>
@@ -17,9 +31,37 @@ const scrollToSection = (sectionId) => {
         <div class="container mx-auto px-4 sm:px-6 py-4">
             <div class="grid grid-cols-3 items-center">
                 <!-- Left: Logo (takes equal space) -->
-                <div class="flex items-center cursor-pointer justify-start" @click="scrollToSection('hero')">
-                    <svg class="w-8 h-8 md:w-10 md:h-10 mr-2 md:mr-3 text-accent-purple" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61-.25-1.17.59-1.69-.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24-.42-.12-.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23-.09.49 0 .61-.22l2-3.46c.12-.22-.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+                <div class="flex items-center cursor-pointer justify-start group" @click="scrollToSection('hero')">
+                    <!-- Animated Gear SVG matching ModernPlatform style -->
+                    <svg class="w-10 h-10 md:w-12 md:h-12 mr-2 md:mr-3" viewBox="0 0 100 100">
+                        <g ref="cogRef" transform-origin="50 50">
+                            <!-- Outer glow circle -->
+                            <circle cx="50" cy="50" r="35" fill="#A020F0" opacity="0.2"/>
+                            
+                            <!-- Gear teeth (8 teeth) -->
+                            <path d="M 50 10 L 53 18 L 47 18 Z 
+                                     M 73 17 L 71 25 L 67 19 Z 
+                                     M 90 50 L 82 53 L 82 47 Z 
+                                     M 73 83 L 67 81 L 71 75 Z 
+                                     M 50 90 L 47 82 L 53 82 Z 
+                                     M 27 83 L 29 75 L 33 81 Z 
+                                     M 10 50 L 18 47 L 18 53 Z 
+                                     M 27 17 L 33 19 L 29 25 Z" 
+                                  fill="#6A3FF4" 
+                                  opacity="0.7"/>
+                            
+                            <!-- Main gear circle -->
+                            <circle cx="50" cy="50" r="25" fill="none" stroke="#6A3FF4" stroke-width="3"/>
+                            
+                            <!-- Inner circle -->
+                            <circle cx="50" cy="50" r="15" fill="#A020F0"/>
+                            
+                            <!-- Center hub -->
+                            <circle cx="50" cy="50" r="8" fill="#11052C"/>
+                            
+                            <!-- Letter E in center -->
+                            <text x="50" y="57" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#6A3FF4" text-anchor="middle">E</text>
+                        </g>
                     </svg>
                     <span class="text-xl md:text-2xl font-bold text-white whitespace-nowrap">Competition Engine</span>
                 </div>
