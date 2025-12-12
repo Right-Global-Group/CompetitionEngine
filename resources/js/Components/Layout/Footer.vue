@@ -1,9 +1,15 @@
 <script setup>
+const calendlyUrl = 'https://calendly.com/rightglobalgroup/website-design-free-consultation';
+
 const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
     }
+};
+
+const openCalendly = () => {
+    window.open(calendlyUrl, '_blank');
 };
 </script>
 
@@ -14,8 +20,7 @@ const scrollToSection = (sectionId) => {
                 <!-- Logo & Description -->
                 <div class="md:col-span-1">
                     <div class="flex items-center mb-4">
-                        <img src="/images/logo.svg" alt="Competition Engine" class="h-8 mr-2" />
-                        <span class="text-xl font-bold text-white">Competition Engine</span>
+                        <img src="/images/logo.svg" alt="Competition Engine" class="h-8" />
                     </div>
                     <p class="text-gray-400">The modern platform for creating and managing viral competitions.</p>
                 </div>
@@ -27,7 +32,7 @@ const scrollToSection = (sectionId) => {
                         <li><button @click="scrollToSection('ecosystem')" class="text-gray-400 hover:text-[#A020F0] transition">Features</button></li>
                         <li><button @click="scrollToSection('pricing')" class="text-gray-400 hover:text-[#A020F0] transition">Pricing</button></li>
                         <li><button @click="scrollToSection('comparison')" class="text-gray-400 hover:text-[#A020F0] transition">Comparisons</button></li>
-                        <li><button @click="scrollToSection('booking')" class="text-gray-400 hover:text-[#A020F0] transition">Book a Demo</button></li>
+                        <li><button @click="openCalendly" class="text-gray-400 hover:text-[#A020F0] transition">Book a Demo</button></li>
                     </ul>
                 </div>
 

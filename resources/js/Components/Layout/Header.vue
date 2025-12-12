@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 
 const mobileMenuOpen = ref(false);
+const calendlyUrl = 'https://calendly.com/rightglobalgroup/website-design-free-consultation';
 
 const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -9,6 +10,11 @@ const scrollToSection = (sectionId) => {
         element.scrollIntoView({ behavior: 'smooth' });
         mobileMenuOpen.value = false;
     }
+};
+
+const openCalendly = () => {
+    window.open(calendlyUrl, '_blank');
+    mobileMenuOpen.value = false;
 };
 </script>
 
@@ -18,8 +24,7 @@ const scrollToSection = (sectionId) => {
             <div class="grid grid-cols-3 items-center">
                 <!-- Left: Logo (takes equal space) -->
                 <div class="flex items-center cursor-pointer justify-start group" @click="scrollToSection('hero')">
-                    <img src="/images/logo.svg" alt="Competition Engine" class="h-10 md:h-12 mr-2 md:mr-3" />
-                    <span class="text-xl md:text-2xl font-bold text-white whitespace-nowrap">Competition Engine</span>
+                    <img src="/images/logo.svg" alt="Competition Engine" class="h-10 md:h-12" />
                 </div>
 
                 <!-- Center: Navigation (perfectly centered) -->
@@ -32,8 +37,8 @@ const scrollToSection = (sectionId) => {
 
                 <!-- Right: Book Demo Button (takes equal space, aligned right) -->
                 <div class="flex justify-end">
-                    <button 
-                        @click="scrollToSection('booking')" 
+                    <button
+                        @click="openCalendly"
                         class="hidden md:inline-block bg-accent-purple text-white font-semibold px-5 py-2 rounded-lg hover:bg-accent-orange transition glow-button whitespace-nowrap"
                     >
                         Book a Demo
@@ -59,7 +64,7 @@ const scrollToSection = (sectionId) => {
                 <button @click="scrollToSection('comparison')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Comparison</button>
                 <button @click="scrollToSection('pricing')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Pricing</button>
                 <button @click="scrollToSection('faq')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">FAQ</button>
-                <button @click="scrollToSection('booking')" class="bg-accent-purple text-white font-semibold px-5 py-2 rounded-lg hover:bg-accent-orange transition w-full mt-2">Book a Demo</button>
+                <button @click="openCalendly" class="bg-accent-purple text-white font-semibold px-5 py-2 rounded-lg hover:bg-accent-orange transition w-full mt-2">Book a Demo</button>
             </nav>
         </div>
     </header>
