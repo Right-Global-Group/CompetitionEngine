@@ -1,10 +1,16 @@
 <script setup>
-    import { onMounted, onUnmounted, ref, inject } from 'vue';
+    import { onMounted, onUnmounted, ref, inject, computed } from 'vue';
     import { gsap } from 'gsap';
     import * as THREE from 'three';
     
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
+    
+    // Create computed properties for reactive text updates
+    const titleKeyword = computed(() => getText('hero.title_keyword', 'Ultimate Competition'));
+    const subtitle = computed(() => getText('hero.subtitle', 'Effortlessly create, manage, and scale engaging competitions that your audience will love. No code, no hassle.'));
+    const buttonPrimary = computed(() => getText('hero.button_primary', 'Book a Demo'));
+    const buttonSecondary = computed(() => getText('hero.button_secondary', 'Game Studio'));
     
     const heroCanvas = ref(null);
     let animationId = null;
@@ -205,49 +211,26 @@
             <!-- Three.js Canvas Background -->
             <canvas ref="heroCanvas" class="absolute top-0 left-0 w-full h-full"></canvas>
     
-            <div v-if="!siteTexts.loading" class="relative z-10 p-4 sm:p-6">
+            <!-- Content (always visible, uses computed properties for reactivity) -->
+            <div class="relative z-10 p-4 sm:p-6">
                 <h1 class="hero-title text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-4 leading-tight">
-                    The <span class="keyword-animate">{{ getText('hero.title_keyword', 'Ultimate Competition') }}</span> Platform
+                    The <span class="keyword-animate">{{ titleKeyword }}</span> Platform
                 </h1>
                 <p class="hero-subtitle text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-                    {{ getText('hero.subtitle', 'Effortlessly create, manage, and scale engaging competitions that your audience will love. No code, no hassle.') }}
+                    {{ subtitle }}
                 </p>
                 <div class="hero-buttons flex flex-col sm:flex-row justify-center items-center gap-4">
                     <button 
                         @click="scrollToBooking"
                         class="w-full sm:w-auto bg-accent-purple text-white font-semibold px-8 py-3 sm:py-4 rounded-lg hover:bg-accent-orange transition-all duration-300 transform hover:scale-105 glow-button"
                     >
-                        {{ getText('hero.button_primary', 'Book a Demo') }}
+                        {{ buttonPrimary }}
                     </button>
                     <a
                         href="#configurator"
                         class="w-full sm:w-auto glass-effect text-white font-semibold px-8 py-3 sm:py-4 rounded-lg hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 text-center"
                     >
-                        {{ getText('hero.button_secondary', 'Game Studio') }}
-                    </a>
-                </div>
-            </div>
-    
-            <!-- Loading state (fallback) -->
-            <div v-else class="relative z-10 p-4 sm:p-6">
-                <h1 class="hero-title text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-4 leading-tight">
-                    The <span class="keyword-animate">Ultimate Competition</span> Platform
-                </h1>
-                <p class="hero-subtitle text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-                    Effortlessly create, manage, and scale engaging competitions that your audience will love. No code, no hassle.
-                </p>
-                <div class="hero-buttons flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <button 
-                        @click="scrollToBooking"
-                        class="w-full sm:w-auto bg-accent-purple text-white font-semibold px-8 py-3 sm:py-4 rounded-lg hover:bg-accent-orange transition-all duration-300 transform hover:scale-105 glow-button"
-                    >
-                        Book a Demo
-                    </button>
-                    <a
-                        href="#configurator"
-                        class="w-full sm:w-auto glass-effect text-white font-semibold px-8 py-3 sm:py-4 rounded-lg hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 text-center"
-                    >
-                        Game Studio
+                        {{ buttonSecondary }}
                     </a>
                 </div>
             </div>

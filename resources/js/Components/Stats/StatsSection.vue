@@ -1,75 +1,74 @@
 <script setup>
-import { ref, onMounted, inject } from 'vue'; // Add inject
-
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-
-
-gsap.registerPlugin(ScrollTrigger);
-
-const stat1Value = ref(0);
-const stat2Value = ref(0);
-const stat3Value = ref(0);
-
-const getText = inject('getText');
-const siteTexts = inject('siteTexts');
-
-onMounted(() => {
-    gsap.to(stat1Value, {
-        value: 42000,
-        duration: 2,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: '#stats',
-            start: 'top 80%',
-        },
-        onUpdate: function() {
-            stat1Value.value = Math.round(this.targets()[0].value);
-        }
+    import { ref, onMounted, inject } from 'vue';
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    
+    gsap.registerPlugin(ScrollTrigger);
+    
+    const stat1Value = ref(0);
+    const stat2Value = ref(0);
+    const stat3Value = ref(0);
+    
+    const getText = inject('getText');
+    const siteTexts = inject('siteTexts');
+    
+    onMounted(() => {
+        gsap.to(stat1Value, {
+            value: 42000,
+            duration: 2,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '#stats',
+                start: 'top 80%',
+            },
+            onUpdate: function() {
+                stat1Value.value = Math.round(this.targets()[0].value);
+            }
+        });
+    
+        gsap.to(stat2Value, {
+            value: 1250000,
+            duration: 2,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '#stats',
+                start: 'top 80%',
+            },
+            onUpdate: function() {
+                stat2Value.value = Math.round(this.targets()[0].value);
+            }
+        });
+    
+        gsap.to(stat3Value, {
+            value: 99.9,
+            duration: 2,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '#stats',
+                start: 'top 80%',
+            },
+            onUpdate: function() {
+                stat3Value.value = this.targets()[0].value.toFixed(1);
+            }
+        });
     });
-
-    gsap.to(stat2Value, {
-        value: 1250000,
-        duration: 2,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: '#stats',
-            start: 'top 80%',
-        },
-        onUpdate: function() {
-            stat2Value.value = Math.round(this.targets()[0].value);
-        }
-    });
-
-    gsap.to(stat3Value, {
-        value: 99.9,
-        duration: 2,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: '#stats',
-            start: 'top 80%',
-        },
-        onUpdate: function() {
-            stat3Value.value = this.targets()[0].value.toFixed(1);
-        }
-    });
-});
-</script>
-
-<template>
-    <section id="stats" class="py-20 bg-black bg-opacity-20 overflow-hidden">
-        <div v-if="!siteTexts.loading" class="container mx-auto px-4 sm:px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                    Trusted by the <span class="keyword-animate">{{ getText('stats.heading_keyword', 'Best') }}</span>
-                </h2>
-                <p class="text-lg text-gray-400 max-w-2xl mx-auto">
-                    {{ getText('stats.description', 'Our platform powers successful competitions at scale, every single day.') }}
-                </p>
-            </div>
+    </script>
+    
+    <template>
+        <section id="stats" class="py-20 bg-black bg-opacity-20 overflow-hidden">
             <div class="container mx-auto px-4 sm:px-6">
-                <div class="text-center mb-12">
+                <!-- Dynamic Heading -->
+                <div v-if="!siteTexts.loading" class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                        Trusted by the <span class="keyword-animate">{{ getText('stats.heading_keyword', 'Best') }}</span>
+                    </h2>
+                    <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                        {{ getText('stats.description', 'Our platform powers successful competitions at scale, every single day.') }}
+                    </p>
+                </div>
+    
+                <!-- Loading Fallback -->
+                <div v-else class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
                         Trusted by the <span class="keyword-animate">Best</span>
                     </h2>
@@ -77,6 +76,8 @@ onMounted(() => {
                         Our platform powers successful competitions at scale, every single day.
                     </p>
                 </div>
+    
+                <!-- Stats Cards -->
                 <div class="relative max-w-5xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-8">
                     <!-- Side Stat 1 -->
                     <div class="liquid-glass p-6 rounded-2xl text-center w-full max-w-sm lg:absolute lg:left-0 lg:-translate-x-1/4">
@@ -88,7 +89,7 @@ onMounted(() => {
                         <h3 class="text-4xl md:text-5xl font-bold text-white">{{ stat1Value.toLocaleString() }}</h3>
                         <p class="text-gray-400 mt-2">Orders Processed</p>
                     </div>
-
+    
                     <!-- Central Stat (Highlighted) -->
                     <div class="liquid-glass p-8 rounded-2xl text-center w-full max-w-sm lg:max-w-md z-10 border-2 border-orange-500 shadow-2xl shadow-orange-500/20">
                         <div class="flex justify-center mb-4">
@@ -99,7 +100,7 @@ onMounted(() => {
                         <h3 class="text-5xl md:text-6xl font-bold text-white">{{ stat2Value.toLocaleString() }}</h3>
                         <p class="text-gray-300 mt-2 text-lg">Tickets Sold This Month</p>
                     </div>
-
+    
                     <!-- Side Stat 2 -->
                     <div class="liquid-glass p-6 rounded-2xl text-center w-full max-w-sm lg:absolute lg:right-0 lg:translate-x-1/4">
                         <div class="flex justify-center mb-3">
@@ -112,6 +113,5 @@ onMounted(() => {
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</template>
+        </section>
+    </template>
