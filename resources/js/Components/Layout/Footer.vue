@@ -20,7 +20,7 @@ const openCalendly = () => {
                 <!-- Logo & Description -->
                 <div class="md:col-span-1">
                     <div class="flex items-center mb-4">
-                        <img src="/images/logo.svg" alt="Competition Engine" class="h-8" />
+                        <img src="/images/logo.png" alt="Competition Engine" class="h-8" />
                     </div>
                     <p class="text-gray-400">The modern platform for creating and managing viral competitions.</p>
                 </div>
