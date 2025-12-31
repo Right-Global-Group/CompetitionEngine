@@ -60,7 +60,7 @@
                 <div class="grid grid-cols-3 items-center">
                     <!-- Left: Logo (takes equal space) -->
                     <div class="flex items-center cursor-pointer justify-start group" @click="scrollToSection('hero')">
-                        <img src="/images/logo.svg" alt="Competition Engine" class="h-10 md:h-12" />
+                        <img src="/images/logo.svg" alt="Competition Engine" class="h-[4.5rem] md:h-12" />
                     </div>
     
                     <!-- Center: Navigation (perfectly centered) -->
