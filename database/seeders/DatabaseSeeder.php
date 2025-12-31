@@ -15,14 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Create the main RGG user (production & all environments)
+        User::factory()->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-
-        // Seed site texts
+        // Seed site texts (always needed)
         $this->call([
             SiteTextSeeder::class,
         ]);

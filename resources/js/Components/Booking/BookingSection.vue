@@ -1,4 +1,5 @@
 <script setup>
+    
 const calendlyUrl = 'https://calendly.com/rightglobalgroup/website-design-free-consultation';
 
 const openCalendly = () => {
