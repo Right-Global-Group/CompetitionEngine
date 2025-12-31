@@ -1,13 +1,15 @@
 <script setup>
     import { ref, computed } from 'vue';
-    import { usePage } from '@inertiajs/vue3';
+    import { usePage, Link } from '@inertiajs/vue3';
     
     const mobileMenuOpen = ref(false);
+    const userMenuOpen = ref(false);
     const calendlyUrl = 'https://calendly.com/rightglobalgroup/website-design-free-consultation';
     
     const page = usePage();
     const isAdmin = computed(() => page.props.auth?.user?.is_admin || false);
     const isLoggedIn = computed(() => !!page.props.auth?.user);
+    const userName = computed(() => page.props.auth?.user?.name || '');
     
     const scrollToSection = (sectionId) => {
         const element = document.getElementById(sectionId);
@@ -25,6 +27,31 @@
     const goToAdmin = () => {
         window.location.href = '/admin';
     };
+    
+    const toggleUserMenu = () => {
+        userMenuOpen.value = !userMenuOpen.value;
+    };
+    
+    const logout = () => {
+        if (confirm('Are you sure you want to logout?')) {
+            // Use Inertia post for proper CSRF handling
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/logout';
+            
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+            if (csrfToken) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = '_token';
+                input.value = csrfToken;
+                form.appendChild(input);
+            }
+            
+            document.body.appendChild(form);
+            form.submit();
+        }
+    };
     </script>
     
     <template>
@@ -33,7 +60,7 @@
                 <div class="grid grid-cols-3 items-center">
                     <!-- Left: Logo (takes equal space) -->
                     <div class="flex items-center cursor-pointer justify-start group" @click="scrollToSection('hero')">
-                        <img src="/images/logo.png" alt="Competition Engine" class="h-10 md:h-12" />
+                        <img src="/images/logo.svg" alt="Competition Engine" class="h-10 md:h-12" />
                     </div>
     
                     <!-- Center: Navigation (perfectly centered) -->
@@ -44,8 +71,57 @@
                         <button @click="scrollToSection('faq')" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">FAQ</button>
                     </nav>
     
-                    <!-- Right: Admin Button + Book Demo Button (takes equal space, aligned right) -->
+                    <!-- Right: User Icon + Admin Button + Book Demo Button -->
                     <div class="flex justify-end items-center gap-3">
+                        <!-- User Icon/Name (Desktop) -->
+                        <div v-if="isLoggedIn" class="hidden md:block relative">
+                            <button
+                                @click="toggleUserMenu"
+                                class="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-300 border border-gray-700/50 hover:border-gray-600/50"
+                            >
+                                <svg class="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                </svg>
+                                <span class="text-sm text-gray-300">{{ userName }}</span>
+                                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+    
+                            <!-- Dropdown Menu -->
+                            <div
+                                v-show="userMenuOpen"
+                                class="absolute right-0 mt-2 w-48 rounded-lg bg-gray-900 border border-gray-700 shadow-xl z-50"
+                            >
+                                <div class="py-2">
+                                    <a
+                                        href="/dashboard"
+                                        class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition"
+                                    >
+                                        Dashboard
+                                    </a>
+                                    <button
+                                        @click="logout"
+                                        class="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-gray-800 hover:text-red-300 transition"
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Login Button (Desktop - if not logged in) -->
+                        <a
+                            v-else
+                            href="/login"
+                            class="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-300 border border-gray-700/50 hover:border-gray-600/50"
+                        >
+                            <svg class="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                            <span class="text-sm text-gray-300">Login</span>
+                        </a>
+    
                         <!-- Admin Icon (only visible to logged-in admins) -->
                         <button
                             v-if="isLoggedIn && isAdmin"
@@ -86,7 +162,23 @@
                     <button @click="scrollToSection('comparison')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Comparison</button>
                     <button @click="scrollToSection('pricing')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Pricing</button>
                     <button @click="scrollToSection('faq')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">FAQ</button>
-                    <button v-if="isLoggedIn && isAdmin" @click="goToAdmin" class="block w-full text-left text-purple-400 hover:text-purple-300 transition py-2 font-semibold">⚙️ Admin Panel</button>
+                    
+                    <!-- User Section (Mobile) -->
+                    <div v-if="isLoggedIn" class="border-t border-gray-700 pt-3 space-y-2">
+                        <div class="flex items-center gap-2 px-3 py-2 text-gray-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                            <span class="text-sm font-semibold">{{ userName }}</span>
+                        </div>
+                        <a href="/dashboard" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2 px-3">Dashboard</a>
+                        <button v-if="isAdmin" @click="goToAdmin" class="block w-full text-left text-purple-400 hover:text-purple-300 transition py-2 px-3 font-semibold">⚙️ Admin Panel</button>
+                        <button @click="logout" class="block w-full text-left text-red-400 hover:text-red-300 transition py-2 px-3">Logout</button>
+                    </div>
+                    <a v-else href="/login" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2 border-t border-gray-700 pt-3">
+                        👤 Login
+                    </a>
+                    
                     <button @click="openCalendly" class="bg-accent-purple text-white font-semibold px-5 py-2 rounded-lg hover:bg-accent-orange transition w-full mt-2">Book a Demo</button>
                 </nav>
             </div>
