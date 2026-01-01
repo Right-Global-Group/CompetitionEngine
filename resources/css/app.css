@@ -4,11 +4,31 @@
 @import 'tailwindcss/utilities';
 
 @layer base {
+    /* Full-width reset for mobile - THE FIX */
+    html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
     body {
         font-family: 'Inter', sans-serif;
         background-color: #1B142C;
         color: #F3F4F6;
+        margin: 0;
+        padding: 0;
+        width: 100%;
         overflow-x: hidden;
+    }
+
+    #app {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    * {
+        box-sizing: border-box;
     }
 }
 
