@@ -64,7 +64,7 @@ class AdminPanelProvider extends PanelProvider
             ->darkMode(true)
             ->navigationItems([
                 NavigationItem::make('View Homepage')
-                    ->url('/', shouldOpenInNewTab: true)
+                    ->url('/', shouldOpenInNewTab: false)
                     ->icon('heroicon-o-home')
                     ->group('Quick Links')
                     ->sort(3),
