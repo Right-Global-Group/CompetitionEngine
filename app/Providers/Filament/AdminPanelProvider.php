@@ -64,11 +64,18 @@ class AdminPanelProvider extends PanelProvider
             ->font('Inter')
             ->darkMode(true)
             ->userMenuItems([
-                'logout' => MenuItem::make()
+                MenuItem::make()
                     ->label('Sign Out')
                     ->icon('heroicon-o-arrow-right-on-rectangle')
-                    ->url('/filament-logout'),
+                    ->url('#')
+                    ->extraAttributes([
+                        'onclick' => 'event.preventDefault(); document.getElementById(\'filament-logout-form\').submit();'
+                    ]),
             ])
+            ->renderHook(
+                'panels::body.end',
+                fn () => view('filament.logout-form')
+            )
             ->navigationItems([
                 NavigationItem::make('View Homepage')
                     ->url('/', shouldOpenInNewTab: false)

@@ -50,14 +50,8 @@ Route::post('/filament-logout', function () {
     
     request()->session()->invalidate();
     request()->session()->regenerateToken();
-    request()->session()->forget('filament');
     
-    return redirect('/')->withHeaders([
-        'Cache-Control' => 'no-cache, no-store, max-age=0, must-revalidate',
-        'Pragma' => 'no-cache',
-        'Expires' => '0',
-        'Clear-Site-Data' => '"cache", "cookies", "storage"'
-    ]);
+    return redirect('/')->with('status', 'Logged out successfully');
 })->name('filament.logout')->middleware('web');
 
 require __DIR__.'/auth.php';
