@@ -1,38 +1,35 @@
 import { computed } from 'vue';
 
-export function useHeadingParser() {
-    const parseHeading = (text) => {
+/**
+ * Get heading parts for rendering with keyword animation
+ * Expects data structure from API with heading_before, heading_keyword, heading_after
+ */
+export function useHeadingParts() {
+    const getHeadingParts = (getText, key, fallbackBefore = '', fallbackKeyword = '', fallbackAfter = '') => {
+        // Try to get the structured heading parts
+        const before = getText(`${key}.before`, fallbackBefore);
+        const keyword = getText(`${key}.keyword`, fallbackKeyword);
+        const after = getText(`${key}.after`, fallbackAfter);
+        
+        // Build parts array for rendering
         const parts = [];
-        let currentIndex = 0;
         
-        const regex = /\{keyword\}(.*?)\{\/keyword\}/g;
-        let match;
-        
-        while ((match = regex.exec(text)) !== null) {
-            if (match.index > currentIndex) {
-                parts.push({
-                    text: text.substring(currentIndex, match.index),
-                    isKeyword: false
-                });
-            }
-            
-            parts.push({
-                text: match[1],
-                isKeyword: true
-            });
-            
-            currentIndex = match.index + match[0].length;
+        if (before && before.trim()) {
+            parts.push({ text: before, isKeyword: false });
         }
         
-        if (currentIndex < text.length) {
-            parts.push({
-                text: text.substring(currentIndex),
-                isKeyword: false
-            });
+        if (keyword && keyword.trim()) {
+            parts.push({ text: keyword, isKeyword: true });
+        }
+        
+        if (after && after.trim()) {
+            parts.push({ text: after, isKeyword: false });
         }
         
         return parts;
     };
     
-    return { parseHeading };
+    return {
+        getHeadingParts
+    };
 }

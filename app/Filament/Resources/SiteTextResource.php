@@ -50,11 +50,47 @@ class SiteTextResource extends Resource
                     ->default('paragraph')
                     ->reactive(),
                 
-                // Conditional content field based on type
+                // Conditional fields based on type
                 Forms\Components\Group::make()
                     ->schema(function (callable $get) {
                         $type = $get('type');
                         
+                        // For headings, show 3-part input
+                        if ($type === 'heading') {
+                            return [
+                                Forms\Components\Section::make('Heading Structure')
+                                    ->description('Split your heading into parts. The middle part (keyword) will have gradient styling.')
+                                    ->schema([
+                                        TextInput::make('heading_before')
+                                            ->label('Text Before Keyword')
+                                            ->placeholder('e.g., "The" or "Your Complete"')
+                                            ->helperText('Optional: Text that appears before the styled keyword'),
+                                        
+                                        TextInput::make('heading_keyword')
+                                            ->label('Keyword (Styled)')
+                                            ->placeholder('e.g., "Ultimate Competition" or "Best"')
+                                            ->helperText('This text will have gradient animation')
+                                            ->required(),
+                                        
+                                        TextInput::make('heading_after')
+                                            ->label('Text After Keyword')
+                                            ->placeholder('e.g., "Platform" or leave empty')
+                                            ->helperText('Optional: Text that appears after the styled keyword'),
+                                        
+                                        Forms\Components\Placeholder::make('preview')
+                                            ->label('Preview')
+                                            ->content(function (callable $get) {
+                                                $before = $get('heading_before') ?? '';
+                                                $keyword = $get('heading_keyword') ?? '[keyword]';
+                                                $after = $get('heading_after') ?? '';
+                                                return trim("$before [$keyword] $after");
+                                            }),
+                                    ])
+                                    ->columnSpanFull(),
+                            ];
+                        }
+                        
+                        // For numbers, use numeric input
                         if ($type === 'number') {
                             return [
                                 TextInput::make('content')
@@ -66,6 +102,7 @@ class SiteTextResource extends Resource
                             ];
                         }
                         
+                        // For all other types, use textarea
                         return [
                             Textarea::make('content')
                                 ->label('Content')
@@ -114,12 +151,22 @@ class SiteTextResource extends Resource
                     ->label('Content')
                     ->limit(50)
                     ->searchable()
-                    ->tooltip(function (TextColumn $column): ?string {
-                        $state = $column->getState();
-                        if (strlen($state) <= 50) {
+                    ->formatStateUsing(function (SiteText $record): string {
+                        // For headings with parts, show assembled version
+                        if ($record->type === 'heading' && $record->heading_keyword) {
+                            return $record->full_heading;
+                        }
+                        return $record->content;
+                    })
+                    ->tooltip(function (TextColumn $column, SiteText $record): ?string {
+                        $text = $record->type === 'heading' && $record->heading_keyword 
+                            ? $record->full_heading 
+                            : $record->content;
+                        
+                        if (strlen($text) <= 50) {
                             return null;
                         }
-                        return $state;
+                        return $text;
                     }),
                 
                 TextColumn::make('order')
@@ -152,7 +199,7 @@ class SiteTextResource extends Resource
                 ]),
             ])
             ->defaultSort('section')
-            ->poll('10s') // Auto-refresh every 10 seconds
+            ->poll('10s')
             ->striped();
     }
 

@@ -2,23 +2,25 @@
     import { onMounted, onUnmounted, ref, inject, computed } from 'vue';
     import { gsap } from 'gsap';
     import * as THREE from 'three';
-    import { useHeadingParser } from '@/Composables/useHeadingParser';
+    import { useHeadingParts } from '@/Composables/useHeadingParts';
     
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
-    const { parseHeading } = useHeadingParser();
+    const { getHeadingParts } = useHeadingParts();
     
     const heroCanvas = ref(null);
     let animationId = null;
     let renderer = null;
     
-    // Parse heading with keyword syntax - FIXED TO USE hero.title
+    // Get heading parts (before, keyword, after)
     const headingParts = computed(() => {
-        const text = getText('hero.title', 'An Exciting Competition Platform');
-        console.log('Hero title from DB:', text);
-        const parsed = parseHeading(text);
-        console.log('Parsed parts:', parsed);
-        return parsed;
+        return getHeadingParts(
+            getText,
+            'hero.title',
+            'The',              // fallback before
+            'Ultimate Competition',  // fallback keyword
+            'Platform'          // fallback after
+        );
     });
     
     const subtitle = computed(() => getText('hero.subtitle', 'Effortlessly create, manage, and scale engaging competitions that your audience will love. No code, no hassle.'));

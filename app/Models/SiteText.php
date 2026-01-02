@@ -15,11 +15,25 @@ class SiteText extends Model
         'content',
         'type',
         'order',
+        'heading_before',
+        'heading_keyword',
+        'heading_after',
     ];
 
     protected $casts = [
         'order' => 'integer',
     ];
+
+    /**
+     * Get full heading text assembled from parts
+     */
+    public function getFullHeadingAttribute()
+    {
+        if ($this->type === 'heading' && ($this->heading_before || $this->heading_keyword || $this->heading_after)) {
+            return trim(($this->heading_before ?? '') . ' ' . ($this->heading_keyword ?? '') . ' ' . ($this->heading_after ?? ''));
+        }
+        return $this->content;
+    }
 
     public static function getSections(): array
     {
