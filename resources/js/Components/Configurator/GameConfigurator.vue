@@ -7,6 +7,30 @@ import BingoGame from '@/Components/Games/BingoGame.vue';
 
 const activeTab = ref('slots');
 
+// Get heading parts
+const headingParts = computed(() => {
+    const parts = [];
+    
+    const before = getText('configurator.heading_before', 'Build Your Game');
+    const keyword = getText('configurator.heading_keyword', '');
+    const after = getText('configurator.heading_after', '');
+    
+    if (before && before.trim()) {
+        parts.push({ text: before + ' ', isKeyword: false });
+    }
+    
+    if (keyword && keyword.trim()) {
+        parts.push({ text: keyword, isKeyword: true });
+    }
+    
+    if (after && after.trim()) {
+        parts.push({ text: ' ' + after, isKeyword: false });
+    }
+    
+    return parts;
+});
+    
+
 const tabs = [
     { id: 'slots', name: 'Slots', icon: '🎰' },
     { id: 'scratch', name: 'Scratch', icon: '🎫' },
@@ -332,7 +356,10 @@ const applySpinPreset = (preset) => {
             <div class="text-center mb-10 md:mb-14">
                 <p class="text-purple-400 text-sm font-medium tracking-widest uppercase mb-3">Game Studio</p>
                 <h2 class="text-3xl md:text-5xl font-bold text-white mb-3">
-                    Build Your Game
+                    <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
+                        <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
+                        <template v-else>{{ part.text }}</template>
+                    </template>
                 </h2>
                 <p class="text-gray-500 text-sm md:text-base">Customize every detail in real-time</p>
             </div>
