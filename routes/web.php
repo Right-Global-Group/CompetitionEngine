@@ -51,6 +51,9 @@ Route::post('/filament-logout', function () {
     request()->session()->invalidate();
     request()->session()->regenerateToken();
     
+    // Clear the intended URL so login doesn't redirect back to /admin
+    request()->session()->forget('url.intended');
+    
     return redirect('/')->with('status', 'Logged out successfully');
 })->name('filament.logout')->middleware('web');
 
