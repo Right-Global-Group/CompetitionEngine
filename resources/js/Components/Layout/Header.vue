@@ -104,12 +104,6 @@
                                 class="absolute right-0 mt-2 w-48 rounded-lg bg-gray-900 border border-gray-700 shadow-xl z-50"
                             >
                                 <div class="py-2">
-                                    <a
-                                        href="/dashboard"
-                                        class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition"
-                                    >
-                                        Dashboard
-                                    </a>
                                     <button
                                         @click="logout"
                                         class="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-gray-800 hover:text-red-300 transition"

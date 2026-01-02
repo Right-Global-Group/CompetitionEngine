@@ -33,12 +33,16 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        // Check if user is admin and redirect to admin panel
+        // Force full page reload for admin users to clear Filament cache
         if ($request->user()->isAdmin()) {
-            return redirect()->intended('/admin');
+            // Store a flag to force full reload
+            session()->put('force_reload', true);
+            
+            return redirect('/admin')
+                ->header('X-Inertia-Location', url('/admin'));
         }
 
-        return redirect()->intended('/dashboard');
+        return redirect()->intended('/');
     }
 
     /**
@@ -54,8 +58,9 @@ class AuthenticatedSessionController extends Controller
         // Clear any Filament-specific session data
         $request->session()->forget('filament');
         
-        // Create response with cache control headers
-        $response = redirect('/login');
+        // Create response with cache control headers and force full page reload
+        $response = redirect('/login')
+            ->header('X-Inertia-Location', url('/login'));
         
         // Prevent caching of the redirect
         $response->headers->set('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate');
