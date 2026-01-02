@@ -19,31 +19,35 @@ class SiteTextController extends Controller
         
         foreach ($texts as $text) {
             // For headings with parts, create separate entries for before/keyword/after
-            if ($text->type === 'heading' && $text->heading_keyword) {
-                if ($text->heading_before) {
+            if ($text->type === 'heading' && !empty($text->heading_keyword)) {
+                
+                // Add before text if it exists
+                if (!empty($text->heading_before)) {
                     $transformed[] = [
-                        'key' => $text->key . '.before',
+                        'key' => $text->key . '_before',
                         'content' => $text->heading_before,
                         'section' => $text->section,
-                        'type' => $text->type,
+                        'type' => 'heading_part',
                         'order' => $text->order,
                     ];
                 }
                 
+                // Add keyword (always)
                 $transformed[] = [
-                    'key' => $text->key . '.keyword',
+                    'key' => $text->key . '_keyword',
                     'content' => $text->heading_keyword,
                     'section' => $text->section,
-                    'type' => $text->type,
+                    'type' => 'heading_keyword',
                     'order' => $text->order,
                 ];
                 
-                if ($text->heading_after) {
+                // Add after text if it exists
+                if (!empty($text->heading_after)) {
                     $transformed[] = [
-                        'key' => $text->key . '.after',
+                        'key' => $text->key . '_after',
                         'content' => $text->heading_after,
                         'section' => $text->section,
-                        'type' => $text->type,
+                        'type' => 'heading_part',
                         'order' => $text->order,
                     ];
                 }
@@ -51,7 +55,7 @@ class SiteTextController extends Controller
                 // Regular content
                 $transformed[] = [
                     'key' => $text->key,
-                    'content' => $text->content,
+                    'content' => $text->content ?? '',
                     'section' => $text->section,
                     'type' => $text->type,
                     'order' => $text->order,

@@ -2,25 +2,36 @@
     import { onMounted, onUnmounted, ref, inject, computed } from 'vue';
     import { gsap } from 'gsap';
     import * as THREE from 'three';
-    import { useHeadingParts } from '@/Composables/useHeadingParts';
     
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
-    const { getHeadingParts } = useHeadingParts();
     
     const heroCanvas = ref(null);
     let animationId = null;
     let renderer = null;
     
-    // Get heading parts (before, keyword, after)
+    // Get heading parts - now looking for _before, _keyword, _after suffixes
     const headingParts = computed(() => {
-        return getHeadingParts(
-            getText,
-            'hero.title',
-            'The',              // fallback before
-            'Ultimate Competition',  // fallback keyword
-            'Platform'          // fallback after
-        );
+        const parts = [];
+        
+        const before = getText('hero.title_before', '');
+        const keyword = getText('hero.title_keyword', 'Exciting Comp');
+        const after = getText('hero.title_after', '');
+        
+        if (before && before.trim()) {
+            parts.push({ text: before + ' ', isKeyword: false });
+        }
+        
+        if (keyword && keyword.trim()) {
+            parts.push({ text: keyword, isKeyword: true });
+        }
+        
+        if (after && after.trim()) {
+            parts.push({ text: ' ' + after, isKeyword: false });
+        }
+        
+        console.log('Heading parts:', parts);
+        return parts;
     });
     
     const subtitle = computed(() => getText('hero.subtitle', 'Effortlessly create, manage, and scale engaging competitions that your audience will love. No code, no hassle.'));
@@ -215,7 +226,7 @@
     
             <div class="relative z-10 p-4 sm:p-6">
                 <h1 class="hero-title text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-4 leading-tight">
-                    <template v-for="(part, index) in headingParts" :key="index">
+                    <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
                         <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
                         <template v-else>{{ part.text }}</template>
                     </template>
