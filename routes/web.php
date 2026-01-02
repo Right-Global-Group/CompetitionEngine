@@ -26,11 +26,6 @@ Route::get('/faq', function () {
     return Inertia::render('FAQ');
 })->name('faq');
 
-// Dashboard route (requires authentication)
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 // Profile routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -57,7 +52,7 @@ Route::post('/filament-logout', function () {
     request()->session()->regenerateToken();
     request()->session()->forget('filament');
     
-    return redirect('/login')->withHeaders([
+    return redirect('/')->withHeaders([
         'Cache-Control' => 'no-cache, no-store, max-age=0, must-revalidate',
         'Pragma' => 'no-cache',
         'Expires' => '0',

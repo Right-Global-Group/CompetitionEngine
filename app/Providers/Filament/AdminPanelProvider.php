@@ -67,12 +67,7 @@ class AdminPanelProvider extends PanelProvider
                 'logout' => MenuItem::make()
                     ->label('Sign Out')
                     ->icon('heroicon-o-arrow-right-on-rectangle')
-                    ->action(function () {
-                        auth()->logout();
-                        request()->session()->invalidate();
-                        request()->session()->regenerateToken();
-                        return redirect('/');
-                    }),
+                    ->url('/filament-logout'),
             ])
             ->navigationItems([
                 NavigationItem::make('View Homepage')
