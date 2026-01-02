@@ -190,7 +190,7 @@ class SiteTextSeeder extends Seeder
         ];
 
         foreach ($texts as $text) {
-            SiteText::updateOrCreate(
+            SiteText::fristOrCreate(
                 ['key' => $text['key']],
                 $text
             );
