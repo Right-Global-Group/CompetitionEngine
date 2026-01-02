@@ -10,7 +10,13 @@ class FilamentAuth
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->user() || !$request->user()->isAdmin()) {
+        // Check if user is not authenticated - redirect to login
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
+
+        // Check if user is not an admin - show 403 error
+        if (!$request->user()->isAdmin()) {
             abort(403, 'Unauthorized access to admin panel.');
         }
 

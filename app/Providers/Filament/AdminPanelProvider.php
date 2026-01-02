@@ -28,7 +28,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            // ->login() // REMOVE THIS LINE
             ->brandName('Competition Engine Admin')
             ->colors([
                 'primary' => Color::hex('#6A3FF4'),
