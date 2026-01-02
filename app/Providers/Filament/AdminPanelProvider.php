@@ -30,6 +30,8 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->brandName('Competition Engine Admin')
+            ->brandLogo(asset('images/favicon.ico'))
+            ->brandLogoHeight('2.5rem')
             ->colors([
                 'primary' => Color::hex('#6A3FF4'),
                 'secondary' => Color::hex('#FF9900'),
