@@ -30,7 +30,6 @@
             parts.push({ text: ' ' + after, isKeyword: false });
         }
         
-        console.log('Heading parts:', parts);
         return parts;
     });
     
