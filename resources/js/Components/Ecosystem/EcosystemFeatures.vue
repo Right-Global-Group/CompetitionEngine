@@ -4,6 +4,29 @@
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
     
+    // Get heading parts
+    const headingParts = computed(() => {
+        const parts = [];
+        
+        const before = getText('ecosystem.heading_before', 'Your Complete');
+        const keyword = getText('ecosystem.heading_keyword', 'Raffle Ecosystem');
+        const after = getText('ecosystem.heading_after', '');
+        
+        if (before && before.trim()) {
+            parts.push({ text: before + ' ', isKeyword: false });
+        }
+        
+        if (keyword && keyword.trim()) {
+            parts.push({ text: keyword, isKeyword: true });
+        }
+        
+        if (after && after.trim()) {
+            parts.push({ text: ' ' + after, isKeyword: false });
+        }
+        
+        return parts;
+    });
+    
     // Computed properties for each feature card
     const features = computed(() => [
         {
@@ -44,7 +67,10 @@
             <div class="container mx-auto px-4 sm:px-6">
                 <div v-if="!siteTexts.loading" class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        Your Complete <span class="keyword-animate">{{ getText('ecosystem.heading_keyword', 'Raffle Ecosystem') }}</span>
+                        <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
+                            <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
+                            <template v-else>{{ part.text }}</template>
+                        </template>
                     </h2>
                     <p class="text-lg text-gray-400 max-w-3xl mx-auto">
                         {{ getText('ecosystem.description', 'We provide the essential infrastructure to launch, operate, and scale your raffle business, all in one place.') }}

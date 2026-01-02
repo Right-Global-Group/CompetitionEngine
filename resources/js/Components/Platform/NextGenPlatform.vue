@@ -1,5 +1,5 @@
 <script setup>
-    import { onMounted, inject } from 'vue';
+    import { onMounted, inject, computed } from 'vue';
     import { gsap } from 'gsap';
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
     
@@ -7,6 +7,29 @@
     
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
+    
+    // Get heading parts
+    const headingParts = computed(() => {
+        const parts = [];
+        
+        const before = getText('nextgen.heading_before', '');
+        const keyword = getText('nextgen.heading_keyword', 'Next Generation');
+        const after = getText('nextgen.heading_after', 'Platform');
+        
+        if (before && before.trim()) {
+            parts.push({ text: before + ' ', isKeyword: false });
+        }
+        
+        if (keyword && keyword.trim()) {
+            parts.push({ text: keyword, isKeyword: true });
+        }
+        
+        if (after && after.trim()) {
+            parts.push({ text: ' ' + after, isKeyword: false });
+        }
+        
+        return parts;
+    });
     
     onMounted(() => {
         const tl = gsap.timeline({
@@ -57,7 +80,10 @@
                 <!-- Content -->
                 <div v-if="!siteTexts.loading" class="text-center md:text-left">
                     <h2 id="next-gen-heading" class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        <span class="keyword-animate">{{ getText('nextgen.heading_keyword', 'Next Generation') }}</span> Platform
+                        <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
+                            <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
+                            <template v-else>{{ part.text }}</template>
+                        </template>
                     </h2>
                     <p class="text-lg text-gray-400 mb-6">
                         {{ getText('nextgen.description', 'Competition Engine isn\'t just another tool; it\'s a complete evolution. Built on a serverless, edge-first architecture, we provide unparalleled speed, security, and scalability that legacy systems can\'t match.') }}

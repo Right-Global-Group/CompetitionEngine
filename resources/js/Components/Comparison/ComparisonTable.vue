@@ -3,6 +3,30 @@
     
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
+
+        
+    // Get heading parts
+    const headingParts = computed(() => {
+        const parts = [];
+        
+        const before = getText('launch.heading_before', 'Competition Engine vs. Others');
+        const keyword = getText('launch.heading_keyword', '');
+        const after = getText('launch.heading_after', '');
+        
+        if (before && before.trim()) {
+            parts.push({ text: before + ' ', isKeyword: false });
+        }
+        
+        if (keyword && keyword.trim()) {
+            parts.push({ text: keyword, isKeyword: true });
+        }
+        
+        if (after && after.trim()) {
+            parts.push({ text: ' ' + after, isKeyword: false });
+        }
+        
+        return parts;
+    });
     
     const comparisonData = [
         {
@@ -43,7 +67,10 @@
             <div class="container mx-auto px-4 sm:px-6">
                 <div v-if="!siteTexts.loading" class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        {{ getText('comparison.heading', 'Competition Engine vs. Others') }}
+                        <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
+                            <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
+                            <template v-else>{{ part.text }}</template>
+                        </template>
                     </h2>
                     <p class="text-lg text-gray-400">
                         {{ getText('comparison.description', 'See how we stack up against the competition.') }}

@@ -1,9 +1,32 @@
 <script setup>
-    import { onMounted, inject } from 'vue';
+    import { onMounted, inject, computed } from 'vue';
     import { gsap } from 'gsap';
     
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
+    
+    // Get heading parts
+    const headingParts = computed(() => {
+        const parts = [];
+        
+        const before = getText('modern.heading_before', '');
+        const keyword = getText('modern.heading_keyword', 'Bye Bye, WordPress.');
+        const after = getText('modern.heading_after', '');
+        
+        if (before && before.trim()) {
+            parts.push({ text: before + ' ', isKeyword: false });
+        }
+        
+        if (keyword && keyword.trim()) {
+            parts.push({ text: keyword, isKeyword: true });
+        }
+        
+        if (after && after.trim()) {
+            parts.push({ text: ' ' + after, isKeyword: false });
+        }
+        
+        return parts;
+    });
     
     const features = [
         'Blazing Fast Performance',
@@ -43,7 +66,10 @@
                 <!-- Content -->
                 <div v-if="!siteTexts.loading" class="text-center md:text-left">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        <span class="keyword-animate">{{ getText('modern.heading', 'Bye Bye, WordPress.') }}</span>
+                        <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
+                            <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
+                            <template v-else>{{ part.text }}</template>
+                        </template>
                     </h2>
                     <p class="text-4xl md:text-5xl font-extrabold gradient-text mb-6">
                         {{ getText('modern.subheading', 'Hello, Modern Platform.') }}

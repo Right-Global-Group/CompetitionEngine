@@ -12,6 +12,29 @@
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
     
+    // Get heading parts
+    const headingParts = computed(() => {
+        const parts = [];
+        
+        const before = getText('stats.heading_before', 'Trusted by the');
+        const keyword = getText('stats.heading_keyword', 'Best');
+        const after = getText('stats.heading_after', '');
+        
+        if (before && before.trim()) {
+            parts.push({ text: before + ' ', isKeyword: false });
+        }
+        
+        if (keyword && keyword.trim()) {
+            parts.push({ text: keyword, isKeyword: true });
+        }
+        
+        if (after && after.trim()) {
+            parts.push({ text: ' ' + after, isKeyword: false });
+        }
+        
+        return parts;
+    });
+    
     // Computed properties for target values from database
     const targetOrders = computed(() => {
         const value = getText('stats.value_orders', '42000');
@@ -107,7 +130,10 @@
                 <!-- Dynamic Heading -->
                 <div v-if="!siteTexts.loading" class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        Trusted by the <span class="keyword-animate">{{ getText('stats.heading_keyword', 'Best') }}</span>
+                        <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
+                            <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
+                            <template v-else>{{ part.text }}</template>
+                        </template>
                     </h2>
                     <p class="text-lg text-gray-400 max-w-2xl mx-auto">
                         {{ getText('stats.description', 'Our platform powers successful competitions at scale, every single day.') }}

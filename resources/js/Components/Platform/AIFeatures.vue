@@ -1,8 +1,31 @@
 <script setup>
-    import { inject } from 'vue';
+    import { inject, computed } from 'vue';
     
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
+    
+    // Get heading parts
+    const headingParts = computed(() => {
+        const parts = [];
+        
+        const before = getText('ai.heading_before', 'The Future is');
+        const keyword = getText('ai.heading_keyword', 'AI-Powered');
+        const after = getText('ai.heading_after', '');
+        
+        if (before && before.trim()) {
+            parts.push({ text: before + ' ', isKeyword: false });
+        }
+        
+        if (keyword && keyword.trim()) {
+            parts.push({ text: keyword, isKeyword: true });
+        }
+        
+        if (after && after.trim()) {
+            parts.push({ text: ' ' + after, isKeyword: false });
+        }
+        
+        return parts;
+    });
     
     const features = [
         {
@@ -33,7 +56,10 @@
                     </span>
                 </div>
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                    {{ getText('ai.heading', 'The Future is AI-Powered') }}
+                    <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
+                        <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
+                        <template v-else>{{ part.text }}</template>
+                    </template>
                 </h2>
                 <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-8">
                     {{ getText('ai.description', 'Supercharge your competition site with the first AI-powered platform. Get ready for smarter analytics, automated marketing, and effortless content creation.') }}

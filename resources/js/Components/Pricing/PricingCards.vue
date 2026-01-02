@@ -1,8 +1,31 @@
 <script setup>
-    import { onMounted, inject } from 'vue';
+    import { onMounted, inject, computed } from 'vue';
     
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
+    
+    // Get heading parts
+    const headingParts = computed(() => {
+        const parts = [];
+        
+        const before = getText('pricing.heading_before', '');
+        const keyword = getText('pricing.heading_keyword', 'Simple, Transparent');
+        const after = getText('pricing.heading_after', 'Pricing');
+        
+        if (before && before.trim()) {
+            parts.push({ text: before + ' ', isKeyword: false });
+        }
+        
+        if (keyword && keyword.trim()) {
+            parts.push({ text: keyword, isKeyword: true });
+        }
+        
+        if (after && after.trim()) {
+            parts.push({ text: ' ' + after, isKeyword: false });
+        }
+        
+        return parts;
+    });
     
     const calendlyUrl = 'https://calendly.com/rightglobalgroup/website-design-free-consultation';
     
@@ -72,7 +95,10 @@
             <div class="container mx-auto px-4 sm:px-6">
                 <div v-if="!siteTexts.loading" class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        <span class="keyword-animate">{{ getText('pricing.heading_keyword', 'Simple, Transparent') }}</span> Pricing
+                        <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
+                            <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
+                            <template v-else>{{ part.text }}</template>
+                        </template>
                     </h2>
                     <p class="text-lg text-gray-400">
                         {{ getText('pricing.description', 'Choose the plan that\'s right for you.') }}
