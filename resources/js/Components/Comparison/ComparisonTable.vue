@@ -3,14 +3,13 @@
     
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
-
-        
+    
     // Get heading parts
     const headingParts = computed(() => {
         const parts = [];
         
-        const before = getText('comparison.heading_before', 'Competition Engine vs. Others');
-        const keyword = getText('comparison.heading_keyword', '');
+        const before = getText('comparison.heading_before', 'Competition Engine vs.');
+        const keyword = getText('comparison.heading_keyword', 'Others');
         const after = getText('comparison.heading_after', '');
         
         if (before && before.trim()) {
@@ -28,38 +27,47 @@
         return parts;
     });
     
-    const comparisonData = [
+    // Helper function to determine color based on text
+    const getColor = (text) => {
+        const lower = text.toLowerCase();
+        if (['excellent', 'high', 'unlimited', 'intuitive', 'dedicated'].includes(lower)) return 'text-green-400';
+        if (['variable', 'moderate', 'complex', 'clunky'].includes(lower)) return 'text-yellow-400';
+        return 'text-red-400';
+    };
+    
+    // Get comparison data from database
+    const comparisonData = computed(() => [
         {
-            feature: 'Performance',
-            competitionEngine: { text: 'Excellent', color: 'text-green-400' },
-            wordpress: { text: 'Variable', color: 'text-yellow-400' },
-            otherSaas: { text: 'Slow', color: 'text-red-400' }
+            feature: getText('comparison.feature1', 'Performance'),
+            competitionEngine: { text: getText('comparison.feature1_us', 'Excellent'), color: getColor(getText('comparison.feature1_us', 'Excellent')) },
+            wordpress: { text: getText('comparison.feature1_wp', 'Variable'), color: getColor(getText('comparison.feature1_wp', 'Variable')) },
+            otherSaas: { text: getText('comparison.feature1_saas', 'Slow'), color: getColor(getText('comparison.feature1_saas', 'Slow')) }
         },
         {
-            feature: 'Security',
-            competitionEngine: { text: 'High', color: 'text-green-400' },
-            wordpress: { text: 'Vulnerable', color: 'text-red-400' },
-            otherSaas: { text: 'Moderate', color: 'text-yellow-400' }
+            feature: getText('comparison.feature2', 'Security'),
+            competitionEngine: { text: getText('comparison.feature2_us', 'High'), color: getColor(getText('comparison.feature2_us', 'High')) },
+            wordpress: { text: getText('comparison.feature2_wp', 'Vulnerable'), color: getColor(getText('comparison.feature2_wp', 'Vulnerable')) },
+            otherSaas: { text: getText('comparison.feature2_saas', 'Moderate'), color: getColor(getText('comparison.feature2_saas', 'Moderate')) }
         },
         {
-            feature: 'Scalability',
-            competitionEngine: { text: 'Unlimited', color: 'text-green-400' },
-            wordpress: { text: 'Limited', color: 'text-red-400' },
-            otherSaas: { text: 'Limited', color: 'text-yellow-400' }
+            feature: getText('comparison.feature3', 'Scalability'),
+            competitionEngine: { text: getText('comparison.feature3_us', 'Unlimited'), color: getColor(getText('comparison.feature3_us', 'Unlimited')) },
+            wordpress: { text: getText('comparison.feature3_wp', 'Limited'), color: getColor(getText('comparison.feature3_wp', 'Limited')) },
+            otherSaas: { text: getText('comparison.feature3_saas', 'Limited'), color: getColor(getText('comparison.feature3_saas', 'Limited')) }
         },
         {
-            feature: 'Ease of Use',
-            competitionEngine: { text: 'Intuitive', color: 'text-green-400' },
-            wordpress: { text: 'Complex', color: 'text-yellow-400' },
-            otherSaas: { text: 'Clunky', color: 'text-yellow-400' }
+            feature: getText('comparison.feature4', 'Ease of Use'),
+            competitionEngine: { text: getText('comparison.feature4_us', 'Intuitive'), color: getColor(getText('comparison.feature4_us', 'Intuitive')) },
+            wordpress: { text: getText('comparison.feature4_wp', 'Complex'), color: getColor(getText('comparison.feature4_wp', 'Complex')) },
+            otherSaas: { text: getText('comparison.feature4_saas', 'Clunky'), color: getColor(getText('comparison.feature4_saas', 'Clunky')) }
         },
         {
-            feature: 'Support',
-            competitionEngine: { text: 'Dedicated', color: 'text-green-400' },
-            wordpress: { text: 'Community Forum', color: 'text-red-400' },
-            otherSaas: { text: 'Email Only', color: 'text-yellow-400' }
+            feature: getText('comparison.feature5', 'Support'),
+            competitionEngine: { text: getText('comparison.feature5_us', 'Dedicated'), color: getColor(getText('comparison.feature5_us', 'Dedicated')) },
+            wordpress: { text: getText('comparison.feature5_wp', 'Community Forum'), color: getColor(getText('comparison.feature5_wp', 'Community Forum')) },
+            otherSaas: { text: getText('comparison.feature5_saas', 'Email Only'), color: getColor(getText('comparison.feature5_saas', 'Email Only')) }
         }
-    ];
+    ]);
     </script>
     
     <template>
@@ -77,7 +85,6 @@
                     </p>
                 </div>
     
-                <!-- Loading fallback -->
                 <div v-else class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Competition Engine vs. Others</h2>
                     <p class="text-lg text-gray-400">See how we stack up against the competition.</p>

@@ -31,28 +31,29 @@
         return parts;
     });
     
-    const steps = [
+    // Get steps from database
+    const steps = computed(() => [
         {
             number: 1,
-            title: 'Choose Your Game',
-            description: 'Select from a variety of engaging competition types like scratch cards, spin wheels, and more.'
+            title: getText('launch.step1_title', 'Choose Your Game'),
+            description: getText('launch.step1_desc', 'Select from a variety of engaging competition types.')
         },
         {
             number: 2,
-            title: 'Customize Everything',
-            description: 'Brand your competition with your logos, colors, and unique messaging to make it truly yours.'
+            title: getText('launch.step2_title', 'Customize Everything'),
+            description: getText('launch.step2_desc', 'Brand your competition with your logos and colors.')
         },
         {
             number: 3,
-            title: 'Define the Rules',
-            description: 'Define entry criteria, prize allocation, and competition duration with our intuitive rule-builder.'
+            title: getText('launch.step3_title', 'Define the Rules'),
+            description: getText('launch.step3_desc', 'Define entry criteria and prize allocation.')
         },
         {
             number: 4,
-            title: 'Go Live!',
-            description: 'Launch and watch the engagement roll in. Monitor everything from your powerful dashboard.'
+            title: getText('launch.step4_title', 'Go Live!'),
+            description: getText('launch.step4_desc', 'Launch and watch the engagement roll in.')
         }
-    ];
+    ]);
     
     onMounted(() => {
         gsap.from('.timeline-item', {
@@ -84,7 +85,6 @@
                     </p>
                 </div>
                 
-                <!-- Loading fallback -->
                 <div v-else class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
                         Launch in <span class="keyword-animate">Minutes</span>

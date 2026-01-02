@@ -3,7 +3,7 @@
     
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
-
+    
     // Get heading parts
     const headingParts = computed(() => {
         const parts = [];
@@ -27,31 +27,32 @@
         return parts;
     });
     
-    const faqs = [
+    // Get FAQs from database
+    const faqs = computed(() => [
         {
-            question: 'What types of competitions can I create?',
-            answer: 'You can create a wide variety of competitions including raffles, instant win games (slots, scratch cards, spin wheels), sweepstakes, and more. Our platform is flexible and can accommodate most competition formats.',
+            question: getText('faq.q1', 'What types of competitions can I create?'),
+            answer: getText('faq.a1', 'You can create a wide variety of competitions.'),
             open: false
         },
         {
-            question: 'How quickly can I launch a competition?',
-            answer: 'With our intuitive interface, you can have a competition up and running in minutes. Choose your game type, customize the look and feel, set your rules, and you\'re ready to go live!',
+            question: getText('faq.q2', 'How quickly can I launch a competition?'),
+            answer: getText('faq.a2', 'With our intuitive interface, you can have a competition up and running in minutes.'),
             open: false
         },
         {
-            question: 'Is Competition Engine secure and compliant?',
-            answer: 'Absolutely. We take security and compliance very seriously. Our platform is built with enterprise-grade security, and we provide comprehensive legal frameworks to ensure your competitions meet all necessary regulations.',
+            question: getText('faq.q3', 'Is Competition Engine secure and compliant?'),
+            answer: getText('faq.a3', 'Absolutely. We take security and compliance very seriously.'),
             open: false
         },
         {
-            question: 'Can I integrate Competition Engine with my existing tools?',
-            answer: 'Yes! Competition Engine is API-first, which means you can easily integrate with your existing CRM, email marketing tools, analytics platforms, and more. Our robust API makes automation and custom integrations straightforward.',
+            question: getText('faq.q4', 'Can I integrate Competition Engine with my existing tools?'),
+            answer: getText('faq.a4', 'Yes! Competition Engine is API-first.'),
             open: false
         }
-    ];
+    ]);
     
     const toggleFaq = (index) => {
-        faqs[index].open = !faqs[index].open;
+        faqs.value[index].open = !faqs.value[index].open;
     };
     </script>
     
@@ -63,13 +64,13 @@
                         <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
                             <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
                             <template v-else>{{ part.text }}</template>
-                        </template>                    </h2>
+                        </template>
+                    </h2>
                     <p class="text-lg text-gray-400 max-w-2xl mx-auto">
-                        Got questions? We've got answers.
+                        {{ getText('faq.description', 'Got questions? We\'ve got answers.') }}
                     </p>
                 </div>
     
-                <!-- Loading fallback -->
                 <div v-else class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
                         Frequently Asked <span class="keyword-animate">Questions</span>

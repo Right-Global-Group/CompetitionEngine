@@ -107,18 +107,6 @@ class SiteTextSeeder extends Seeder
             ['section' => 'ecosystem', 'key' => 'ecosystem.feature6_icon', 'content' => '⚡', 'type' => 'label', 'order' => 18],
             ['section' => 'ecosystem', 'key' => 'ecosystem.feature6_title', 'content' => 'Instant Wins', 'type' => 'subheading', 'order' => 19],
             ['section' => 'ecosystem', 'key' => 'ecosystem.feature6_description', 'content' => 'Amplify excitement and drive repeat sales with our highly popular instant win feature, keeping customers engaged between main draws.', 'type' => 'paragraph', 'order' => 20],
-
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature7_icon', 'content' => '📱', 'type' => 'label', 'order' => 12],
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature7_title', 'content' => 'Native iOS & Android Apps', 'type' => 'subheading', 'order' => 13],
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature7_description', 'content' => 'Maximise engagement and sales with dedicated mobile apps, featuring push notifications to keep your audience instantly updated.', 'type' => 'paragraph', 'order' => 14],
-            
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature8_icon', 'content' => '👍', 'type' => 'label', 'order' => 15],
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature8_title', 'content' => 'Social Ad-Ready', 'type' => 'subheading', 'order' => 16],
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature8_description', 'content' => 'Expand your reach with our expert guidance on meeting Facebook\'s strict advertising requirements, unlocking a massive audience.', 'type' => 'paragraph', 'order' => 17],
-            
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature9_icon', 'content' => '⚡', 'type' => 'label', 'order' => 18],
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature9_title', 'content' => 'Instant Wins', 'type' => 'subheading', 'order' => 19],
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature9_description', 'content' => 'Amplify excitement and drive repeat sales with our highly popular instant win feature, keeping customers engaged between main draws.', 'type' => 'paragraph', 'order' => 20],
             
             // Next Gen Platform
             [
@@ -161,8 +149,43 @@ class SiteTextSeeder extends Seeder
             ['section' => 'ai', 'key' => 'ai.description', 'content' => 'Supercharge your competition site with the first AI-powered platform. Get ready for smarter analytics, automated marketing, and effortless content creation.', 'type' => 'paragraph', 'order' => 2],
 
             // Comparison
-            ['section' => 'comparison', 'key' => 'comparison.heading', 'content' => 'Competition Engine vs. Others', 'type' => 'heading', 'order' => 1],
+            [
+                'section' => 'comparison', 
+                'key' => 'comparison.heading', 
+                'content' => '', 
+                'type' => 'heading', 
+                'order' => 1,
+                'heading_before' => 'Competition Engine vs.',
+                'heading_keyword' => 'Others',
+                'heading_after' => ''
+            ],
             ['section' => 'comparison', 'key' => 'comparison.description', 'content' => 'See how we stack up against the competition.', 'type' => 'paragraph', 'order' => 2],
+            
+            // Comparison Table Data
+            ['section' => 'comparison', 'key' => 'comparison.feature1', 'content' => 'Performance', 'type' => 'label', 'order' => 3],
+            ['section' => 'comparison', 'key' => 'comparison.feature1_us', 'content' => 'Excellent', 'type' => 'label', 'order' => 4],
+            ['section' => 'comparison', 'key' => 'comparison.feature1_wp', 'content' => 'Variable', 'type' => 'label', 'order' => 5],
+            ['section' => 'comparison', 'key' => 'comparison.feature1_saas', 'content' => 'Slow', 'type' => 'label', 'order' => 6],
+            
+            ['section' => 'comparison', 'key' => 'comparison.feature2', 'content' => 'Security', 'type' => 'label', 'order' => 7],
+            ['section' => 'comparison', 'key' => 'comparison.feature2_us', 'content' => 'High', 'type' => 'label', 'order' => 8],
+            ['section' => 'comparison', 'key' => 'comparison.feature2_wp', 'content' => 'Vulnerable', 'type' => 'label', 'order' => 9],
+            ['section' => 'comparison', 'key' => 'comparison.feature2_saas', 'content' => 'Moderate', 'type' => 'label', 'order' => 10],
+            
+            ['section' => 'comparison', 'key' => 'comparison.feature3', 'content' => 'Scalability', 'type' => 'label', 'order' => 11],
+            ['section' => 'comparison', 'key' => 'comparison.feature3_us', 'content' => 'Unlimited', 'type' => 'label', 'order' => 12],
+            ['section' => 'comparison', 'key' => 'comparison.feature3_wp', 'content' => 'Limited', 'type' => 'label', 'order' => 13],
+            ['section' => 'comparison', 'key' => 'comparison.feature3_saas', 'content' => 'Limited', 'type' => 'label', 'order' => 14],
+            
+            ['section' => 'comparison', 'key' => 'comparison.feature4', 'content' => 'Ease of Use', 'type' => 'label', 'order' => 15],
+            ['section' => 'comparison', 'key' => 'comparison.feature4_us', 'content' => 'Intuitive', 'type' => 'label', 'order' => 16],
+            ['section' => 'comparison', 'key' => 'comparison.feature4_wp', 'content' => 'Complex', 'type' => 'label', 'order' => 17],
+            ['section' => 'comparison', 'key' => 'comparison.feature4_saas', 'content' => 'Clunky', 'type' => 'label', 'order' => 18],
+            
+            ['section' => 'comparison', 'key' => 'comparison.feature5', 'content' => 'Support', 'type' => 'label', 'order' => 19],
+            ['section' => 'comparison', 'key' => 'comparison.feature5_us', 'content' => 'Dedicated', 'type' => 'label', 'order' => 20],
+            ['section' => 'comparison', 'key' => 'comparison.feature5_wp', 'content' => 'Community Forum', 'type' => 'label', 'order' => 21],
+            ['section' => 'comparison', 'key' => 'comparison.feature5_saas', 'content' => 'Email Only', 'type' => 'label', 'order' => 22],
 
             // Pricing
             [
@@ -177,11 +200,72 @@ class SiteTextSeeder extends Seeder
             ],
             ['section' => 'pricing', 'key' => 'pricing.description', 'content' => 'Choose the plan that\'s right for you.', 'type' => 'paragraph', 'order' => 2],
 
+            // Plan 1: Pay As You Go
+            ['section' => 'pricing', 'key' => 'pricing.plan1_name', 'content' => 'Pay As You Go', 'type' => 'subheading', 'order' => 3],
+            ['section' => 'pricing', 'key' => 'pricing.plan1_price', 'content' => '5p - 10p', 'type' => 'label', 'order' => 4],
+            ['section' => 'pricing', 'key' => 'pricing.plan1_subtext', 'content' => 'per order', 'type' => 'label', 'order' => 5],
+            ['section' => 'pricing', 'key' => 'pricing.plan1_description', 'content' => 'Perfect for businesses of any size. Only pay for what you use.', 'type' => 'paragraph', 'order' => 6],
+            ['section' => 'pricing', 'key' => 'pricing.plan1_feature1', 'content' => 'All Competition Types', 'type' => 'label', 'order' => 7],
+            ['section' => 'pricing', 'key' => 'pricing.plan1_feature2', 'content' => 'Full Analytics Dashboard', 'type' => 'label', 'order' => 8],
+            ['section' => 'pricing', 'key' => 'pricing.plan1_feature3', 'content' => 'Email Support', 'type' => 'label', 'order' => 9],
+            ['section' => 'pricing', 'key' => 'pricing.plan1_feature4', 'content' => 'And many more...', 'type' => 'label', 'order' => 10],
+            ['section' => 'pricing', 'key' => 'pricing.plan1_button', 'content' => 'Get Started', 'type' => 'button', 'order' => 11],
+            ['section' => 'pricing', 'key' => 'pricing.plan1_highlighted', 'content' => 'false', 'type' => 'label', 'order' => 12],
+            ['section' => 'pricing', 'key' => 'pricing.plan1_badge', 'content' => '', 'type' => 'label', 'order' => 13],
+            ['section' => 'pricing', 'key' => 'pricing.plan1_action', 'content' => 'scroll', 'type' => 'label', 'order' => 14],
+
+            // Plan 2: Enterprise
+            ['section' => 'pricing', 'key' => 'pricing.plan2_name', 'content' => 'Enterprise', 'type' => 'subheading', 'order' => 15],
+            ['section' => 'pricing', 'key' => 'pricing.plan2_price', 'content' => 'Custom', 'type' => 'label', 'order' => 16],
+            ['section' => 'pricing', 'key' => 'pricing.plan2_subtext', 'content' => 'pricing', 'type' => 'label', 'order' => 17],
+            ['section' => 'pricing', 'key' => 'pricing.plan2_description', 'content' => 'For larger businesses that need tailored solutions.', 'type' => 'paragraph', 'order' => 18],
+            ['section' => 'pricing', 'key' => 'pricing.plan2_feature1', 'content' => 'Volume Discounts', 'type' => 'label', 'order' => 19],
+            ['section' => 'pricing', 'key' => 'pricing.plan2_feature2', 'content' => 'Dedicated Account Manager', 'type' => 'label', 'order' => 20],
+            ['section' => 'pricing', 'key' => 'pricing.plan2_feature3', 'content' => 'Custom Integrations & API Access', 'type' => 'label', 'order' => 21],
+            ['section' => 'pricing', 'key' => 'pricing.plan2_feature4', 'content' => 'Priority Support & Onboarding', 'type' => 'label', 'order' => 22],
+            ['section' => 'pricing', 'key' => 'pricing.plan2_feature5', 'content' => 'And many more...', 'type' => 'label', 'order' => 23],
+            ['section' => 'pricing', 'key' => 'pricing.plan2_button', 'content' => 'Book a Call', 'type' => 'button', 'order' => 24],
+            ['section' => 'pricing', 'key' => 'pricing.plan2_highlighted', 'content' => 'true', 'type' => 'label', 'order' => 25],
+            ['section' => 'pricing', 'key' => 'pricing.plan2_badge', 'content' => 'BEST VALUE', 'type' => 'label', 'order' => 26],
+            ['section' => 'pricing', 'key' => 'pricing.plan2_action', 'content' => 'calendly', 'type' => 'label', 'order' => 27],
+
             // FAQ
-            ['section' => 'faq', 'key' => 'faq.heading', 'content' => 'Frequently Asked Questions', 'type' => 'heading', 'order' => 1],
+            [
+                'section' => 'faq', 
+                'key' => 'faq.heading', 
+                'content' => '', 
+                'type' => 'heading', 
+                'order' => 1,
+                'heading_before' => 'Frequently Asked',
+                'heading_keyword' => 'Questions',
+                'heading_after' => ''
+            ],
+            ['section' => 'faq', 'key' => 'faq.description', 'content' => 'Got questions? We\'ve got answers.', 'type' => 'paragraph', 'order' => 2],
+            
+            // FAQ Items
+            ['section' => 'faq', 'key' => 'faq.q1', 'content' => 'What types of competitions can I create?', 'type' => 'subheading', 'order' => 3],
+            ['section' => 'faq', 'key' => 'faq.a1', 'content' => 'You can create a wide variety of competitions including raffles, instant win games (slots, scratch cards, spin wheels), sweepstakes, and more. Our platform is flexible and can accommodate most competition formats.', 'type' => 'paragraph', 'order' => 4],
+            
+            ['section' => 'faq', 'key' => 'faq.q2', 'content' => 'How quickly can I launch a competition?', 'type' => 'subheading', 'order' => 5],
+            ['section' => 'faq', 'key' => 'faq.a2', 'content' => 'With our intuitive interface, you can have a competition up and running in minutes. Choose your game type, customize the look and feel, set your rules, and you\'re ready to go live!', 'type' => 'paragraph', 'order' => 6],
+            
+            ['section' => 'faq', 'key' => 'faq.q3', 'content' => 'Is Competition Engine secure and compliant?', 'type' => 'subheading', 'order' => 7],
+            ['section' => 'faq', 'key' => 'faq.a3', 'content' => 'Absolutely. We take security and compliance very seriously. Our platform is built with enterprise-grade security, and we provide comprehensive legal frameworks to ensure your competitions meet all necessary regulations.', 'type' => 'paragraph', 'order' => 8],
+            
+            ['section' => 'faq', 'key' => 'faq.q4', 'content' => 'Can I integrate Competition Engine with my existing tools?', 'type' => 'subheading', 'order' => 9],
+            ['section' => 'faq', 'key' => 'faq.a4', 'content' => 'Yes! Competition Engine is API-first, which means you can easily integrate with your existing CRM, email marketing tools, analytics platforms, and more. Our robust API makes automation and custom integrations straightforward.', 'type' => 'paragraph', 'order' => 10],
 
             // Booking
-            ['section' => 'booking', 'key' => 'booking.heading', 'content' => 'Ready to Launch?', 'type' => 'heading', 'order' => 1],
+            [
+                'section' => 'booking', 
+                'key' => 'booking.heading', 
+                'content' => '', 
+                'type' => 'heading', 
+                'order' => 1,
+                'heading_before' => 'Ready to',
+                'heading_keyword' => 'Launch?',
+                'heading_after' => ''
+            ],
             ['section' => 'booking', 'key' => 'booking.description', 'content' => 'Book a demo and see Competition Engine in action.', 'type' => 'paragraph', 'order' => 2],
 
             // Footer
@@ -190,7 +274,7 @@ class SiteTextSeeder extends Seeder
         ];
 
         foreach ($texts as $text) {
-            SiteText::fristOrCreate(
+            SiteText::firstOrCreate(
                 ['key' => $text['key']],
                 $text
             );

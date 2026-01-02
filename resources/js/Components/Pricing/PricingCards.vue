@@ -29,40 +29,52 @@
     
     const calendlyUrl = 'https://calendly.com/rightglobalgroup/website-design-free-consultation';
     
-    const plans = [
-        {
-            name: 'Pay As You Go',
-            priceDisplay: '5p - 10p',
-            priceSubtext: 'per order',
-            description: 'Perfect for businesses of any size. Only pay for what you use.',
-            features: [
-                'All Competition Types',
-                'Full Analytics Dashboard',
-                'Email Support',
-                'And many more...'
-            ],
-            highlighted: false,
-            buttonText: 'Get Started',
-            action: 'scroll'
-        },
-        {
-            name: 'Enterprise',
-            priceDisplay: 'Custom',
-            priceSubtext: 'pricing',
-            description: 'For larger businesses that need tailored solutions.',
-            features: [
-                'Volume Discounts',
-                'Dedicated Account Manager',
-                'Custom Integrations & API Access',
-                'Priority Support & Onboarding',
-                'And many more...'
-            ],
-            highlighted: true,
-            badge: 'BEST VALUE',
-            buttonText: 'Book a Call',
-            action: 'calendly'
+    // Build plans from database
+    const plans = computed(() => {
+        const plan1Features = [];
+        const plan2Features = [];
+        
+        // Collect all features for plan 1
+        for (let i = 1; i <= 10; i++) {
+            const feature = getText(`pricing.plan1_feature${i}`, '');
+            if (feature && feature.trim()) {
+                plan1Features.push(feature);
+            }
         }
-    ];
+        
+        // Collect all features for plan 2
+        for (let i = 1; i <= 10; i++) {
+            const feature = getText(`pricing.plan2_feature${i}`, '');
+            if (feature && feature.trim()) {
+                plan2Features.push(feature);
+            }
+        }
+        
+        return [
+            {
+                name: getText('pricing.plan1_name', 'Pay As You Go'),
+                priceDisplay: getText('pricing.plan1_price', '5p - 10p'),
+                priceSubtext: getText('pricing.plan1_subtext', 'per order'),
+                description: getText('pricing.plan1_description', 'Perfect for businesses of any size. Only pay for what you use.'),
+                features: plan1Features,
+                highlighted: getText('pricing.plan1_highlighted', 'false') === 'true',
+                badge: getText('pricing.plan1_badge', ''),
+                buttonText: getText('pricing.plan1_button', 'Get Started'),
+                action: getText('pricing.plan1_action', 'scroll')
+            },
+            {
+                name: getText('pricing.plan2_name', 'Enterprise'),
+                priceDisplay: getText('pricing.plan2_price', 'Custom'),
+                priceSubtext: getText('pricing.plan2_subtext', 'pricing'),
+                description: getText('pricing.plan2_description', 'For larger businesses that need tailored solutions.'),
+                features: plan2Features,
+                highlighted: getText('pricing.plan2_highlighted', 'true') === 'true',
+                badge: getText('pricing.plan2_badge', 'BEST VALUE'),
+                buttonText: getText('pricing.plan2_button', 'Book a Call'),
+                action: getText('pricing.plan2_action', 'calendly')
+            }
+        ];
+    });
     
     onMounted(() => {
         // Load Calendly popup widget script and CSS
