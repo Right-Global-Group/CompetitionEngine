@@ -1,5 +1,5 @@
 <script setup>
-    import { inject } from 'vue';
+    import { inject, computed } from 'vue';
     
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
