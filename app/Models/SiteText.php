@@ -49,6 +49,7 @@ class SiteText extends Model
             'button' => 'Button Text',
             'list_item' => 'List Item',
             'label' => 'Label',
+            'number' => 'Number',
         ];
     }
 }

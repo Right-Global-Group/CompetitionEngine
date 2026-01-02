@@ -47,12 +47,33 @@ class SiteTextResource extends Resource
                     ->label('Text Type')
                     ->options(SiteText::getTypes())
                     ->required()
-                    ->default('paragraph'),
+                    ->default('paragraph')
+                    ->reactive(),
                 
-                Textarea::make('content')
-                    ->label('Content')
-                    ->required()
-                    ->rows(3)
+                // Conditional content field based on type
+                Forms\Components\Group::make()
+                    ->schema(function (callable $get) {
+                        $type = $get('type');
+                        
+                        if ($type === 'number') {
+                            return [
+                                TextInput::make('content')
+                                    ->label('Content')
+                                    ->required()
+                                    ->numeric()
+                                    ->helperText('Enter a numeric value (e.g., 42000 or 99.9)')
+                                    ->columnSpanFull(),
+                            ];
+                        }
+                        
+                        return [
+                            Textarea::make('content')
+                                ->label('Content')
+                                ->required()
+                                ->rows(3)
+                                ->columnSpanFull(),
+                        ];
+                    })
                     ->columnSpanFull(),
                 
                 TextInput::make('order')
