@@ -60,19 +60,19 @@
             description: getText('ecosystem.feature6_description', 'Amplify excitement and drive repeat sales with our highly popular instant win feature, keeping customers engaged between main draws.')
         },
         {
-            icon: getText('ecosystem.feature4_icon', '📱'),
-            title: getText('ecosystem.feature4_title', 'Native iOS & Android Apps'),
-            description: getText('ecosystem.feature4_description', 'Maximise engagement and sales with dedicated mobile apps, featuring push notifications to keep your audience instantly updated.')
+            icon: getText('ecosystem.feature7_icon', '📱'),
+            title: getText('ecosystem.feature7_title', 'Native iOS & Android Apps'),
+            description: getText('ecosystem.feature7_description', 'Maximise engagement and sales with dedicated mobile apps, featuring push notifications to keep your audience instantly updated.')
         },
         {
-            icon: getText('ecosystem.feature5_icon', '👍'),
-            title: getText('ecosystem.feature5_title', 'Social Ad-Ready'),
-            description: getText('ecosystem.feature5_description', 'Expand your reach with our expert guidance on meeting Facebook\'s strict advertising requirements, unlocking a massive audience.')
+            icon: getText('ecosystem.feature8_icon', '👍'),
+            title: getText('ecosystem.feature8_title', 'Social Ad-Ready'),
+            description: getText('ecosystem.feature8_description', 'Expand your reach with our expert guidance on meeting Facebook\'s strict advertising requirements, unlocking a massive audience.')
         },
         {
-            icon: getText('ecosystem.feature6_icon', '⚡'),
-            title: getText('ecosystem.feature6_title', 'Instant Wins'),
-            description: getText('ecosystem.feature6_description', 'Amplify excitement and drive repeat sales with our highly popular instant win feature, keeping customers engaged between main draws.')
+            icon: getText('ecosystem.feature9_icon', '⚡'),
+            title: getText('ecosystem.feature9_title', 'Instant Wins'),
+            description: getText('ecosystem.feature9_description', 'Amplify excitement and drive repeat sales with our highly popular instant win feature, keeping customers engaged between main draws.')
         }
     ]);
     </script>

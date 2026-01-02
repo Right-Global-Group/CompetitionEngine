@@ -1,11 +1,14 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, inject, computed } from 'vue';
 import SlotsGame from '@/Components/Games/SlotsGame.vue';
 import SpinGame from '@/Components/Games/SpinGame.vue';
 import ScratchGame from '@/Components/Games/ScratchGame.vue';
 import BingoGame from '@/Components/Games/BingoGame.vue';
 
 const activeTab = ref('slots');
+
+const getText = inject('getText');
+const siteTexts = inject('siteTexts');
 
 // Get heading parts
 const headingParts = computed(() => {

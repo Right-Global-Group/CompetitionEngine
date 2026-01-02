@@ -108,17 +108,17 @@ class SiteTextSeeder extends Seeder
             ['section' => 'ecosystem', 'key' => 'ecosystem.feature6_title', 'content' => 'Instant Wins', 'type' => 'subheading', 'order' => 19],
             ['section' => 'ecosystem', 'key' => 'ecosystem.feature6_description', 'content' => 'Amplify excitement and drive repeat sales with our highly popular instant win feature, keeping customers engaged between main draws.', 'type' => 'paragraph', 'order' => 20],
 
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature4_icon', 'content' => '📱', 'type' => 'label', 'order' => 12],
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature4_title', 'content' => 'Native iOS & Android Apps', 'type' => 'subheading', 'order' => 13],
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature4_description', 'content' => 'Maximise engagement and sales with dedicated mobile apps, featuring push notifications to keep your audience instantly updated.', 'type' => 'paragraph', 'order' => 14],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature7_icon', 'content' => '📱', 'type' => 'label', 'order' => 12],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature7_title', 'content' => 'Native iOS & Android Apps', 'type' => 'subheading', 'order' => 13],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature7_description', 'content' => 'Maximise engagement and sales with dedicated mobile apps, featuring push notifications to keep your audience instantly updated.', 'type' => 'paragraph', 'order' => 14],
             
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature5_icon', 'content' => '👍', 'type' => 'label', 'order' => 15],
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature5_title', 'content' => 'Social Ad-Ready', 'type' => 'subheading', 'order' => 16],
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature5_description', 'content' => 'Expand your reach with our expert guidance on meeting Facebook\'s strict advertising requirements, unlocking a massive audience.', 'type' => 'paragraph', 'order' => 17],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature8_icon', 'content' => '👍', 'type' => 'label', 'order' => 15],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature8_title', 'content' => 'Social Ad-Ready', 'type' => 'subheading', 'order' => 16],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature8_description', 'content' => 'Expand your reach with our expert guidance on meeting Facebook\'s strict advertising requirements, unlocking a massive audience.', 'type' => 'paragraph', 'order' => 17],
             
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature6_icon', 'content' => '⚡', 'type' => 'label', 'order' => 18],
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature6_title', 'content' => 'Instant Wins', 'type' => 'subheading', 'order' => 19],
-            ['section' => 'ecosystem', 'key' => 'ecosystem.feature6_description', 'content' => 'Amplify excitement and drive repeat sales with our highly popular instant win feature, keeping customers engaged between main draws.', 'type' => 'paragraph', 'order' => 20],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature9_icon', 'content' => '⚡', 'type' => 'label', 'order' => 18],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature9_title', 'content' => 'Instant Wins', 'type' => 'subheading', 'order' => 19],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature9_description', 'content' => 'Amplify excitement and drive repeat sales with our highly popular instant win feature, keeping customers engaged between main draws.', 'type' => 'paragraph', 'order' => 20],
             
             // Next Gen Platform
             [
