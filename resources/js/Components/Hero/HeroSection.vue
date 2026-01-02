@@ -15,7 +15,7 @@
         const parts = [];
         
         const before = getText('hero.title_before', '');
-        const keyword = getText('hero.title_keyword', 'Exciting Comp');
+        const keyword = getText('hero.title_keyword', '');
         const after = getText('hero.title_after', '');
         
         if (before && before.trim()) {
