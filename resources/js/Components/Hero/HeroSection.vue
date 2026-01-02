@@ -2,19 +2,25 @@
     import { onMounted, onUnmounted, ref, inject, computed } from 'vue';
     import { gsap } from 'gsap';
     import * as THREE from 'three';
+    import { useHeadingParser } from '@/Composables/useHeadingParser';
     
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
-    
-    // Create computed properties for reactive text updates
-    const titleKeyword = computed(() => getText('hero.title_keyword', 'Ultimate Competition'));
-    const subtitle = computed(() => getText('hero.subtitle', 'Effortlessly create, manage, and scale engaging competitions that your audience will love. No code, no hassle.'));
-    const buttonPrimary = computed(() => getText('hero.button_primary', 'Book a Demo'));
-    const buttonSecondary = computed(() => getText('hero.button_secondary', 'Game Studio'));
+    const { parseHeading } = useHeadingParser();
     
     const heroCanvas = ref(null);
     let animationId = null;
     let renderer = null;
+    
+    // Parse heading with keyword syntax
+    const headingParts = computed(() => {
+        const text = getText('hero.heading', 'The {keyword}Ultimate Competition{/keyword} Platform');
+        return parseHeading(text);
+    });
+    
+    const subtitle = computed(() => getText('hero.subtitle', 'Effortlessly create, manage, and scale engaging competitions that your audience will love. No code, no hassle.'));
+    const buttonPrimary = computed(() => getText('hero.button_primary', 'Book a Demo'));
+    const buttonSecondary = computed(() => getText('hero.button_secondary', 'Game Studio'));
     
     const scrollToBooking = () => {
         const element = document.getElementById('booking');
@@ -84,7 +90,7 @@
         const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
         scene.add(particlesMesh);
     
-        // Create floating tickets - MORE TRANSPARENT
+        // Create floating tickets
         const tickets = [];
         const ticketCount = 25;
     
@@ -94,16 +100,13 @@
             canvas.height = 128;
             const ctx = canvas.getContext('2d');
     
-            // Ticket background - more subtle
             ctx.fillStyle = 'rgba(106, 63, 244, 0.3)';
             ctx.fillRect(0, 0, 256, 128);
     
-            // Ticket border - subtle
             ctx.strokeStyle = 'rgba(255, 153, 0, 0.4)';
             ctx.lineWidth = 2;
             ctx.strokeRect(5, 5, 246, 118);
     
-            // Ticket number - very subtle
             ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
             ctx.font = 'bold 36px Arial';
             ctx.textAlign = 'center';
@@ -122,7 +125,7 @@
             const ticketMaterial = new THREE.MeshBasicMaterial({
                 map: texture,
                 transparent: true,
-                opacity: 0.15, // Much more transparent like the original
+                opacity: 0.15,
                 side: THREE.DoubleSide,
                 blending: THREE.AdditiveBlending
             });
@@ -154,11 +157,9 @@
         function animate() {
             animationId = requestAnimationFrame(animate);
     
-            // Rotate particles slowly
             particlesMesh.rotation.y += 0.0005;
             particlesMesh.rotation.x += 0.0002;
     
-            // Animate tickets
             tickets.forEach(ticket => {
                 ticket.position.x += ticket.userData.velocity.x;
                 ticket.position.y += ticket.userData.velocity.y;
@@ -168,7 +169,6 @@
                 ticket.rotation.y += ticket.userData.velocity.rotationY;
                 ticket.rotation.z += ticket.userData.velocity.rotationZ;
     
-                // Boundary checks - wrap around
                 if (Math.abs(ticket.position.x) > 600) {
                     ticket.position.x = -ticket.position.x;
                 }
@@ -185,7 +185,6 @@
     
         animate();
     
-        // Handle window resize
         const handleResize = () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
@@ -196,7 +195,6 @@
     });
     
     onUnmounted(() => {
-        // Cleanup
         if (animationId) {
             cancelAnimationFrame(animationId);
         }
@@ -208,13 +206,14 @@
     
     <template>
         <section id="hero" class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
-            <!-- Three.js Canvas Background -->
             <canvas ref="heroCanvas" class="absolute top-0 left-0 w-full h-full"></canvas>
     
-            <!-- Content (always visible, uses computed properties for reactivity) -->
             <div class="relative z-10 p-4 sm:p-6">
                 <h1 class="hero-title text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-4 leading-tight">
-                    The <span class="keyword-animate">{{ titleKeyword }}</span> Platform
+                    <template v-for="(part, index) in headingParts" :key="index">
+                        <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
+                        <template v-else>{{ part.text }}</template>
+                    </template>
                 </h1>
                 <p class="hero-subtitle text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
                     {{ subtitle }}

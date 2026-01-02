@@ -11,13 +11,13 @@ class SiteTextSeeder extends Seeder
     {
         $texts = [
             // Hero Section
-            ['section' => 'hero', 'key' => 'hero.title', 'content' => 'The Ultimate Competition Platform', 'type' => 'heading', 'order' => 1],
+            ['section' => 'hero', 'key' => 'hero.heading', 'content' => 'The {keyword}Ultimate Competition{/keyword} Platform', 'type' => 'heading', 'order' => 1],
             ['section' => 'hero', 'key' => 'hero.subtitle', 'content' => 'Effortlessly create, manage, and scale engaging competitions that your audience will love. No code, no hassle.', 'type' => 'paragraph', 'order' => 2],
             ['section' => 'hero', 'key' => 'hero.button_primary', 'content' => 'Book a Demo', 'type' => 'button', 'order' => 3],
             ['section' => 'hero', 'key' => 'hero.button_secondary', 'content' => 'Game Studio', 'type' => 'button', 'order' => 4],
 
             // Stats Section
-            ['section' => 'stats', 'key' => 'stats.heading_keyword', 'content' => 'Best', 'type' => 'heading', 'order' => 1],
+            ['section' => 'stats', 'key' => 'stats.heading', 'content' => 'Trusted by the {keyword}Best{/keyword}', 'type' => 'heading', 'order' => 1],
             ['section' => 'stats', 'key' => 'stats.description', 'content' => 'Our platform powers successful competitions at scale, every single day.', 'type' => 'paragraph', 'order' => 2],
             ['section' => 'stats', 'key' => 'stats.value_orders', 'content' => '42000', 'type' => 'number', 'order' => 3],
             ['section' => 'stats', 'key' => 'stats.label_orders', 'content' => 'Orders Processed', 'type' => 'label', 'order' => 4],
@@ -27,7 +27,7 @@ class SiteTextSeeder extends Seeder
             ['section' => 'stats', 'key' => 'stats.label_uptime', 'content' => 'Uptime Percentage', 'type' => 'label', 'order' => 8],
 
             // Launch Steps
-            ['section' => 'launch', 'key' => 'launch.heading_keyword', 'content' => 'Minutes', 'type' => 'heading', 'order' => 1],
+            ['section' => 'launch', 'key' => 'launch.heading', 'content' => 'Launch in {keyword}Minutes{/keyword}', 'type' => 'heading', 'order' => 1],
             ['section' => 'launch', 'key' => 'launch.description', 'content' => 'A straightforward path from idea to live competition.', 'type' => 'paragraph', 'order' => 2],
             ['section' => 'launch', 'key' => 'launch.step1_title', 'content' => 'Choose Your Game', 'type' => 'subheading', 'order' => 3],
             ['section' => 'launch', 'key' => 'launch.step1_desc', 'content' => 'Select from a variety of engaging competition types like scratch cards, spin wheels, and more.', 'type' => 'paragraph', 'order' => 4],
@@ -44,7 +44,7 @@ class SiteTextSeeder extends Seeder
             ['section' => 'configurator', 'key' => 'configurator.description', 'content' => 'Customize every detail in real-time', 'type' => 'paragraph', 'order' => 3],
 
             // Ecosystem Features
-            ['section' => 'ecosystem', 'key' => 'ecosystem.heading_keyword', 'content' => 'Raffle Ecosystem', 'type' => 'heading', 'order' => 1],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.heading', 'content' => 'Your Complete {keyword}Raffle Ecosystem{/keyword}', 'type' => 'heading', 'order' => 1],
             ['section' => 'ecosystem', 'key' => 'ecosystem.description', 'content' => 'We provide the essential infrastructure to launch, operate, and scale your raffle business, all in one place.', 'type' => 'paragraph', 'order' => 2],
             
             // Ecosystem Feature Cards
@@ -73,16 +73,16 @@ class SiteTextSeeder extends Seeder
             ['section' => 'ecosystem', 'key' => 'ecosystem.feature6_description', 'content' => 'Amplify excitement and drive repeat sales with our highly popular instant win feature, keeping customers engaged between main draws.', 'type' => 'paragraph', 'order' => 20],
             
             // Next Gen Platform
-            ['section' => 'nextgen', 'key' => 'nextgen.heading_keyword', 'content' => 'Next Generation', 'type' => 'heading', 'order' => 1],
+            ['section' => 'nextgen', 'key' => 'nextgen.heading', 'content' => '{keyword}Next Generation{/keyword} Platform', 'type' => 'heading', 'order' => 1],
             ['section' => 'nextgen', 'key' => 'nextgen.description', 'content' => 'Competition Engine isn\'t just another tool; it\'s a complete evolution. Built on a serverless, edge-first architecture, we provide unparalleled speed, security, and scalability that legacy systems can\'t match.', 'type' => 'paragraph', 'order' => 2],
 
             // Modern Platform (WordPress Alternative)
-            ['section' => 'modern', 'key' => 'modern.heading', 'content' => 'Bye Bye, WordPress.', 'type' => 'heading', 'order' => 1],
+            ['section' => 'modern', 'key' => 'modern.heading', 'content' => '{keyword}Bye Bye, WordPress.{/keyword}', 'type' => 'heading', 'order' => 1],
             ['section' => 'modern', 'key' => 'modern.subheading', 'content' => 'Hello, Modern Platform.', 'type' => 'subheading', 'order' => 2],
             ['section' => 'modern', 'key' => 'modern.description', 'content' => 'Tired of slow, insecure, and clunky WordPress plugins? Competition Engine is built from the ground up for one purpose: to run flawless competitions at scale.', 'type' => 'paragraph', 'order' => 3],
 
             // AI Features
-            ['section' => 'ai', 'key' => 'ai.heading', 'content' => 'The Future is AI-Powered', 'type' => 'heading', 'order' => 1],
+            ['section' => 'ai', 'key' => 'ai.heading', 'content' => 'The Future is {keyword}AI-Powered{/keyword}', 'type' => 'heading', 'order' => 1],
             ['section' => 'ai', 'key' => 'ai.description', 'content' => 'Supercharge your competition site with the first AI-powered platform. Get ready for smarter analytics, automated marketing, and effortless content creation.', 'type' => 'paragraph', 'order' => 2],
 
             // Comparison
@@ -90,7 +90,7 @@ class SiteTextSeeder extends Seeder
             ['section' => 'comparison', 'key' => 'comparison.description', 'content' => 'See how we stack up against the competition.', 'type' => 'paragraph', 'order' => 2],
 
             // Pricing
-            ['section' => 'pricing', 'key' => 'pricing.heading_keyword', 'content' => 'Simple, Transparent', 'type' => 'heading', 'order' => 1],
+            ['section' => 'pricing', 'key' => 'pricing.heading', 'content' => '{keyword}Simple, Transparent{/keyword} Pricing', 'type' => 'heading', 'order' => 1],
             ['section' => 'pricing', 'key' => 'pricing.description', 'content' => 'Choose the plan that\'s right for you.', 'type' => 'paragraph', 'order' => 2],
 
             // Footer
