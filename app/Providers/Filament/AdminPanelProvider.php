@@ -59,6 +59,7 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
                 FilamentAuth::class,
             ])
+            ->authGuard('web')
             ->sidebarCollapsibleOnDesktop()
             ->font('Inter')
             ->darkMode(true)
@@ -66,7 +67,13 @@ class AdminPanelProvider extends PanelProvider
                 'logout' => MenuItem::make()
                     ->label('Sign Out')
                     ->icon('heroicon-o-arrow-right-on-rectangle')
-                    ->url('#'),
+                    ->url(route('logout'))
+                    ->action(function () {
+                        auth()->logout();
+                        request()->session()->invalidate();
+                        request()->session()->regenerateToken();
+                        return redirect('/');
+                    }),
             ])
             ->navigationItems([
                 NavigationItem::make('View Homepage')

@@ -192,7 +192,6 @@ const logout = () => {
                             </svg>
                             <span class="text-sm font-semibold">{{ userName }}</span>
                         </div>
-                        <a href="/dashboard" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2 px-3">Dashboard</a>
                         <button v-if="isAdmin" @click="goToAdmin" class="block w-full text-left text-purple-400 hover:text-purple-300 transition py-2 px-3 font-semibold">⚙️ Admin Panel</button>
                         <button @click="logout" class="block w-full text-left text-red-400 hover:text-red-300 transition py-2 px-3">Logout</button>
                     </div>
