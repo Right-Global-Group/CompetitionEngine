@@ -67,7 +67,6 @@ class AdminPanelProvider extends PanelProvider
                 'logout' => MenuItem::make()
                     ->label('Sign Out')
                     ->icon('heroicon-o-arrow-right-on-rectangle')
-                    ->url(route('logout'))
                     ->action(function () {
                         auth()->logout();
                         request()->session()->invalidate();
