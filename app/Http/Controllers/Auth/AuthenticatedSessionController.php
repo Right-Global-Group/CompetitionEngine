@@ -33,16 +33,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        // Force full page reload for admin users to clear Filament cache
-        if ($request->user()->isAdmin()) {
-            // Store a flag to force full reload
-            session()->put('force_reload', true);
-            
-            return redirect('/admin')
-                ->header('X-Inertia-Location', url('/admin'));
-        }
-
-        return redirect()->intended('/dashboard');
+        return redirect()->intended('/');
     }
 
     /**
