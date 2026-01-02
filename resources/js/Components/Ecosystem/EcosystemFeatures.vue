@@ -1,41 +1,42 @@
 <script setup>
-    import { inject } from 'vue';
+    import { inject, computed } from 'vue';
     
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
     
-    const features = [
+    // Computed properties for each feature card
+    const features = computed(() => [
         {
-            icon: '💳',
-            title: 'Compliant Payments',
-            description: 'Navigate complex regulations with our pre-approved payment providers, ensuring smooth, secure transactions without the usual hurdles.'
+            icon: getText('ecosystem.feature1_icon', '💳'),
+            title: getText('ecosystem.feature1_title', 'Compliant Payments'),
+            description: getText('ecosystem.feature1_description', 'Navigate complex regulations with our pre-approved payment providers, ensuring smooth, secure transactions without the usual hurdles.')
         },
         {
-            icon: '🏦',
-            title: 'Simplified Banking',
-            description: 'Leverage our established relationships with approved banks for straightforward and hassle-free financial management from day one.'
+            icon: getText('ecosystem.feature2_icon', '🏦'),
+            title: getText('ecosystem.feature2_title', 'Simplified Banking'),
+            description: getText('ecosystem.feature2_description', 'Leverage our established relationships with approved banks for straightforward and hassle-free financial management from day one.')
         },
         {
-            icon: '⚖️',
-            title: 'Legal Framework',
-            description: 'Launch with confidence. We provide comprehensive, lawyer-approved terms and conditions to ensure your site meets all necessary regulations.'
+            icon: getText('ecosystem.feature3_icon', '⚖️'),
+            title: getText('ecosystem.feature3_title', 'Legal Framework'),
+            description: getText('ecosystem.feature3_description', 'Launch with confidence. We provide comprehensive, lawyer-approved terms and conditions to ensure your site meets all necessary regulations.')
         },
         {
-            icon: '📱',
-            title: 'Native iOS & Android Apps',
-            description: 'Maximise engagement and sales with dedicated mobile apps, featuring push notifications to keep your audience instantly updated.'
+            icon: getText('ecosystem.feature4_icon', '📱'),
+            title: getText('ecosystem.feature4_title', 'Native iOS & Android Apps'),
+            description: getText('ecosystem.feature4_description', 'Maximise engagement and sales with dedicated mobile apps, featuring push notifications to keep your audience instantly updated.')
         },
         {
-            icon: '👍',
-            title: 'Social Ad-Ready',
-            description: 'Expand your reach with our expert guidance on meeting Facebook\'s strict advertising requirements, unlocking a massive audience.'
+            icon: getText('ecosystem.feature5_icon', '👍'),
+            title: getText('ecosystem.feature5_title', 'Social Ad-Ready'),
+            description: getText('ecosystem.feature5_description', 'Expand your reach with our expert guidance on meeting Facebook\'s strict advertising requirements, unlocking a massive audience.')
         },
         {
-            icon: '⚡',
-            title: 'Instant Wins',
-            description: 'Amplify excitement and drive repeat sales with our highly popular instant win feature, keeping customers engaged between main draws.'
+            icon: getText('ecosystem.feature6_icon', '⚡'),
+            title: getText('ecosystem.feature6_title', 'Instant Wins'),
+            description: getText('ecosystem.feature6_description', 'Amplify excitement and drive repeat sales with our highly popular instant win feature, keeping customers engaged between main draws.')
         }
-    ];
+    ]);
     </script>
     
     <template>

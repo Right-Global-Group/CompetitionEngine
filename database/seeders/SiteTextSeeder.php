@@ -47,6 +47,31 @@ class SiteTextSeeder extends Seeder
             ['section' => 'ecosystem', 'key' => 'ecosystem.heading_keyword', 'content' => 'Raffle Ecosystem', 'type' => 'heading', 'order' => 1],
             ['section' => 'ecosystem', 'key' => 'ecosystem.description', 'content' => 'We provide the essential infrastructure to launch, operate, and scale your raffle business, all in one place.', 'type' => 'paragraph', 'order' => 2],
             
+            // Ecosystem Feature Cards
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature1_icon', 'content' => '💳', 'type' => 'label', 'order' => 3],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature1_title', 'content' => 'Compliant Payments', 'type' => 'subheading', 'order' => 4],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature1_description', 'content' => 'Navigate complex regulations with our pre-approved payment providers, ensuring smooth, secure transactions without the usual hurdles.', 'type' => 'paragraph', 'order' => 5],
+            
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature2_icon', 'content' => '🏦', 'type' => 'label', 'order' => 6],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature2_title', 'content' => 'Simplified Banking', 'type' => 'subheading', 'order' => 7],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature2_description', 'content' => 'Leverage our established relationships with approved banks for straightforward and hassle-free financial management from day one.', 'type' => 'paragraph', 'order' => 8],
+            
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature3_icon', 'content' => '⚖️', 'type' => 'label', 'order' => 9],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature3_title', 'content' => 'Legal Framework', 'type' => 'subheading', 'order' => 10],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature3_description', 'content' => 'Launch with confidence. We provide comprehensive, lawyer-approved terms and conditions to ensure your site meets all necessary regulations.', 'type' => 'paragraph', 'order' => 11],
+            
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature4_icon', 'content' => '📱', 'type' => 'label', 'order' => 12],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature4_title', 'content' => 'Native iOS & Android Apps', 'type' => 'subheading', 'order' => 13],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature4_description', 'content' => 'Maximise engagement and sales with dedicated mobile apps, featuring push notifications to keep your audience instantly updated.', 'type' => 'paragraph', 'order' => 14],
+            
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature5_icon', 'content' => '👍', 'type' => 'label', 'order' => 15],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature5_title', 'content' => 'Social Ad-Ready', 'type' => 'subheading', 'order' => 16],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature5_description', 'content' => 'Expand your reach with our expert guidance on meeting Facebook\'s strict advertising requirements, unlocking a massive audience.', 'type' => 'paragraph', 'order' => 17],
+            
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature6_icon', 'content' => '⚡', 'type' => 'label', 'order' => 18],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature6_title', 'content' => 'Instant Wins', 'type' => 'subheading', 'order' => 19],
+            ['section' => 'ecosystem', 'key' => 'ecosystem.feature6_description', 'content' => 'Amplify excitement and drive repeat sales with our highly popular instant win feature, keeping customers engaged between main draws.', 'type' => 'paragraph', 'order' => 20],
+            
             // Next Gen Platform
             ['section' => 'nextgen', 'key' => 'nextgen.heading_keyword', 'content' => 'Next Generation', 'type' => 'heading', 'order' => 1],
             ['section' => 'nextgen', 'key' => 'nextgen.description', 'content' => 'Competition Engine isn\'t just another tool; it\'s a complete evolution. Built on a serverless, edge-first architecture, we provide unparalleled speed, security, and scalability that legacy systems can\'t match.', 'type' => 'paragraph', 'order' => 2],
