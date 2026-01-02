@@ -31,6 +31,53 @@
         return parts;
     });
     
+    // Get features from database
+    const features = computed(() => {
+        const featureList = [];
+        
+        // Collect up to 10 features
+        for (let i = 1; i <= 10; i++) {
+            const title = getText(`nextgen.feature${i}_title`, '');
+            const desc = getText(`nextgen.feature${i}_desc`, '');
+            
+            if (title || desc) {
+                featureList.push({
+                    title,
+                    description: desc
+                });
+            }
+        }
+        
+        // Default features if none found
+        if (featureList.length === 0) {
+            return [
+                {
+                    title: 'Global Edge Network:',
+                    description: 'Competitions load instantly for users anywhere in the world.'
+                },
+                {
+                    title: 'Serverless Infrastructure:',
+                    description: 'Infinite scalability without the bottlenecks. Handle viral traffic spikes without a sweat.'
+                },
+                {
+                    title: 'API-First Design:',
+                    description: 'Integrate and automate everything. Connect to your existing tools with our powerful, easy-to-use API.'
+                }
+            ];
+        }
+        
+        return featureList;
+    });
+    
+    // Icon mapping for each feature (can be expanded)
+    const icons = [
+        'M13 10V3L4 14h7v7l9-11h-7z', // Lightning
+        'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z', // Lock/Security
+        'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', // Shield
+        'M13 10V3L4 14h7v7l9-11h-7z', // Lightning (repeat for more)
+        'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z',
+    ];
+    
     onMounted(() => {
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -89,31 +136,17 @@
                         {{ getText('nextgen.description', 'Competition Engine isn\'t just another tool; it\'s a complete evolution. Built on a serverless, edge-first architecture, we provide unparalleled speed, security, and scalability that legacy systems can\'t match.') }}
                     </p>
                     <ul class="space-y-3 text-left text-gray-300">
-                        <li class="next-gen-list-item flex items-start">
+                        <li 
+                            v-for="(feature, index) in features"
+                            :key="index"
+                            class="next-gen-list-item flex items-start"
+                        >
                             <svg class="w-6 h-6 mr-2 text-orange-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="icons[index % icons.length]"></path>
                             </svg>
                             <div>
-                                <span class="font-semibold">Global Edge Network:</span> 
-                                Competitions load instantly for users anywhere in the world.
-                            </div>
-                        </li>
-                        <li class="next-gen-list-item flex items-start">
-                            <svg class="w-6 h-6 mr-2 text-orange-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                            </svg>
-                            <div>
-                                <span class="font-semibold">Serverless Infrastructure:</span> 
-                                Infinite scalability without the bottlenecks. Handle viral traffic spikes without a sweat.
-                            </div>
-                        </li>
-                        <li class="next-gen-list-item flex items-start">
-                            <svg class="w-6 h-6 mr-2 text-orange-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                            </svg>
-                            <div>
-                                <span class="font-semibold">API-First Design:</span> 
-                                Integrate and automate everything. Connect to your existing tools with our powerful, easy-to-use API.
+                                <span class="font-semibold">{{ feature.title }}</span> 
+                                {{ feature.description }}
                             </div>
                         </li>
                     </ul>

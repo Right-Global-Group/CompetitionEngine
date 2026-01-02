@@ -121,6 +121,16 @@ class SiteTextSeeder extends Seeder
             ],
             ['section' => 'nextgen', 'key' => 'nextgen.description', 'content' => 'Competition Engine isn\'t just another tool; it\'s a complete evolution. Built on a serverless, edge-first architecture, we provide unparalleled speed, security, and scalability that legacy systems can\'t match.', 'type' => 'paragraph', 'order' => 2],
 
+            // Next Gen Platform Features
+            ['section' => 'nextgen', 'key' => 'nextgen.feature1_title', 'content' => 'Global Edge Network:', 'type' => 'label', 'order' => 3],
+            ['section' => 'nextgen', 'key' => 'nextgen.feature1_desc', 'content' => 'Competitions load instantly for users anywhere in the world.', 'type' => 'paragraph', 'order' => 4],
+
+            ['section' => 'nextgen', 'key' => 'nextgen.feature2_title', 'content' => 'Serverless Infrastructure:', 'type' => 'label', 'order' => 5],
+            ['section' => 'nextgen', 'key' => 'nextgen.feature2_desc', 'content' => 'Infinite scalability without the bottlenecks. Handle viral traffic spikes without a sweat.', 'type' => 'paragraph', 'order' => 6],
+
+            ['section' => 'nextgen', 'key' => 'nextgen.feature3_title', 'content' => 'API-First Design:', 'type' => 'label', 'order' => 7],
+            ['section' => 'nextgen', 'key' => 'nextgen.feature3_desc', 'content' => 'Integrate and automate everything. Connect to your existing tools with our powerful, easy-to-use API.', 'type' => 'paragraph', 'order' => 8],
+
             // Modern Platform (WordPress Alternative)
             [
                 'section' => 'modern', 
