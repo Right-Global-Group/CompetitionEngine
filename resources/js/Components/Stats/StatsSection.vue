@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, onMounted, inject } from 'vue';
+    import { ref, onMounted, inject, computed, watch } from 'vue';
     import { gsap } from 'gsap';
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
     
@@ -12,9 +12,35 @@
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
     
-    onMounted(() => {
+    // Computed properties for target values from database
+    const targetOrders = computed(() => {
+        const value = getText('stats.value_orders', '42000');
+        return parseInt(value) || 42000;
+    });
+    
+    const targetTickets = computed(() => {
+        const value = getText('stats.value_tickets', '1250000');
+        return parseInt(value) || 1250000;
+    });
+    
+    const targetUptime = computed(() => {
+        const value = getText('stats.value_uptime', '99.9');
+        return parseFloat(value) || 99.9;
+    });
+    
+    // Computed properties for labels
+    const labelOrders = computed(() => getText('stats.label_orders', 'Orders Processed'));
+    const labelTickets = computed(() => getText('stats.label_tickets', 'Tickets Sold This Month'));
+    const labelUptime = computed(() => getText('stats.label_uptime', 'Uptime Percentage'));
+    
+    let animationsCreated = false;
+    
+    const createAnimations = () => {
+        if (animationsCreated) return;
+        animationsCreated = true;
+    
         gsap.to(stat1Value, {
-            value: 42000,
+            value: targetOrders.value,
             duration: 2,
             ease: 'power2.out',
             scrollTrigger: {
@@ -27,7 +53,7 @@
         });
     
         gsap.to(stat2Value, {
-            value: 1250000,
+            value: targetTickets.value,
             duration: 2,
             ease: 'power2.out',
             scrollTrigger: {
@@ -40,7 +66,7 @@
         });
     
         gsap.to(stat3Value, {
-            value: 99.9,
+            value: targetUptime.value,
             duration: 2,
             ease: 'power2.out',
             scrollTrigger: {
@@ -51,6 +77,27 @@
                 stat3Value.value = this.targets()[0].value.toFixed(1);
             }
         });
+    };
+    
+    onMounted(() => {
+        createAnimations();
+    });
+    
+    // Watch for siteTexts to load and recreate animations with new values
+    watch(() => siteTexts.loading, (newVal, oldVal) => {
+        if (oldVal === true && newVal === false) {
+            // Texts just finished loading, update animations
+            stat1Value.value = 0;
+            stat2Value.value = 0;
+            stat3Value.value = 0;
+            animationsCreated = false;
+            
+            // Small delay to ensure DOM is updated
+            setTimeout(() => {
+                ScrollTrigger.refresh();
+                createAnimations();
+            }, 100);
+        }
     });
     </script>
     
@@ -87,7 +134,7 @@
                             </svg>
                         </div>
                         <h3 class="text-4xl md:text-5xl font-bold text-white">{{ stat1Value.toLocaleString() }}</h3>
-                        <p class="text-gray-400 mt-2">Orders Processed</p>
+                        <p class="text-gray-400 mt-2">{{ labelOrders }}</p>
                     </div>
     
                     <!-- Central Stat (Highlighted) -->
@@ -98,7 +145,7 @@
                             </svg>
                         </div>
                         <h3 class="text-5xl md:text-6xl font-bold text-white">{{ stat2Value.toLocaleString() }}</h3>
-                        <p class="text-gray-300 mt-2 text-lg">Tickets Sold This Month</p>
+                        <p class="text-gray-300 mt-2 text-lg">{{ labelTickets }}</p>
                     </div>
     
                     <!-- Side Stat 2 -->
@@ -109,7 +156,7 @@
                             </svg>
                         </div>
                         <h3 class="text-4xl md:text-5xl font-bold text-white">{{ stat3Value }}%</h3>
-                        <p class="text-gray-400 mt-2">Uptime Percentage</p>
+                        <p class="text-gray-400 mt-2">{{ labelUptime }}</p>
                     </div>
                 </div>
             </div>

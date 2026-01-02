@@ -11,7 +11,7 @@ class SiteTextSeeder extends Seeder
     {
         $texts = [
             // Hero Section
-            ['section' => 'hero', 'key' => 'hero.title_keyword', 'content' => 'Ultimate Competition', 'type' => 'heading', 'order' => 1],
+            ['section' => 'hero', 'key' => 'hero.title', 'content' => 'The Ultimate Competition Platform', 'type' => 'heading', 'order' => 1],
             ['section' => 'hero', 'key' => 'hero.subtitle', 'content' => 'Effortlessly create, manage, and scale engaging competitions that your audience will love. No code, no hassle.', 'type' => 'paragraph', 'order' => 2],
             ['section' => 'hero', 'key' => 'hero.button_primary', 'content' => 'Book a Demo', 'type' => 'button', 'order' => 3],
             ['section' => 'hero', 'key' => 'hero.button_secondary', 'content' => 'Game Studio', 'type' => 'button', 'order' => 4],
@@ -19,9 +19,12 @@ class SiteTextSeeder extends Seeder
             // Stats Section
             ['section' => 'stats', 'key' => 'stats.heading_keyword', 'content' => 'Best', 'type' => 'heading', 'order' => 1],
             ['section' => 'stats', 'key' => 'stats.description', 'content' => 'Our platform powers successful competitions at scale, every single day.', 'type' => 'paragraph', 'order' => 2],
-            ['section' => 'stats', 'key' => 'stats.label_orders', 'content' => 'Orders Processed', 'type' => 'label', 'order' => 3],
-            ['section' => 'stats', 'key' => 'stats.label_tickets', 'content' => 'Tickets Sold This Month', 'type' => 'label', 'order' => 4],
-            ['section' => 'stats', 'key' => 'stats.label_uptime', 'content' => 'Uptime Percentage', 'type' => 'label', 'order' => 5],
+            ['section' => 'stats', 'key' => 'stats.value_orders', 'content' => '42000', 'type' => 'number', 'order' => 3],
+            ['section' => 'stats', 'key' => 'stats.label_orders', 'content' => 'Orders Processed', 'type' => 'label', 'order' => 4],
+            ['section' => 'stats', 'key' => 'stats.value_tickets', 'content' => '1250000', 'type' => 'number', 'order' => 5],
+            ['section' => 'stats', 'key' => 'stats.label_tickets', 'content' => 'Tickets Sold This Month', 'type' => 'label', 'order' => 6],
+            ['section' => 'stats', 'key' => 'stats.value_uptime', 'content' => '99.9', 'type' => 'number', 'order' => 7],
+            ['section' => 'stats', 'key' => 'stats.label_uptime', 'content' => 'Uptime Percentage', 'type' => 'label', 'order' => 8],
 
             // Launch Steps
             ['section' => 'launch', 'key' => 'launch.heading_keyword', 'content' => 'Minutes', 'type' => 'heading', 'order' => 1],
