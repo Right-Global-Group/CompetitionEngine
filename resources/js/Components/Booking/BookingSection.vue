@@ -11,9 +11,9 @@
     const headingParts = computed(() => {
         const parts = [];
         
-        const before = getText('launch.heading_before', 'Book Your');
-        const keyword = getText('launch.heading_keyword', 'Free Consultation');
-        const after = getText('launch.heading_after', '');
+        const before = getText('booking.heading_before', 'Book Your');
+        const keyword = getText('booking.heading_keyword', 'Free Consultation');
+        const after = getText('booking.heading_after', '');
         
         if (before && before.trim()) {
             parts.push({ text: before + ' ', isKeyword: false });
