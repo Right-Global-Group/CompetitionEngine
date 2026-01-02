@@ -151,17 +151,26 @@ class SiteTextResource extends Resource
                     ->label('Content')
                     ->limit(50)
                     ->searchable()
-                    ->formatStateUsing(function (SiteText $record): string {
+                    ->getStateUsing(function (SiteText $record): string {
                         // For headings with parts, show assembled version
                         if ($record->type === 'heading' && $record->heading_keyword) {
-                            return $record->full_heading;
+                            $before = $record->heading_before ? $record->heading_before . ' ' : '';
+                            $keyword = $record->heading_keyword;
+                            $after = $record->heading_after ? ' ' . $record->heading_after : '';
+                            return trim($before . $keyword . $after);
                         }
-                        return $record->content;
+                        return $record->content ?? '';
                     })
                     ->tooltip(function (TextColumn $column, SiteText $record): ?string {
-                        $text = $record->type === 'heading' && $record->heading_keyword 
-                            ? $record->full_heading 
-                            : $record->content;
+                        $text = '';
+                        if ($record->type === 'heading' && $record->heading_keyword) {
+                            $before = $record->heading_before ? $record->heading_before . ' ' : '';
+                            $keyword = $record->heading_keyword;
+                            $after = $record->heading_after ? ' ' . $record->heading_after : '';
+                            $text = trim($before . $keyword . $after);
+                        } else {
+                            $text = $record->content ?? '';
+                        }
                         
                         if (strlen($text) <= 50) {
                             return null;
