@@ -42,7 +42,7 @@ class AuthenticatedSessionController extends Controller
                 ->header('X-Inertia-Location', url('/admin'));
         }
 
-        return redirect()->intended('/');
+        return redirect()->intended('/dashboard');
     }
 
     /**

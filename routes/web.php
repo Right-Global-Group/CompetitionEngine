@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\SiteTextController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -47,5 +48,21 @@ Route::prefix('api')->group(function () {
     Route::post('/site-texts/clear-cache', [SiteTextController::class, 'clearCache'])
         ->middleware('auth');
 });
+
+// Custom Filament logout route
+Route::post('/filament-logout', function () {
+    Auth::guard('web')->logout();
+    
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    request()->session()->forget('filament');
+    
+    return redirect('/login')->withHeaders([
+        'Cache-Control' => 'no-cache, no-store, max-age=0, must-revalidate',
+        'Pragma' => 'no-cache',
+        'Expires' => '0',
+        'Clear-Site-Data' => '"cache", "cookies", "storage"'
+    ]);
+})->name('filament.logout')->middleware('web');
 
 require __DIR__.'/auth.php';

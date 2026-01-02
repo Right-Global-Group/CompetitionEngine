@@ -6,6 +6,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\NavigationItem;
+use Filament\Navigation\MenuItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -28,7 +29,6 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            // ->login() // REMOVE THIS LINE
             ->brandName('Competition Engine Admin')
             ->colors([
                 'primary' => Color::hex('#6A3FF4'),
@@ -62,6 +62,15 @@ class AdminPanelProvider extends PanelProvider
             ->sidebarCollapsibleOnDesktop()
             ->font('Inter')
             ->darkMode(true)
+            ->userMenuItems([
+                'logout' => MenuItem::make()
+                    ->label('Sign Out')
+                    ->icon('heroicon-o-arrow-right-on-rectangle')
+                    ->url('#')
+                    ->extraAttributes([
+                        'onclick' => 'event.preventDefault(); document.getElementById(\'filament-logout-form\').submit();',
+                    ]),
+            ])
             ->navigationItems([
                 NavigationItem::make('View Homepage')
                     ->url('/', shouldOpenInNewTab: false)
