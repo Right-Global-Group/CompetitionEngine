@@ -66,10 +66,7 @@ class AdminPanelProvider extends PanelProvider
                 'logout' => MenuItem::make()
                     ->label('Sign Out')
                     ->icon('heroicon-o-arrow-right-on-rectangle')
-                    ->url('#')
-                    ->extraAttributes([
-                        'onclick' => 'event.preventDefault(); document.getElementById(\'filament-logout-form\').submit();',
-                    ]),
+                    ->url('#'),
             ])
             ->navigationItems([
                 NavigationItem::make('View Homepage')
