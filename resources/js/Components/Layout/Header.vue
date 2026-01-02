@@ -49,6 +49,16 @@
             
             document.body.appendChild(form);
             form.submit();
+            
+            // Clear browser cache/storage after logout
+            setTimeout(() => {
+                if (window.caches) {
+                    caches.keys().then(names => {
+                        names.forEach(name => caches.delete(name));
+                    });
+                }
+                window.location.reload(true);
+            }, 100);
         }
     };
     </script>
