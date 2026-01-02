@@ -76,15 +76,6 @@ class SiteTextResource extends Resource
                                             ->label('Text After Keyword')
                                             ->placeholder('e.g., "Platform" or leave empty')
                                             ->helperText('Optional: Text that appears after the styled keyword'),
-                                        
-                                        Forms\Components\Placeholder::make('preview')
-                                            ->label('Preview')
-                                            ->content(function (callable $get) {
-                                                $before = $get('heading_before') ?? '';
-                                                $keyword = $get('heading_keyword') ?? '[keyword]';
-                                                $after = $get('heading_after') ?? '';
-                                                return trim("$before [$keyword] $after");
-                                            }),
                                     ])
                                     ->columnSpanFull(),
                             ];
