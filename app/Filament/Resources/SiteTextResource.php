@@ -69,8 +69,7 @@ class SiteTextResource extends Resource
                                         TextInput::make('heading_keyword')
                                             ->label('Keyword (Styled)')
                                             ->placeholder('e.g., "Ultimate Competition" or "Best"')
-                                            ->helperText('This text will have gradient animation')
-                                            ->required(),
+                                            ->helperText('Optional: This text will have gradient animation'),
                                         
                                         TextInput::make('heading_after')
                                             ->label('Text After Keyword')
