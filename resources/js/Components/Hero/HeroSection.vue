@@ -12,10 +12,13 @@
     let animationId = null;
     let renderer = null;
     
-    // Parse heading with keyword syntax
+    // Parse heading with keyword syntax - FIXED TO USE hero.title
     const headingParts = computed(() => {
-        const text = getText('hero.heading', 'The {keyword}Ultimate Competition{/keyword} Platform');
-        return parseHeading(text);
+        const text = getText('hero.title', 'An Exciting Competition Platform');
+        console.log('Hero title from DB:', text);
+        const parsed = parseHeading(text);
+        console.log('Parsed parts:', parsed);
+        return parsed;
     });
     
     const subtitle = computed(() => getText('hero.subtitle', 'Effortlessly create, manage, and scale engaging competitions that your audience will love. No code, no hassle.'));
