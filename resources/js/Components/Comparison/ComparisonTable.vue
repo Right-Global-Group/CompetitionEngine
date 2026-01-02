@@ -8,8 +8,8 @@
     const headingParts = computed(() => {
         const parts = [];
         
-        const before = getText('comparison.heading_before', 'Competition Engine vs.');
-        const keyword = getText('comparison.heading_keyword', 'Others');
+        const before = getText('comparison.heading_before', 'Competition Engine vs. Others');
+        const keyword = getText('comparison.heading_keyword', '');
         const after = getText('comparison.heading_after', '');
         
         if (before && before.trim()) {
