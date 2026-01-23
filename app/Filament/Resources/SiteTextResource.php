@@ -57,8 +57,7 @@ class SiteTextResource extends Resource
                     ->label('Unique Key')
                     ->required()
                     ->maxLength(255)
-                    ->helperText('Format: section.identifier (e.g., hero.title, faq.q5)')
-                    ->unique(ignoreRecord: true),
+                    ->helperText('Format: section.identifier (e.g., hero.title, faq.q5)'),
                 
                 Select::make('type')
                     ->label('Text Type')
