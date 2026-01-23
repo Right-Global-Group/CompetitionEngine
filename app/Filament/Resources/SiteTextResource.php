@@ -20,9 +20,7 @@ class SiteTextResource extends Resource
     protected static ?string $model = SiteText::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
-
     protected static ?string $navigationLabel = 'Site Text Manager';
-
     protected static ?string $navigationGroup = 'Content Management';
 
     public static function form(Form $form): Form
@@ -34,21 +32,40 @@ class SiteTextResource extends Resource
                     ->options(SiteText::getSections())
                     ->required()
                     ->searchable()
-                    ->reactive(),
+                    ->live()
+                    ->afterStateUpdated(function ($state, callable $set, callable $get) {
+                        // Auto-generate key for FAQ section
+                        if ($state === 'faq' && !$get('key')) {
+                            // Get the highest FAQ number
+                            $maxFaqNumber = SiteText::where('section', 'faq')
+                                ->where('key', 'like', 'faq.q%')
+                                ->get()
+                                ->map(function ($item) {
+                                    preg_match('/faq\.q(\d+)/', $item->key, $matches);
+                                    return isset($matches[1]) ? (int)$matches[1] : 0;
+                                })
+                                ->max();
+                            
+                            $nextNumber = ($maxFaqNumber ?? 0) + 1;
+                            
+                            // Suggest the next question key
+                            $set('key', "faq.q{$nextNumber}");
+                        }
+                    }),
                 
                 TextInput::make('key')
                     ->label('Unique Key')
                     ->required()
-                    ->unique(ignoreRecord: true)
                     ->maxLength(255)
-                    ->helperText('Format: section.identifier (e.g., hero.title)'),
+                    ->helperText('Format: section.identifier (e.g., hero.title, faq.q5)')
+                    ->unique(ignoreRecord: true),
                 
                 Select::make('type')
                     ->label('Text Type')
                     ->options(SiteText::getTypes())
                     ->required()
                     ->default('paragraph')
-                    ->reactive(),
+                    ->live(),
                 
                 // Conditional fields based on type
                 Forms\Components\Group::make()
@@ -106,9 +123,19 @@ class SiteTextResource extends Resource
                 TextInput::make('order')
                     ->label('Display Order')
                     ->numeric()
-                    ->default(0)
+                    ->default(fn (callable $get) => self::getNextOrder($get('section')))
                     ->helperText('Lower numbers appear first'),
             ]);
+    }
+
+    protected static function getNextOrder(?string $section): int
+    {
+        if (!$section) {
+            return 1;
+        }
+        
+        $maxOrder = SiteText::where('section', $section)->max('order') ?? 0;
+        return $maxOrder + 1;
     }
 
     public static function table(Table $table): Table
@@ -142,7 +169,6 @@ class SiteTextResource extends Resource
                     ->limit(50)
                     ->searchable()
                     ->getStateUsing(function (SiteText $record): string {
-                        // For headings with parts, show assembled version
                         if ($record->type === 'heading' && $record->heading_keyword) {
                             $before = $record->heading_before ? $record->heading_before . ' ' : '';
                             $keyword = $record->heading_keyword;

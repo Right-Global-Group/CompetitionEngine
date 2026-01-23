@@ -27,29 +27,39 @@
         return parts;
     });
     
-    // Get FAQs from database
-    const faqs = computed(() => [
-        {
-            question: getText('faq.q1', 'What types of competitions can I create?'),
-            answer: getText('faq.a1', 'You can create a wide variety of competitions.'),
-            open: false
-        },
-        {
-            question: getText('faq.q2', 'How quickly can I launch a competition?'),
-            answer: getText('faq.a2', 'With our intuitive interface, you can have a competition up and running in minutes.'),
-            open: false
-        },
-        {
-            question: getText('faq.q3', 'Is Competition Engine secure and compliant?'),
-            answer: getText('faq.a3', 'Absolutely. We take security and compliance very seriously.'),
-            open: false
-        },
-        {
-            question: getText('faq.q4', 'Can I integrate Competition Engine with my existing tools?'),
-            answer: getText('faq.a4', 'Yes! Competition Engine is API-first.'),
-            open: false
+    // Dynamically build FAQs from database
+    const faqs = computed(() => {
+        if (siteTexts.loading || !siteTexts.data?.faq) {
+            return [];
         }
-    ]);
+        
+        const faqData = siteTexts.data.faq;
+        const faqItems = [];
+        
+        // Extract all question keys (faq.q1, faq.q2, etc.)
+        const questionKeys = Object.keys(faqData)
+            .filter(key => key.startsWith('faq.q') && !key.startsWith('faq.q') === false)
+            .sort((a, b) => {
+                const numA = parseInt(a.match(/\d+/)?.[0] || '0');
+                const numB = parseInt(b.match(/\d+/)?.[0] || '0');
+                return numA - numB;
+            });
+        
+        // Build FAQ objects
+        questionKeys.forEach(qKey => {
+            const number = qKey.match(/\d+/)?.[0];
+            if (number) {
+                const aKey = `faq.a${number}`;
+                faqItems.push({
+                    question: faqData[qKey] || '',
+                    answer: faqData[aKey] || '',
+                    open: false
+                });
+            }
+        });
+        
+        return faqItems;
+    });
     
     const toggleFaq = (index) => {
         faqs.value[index].open = !faqs.value[index].open;
@@ -83,7 +93,7 @@
                 <div class="max-w-3xl mx-auto">
                     <div 
                         v-for="(faq, index) in faqs"
-                        :key="index"
+                        :key="`faq-${index}`"
                         class="faq-item"
                     >
                         <details 
@@ -106,6 +116,10 @@
                                 {{ faq.answer }}
                             </div>
                         </details>
+                    </div>
+                    
+                    <div v-if="faqs.length === 0 && !siteTexts.loading" class="text-center py-12 text-gray-400">
+                        No FAQs available yet.
                     </div>
                 </div>
             </div>
