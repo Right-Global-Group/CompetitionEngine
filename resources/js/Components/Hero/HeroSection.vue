@@ -60,7 +60,7 @@
             delay: 0.3,
             ease: 'power3.out'
         });
-    
+
         gsap.from('.hero-buttons', {
             opacity: 0,
             y: 20,
