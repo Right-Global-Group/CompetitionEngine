@@ -233,8 +233,11 @@
                 <p class="hero-subtitle text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6">
                     {{ subtitle }}
                 </p>
-                <div class="hero-certified flex justify-center mb-8">
-                    <img src="/images/certified.png" alt="Certified" class="h-16 sm:h-20 object-contain" />
+                <div class="hero-certified flex flex-col items-center mb-8">
+                    <a href="https://access.gaminglabs.com/Certificate/Index?i=618" target="_blank">
+                        <img src="/images/certified.png" alt="Certified" class="h-16 sm:h-20 object-contain hover:opacity-80 transition-opacity duration-300" />
+                    </a>
+                    <a href="https://access.gaminglabs.com/Certificate/Index?i=618" target="_blank" class="text-accent-purple hover:text-accent-orange text-sm mt-2 transition-colors duration-300">Find more →</a>
                 </div>
                 <div class="hero-buttons flex flex-col sm:flex-row justify-center items-center gap-4">
                     <button 
