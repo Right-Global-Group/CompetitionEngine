@@ -29,7 +29,7 @@ class ContactSubmissionController extends Controller
 
         // Send email notification
         try {
-            Mail::to('max.behrens@rightglobalgroup.com')
+            Mail::to('maxdbehrens@gmail.com')
                 ->send(new ContactFormSubmitted($submission));
         } catch (\Exception $e) {
             Log::error('Failed to send contact form email: ' . $e->getMessage());
