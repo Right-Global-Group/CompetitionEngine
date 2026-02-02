@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\SiteTextController;
+use App\Http\Controllers\ContactSubmissionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -41,8 +42,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Site Text API Routes (public for reading)
+// API Routes
 Route::prefix('api')->group(function () {
+    // Site Text API Routes (public for reading)
     Route::get('/site-texts', [SiteTextController::class, 'index']);
     Route::get('/site-texts/section/{section}', [SiteTextController::class, 'section']);
     Route::get('/site-texts/{key}', [SiteTextController::class, 'show']);
@@ -50,6 +52,9 @@ Route::prefix('api')->group(function () {
     // Cache clearing requires authentication
     Route::post('/site-texts/clear-cache', [SiteTextController::class, 'clearCache'])
         ->middleware('auth');
+    
+    // Contact Form Submission (public)
+    Route::post('/contact', [ContactSubmissionController::class, 'store']);
 });
 
 // Custom Filament logout route

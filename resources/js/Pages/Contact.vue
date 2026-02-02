@@ -1,9 +1,10 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import { Head, router } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { onMounted, inject, computed, ref } from 'vue';
 import * as THREE from 'three';
 import { gsap } from 'gsap';
+import axios from 'axios';
 
 const getText = inject('getText');
 const siteTexts = inject('siteTexts');
@@ -40,22 +41,38 @@ const form = ref({
 });
 
 const showSuccess = ref(false);
+const isSubmitting = ref(false);
+const errorMessage = ref('');
 
-const submitForm = (e) => {
-    e.preventDefault();
-    // Here you would normally send to your backend
-    showSuccess.value = true;
-    form.value = {
-        first_name: '',
-        last_name: '',
-        email: '',
-        phone: '',
-        message: ''
-    };
+const submitForm = async () => {
+    if (isSubmitting.value) return;
     
-    setTimeout(() => {
-        showSuccess.value = false;
-    }, 5000);
+    errorMessage.value = '';
+    isSubmitting.value = true;
+
+    try {
+        const response = await axios.post('/api/contact', form.value);
+        
+        if (response.data.success) {
+            showSuccess.value = true;
+            form.value = {
+                first_name: '',
+                last_name: '',
+                email: '',
+                phone: '',
+                message: ''
+            };
+            
+            setTimeout(() => {
+                showSuccess.value = false;
+            }, 5000);
+        }
+    } catch (error) {
+        console.error('Error submitting form:', error);
+        errorMessage.value = error.response?.data?.message || 'There was an error submitting your message. Please try again.';
+    } finally {
+        isSubmitting.value = false;
+    }
 };
 
 onMounted(() => {
@@ -208,7 +225,11 @@ onMounted(() => {
                                 {{ getText('contact.form_success', 'Thanks for reaching out! We\'ll be in touch shortly.') }}
                             </div>
 
-                            <form @submit="submitForm" class="space-y-6">
+                            <div v-if="errorMessage" class="bg-red-500/20 border border-red-500 text-red-200 p-4 rounded-xl mb-6 text-center">
+                                {{ errorMessage }}
+                            </div>
+
+                            <form @submit.prevent="submitForm" class="space-y-6">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div class="space-y-2">
                                         <label class="text-sm font-medium text-gray-400">
@@ -271,9 +292,14 @@ onMounted(() => {
                                         class="contact-input w-full px-4 py-3 rounded-xl focus:ring-2 focus:ring-[#6A3FF4] transition-all"></textarea>
                                 </div>
 
-                                <button type="submit" class="w-full bg-[#6A3FF4] text-white font-bold py-4 rounded-xl hover:bg-[#FF9900] transition-all duration-300 transform hover:scale-[1.02] glow-button flex items-center justify-center">
-                                    {{ getText('contact.form_button', 'Send Message') }}
-                                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <button 
+                                    type="submit" 
+                                    :disabled="isSubmitting"
+                                    class="w-full bg-[#6A3FF4] text-white font-bold py-4 rounded-xl hover:bg-[#FF9900] transition-all duration-300 transform hover:scale-[1.02] glow-button flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    <span v-if="!isSubmitting">{{ getText('contact.form_button', 'Send Message') }}</span>
+                                    <span v-else>Sending...</span>
+                                    <svg v-if="!isSubmitting" class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                                     </svg>
                                 </button>

@@ -1,2 +1,9 @@
 User-agent: *
-Disallow:
+Disallow: /login
+Disallow: /register
+Disallow: /password/
+Disallow: /admin
+Disallow: /admin/
+
+# Allow everything else
+Allow: /
