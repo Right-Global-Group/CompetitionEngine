@@ -18,6 +18,17 @@ class DatabaseSeeder extends Seeder
         // Create the main RGG user (production & all environments)
         User::factory()->create();
 
+        // Create test user with password 'test'
+        User::firstOrCreate(
+            ['email' => 'test@test.com'],
+            [
+                'name' => 'Test User',
+                'email' => 'test@test.com',
+                'password' => bcrypt('test'),
+                'email_verified_at' => now(),
+            ]
+        );
+
         // Seed site texts (always needed)
         $this->call([
             SiteTextSeeder::class,
