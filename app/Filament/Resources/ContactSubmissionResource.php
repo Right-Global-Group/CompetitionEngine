@@ -37,13 +37,11 @@ class ContactSubmissionResource extends Resource
                         Forms\Components\TextInput::make('email')
                             ->label('Email')
                             ->email()
-                            ->disabled()
-                            ->copyMessage('Email copied!'),
+                            ->disabled(),
                         
                         Forms\Components\TextInput::make('phone')
                             ->label('Phone')
-                            ->disabled()
-                            ->copyMessage('Phone copied!'),
+                            ->disabled(),
                     ])
                     ->columns(2),
 
@@ -90,14 +88,12 @@ class ContactSubmissionResource extends Resource
                     ->label('Email')
                     ->searchable()
                     ->sortable()
-                    ->copyMessage('Email copied!')
                     ->icon('heroicon-m-envelope'),
                 
                 TextColumn::make('phone')
                     ->label('Phone')
                     ->searchable()
                     ->sortable()
-                    ->copyMessage('Phone copied!')
                     ->icon('heroicon-m-phone'),
                 
                 TextColumn::make('message')
