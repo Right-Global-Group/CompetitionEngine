@@ -1,4 +1,6 @@
 <script setup>
+import { Link } from '@inertiajs/vue3';
+
 const calendlyUrl = 'https://calendly.com/rightglobalgroup/website-design-free-consultation';
 
 const scrollToSection = (sectionId) => {
@@ -40,18 +42,8 @@ const openCalendly = () => {
                 <div>
                     <h4 class="text-lg font-semibold text-white mb-4">Company</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-[#A020F0] transition">About Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-[#A020F0] transition">Careers</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-[#A020F0] transition">Contact</a></li>
-                    </ul>
-                </div>
-
-                <!-- Legal Links -->
-                <div>
-                    <h4 class="text-lg font-semibold text-white mb-4">Legal</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-[#A020F0] transition">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-[#A020F0] transition">Terms of Service</a></li>
+                        <li><Link href="/about" class="text-gray-400 hover:text-[#A020F0] transition">About Us</Link></li>
+                        <li><Link href="/contact" class="text-gray-400 hover:text-[#A020F0] transition">Contact</Link></li>
                     </ul>
                 </div>
             </div>

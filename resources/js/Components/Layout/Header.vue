@@ -75,6 +75,8 @@ const logout = () => {
                     <button @click="scrollToSection('comparison')" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Comparison</button>
                     <button @click="scrollToSection('pricing')" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Pricing</button>
                     <button @click="scrollToSection('faq')" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">FAQ</button>
+                    <a href="/about" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">About</a>
+                    <a href="/contact" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Contact</a>
                 </nav>
 
                 <!-- Right: Desktop buttons + Mobile menu button -->
@@ -183,6 +185,8 @@ const logout = () => {
                     <button @click="scrollToSection('comparison')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Comparison</button>
                     <button @click="scrollToSection('pricing')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Pricing</button>
                     <button @click="scrollToSection('faq')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">FAQ</button>
+                    <a href="/about" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">About</a>
+                    <a href="/contact" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Contact</a>
                     
                     <!-- User Section (Mobile) -->
                     <div v-if="isLoggedIn" class="border-t border-gray-700 pt-3 space-y-2">
