@@ -50,7 +50,7 @@
     <template>
         <section id="ai-features" class="py-20">
             <div v-if="!siteTexts.loading" class="container mx-auto px-4 sm:px-6 relative text-center">
-                <div class="absolute top-0 right-0 -mt-8 -mr-8">
+                <div class="absolute top-0 left-6 -mt-8 -ml-2 md:left-80">
                     <span class="inline-flex items-center px-4 py-2 bg-yellow-400 text-yellow-900 text-sm font-bold rounded-full -rotate-12">
                         COMING SOON
                     </span>
