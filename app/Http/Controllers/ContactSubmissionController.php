@@ -29,8 +29,7 @@ class ContactSubmissionController extends Controller
 
         // Send email notification
         try {
-            Mail::to('maxdbehrens@gmail.com')
-                ->cc('max.behrens@rightglobalgroup.com')
+            Mail::to('contact@compengine.io')
                 ->send(new ContactFormSubmitted($submission));
         } catch (\Exception $e) {
             Log::error('Failed to send contact form email: ' . $e->getMessage());
