@@ -48,5 +48,18 @@
     </head>
     <body class="font-sans antialiased">
         @inertia
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/6981d3d4f17d0d1c3e8e04f7/default';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script>
+        <!--End of Tawk.to Script-->
     </body>
 </html>
