@@ -1,4 +1,6 @@
 <script setup>
+import { Link } from '@inertiajs/vue3';
+
 const calendlyUrl = 'https://calendly.com/contact-compengine/30min';
 
 const scrollToSection = (sectionId) => {
@@ -16,17 +18,17 @@ const openCalendly = () => {
 <template>
     <footer class="bg-[#161B22] border-t border-gray-800">
         <div class="container mx-auto px-4 sm:px-6 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="flex flex-col md:flex-row gap-8 md:gap-16">
                 <!-- Logo & Description -->
-                <div class="md:col-span-1">
+                <div class="md:max-w-xs">
                     <div class="flex items-center mb-4">
-                        <img src="/images/logo.png" alt="Competition Engine" class="h-8" />
+                        <img src="/images/logo.png" alt="Competition Engine" class="h-20 md:h-30" />
                     </div>
                     <p class="text-gray-400">The modern platform for creating and managing viral competitions.</p>
                 </div>
 
                 <!-- Product Links -->
-                <div>
+                <div class="mr-10">
                     <h4 class="text-lg font-semibold text-white mb-4">Product</h4>
                     <ul class="space-y-3">
                         <li><button @click="scrollToSection('ecosystem')" class="text-gray-400 hover:text-[#A020F0] transition">Features</button></li>
@@ -40,18 +42,8 @@ const openCalendly = () => {
                 <div>
                     <h4 class="text-lg font-semibold text-white mb-4">Company</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-[#A020F0] transition">About Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-[#A020F0] transition">Careers</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-[#A020F0] transition">Contact</a></li>
-                    </ul>
-                </div>
-
-                <!-- Legal Links -->
-                <div>
-                    <h4 class="text-lg font-semibold text-white mb-4">Legal</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-[#A020F0] transition">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-[#A020F0] transition">Terms of Service</a></li>
+                        <li><Link href="/about" class="text-gray-400 hover:text-[#A020F0] transition">About Us</Link></li>
+                        <li><Link href="/contact" class="text-gray-400 hover:text-[#A020F0] transition">Contact</Link></li>
                     </ul>
                 </div>
             </div>

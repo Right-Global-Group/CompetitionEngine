@@ -51,6 +51,8 @@ class SiteText extends Model
             'faq' => 'FAQ Section',
             'booking' => 'Booking Section',
             'footer' => 'Footer',
+            'about' => 'About Page',
+            'contact' => 'Contact Page',
         ];
     }
 

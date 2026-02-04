@@ -12,10 +12,33 @@ const isLoggedIn = computed(() => !!page.props.auth?.user);
 const userName = computed(() => page.props.auth?.user?.name || '');
 
 const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+    const currentPath = window.location.pathname;
+    
+    const scrollWithOffset = () => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            const yOffset = -30;
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    };
+    
+    if (currentPath === '/') {
+        // We're on home page, just scroll
+        scrollWithOffset();
         mobileMenuOpen.value = false;
+    } else {
+        // We're on another page, navigate to home
+        mobileMenuOpen.value = false;
+        router.visit('/', {
+            preserveScroll: false,
+            onSuccess: () => {
+                // Use setTimeout to ensure the DOM is fully rendered
+                setTimeout(() => {
+                    scrollWithOffset();
+                }, 300);
+            }
+        });
     }
 };
 
@@ -71,10 +94,13 @@ const logout = () => {
 
                 <!-- Center: Navigation (Desktop only) -->
                 <nav class="hidden md:flex items-center justify-center space-x-8 absolute left-1/2 -translate-x-1/2">
+                    <a href="/" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Home</a>
                     <button @click="scrollToSection('ecosystem')" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Features</button>
                     <button @click="scrollToSection('comparison')" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Comparison</button>
                     <button @click="scrollToSection('pricing')" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Pricing</button>
                     <button @click="scrollToSection('faq')" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">FAQ</button>
+                    <a href="/about" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">About</a>
+                    <a href="/contact" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Contact</a>
                 </nav>
 
                 <!-- Right: Desktop buttons + Mobile menu button -->
@@ -178,11 +204,14 @@ const logout = () => {
             leave-to-class="opacity-0 -translate-y-1"
         >
             <div v-show="mobileMenuOpen" class="md:hidden glass-effect border-t border-gray-700">
-                <nav class="w-full px-4 py-4 space-y-3">
+                <nav class="w-full px-4 py-4 space-y-1">
+                    <a href="/" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Home</a>
                     <button @click="scrollToSection('ecosystem')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Features</button>
                     <button @click="scrollToSection('comparison')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Comparison</button>
                     <button @click="scrollToSection('pricing')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Pricing</button>
                     <button @click="scrollToSection('faq')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">FAQ</button>
+                    <a href="/about" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">About</a>
+                    <a href="/contact" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Contact</a>
                     
                     <!-- User Section (Mobile) -->
                     <div v-if="isLoggedIn" class="border-t border-gray-700 pt-3 space-y-2">

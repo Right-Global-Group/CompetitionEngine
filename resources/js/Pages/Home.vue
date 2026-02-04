@@ -13,6 +13,22 @@ import ComparisonTable from '@/Components/Comparison/ComparisonTable.vue';
 import PricingCards from '@/Components/Pricing/PricingCards.vue';
 import FAQSection from '@/Components/FAQ/FAQSection.vue';
 import BookingSection from '@/Components/Booking/BookingSection.vue';
+
+import { onMounted } from 'vue';
+
+onMounted(() => {
+    // Check if there's a hash in the URL
+    const hash = window.location.hash;
+    if (hash) {
+        // Wait a bit for the page to fully render
+        setTimeout(() => {
+            const element = document.getElementById(hash.substring(1));
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 100);
+    }
+});
 </script>
 
 <template>

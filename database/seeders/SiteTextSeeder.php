@@ -281,12 +281,104 @@ class SiteTextSeeder extends Seeder
             // Footer
             ['section' => 'footer', 'key' => 'footer.description', 'content' => 'The modern platform for creating and managing viral competitions.', 'type' => 'paragraph', 'order' => 1],
             ['section' => 'footer', 'key' => 'footer.copyright', 'content' => '© 2025 Competition Engine. All rights reserved.', 'type' => 'label', 'order' => 2],
+
+            // ========================================
+            // ABOUT PAGE
+            // ========================================
+            [
+                'section' => 'about',
+                'key' => 'about.hero_heading',
+                'content' => '',
+                'type' => 'heading',
+                'order' => 1,
+                'heading_before' => 'Unique',
+                'heading_keyword' => 'By Design',
+                'heading_after' => ''
+            ],
+            ['section' => 'about', 'key' => 'about.hero_description', 'content' => 'Manchester-born, globally focused. Our vision is simple: every competition site deserves its own Unique Identity.', 'type' => 'paragraph', 'order' => 2],
+
+            // About Core Values
+            ['section' => 'about', 'key' => 'about.value1_number', 'content' => '01', 'type' => 'label', 'order' => 3],
+            ['section' => 'about', 'key' => 'about.value1_title', 'content' => 'Zero Repetition', 'type' => 'subheading', 'order' => 4],
+            ['section' => 'about', 'key' => 'about.value1_description', 'content' => 'We reject the "plugin-and-play" culture. Your brand is unique, and your platform should be a bespoke reflection of that vision.', 'type' => 'paragraph', 'order' => 5],
+
+            ['section' => 'about', 'key' => 'about.value2_number', 'content' => '02', 'type' => 'label', 'order' => 6],
+            ['section' => 'about', 'key' => 'about.value2_title', 'content' => 'Identity as Logic', 'type' => 'subheading', 'order' => 7],
+            ['section' => 'about', 'key' => 'about.value2_description', 'content' => 'Customisation isn\'t just skin deep. We build unique workflows, logic, and prize systems tailored specifically to your audience.', 'type' => 'paragraph', 'order' => 8],
+
+            ['section' => 'about', 'key' => 'about.value3_number', 'content' => '03', 'type' => 'label', 'order' => 9],
+            ['section' => 'about', 'key' => 'about.value3_title', 'content' => 'Elite Experience', 'type' => 'subheading', 'order' => 10],
+            ['section' => 'about', 'key' => 'about.value3_description', 'content' => 'Every pixel is an opportunity to engage. We provide the tools to build immersive worlds, not just raffle listings.', 'type' => 'paragraph', 'order' => 11],
+
+            // About Vision Section
+            [
+                'section' => 'about',
+                'key' => 'about.vision_heading',
+                'content' => '',
+                'type' => 'heading',
+                'order' => 12,
+                'heading_before' => 'Our Vision for',
+                'heading_keyword' => 'Individuality',
+                'heading_after' => ''
+            ],
+            ['section' => 'about', 'key' => 'about.vision_paragraph1', 'content' => 'The internet is becoming a sea of sameness. Competition Engine was founded to break the cycle of identical WordPress sites that all look, feel, and fail in the same way.', 'type' => 'paragraph', 'order' => 13],
+            ['section' => 'about', 'key' => 'about.vision_paragraph2', 'content' => 'We give creators the power of elite-tier engineering while maintaining complete creative freedom. Our vision is to empower every site owner to stand out with a distinct digital footprint that is impossible to copy and hard to forget.', 'type' => 'paragraph', 'order' => 14],
+
+            // About CTA
+            ['section' => 'about', 'key' => 'about.cta_heading', 'content' => 'Ready to build your identity?', 'type' => 'heading', 'order' => 15],
+            ['section' => 'about', 'key' => 'about.cta_button', 'content' => 'Work With Us', 'type' => 'button', 'order' => 16],
+
+            // ========================================
+            // CONTACT PAGE
+            // ========================================
+            [
+                'section' => 'contact',
+                'key' => 'contact.hero_heading',
+                'content' => '',
+                'type' => 'heading',
+                'order' => 1,
+                'heading_before' => 'Let\'s',
+                'heading_keyword' => 'Connect',
+                'heading_after' => ''
+            ],
+            ['section' => 'contact', 'key' => 'contact.hero_description', 'content' => 'Have questions about scaling your competition? Our experts are here to help you build the ultimate engagement machine.', 'type' => 'paragraph', 'order' => 2],
+
+            // Email Card
+            ['section' => 'contact', 'key' => 'contact.email_title', 'content' => 'Email Us', 'type' => 'subheading', 'order' => 3],
+            ['section' => 'contact', 'key' => 'contact.email_subtitle', 'content' => 'for all enquires please use the below email', 'type' => 'paragraph', 'order' => 4],
+            ['section' => 'contact', 'key' => 'contact.email_address', 'content' => 'contact@compengine.io', 'type' => 'label', 'order' => 5],
+
+            // Location Card
+            ['section' => 'contact', 'key' => 'contact.location_title', 'content' => 'Location', 'type' => 'subheading', 'order' => 6],
+            ['section' => 'contact', 'key' => 'contact.location_subtitle', 'content' => 'Visit us for a coffee and a demo', 'type' => 'paragraph', 'order' => 7],
+            ['section' => 'contact', 'key' => 'contact.location_city', 'content' => 'Manchester', 'type' => 'label', 'order' => 8],
+
+            // Live Chat Card
+            ['section' => 'contact', 'key' => 'contact.chat_title', 'content' => 'Live Chat', 'type' => 'subheading', 'order' => 9],
+            ['section' => 'contact', 'key' => 'contact.chat_subtitle', 'content' => 'Available Mon-Fri, 9am - 6pm', 'type' => 'paragraph', 'order' => 10],
+            ['section' => 'contact', 'key' => 'contact.chat_button', 'content' => 'Start a conversation', 'type' => 'button', 'order' => 11],
+
+            // Contact Form
+            ['section' => 'contact', 'key' => 'contact.form_success', 'content' => 'Thanks for reaching out! We\'ll be in touch shortly.', 'type' => 'paragraph', 'order' => 12],
+            ['section' => 'contact', 'key' => 'contact.form_first_name', 'content' => 'First Name', 'type' => 'label', 'order' => 13],
+            ['section' => 'contact', 'key' => 'contact.form_first_name_placeholder', 'content' => 'John', 'type' => 'label', 'order' => 14],
+            ['section' => 'contact', 'key' => 'contact.form_last_name', 'content' => 'Last Name', 'type' => 'label', 'order' => 15],
+            ['section' => 'contact', 'key' => 'contact.form_last_name_placeholder', 'content' => 'Doe', 'type' => 'label', 'order' => 16],
+            ['section' => 'contact', 'key' => 'contact.form_email', 'content' => 'Email Address', 'type' => 'label', 'order' => 17],
+            ['section' => 'contact', 'key' => 'contact.form_email_placeholder', 'content' => 'john@company.com', 'type' => 'label', 'order' => 18],
+            ['section' => 'contact', 'key' => 'contact.form_phone', 'content' => 'Phone Number', 'type' => 'label', 'order' => 19],
+            ['section' => 'contact', 'key' => 'contact.form_phone_placeholder', 'content' => '+44 0000 000000', 'type' => 'label', 'order' => 20],
+            ['section' => 'contact', 'key' => 'contact.form_message', 'content' => 'Message', 'type' => 'label', 'order' => 21],
+            ['section' => 'contact', 'key' => 'contact.form_message_placeholder', 'content' => 'How can we help your competition business grow?', 'type' => 'label', 'order' => 22],
+            ['section' => 'contact', 'key' => 'contact.form_button', 'content' => 'Send Message', 'type' => 'button', 'order' => 23],
         ];
 
+        // Using firstOrCreate ensures existing records are NEVER updated
+        // Only new records are created
         foreach ($texts as $text) {
             SiteText::firstOrCreate(
-                ['key' => $text['key']],
-                $text
+                ['key' => $text['key']], // Check if this key already exists
+                $text // If not, create with this data
             );
         }
     }
