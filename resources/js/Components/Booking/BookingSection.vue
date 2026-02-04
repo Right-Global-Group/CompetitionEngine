@@ -4,7 +4,7 @@
     const getText = inject('getText');
     const siteTexts = inject('siteTexts');
     
-    const calendlyUrl = 'https://calendly.com/rightglobalgroup/website-design-free-consultation';
+    const calendlyUrl = 'https://calendly.com/contact-compengine/30min';
 
         
     // Get heading parts

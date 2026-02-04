@@ -27,7 +27,7 @@
         return parts;
     });
     
-    const calendlyUrl = 'https://calendly.com/rightglobalgroup/website-design-free-consultation';
+    const calendlyUrl = 'https://calendly.com/contact-compengine/30min';
     
     // Build plans from database
     const plans = computed(() => {

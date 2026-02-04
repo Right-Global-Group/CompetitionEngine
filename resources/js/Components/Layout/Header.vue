@@ -4,7 +4,7 @@ import { usePage, router } from '@inertiajs/vue3';
 
 const mobileMenuOpen = ref(false);
 const userMenuOpen = ref(false);
-const calendlyUrl = 'https://calendly.com/rightglobalgroup/website-design-free-consultation';
+const calendlyUrl = 'https://calendly.com/contact-compengine/30min';
 
 const page = usePage();
 const isAdmin = computed(() => page.props.auth?.user?.is_admin || false);

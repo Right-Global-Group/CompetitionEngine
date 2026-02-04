@@ -1,5 +1,5 @@
 <script setup>
-const calendlyUrl = 'https://calendly.com/rightglobalgroup/website-design-free-consultation';
+const calendlyUrl = 'https://calendly.com/contact-compengine/30min';
 
 const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
