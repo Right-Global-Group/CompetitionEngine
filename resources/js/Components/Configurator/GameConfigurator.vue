@@ -4,6 +4,8 @@ import SlotsGame from '@/Components/Games/SlotsGame.vue';
 import SpinGame from '@/Components/Games/SpinGame.vue';
 import ScratchGame from '@/Components/Games/ScratchGame.vue';
 import BingoGame from '@/Components/Games/BingoGame.vue';
+import CoinDropGame from '@/Components/Games/CoinDropGame.vue';
+import BalloonPopGame from '@/Components/Games/PopGame.vue';
 
 const activeTab = ref('slots');
 
@@ -38,7 +40,9 @@ const tabs = [
     { id: 'slots', name: 'Slots', icon: '🎰' },
     { id: 'scratch', name: 'Scratch', icon: '🎫' },
     { id: 'spin', name: 'Spinny', icon: '🎡' },
-    { id: 'bingo', name: 'Bingo', icon: '🎱' }
+    { id: 'bingo', name: 'Bingo', icon: '🎱' },
+    { id: 'coindrop', name: 'Coin Drop', icon: '🪙' },
+    { id: 'balloonpop', name: 'Balloon Pop', icon: '🎈' }
 ];
 
 // Image uploads (stored as blob URLs)
@@ -62,6 +66,26 @@ const bingoImages = ref({
     background: '',
     header: '',
     cardCover: ''
+});
+
+const coinDropImages = ref({
+    background: '',
+    header: '',
+    titleImage: '',
+    dropButtonImage: '',
+    ballImage: '',
+    winBucketImage: '',
+    loseBucketImage: '',
+    tubeImage: '',
+    machineImage: '',
+    footerImage: ''
+});
+
+const balloonPopImages = ref({
+    background: '',
+    header: '',
+    titleImage: '',
+    popItemImage: ''
 });
 
 // Handle image upload - specific handlers for each
@@ -196,6 +220,122 @@ const clearBingoCardCover = () => {
     bingoImages.value.cardCover = '';
 };
 
+// Coin Drop image handlers
+const handleCoinDropBackground = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (coinDropImages.value.background) URL.revokeObjectURL(coinDropImages.value.background);
+        coinDropImages.value.background = URL.createObjectURL(file);
+    }
+};
+
+const handleCoinDropHeader = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (coinDropImages.value.header) URL.revokeObjectURL(coinDropImages.value.header);
+        coinDropImages.value.header = URL.createObjectURL(file);
+    }
+};
+
+const handleCoinDropTitleImage = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (coinDropImages.value.titleImage) URL.revokeObjectURL(coinDropImages.value.titleImage);
+        coinDropImages.value.titleImage = URL.createObjectURL(file);
+    }
+};
+
+// Add these handlers after your existing Coin Drop handlers:
+
+const handleCoinDropBallImage = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (coinDropImages.value.ballImage) URL.revokeObjectURL(coinDropImages.value.ballImage);
+        coinDropImages.value.ballImage = URL.createObjectURL(file);
+    }
+};
+
+const handleCoinDropDropButton = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (coinDropImages.value.dropButtonImage) URL.revokeObjectURL(coinDropImages.value.dropButtonImage);
+        coinDropImages.value.dropButtonImage = URL.createObjectURL(file);
+    }
+};
+
+const handleCoinDropWinBucket = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (coinDropImages.value.winBucketImage) URL.revokeObjectURL(coinDropImages.value.winBucketImage);
+        coinDropImages.value.winBucketImage = URL.createObjectURL(file);
+    }
+};
+
+const handleCoinDropLoseBucket = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (coinDropImages.value.loseBucketImage) URL.revokeObjectURL(coinDropImages.value.loseBucketImage);
+        coinDropImages.value.loseBucketImage = URL.createObjectURL(file);
+    }
+};
+
+const handleCoinDropTube = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (coinDropImages.value.tubeImage) URL.revokeObjectURL(coinDropImages.value.tubeImage);
+        coinDropImages.value.tubeImage = URL.createObjectURL(file);
+    }
+};
+
+const handleCoinDropMachine = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (coinDropImages.value.machineImage) URL.revokeObjectURL(coinDropImages.value.machineImage);
+        coinDropImages.value.machineImage = URL.createObjectURL(file);
+    }
+};
+
+const handleCoinDropFooter = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (coinDropImages.value.footerImage) URL.revokeObjectURL(coinDropImages.value.footerImage);
+        coinDropImages.value.footerImage = URL.createObjectURL(file);
+    }
+};
+
+// Balloon Pop image handlers
+const handleBalloonPopBackground = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (balloonPopImages.value.background) URL.revokeObjectURL(balloonPopImages.value.background);
+        balloonPopImages.value.background = URL.createObjectURL(file);
+    }
+};
+
+const handleBalloonPopHeader = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (balloonPopImages.value.header) URL.revokeObjectURL(balloonPopImages.value.header);
+        balloonPopImages.value.header = URL.createObjectURL(file);
+    }
+};
+
+const handleBalloonPopTitleImage = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (balloonPopImages.value.titleImage) URL.revokeObjectURL(balloonPopImages.value.titleImage);
+        balloonPopImages.value.titleImage = URL.createObjectURL(file);
+    }
+};
+
+const handleBalloonPopItemImage = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (balloonPopImages.value.popItemImage) URL.revokeObjectURL(balloonPopImages.value.popItemImage);
+        balloonPopImages.value.popItemImage = URL.createObjectURL(file);
+    }
+};
+
 // Slots Configuration
 const slotsConfig = ref({
     titleText: 'LUCKY SLOTS',
@@ -247,6 +387,38 @@ const bingoConfig = ref({
     popupStart: '#10b981',
     popupEnd: '#059669',
     diamondEmoji: '💎'
+});
+
+// Coin Drop Configuration
+const coinDropConfig = ref({
+    titleText: 'COIN DROP!',
+    titleColor: '#FFD700',
+    primaryColor: '#e94560',
+    secondaryColor: '#1a1a2e',
+    accentColor: '#ffd700',
+    boardBgColor: '#1a1a2e',
+    pegColor: '#ffffff',
+    pegGlowColor: '#e94560',
+    ballColor: '#ffd700',
+    ballGlowColor: '#ffaa00',
+    winBucketColor: '#00ff88',
+    loseBucketColor: '#ff4444',
+    trailColor: '#e94560',
+    pegShape: 'hexagon'
+});
+
+// Balloon Pop Configuration
+const balloonPopConfig = ref({
+    titleText: 'POP TO WIN!',
+    titleColor: '#FFD700',
+    primaryColor: '#e94560',
+    secondaryColor: '#1a1a2e',
+    accentColor: '#ffd700',
+    popBgColor: '#1a1a2e',
+    popItemType: 'balloon',
+    popWinColor: '#00ff88',
+    popLoseColor: '#ff4444',
+    popSubtitleText: 'Pop balloons to reveal your prize!'
 });
 
 // Computed assets for each game
@@ -313,6 +485,66 @@ const bingoAssets = computed(() => ({
     diamondEmoji: bingoConfig.value.diamondEmoji
 }));
 
+const coinDropAssets = computed(() => ({
+    name: 'Coin Drop',
+    titleText: coinDropConfig.value.titleText,
+    titleColor: coinDropConfig.value.titleColor,
+    primaryColor: coinDropConfig.value.primaryColor,
+    secondaryColor: coinDropConfig.value.secondaryColor,
+    accentColor: coinDropConfig.value.accentColor,
+    textColor: '#FFFFFF',
+    boardBgColor: coinDropConfig.value.boardBgColor,
+    pegColor: coinDropConfig.value.pegColor,
+    pegGlowColor: coinDropConfig.value.pegGlowColor,
+    ballColor: coinDropConfig.value.ballColor,
+    ballGlowColor: coinDropConfig.value.ballGlowColor,
+    winBucketColor: coinDropConfig.value.winBucketColor,
+    loseBucketColor: coinDropConfig.value.loseBucketColor,
+    trailColor: coinDropConfig.value.trailColor,
+    pegShape: coinDropConfig.value.pegShape,
+    background: coinDropImages.value.background || '',
+    header: coinDropImages.value.header || '',
+    titleImage: coinDropImages.value.titleImage || '',
+    dropButtonImage: coinDropImages.value.dropButtonImage || '',
+    ballImage: coinDropImages.value.ballImage || '',
+    winBucketImage: coinDropImages.value.winBucketImage || '',
+    loseBucketImage: coinDropImages.value.loseBucketImage || '',
+    tubeImage: coinDropImages.value.tubeImage || '',
+    machineImage: '',
+    footerImage: '',
+    gameBackground: coinDropImages.value.background || '',
+    welcomeSound: '',
+    dropSound: '',
+    winSound: '',
+    lossSound: ''
+}));
+
+const balloonPopAssets = computed(() => ({
+    name: 'Balloon Pop',
+    titleText: balloonPopConfig.value.titleText,
+    titleColor: balloonPopConfig.value.titleColor,
+    primaryColor: balloonPopConfig.value.primaryColor,
+    secondaryColor: balloonPopConfig.value.secondaryColor,
+    accentColor: balloonPopConfig.value.accentColor,
+    textColor: '#FFFFFF',
+    popBgColor: balloonPopConfig.value.popBgColor,
+    popItemType: balloonPopConfig.value.popItemType,
+    popWinColor: balloonPopConfig.value.popWinColor,
+    popLoseColor: balloonPopConfig.value.popLoseColor,
+    popSubtitleText: balloonPopConfig.value.popSubtitleText,
+    background: balloonPopImages.value.background || '',
+    header: balloonPopImages.value.header || '',
+    titleImage: balloonPopImages.value.titleImage || '',
+    popItemImage: balloonPopImages.value.popItemImage || '',
+    popItemColors: ['#FF4C4C', '#FFEB3B', '#64B5F6', '#81C784', '#9575CD', '#FF8A80', '#FFB74D', '#4DD0E1', '#F06292', '#FFD700'],
+    popConfettiColors: ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7'],
+    popSound: '',
+    welcomeSound: '',
+    winSound: '',
+    lossSound: '',
+    popItemLabel: ''
+}));
+
 // Emoji options for inventory button
 const emojiOptions = ['🎣', '🎁', '🏆', '💎', '⭐', '🎯', '🎪', '🎲'];
 
@@ -331,6 +563,18 @@ const colorPresets = {
         { name: 'Fire Red', edge: '#EF4444', title: '#FCD34D' },
         { name: 'Emerald', edge: '#10B981', title: '#FFFFFF' },
         { name: 'Sunset', edge: '#F97316', title: '#FEF3C7' }
+    ],
+    coindrop: [
+        { name: 'Classic', primary: '#e94560', accent: '#ffd700', ball: '#ffd700' },
+        { name: 'Emerald', primary: '#10B981', accent: '#34D399', ball: '#6EE7B7' },
+        { name: 'Purple', primary: '#9333EA', accent: '#C084FC', ball: '#E9D5FF' },
+        { name: 'Fire', primary: '#EF4444', accent: '#F97316', ball: '#FBBF24' }
+    ],
+    balloonpop: [
+        { name: 'Classic', primary: '#e94560', accent: '#ffd700' },
+        { name: 'Ocean', primary: '#06B6D4', accent: '#67E8F9' },
+        { name: 'Forest', primary: '#22C55E', accent: '#86EFAC' },
+        { name: 'Sunset', primary: '#F97316', accent: '#FCD34D' }
     ]
 };
 
@@ -345,6 +589,18 @@ const applySlotPreset = (preset) => {
 const applySpinPreset = (preset) => {
     spinConfig.value.wheelEdgeColor = preset.edge;
     spinConfig.value.titleColor = preset.title;
+};
+
+const applyCoinDropPreset = (preset) => {
+    coinDropConfig.value.primaryColor = preset.primary;
+    coinDropConfig.value.accentColor = preset.accent;
+    coinDropConfig.value.ballColor = preset.ball;
+    coinDropConfig.value.ballGlowColor = preset.ball;
+};
+
+const applyBalloonPopPreset = (preset) => {
+    balloonPopConfig.value.primaryColor = preset.primary;
+    balloonPopConfig.value.accentColor = preset.accent;
 };
 </script>
 
@@ -662,6 +918,198 @@ const applySpinPreset = (preset) => {
                             </div>
                         </div>
                     </div>
+
+                    <!-- COIN DROP Configuration -->
+                    <div v-if="activeTab === 'coindrop'" class="config-sections">
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Theme</span>
+                            </div>
+                            <div class="preset-grid">
+                                <button
+                                    v-for="preset in colorPresets.coindrop"
+                                    :key="preset.name"
+                                    @click="applyCoinDropPreset(preset)"
+                                    class="preset-btn"
+                                    :style="{ '--preset-color': preset.primary }"
+                                >
+                                    <span class="preset-dot" :style="{ background: preset.primary }"></span>
+                                    {{ preset.name }}
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Branding</span>
+                            </div>
+                            <div class="input-group">
+                                <label>Title</label>
+                                <input type="text" v-model="coinDropConfig.titleText" class="text-input" />
+                            </div>
+                            <div class="upload-row">
+                                <label class="upload-box" :class="{ 'has-image': coinDropImages.header }">
+                                    <img v-if="coinDropImages.header" :src="coinDropImages.header" />
+                                    <span v-else class="upload-placeholder">+ Header</span>
+                                    <input type="file" accept="image/*" @change="handleCoinDropHeader" />
+                                </label>
+                                <label class="upload-box" :class="{ 'has-image': coinDropImages.background }">
+                                    <img v-if="coinDropImages.background" :src="coinDropImages.background" />
+                                    <span v-else class="upload-placeholder">+ BG</span>
+                                    <input type="file" accept="image/*" @change="handleCoinDropBackground" />
+                                </label>
+                                <label class="upload-box" :class="{ 'has-image': coinDropImages.titleImage }">
+                                    <img v-if="coinDropImages.titleImage" :src="coinDropImages.titleImage" />
+                                    <span v-else class="upload-placeholder">+ Logo</span>
+                                    <input type="file" accept="image/*" @change="handleCoinDropTitleImage" />
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Colors</span>
+                            </div>
+                            <div class="color-grid">
+                                <div class="color-item">
+                                    <input type="color" v-model="coinDropConfig.titleColor" class="color-picker" />
+                                    <span>Title</span>
+                                </div>
+                                <div class="color-item">
+                                    <input type="color" v-model="coinDropConfig.ballColor" class="color-picker" />
+                                    <span>Ball</span>
+                                </div>
+                                <div class="color-item">
+                                    <input type="color" v-model="coinDropConfig.pegColor" class="color-picker" />
+                                    <span>Pegs</span>
+                                </div>
+                                <div class="color-item">
+                                    <input type="color" v-model="coinDropConfig.winBucketColor" class="color-picker" />
+                                    <span>Win Bucket</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Peg Shape</span>
+                            </div>
+                            <div class="preset-grid">
+                                <button
+                                    @click="coinDropConfig.pegShape = 'circle'"
+                                    class="preset-btn"
+                                    :class="{ 'active': coinDropConfig.pegShape === 'circle' }"
+                                >
+                                    Circle
+                                </button>
+                                <button
+                                    @click="coinDropConfig.pegShape = 'hexagon'"
+                                    class="preset-btn"
+                                    :class="{ 'active': coinDropConfig.pegShape === 'hexagon' }"
+                                >
+                                    Hexagon
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BALLOON POP Configuration -->
+                    <div v-if="activeTab === 'balloonpop'" class="config-sections">
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Theme</span>
+                            </div>
+                            <div class="preset-grid">
+                                <button
+                                    v-for="preset in colorPresets.balloonpop"
+                                    :key="preset.name"
+                                    @click="applyBalloonPopPreset(preset)"
+                                    class="preset-btn"
+                                    :style="{ '--preset-color': preset.primary }"
+                                >
+                                    <span class="preset-dot" :style="{ background: preset.primary }"></span>
+                                    {{ preset.name }}
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Branding</span>
+                            </div>
+                            <div class="input-group">
+                                <label>Title</label>
+                                <input type="text" v-model="balloonPopConfig.titleText" class="text-input" />
+                            </div>
+                            <div class="input-group">
+                                <label>Subtitle</label>
+                                <input type="text" v-model="balloonPopConfig.popSubtitleText" class="text-input" placeholder="Pop balloons to reveal your prize!" />
+                            </div>
+                            <div class="upload-row">
+                                <label class="upload-box" :class="{ 'has-image': balloonPopImages.header }">
+                                    <img v-if="balloonPopImages.header" :src="balloonPopImages.header" />
+                                    <span v-else class="upload-placeholder">+ Header</span>
+                                    <input type="file" accept="image/*" @change="handleBalloonPopHeader" />
+                                </label>
+                                <label class="upload-box" :class="{ 'has-image': balloonPopImages.background }">
+                                    <img v-if="balloonPopImages.background" :src="balloonPopImages.background" />
+                                    <span v-else class="upload-placeholder">+ BG</span>
+                                    <input type="file" accept="image/*" @change="handleBalloonPopBackground" />
+                                </label>
+                                <label class="upload-box" :class="{ 'has-image': balloonPopImages.titleImage }">
+                                    <img v-if="balloonPopImages.titleImage" :src="balloonPopImages.titleImage" />
+                                    <span v-else class="upload-placeholder">+ Logo</span>
+                                    <input type="file" accept="image/*" @change="handleBalloonPopTitleImage" />
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Colors</span>
+                            </div>
+                            <div class="color-grid">
+                                <div class="color-item">
+                                    <input type="color" v-model="balloonPopConfig.titleColor" class="color-picker" />
+                                    <span>Title</span>
+                                </div>
+                                <div class="color-item">
+                                    <input type="color" v-model="balloonPopConfig.primaryColor" class="color-picker" />
+                                    <span>Primary</span>
+                                </div>
+                                <div class="color-item">
+                                    <input type="color" v-model="balloonPopConfig.popWinColor" class="color-picker" />
+                                    <span>Win</span>
+                                </div>
+                                <div class="color-item">
+                                    <input type="color" v-model="balloonPopConfig.popLoseColor" class="color-picker" />
+                                    <span>Lose</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Item Type</span>
+                            </div>
+                            <div class="preset-grid">
+                                <button
+                                    @click="balloonPopConfig.popItemType = 'balloon'"
+                                    class="preset-btn"
+                                    :class="{ 'active': balloonPopConfig.popItemType === 'balloon' }"
+                                >
+                                    🎈 Balloon
+                                </button>
+                                <button
+                                    @click="balloonPopConfig.popItemType = 'bubble'"
+                                    class="preset-btn"
+                                    :class="{ 'active': balloonPopConfig.popItemType === 'bubble' }"
+                                >
+                                    🫧 Bubble
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                         </div>
                     </div>
                 </div>
@@ -687,6 +1135,13 @@ const applySpinPreset = (preset) => {
                             </div>
                             <div v-if="activeTab === 'bingo'" class="preview-game">
                                 <BingoGame :demoMode="true" previewMode="desktop" :assets="bingoAssets" :prizes="[]" :tickets="[]" />
+                            </div>
+                            <div v-if="activeTab === 'coindrop'" class="preview-game">
+                                <CoinDropGame :demoMode="true" previewMode="desktop" :coinDropAssets="coinDropAssets" :tickets="[]" :showGameBoard="true"
+                                /> 
+                            </div>
+                            <div v-if="activeTab === 'balloonpop'" class="preview-game">
+                                <BalloonPopGame :demoMode="true" previewMode="desktop" :popGameAssets="balloonPopAssets" :tickets="[]" :showGameBoard="true"/>
                             </div>
                         </div>
                     </div>
@@ -718,7 +1173,8 @@ const applySpinPreset = (preset) => {
    TABS
    ========================================= */
 .tab-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 4px;
     padding: 12px;
     background: rgba(0, 0, 0, 0.3);
@@ -726,7 +1182,6 @@ const applySpinPreset = (preset) => {
 }
 
 .tab-pill {
-    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -840,6 +1295,12 @@ const applySpinPreset = (preset) => {
     background: rgba(255, 255, 255, 0.08);
     border-color: var(--preset-color, rgba(255, 255, 255, 0.2));
     transform: translateY(-1px);
+}
+
+.preset-btn.active {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-color: transparent;
+    color: white;
 }
 
 .preset-dot {
