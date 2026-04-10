@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Tenant;
 use App\Models\TenantFeeReport;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -30,6 +31,12 @@ class TenantFeeReportController extends Controller
             'vat'                 => 'required|numeric|min:0',
             'total'               => 'required|numeric|min:0',
         ]);
+
+        // Auto-register tenant if not already in the registry
+        Tenant::firstOrCreate(
+            ['tenant_key' => $data['tenant_key']],
+            ['name' => $data['tenant_key'], 'is_active' => true]
+        );
 
         TenantFeeReport::updateOrCreate(
             [
