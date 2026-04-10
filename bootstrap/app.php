@@ -19,6 +19,11 @@ return Application::configure(basePath: dirname(__DIR__))
             'filament.auth' => \App\Http\Middleware\FilamentAuth::class,
         ]);
 
+        $middleware->validateCsrfTokens(except: [
+            'api/fees/report',
+            'api/messages',
+        ]);
+
         //
     })
     ->withProviders([
