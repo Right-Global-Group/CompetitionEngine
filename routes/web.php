@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\SiteTextController;
+use App\Http\Controllers\Api\TenantFeeReportController;
 use App\Http\Controllers\Api\TenantMessagesController;
 use App\Http\Controllers\ContactSubmissionController;
 use App\Http\Controllers\ProfileController;
@@ -59,6 +60,9 @@ Route::prefix('api')->group(function () {
 
     // Hub API — tenant servers fetch messages/warnings using X-Hub-Api-Key header
     Route::get('/messages', [TenantMessagesController::class, 'index']);
+
+    // Tenant fee reporting — tenants POST daily fee totals here
+    Route::post('/fees/report', [TenantFeeReportController::class, 'store']);
 });
 
 // Custom Filament logout route
