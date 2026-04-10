@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\SiteTextController;
+use App\Http\Controllers\Api\TenantMessagesController;
 use App\Http\Controllers\ContactSubmissionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,9 @@ Route::prefix('api')->group(function () {
     
     // Contact Form Submission (public)
     Route::post('/contact', [ContactSubmissionController::class, 'store']);
+
+    // Hub API — tenant servers fetch messages/warnings using X-Hub-Api-Key header
+    Route::get('/messages', [TenantMessagesController::class, 'index']);
 });
 
 // Custom Filament logout route
