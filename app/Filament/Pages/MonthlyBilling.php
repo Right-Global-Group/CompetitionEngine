@@ -83,10 +83,31 @@ class MonthlyBilling extends Page
             ->get()
             ->keyBy('tenant_key');
 
-        return $tenants->map(fn ($tenant) => [
+        $rows = $tenants->map(fn ($tenant) => [
             'tenant' => $tenant,
             'report' => $reports->get($tenant->tenant_key),
-        ])->all();
+        ]);
+
+        // Sort: tenants with reports by total DESC, then no-report tenants at bottom
+        return $rows->sortByDesc(fn ($row) => $row['report']?->total ?? -1)->values()->all();
+    }
+
+    public function getChartData(): array
+    {
+        $rows = $this->getRows();
+
+        $labels = [];
+        $totals = [];
+        $colors = [];
+
+        foreach ($rows as $row) {
+            if (!$row['report']) continue;
+            $labels[] = $row['tenant']->name;
+            $totals[] = (float) $row['report']->total;
+            $colors[] = $row['report']->is_paid ? 'rgba(34,197,94,0.8)' : 'rgba(239,68,68,0.8)';
+        }
+
+        return compact('labels', 'totals', 'colors');
     }
 
     public function getTotals(): array
