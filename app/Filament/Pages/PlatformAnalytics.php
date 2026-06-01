@@ -16,6 +16,8 @@ class PlatformAnalytics extends Page
     protected static string  $view            = 'filament.pages.platform-analytics';
 
     public int $rangeMonths = 12;
+    public int $year;
+    public int $month;
 
     // Per-render memo caches — Filament/Livewire re-renders call these
     // helpers multiple times from the blade (e.g. getMovers wraps
@@ -26,11 +28,49 @@ class PlatformAnalytics extends Page
     private ?array $trendCache = null;
     private ?int $trendCacheRange = null;
 
+    public function mount(): void
+    {
+        $this->year = now()->year;
+        $this->month = now()->month;
+    }
+
     public function setRange(int $months): void
     {
         $this->rangeMonths = in_array($months, [3, 6, 12, 24]) ? $months : 12;
         $this->trendCache = null;
         $this->trendCacheRange = null;
+    }
+
+    public function prevMonth(): void
+    {
+        $d = Carbon::create($this->year, $this->month, 1)->subMonth();
+        $this->year = $d->year;
+        $this->month = $d->month;
+        $this->kpisCache = null;
+        $this->snapshotCache = null;
+    }
+
+    public function nextMonth(): void
+    {
+        if ($this->isCurrentMonth()) {
+            return;
+        }
+        $d = Carbon::create($this->year, $this->month, 1)->addMonth();
+        $this->year = $d->year;
+        $this->month = $d->month;
+        $this->kpisCache = null;
+        $this->snapshotCache = null;
+    }
+
+    public function isCurrentMonth(): bool
+    {
+        $now = Carbon::now();
+        return $this->year === $now->year && $this->month === $now->month;
+    }
+
+    public function getMonthLabel(): string
+    {
+        return Carbon::create($this->year, $this->month, 1)->format('F Y');
     }
 
     public function getKpis(): array
@@ -39,9 +79,9 @@ class PlatformAnalytics extends Page
             return $this->kpisCache;
         }
 
-        $now = Carbon::now();
-        $thisMonth = TenantFeeReport::where('year', $now->year)->where('month', $now->month);
-        $lastMonthCarbon = $now->copy()->subMonth();
+        $selected = Carbon::create($this->year, $this->month, 1);
+        $thisMonth = TenantFeeReport::where('year', $this->year)->where('month', $this->month);
+        $lastMonthCarbon = $selected->copy()->subMonth();
         $lastMonth = TenantFeeReport::where('year', $lastMonthCarbon->year)->where('month', $lastMonthCarbon->month);
 
         $mtdSubtotal = (float) (clone $thisMonth)->sum('subtotal');
@@ -49,8 +89,10 @@ class PlatformAnalytics extends Page
         $mtdTotal = (float) (clone $thisMonth)->sum('total');
         $lastTotal = (float) (clone $lastMonth)->sum('total');
 
-        $daysInMonth = $now->daysInMonth;
-        $daysElapsed = $now->day;
+        $isCurrent = $this->isCurrentMonth();
+        $daysInMonth = $selected->daysInMonth;
+        $daysElapsed = $isCurrent ? Carbon::now()->day : $daysInMonth;
+        // For past months days_elapsed = days_in_month so projected_total == mtd_total.
         $projectedTotal = $daysElapsed > 0 ? round(($mtdTotal / $daysElapsed) * $daysInMonth, 2) : $mtdTotal;
 
         $deltaPct = $lastTotal > 0 ? (($mtdTotal - $lastTotal) / $lastTotal) * 100 : null;
@@ -158,15 +200,16 @@ class PlatformAnalytics extends Page
             return $this->snapshotCache;
         }
 
-        $now = Carbon::now();
-        $prev = $now->copy()->subMonth();
+        $selected = Carbon::create($this->year, $this->month, 1);
+        $prev = $selected->copy()->subMonth();
+        $isCurrent = $this->isCurrentMonth();
 
-        $current = TenantFeeReport::where('year', $now->year)->where('month', $now->month)->get()->keyBy('tenant_key');
+        $current = TenantFeeReport::where('year', $this->year)->where('month', $this->month)->get()->keyBy('tenant_key');
         $previous = TenantFeeReport::where('year', $prev->year)->where('month', $prev->month)->get()->keyBy('tenant_key');
 
         $tenants = Tenant::where('is_active', true)->orderBy('name')->get();
 
-        $rows = $tenants->map(function ($tenant) use ($current, $previous, $now) {
+        $rows = $tenants->map(function ($tenant) use ($current, $previous, $selected, $isCurrent) {
             $cur = $current->get($tenant->tenant_key);
             $prv = $previous->get($tenant->tenant_key);
 
@@ -177,8 +220,8 @@ class PlatformAnalytics extends Page
             $deltaAbs = $curTotal - $prvTotal;
             $deltaPct = $prvTotal > 0 ? (($curTotal - $prvTotal) / $prvTotal) * 100 : null;
 
-            $daysInMonth = $now->daysInMonth;
-            $daysElapsed = $now->day;
+            $daysInMonth = $selected->daysInMonth;
+            $daysElapsed = $isCurrent ? Carbon::now()->day : $daysInMonth;
             $projected = $daysElapsed > 0 ? round(($curTotal / $daysElapsed) * $daysInMonth, 2) : $curTotal;
 
             return [

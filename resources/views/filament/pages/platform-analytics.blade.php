@@ -13,6 +13,24 @@
         $mixBg = fn ($m) => $m === null ? 'bg-gray-700' : ($m < 30 ? 'bg-red-500' : ($m < 60 ? 'bg-amber-500' : 'bg-green-500'));
     @endphp
 
+    {{-- Month navigation --}}
+    <div class="flex items-center justify-between mb-4">
+        <div>
+            <h2 class="text-xl font-bold text-gray-950 dark:text-white">{{ $this->getMonthLabel() }}</h2>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                @if ($this->isCurrentMonth())
+                    Live — day {{ now()->day }} of {{ now()->daysInMonth }}
+                @else
+                    Closed month
+                @endif
+            </p>
+        </div>
+        <div class="flex items-center gap-2">
+            <x-filament::button wire:click="prevMonth" color="gray" icon="heroicon-m-chevron-left" icon-position="before">Prev</x-filament::button>
+            <x-filament::button wire:click="nextMonth" color="gray" icon="heroicon-m-chevron-right" icon-position="after" :disabled="$this->isCurrentMonth()">Next</x-filament::button>
+        </div>
+    </div>
+
     {{-- KPI strip --}}
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
@@ -62,23 +80,26 @@
     </div>
 
     {{-- Platform trend chart --}}
+    <script>
+        window.__paTrend{{ $rangeMonths }} = {!! json_encode([
+            'labels' => $trend['labels'],
+            'tenants' => $trend['tenants'],
+            'platformTotals' => $trend['platform_totals'],
+        ], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP) !!};
+    </script>
     <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 mb-6"
         wire:key="trend-chart-{{ $rangeMonths }}"
         x-data="{
             init() {
-                const labels = @json($trend['labels']);
-                const series = @json($trend['tenants']).map(s => ({ ...s, type: 'column' }));
-                series.push({ name: 'Platform total', type: 'line', data: @json($trend['platform_totals']) });
+                const data = window.__paTrend{{ $rangeMonths }};
+                const series = data.tenants.map(s => ({ ...s, type: 'column' }));
+                series.push({ name: 'Platform total', type: 'line', data: data.platformTotals });
 
                 const palette = ['#a855f7','#3b82f6','#10b981','#f59e0b','#ef4444','#06b6d4','#ec4899','#8b5cf6','#84cc16','#f97316','#14b8a6','#eab308'];
                 const colors = series.map((_, i) => i === series.length - 1 ? '#facc15' : palette[i % palette.length]);
 
                 const opts = {
-                    chart: {
-                        type: 'line', stacked: true, height: 360,
-                        toolbar: { show: false }, background: 'transparent',
-                        animations: { enabled: true, speed: 400 },
-                    },
+                    chart: { type: 'line', stacked: true, height: 360, toolbar: { show: false }, background: 'transparent', animations: { enabled: true, speed: 400 } },
                     theme: { mode: document.documentElement.classList.contains('dark') ? 'dark' : 'light' },
                     series: series,
                     colors: colors,
@@ -88,7 +109,7 @@
                     markers: { size: series.map((_, i) => i === series.length - 1 ? 5 : 0), strokeColors: '#0b0f19', strokeWidth: 2 },
                     grid: { borderColor: 'rgba(148,163,184,0.15)', strokeDashArray: 4 },
                     dataLabels: { enabled: false },
-                    xaxis: { categories: labels, labels: { style: { colors: '#9ca3af', fontSize: '12px' } } },
+                    xaxis: { categories: data.labels, labels: { style: { colors: '#9ca3af', fontSize: '12px' } } },
                     yaxis: { labels: { style: { colors: '#9ca3af', fontSize: '12px' }, formatter: v => '£' + v.toFixed(0) } },
                     legend: { position: 'top', horizontalAlign: 'right', labels: { colors: '#cbd5e1' }, markers: { width: 10, height: 10, radius: 2 } },
                     tooltip: { theme: 'dark', shared: true, intersect: false, y: { formatter: v => '£' + v.toFixed(2) } },
