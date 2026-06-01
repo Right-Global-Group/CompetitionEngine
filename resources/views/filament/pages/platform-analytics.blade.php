@@ -125,55 +125,60 @@
         <div x-ref="chart"></div>
     </div>
 
-    {{-- Chart 2: All tenants as a heatmap (sorted by value desc) --}}
-    @php
-        $heatmapHeight = max(260, count($trend['tenants_sorted']) * 26 + 80);
-    @endphp
+    {{-- Chart 2: All tenants as separate lines, sorted by value desc --}}
     <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 mb-6"
-        wire:key="trend-heatmap-{{ $rangeMonths }}"
+        wire:key="trend-all-{{ $rangeMonths }}"
         x-data="{
             labels: @js($trend['labels']),
             tenants: @js($trend['tenants_sorted']),
             init() {
-                // Apex heatmap expects each series.data to be the value array;
-                // categories live on the x-axis. We already have that shape.
-                // Reverse so biggest renders at the TOP of the heatmap (Apex draws series bottom-up).
-                const series = [...this.tenants].reverse();
+                // Generate a distinct colour per tenant via HSL spread so 20+
+                // tenants each get a unique hue. Saturation/lightness tuned for
+                // dark-bg legibility.
+                const n = this.tenants.length;
+                const colors = this.tenants.map((_, i) => `hsl(${Math.round(i * 360 / Math.max(n, 1))}, 70%, 60%)`);
                 const opts = {
-                    chart: { type: 'heatmap', height: {{ $heatmapHeight }}, toolbar: { show: false }, background: 'transparent', animations: { enabled: true, speed: 400 } },
-                    theme: { mode: document.documentElement.classList.contains('dark') ? 'dark' : 'light' },
-                    series: series,
-                    dataLabels: { enabled: false },
-                    plotOptions: {
-                        heatmap: {
-                            radius: 4,
-                            useFillColorAsStroke: false,
-                            colorScale: {
-                                ranges: [
-                                    { from: 0,    to: 0.001, color: '#1f2937', name: 'no data' },
-                                    { from: 0.01, to: 50,    color: '#1e293b', name: '< £50' },
-                                    { from: 50,   to: 200,   color: '#3730a3', name: '£50-200' },
-                                    { from: 200,  to: 500,   color: '#6d28d9', name: '£200-500' },
-                                    { from: 500,  to: 1000,  color: '#9333ea', name: '£500-1k' },
-                                    { from: 1000, to: 1500,  color: '#c026d3', name: '£1k-1.5k' },
-                                    { from: 1500, to: 9999999, color: '#facc15', name: '£1.5k+' },
-                                ]
-                            }
-                        }
+                    chart: {
+                        type: 'line',
+                        height: 460,
+                        toolbar: { show: false },
+                        background: 'transparent',
+                        animations: { enabled: true, speed: 400 },
                     },
-                    grid: { padding: { right: 20 } },
-                    stroke: { width: 1, colors: ['#0b0f19'] },
+                    theme: { mode: document.documentElement.classList.contains('dark') ? 'dark' : 'light' },
+                    series: this.tenants,
+                    colors: colors,
+                    stroke: { width: 2, curve: 'smooth' },
+                    markers: { size: 0, hover: { size: 5 } },
+                    grid: { borderColor: 'rgba(148,163,184,0.15)', strokeDashArray: 4 },
+                    dataLabels: { enabled: false },
                     xaxis: { categories: this.labels, labels: { style: { colors: '#9ca3af', fontSize: '11px' } } },
-                    yaxis: { labels: { style: { colors: '#9ca3af', fontSize: '11px' } } },
-                    legend: { position: 'bottom', labels: { colors: '#cbd5e1' }, markers: { width: 12, height: 12, radius: 2 } },
-                    tooltip: { theme: 'dark', y: { formatter: v => '£' + v.toFixed(2) } },
+                    yaxis: { labels: { style: { colors: '#9ca3af', fontSize: '11px' }, formatter: v => '£' + v.toFixed(0) } },
+                    legend: {
+                        position: 'bottom',
+                        horizontalAlign: 'left',
+                        labels: { colors: '#cbd5e1' },
+                        markers: { width: 10, height: 10, radius: 5 },
+                        itemMargin: { horizontal: 8, vertical: 3 },
+                    },
+                    tooltip: {
+                        theme: 'dark',
+                        shared: false,
+                        intersect: false,
+                        y: { formatter: v => '£' + v.toFixed(2) },
+                    },
+                    // Hover-fade: when hovering a series, dim the others.
+                    states: {
+                        hover: { filter: { type: 'none' } },
+                        active: { filter: { type: 'none' } },
+                    },
                 };
                 new ApexCharts(this.$refs.chart, opts).render();
             }
         }"
     >
         <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">All tenants by month</h4>
-        <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">Sorted by total in range · darker → higher fees · hover for exact figures</p>
+        <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">Sorted by total in range · click a tenant in the legend to isolate it · hover a line for figures</p>
         <div x-ref="chart"></div>
     </div>
 
@@ -290,7 +295,9 @@
                     <th class="px-4 py-2 text-left font-semibold text-gray-700 dark:text-gray-200">Tenant</th>
                     <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">{{ $isCurrent ? 'This month (net)' : 'Net' }}</th>
                     <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">Last month (net)</th>
-                    <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">Δ</th>
+                    @if (!$isCurrent)
+                        <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">Δ</th>
+                    @endif
                     <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">Orders</th>
                     <th class="px-4 py-2 text-center font-semibold text-gray-700 dark:text-gray-200">Mix score</th>
                     <th class="px-4 py-2 text-center font-semibold text-gray-700 dark:text-gray-200">Paid</th>
@@ -310,13 +317,15 @@
                             <div class="text-[10px] text-gray-500 dark:text-gray-400">gross £{{ number_format($row['current_total'], 2) }}</div>
                         </td>
                         <td class="px-4 py-2 text-right text-gray-500 dark:text-gray-400">£{{ number_format($row['previous_subtotal'], 2) }}</td>
-                        <td class="px-4 py-2 text-right {{ $deltaColor($row['delta_pct']) }} font-medium">
-                            @if ($row['delta_pct'] !== null)
-                                {{ $row['delta_pct'] >= 0 ? '+' : '' }}{{ number_format($row['delta_pct'], 1) }}%
-                            @else
-                                <span class="text-xs text-gray-500">new</span>
-                            @endif
-                        </td>
+                        @if (!$isCurrent)
+                            <td class="px-4 py-2 text-right {{ $deltaColor($row['delta_pct']) }} font-medium">
+                                @if ($row['delta_pct'] !== null)
+                                    {{ $row['delta_pct'] >= 0 ? '+' : '' }}{{ number_format($row['delta_pct'], 1) }}%
+                                @else
+                                    <span class="text-xs text-gray-500">new</span>
+                                @endif
+                            </td>
+                        @endif
                         <td class="px-4 py-2 text-right text-gray-600 dark:text-gray-300">{{ number_format($row['orders']) }}</td>
                         <td class="px-4 py-2">
                             @if ($row['mix_score'] !== null)
