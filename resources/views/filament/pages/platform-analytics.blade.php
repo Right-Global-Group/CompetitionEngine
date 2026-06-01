@@ -73,7 +73,7 @@
         </div>
 
         <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
-            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">VAT (Inland Revenue)</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">VAT</p>
             <p class="text-3xl font-bold text-amber-600 dark:text-amber-400">£{{ number_format($kpis['mtd_vat'], 2) }}</p>
             <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Subtotal £{{ number_format($kpis['mtd_subtotal'], 2) }}</p>
         </div>
