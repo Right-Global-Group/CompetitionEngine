@@ -172,15 +172,17 @@ class PlatformAnalytics extends Page
 
         $tenants = Tenant::where('is_active', true)->orderBy('name')->get();
 
+        // Chart values are NET (subtotal). The KPIs lead with net since
+        // VAT passes through to HMRC; charts should match so figures the
+        // operator sees in the tooltip line up with the headline numbers.
         $tenantSeries = [];
         foreach ($tenants as $tenant) {
             $rowsByMonth = $byTenantMonth->get($tenant->tenant_key, collect());
             $data = [];
             foreach ($monthsKey as $key) {
                 $r = $rowsByMonth->get($key);
-                $data[] = $r ? (float) $r->total : 0.0;
+                $data[] = $r ? (float) $r->subtotal : 0.0;
             }
-            // Only include tenants that have at least one non-zero month in range
             if (array_sum($data) > 0) {
                 $tenantSeries[] = ['name' => $tenant->name, 'data' => $data];
             }
