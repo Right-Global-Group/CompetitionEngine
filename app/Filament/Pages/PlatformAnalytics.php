@@ -5,6 +5,7 @@ namespace App\Filament\Pages;
 use App\Models\Tenant;
 use App\Models\TenantFeeReport;
 use Carbon\Carbon;
+use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 
 class PlatformAnalytics extends Page
@@ -71,6 +72,20 @@ class PlatformAnalytics extends Page
     public function getMonthLabel(): string
     {
         return Carbon::create($this->year, $this->month, 1)->format('F Y');
+    }
+
+    public function markPaid(int $id): void
+    {
+        TenantFeeReport::findOrFail($id)->markPaid();
+        $this->snapshotCache = null;
+        Notification::make()->title('Marked as paid')->success()->send();
+    }
+
+    public function markUnpaid(int $id): void
+    {
+        TenantFeeReport::findOrFail($id)->update(['is_paid' => false, 'paid_at' => null]);
+        $this->snapshotCache = null;
+        Notification::make()->title('Marked as unpaid')->warning()->send();
     }
 
     public function getKpis(): array
@@ -181,10 +196,27 @@ class PlatformAnalytics extends Page
             $platformTotals[] = round($sum, 2);
         }
 
+        // Top 5 tenants by total in the visible range — keeps the second
+        // chart readable. The rest are rolled into an "Others" band.
+        usort($tenantSeries, fn ($a, $b) => array_sum($b['data']) <=> array_sum($a['data']));
+        $top = array_slice($tenantSeries, 0, 5);
+        $rest = array_slice($tenantSeries, 5);
+
+        $othersTotals = array_fill(0, count($monthsKey), 0.0);
+        foreach ($rest as $r) {
+            foreach ($r['data'] as $i => $v) {
+                $othersTotals[$i] += $v;
+            }
+        }
+        $othersTotals = array_map(fn ($v) => round($v, 2), $othersTotals);
+
         $this->trendCacheRange = $this->rangeMonths;
         return $this->trendCache = [
             'labels' => $labels,
             'tenants' => $tenantSeries,
+            'top_tenants' => $top,
+            'others_totals' => $othersTotals,
+            'others_count' => count($rest),
             'platform_totals' => $platformTotals,
         ];
     }
@@ -227,6 +259,7 @@ class PlatformAnalytics extends Page
             return [
                 'tenant_key' => $tenant->tenant_key,
                 'name' => $tenant->name,
+                'report_id' => $cur?->id,
                 'current_total' => $curTotal,
                 'previous_total' => $prvTotal,
                 'projected_total' => $projected,
@@ -234,7 +267,10 @@ class PlatformAnalytics extends Page
                 'delta_pct' => $deltaPct,
                 'orders' => $orders,
                 'mix_score' => $mixScore,
+                'subtotal' => $cur ? (float) $cur->subtotal : 0.0,
+                'vat' => $cur ? (float) $cur->vat : 0.0,
                 'is_paid' => $cur ? (bool) $cur->is_paid : false,
+                'paid_at' => $cur && $cur->paid_at ? $cur->paid_at->format('d/m/Y') : null,
             ];
         })->all();
 
@@ -247,18 +283,31 @@ class PlatformAnalytics extends Page
     }
 
     /**
-     * Top 5 risers and top 5 fallers by absolute fee change vs previous month.
-     * Tenants without a previous-month report are excluded from movers — they
-     * have no baseline to compare against and would dominate the "risers".
+     * Top 5 risers and top 5 fallers by pace-adjusted fee change vs previous
+     * month. We compare PROJECTED month-end (for current month) or actual
+     * total (for closed months) against the prior month — otherwise on day 1
+     * of a new month every tenant looks like a -99% faller against the full
+     * previous month, which is meaningless.
      */
     public function getMovers(): array
     {
         $snapshot = collect($this->getTenantSnapshot())
-            ->filter(fn ($r) => $r['previous_total'] > 0);
+            ->filter(fn ($r) => $r['previous_total'] > 0)
+            ->map(function ($r) {
+                $paceDelta = $r['projected_total'] - $r['previous_total'];
+                $pacePct = $r['previous_total'] > 0
+                    ? (($r['projected_total'] - $r['previous_total']) / $r['previous_total']) * 100
+                    : null;
+                return array_merge($r, [
+                    'pace_delta_abs' => round($paceDelta, 2),
+                    'pace_delta_pct' => $pacePct,
+                ]);
+            });
 
         return [
-            'risers' => $snapshot->sortByDesc('delta_abs')->take(5)->values()->all(),
-            'fallers' => $snapshot->sortBy('delta_abs')->take(5)->values()->all(),
+            'risers' => $snapshot->sortByDesc('pace_delta_abs')->take(5)->values()->all(),
+            'fallers' => $snapshot->sortBy('pace_delta_abs')->take(5)->values()->all(),
+            'pace_adjusted' => $this->isCurrentMonth(),
         ];
     }
 
