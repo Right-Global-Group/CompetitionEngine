@@ -67,14 +67,11 @@
 
         <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
             <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Last month (net)</p>
-            <p class="text-3xl font-bold text-gray-900 dark:text-white">£{{ number_format(($kpis['last_total'] ?? 0) / 1.2, 2) }}</p>
+            <p class="text-3xl font-bold text-gray-900 dark:text-white">£{{ number_format($kpis['last_subtotal'] ?? 0, 2) }}</p>
             <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                Gross £{{ number_format($kpis['last_total'], 2) }}
-                @if ($isCurrent && ($kpis['last_total'] ?? 0) > 0 && $kpis['mtd_subtotal'] > 0)
-                    @php
-                        $lastNet = ($kpis['last_total'] ?? 0) / 1.2;
-                        $deltaPct = (($kpis['mtd_subtotal'] - $lastNet) / $lastNet) * 100;
-                    @endphp
+                Gross £{{ number_format($kpis['last_total'], 2) }} · VAT £{{ number_format($kpis['last_vat'], 2) }}
+                @if ($isCurrent && ($kpis['last_subtotal'] ?? 0) > 0 && $kpis['mtd_subtotal'] > 0)
+                    @php $deltaPct = (($kpis['mtd_subtotal'] - $kpis['last_subtotal']) / $kpis['last_subtotal']) * 100; @endphp
                     · MTD pace {{ $deltaPct >= 0 ? '+' : '' }}{{ number_format($deltaPct, 1) }}%
                 @endif
             </p>
@@ -355,11 +352,14 @@
                         </td>
                         <td class="px-4 py-2 text-center">
                             @if ($row['report_id'])
-                                @if ($row['is_paid'])
-                                    <x-filament::button wire:click="markUnpaid({{ $row['report_id'] }})" wire:confirm="Mark this as unpaid?" color="gray" size="xs">Unmark</x-filament::button>
-                                @else
-                                    <x-filament::button wire:click="markPaid({{ $row['report_id'] }})" wire:confirm="Mark this as paid?" color="success" size="xs">Mark Paid</x-filament::button>
-                                @endif
+                                <div class="flex items-center justify-center gap-1.5">
+                                    @if ($row['is_paid'])
+                                        <x-filament::button wire:click="markUnpaid({{ $row['report_id'] }})" wire:confirm="Mark this as unpaid?" color="gray" size="xs">Unmark</x-filament::button>
+                                    @else
+                                        <x-filament::button wire:click="markPaid({{ $row['report_id'] }})" wire:confirm="Mark this as paid?" color="success" size="xs">Mark Paid</x-filament::button>
+                                        <x-filament::button wire:click="sendReminder({{ $row['report_id'] }})" wire:confirm="Send a billing reminder to {{ $row['name'] }} for {{ \Carbon\Carbon::create($year, $month, 1)->format('M Y') }}?" color="warning" size="xs" icon="heroicon-m-bell">Remind</x-filament::button>
+                                    @endif
+                                </div>
                             @else
                                 <span class="text-xs text-gray-500">—</span>
                             @endif

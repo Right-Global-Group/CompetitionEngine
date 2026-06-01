@@ -4,6 +4,7 @@ namespace App\Filament\Pages;
 
 use App\Models\Tenant;
 use App\Models\TenantFeeReport;
+use App\Models\TenantMessage;
 use Carbon\Carbon;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
@@ -88,6 +89,44 @@ class PlatformAnalytics extends Page
         Notification::make()->title('Marked as unpaid')->warning()->send();
     }
 
+    /**
+     * Send a templated billing reminder to a specific tenant via the
+     * existing TenantMessage system. VVG admin panels read these and
+     * surface them to the tenant operator.
+     */
+    public function sendReminder(int $reportId): void
+    {
+        $report = TenantFeeReport::findOrFail($reportId);
+        $tenant = Tenant::where('tenant_key', $report->tenant_key)->first();
+        $name = $tenant?->name ?? $report->tenant_key;
+        $monthLabel = Carbon::create($report->year, $report->month, 1)->format('F Y');
+
+        $body = "Hi {$name},\n\n"
+            . "This is a reminder that your platform fee for {$monthLabel} is still outstanding.\n\n"
+            . 'Net:   £' . number_format($report->subtotal, 2) . "\n"
+            . 'VAT:   £' . number_format($report->vat, 2) . "\n"
+            . 'Total: £' . number_format($report->total, 2) . "\n\n"
+            . 'Please settle at your earliest convenience to avoid service interruption.';
+
+        TenantMessage::create([
+            'title' => "Platform fee unpaid — {$monthLabel}",
+            'body' => $body,
+            'type' => 'warning',
+            'severity' => 'medium',
+            'category' => 'licensing',
+            'target' => 'specific',
+            'tenant_keys' => [$report->tenant_key],
+            'published_at' => now()->toDateString(),
+            'is_published' => true,
+        ]);
+
+        Notification::make()
+            ->title("Reminder sent to {$name}")
+            ->body($monthLabel . ' · £' . number_format($report->total, 2) . ' outstanding')
+            ->success()
+            ->send();
+    }
+
     public function getKpis(): array
     {
         if ($this->kpisCache !== null) {
@@ -102,6 +141,8 @@ class PlatformAnalytics extends Page
         $mtdSubtotal = (float) (clone $thisMonth)->sum('subtotal');
         $mtdVat = (float) (clone $thisMonth)->sum('vat');
         $mtdTotal = (float) (clone $thisMonth)->sum('total');
+        $lastSubtotal = (float) (clone $lastMonth)->sum('subtotal');
+        $lastVat = (float) (clone $lastMonth)->sum('vat');
         $lastTotal = (float) (clone $lastMonth)->sum('total');
 
         $isCurrent = $this->isCurrentMonth();
@@ -128,6 +169,8 @@ class PlatformAnalytics extends Page
             'projected_total' => $projectedTotal,
             'days_elapsed' => $daysElapsed,
             'days_in_month' => $daysInMonth,
+            'last_subtotal' => $lastSubtotal,
+            'last_vat' => $lastVat,
             'last_total' => $lastTotal,
             'delta_pct' => $deltaPct,
             'projected_vs_last_pct' => $projectedVsLast,
