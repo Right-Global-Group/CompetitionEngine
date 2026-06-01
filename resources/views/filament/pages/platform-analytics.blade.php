@@ -6,7 +6,8 @@
         $kpis = $this->getKpis();
         $trend = $this->getTrendSeries();
         $snapshot = $this->getTenantSnapshot();
-        $movers = $this->getMovers();
+        $isCurrent = $this->isCurrentMonth();
+        $movers = $isCurrent ? null : $this->getMovers();
 
         $deltaColor = fn ($pct) => $pct === null ? 'text-gray-400' : ($pct >= 0 ? 'text-green-400' : 'text-red-400');
         $mixColor = fn ($m) => $m === null ? 'text-gray-400' : ($m < 30 ? 'text-red-400' : ($m < 60 ? 'text-amber-400' : 'text-green-400'));
@@ -32,31 +33,23 @@
     </div>
 
     {{-- KPI strip --}}
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
-            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">This Month (MTD)</p>
-            <p class="text-3xl font-bold text-gray-900 dark:text-white">£{{ number_format($kpis['mtd_total'], 2) }}</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">
+                {{ $isCurrent ? 'Net income (MTD)' : 'Net income' }}
+            </p>
+            <p class="text-3xl font-bold text-gray-900 dark:text-white">£{{ number_format($kpis['mtd_subtotal'], 2) }}</p>
             <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                Day {{ $kpis['days_elapsed'] }} of {{ $kpis['days_in_month'] }} ·
+                Gross £{{ number_format($kpis['mtd_total'], 2) }} · VAT £{{ number_format($kpis['mtd_vat'], 2) }}
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                @if ($isCurrent) Day {{ $kpis['days_elapsed'] }} of {{ $kpis['days_in_month'] }} · @endif
                 {{ $kpis['tenants_reporting'] }}/{{ $kpis['active_tenants'] }} tenants reporting
             </p>
         </div>
 
-        <div class="rounded-xl border border-purple-200 dark:border-purple-800 bg-purple-50 dark:bg-gray-900 p-4">
-            <p class="text-xs text-purple-600 dark:text-purple-300 uppercase tracking-wider mb-1">Projected Month-End</p>
-            <p class="text-3xl font-bold text-purple-700 dark:text-purple-300">£{{ number_format($kpis['projected_total'], 2) }}</p>
-            <p class="text-xs text-purple-600 dark:text-purple-400/80 mt-1">
-                vs Last Month: £{{ number_format($kpis['last_total'], 2) }}
-                @if ($kpis['projected_vs_last_pct'] !== null)
-                    <span class="{{ $kpis['projected_vs_last_pct'] >= 0 ? 'text-green-500' : 'text-red-500' }}">
-                        ({{ $kpis['projected_vs_last_pct'] >= 0 ? '+' : '' }}{{ number_format($kpis['projected_vs_last_pct'], 1) }}%)
-                    </span>
-                @endif
-            </p>
-        </div>
-
         <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
-            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Platform Mix Score</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Platform mix score</p>
             @if ($kpis['platform_mix'] !== null)
                 <p class="text-3xl font-bold {{ $mixColor($kpis['platform_mix']) }}">{{ number_format($kpis['platform_mix'], 1) }}%</p>
                 <div class="mt-2 h-1.5 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
@@ -73,9 +66,18 @@
         </div>
 
         <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
-            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">VAT</p>
-            <p class="text-3xl font-bold text-amber-600 dark:text-amber-400">£{{ number_format($kpis['mtd_vat'], 2) }}</p>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Subtotal £{{ number_format($kpis['mtd_subtotal'], 2) }}</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Last month (net)</p>
+            <p class="text-3xl font-bold text-gray-900 dark:text-white">£{{ number_format(($kpis['last_total'] ?? 0) / 1.2, 2) }}</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                Gross £{{ number_format($kpis['last_total'], 2) }}
+                @if ($isCurrent && ($kpis['last_total'] ?? 0) > 0 && $kpis['mtd_subtotal'] > 0)
+                    @php
+                        $lastNet = ($kpis['last_total'] ?? 0) / 1.2;
+                        $deltaPct = (($kpis['mtd_subtotal'] - $lastNet) / $lastNet) * 100;
+                    @endphp
+                    · MTD pace {{ $deltaPct >= 0 ? '+' : '' }}{{ number_format($deltaPct, 1) }}%
+                @endif
+            </p>
         </div>
     </div>
 
@@ -123,49 +125,65 @@
         <div x-ref="chart"></div>
     </div>
 
-    {{-- Chart 2: Top 5 tenants as separate lines --}}
+    {{-- Chart 2: All tenants as a heatmap (sorted by value desc) --}}
+    @php
+        $heatmapHeight = max(260, count($trend['tenants_sorted']) * 26 + 80);
+    @endphp
     <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 mb-6"
-        wire:key="trend-top-{{ $rangeMonths }}"
+        wire:key="trend-heatmap-{{ $rangeMonths }}"
         x-data="{
             labels: @js($trend['labels']),
-            tenants: @js($trend['top_tenants']),
-            othersTotals: @js($trend['others_totals']),
-            othersCount: @js($trend['others_count']),
+            tenants: @js($trend['tenants_sorted']),
             init() {
-                const series = [...this.tenants];
-                if (this.othersCount > 0) {
-                    series.push({ name: 'Others (' + this.othersCount + ')', data: this.othersTotals });
-                }
-                const palette = ['#a855f7','#3b82f6','#10b981','#f59e0b','#ef4444','#94a3b8'];
+                // Apex heatmap expects each series.data to be the value array;
+                // categories live on the x-axis. We already have that shape.
+                // Reverse so biggest renders at the TOP of the heatmap (Apex draws series bottom-up).
+                const series = [...this.tenants].reverse();
                 const opts = {
-                    chart: { type: 'line', height: 280, toolbar: { show: false }, background: 'transparent', animations: { enabled: true, speed: 400 } },
+                    chart: { type: 'heatmap', height: {{ $heatmapHeight }}, toolbar: { show: false }, background: 'transparent', animations: { enabled: true, speed: 400 } },
                     theme: { mode: document.documentElement.classList.contains('dark') ? 'dark' : 'light' },
                     series: series,
-                    colors: palette.slice(0, series.length),
-                    stroke: { width: series.map(s => s.name && s.name.startsWith('Others') ? 2 : 3), curve: 'smooth', dashArray: series.map(s => s.name && s.name.startsWith('Others') ? 5 : 0) },
-                    markers: { size: 4, strokeColors: '#0b0f19', strokeWidth: 2, hover: { size: 6 } },
-                    grid: { borderColor: 'rgba(148,163,184,0.15)', strokeDashArray: 4 },
                     dataLabels: { enabled: false },
-                    xaxis: { categories: this.labels, labels: { style: { colors: '#9ca3af', fontSize: '12px' } } },
-                    yaxis: { labels: { style: { colors: '#9ca3af', fontSize: '12px' }, formatter: v => '£' + v.toFixed(0) } },
-                    legend: { position: 'top', horizontalAlign: 'left', labels: { colors: '#cbd5e1' }, markers: { width: 10, height: 10, radius: 2 } },
-                    tooltip: { theme: 'dark', shared: true, intersect: false, y: { formatter: v => '£' + v.toFixed(2) } },
+                    plotOptions: {
+                        heatmap: {
+                            radius: 4,
+                            useFillColorAsStroke: false,
+                            colorScale: {
+                                ranges: [
+                                    { from: 0,    to: 0.001, color: '#1f2937', name: 'no data' },
+                                    { from: 0.01, to: 50,    color: '#1e293b', name: '< £50' },
+                                    { from: 50,   to: 200,   color: '#3730a3', name: '£50-200' },
+                                    { from: 200,  to: 500,   color: '#6d28d9', name: '£200-500' },
+                                    { from: 500,  to: 1000,  color: '#9333ea', name: '£500-1k' },
+                                    { from: 1000, to: 1500,  color: '#c026d3', name: '£1k-1.5k' },
+                                    { from: 1500, to: 9999999, color: '#facc15', name: '£1.5k+' },
+                                ]
+                            }
+                        }
+                    },
+                    grid: { padding: { right: 20 } },
+                    stroke: { width: 1, colors: ['#0b0f19'] },
+                    xaxis: { categories: this.labels, labels: { style: { colors: '#9ca3af', fontSize: '11px' } } },
+                    yaxis: { labels: { style: { colors: '#9ca3af', fontSize: '11px' } } },
+                    legend: { position: 'bottom', labels: { colors: '#cbd5e1' }, markers: { width: 12, height: 12, radius: 2 } },
+                    tooltip: { theme: 'dark', y: { formatter: v => '£' + v.toFixed(2) } },
                 };
                 new ApexCharts(this.$refs.chart, opts).render();
             }
         }"
     >
-        <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">Top 5 tenants <span class="text-xs text-gray-500 dark:text-gray-400 font-normal">— by total in range</span></h4>
+        <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">All tenants by month</h4>
+        <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">Sorted by total in range · darker → higher fees · hover for exact figures</p>
         <div x-ref="chart"></div>
     </div>
 
-    {{-- Leaderboard + Movers --}}
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+    {{-- Leaderboard (always shown) + Movers (only when looking at a closed month) --}}
+    <div class="grid grid-cols-1 {{ $isCurrent ? '' : 'lg:grid-cols-3' }} gap-4 mb-6">
 
         {{-- Leaderboard --}}
-        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 lg:col-span-1">
+        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
             <h3 class="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                <x-heroicon-o-trophy class="w-5 h-5 text-amber-500" /> Top tenants — this month
+                <x-heroicon-o-trophy class="w-5 h-5 text-amber-500" /> Top tenants — {{ strtolower($this->getMonthLabel()) }}
             </h3>
             @if (count($snapshot) === 0)
                 <p class="text-sm text-gray-500 dark:text-gray-400">No tenants reporting yet.</p>
@@ -181,7 +199,7 @@
                                 <span class="font-medium text-gray-900 dark:text-white truncate">{{ $row['name'] }}</span>
                             </div>
                             <div class="text-right shrink-0">
-                                <span class="font-semibold text-gray-900 dark:text-white">£{{ number_format($row['current_total'], 0) }}</span>
+                                <span class="font-semibold text-gray-900 dark:text-white">£{{ number_format($row['current_subtotal'], 0) }}</span>
                                 @if ($row['mix_score'] !== null)
                                     <span class="text-xs ml-1 {{ $mixColor($row['mix_score']) }}">{{ number_format($row['mix_score'], 0) }}%</span>
                                 @endif
@@ -192,14 +210,13 @@
             @endif
         </div>
 
+        @if (!$isCurrent && $movers)
         {{-- Risers --}}
         <div class="rounded-xl border border-green-200 dark:border-green-800 bg-green-50 dark:bg-gray-900 p-5">
             <h3 class="font-semibold text-green-700 dark:text-green-400 mb-1 flex items-center gap-2">
                 <x-heroicon-o-arrow-trending-up class="w-5 h-5" /> Biggest risers
             </h3>
-            <p class="text-[10px] text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wide">
-                @if ($movers['pace_adjusted']) Projected month-end vs last month @else This month vs last month @endif
-            </p>
+            <p class="text-[10px] text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wide">vs last month</p>
             @if (count($movers['risers']) === 0)
                 <p class="text-sm text-gray-500 dark:text-gray-400">No comparable data yet.</p>
             @else
@@ -229,9 +246,7 @@
             <h3 class="font-semibold text-red-700 dark:text-red-400 mb-1 flex items-center gap-2">
                 <x-heroicon-o-arrow-trending-down class="w-5 h-5" /> Biggest fallers
             </h3>
-            <p class="text-[10px] text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wide">
-                @if ($movers['pace_adjusted']) Projected month-end vs last month @else This month vs last month @endif
-            </p>
+            <p class="text-[10px] text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wide">vs last month</p>
             @if (count($movers['fallers']) === 0)
                 <p class="text-sm text-gray-500 dark:text-gray-400">No comparable data yet.</p>
             @else
@@ -255,22 +270,26 @@
                 </ol>
             @endif
         </div>
+        @endif
     </div>
+
+    @if ($isCurrent)
+        <p class="text-xs text-gray-500 dark:text-gray-400 mb-4 italic">Risers & fallers only appear on closed months — partial-month comparisons are misleading.</p>
+    @endif
 
     {{-- Per-tenant snapshot matrix --}}
     <div class="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden mb-2">
         <div class="px-5 py-3 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
             <h3 class="font-semibold text-gray-900 dark:text-white">Per-tenant snapshot</h3>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Sorted by current-month fees · mix score colour-coded</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Sorted by fees · net (what we keep) shown · gross + last month for context</p>
         </div>
         <table class="w-full text-sm">
             <thead class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                 <tr>
                     <th class="px-4 py-2 text-left font-semibold text-gray-700 dark:text-gray-200">#</th>
                     <th class="px-4 py-2 text-left font-semibold text-gray-700 dark:text-gray-200">Tenant</th>
-                    <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">This month</th>
-                    <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">Projected</th>
-                    <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">Last month</th>
+                    <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">{{ $isCurrent ? 'This month (net)' : 'Net' }}</th>
+                    <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">Last month (net)</th>
                     <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">Δ</th>
                     <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">Orders</th>
                     <th class="px-4 py-2 text-center font-semibold text-gray-700 dark:text-gray-200">Mix score</th>
@@ -286,9 +305,11 @@
                             <div class="font-medium text-gray-900 dark:text-white">{{ $row['name'] }}</div>
                             <div class="text-xs text-gray-500 dark:text-gray-400">{{ $row['tenant_key'] }}</div>
                         </td>
-                        <td class="px-4 py-2 text-right font-semibold text-gray-900 dark:text-white">£{{ number_format($row['current_total'], 2) }}</td>
-                        <td class="px-4 py-2 text-right text-purple-600 dark:text-purple-300">£{{ number_format($row['projected_total'], 2) }}</td>
-                        <td class="px-4 py-2 text-right text-gray-500 dark:text-gray-400">£{{ number_format($row['previous_total'], 2) }}</td>
+                        <td class="px-4 py-2 text-right">
+                            <div class="font-semibold text-gray-900 dark:text-white">£{{ number_format($row['current_subtotal'], 2) }}</div>
+                            <div class="text-[10px] text-gray-500 dark:text-gray-400">gross £{{ number_format($row['current_total'], 2) }}</div>
+                        </td>
+                        <td class="px-4 py-2 text-right text-gray-500 dark:text-gray-400">£{{ number_format($row['previous_subtotal'], 2) }}</td>
                         <td class="px-4 py-2 text-right {{ $deltaColor($row['delta_pct']) }} font-medium">
                             @if ($row['delta_pct'] !== null)
                                 {{ $row['delta_pct'] >= 0 ? '+' : '' }}{{ number_format($row['delta_pct'], 1) }}%

@@ -196,27 +196,14 @@ class PlatformAnalytics extends Page
             $platformTotals[] = round($sum, 2);
         }
 
-        // Top 5 tenants by total in the visible range — keeps the second
-        // chart readable. The rest are rolled into an "Others" band.
+        // Sort all tenants by total in the visible range, descending. The
+        // heatmap renders biggest at the top so the eye lands on them first.
         usort($tenantSeries, fn ($a, $b) => array_sum($b['data']) <=> array_sum($a['data']));
-        $top = array_slice($tenantSeries, 0, 5);
-        $rest = array_slice($tenantSeries, 5);
-
-        $othersTotals = array_fill(0, count($monthsKey), 0.0);
-        foreach ($rest as $r) {
-            foreach ($r['data'] as $i => $v) {
-                $othersTotals[$i] += $v;
-            }
-        }
-        $othersTotals = array_map(fn ($v) => round($v, 2), $othersTotals);
 
         $this->trendCacheRange = $this->rangeMonths;
         return $this->trendCache = [
             'labels' => $labels,
-            'tenants' => $tenantSeries,
-            'top_tenants' => $top,
-            'others_totals' => $othersTotals,
-            'others_count' => count($rest),
+            'tenants_sorted' => $tenantSeries,
             'platform_totals' => $platformTotals,
         ];
     }
@@ -256,19 +243,27 @@ class PlatformAnalytics extends Page
             $daysElapsed = $isCurrent ? Carbon::now()->day : $daysInMonth;
             $projected = $daysElapsed > 0 ? round(($curTotal / $daysElapsed) * $daysInMonth, 2) : $curTotal;
 
+            $curSubtotal = $cur ? (float) $cur->subtotal : 0.0;
+            $prvSubtotal = $prv ? (float) $prv->subtotal : 0.0;
+            $projectedSubtotal = $daysElapsed > 0 ? round(($curSubtotal / $daysElapsed) * $daysInMonth, 2) : $curSubtotal;
+
             return [
                 'tenant_key' => $tenant->tenant_key,
                 'name' => $tenant->name,
                 'report_id' => $cur?->id,
+                // Gross (includes VAT) — still exposed for invoicing
                 'current_total' => $curTotal,
                 'previous_total' => $prvTotal,
                 'projected_total' => $projected,
+                // Net (subtotal, what we actually earn) — used as the headline
+                'current_subtotal' => $curSubtotal,
+                'previous_subtotal' => $prvSubtotal,
+                'projected_subtotal' => $projectedSubtotal,
+                'vat' => $cur ? (float) $cur->vat : 0.0,
                 'delta_abs' => round($deltaAbs, 2),
                 'delta_pct' => $deltaPct,
                 'orders' => $orders,
                 'mix_score' => $mixScore,
-                'subtotal' => $cur ? (float) $cur->subtotal : 0.0,
-                'vat' => $cur ? (float) $cur->vat : 0.0,
                 'is_paid' => $cur ? (bool) $cur->is_paid : false,
                 'paid_at' => $cur && $cur->paid_at ? $cur->paid_at->format('d/m/Y') : null,
             ];
