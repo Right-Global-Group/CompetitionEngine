@@ -162,6 +162,14 @@ class PlatformAnalytics extends Page
         $totalOrders = $totalScratchy + $totalOther;
         $platformMix = $totalOrders > 0 ? round(($totalOther / $totalOrders) * 100, 1) : null;
 
+        // Per-rate fee breakdown (5p scratch / 10p mixed). Counts come straight
+        // from the stored columns rather than recalc from subtotals, so this
+        // stays correct if rates ever change in VVG without a hub schema change.
+        $scratchSubtotal = round($totalScratchy * 0.05, 2);
+        $otherSubtotal = round($totalOther * 0.10, 2);
+        $scratchVat = round($scratchSubtotal * 0.20, 2);
+        $otherVat = round($otherSubtotal * 0.20, 2);
+
         return $this->kpisCache = [
             'mtd_subtotal' => $mtdSubtotal,
             'mtd_vat' => $mtdVat,
@@ -179,6 +187,14 @@ class PlatformAnalytics extends Page
             'platform_mix' => $platformMix,
             'platform_avg_rate' => $totalOrders > 0 ? round($mtdSubtotal / $totalOrders, 4) : null,
             'total_orders' => $totalOrders,
+            'scratch_orders' => $totalScratchy,
+            'other_orders' => $totalOther,
+            'scratch_subtotal' => $scratchSubtotal,
+            'scratch_vat' => $scratchVat,
+            'scratch_total' => round($scratchSubtotal + $scratchVat, 2),
+            'other_subtotal' => $otherSubtotal,
+            'other_vat' => $otherVat,
+            'other_total' => round($otherSubtotal + $otherVat, 2),
         ];
     }
 
@@ -292,15 +308,16 @@ class PlatformAnalytics extends Page
             $prvSubtotal = $prv ? (float) $prv->subtotal : 0.0;
             $projectedSubtotal = $daysElapsed > 0 ? round(($curSubtotal / $daysElapsed) * $daysInMonth, 2) : $curSubtotal;
 
+            $scratchCount = $cur ? (int) $cur->scratchy_only_count : 0;
+            $otherCount = $cur ? (int) $cur->other_count : 0;
+
             return [
                 'tenant_key' => $tenant->tenant_key,
                 'name' => $tenant->name,
                 'report_id' => $cur?->id,
-                // Gross (includes VAT) — still exposed for invoicing
                 'current_total' => $curTotal,
                 'previous_total' => $prvTotal,
                 'projected_total' => $projected,
-                // Net (subtotal, what we actually earn) — used as the headline
                 'current_subtotal' => $curSubtotal,
                 'previous_subtotal' => $prvSubtotal,
                 'projected_subtotal' => $projectedSubtotal,
@@ -308,6 +325,10 @@ class PlatformAnalytics extends Page
                 'delta_abs' => round($deltaAbs, 2),
                 'delta_pct' => $deltaPct,
                 'orders' => $orders,
+                'scratch_orders' => $scratchCount,
+                'other_orders' => $otherCount,
+                'scratch_net' => round($scratchCount * 0.05, 2),
+                'other_net' => round($otherCount * 0.10, 2),
                 'mix_score' => $mixScore,
                 'is_paid' => $cur ? (bool) $cur->is_paid : false,
                 'paid_at' => $cur && $cur->paid_at ? $cur->paid_at->format('d/m/Y') : null,

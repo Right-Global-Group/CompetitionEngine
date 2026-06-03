@@ -78,6 +78,60 @@
         </div>
     </div>
 
+    {{-- Fee breakdown by rate --}}
+    @if ($kpis['total_orders'] > 0)
+    <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 overflow-hidden mb-6">
+        <div class="px-5 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+            <h3 class="font-semibold text-gray-900 dark:text-white">Fee breakdown — {{ $this->getMonthLabel() }}</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Platform-wide split by rate · 5p scratch only · 10p any non-scratch game</p>
+        </div>
+        <table class="w-full text-sm">
+            <thead class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                <tr>
+                    <th class="px-4 py-2 text-left font-semibold text-gray-700 dark:text-gray-200">Game Type</th>
+                    <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">Orders</th>
+                    <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">Rate</th>
+                    <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">Net</th>
+                    <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">VAT</th>
+                    <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">Gross</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                <tr class="bg-white dark:bg-gray-900">
+                    <td class="px-4 py-2 font-medium text-gray-900 dark:text-white">Scratch Card only</td>
+                    <td class="px-4 py-2 text-right text-gray-700 dark:text-gray-300">{{ number_format($kpis['scratch_orders']) }}</td>
+                    <td class="px-4 py-2 text-right">
+                        <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">5p</span>
+                    </td>
+                    <td class="px-4 py-2 text-right font-semibold text-gray-900 dark:text-white">£{{ number_format($kpis['scratch_subtotal'], 2) }}</td>
+                    <td class="px-4 py-2 text-right text-amber-600 dark:text-amber-400">£{{ number_format($kpis['scratch_vat'], 2) }}</td>
+                    <td class="px-4 py-2 text-right text-gray-500 dark:text-gray-400">£{{ number_format($kpis['scratch_total'], 2) }}</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-900">
+                    <td class="px-4 py-2 font-medium text-gray-900 dark:text-white">Other / Mixed</td>
+                    <td class="px-4 py-2 text-right text-gray-700 dark:text-gray-300">{{ number_format($kpis['other_orders']) }}</td>
+                    <td class="px-4 py-2 text-right">
+                        <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300">10p</span>
+                    </td>
+                    <td class="px-4 py-2 text-right font-semibold text-gray-900 dark:text-white">£{{ number_format($kpis['other_subtotal'], 2) }}</td>
+                    <td class="px-4 py-2 text-right text-amber-600 dark:text-amber-400">£{{ number_format($kpis['other_vat'], 2) }}</td>
+                    <td class="px-4 py-2 text-right text-gray-500 dark:text-gray-400">£{{ number_format($kpis['other_total'], 2) }}</td>
+                </tr>
+            </tbody>
+            <tfoot class="bg-gray-50 dark:bg-gray-800 border-t-2 border-gray-300 dark:border-gray-600">
+                <tr>
+                    <td class="px-4 py-3 font-bold text-gray-900 dark:text-white">Total</td>
+                    <td class="px-4 py-3 text-right font-bold text-gray-900 dark:text-white">{{ number_format($kpis['total_orders']) }}</td>
+                    <td class="px-4 py-3"></td>
+                    <td class="px-4 py-3 text-right font-bold text-gray-900 dark:text-white">£{{ number_format($kpis['mtd_subtotal'], 2) }}</td>
+                    <td class="px-4 py-3 text-right font-bold text-amber-600 dark:text-amber-400">£{{ number_format($kpis['mtd_vat'], 2) }}</td>
+                    <td class="px-4 py-3 text-right font-bold text-gray-900 dark:text-white">£{{ number_format($kpis['mtd_total'], 2) }}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    @endif
+
     {{-- Trend charts (split into two for readability) --}}
     <div class="flex items-center justify-between mb-3">
         <div>
@@ -295,6 +349,8 @@
                     @if (!$isCurrent)
                         <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">Δ</th>
                     @endif
+                    <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200" title="Scratch-only orders @ 5p">5p</th>
+                    <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200" title="Other / mixed orders @ 10p">10p</th>
                     <th class="px-4 py-2 text-right font-semibold text-gray-700 dark:text-gray-200">Orders</th>
                     <th class="px-4 py-2 text-center font-semibold text-gray-700 dark:text-gray-200">Mix score</th>
                     <th class="px-4 py-2 text-center font-semibold text-gray-700 dark:text-gray-200">Paid</th>
@@ -323,6 +379,14 @@
                                 @endif
                             </td>
                         @endif
+                        <td class="px-4 py-2 text-right">
+                            <div class="text-blue-600 dark:text-blue-400 font-medium">{{ number_format($row['scratch_orders']) }}</div>
+                            <div class="text-[10px] text-gray-500 dark:text-gray-500">£{{ number_format($row['scratch_net'], 2) }}</div>
+                        </td>
+                        <td class="px-4 py-2 text-right">
+                            <div class="text-purple-600 dark:text-purple-400 font-medium">{{ number_format($row['other_orders']) }}</div>
+                            <div class="text-[10px] text-gray-500 dark:text-gray-500">£{{ number_format($row['other_net'], 2) }}</div>
+                        </td>
                         <td class="px-4 py-2 text-right text-gray-600 dark:text-gray-300">{{ number_format($row['orders']) }}</td>
                         <td class="px-4 py-2">
                             @if ($row['mix_score'] !== null)
