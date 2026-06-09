@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\SiteTextController;
 use App\Http\Controllers\Api\TenantFeeReportController;
 use App\Http\Controllers\Api\TenantMessagesController;
 use App\Http\Controllers\ContactSubmissionController;
+use App\Http\Controllers\DocumentationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -77,5 +78,13 @@ Route::post('/filament-logout', function () {
     
     return redirect('/')->with('status', 'Logged out successfully');
 })->name('filament.logout')->middleware('web');
+
+// Docs — password wall (these routes are always visible so the form works)
+Route::get('/docs/unlock', [DocumentationController::class, 'password'])->name('docs.password');
+Route::post('/docs/unlock', [DocumentationController::class, 'unlock'])->name('docs.unlock');
+
+// Docs content — returns 404 if not unlocked (handled inside controller)
+Route::get('/docs', [DocumentationController::class, 'index'])->name('docs.index');
+Route::get('/docs/{section}/{slug}', [DocumentationController::class, 'show'])->name('docs.show');
 
 require __DIR__.'/auth.php';

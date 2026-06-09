@@ -6,7 +6,7 @@ use App\Filament\Resources\ContactSubmissionResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
 
-class ViewContactSubmission extends ViewRecord
+class ViewContactSubmissions extends ViewRecord
 {
     protected static string $resource = ContactSubmissionResource::class;
 
