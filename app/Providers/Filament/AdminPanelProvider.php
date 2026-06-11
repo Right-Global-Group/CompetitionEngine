@@ -75,6 +75,12 @@ class AdminPanelProvider extends PanelProvider
                     ->icon('heroicon-o-home')
                     ->group('Quick Links')
                     ->sort(3),
+            
+                NavigationItem::make('Help Center')
+                    ->url('/docs/unlock', shouldOpenInNewTab: true)
+                    ->icon('heroicon-o-book-open')
+                    ->group('Quick Links')
+                    ->sort(4),
             ]);
     }
 }

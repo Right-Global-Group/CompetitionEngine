@@ -85,6 +85,7 @@ Route::post('/docs/unlock', [DocumentationController::class, 'unlock'])->name('d
 
 // Docs content — returns 404 if not unlocked (handled inside controller)
 Route::get('/docs', [DocumentationController::class, 'index'])->name('docs.index');
+Route::get('/docs/search', [DocumentationController::class, 'search'])->name('docs.search');
 Route::get('/docs/{section}/{slug}', [DocumentationController::class, 'show'])->name('docs.show');
 
 require __DIR__.'/auth.php';
