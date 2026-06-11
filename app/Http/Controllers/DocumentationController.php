@@ -190,6 +190,8 @@ class DocumentationController extends Controller
                     ['title' => 'Orders & Wallets', 'slug' => 'admin/orders-and-wallets'],
                     ['title' => 'Instant Wins', 'slug' => 'admin/instant-wins'],
                     ['title' => 'Winners & Draw', 'slug' => 'admin/winners-and-draw'],
+                    ['title' => 'Prize Tracker', 'slug' => 'admin/prize-tracker'],
+                    ['title' => 'Funding', 'slug' => 'admin/funding'],
                     ['title' => 'Coupons', 'slug' => 'admin/coupons'],
                     ['title' => 'Settings', 'slug' => 'admin/settings'],
                     ['title' => 'Integrations', 'slug' => 'admin/integrations'],

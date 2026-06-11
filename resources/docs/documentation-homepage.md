@@ -66,6 +66,8 @@
 * [Orders & Wallets](admin/orders-and-wallets)
 * [Instant Wins](admin/instant-wins)
 * [Winners & Draw](admin/winners-and-draw)
+* [Prize Tracker](admin/prize-tracker)
+* [Funding](admin/funding)
 * [Coupons](admin/coupons)
 * [Settings](admin/settings)
 * [Integrations](admin/integrations)
