@@ -126,18 +126,7 @@ class ChangelogService
 
     private function fetchAuthoredEntries(): array
     {
-        try {
-            $messages = \App\Models\TenantMessage::active()
-                ->where('target', 'all')
-                ->where('show_in_changelog', true)
-                ->orderByDesc('published_at')
-                ->get();
-
-            return $messages->map(fn ($m) => $this->normaliseAuthoredEntry($m))->all();
-
-        } catch (\Throwable $e) {
-            return [];
-        }
+        return [];
     }
 
     private function normaliseAuthoredEntry(\App\Models\TenantMessage $m): array
