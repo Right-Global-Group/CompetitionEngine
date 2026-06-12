@@ -20,6 +20,7 @@ class TenantMessage extends Model
         'is_published',
         'is_paid',
         'paid_at',
+        'show_in_changelog',
     ];
 
     protected $casts = [
@@ -29,6 +30,7 @@ class TenantMessage extends Model
         'is_published' => 'boolean',
         'is_paid'      => 'boolean',
         'paid_at'      => 'datetime',
+        'show_in_changelog' => 'boolean',
     ];
 
     public function scopeActive(Builder $query): Builder
