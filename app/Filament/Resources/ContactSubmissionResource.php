@@ -155,7 +155,7 @@ class ContactSubmissionResource extends Resource
     {
         return [
             'index' => Pages\ListContactSubmissions::route('/'),
-            'view' => Pages\ViewContactSubmission::route('/{record}'),
+            'view' => Pages\ViewContactSubmissions::route('/{record}'),
         ];
     }
 
