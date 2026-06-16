@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactSubmissionController;
 use App\Http\Controllers\DocumentationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChangelogController;
+use App\Http\Controllers\DeveloperDocsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -88,6 +89,11 @@ Route::post('/docs/unlock', [DocumentationController::class, 'unlock'])->name('d
 Route::get('/docs', [DocumentationController::class, 'index'])->name('docs.index');
 Route::get('/docs/search', [DocumentationController::class, 'search'])->name('docs.search');
 Route::get('/docs/{section}/{slug}', [DocumentationController::class, 'show'])->name('docs.show');
+
+// Developer Docs — admin-only password wall
+Route::get('/developer-docs/unlock',  [DeveloperDocsController::class, 'password'])->name('developer-docs.password');
+Route::post('/developer-docs/unlock', [DeveloperDocsController::class, 'unlock'])->name('developer-docs.unlock');
+Route::get('/developer-docs',         [DeveloperDocsController::class, 'index'])->name('developer-docs.index');
 
 // Changelog — password wall
 Route::get('/changelog/unlock',  [ChangelogController::class, 'password'])->name('changelog.password');

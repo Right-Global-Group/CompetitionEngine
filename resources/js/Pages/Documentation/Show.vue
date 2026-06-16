@@ -3,11 +3,12 @@ import { Head, Link, router } from '@inertiajs/vue3';
 import { ref, onMounted, watch } from 'vue';
 
 const props = defineProps({
-    html:        String,
-    nav:         Array,
-    currentSlug: String,
-    title:       String,
-    isAdmin:     Boolean,
+    html:         String,
+    nav:          Array,
+    currentSlug:  String,
+    title:        String,
+    isAdmin:      Boolean,
+    isSuperSuperAdmin: Boolean,
 });
 
 // ── Sidebar / TOC ──────────────────────────────────────────────────────────
@@ -254,6 +255,19 @@ function sectionLabel(section) {
                               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                     </svg>
                     Admin
+                </a>
+
+                <!-- Developer Docs — only shown to super admins -->
+                <a
+                    v-if="isSuperSuperAdmin"
+                    href="/developer-docs/unlock"
+                    class="hidden sm:inline-flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition px-2.5 py-1.5 rounded border border-white/10 hover:border-white/20 whitespace-nowrap"
+                >
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                    </svg>
+                    Developer Docs
                 </a>
 
                 <!-- Back to site — always shown -->

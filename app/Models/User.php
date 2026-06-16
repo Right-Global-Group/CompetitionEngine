@@ -41,6 +41,11 @@ class User extends Authenticatable implements FilamentUser
         return $this->admin()->exists();
     }
 
+    public function isSuperSuperAdmin(): bool
+    {
+        return $this->admin()->where('is_super_super_admin', true)->exists();
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->isAdmin();

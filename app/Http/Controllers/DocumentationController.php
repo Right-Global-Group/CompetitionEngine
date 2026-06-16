@@ -55,7 +55,8 @@ class DocumentationController extends Controller
             'nav'         => $nav,
             'currentSlug' => '',
             'title'       => 'Help Center',
-            'isAdmin'     => auth()->check() && auth()->user()->isAdmin(),
+            'isAdmin'       => auth()->check() && auth()->user()->isAdmin(),
+            'isSuperSuperAdmin'  => auth()->check() && auth()->user()->isSuperSuperAdmin(),
         ]);
     }
 
@@ -80,7 +81,8 @@ class DocumentationController extends Controller
             'nav'         => $nav,
             'currentSlug' => "{$section}/{$slug}",
             'title'       => $title,
-            'isAdmin'     => auth()->check() && auth()->user()->isAdmin(),
+            'isAdmin'      => auth()->check() && auth()->user()->isAdmin(),
+            'isSuperSuperAdmin' => auth()->check() && auth()->user()->isSuperSuperAdmin(),
         ]);
     }
 

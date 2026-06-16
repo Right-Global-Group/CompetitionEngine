@@ -81,6 +81,13 @@ class AdminPanelProvider extends PanelProvider
                     ->icon('heroicon-o-book-open')
                     ->group('Quick Links')
                     ->sort(4),
+
+                NavigationItem::make('Developer Docs')
+                    ->url('/developer-docs/unlock', shouldOpenInNewTab: true)
+                    ->icon('heroicon-o-code-bracket')
+                    ->group('Quick Links')
+                    ->sort(5)
+                    ->visible(fn () => auth()->check() && auth()->user()->isSuperSuperAdmin()),
             ]);
     }
 }
