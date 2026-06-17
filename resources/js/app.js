@@ -3,7 +3,7 @@ import './bootstrap';
 
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { createApp, h } from 'vue';
+import { createSSRApp, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import { SiteTextPlugin } from './Plugins/siteText';
 
@@ -17,7 +17,7 @@ createInertiaApp({
             import.meta.glob('./Pages/**/*.vue'),
         ),
     setup({ el, App, props, plugin }) {
-        return createApp({ render: () => h(App, props) })
+        return createSSRApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
             .use(SiteTextPlugin)
