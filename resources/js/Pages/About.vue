@@ -122,7 +122,10 @@ onMounted(() => {
 </script>
 
 <template>
-    <Head title="Our Vision - Competition Engine" />
+    <Head>
+        <title>About Us - Competition Engine</title>
+        <meta name="description" content="Meet the team behind Competition Engine — building next-generation white-label competition software for operators worldwide." head-key="description" />
+    </Head>
 
     <AppLayout>
         <div class="about-page">

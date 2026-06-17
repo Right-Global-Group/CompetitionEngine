@@ -7,3 +7,5 @@ Disallow: /admin/
 
 # Allow everything else
 Allow: /
+
+Sitemap: https://compengine.io/sitemap.xml
