@@ -45,16 +45,14 @@
     };
     
     onMounted(() => {
-        // GSAP Hero Animations
+        // GSAP Hero Animations — no opacity:0 so SSR text stays visible during animation
         gsap.from('.hero-title', {
-            opacity: 0,
             y: 50,
             duration: 1,
             ease: 'power3.out'
         });
-    
+
         gsap.from('.hero-subtitle', {
-            opacity: 0,
             y: 30,
             duration: 1,
             delay: 0.3,
@@ -62,31 +60,31 @@
         });
 
         gsap.from('.hero-buttons', {
-            opacity: 0,
             y: 20,
             duration: 0.8,
             delay: 0.6,
             ease: 'power3.out'
         });
-    
-        // Three.js Background with Floating Tickets
+
+        // Three.js — deferred so it doesn't block hydration
+        requestAnimationFrame(() => {
         if (!heroCanvas.value) return;
-    
+
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        renderer = new THREE.WebGLRenderer({ 
-            canvas: heroCanvas.value, 
+        renderer = new THREE.WebGLRenderer({
+            canvas: heroCanvas.value,
             alpha: true,
-            antialias: true
+            antialias: false
         });
-        
+
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
         camera.position.z = 500;
-    
+
         // Create particles for background
         const particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 1500;
+        const particlesCount = 600;
         const posArray = new Float32Array(particlesCount * 3);
     
         for (let i = 0; i < particlesCount * 3; i++) {
@@ -199,14 +197,15 @@
         }
     
         animate();
-    
+
         const handleResize = () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         };
-    
+
         window.addEventListener('resize', handleResize);
+        }); // end requestAnimationFrame
     });
     
     onUnmounted(() => {

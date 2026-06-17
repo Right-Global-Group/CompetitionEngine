@@ -57,7 +57,7 @@
     
     onMounted(() => {
         gsap.from('.timeline-item', {
-            opacity: 0,
+
             x: -50,
             duration: 0.8,
             stagger: 0.2,

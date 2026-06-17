@@ -93,13 +93,13 @@
             ease: 'elastic.out(1, 0.75)'
         })
         .from('#next-gen-heading', {
-            opacity: 0,
+
             y: 30,
             duration: 0.8,
             ease: 'power2.out'
         }, '-=0.8')
         .from('.next-gen-list-item', {
-            opacity: 0,
+
             x: -30,
             duration: 0.5,
             stagger: 0.2,
