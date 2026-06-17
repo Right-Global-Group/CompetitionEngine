@@ -4,17 +4,6 @@ import { renderToString } from 'vue/server-renderer'
 import { createSSRApp, h } from 'vue'
 import { ZiggyVue } from '../../vendor/tightenco/ziggy'
 
-const SiteTextPluginSSR = {
-    install(app) {
-        const siteTexts = { data: {}, loading: false, error: null }
-        const getText = (key, fallback = '') => fallback
-        app.config.globalProperties.$siteTexts = siteTexts
-        app.config.globalProperties.$getText = getText
-        app.provide('siteTexts', siteTexts)
-        app.provide('getText', getText)
-    }
-}
-
 createServer(page =>
     createInertiaApp({
         page,
@@ -24,6 +13,22 @@ createServer(page =>
             return pages[`./Pages/${name}.vue`]
         },
         setup({ App, props, plugin }) {
+            const siteTextData = props.initialPage.props.siteTexts || {}
+            const SiteTextPluginSSR = {
+                install(app) {
+                    const getText = (key, fallback = '') => {
+                        const parts = key.split('.')
+                        if (parts.length >= 2) {
+                            return siteTextData[parts[0]]?.[key] || fallback
+                        }
+                        return fallback
+                    }
+                    app.config.globalProperties.$siteTexts = { data: siteTextData, loading: false, error: null }
+                    app.config.globalProperties.$getText = getText
+                    app.provide('siteTexts', { data: siteTextData, loading: false, error: null })
+                    app.provide('getText', getText)
+                }
+            }
             return createSSRApp({
                 render: () => h(App, props),
             }).use(plugin).use(ZiggyVue).use(SiteTextPluginSSR)
