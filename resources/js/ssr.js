@@ -3,7 +3,6 @@ import createServer from '@inertiajs/vue3/server'
 import { renderToString } from 'vue/server-renderer'
 import { createSSRApp, h } from 'vue'
 import { ZiggyVue } from '../../vendor/tightenco/ziggy'
-import { SiteTextPlugin } from './Plugins/siteText'
 
 createServer(page =>
     createInertiaApp({
@@ -16,7 +15,7 @@ createServer(page =>
         setup({ App, props, plugin }) {
             return createSSRApp({
                 render: () => h(App, props),
-            }).use(plugin).use(ZiggyVue).use(SiteTextPlugin)
+            }).use(plugin).use(ZiggyVue)
         },
     }),
 )
