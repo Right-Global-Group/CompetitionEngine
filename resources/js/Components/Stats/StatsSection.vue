@@ -9,7 +9,7 @@
     const stat2Value = ref(0);
     const stat3Value = ref(0);
     
-    const getText = inject('getText');
+    const getText = inject('getText', (key, fallback = '') => fallback);
     const siteTexts = inject('siteTexts');
     
     // Get heading parts

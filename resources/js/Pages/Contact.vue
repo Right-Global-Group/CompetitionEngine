@@ -6,7 +6,7 @@ import * as THREE from 'three';
 import { gsap } from 'gsap';
 import axios from 'axios';
 
-const getText = inject('getText');
+const getText = inject('getText', (key, fallback = '') => fallback);
 const siteTexts = inject('siteTexts');
 
 // Get heading parts

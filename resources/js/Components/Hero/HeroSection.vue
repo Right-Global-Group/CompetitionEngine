@@ -3,7 +3,7 @@
     import { gsap } from 'gsap';
     import * as THREE from 'three';
     
-    const getText = inject('getText');
+    const getText = inject('getText', (key, fallback = '') => fallback);
     const siteTexts = inject('siteTexts');
     
     const heroCanvas = ref(null);

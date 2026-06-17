@@ -9,7 +9,7 @@ import BalloonPopGame from '@/Components/Games/PopGame.vue';
 
 const activeTab = ref('slots');
 
-const getText = inject('getText');
+const getText = inject('getText', (key, fallback = '') => fallback);
 const siteTexts = inject('siteTexts');
 
 // Get heading parts

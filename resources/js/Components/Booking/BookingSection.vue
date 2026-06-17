@@ -1,7 +1,7 @@
 <script setup>
     import { inject, computed } from 'vue';
     
-    const getText = inject('getText');
+    const getText = inject('getText', (key, fallback = '') => fallback);
     const siteTexts = inject('siteTexts');
     
     const calendlyUrl = 'https://calendly.com/contact-compengine/30min';

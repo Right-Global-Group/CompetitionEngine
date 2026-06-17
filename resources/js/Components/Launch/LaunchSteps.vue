@@ -5,7 +5,7 @@
     
     gsap.registerPlugin(ScrollTrigger);
     
-    const getText = inject('getText');
+    const getText = inject('getText', (key, fallback = '') => fallback);
     const siteTexts = inject('siteTexts');
     
     // Get heading parts
