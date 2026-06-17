@@ -66,8 +66,8 @@
             ease: 'power3.out'
         });
 
-        // Three.js — deferred so it doesn't block hydration
-        requestAnimationFrame(() => {
+        // Three.js — deferred 800ms so hydration fully completes before WebGL starts
+        setTimeout(() => {
         if (!heroCanvas.value) return;
 
         const scene = new THREE.Scene();
@@ -205,7 +205,7 @@
         };
 
         window.addEventListener('resize', handleResize);
-        }); // end requestAnimationFrame
+        }, 800); // end setTimeout
     });
     
     onUnmounted(() => {
