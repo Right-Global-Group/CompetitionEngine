@@ -14,9 +14,9 @@
     const headingParts = computed(() => {
         const parts = [];
         
-        const before = getText('hero.title_before', 'The');
-        const keyword = getText('hero.title_keyword', 'Ultimate Competition');
-        const after = getText('hero.title_after', 'Platform');
+        const before = getText('hero.title_before', '');
+        const keyword = getText('hero.title_keyword', '');
+        const after = getText('hero.title_after', '');
         
         if (before && before.trim()) {
             parts.push({ text: before + ' ', isKeyword: false });
