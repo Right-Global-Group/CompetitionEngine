@@ -2,6 +2,7 @@ User-agent: *
 Disallow: /login
 Disallow: /register
 Disallow: /password/
+Disallow: /forgot-password
 Disallow: /admin
 Disallow: /admin/
 
