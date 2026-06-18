@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\TenantMessagesController;
 use App\Http\Controllers\ContactSubmissionController;
 use App\Http\Controllers\DocumentationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ChangelogController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -87,5 +88,13 @@ Route::post('/docs/unlock', [DocumentationController::class, 'unlock'])->name('d
 Route::get('/docs', [DocumentationController::class, 'index'])->name('docs.index');
 Route::get('/docs/search', [DocumentationController::class, 'search'])->name('docs.search');
 Route::get('/docs/{section}/{slug}', [DocumentationController::class, 'show'])->name('docs.show');
+
+// Changelog — password wall
+Route::get('/changelog/unlock',  [ChangelogController::class, 'password'])->name('changelog.password');
+Route::post('/changelog/unlock', [ChangelogController::class, 'unlock'])->name('changelog.unlock');
+
+// Changelog content — returns 404 if not unlocked (handled inside controller)
+Route::get('/changelog/data',   [ChangelogController::class, 'data'])->name('changelog.data');
+Route::post('/changelog/flush', [ChangelogController::class, 'flush'])->name('changelog.flush');
 
 require __DIR__.'/auth.php';

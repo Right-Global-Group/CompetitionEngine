@@ -88,6 +88,12 @@ class TenantMessageResource extends Resource
                     ->required()
                     ->reactive(),
 
+                Toggle::make('show_in_changelog')
+                    ->label('Show on public changelog')
+                    ->helperText('Only appears on changelog when target is set to All Tenants')
+                    ->visible(fn ($get) => $get('target') === 'all')
+                    ->default(false),
+
                 Select::make('tenant_keys')
                     ->label('Target Tenants')
                     ->multiple()
@@ -179,6 +185,12 @@ class TenantMessageResource extends Resource
                     ->label('Paid')
                     ->boolean()
                     ->trueColor('success')
+                    ->falseColor('gray'),
+
+                IconColumn::make('show_in_changelog')
+                    ->label('Changelog')
+                    ->boolean()
+                    ->trueColor('primary')
                     ->falseColor('gray'),
             ])
             ->filters([
