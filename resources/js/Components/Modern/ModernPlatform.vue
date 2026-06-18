@@ -2,7 +2,7 @@
     import { onMounted, inject, computed } from 'vue';
     import { gsap } from 'gsap';
     
-    const getText = inject('getText');
+    const getText = inject('getText', (key, fallback = '') => fallback);
     const siteTexts = inject('siteTexts');
     
     // Get heading parts

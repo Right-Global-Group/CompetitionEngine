@@ -32,7 +32,10 @@ onMounted(() => {
 </script>
 
 <template>
-    <Head title="Competition Engine - Ultimate Competition Platform" />
+    <Head>
+        <title>Competition Engine - Ultimate Competition Platform</title>
+        <meta name="description" content="Build, manage, and scale engaging competitions with Competition Engine — the ultimate competition platform built for operators. No code needed." head-key="description" />
+    </Head>
 
     <AppLayout>
         <!-- Hero Section -->

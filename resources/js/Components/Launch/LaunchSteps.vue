@@ -5,7 +5,7 @@
     
     gsap.registerPlugin(ScrollTrigger);
     
-    const getText = inject('getText');
+    const getText = inject('getText', (key, fallback = '') => fallback);
     const siteTexts = inject('siteTexts');
     
     // Get heading parts
@@ -57,7 +57,7 @@
     
     onMounted(() => {
         gsap.from('.timeline-item', {
-            opacity: 0,
+
             x: -50,
             duration: 0.8,
             stagger: 0.2,

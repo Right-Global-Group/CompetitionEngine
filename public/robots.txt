@@ -2,8 +2,11 @@ User-agent: *
 Disallow: /login
 Disallow: /register
 Disallow: /password/
+Disallow: /forgot-password
 Disallow: /admin
 Disallow: /admin/
 
 # Allow everything else
 Allow: /
+
+Sitemap: https://compengine.io/sitemap.xml
