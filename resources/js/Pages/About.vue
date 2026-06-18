@@ -124,7 +124,7 @@ onMounted(() => {
 <template>
     <Head>
         <title>About Us - Competition Engine</title>
-        <meta name="description" content="Meet the team behind Competition Engine — building next-generation white-label competition software for operators worldwide." head-key="description" />
+        <meta name="description" content="Meet the team behind Competition Engine — building next-generation ultimate competition software for operators worldwide." head-key="description" />
     </Head>
 
     <AppLayout>
