@@ -20,7 +20,7 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
-            .use(SiteTextPlugin)
+            .use(SiteTextPlugin, { initialData: props.initialPage.props.siteTexts || {} })
             .mount(el);
     },
     progress: {
