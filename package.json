@@ -24,6 +24,7 @@
         "@headlessui/vue": "^1.7.23",
         "@heroicons/vue": "^2.2.0",
         "canvas-confetti": "^1.9.4",
+        "chart.js": "^4.5.1",
         "gsap": "^3.13.0",
         "three": "^0.180.0"
     }

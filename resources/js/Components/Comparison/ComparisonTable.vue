@@ -1,145 +1,107 @@
 <script setup>
-    import { inject, computed } from 'vue';
-    
-    const getText = inject('getText', (key, fallback = '') => fallback);
-    const siteTexts = inject('siteTexts');
-    
-    // Get heading parts
-    const headingParts = computed(() => {
-        const parts = [];
-        
-        const before = getText('comparison.heading_before', 'Competition Engine vs. Others');
-        const keyword = getText('comparison.heading_keyword', '');
-        const after = getText('comparison.heading_after', '');
-        
-        if (before && before.trim()) {
-            parts.push({ text: before + ' ', isKeyword: false });
-        }
-        
-        if (keyword && keyword.trim()) {
-            parts.push({ text: keyword, isKeyword: true });
-        }
-        
-        if (after && after.trim()) {
-            parts.push({ text: ' ' + after, isKeyword: false });
-        }
-        
-        return parts;
-    });
-    
-    // Helper function to determine color based on text
-    const getColor = (text) => {
-        const lower = text.toLowerCase();
-        if (['excellent', 'high', 'unlimited', 'intuitive', 'dedicated'].includes(lower)) return 'text-green-400';
-        if (['variable', 'moderate', 'complex', 'clunky'].includes(lower)) return 'text-yellow-400';
-        return 'text-red-400';
-    };
-    
-    // Get comparison data from database
-    const comparisonData = computed(() => [
-        {
-            feature: getText('comparison.feature1', 'Performance'),
-            competitionEngine: { text: getText('comparison.feature1_us', 'Excellent'), color: getColor(getText('comparison.feature1_us', 'Excellent')) },
-            wordpress: { text: getText('comparison.feature1_wp', 'Variable'), color: getColor(getText('comparison.feature1_wp', 'Variable')) },
-            otherSaas: { text: getText('comparison.feature1_saas', 'Slow'), color: getColor(getText('comparison.feature1_saas', 'Slow')) }
-        },
-        {
-            feature: getText('comparison.feature2', 'Security'),
-            competitionEngine: { text: getText('comparison.feature2_us', 'High'), color: getColor(getText('comparison.feature2_us', 'High')) },
-            wordpress: { text: getText('comparison.feature2_wp', 'Vulnerable'), color: getColor(getText('comparison.feature2_wp', 'Vulnerable')) },
-            otherSaas: { text: getText('comparison.feature2_saas', 'Moderate'), color: getColor(getText('comparison.feature2_saas', 'Moderate')) }
-        },
-        {
-            feature: getText('comparison.feature3', 'Scalability'),
-            competitionEngine: { text: getText('comparison.feature3_us', 'Unlimited'), color: getColor(getText('comparison.feature3_us', 'Unlimited')) },
-            wordpress: { text: getText('comparison.feature3_wp', 'Limited'), color: getColor(getText('comparison.feature3_wp', 'Limited')) },
-            otherSaas: { text: getText('comparison.feature3_saas', 'Limited'), color: getColor(getText('comparison.feature3_saas', 'Limited')) }
-        },
-        {
-            feature: getText('comparison.feature4', 'Ease of Use'),
-            competitionEngine: { text: getText('comparison.feature4_us', 'Intuitive'), color: getColor(getText('comparison.feature4_us', 'Intuitive')) },
-            wordpress: { text: getText('comparison.feature4_wp', 'Complex'), color: getColor(getText('comparison.feature4_wp', 'Complex')) },
-            otherSaas: { text: getText('comparison.feature4_saas', 'Clunky'), color: getColor(getText('comparison.feature4_saas', 'Clunky')) }
-        },
-        {
-            feature: getText('comparison.feature5', 'Support'),
-            competitionEngine: { text: getText('comparison.feature5_us', 'Dedicated'), color: getColor(getText('comparison.feature5_us', 'Dedicated')) },
-            wordpress: { text: getText('comparison.feature5_wp', 'Community Forum'), color: getColor(getText('comparison.feature5_wp', 'Community Forum')) },
-            otherSaas: { text: getText('comparison.feature5_saas', 'Email Only'), color: getColor(getText('comparison.feature5_saas', 'Email Only')) }
-        }
-    ]);
-    </script>
-    
-    <template>
-        <section id="comparison" class="py-20">
-            <div class="container mx-auto px-4 sm:px-6">
-                <div v-if="!siteTexts.loading" class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
-                            <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
-                            <template v-else>{{ part.text }}</template>
-                        </template>
-                    </h2>
-                    <p class="text-lg text-gray-400">
-                        {{ getText('comparison.description', 'See how we stack up against the competition.') }}
-                    </p>
-                </div>
-    
-                <div v-else class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Competition Engine vs. Others</h2>
-                    <p class="text-lg text-gray-400">See how we stack up against the competition.</p>
-                </div>
-                
-                <!-- Desktop Table -->
-                <div class="hidden md:block overflow-x-auto liquid-glass rounded-lg">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr>
-                                <th class="p-4 text-white font-semibold border-b-2 border-gray-700 rounded-tl-lg">Feature</th>
-                                <th class="p-4 text-white font-semibold border-b-2 border-gray-700 text-center">Competition Engine</th>
-                                <th class="p-4 text-white font-semibold border-b-2 border-gray-700 text-center">WordPress Plugins</th>
-                                <th class="p-4 text-white font-semibold border-b-2 border-gray-700 text-center rounded-tr-lg">Other SaaS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr 
-                                v-for="(row, index) in comparisonData"
-                                :key="index"
-                                :class="index < comparisonData.length - 1 ? 'border-b border-gray-800' : ''"
-                            >
-                                <td class="p-4 font-medium text-white">{{ row.feature }}</td>
-                                <td class="p-4 text-center font-bold" :class="row.competitionEngine.color">{{ row.competitionEngine.text }}</td>
-                                <td class="p-4 text-center" :class="row.wordpress.color">{{ row.wordpress.text }}</td>
-                                <td class="p-4 text-center" :class="row.otherSaas.color">{{ row.otherSaas.text }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-    
-                <!-- Mobile Cards -->
-                <div class="block md:hidden space-y-4">
-                    <div 
-                        v-for="(row, index) in comparisonData"
-                        :key="index"
-                        class="liquid-glass rounded-lg p-4"
-                    >
-                        <h4 class="font-semibold text-white text-lg mb-3 text-center">{{ row.feature }}</h4>
-                        <div class="space-y-2 text-sm">
-                            <p class="flex justify-between">
-                                <span>Competition Engine:</span> 
-                                <span class="font-bold" :class="row.competitionEngine.color">{{ row.competitionEngine.text }}</span>
-                            </p>
-                            <p class="flex justify-between">
-                                <span>WordPress Plugins:</span> 
-                                <span class="font-bold" :class="row.wordpress.color">{{ row.wordpress.text }}</span>
-                            </p>
-                            <p class="flex justify-between">
-                                <span>Other SaaS:</span> 
-                                <span class="font-bold" :class="row.otherSaas.color">{{ row.otherSaas.text }}</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+import { inject, computed, ref } from 'vue';
+import { useReveal } from '@/Composables/useReveal';
+
+const getText = inject('getText', (key, fallback = '') => fallback);
+const { sectionRef, revealed } = useReveal();
+
+function ct(key, fallback) {
+    return getText(`cmp.${key}`, fallback);
+}
+
+const eyebrow = computed(() => ct('eyebrow', 'Side by side'));
+const titleMain = computed(() => ct('title', 'How we stack up.'));
+const lead = computed(() => ct('lead', 'Pick what you\'re considering. We\'ll show you the differences that actually move the needle.'));
+
+/* ============== Tab data (structural/demo data — not admin-managed) ============== */
+const TABLES = {
+    rafflex: {
+        tabLabel: ct('tab_rafflex', 'vs RaffleX'),
+        name: ct('tab_rafflex_name', 'RaffleX'),
+        rows: [
+            ['Years operating in this category', '5+ years', '4+ years'],
+            ['Per-order fee', '5–10p', '17p'],
+            ['Game customisation', 'Game Studio — build your own', '7+ fixed presets'],
+            ['Independent penetration test', 'Yes — published', 'Not published'],
+            ['Separate Cash + Site Credit wallets', 'Yes', 'Not advertised'],
+            ['RNG / draw certification', 'GLI', 'GLI Verified'],
+            ['VCOC alignment in product', 'Built in from launch', 'Added recently'],
+            ['Public order / ticket numbers (30d)', '245k orders / 13.25M tickets', 'Not published'],
+        ],
+    },
+    flat: {
+        tabLabel: ct('tab_flat', 'vs flat-fee platforms'),
+        name: ct('tab_flat_name', 'Other UK platforms with big flat fees'),
+        rows: [
+            ['Years operating in this category', '5+ years', 'Newer entrants (typically <2 yrs)'],
+            ['Entry pricing', '5–10p per order — pay only when you sell', '£499/month from day one, before a ticket is sold'],
+            ['Pricing for small operators (<5k orders/mo)', '£25–£500/month', '£499/month flat'],
+            ['Pricing for scaling operators (50k+ orders/mo)', '£2,000/month flat', '£1,299–£1,499/month flat'],
+            ['Game customisation', 'Game Studio — build your own', 'Fixed reveal animations'],
+            ['Wallet model', 'Cash + Site Credit (separate)', 'Single wallet (mixed funds)'],
+            ['Track record at real volume', '245k orders / 13.25M tickets last 30d', 'Limited public operating numbers'],
+            ['UK VCOC signatory', 'Yes — from launch', 'Yes (typical)'],
+        ],
+    },
+    wp: {
+        tabLabel: ct('tab_wp', 'vs WordPress + plugins'),
+        name: ct('tab_wp_name', 'WordPress + plugins'),
+        rows: [
+            ['Setup', 'Hosted platform, zero plugins', '25+ plugins, fragile stack'],
+            ['Performance', 'Single-page app, instant browsing', 'Plugin-throttled, full reloads'],
+            ['Payment integration', 'UK-licensed gateway, fully integrated', 'Bolt-on payment plugin'],
+            ['Compliance with UK VCOC', 'System-enforced from launch', 'Manual, plugin-dependent'],
+            ['Hosting costs at scale', 'Included', '£2k+/mo dedicated servers (real customer case)'],
+            ['Security updates', 'Continuous, managed', 'You patch every plugin yourself'],
+            ['Free-entry compliance', 'Built in, automated', 'Manual, hand-rolled'],
+        ],
+    },
+};
+
+const TAB_KEYS = ['rafflex', 'flat', 'wp'];
+const activeTab = ref('rafflex');
+const currentTable = computed(() => TABLES[activeTab.value]);
+
+const sourcesNote = computed(() => ct('sources', 'Sources: rafflex.io homepage (May 2026); typical UK flat-fee platform pricing observed at May 2026; CompEngine internal numbers (May 2026 rolling-30-day).'));
+</script>
+
+<template>
+    <section ref="sectionRef" class="section reveal" :class="{ visible: revealed }" id="comparison">
+        <div class="center">
+            <div class="eyebrow"><span class="dot"></span>{{ eyebrow }}</div>
+            <h2 class="h2">{{ titleMain }}</h2>
+            <p class="lead center" style="margin: 18px auto 0;">{{ lead }}</p>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <div class="cmp-tabs">
+                <button
+                    v-for="key in TAB_KEYS"
+                    :key="key"
+                    class="cmp-tab"
+                    :class="{ active: activeTab === key }"
+                    @click="activeTab = key"
+                >{{ TABLES[key].tabLabel }}</button>
             </div>
-        </section>
-    </template>
+            <div style="overflow-x: auto;">
+                <table class="cmp-table">
+                    <thead>
+                        <tr>
+                            <th style="width:34%">Feature</th>
+                            <th style="width:33%; color:var(--orange)">CompEngine</th>
+                            <th style="width:33%">{{ currentTable.name }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(row, i) in currentTable.rows" :key="i">
+                            <td>{{ row[0] }}</td>
+                            <td class="us">{{ row[1] }}</td>
+                            <td class="them">{{ row[2] }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size:13px; color:var(--text-3); margin-top:14px;">{{ sourcesNote }}</p>
+            </div>
+        </div>
+    </section>
+</template>

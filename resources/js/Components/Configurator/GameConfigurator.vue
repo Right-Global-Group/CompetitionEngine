@@ -6,35 +6,21 @@ import ScratchGame from '@/Components/Games/ScratchGame.vue';
 import BingoGame from '@/Components/Games/BingoGame.vue';
 import CoinDropGame from '@/Components/Games/CoinDropGame.vue';
 import BalloonPopGame from '@/Components/Games/PopGame.vue';
+import FootballModal from '@/Components/Games/FootballModal.vue';
+import { useReveal } from '@/Composables/useReveal';
 
 const activeTab = ref('slots');
 
 const getText = inject('getText', (key, fallback = '') => fallback);
 const siteTexts = inject('siteTexts');
+const { sectionRef, revealed } = useReveal();
 
-// Get heading parts
-const headingParts = computed(() => {
-    const parts = [];
-    
-    const before = getText('configurator.heading_before', 'Build Your Game');
-    const keyword = getText('configurator.heading_keyword', '');
-    const after = getText('configurator.heading_after', '');
-    
-    if (before && before.trim()) {
-        parts.push({ text: before + ' ', isKeyword: false });
-    }
-    
-    if (keyword && keyword.trim()) {
-        parts.push({ text: keyword, isKeyword: true });
-    }
-    
-    if (after && after.trim()) {
-        parts.push({ text: ' ' + after, isKeyword: false });
-    }
-    
-    return parts;
-});
-    
+const badgeText = computed(() => getText('gamestudio.badge', 'Only on CompEngine'));
+const titleBefore = computed(() => getText('gamestudio.title_before', 'Game Studio.'));
+const titleKeyword = computed(() => getText('gamestudio.title_keyword', 'Built by you.'));
+const lead = computed(() => getText('gamestudio.lead', 'Other UK competition platforms give operators a handful of fixed game presets. We give a studio. Pick a game, theme it, brand it, preview every change live.'));
+const tryMeText = computed(() => getText('gamestudio.try_me', '🎮 Try it — no signup needed'));
+
 
 const tabs = [
     { id: 'slots', name: 'Slots', icon: '🎰' },
@@ -42,7 +28,8 @@ const tabs = [
     { id: 'spin', name: 'Spinny', icon: '🎡' },
     { id: 'bingo', name: 'Bingo', icon: '🎱' },
     { id: 'coindrop', name: 'Coin Drop', icon: '🪙' },
-    { id: 'balloonpop', name: 'Balloon Pop', icon: '🎈' }
+    { id: 'balloonpop', name: 'Balloon Pop', icon: '🎈' },
+    { id: 'football', name: 'Football', icon: '⚽' }
 ];
 
 // Image uploads (stored as blob URLs)
@@ -421,6 +408,21 @@ const balloonPopConfig = ref({
     popSubtitleText: 'Pop balloons to reveal your prize!'
 });
 
+// Football Configuration
+const footballConfig = ref({
+    theme: 'classic',
+    titleText: 'Take Your Shot!',
+    primaryColor: '#1b5e20',
+    accentColor: '#ffeb3b',
+    goalColor: '#f59e0b',
+});
+
+// Demo ticket so strike() / aim flow fully works in the configurator preview
+const footballDemoTickets = [
+    { id: 1, number: '001', instant_win: { id: 1, prize: '£50 Cash', value: 50, claimed: false, image_path: null } },
+    { id: 2, number: '002', instant_win: false },
+];
+
 // Computed assets for each game
 const slotsAssets = computed(() => ({
     titleText: slotsConfig.value.titleText,
@@ -575,6 +577,12 @@ const colorPresets = {
         { name: 'Ocean', primary: '#06B6D4', accent: '#67E8F9' },
         { name: 'Forest', primary: '#22C55E', accent: '#86EFAC' },
         { name: 'Sunset', primary: '#F97316', accent: '#FCD34D' }
+    ],
+    football: [
+        { name: 'Classic', theme: 'classic', primary: '#1b5e20', accent: '#ffeb3b' },
+        { name: 'Night', theme: 'night', primary: '#1b5e20', accent: '#cfeaff' },
+        { name: 'Retro', theme: 'retro', primary: '#4a3416', accent: '#ffd27a' },
+        { name: 'Neon', theme: 'neon', primary: '#0c5a3c', accent: '#3df5ff' },
     ]
 };
 
@@ -602,27 +610,34 @@ const applyBalloonPopPreset = (preset) => {
     balloonPopConfig.value.primaryColor = preset.primary;
     balloonPopConfig.value.accentColor = preset.accent;
 };
+
+const applyFootballPreset = (preset) => {
+    footballConfig.value.theme = preset.theme;
+    footballConfig.value.primaryColor = preset.primary;
+    footballConfig.value.accentColor = preset.accent;
+};
+
+const footballAssets = computed(() => ({
+    theme: footballConfig.value.theme,
+    titleText: footballConfig.value.titleText,
+    primaryColor: footballConfig.value.primaryColor,
+    accentColor: footballConfig.value.accentColor,
+    goalColor: footballConfig.value.goalColor,
+}));
 </script>
 
 <template>
-    <section id="configurator" class="configurator-section py-12 md:py-20 relative overflow-hidden">
-        <!-- Minimal Background -->
-        <div class="absolute inset-0 bg-gradient-to-b from-[#0c0c14] via-[#12121c] to-[#0c0c14]"></div>
-        <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
-
-        <div class="container mx-auto px-4 relative z-10">
-            <!-- Clean Header -->
-            <div class="text-center mb-10 md:mb-14">
-                <p class="text-purple-400 text-sm font-medium tracking-widest uppercase mb-3">Game Studio</p>
-                <h2 class="text-3xl md:text-5xl font-bold text-white mb-3">
-                    <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
-                        <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
-                        <template v-else>{{ part.text }}</template>
-                    </template>
-                </h2>
-                <p class="text-gray-500 text-sm md:text-base">Customize every detail in real-time</p>
+    <section ref="sectionRef" id="game-studio" class="section reveal" :class="{ visible: revealed }" style="position:relative;">
+        <div class="center" style="margin-bottom: 24px; position:relative;">
+            <div class="mega-badge"><span class="spark">✦</span> {{ badgeText }} <span class="spark">✦</span></div>
+            <h2 class="h2">{{ titleBefore }} <span class="grad-text">{{ titleKeyword }}</span></h2>
+            <p class="lead center" style="margin: 18px auto 0;">{{ lead }}</p>
+            <div style="margin-top: 22px;">
+                <a href="#game-studio" class="try-me">{{ tryMeText }}</a>
             </div>
+        </div>
 
+        <div class="gs-block">
             <div class="grid lg:grid-cols-12 gap-5 max-w-[1400px] mx-auto">
                 <!-- Configurator Panel -->
                 <div class="lg:col-span-5 xl:col-span-4">
@@ -1013,6 +1028,36 @@ const applyBalloonPopPreset = (preset) => {
                         </div>
                     </div>
 
+                    <!-- FOOTBALL Configuration -->
+                    <div v-if="activeTab === 'football'" class="config-sections">
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Theme</span>
+                            </div>
+                            <div class="preset-grid">
+                                <button
+                                    v-for="preset in colorPresets.football"
+                                    :key="preset.name"
+                                    @click="applyFootballPreset(preset)"
+                                    class="preset-btn"
+                                    :class="{ 'active': footballConfig.theme === preset.theme }"
+                                >
+                                    {{ preset.name }}
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Branding</span>
+                            </div>
+                            <div class="input-group">
+                                <label>Title</label>
+                                <input type="text" v-model="footballConfig.titleText" class="text-input" />
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- BALLOON POP Configuration -->
                     <div v-if="activeTab === 'balloonpop'" class="config-sections">
                         <div class="config-section">
@@ -1143,6 +1188,9 @@ const applyBalloonPopPreset = (preset) => {
                             <div v-if="activeTab === 'balloonpop'" class="preview-game">
                                 <BalloonPopGame :demoMode="true" previewMode="desktop" :popGameAssets="balloonPopAssets" :tickets="[]" :showGameBoard="true"/>
                             </div>
+                            <div v-if="activeTab === 'football'" class="preview-game-football">
+                                <FootballModal :model-value="true" :demoMode="true" previewMode="desktop" :assets="footballAssets" :tickets="footballDemoTickets" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1153,18 +1201,11 @@ const applyBalloonPopPreset = (preset) => {
 
 <style scoped>
 /* =========================================
-   BASE
-   ========================================= */
-.configurator-section {
-    min-height: 100vh;
-}
-
-/* =========================================
    CONFIG CARD
    ========================================= */
 .config-card {
-    background: rgba(18, 18, 28, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
     border-radius: 16px;
     overflow: hidden;
 }
@@ -1174,11 +1215,17 @@ const applyBalloonPopPreset = (preset) => {
    ========================================= */
 .tab-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 4px;
     padding: 12px;
     background: rgba(0, 0, 0, 0.3);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 480px) {
+    .tab-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 .tab-pill {
@@ -1190,22 +1237,24 @@ const applyBalloonPopPreset = (preset) => {
     border-radius: 10px;
     border: none;
     background: transparent;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-3);
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .tab-pill:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.8);
+    background: var(--bg-card-hover);
+    color: var(--text-0);
 }
 
 .tab-pill.active {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    background: linear-gradient(135deg, var(--orange), var(--coral));
     color: white;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 4px 12px -2px var(--orange-glow);
 }
 
 .tab-icon {
@@ -1216,6 +1265,10 @@ const applyBalloonPopPreset = (preset) => {
 .tab-label {
     display: inline;
     font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
 }
 
 @media (min-width: 640px) {
@@ -1259,12 +1312,12 @@ const applyBalloonPopPreset = (preset) => {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-3);
 }
 
 .section-hint {
     font-size: 10px;
-    color: rgba(255, 255, 255, 0.25);
+    color: var(--text-3);
 }
 
 /* =========================================
@@ -1282,9 +1335,9 @@ const applyBalloonPopPreset = (preset) => {
     gap: 6px;
     padding: 8px 14px;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border);
     background: rgba(255, 255, 255, 0.03);
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-2);
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
@@ -1292,13 +1345,13 @@ const applyBalloonPopPreset = (preset) => {
 }
 
 .preset-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: var(--preset-color, rgba(255, 255, 255, 0.2));
+    background: var(--bg-card-hover);
+    border-color: var(--preset-color, var(--border-strong));
     transform: translateY(-1px);
 }
 
 .preset-btn.active {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    background: linear-gradient(135deg, var(--orange), var(--coral));
     border-color: transparent;
     color: white;
 }
@@ -1320,28 +1373,28 @@ const applyBalloonPopPreset = (preset) => {
 
 .input-group label {
     font-size: 11px;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-3);
 }
 
 .text-input {
     width: 100%;
     padding: 10px 14px;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border);
     background: rgba(0, 0, 0, 0.3);
-    color: white;
+    color: var(--text-0);
     font-size: 14px;
     outline: none;
     transition: all 0.2s ease;
 }
 
 .text-input:focus {
-    border-color: rgba(99, 102, 241, 0.5);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(244, 165, 88, 0.12);
 }
 
 .text-input::placeholder {
-    color: rgba(255, 255, 255, 0.25);
+    color: var(--text-3);
 }
 
 /* =========================================
@@ -1364,7 +1417,7 @@ const applyBalloonPopPreset = (preset) => {
     justify-content: center;
     height: 60px;
     border-radius: 10px;
-    border: 1px dashed rgba(255, 255, 255, 0.12);
+    border: 1px dashed var(--border);
     background: rgba(0, 0, 0, 0.2);
     cursor: pointer;
     overflow: hidden;
@@ -1372,8 +1425,8 @@ const applyBalloonPopPreset = (preset) => {
 }
 
 .upload-box:hover {
-    border-color: rgba(99, 102, 241, 0.5);
-    background: rgba(99, 102, 241, 0.05);
+    border-color: var(--orange);
+    background: rgba(244, 165, 88, 0.06);
 }
 
 .upload-box.wide {
@@ -1382,7 +1435,7 @@ const applyBalloonPopPreset = (preset) => {
 
 .upload-box.has-image {
     border-style: solid;
-    border-color: rgba(99, 102, 241, 0.3);
+    border-color: rgba(244, 165, 88, 0.35);
 }
 
 .upload-box img {
@@ -1397,7 +1450,7 @@ const applyBalloonPopPreset = (preset) => {
 
 .upload-placeholder {
     font-size: 11px;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--text-3);
     font-weight: 500;
 }
 
@@ -1419,7 +1472,7 @@ const applyBalloonPopPreset = (preset) => {
 
 .color-item span {
     font-size: 10px;
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--text-3);
     text-align: center;
 }
 
@@ -1437,7 +1490,7 @@ const applyBalloonPopPreset = (preset) => {
     width: 36px;
     height: 36px;
     padding: 0;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--border);
     border-radius: 10px;
     background: transparent;
     cursor: pointer;
@@ -1446,7 +1499,7 @@ const applyBalloonPopPreset = (preset) => {
 
 .color-picker:hover {
     transform: scale(1.1);
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: var(--border-strong);
 }
 
 .color-picker::-webkit-color-swatch-wrapper {
@@ -1474,7 +1527,7 @@ const applyBalloonPopPreset = (preset) => {
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border);
     background: rgba(0, 0, 0, 0.2);
     font-size: 18px;
     cursor: pointer;
@@ -1482,22 +1535,22 @@ const applyBalloonPopPreset = (preset) => {
 }
 
 .emoji-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--bg-card-hover);
     transform: scale(1.05);
 }
 
 .emoji-btn.active {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    background: linear-gradient(135deg, var(--orange), var(--coral));
     border-color: transparent;
-    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 2px 8px -2px var(--orange-glow);
 }
 
 /* =========================================
    PREVIEW CARD
    ========================================= */
 .preview-card {
-    background: rgba(18, 18, 28, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--bg-1);
+    border: 1px solid var(--border);
     border-radius: 16px;
     overflow: hidden;
     height: 100%;
@@ -1510,29 +1563,30 @@ const applyBalloonPopPreset = (preset) => {
     align-items: center;
     justify-content: space-between;
     padding: 14px 18px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border);
 }
 
 .preview-title {
     font-size: 14px;
     font-weight: 600;
-    color: white;
+    color: var(--text-0);
 }
 
 .preview-badge {
     font-size: 11px;
     padding: 5px 12px;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.06);
-    color: rgba(255, 255, 255, 0.6);
+    background: var(--bg-card-hover);
+    color: var(--text-2);
 }
 
 .preview-container {
     flex: 1;
     min-height: 650px;
-    background: #0a0a12;
+    background: var(--bg-0);
     position: relative;
     overflow: hidden;
+    overflow-y: auto;
 }
 
 .preview-game {
@@ -1542,6 +1596,27 @@ const applyBalloonPopPreset = (preset) => {
     align-items: flex-start;
     justify-content: center;
     padding-top: 10px;
+}
+
+.preview-game-football {
+    position: absolute;
+    inset: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.preview-game-football :deep(.fbg-demo-device) {
+    max-width: 100% !important;
+}
+
+.preview-game-football :deep(.fbg-demo-bar) {
+    max-width: 100%;
+    flex-wrap: wrap;
+    row-gap: 4px;
 }
 
 /* =========================================

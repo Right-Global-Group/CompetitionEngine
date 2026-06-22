@@ -1,69 +1,54 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
-
-const calendlyUrl = 'https://calendly.com/contact-compengine/30min';
-
-const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
-};
-
-const openCalendly = () => {
-    window.open(calendlyUrl, '_blank');
-};
+const year = new Date().getFullYear();
 </script>
 
 <template>
-    <footer class="bg-[#161B22] border-t border-gray-800">
-        <div class="container mx-auto px-4 sm:px-6 py-12">
-            <div class="flex flex-col md:flex-row gap-8 md:gap-16">
-                <!-- Logo & Description -->
-                <div class="md:max-w-xs">
-                    <div class="flex items-center mb-4">
-                        <img src="/images/logo.png" alt="Competition Engine" class="h-20 md:h-30" />
-                    </div>
-                    <p class="text-gray-400">The modern platform for creating and managing viral competitions.</p>
-                </div>
-
-                <!-- Product Links -->
-                <div class="mr-10">
-                    <h4 class="text-lg font-semibold text-white mb-4">Product</h4>
-                    <ul class="space-y-3">
-                        <li><button @click="scrollToSection('ecosystem')" class="text-gray-400 hover:text-[#A020F0] transition">Features</button></li>
-                        <li><button @click="scrollToSection('pricing')" class="text-gray-400 hover:text-[#A020F0] transition">Pricing</button></li>
-                        <li><button @click="scrollToSection('comparison')" class="text-gray-400 hover:text-[#A020F0] transition">Comparisons</button></li>
-                        <li><button @click="openCalendly" class="text-gray-400 hover:text-[#A020F0] transition">Book a Demo</button></li>
-                    </ul>
-                </div>
-
-                <!-- Company Links -->
-                <div>
-                    <h4 class="text-lg font-semibold text-white mb-4">Company</h4>
-                    <ul class="space-y-3">
-                        <li><Link href="/about" class="text-gray-400 hover:text-[#A020F0] transition">About Us</Link></li>
-                        <li><Link href="/contact" class="text-gray-400 hover:text-[#A020F0] transition">Contact</Link></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Copyright & Social -->
-            <div class="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center">
-                <p class="text-gray-500">&copy; 2024 Competition Engine. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 sm:mt-0">
-                    <a href="#" class="text-gray-500 hover:text-[#A020F0] transition">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="text-gray-500 hover:text-[#A020F0] transition">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.46 12.92,11.24V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17C15.08,12.17 15.7,12.8 15.7,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,6 7.76,5.19 6.88,5.19C6,5.19 5.19,6 5.19,6.88C5.19,7.76 6,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+    <footer>
+        <div class="for-entrants">
+            <strong>Entering a competition powered by CompEngine?</strong>
+            Every draw is GLI-certified. Every winner is verifiable. Every order runs through a UK-licensed payment gateway.
+            Every site we power is signed up to the UK Voluntary Code of Good Practice for Prize Draw Operators.
+            If something goes wrong, the operator has a real platform behind them — not a stack of plugins.
         </div>
+        <div>© {{ year }} CompEngine. Built quietly in the UK.</div>
     </footer>
 </template>
+
+<style scoped>
+footer {
+    border-top: 1px solid rgba(178, 151, 219, 0.18);
+    margin-top: 80px;
+    padding: 32px 28px;
+    text-align: center;
+    color: #8978b1;
+    font-size: 13px;
+}
+
+.for-entrants {
+    max-width: 900px;
+    margin: 0 auto 24px;
+    padding: 20px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(178, 151, 219, 0.18);
+    text-align: left;
+    font-size: 13px;
+    color: #bba6d8;
+    line-height: 1.65;
+}
+
+.for-entrants strong {
+    color: #ffffff;
+}
+
+@media (max-width: 700px) {
+    footer {
+        padding: 26px 18px;
+        margin-top: 56px;
+    }
+    .for-entrants {
+        padding: 16px;
+        font-size: 12px;
+    }
+}
+</style>

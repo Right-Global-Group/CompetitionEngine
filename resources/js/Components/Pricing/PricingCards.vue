@@ -1,173 +1,131 @@
 <script setup>
-    import { onMounted, inject, computed } from 'vue';
-    
-    const getText = inject('getText', (key, fallback = '') => fallback);
-    const siteTexts = inject('siteTexts');
-    
-    // Get heading parts
-    const headingParts = computed(() => {
-        const parts = [];
-        
-        const before = getText('pricing.heading_before', '');
-        const keyword = getText('pricing.heading_keyword', 'Simple, Transparent');
-        const after = getText('pricing.heading_after', 'Pricing');
-        
-        if (before && before.trim()) {
-            parts.push({ text: before + ' ', isKeyword: false });
-        }
-        
-        if (keyword && keyword.trim()) {
-            parts.push({ text: keyword, isKeyword: true });
-        }
-        
-        if (after && after.trim()) {
-            parts.push({ text: ' ' + after, isKeyword: false });
-        }
-        
-        return parts;
-    });
-    
-    const calendlyUrl = 'https://calendly.com/contact-compengine/30min';
-    
-    // Build plans from database
-    const plans = computed(() => {
-        const plan1Features = [];
-        const plan2Features = [];
-        
-        // Collect all features for plan 1
-        for (let i = 1; i <= 10; i++) {
-            const feature = getText(`pricing.plan1_feature${i}`, '');
-            if (feature && feature.trim()) {
-                plan1Features.push(feature);
-            }
-        }
-        
-        // Collect all features for plan 2
-        for (let i = 1; i <= 10; i++) {
-            const feature = getText(`pricing.plan2_feature${i}`, '');
-            if (feature && feature.trim()) {
-                plan2Features.push(feature);
-            }
-        }
-        
-        return [
-            {
-                name: getText('pricing.plan1_name', 'Pay As You Go'),
-                priceDisplay: getText('pricing.plan1_price', '5p - 10p'),
-                priceSubtext: getText('pricing.plan1_subtext', 'per order'),
-                description: getText('pricing.plan1_description', 'Perfect for businesses of any size. Only pay for what you use.'),
-                features: plan1Features,
-                highlighted: getText('pricing.plan1_highlighted', 'false') === 'true',
-                badge: getText('pricing.plan1_badge', ''),
-                buttonText: getText('pricing.plan1_button', 'Get Started'),
-                action: getText('pricing.plan1_action', 'scroll')
-            },
-            {
-                name: getText('pricing.plan2_name', 'Enterprise'),
-                priceDisplay: getText('pricing.plan2_price', 'Custom'),
-                priceSubtext: getText('pricing.plan2_subtext', 'pricing'),
-                description: getText('pricing.plan2_description', 'For larger businesses that need tailored solutions.'),
-                features: plan2Features,
-                highlighted: getText('pricing.plan2_highlighted', 'true') === 'true',
-                badge: getText('pricing.plan2_badge', 'BEST VALUE'),
-                buttonText: getText('pricing.plan2_button', 'Book a Call'),
-                action: getText('pricing.plan2_action', 'calendly')
-            }
-        ];
-    });
-    
-    onMounted(() => {
-        // Load Calendly popup widget script and CSS
-        const link = document.createElement('link');
-        link.href = 'https://assets.calendly.com/assets/external/widget.css';
-        link.rel = 'stylesheet';
-        document.head.appendChild(link);
-    
-        const script = document.createElement('script');
-        script.src = 'https://assets.calendly.com/assets/external/widget.js';
-        script.async = true;
-        document.head.appendChild(script);
-    });
-    
-    const handleClick = (plan) => {
-        if (plan.action === 'calendly') {
-            // Open Calendly popup
-            if (window.Calendly) {
-                window.Calendly.initPopupWidget({ url: calendlyUrl });
-            }
+import { onMounted, inject, computed } from 'vue';
+import { useReveal } from '@/Composables/useReveal';
+
+const getText = inject('getText', (key, fallback = '') => fallback);
+const { sectionRef, revealed } = useReveal();
+
+const calendlyUrl = 'https://calendly.com/contact-compengine/30min';
+
+function pt(key, fallback) {
+    return getText(`pricing.${key}`, fallback);
+}
+
+const eyebrow = computed(() => pt('eyebrow', 'Pricing'));
+const titleBefore = computed(() => pt('title_before', 'Two tiers.'));
+const titleKeyword = computed(() => pt('title_keyword', 'No tricks.'));
+const lead = computed(() => pt('lead', 'Pay 5–10p per order while you\'re growing. Switch to flat-rate Enterprise when volume makes it cheaper. Most operators make that switch at around 20,000 orders per month.'));
+
+const plans = computed(() => {
+    const plan1Features = [];
+    const plan2Features = [];
+
+    for (let i = 1; i <= 10; i++) {
+        const f = getText(`pricing.plan1_feature${i}`, '');
+        if (f && f.trim()) plan1Features.push(f);
+    }
+    if (plan1Features.length === 0) {
+        plan1Features.push(
+            'All game types — including Game Studio',
+            'Full analytics & reporting dashboard',
+            'Personalised onboarding handover',
+            'All future features included automatically',
+            '1–2 week average launch time',
+        );
+    }
+
+    for (let i = 1; i <= 10; i++) {
+        const f = getText(`pricing.plan2_feature${i}`, '');
+        if (f && f.trim()) plan2Features.push(f);
+    }
+    if (plan2Features.length === 0) {
+        plan2Features.push(
+            'Everything in Pay As You Go',
+            'Fixed monthly cost — no per-order charges',
+            'Dedicated account manager',
+            'Priority 24/7 support',
+            'Custom contract & SLA',
+        );
+    }
+
+    return [
+        {
+            name: pt('plan1_name', 'Pay As You Go'),
+            price: pt('plan1_price', '5–10p'),
+            priceSuffix: pt('plan1_price_suffix', '&nbsp;per order'),
+            priceSub: pt('plan1_subtext', 'No monthly minimum. Scale freely.'),
+            description: pt('plan1_description', 'Pay only when customers order. Perfect from first launch through to ~20k orders/month.'),
+            features: plan1Features,
+            popular: false,
+            badge: '',
+            buttonText: pt('plan1_button', 'Get started'),
+            action: pt('plan1_action', 'calendly'),
+        },
+        {
+            name: pt('plan2_name', 'Enterprise'),
+            price: pt('plan2_price', '£2,000'),
+            priceSuffix: pt('plan2_price_suffix', '&nbsp;/ month'),
+            priceSub: pt('plan2_subtext', 'or starts at 5p / order — whichever is lower.'),
+            description: pt('plan2_description', 'A flat rate that makes financial planning simple. Locked in when volume means per-order is more expensive.'),
+            features: plan2Features,
+            popular: true,
+            badge: pt('plan2_badge', 'Most operators'),
+            buttonText: pt('plan2_button', 'Book a demo'),
+            action: pt('plan2_action', 'calendly'),
+        },
+    ];
+});
+
+onMounted(() => {
+    const link = document.createElement('link');
+    link.href = 'https://assets.calendly.com/assets/external/widget.css';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.head.appendChild(script);
+});
+
+function handleClick(plan) {
+    if (plan.action === 'calendly') {
+        if (window.Calendly) {
+            window.Calendly.initPopupWidget({ url: calendlyUrl });
         } else {
-            // Scroll to booking section
-            document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+            window.open(calendlyUrl, '_blank');
         }
-    };
-    </script>
-    
-    <template>
-        <section id="pricing" class="py-20 bg-[#161B22]">
-            <div class="container mx-auto px-4 sm:px-6">
-                <div v-if="!siteTexts.loading" class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
-                            <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
-                            <template v-else>{{ part.text }}</template>
-                        </template>
-                    </h2>
-                    <p class="text-lg text-gray-400">
-                        {{ getText('pricing.description', 'Choose the plan that\'s right for you.') }}
-                    </p>
-                </div>
-    
-                <!-- Loading fallback -->
-                <div v-else class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        <span class="keyword-animate">Simple, Transparent</span> Pricing
-                    </h2>
-                    <p class="text-lg text-gray-400">Choose the plan that's right for you.</p>
-                </div>
-    
-                <div class="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div
-                        v-for="(plan, index) in plans"
-                        :key="index"
-                        class="liquid-glass p-8 rounded-xl flex flex-col relative"
-                        :class="plan.highlighted ? 'border-2 border-pink-500' : ''"
-                    >
-                        <span
-                            v-if="plan.badge"
-                            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-pink-500 text-white text-xs font-bold px-4 py-1 rounded-full"
-                        >
-                            {{ plan.badge }}
-                        </span>
-    
-                        <h3 class="text-2xl font-semibold text-white">{{ plan.name }}</h3>
-                        <p class="text-gray-400 mt-2 mb-6">{{ plan.description }}</p>
-                        <div class="mb-6">
-                            <span class="text-5xl font-bold text-white">{{ plan.priceDisplay }}</span>
-                            <span class="text-gray-400 ml-1">{{ plan.priceSubtext }}</span>
-                        </div>
-                        <ul class="space-y-3 mb-8 flex-grow">
-                            <li
-                                v-for="(feature, fIndex) in plan.features"
-                                :key="fIndex"
-                                class="flex items-start text-gray-300"
-                            >
-                                <svg class="w-5 h-5 mr-2 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                {{ feature }}
-                            </li>
-                        </ul>
-                        <button
-                            @click="handleClick(plan)"
-                            class="w-full py-3 rounded-lg font-semibold transition-all"
-                            :class="plan.highlighted
-                                ? 'bg-pink-500 text-white hover:bg-pink-600 glow-button'
-                                : 'bg-gray-700 text-white hover:bg-gray-600'"
-                        >
-                            {{ plan.buttonText }}
-                        </button>
-                    </div>
-                </div>
+    } else {
+        document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+</script>
+
+<template>
+    <section ref="sectionRef" class="section reveal" :class="{ visible: revealed }" id="pricing">
+        <div class="center">
+            <div class="eyebrow"><span class="dot"></span>{{ eyebrow }}</div>
+            <h2 class="h2">{{ titleBefore }} <span class="grad-text">{{ titleKeyword }}</span></h2>
+            <p class="lead center" style="margin: 18px auto 0;">{{ lead }}</p>
+        </div>
+
+        <div class="pricing-grid">
+            <div
+                v-for="(plan, idx) in plans"
+                :key="idx"
+                class="price-card"
+                :class="{ popular: plan.popular }"
+            >
+                <div v-if="plan.badge" class="price-tag">{{ plan.badge }}</div>
+                <h3>{{ plan.name }}</h3>
+                <p style="font-size:13px; color:var(--text-3); margin:6px 0 0;">{{ plan.description }}</p>
+                <div class="price"><span v-html="plan.price + plan.priceSuffix"></span></div>
+                <div class="price-tag-sub">{{ plan.priceSub }}</div>
+                <ul>
+                    <li v-for="(feat, fi) in plan.features" :key="fi">{{ feat }}</li>
+                </ul>
+                <button class="btn btn-orange" style="width:100%;" @click="handleClick(plan)">{{ plan.buttonText }}</button>
             </div>
-        </section>
-    </template>
+        </div>
+    </section>
+</template>

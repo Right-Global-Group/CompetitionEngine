@@ -1,113 +1,52 @@
 <script setup>
-    import { inject, computed } from 'vue';
-    
-    const getText = inject('getText', (key, fallback = '') => fallback);
-    const siteTexts = inject('siteTexts');
-    
-    // Get heading parts
-    const headingParts = computed(() => {
-        const parts = [];
-        
-        const before = getText('ai.heading_before', 'The Future is');
-        const keyword = getText('ai.heading_keyword', 'AI-Powered');
-        const after = getText('ai.heading_after', '');
-        
-        if (before && before.trim()) {
-            parts.push({ text: before + ' ', isKeyword: false });
-        }
-        
-        if (keyword && keyword.trim()) {
-            parts.push({ text: keyword, isKeyword: true });
-        }
-        
-        if (after && after.trim()) {
-            parts.push({ text: ' ' + after, isKeyword: false });
-        }
-        
-        return parts;
-    });
-    
-    const features = [
-        {
-            title: 'Smarter Analytics',
-            description: 'Get actionable recommendations to improve performance.'
-        },
-        {
-            title: 'Smarter Marketing',
-            description: 'AI-driven insights to optimize your campaigns.'
-        },
-        {
-            title: 'AI Image Generation',
-            description: 'Create stunning competition visuals without a designer.'
-        },
-        {
-            title: 'AI Content Assist',
-            description: 'Generate compelling descriptions in seconds.'
-        }
-    ];
-    </script>
-    
-    <template>
-        <section id="ai-features" class="py-20">
-            <div v-if="!siteTexts.loading" class="container mx-auto px-4 sm:px-6 relative text-center">
-                <div class="absolute top-0 left-6 -mt-8 -ml-2 md:left-80">
-                    <span class="inline-flex items-center px-4 py-2 bg-yellow-400 text-yellow-900 text-sm font-bold rounded-full -rotate-12">
-                        COMING SOON
-                    </span>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                    <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
-                        <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
-                        <template v-else>{{ part.text }}</template>
-                    </template>
-                </h2>
-                <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-8">
-                    {{ getText('ai.description', 'Supercharge your competition site with the first AI-powered platform. Get ready for smarter analytics, automated marketing, and effortless content creation.') }}
-                </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                    <div 
-                        v-for="(feature, index) in features"
-                        :key="index"
-                        class="liquid-glass p-6 rounded-xl"
-                    >
-                        <h3 class="font-semibold text-white mb-2">{{ feature.title }}</h3>
-                        <p class="text-sm text-gray-400 coming-soon-blur">{{ feature.description }}</p>
-                    </div>
+import { inject, computed } from 'vue';
+import { useReveal } from '@/Composables/useReveal';
+
+const getText = inject('getText', (key, fallback = '') => fallback);
+const { sectionRef, revealed } = useReveal();
+
+function at(key, fallback) {
+    return getText(`ai.${key}`, fallback);
+}
+
+const eyebrow = computed(() => at('eyebrow', 'What\'s coming next'));
+const titleBefore = computed(() => at('title_before', 'The AI roadmap is'));
+const titleKeyword = computed(() => at('title_keyword', 'already being built.'));
+const lead = computed(() => at('lead', 'We\'re integrating machine learning into the parts of your business that move money: demand forecasting, customer segmentation, revenue attribution. Public release in phases — existing operators get every feature automatically.'));
+
+const AI_CARDS = [
+    { emoji: '🤖', title: at('card1_title', 'Demand Forecasting'), text: at('card1_text', 'Predict ticket demand per draw type, adjusting prize structures before you publish.') },
+    { emoji: '🎯', title: at('card2_title', 'Smart Targeting'), text: at('card2_text', 'Segment customers by lifetime value and re-engage with dynamically generated offers.') },
+    { emoji: '📊', title: at('card3_title', 'Revenue Insights'), text: at('card3_text', 'ML-attributed revenue per game type, acquisition channel, and promotional mechanic.') },
+    { emoji: '✍️', title: at('card4_title', 'AI Content Assist'), text: at('card4_text', 'Competition titles, rules copy, and email subject lines — generated and A/B tested automatically.') },
+];
+</script>
+
+<template>
+    <section ref="sectionRef" class="section reveal" :class="{ visible: revealed }">
+        <div class="ai-block">
+            <div class="center">
+                <div class="eyebrow"><span class="dot"></span>{{ eyebrow }}</div>
+                <h2 class="h2">{{ titleBefore }} <span class="grad-text">{{ titleKeyword }}</span></h2>
+                <p class="lead center" style="margin: 14px auto 0;">{{ lead }}</p>
+            </div>
+            <div class="ai-grid">
+                <div v-for="(card, i) in AI_CARDS" :key="i" class="ai-card">
+                    <div class="ai-emoji">{{ card.emoji }}</div>
+                    <h5>{{ card.title }}</h5>
+                    <p class="ai-card-text">{{ card.text }}</p>
                 </div>
             </div>
-    
-            <!-- Loading fallback -->
-            <div v-else class="container mx-auto px-4 sm:px-6 relative text-center">
-                <div class="absolute top-0 right-0 -mt-8 -mr-8">
-                    <span class="inline-flex items-center px-4 py-2 bg-yellow-400 text-yellow-900 text-sm font-bold rounded-full -rotate-12">
-                        COMING SOON
-                    </span>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                    The Future is <span class="keyword-animate">AI-Powered</span>
-                </h2>
-                <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-8">
-                    Supercharge your competition site with the first AI-powered platform. Get ready for smarter analytics, automated marketing, and effortless content creation.
-                </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                    <div 
-                        v-for="(feature, index) in features"
-                        :key="index"
-                        class="liquid-glass p-6 rounded-xl"
-                    >
-                        <h3 class="font-semibold text-white mb-2">{{ feature.title }}</h3>
-                        <p class="text-sm text-gray-400 coming-soon-blur">{{ feature.description }}</p>
-                    </div>
-                </div>
+            <div style="text-align:center; margin-top:30px;">
+                <span class="price-tag" style="position:static; display:inline-block;">COMING SOON — included for all operators</span>
             </div>
-        </section>
-    </template>
-    
-    <style scoped>
-    .coming-soon-blur {
-        filter: blur(4px);
-        opacity: 0.6;
-        pointer-events: none;
-        user-select: none;
-    }
-    </style>
+        </div>
+    </section>
+</template>
+
+<style scoped>
+.ai-card-text {
+    font-size: 13px; color: var(--text-3); margin-top: 6px; line-height: 1.5;
+    filter: blur(3.5px); opacity: 0.7; pointer-events: none; user-select: none;
+}
+</style>

@@ -1,118 +1,290 @@
 <script setup>
-    import { inject, computed } from 'vue';
-    
-    const getText = inject('getText', (key, fallback = '') => fallback);
-    const siteTexts = inject('siteTexts');
-    
-    // Get heading parts
-    const headingParts = computed(() => {
-        const parts = [];
-        
-        const before = getText('ecosystem.heading_before', 'Your Complete');
-        const keyword = getText('ecosystem.heading_keyword', 'Raffle Ecosystem');
-        const after = getText('ecosystem.heading_after', '');
-        
-        if (before && before.trim()) {
-            parts.push({ text: before + ' ', isKeyword: false });
-        }
-        
-        if (keyword && keyword.trim()) {
-            parts.push({ text: keyword, isKeyword: true });
-        }
-        
-        if (after && after.trim()) {
-            parts.push({ text: ' ' + after, isKeyword: false });
-        }
-        
-        return parts;
-    });
-    
-    // Computed properties for each feature card
-    const features = computed(() => [
-        {
-            icon: getText('ecosystem.feature1_icon', '💳'),
-            title: getText('ecosystem.feature1_title', 'Compliant Payments'),
-            description: getText('ecosystem.feature1_description', 'Navigate complex regulations with our pre-approved payment providers, ensuring smooth, secure transactions without the usual hurdles.')
-        },
-        {
-            icon: getText('ecosystem.feature2_icon', '🏦'),
-            title: getText('ecosystem.feature2_title', 'Simplified Banking'),
-            description: getText('ecosystem.feature2_description', 'Leverage our established relationships with approved banks for straightforward and hassle-free financial management from day one.')
-        },
-        {
-            icon: getText('ecosystem.feature3_icon', '⚖️'),
-            title: getText('ecosystem.feature3_title', 'Legal Framework'),
-            description: getText('ecosystem.feature3_description', 'Launch with confidence. We provide comprehensive, lawyer-approved terms and conditions to ensure your site meets all necessary regulations.')
-        },
-        {
-            icon: getText('ecosystem.feature4_icon', '📱'),
-            title: getText('ecosystem.feature4_title', 'Native iOS & Android Apps'),
-            description: getText('ecosystem.feature4_description', 'Maximise engagement and sales with dedicated mobile apps, featuring push notifications to keep your audience instantly updated.')
-        },
-        {
-            icon: getText('ecosystem.feature5_icon', '👍'),
-            title: getText('ecosystem.feature5_title', 'Social Ad-Ready'),
-            description: getText('ecosystem.feature5_description', 'Expand your reach with our expert guidance on meeting Facebook\'s strict advertising requirements, unlocking a massive audience.')
-        },
-        {
-            icon: getText('ecosystem.feature6_icon', '⚡'),
-            title: getText('ecosystem.feature6_title', 'Instant Wins'),
-            description: getText('ecosystem.feature6_description', 'Amplify excitement and drive repeat sales with our highly popular instant win feature, keeping customers engaged between main draws.')
-        },
-        {
-            icon: getText('ecosystem.feature7_icon', '📱'),
-            title: getText('ecosystem.feature7_title', 'Native iOS & Android Apps'),
-            description: getText('ecosystem.feature7_description', 'Maximise engagement and sales with dedicated mobile apps, featuring push notifications to keep your audience instantly updated.')
-        },
-        {
-            icon: getText('ecosystem.feature8_icon', '👍'),
-            title: getText('ecosystem.feature8_title', 'Social Ad-Ready'),
-            description: getText('ecosystem.feature8_description', 'Expand your reach with our expert guidance on meeting Facebook\'s strict advertising requirements, unlocking a massive audience.')
-        },
-        {
-            icon: getText('ecosystem.feature9_icon', '⚡'),
-            title: getText('ecosystem.feature9_title', 'Instant Wins'),
-            description: getText('ecosystem.feature9_description', 'Amplify excitement and drive repeat sales with our highly popular instant win feature, keeping customers engaged between main draws.')
-        }
-    ]);
-    </script>
-    
-    <template>
-        <section id="ecosystem" class="py-20">
-            <div class="container mx-auto px-4 sm:px-6">
-                <div v-if="!siteTexts.loading" class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
-                            <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
-                            <template v-else>{{ part.text }}</template>
-                        </template>
-                    </h2>
-                    <p class="text-lg text-gray-400 max-w-3xl mx-auto">
-                        {{ getText('ecosystem.description', 'We provide the essential infrastructure to launch, operate, and scale your raffle business, all in one place.') }}
-                    </p>
-                </div>
-    
-                <!-- Loading fallback -->
-                <div v-else class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        Your Complete <span class="keyword-animate">Raffle Ecosystem</span>
-                    </h2>
-                    <p class="text-lg text-gray-400 max-w-3xl mx-auto">
-                        We provide the essential infrastructure to launch, operate, and scale your raffle business, all in one place.
-                    </p>
-                </div>
-    
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                    <div 
-                        v-for="(feature, index) in features"
-                        :key="index"
-                        class="liquid-glass rounded-xl p-6 feature-card"
-                    >
-                        <div class="text-5xl mb-4">{{ feature.icon }}</div>
-                        <h3 class="text-xl font-bold text-white mb-3">{{ feature.title }}</h3>
-                        <p class="text-gray-400">{{ feature.description }}</p>
+import { inject, computed, ref, onUnmounted } from 'vue';
+import { useReveal } from '@/Composables/useReveal';
+import { popConfettiFromEvent } from '@/Composables/useConfettiPop';
+
+const getText = inject('getText', (key, fallback = '') => fallback);
+const { sectionRef, revealed } = useReveal();
+
+const eyebrow = computed(() => getText('ecosystem.eyebrow', 'Your complete raffle ecosystem'));
+const titleBefore = computed(() => getText('ecosystem.title_before', 'Everything you need.'));
+const titleKeyword = computed(() => getText('ecosystem.title_keyword', 'Nine modules. Zero plugins.'));
+const lead = computed(() => getText('ecosystem.lead', 'Built ground-up over five years of operating — not duct-taped from generic e-commerce plugins. Click any module for the operator-side detail.'));
+const gridLureText = computed(() => getText('ecosystem.grid_lure_text', 'Tap any card for more detail'));
+
+const badgeHero = computed(() => getText('ecosystem.badge_hero', '✦ Only on CompEngine ✦'));
+const badgeInteractive = computed(() => getText('ecosystem.badge_interactive', '✦ Hands-on demo ✦'));
+const badgeStandard = computed(() => getText('ecosystem.badge_standard', 'Only on CompEngine'));
+
+const features = computed(() => [
+    {
+        size: 'hero', mini: 'slot', featured: true, badge: badgeHero.value,
+        icon: getText('ecosystem.feat_gamestudio_icon', '🎮'),
+        title: getText('ecosystem.feat_gamestudio_title', 'Game Studio — design your own instant-win games'),
+        text: getText('ecosystem.feat_gamestudio_text', 'Build and preview competition games in real time. Theme, brand, inventory, button text — every detail, live. No developers, no delays, no limits. The only studio of its kind in the UK competition category.'),
+        more: getText('ecosystem.feat_gamestudio_more', '🎮 Try it live below'),
+    },
+    {
+        size: 'wide', mini: 'wallet', featured: true, badge: badgeStandard.value,
+        icon: getText('ecosystem.feat_wallets_icon', '💵'),
+        title: getText('ecosystem.feat_wallets_title', 'Separate Cash & Site-Credit Wallets'),
+        text: getText('ecosystem.feat_wallets_text', 'Two wallets, not one. Cash on one side. Site credit on the other. Clearer for operators, cleaner for compliance, simpler for chargebacks. Single-wallet platforms quietly mix everything together.'),
+        more: getText('ecosystem.feat_wallets_more', 'Why we built it this way →'),
+    },
+    {
+        size: 'wide', mini: 'compliance', featured: true, badge: badgeStandard.value,
+        icon: getText('ecosystem.feat_compliance_icon', '📝'),
+        title: getText('ecosystem.feat_compliance_title', 'Free Entry Compliance & Management'),
+        text: getText('ecosystem.feat_compliance_text', 'Built-in free-entry system designed to meet UK compliance requirements end-to-end. Full tracking, full management, full audit trail. No manual handling. No workarounds.'),
+        more: getText('ecosystem.feat_compliance_more', 'See VCOC alignment →'),
+    },
+    {
+        size: 'interactive', mini: 'upsell', featured: true, badge: badgeInteractive.value,
+        icon: getText('ecosystem.feat_upsell_icon', '📱🚀'),
+        title: getText('ecosystem.feat_upsell_title', 'Smart Upsell — built into every checkout'),
+        text: getText('ecosystem.feat_upsell_text', 'Triggers automatically at the exact right point in the buy flow. Adds an average +£23 to every ticket order. 87% of buyers take the offer. Click "Pay" on the right to see it fire — exactly as your customers will.'),
+        more: getText('ecosystem.feat_upsell_more', 'Click Pay below to test it →'),
+    },
+    {
+        size: 'std', mini: 'bars', featured: false,
+        icon: getText('ecosystem.feat_reporting_icon', '👍📈'),
+        title: getText('ecosystem.feat_reporting_title', 'Best-in-class reporting'),
+        text: getText('ecosystem.feat_reporting_text', 'Detailed insights on order patterns, customer LTV, prize cost, P&L per competition.'),
+        more: getText('ecosystem.feat_reporting_more', 'See the dashboard →'),
+    },
+    {
+        size: 'std', mini: null, featured: false,
+        icon: getText('ecosystem.feat_builder_icon', '🏗️'),
+        title: getText('ecosystem.feat_builder_title', 'Competition Builder'),
+        text: getText('ecosystem.feat_builder_text', 'Create once, save templates, launch faster every time.'),
+        more: getText('ecosystem.feat_builder_more', 'See template library →'),
+    },
+    {
+        size: 'std', mini: null, featured: false,
+        icon: getText('ecosystem.feat_payouts_icon', '⚡'),
+        title: getText('ecosystem.feat_payouts_title', 'Automated Payouts & Prize Management'),
+        text: getText('ecosystem.feat_payouts_text', 'Winner choice → instant cash, site credit, or tracked prize fulfilment. End-to-end automated.'),
+        more: getText('ecosystem.feat_payouts_more', 'See the prize flow →'),
+    },
+    {
+        size: 'std', mini: null, featured: false,
+        icon: getText('ecosystem.feat_rng_icon', '✅'),
+        title: getText('ecosystem.feat_rng_title', 'RNG-Certified Draws'),
+        text: getText('ecosystem.feat_rng_text', 'GLI-certified RNG. Every result independently verifiable, full audit trail, live-stream mode.'),
+        more: getText('ecosystem.feat_rng_more', 'See the certification →'),
+    },
+    {
+        size: 'std', mini: null, featured: false,
+        icon: getText('ecosystem.feat_notify_icon', '📱🔔'),
+        title: getText('ecosystem.feat_notify_title', 'Built-in Notifications'),
+        text: getText('ecosystem.feat_notify_text', 'Winner alerts, customer updates, direct marketing — no third-party email tool to wire up.'),
+        more: getText('ecosystem.feat_notify_more', 'See the message flow →'),
+    },
+]);
+
+/* ============== Card press feedback ============== */
+const pressedIdx = ref(null);
+function pulseCard(idx) {
+    pressedIdx.value = idx;
+    setTimeout(() => { if (pressedIdx.value === idx) pressedIdx.value = null; }, 150);
+}
+
+/* ============== Mini slot (Game Studio hero card) ============== */
+const MINI_SYMBOLS = ['🍒', '🍋', '🍊', '🍇', '🔔', '⭐', '💎', '💰', '7️⃣', '🍉'];
+const miniSlotTitle = computed(() => getText('ecosystem.mini_slot_title', 'LUCKY SLOTS'));
+const miniSlotSub = computed(() => getText('ecosystem.mini_slot_sub', 'Match 3 to win'));
+const miniSlotSymbols = ref(rollMiniSlot());
+
+function rollMiniSlot() {
+    return Array.from({ length: 9 }, () => MINI_SYMBOLS[Math.floor(Math.random() * MINI_SYMBOLS.length)]);
+}
+
+function spinMini(event) {
+    miniSlotSymbols.value = rollMiniSlot();
+    popConfettiFromEvent(event);
+}
+
+const miniSlotInterval = setInterval(() => { miniSlotSymbols.value = rollMiniSlot(); }, 4000);
+onUnmounted(() => clearInterval(miniSlotInterval));
+
+/* ============== Wallet split bar ============== */
+const walletCashLabel = computed(() => getText('ecosystem.wallet_cash_label', 'Cash 68%'));
+const walletCreditLabel = computed(() => getText('ecosystem.wallet_credit_label', 'Credit 32%'));
+const walletWithdrawLabel = computed(() => getText('ecosystem.wallet_withdraw_label', 'Withdrawable'));
+const walletCashSub = computed(() => getText('ecosystem.wallet_cash_sub', 'Cash wallet'));
+const walletPromoLabel = computed(() => getText('ecosystem.wallet_promo_label', 'Promo / prize'));
+const walletCreditSub = computed(() => getText('ecosystem.wallet_credit_sub', 'Site credit'));
+
+/* ============== VCOC compliance stamp ============== */
+const vcocLabel = computed(() => getText('ecosystem.vcoc_label', 'UK Voluntary Code'));
+const vcocValue = computed(() => getText('ecosystem.vcoc_value', 'Mapped end-to-end · since May 2026'));
+
+/* ============== Mini bars chart ============== */
+const barHeights = [30, 42, 38, 55, 50, 72, 88, 100];
+const barsTrend = computed(() => getText('ecosystem.bars_trend', '↗ +34% MoM growth'));
+
+/* ============== Smart Upsell checkout demo ============== */
+const checkoutLabel = computed(() => getText('ecosystem.checkout_label', 'Your basket · STAR DRAWS'));
+const checkoutRow1Label = computed(() => getText('ecosystem.checkout_row1_label', 'Friday Cash Draw × 5'));
+const checkoutRow1Price = computed(() => getText('ecosystem.checkout_row1_price', '£10.00'));
+const checkoutRow2Label = computed(() => getText('ecosystem.checkout_row2_label', 'Instant Win — Scratch'));
+const checkoutRow2Price = computed(() => getText('ecosystem.checkout_row2_price', '£2.50'));
+const checkoutTotal = computed(() => getText('ecosystem.checkout_total', '£12.50'));
+const checkoutPayLabel = computed(() => getText('ecosystem.checkout_pay_label', 'Pay £12.50 →'));
+
+const upsellTitle = computed(() => getText('ecosystem.upsell_title', 'Wait — quick offer.'));
+const upsellDesc = computed(() => getText('ecosystem.upsell_desc', 'Add <strong>10 more tickets for just £8 extra</strong>. <strong>87%</strong> of buyers take this offer.'));
+const upsellYesLabel = computed(() => getText('ecosystem.upsell_yes_label', 'Add 10 · £20.50'));
+const upsellNoLabel = computed(() => getText('ecosystem.upsell_no_label', 'No thanks'));
+const upsellMeta = computed(() => getText('ecosystem.upsell_meta', 'A/B test winner · <strong>+38% AOV</strong> at checkout'));
+
+const upsellResultDefault = computed(() => getText('ecosystem.upsell_result_default', 'Click Pay above to see the upsell trigger →'));
+const upsellResultTriggered = computed(() => getText('ecosystem.upsell_result_triggered', 'Smart upsell modal triggered…'));
+const upsellResultWin = computed(() => getText('ecosystem.upsell_result_win', '🎉 Smart upsell live. Operator just banked an extra <strong>£8.00</strong>.'));
+const upsellResultNo = computed(() => getText('ecosystem.upsell_result_no', 'No worries — that\'s exactly the kind of choice we <strong>A/B test</strong> for our operators.'));
+const upsellResultRearm = computed(() => getText('ecosystem.upsell_result_rearm', 'Click Pay to see the upsell trigger'));
+
+const upsellShown = ref(false);
+const upsellResultWinState = ref(false);
+const upsellResultText = ref(upsellResultDefault.value);
+let upsellRearmTimer = null;
+
+function handlePay() {
+    upsellShown.value = true;
+    upsellResultWinState.value = false;
+    upsellResultText.value = upsellResultTriggered.value;
+}
+
+function handlePick(pick, event) {
+    upsellShown.value = false;
+    if (pick === 'yes') {
+        upsellResultWinState.value = true;
+        upsellResultText.value = upsellResultWin.value;
+        popConfettiFromEvent(event);
+    } else {
+        upsellResultWinState.value = false;
+        upsellResultText.value = upsellResultNo.value;
+    }
+    clearTimeout(upsellRearmTimer);
+    upsellRearmTimer = setTimeout(() => {
+        upsellResultWinState.value = false;
+        upsellResultText.value = upsellResultRearm.value;
+    }, 6000);
+}
+
+onUnmounted(() => clearTimeout(upsellRearmTimer));
+</script>
+
+<template>
+    <section ref="sectionRef" class="section reveal" :class="{ visible: revealed }" id="ecosystem">
+        <div class="center">
+            <div class="eyebrow"><span class="dot"></span>{{ eyebrow }}</div>
+            <h2 class="h2">{{ titleBefore }}<br /><span class="grad-text">{{ titleKeyword }}</span></h2>
+            <p class="lead center" style="margin: 18px auto 0;">{{ lead }}</p>
+        </div>
+
+        <div class="feature-grid">
+            <div
+                v-for="(f, idx) in features"
+                :key="idx"
+                :class="['feature-card', f.size, { featured: f.featured, pressed: pressedIdx === idx }]"
+                @click="pulseCard(idx)"
+            >
+                <!-- HERO: Game Studio -->
+                <template v-if="f.size === 'hero'">
+                    <div>
+                        <span v-if="f.featured" class="badge" style="position:relative; top:0; right:0; display:inline-block; margin-bottom:14px;">{{ f.badge }}</span>
+                        <span class="icon">{{ f.icon }}</span>
+                        <h4>{{ f.title }}</h4>
+                        <p>{{ f.text }}</p>
+                        <a href="#game-studio" class="more">{{ f.more }}</a>
                     </div>
-                </div>
+                    <div>
+                        <div class="mini-slot-preview">
+                            <div class="mini-slot-title">{{ miniSlotTitle }}</div>
+                            <div class="mini-slot-sub">{{ miniSlotSub }}</div>
+                            <div class="mini-slot-grid">
+                                <div v-for="(sym, i) in miniSlotSymbols" :key="i" class="mini-slot-cell">{{ sym }}</div>
+                            </div>
+                            <button class="mini-spin" @click.stop="spinMini">SPIN</button>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- INTERACTIVE: Smart Upsell -->
+                <template v-else-if="f.size === 'interactive'">
+                    <div>
+                        <span v-if="f.featured" class="badge" style="position:relative; top:0; right:0; display:inline-block; margin-bottom:14px;">{{ f.badge }}</span>
+                        <span class="icon">{{ f.icon }}</span>
+                        <h4>{{ f.title }}</h4>
+                        <p>{{ f.text }}</p>
+                        <span class="more">{{ f.more }}</span>
+                    </div>
+                    <div>
+                        <div class="checkout-mock">
+                            <div class="checkout-mock-label">{{ checkoutLabel }}</div>
+                            <div class="checkout-row"><span>{{ checkoutRow1Label }}</span><span class="v">{{ checkoutRow1Price }}</span></div>
+                            <div class="checkout-row"><span>{{ checkoutRow2Label }}</span><span class="v">{{ checkoutRow2Price }}</span></div>
+                            <div class="checkout-row total"><span>Total</span><span class="v">{{ checkoutTotal }}</span></div>
+                            <button class="checkout-btn" @click="handlePay">{{ checkoutPayLabel }}</button>
+                            <div class="upsell-modal" :class="{ shown: upsellShown }">
+                                <div class="upsell-modal-icon">🎁</div>
+                                <div class="upsell-modal-title">{{ upsellTitle }}</div>
+                                <div class="upsell-modal-desc" v-html="upsellDesc"></div>
+                                <div class="upsell-modal-buttons">
+                                    <button class="upsell-btn primary" @click="handlePick('yes', $event)">{{ upsellYesLabel }}</button>
+                                    <button class="upsell-btn secondary" @click="handlePick('no', $event)">{{ upsellNoLabel }}</button>
+                                </div>
+                                <div class="upsell-meta" v-html="upsellMeta"></div>
+                            </div>
+                        </div>
+                        <div class="upsell-result-inline" :class="{ win: upsellResultWinState }" v-html="upsellResultText"></div>
+                    </div>
+                </template>
+
+                <!-- WIDE / STD cards -->
+                <template v-else>
+                    <span v-if="f.featured" class="badge">{{ f.badge }}</span>
+                    <span class="icon">{{ f.icon }}</span>
+                    <h4>{{ f.title }}</h4>
+                    <p>{{ f.text }}</p>
+
+                    <template v-if="f.mini === 'wallet'">
+                        <div class="wallet-split" :class="{ animate: revealed }">
+                            <div class="wallet-seg cash">{{ walletCashLabel }}</div>
+                            <div class="wallet-seg credit">{{ walletCreditLabel }}</div>
+                        </div>
+                        <div class="wallet-labels">
+                            <span><strong>{{ walletWithdrawLabel }}</strong> · {{ walletCashSub }}</span>
+                            <span><strong>{{ walletPromoLabel }}</strong> · {{ walletCreditSub }}</span>
+                        </div>
+                    </template>
+
+                    <div v-else-if="f.mini === 'compliance'" class="vcoc-stamp">
+                        <div class="tick">✓</div>
+                        <div>
+                            <div class="vcoc-stamp-label">{{ vcocLabel }}</div>
+                            <div class="vcoc-stamp-value">{{ vcocValue }}</div>
+                        </div>
+                    </div>
+
+                    <template v-else-if="f.mini === 'bars'">
+                        <div class="mini-bars" :class="{ animate: revealed }">
+                            <div v-for="(h, i) in barHeights" :key="i" :style="{ height: h + '%' }"></div>
+                        </div>
+                        <div class="chart-trend" style="margin-top:8px; display:inline-flex; align-items:center; gap:4px; font-size:12px; font-weight:700; color:var(--orange);">{{ barsTrend }}</div>
+                    </template>
+
+                    <div class="more">{{ f.more }}</div>
+                </template>
             </div>
-        </section>
-    </template>
+        </div>
+        <div class="grid-lure"><span class="arr">👆</span>&nbsp;&nbsp;{{ gridLureText }}&nbsp;&nbsp;<span class="arr">👆</span></div>
+    </section>
+</template>
+
+<style scoped>
+.feature-card.pressed {
+    transform: scale(0.985);
+}
+</style>

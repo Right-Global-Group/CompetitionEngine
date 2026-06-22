@@ -100,6 +100,7 @@ const logout = () => {
                     <button @click="scrollToSection('pricing')" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Pricing</button>
                     <button @click="scrollToSection('faq')" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">FAQ</button>
                     <a href="/about" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">About</a>
+                    <a href="/blog" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Blog</a>
                     <a href="/contact" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Contact</a>
                 </nav>
 
@@ -211,6 +212,7 @@ const logout = () => {
                     <button @click="scrollToSection('pricing')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Pricing</button>
                     <button @click="scrollToSection('faq')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">FAQ</button>
                     <a href="/about" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">About</a>
+                    <a href="/blog" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Blog</a>
                     <a href="/contact" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Contact</a>
                     
                     <!-- User Section (Mobile) -->
