@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Api\FeatureRequestController;
 use App\Http\Controllers\Api\SiteTextController;
 use App\Http\Controllers\Api\TenantFeeReportController;
 use App\Http\Controllers\Api\TenantMessagesController;
+use App\Http\Controllers\ChangelogController;
 use App\Http\Controllers\ContactSubmissionController;
 use App\Http\Controllers\DocumentationController;
 use App\Http\Controllers\ProfileController;
@@ -39,6 +41,8 @@ Route::get('/contact', function () {
     return Inertia::render('Contact');
 })->name('contact');
 
+Route::get('/changelog', [ChangelogController::class, 'index'])->name('changelog');
+
 // Profile routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -65,6 +69,9 @@ Route::prefix('api')->group(function () {
 
     // Tenant fee reporting — tenants POST daily fee totals here
     Route::post('/fees/report', [TenantFeeReportController::class, 'store']);
+
+    // Feature / improvement requests — tenant admins POST suggestions here
+    Route::post('/feature-requests', [FeatureRequestController::class, 'store']);
 });
 
 // Custom Filament logout route
