@@ -9627,7 +9627,6 @@ const _sfc_main$v = {
       { label: "Podium", emoji: "🏆", cls: "bl-rounded" },
       { label: "CrazyCat", cls: "bl-script" },
       { label: "Padel Comps" },
-      { label: "PhatLads", img: "/images/tenant-icons/phatlads.png", color: "#FF1F1F", large: true, imgSize: 64 },
       { label: "Belter Competition", color: "#ffffff" },
       { label: "Prize Hunter Competitions", color: "#ffffff" }
     ];

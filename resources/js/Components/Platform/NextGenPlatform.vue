@@ -275,10 +275,7 @@ function spawnActivity() {
     const val = a.v[Math.floor(Math.random() * a.v.length)];
     const time = TIME_OFFSETS[Math.floor(Math.random() * TIME_OFFSETS.length)];
     const id = ++activityIdCounter;
-    activityItems.value.push({ id, icon: a.icon, name, verb, val, suffix: a.suffix, brand, time });
-    setTimeout(() => {
-        activityItems.value = activityItems.value.filter((item) => item.id !== id);
-    }, 14500);
+    activityItems.value = [{ id, icon: a.icon, name, verb, val, suffix: a.suffix, brand, time }];
 }
 
 function startTicker() {

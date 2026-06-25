@@ -126,5 +126,6 @@ return [
 
     'documentation_password' => env('DOCUMENTATION_PASSWORD', ''),
     'changelog_password'     => env('CHANGELOG_PASSWORD', ''),
+    'dev_docs_password'      => env('DEV_DOCS_PASSWORD', ''),
 
 ];

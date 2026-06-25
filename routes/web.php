@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\SiteTextController;
 use App\Http\Controllers\Api\TenantFeeReportController;
 use App\Http\Controllers\Api\TenantMessagesController;
 use App\Http\Controllers\ContactSubmissionController;
+use App\Http\Controllers\DevDocsController;
 use App\Http\Controllers\DocumentationController;
 use App\Http\Controllers\ProfileController;
 use App\Models\BlogPost;
@@ -81,6 +82,11 @@ Route::post('/filament-logout', function () {
     
     return redirect('/')->with('status', 'Logged out successfully');
 })->name('filament.logout')->middleware('web');
+
+// Developer Docs — super-super-admin only, password-protected
+Route::get('/dev-docs/unlock', [DevDocsController::class, 'password'])->name('dev-docs.password');
+Route::post('/dev-docs/unlock', [DevDocsController::class, 'unlock'])->name('dev-docs.unlock');
+Route::get('/dev-docs/{slug}', [DevDocsController::class, 'show'])->name('dev-docs.show');
 
 // Docs — password wall (these routes are always visible so the form works)
 Route::get('/docs/unlock', [DocumentationController::class, 'password'])->name('docs.password');

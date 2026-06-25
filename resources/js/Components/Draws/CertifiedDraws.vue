@@ -156,7 +156,7 @@ async function copyToClipboard(text) {
         </div>
 
         <div class="draws-grid">
-            <div v-for="(draw, drawIdx) in DRAWS" :key="drawIdx" class="draw-card">
+            <div v-for="(draw, drawIdx) in DRAWS" :key="drawIdx" class="draw-card" :class="drawIdx >= 3 ? 'draw-card--hidden-desktop' : drawIdx >= 1 ? 'draw-card--hidden-mobile' : ''">
                 <div :class="['draw-image', draw.image]">
                     <span class="draw-image-emoji">{{ draw.emoji }}</span>
                     <div class="draw-image-label">{{ draw.label }}</div>

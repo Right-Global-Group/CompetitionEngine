@@ -2,6 +2,7 @@
 import { inject, computed, ref, onUnmounted } from 'vue';
 import { useReveal } from '@/Composables/useReveal';
 import { popConfettiFromEvent } from '@/Composables/useConfettiPop';
+import SlotsGame from '@/Components/Games/SlotsGame.vue';
 
 const getText = inject('getText', (key, fallback = '') => fallback);
 const { sectionRef, revealed } = useReveal();
@@ -89,23 +90,25 @@ function pulseCard(idx) {
     setTimeout(() => { if (pressedIdx.value === idx) pressedIdx.value = null; }, 150);
 }
 
-/* ============== Mini slot (Game Studio hero card) ============== */
-const MINI_SYMBOLS = ['🍒', '🍋', '🍊', '🍇', '🔔', '⭐', '💎', '💰', '7️⃣', '🍉'];
-const miniSlotTitle = computed(() => getText('ecosystem.mini_slot_title', 'LUCKY SLOTS'));
-const miniSlotSub = computed(() => getText('ecosystem.mini_slot_sub', 'Match 3 to win'));
-const miniSlotSymbols = ref(rollMiniSlot());
-
-function rollMiniSlot() {
-    return Array.from({ length: 9 }, () => MINI_SYMBOLS[Math.floor(Math.random() * MINI_SYMBOLS.length)]);
-}
-
-function spinMini(event) {
-    miniSlotSymbols.value = rollMiniSlot();
-    popConfettiFromEvent(event);
-}
-
-const miniSlotInterval = setInterval(() => { miniSlotSymbols.value = rollMiniSlot(); }, 4000);
-onUnmounted(() => clearInterval(miniSlotInterval));
+/* ============== Slots demo assets for the hero card ============== */
+const demoSlotsAssets = {
+    titleText: 'LUCKY SLOTS',
+    titleColor: '#00FFFF',
+    primaryColor: '#00CED1',
+    secondaryColor: '#1a5a7a',
+    accentColor: '#00FFFF',
+    textColor: '#FFFFFF',
+    machineBgColor: '#1a5a7a',
+    matchTextColor: '#7FDBFF',
+    inventoryEmoji: '🎣',
+    inventoryButtonColor: '#FFD700',
+    prizesModalBgColor: '#1F2937',
+    prizesTitleColor: '#FFD700',
+    prizesCardBorderColor: '#FFD700',
+    prizesCardBgColor: '#374151',
+    prizesValueColor: '#10B981',
+    titleImage: '', background: '', spinButtonImage: '', machineImage: '', footerImage: '', header: '',
+};
 
 /* ============== Wallet split bar ============== */
 const walletCashLabel = computed(() => getText('ecosystem.wallet_cash_label', 'Cash 68%'));
@@ -199,15 +202,8 @@ onUnmounted(() => clearTimeout(upsellRearmTimer));
                         <p>{{ f.text }}</p>
                         <a href="#game-studio" class="more">{{ f.more }}</a>
                     </div>
-                    <div>
-                        <div class="mini-slot-preview">
-                            <div class="mini-slot-title">{{ miniSlotTitle }}</div>
-                            <div class="mini-slot-sub">{{ miniSlotSub }}</div>
-                            <div class="mini-slot-grid">
-                                <div v-for="(sym, i) in miniSlotSymbols" :key="i" class="mini-slot-cell">{{ sym }}</div>
-                            </div>
-                            <button class="mini-spin" @click.stop="spinMini">SPIN</button>
-                        </div>
+                    <div class="slots-demo-wrapper" @click.stop>
+                        <SlotsGame :demoMode="true" previewMode="desktop" :slotsAssets="demoSlotsAssets" :showMachine="true" />
                     </div>
                 </template>
 
@@ -286,5 +282,18 @@ onUnmounted(() => clearTimeout(upsellRearmTimer));
 <style scoped>
 .feature-card.pressed {
     transform: scale(0.985);
+}
+.slots-demo-wrapper {
+    width: 100%;
+    max-height: 340px;
+    overflow: hidden;
+    border-radius: 12px;
+    transform-origin: top center;
+    transform: scale(0.7);
+    margin-top: -10%;
+    pointer-events: none;
+}
+@media (max-width: 900px) {
+    .slots-demo-wrapper { transform: scale(0.6); margin-top: -18%; }
 }
 </style>

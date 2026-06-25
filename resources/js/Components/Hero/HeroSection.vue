@@ -112,3 +112,39 @@ watch(() => siteTexts.loading, (loading) => {
         </div>
     </section>
 </template>
+
+
+
+<style scoped>
+@media (max-width: 820px) {
+    .trust-bar {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-inline: auto !important;
+        justify-content: center !important;
+        justify-items: center !important;
+        overflow: visible !important;
+        flex-wrap: wrap !important;
+    }
+    .trust-item {
+        width: auto !important;
+        min-width: 0 !important;
+        flex: none !important;
+    }
+}
+
+@media (max-width: 820px) {
+    .hero-mini-stats {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+        justify-items: center !important;
+    }
+    .hero-mini-stats .mini-stat:nth-child(3) {
+        grid-column: 1 / -1 !important;
+    }
+}
+</style>

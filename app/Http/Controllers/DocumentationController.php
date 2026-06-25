@@ -51,11 +51,12 @@ class DocumentationController extends Controller
         $nav  = $this->buildNav();
 
         return Inertia::render('Documentation/Show', [
-            'html'        => $html,
-            'nav'         => $nav,
-            'currentSlug' => '',
-            'title'       => 'Help Center',
-            'isAdmin'     => auth()->check() && auth()->user()->isAdmin(),
+            'html'              => $html,
+            'nav'               => $nav,
+            'currentSlug'       => '',
+            'title'             => 'Help Center',
+            'isAdmin'           => auth()->check() && auth()->user()->isAdmin(),
+            'isSuperSuperAdmin' => auth()->check() && auth()->user()->isSuperSuperAdmin(),
         ]);
     }
 
@@ -76,11 +77,12 @@ class DocumentationController extends Controller
         $title = $this->titleFromSlug($slug);
 
         return Inertia::render('Documentation/Show', [
-            'html'        => $html,
-            'nav'         => $nav,
-            'currentSlug' => "{$section}/{$slug}",
-            'title'       => $title,
-            'isAdmin'     => auth()->check() && auth()->user()->isAdmin(),
+            'html'              => $html,
+            'nav'               => $nav,
+            'currentSlug'       => "{$section}/{$slug}",
+            'title'             => $title,
+            'isAdmin'           => auth()->check() && auth()->user()->isAdmin(),
+            'isSuperSuperAdmin' => auth()->check() && auth()->user()->isSuperSuperAdmin(),
         ]);
     }
 
@@ -308,6 +310,7 @@ class DocumentationController extends Controller
                     ['title' => 'Coupons',               'slug' => 'admin/coupons'],
                     ['title' => 'Settings',              'slug' => 'admin/settings'],
                     ['title' => 'Integrations',          'slug' => 'admin/integrations'],
+                    ['title' => 'App Exclusives',        'slug' => 'admin/app-exclusives'],
                 ],
             ],
         ];

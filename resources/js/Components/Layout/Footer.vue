@@ -7,7 +7,6 @@ const year = new Date().getFullYear();
         <div class="for-entrants">
             <strong>Entering a competition powered by CompEngine?</strong>
             Every draw is GLI-certified. Every winner is verifiable. Every order runs through a UK-licensed payment gateway.
-            Every site we power is signed up to the UK Voluntary Code of Good Practice for Prize Draw Operators.
             If something goes wrong, the operator has a real platform behind them — not a stack of plugins.
         </div>
         <div>© {{ year }} CompEngine. Built quietly in the UK.</div>
