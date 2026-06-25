@@ -4,7 +4,6 @@ use App\Http\Controllers\Api\FeatureRequestController;
 use App\Http\Controllers\Api\SiteTextController;
 use App\Http\Controllers\Api\TenantFeeReportController;
 use App\Http\Controllers\Api\TenantMessagesController;
-use App\Http\Controllers\ChangelogController;
 use App\Http\Controllers\ContactSubmissionController;
 use App\Http\Controllers\DevDocsController;
 use App\Http\Controllers\DocumentationController;
@@ -43,8 +42,6 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return Inertia::render('Contact');
 })->name('contact');
-
-Route::get('/changelog', [ChangelogController::class, 'index'])->name('changelog');
 
 // Profile routes
 Route::middleware('auth')->group(function () {
