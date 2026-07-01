@@ -2,7 +2,8 @@
 import { inject, computed, ref, onMounted, onUnmounted } from 'vue';
 import { useReveal } from '@/Composables/useReveal';
 import { popConfettiFromEvent } from '@/Composables/useConfettiPop';
-import BingoGame from '@/Components/Games/BingoGame.vue';
+import ScratchGame from '@/Components/Games/ScratchGame.vue';
+import SpinGame from '@/Components/Games/SpinGame.vue';
 
 const getText = inject('getText', (key, fallback = '') => fallback);
 const { sectionRef, revealed } = useReveal();
@@ -104,15 +105,17 @@ function pulseCard(idx) {
     setTimeout(() => { if (pressedIdx.value === idx) pressedIdx.value = null; }, 150);
 }
 
-/* ============== Bingo demo assets for the hero card ============== */
-const demoBingoAssets = {
-    bgStart: '#1e3a8a', bgEnd: '#1e40af',
-    frameColor: '#3b82f6', frameGlow: '#60a5fa',
-    squareBg: '#374151', squareText: '#e5e7eb',
-    diamond1: '#06b6d4', diamond2: '#67e8f9',
-    winnerGlow: '#10b981', winnerBg: '#059669',
-    popupStart: '#10b981', popupEnd: '#059669',
-    diamondEmoji: '💎',
+/* ============== Game demo assets for the hero card ============== */
+const demoScratchAssets = {
+    textColour: '#FFFFFF',
+    wonTextColour: '#00FF00',
+    loseTextColour: '#FF4444',
+    accentColour: '#FFD700',
+};
+const demoSpinAssets = {
+    titleText: 'SPIN & WIN',
+    titleColor: '#FFD700',
+    wheelEdgeColor: '#F59E0B',
 };
 
 /* ============== Wallet split bar ============== */
@@ -207,8 +210,13 @@ onUnmounted(() => clearTimeout(upsellRearmTimer));
                         <p>{{ f.text }}</p>
                         <a href="#game-studio" class="more">{{ f.more }}</a>
                     </div>
-                    <div class="bingo-demo-wrapper" @click.stop>
-                        <BingoGame :demoMode="true" :assets="demoBingoAssets" :prizes="[]" :tickets="[]" />
+                    <div class="games-demo-wrapper" @click.stop>
+                        <div class="game-demo-col">
+                            <ScratchGame :demoMode="true" previewMode="mobile" :scratchAssets="demoScratchAssets" :tickets="[]" />
+                        </div>
+                        <div class="game-demo-col">
+                            <SpinGame :demoMode="true" previewMode="mobile" :spinAssets="demoSpinAssets" :tickets="[]" />
+                        </div>
                     </div>
                 </template>
 
@@ -288,17 +296,24 @@ onUnmounted(() => clearTimeout(upsellRearmTimer));
 .feature-card.pressed {
     transform: scale(0.985);
 }
-.bingo-demo-wrapper {
-    width: 100%;
-    border-radius: 12px;
-    transform-origin: top center;
-    transform: scale(0.62);
-    /* negative margin-bottom compensates for the layout space (natural height)
-       that the scaled-down game still occupies — pulls card content up */
-    margin-bottom: -200px;
+.games-demo-wrapper {
+    /* render wider than the container then scale back down so each
+       game gets enough width to look correct in mobile preview mode */
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    width: 170%;
+    transform-origin: top left;
+    transform: scale(0.59);
+    /* pull next content up to compensate for unused layout space */
+    margin-bottom: -220px;
     pointer-events: none;
 }
+.game-demo-col {
+    flex: 1;
+    min-width: 0;
+}
 @media (max-width: 900px) {
-    .bingo-demo-wrapper { transform: scale(0.52); margin-bottom: -240px; }
+    .games-demo-wrapper { transform: scale(0.48); margin-bottom: -270px; }
 }
 </style>

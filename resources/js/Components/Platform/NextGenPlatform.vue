@@ -295,7 +295,8 @@ function spawnActivity() {
     const id = ++activityIdCounter;
     if (liveEvents.value.length > 0) {
         const e = liveEvents.value[Math.floor(Math.random() * liveEvents.value.length)];
-        activityItems.value = [{ id, icon: e.icon, name: 'User', verb: e.verb, val: e.val, suffix: e.suffix, brand: e.brand, time }];
+        const name = NAMES[Math.floor(Math.random() * NAMES.length)];
+        activityItems.value = [{ id, icon: e.icon, name, verb: e.verb, val: e.val, suffix: e.suffix, brand: e.brand, time }];
     } else {
         const name = NAMES[Math.floor(Math.random() * NAMES.length)];
         const brand = BRANDS[Math.floor(Math.random() * BRANDS.length)];
