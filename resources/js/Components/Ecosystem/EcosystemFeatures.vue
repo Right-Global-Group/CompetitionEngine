@@ -2,7 +2,7 @@
 import { inject, computed, ref, onMounted, onUnmounted } from 'vue';
 import { useReveal } from '@/Composables/useReveal';
 import { popConfettiFromEvent } from '@/Composables/useConfettiPop';
-import SlotsGame from '@/Components/Games/SlotsGame.vue';
+import BingoGame from '@/Components/Games/BingoGame.vue';
 
 const getText = inject('getText', (key, fallback = '') => fallback);
 const { sectionRef, revealed } = useReveal();
@@ -104,24 +104,15 @@ function pulseCard(idx) {
     setTimeout(() => { if (pressedIdx.value === idx) pressedIdx.value = null; }, 150);
 }
 
-/* ============== Slots demo assets for the hero card ============== */
-const demoSlotsAssets = {
-    titleText: 'LUCKY SLOTS',
-    titleColor: '#00FFFF',
-    primaryColor: '#00CED1',
-    secondaryColor: '#1a5a7a',
-    accentColor: '#00FFFF',
-    textColor: '#FFFFFF',
-    machineBgColor: '#1a5a7a',
-    matchTextColor: '#7FDBFF',
-    inventoryEmoji: '🎣',
-    inventoryButtonColor: '#FFD700',
-    prizesModalBgColor: '#1F2937',
-    prizesTitleColor: '#FFD700',
-    prizesCardBorderColor: '#FFD700',
-    prizesCardBgColor: '#374151',
-    prizesValueColor: '#10B981',
-    titleImage: '', background: '', spinButtonImage: '', machineImage: '', footerImage: '', header: '',
+/* ============== Bingo demo assets for the hero card ============== */
+const demoBingoAssets = {
+    bgStart: '#1e3a8a', bgEnd: '#1e40af',
+    frameColor: '#3b82f6', frameGlow: '#60a5fa',
+    squareBg: '#374151', squareText: '#e5e7eb',
+    diamond1: '#06b6d4', diamond2: '#67e8f9',
+    winnerGlow: '#10b981', winnerBg: '#059669',
+    popupStart: '#10b981', popupEnd: '#059669',
+    diamondEmoji: '💎',
 };
 
 /* ============== Wallet split bar ============== */
@@ -216,8 +207,8 @@ onUnmounted(() => clearTimeout(upsellRearmTimer));
                         <p>{{ f.text }}</p>
                         <a href="#game-studio" class="more">{{ f.more }}</a>
                     </div>
-                    <div class="slots-demo-wrapper" @click.stop>
-                        <SlotsGame :demoMode="true" previewMode="desktop" :slotsAssets="demoSlotsAssets" :showMachine="true" />
+                    <div class="bingo-demo-wrapper" @click.stop>
+                        <BingoGame :demoMode="true" :assets="demoBingoAssets" :prizes="[]" :tickets="[]" />
                     </div>
                 </template>
 
@@ -297,17 +288,17 @@ onUnmounted(() => clearTimeout(upsellRearmTimer));
 .feature-card.pressed {
     transform: scale(0.985);
 }
-.slots-demo-wrapper {
+.bingo-demo-wrapper {
     width: 100%;
-    max-height: 340px;
-    overflow: hidden;
     border-radius: 12px;
     transform-origin: top center;
-    transform: scale(0.7);
-    margin-top: -10%;
+    transform: scale(0.62);
+    /* negative margin-bottom compensates for the layout space (natural height)
+       that the scaled-down game still occupies — pulls card content up */
+    margin-bottom: -200px;
     pointer-events: none;
 }
 @media (max-width: 900px) {
-    .slots-demo-wrapper { transform: scale(0.6); margin-top: -18%; }
+    .bingo-demo-wrapper { transform: scale(0.52); margin-bottom: -240px; }
 }
 </style>
