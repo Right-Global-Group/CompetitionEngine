@@ -261,14 +261,15 @@ function animateStatsAndSparks() {
 
 /* ============== Live activity ticker ============== */
 const tickerLiveLabel = computed(() => ft('ticker_live_label', 'Live'));
+const tickerBrand = computed(() => liveEvents.value[0]?.brand ?? null);
 
 const BRANDS = ['BOLT', 'APEX', 'STAR DRAWS', 'GOAT', 'ZENITH', 'NORTH', 'BLAZE', 'SUMMIT', 'VYBE', 'RUSH', 'KINGS', "DAISY'S DRAWS", 'PHAT STAX', 'LUXE', 'ANCHOR', 'HORIZON', 'BIG WINS', 'LOCKDOWN', 'ROYAL DRAWS', 'CRAZY COW'];
 const ACTIONS = [
-    { icon: '🎟️', t: ['just bought', 'just snagged', 'just secured'], v: [5, 10, 15, 20, 25, 50, 100], suffix: 'tickets on' },
-    { icon: '🎉', t: ['just won', 'just claimed'], v: ['£250', '£500', '£100', '£1,200', '£450', '£75', '£2,500'], suffix: 'on' },
-    { icon: '✨', t: ['joined the wallet on', 'signed up to'], v: [''], suffix: '' },
-    { icon: '💰', t: ['withdrew', 'cashed out'], v: ['£250', '£500', '£140', '£890'], suffix: 'from' },
-    { icon: '⚡', t: ['used an instant win on', 'hit a scratchcard win on'], v: [''], suffix: '' },
+    { icon: '🎟️', t: ['just bought', 'just snagged', 'just secured'], v: [5, 10, 15, 20, 25, 50, 100], suffix: 'tickets' },
+    { icon: '🎉', t: ['just won', 'just claimed'], v: ['£250', '£500', '£100', '£1,200', '£450', '£75', '£2,500'], suffix: '' },
+    { icon: '✨', t: ['just joined the wallet', 'just signed up'], v: [''], suffix: '' },
+    { icon: '💰', t: ['just withdrew', 'just cashed out'], v: ['£250', '£500', '£140', '£890'], suffix: '' },
+    { icon: '⚡', t: ['just used an instant win', 'hit a scratchcard win'], v: [''], suffix: '' },
 ];
 const NAMES = ['Sarah K', 'James P', 'Amira H', 'Tom R', 'Lia M', 'Daniel B', 'Sofia G', 'Marcus T', 'Aisha N', 'Ben C', 'Holly W', 'Connor F', 'Zara K', 'Owen H', 'Maddie L'];
 const TIME_OFFSETS = ['just now', '3s ago', '8s ago', '15s ago', '22s ago', '34s ago', '48s ago', '1m ago', '2m ago'];
@@ -347,11 +348,12 @@ onUnmounted(() => {
 
         <div class="activity-ticker">
             <span class="activity-ticker-label">{{ tickerLiveLabel }}</span>
+            <span v-if="tickerBrand" class="activity-ticker-brand">{{ tickerBrand }}</span>
             <div class="activity-list">
                 <div v-for="item in activityItems" :key="item.id" class="activity-item">
                     <span class="activity-item-icon">{{ item.icon }}</span>
                     <span class="activity-item-text">
-                        <strong>{{ item.name }}</strong> {{ item.verb }}<strong v-if="item.val" style="color:var(--text-0);"> {{ item.val }}</strong>{{ item.suffix ? ' ' + item.suffix : '' }} <span class="brand">{{ item.brand }}</span>
+                        <strong>{{ item.name }}</strong> {{ item.verb }}<strong v-if="item.val" style="color:var(--text-0);"> {{ item.val }}</strong>{{ item.suffix ? ' ' + item.suffix : '' }}
                     </span>
                     <span class="activity-item-time">· {{ item.time }}</span>
                 </div>
