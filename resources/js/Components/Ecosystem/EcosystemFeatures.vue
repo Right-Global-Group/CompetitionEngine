@@ -297,23 +297,28 @@ onUnmounted(() => clearTimeout(upsellRearmTimer));
     transform: scale(0.985);
 }
 .games-demo-wrapper {
-    /* render wider than the container then scale back down so each
-       game gets enough width to look correct in mobile preview mode */
     display: flex;
     gap: 12px;
-    align-items: flex-start;
     width: 170%;
     transform-origin: top left;
     transform: scale(0.59);
-    /* pull next content up to compensate for unused layout space */
-    margin-bottom: -220px;
+    margin-bottom: -230px;
     pointer-events: none;
 }
 .game-demo-col {
     flex: 1;
     min-width: 0;
+    height: 550px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+/* strip the hardcoded dark backgrounds from both game components */
+.games-demo-wrapper :deep(.scratch-game-container),
+.games-demo-wrapper :deep(.spin-game-wrapper) {
+    background-color: transparent !important;
+    background-image: none !important;
 }
 @media (max-width: 900px) {
-    .games-demo-wrapper { transform: scale(0.48); margin-bottom: -270px; }
+    .games-demo-wrapper { transform: scale(0.48); margin-bottom: -290px; }
 }
 </style>
