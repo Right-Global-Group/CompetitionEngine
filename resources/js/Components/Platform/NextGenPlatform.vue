@@ -353,7 +353,7 @@ onUnmounted(() => {
                 <div v-for="item in activityItems" :key="item.id" class="activity-item">
                     <span class="activity-item-icon">{{ item.icon }}</span>
                     <span class="activity-item-text">
-                        <strong>{{ item.name }}</strong> {{ item.verb }}<strong v-if="item.val" style="color:var(--text-0);"> {{ item.val }}</strong>{{ item.suffix ? ' ' + item.suffix : '' }}
+                        <strong>{{ item.name }}</strong> {{ item.verb }}<strong v-if="item.val" style="color:var(--text-0);"> {{ item.val }}</strong>
                     </span>
                     <span class="activity-item-time">· {{ item.time }}</span>
                 </div>
