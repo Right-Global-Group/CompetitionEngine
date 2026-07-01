@@ -39,14 +39,14 @@ const convertFeatures = computed(() => [
         icon: ft('feat2_icon', '💡'),
         title: ft('feat2_title', 'Smart upsell modals'),
         desc: ft('feat2_desc', '"Add 10 more tickets for £8", "Try our instant win", "Upgrade to bundle" — context-aware suggestions at exactly the right point in the buy flow.'),
-        detail: ft('feat2_detail', '<strong>Average uplift per checkout:</strong> +£23 to ticket value when the bundle-suggestion modal fires post-cart. ~38% of buyers accept at least one upsell.'),
+        detail: ft('feat2_detail', `<strong>Average uplift per checkout:</strong> +£${Math.round(upsellStats.value?.avg_uplift_gbp ?? 23)} to ticket value when the bundle-suggestion modal fires post-cart. ~${Math.round(upsellStats.value?.aov_uplift_pct ?? 38)}% of buyers accept at least one upsell.`),
         compare: {
-            leftValue: ft('feat2_compare_left_value', '£42'),
-            leftLabel: ft('feat2_compare_left_label', 'Baseline order'),
-            leftMeta: ft('feat2_compare_left_meta', 'No upsell'),
-            rightValue: ft('feat2_compare_right_value', '£65'),
+            leftValue:  ft('feat2_compare_left_value',  '£' + Math.round(upsellStats.value?.baseline_aov_gbp ?? 42)),
+            leftLabel:  ft('feat2_compare_left_label',  'Baseline order'),
+            leftMeta:   ft('feat2_compare_left_meta',   'No upsell'),
+            rightValue: ft('feat2_compare_right_value', '£' + Math.round(upsellStats.value?.upsell_aov_gbp ?? 65)),
             rightLabel: ft('feat2_compare_right_label', 'With upsell'),
-            rightMeta: ft('feat2_compare_right_meta', '+£23 avg'),
+            rightMeta:  ft('feat2_compare_right_meta',  '+£' + Math.round(upsellStats.value?.avg_uplift_gbp ?? 23) + ' avg'),
         },
         expandHint: ft('feat2_expand_hint', 'See the data'),
     },
@@ -222,11 +222,23 @@ function switchMetric(key) {
     growthChart.update();
 }
 
+/* ============== Upsell stats (fetched from tenant weekly snapshot) ============== */
+const upsellStats = ref(null);
+async function fetchUpsellStats() {
+    try {
+        const res = await fetch('/api/upsell-stats/latest');
+        if (res.ok) {
+            const data = await res.json();
+            if (data.stat) upsellStats.value = data.stat;
+        }
+    } catch {}
+}
+
 /* ============== Stat cards + sparklines ============== */
 const statCards = computed(() => [
     { target: 47, prefix: '+', suffix: '%', decimals: 0, label: ft('stat1_label', 'Avg checkout conversion'), vs: ft('stat1_vs', 'vs typical WordPress raffle stack'), path: 'M 0,32 L 40,28 L 80,24 L 120,18 L 160,12 L 200,4' },
     { target: 2.4, prefix: '', suffix: 'x', decimals: 1, label: ft('stat2_label', '90-day repeat purchase rate'), vs: ft('stat2_vs', 'CompEngine sites vs industry baseline'), path: 'M 0,30 L 40,30 L 80,24 L 120,18 L 160,10 L 200,6' },
-    { target: 23, prefix: '+£', suffix: '', decimals: 0, label: ft('stat3_label', 'Avg ticket value uplift'), vs: ft('stat3_vs', 'via smart upsell modals at checkout'), path: 'M 0,34 L 40,28 L 80,30 L 120,22 L 160,14 L 200,8' },
+    { target: upsellStats.value?.avg_uplift_gbp ?? 23, prefix: '+£', suffix: '', decimals: 0, label: ft('stat3_label', 'Avg ticket value uplift'), vs: ft('stat3_vs', 'via smart upsell modals at checkout'), path: 'M 0,34 L 40,28 L 80,30 L 120,22 L 160,14 L 200,8' },
 ]);
 
 const statsAnimated = ref(false);
@@ -262,25 +274,42 @@ const NAMES = ['Sarah K', 'James P', 'Amira H', 'Tom R', 'Lia M', 'Daniel B', 'S
 const TIME_OFFSETS = ['just now', '3s ago', '8s ago', '15s ago', '22s ago', '34s ago', '48s ago', '1m ago', '2m ago'];
 
 const activityItems = ref([]);
+const liveEvents = ref([]);
 let activityIdCounter = 0;
 let tickerStarted = false;
 let tickerIntervalHandle = null;
 let tickerKickoffHandle = null;
 
-function spawnActivity() {
-    const name = NAMES[Math.floor(Math.random() * NAMES.length)];
-    const brand = BRANDS[Math.floor(Math.random() * BRANDS.length)];
-    const a = ACTIONS[Math.floor(Math.random() * ACTIONS.length)];
-    const verb = a.t[Math.floor(Math.random() * a.t.length)];
-    const val = a.v[Math.floor(Math.random() * a.v.length)];
-    const time = TIME_OFFSETS[Math.floor(Math.random() * TIME_OFFSETS.length)];
-    const id = ++activityIdCounter;
-    activityItems.value = [{ id, icon: a.icon, name, verb, val, suffix: a.suffix, brand, time }];
+async function fetchLiveEvents() {
+    try {
+        const res = await fetch('/api/activity/recent');
+        if (res.ok) {
+            const data = await res.json();
+            if (data.events?.length) liveEvents.value = data.events;
+        }
+    } catch {}
 }
 
-function startTicker() {
+function spawnActivity() {
+    const time = TIME_OFFSETS[Math.floor(Math.random() * TIME_OFFSETS.length)];
+    const id = ++activityIdCounter;
+    if (liveEvents.value.length > 0) {
+        const e = liveEvents.value[Math.floor(Math.random() * liveEvents.value.length)];
+        activityItems.value = [{ id, icon: e.icon, name: 'User', verb: e.verb, val: e.val, suffix: e.suffix, brand: e.brand, time }];
+    } else {
+        const name = NAMES[Math.floor(Math.random() * NAMES.length)];
+        const brand = BRANDS[Math.floor(Math.random() * BRANDS.length)];
+        const a = ACTIONS[Math.floor(Math.random() * ACTIONS.length)];
+        const verb = a.t[Math.floor(Math.random() * a.t.length)];
+        const val = a.v[Math.floor(Math.random() * a.v.length)];
+        activityItems.value = [{ id, icon: a.icon, name, verb, val, suffix: a.suffix, brand, time }];
+    }
+}
+
+async function startTicker() {
     if (tickerStarted) return;
     tickerStarted = true;
+    await fetchLiveEvents();
     spawnActivity();
     tickerKickoffHandle = setTimeout(spawnActivity, 1400);
     tickerIntervalHandle = setInterval(spawnActivity, 2400);
@@ -297,6 +326,7 @@ watch(revealed, (isRevealed) => {
 onMounted(async () => {
     await nextTick();
     buildGrowthChart();
+    fetchUpsellStats();
 });
 
 onUnmounted(() => {

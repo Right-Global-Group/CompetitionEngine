@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Api\FeatureRequestController;
 use App\Http\Controllers\Api\SiteTextController;
+use App\Http\Controllers\Api\TenantActivityController;
 use App\Http\Controllers\Api\TenantFeeReportController;
 use App\Http\Controllers\Api\TenantMessagesController;
+use App\Http\Controllers\Api\TenantUpsellStatsController;
 use App\Http\Controllers\ContactSubmissionController;
 use App\Http\Controllers\DevDocsController;
 use App\Http\Controllers\DocumentationController;
@@ -72,6 +74,14 @@ Route::prefix('api')->group(function () {
 
     // Feature / improvement requests — tenant admins POST suggestions here
     Route::post('/feature-requests', [FeatureRequestController::class, 'store']);
+
+    // Live activity events — tenants POST events, marketing site polls recent
+    Route::post('/activity', [TenantActivityController::class, 'store']);
+    Route::get('/activity/recent', [TenantActivityController::class, 'recent']);
+
+    // Upsell stats — tenant POSTs weekly snapshot, marketing site reads latest
+    Route::post('/upsell-stats', [TenantUpsellStatsController::class, 'store']);
+    Route::get('/upsell-stats/latest', [TenantUpsellStatsController::class, 'latest']);
 });
 
 // Custom Filament logout route

@@ -412,9 +412,22 @@ const balloonPopConfig = ref({
 const footballConfig = ref({
     theme: 'classic',
     titleText: 'Take Your Shot!',
+    winText: 'GOAL! You scored!',
+    loseText: 'Saved! Unlucky…',
     primaryColor: '#1b5e20',
     accentColor: '#ffeb3b',
     goalColor: '#f59e0b',
+    showTopPrize: true,
+    hostEnabled: true,
+});
+
+const footballMedia = ref({
+    hostImage: '',
+    kickSound: '',
+    whistleSound: '',
+    crowdSound: '',
+    winSound: '',
+    lossSound: '',
 });
 
 // Demo ticket so strike() / aim flow fully works in the configurator preview
@@ -547,6 +560,23 @@ const balloonPopAssets = computed(() => ({
     popItemLabel: ''
 }));
 
+// Football media handlers
+const handleFootballHostImage = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (footballMedia.value.hostImage) URL.revokeObjectURL(footballMedia.value.hostImage);
+        footballMedia.value.hostImage = URL.createObjectURL(file);
+    }
+};
+
+const handleFootballAudio = (key) => (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (footballMedia.value[key]) URL.revokeObjectURL(footballMedia.value[key]);
+        footballMedia.value[key] = URL.createObjectURL(file);
+    }
+};
+
 // Emoji options for inventory button
 const emojiOptions = ['🎣', '🎁', '🏆', '💎', '⭐', '🎯', '🎪', '🎲'];
 
@@ -620,9 +650,19 @@ const applyFootballPreset = (preset) => {
 const footballAssets = computed(() => ({
     theme: footballConfig.value.theme,
     titleText: footballConfig.value.titleText,
+    winText: footballConfig.value.winText,
+    loseText: footballConfig.value.loseText,
     primaryColor: footballConfig.value.primaryColor,
     accentColor: footballConfig.value.accentColor,
     goalColor: footballConfig.value.goalColor,
+    showTopPrize: footballConfig.value.showTopPrize,
+    hostEnabled: footballConfig.value.hostEnabled,
+    hostImage: footballMedia.value.hostImage,
+    kickSound: footballMedia.value.kickSound,
+    whistleSound: footballMedia.value.whistleSound,
+    crowdSound: footballMedia.value.crowdSound,
+    winSound: footballMedia.value.winSound,
+    lossSound: footballMedia.value.lossSound,
 }));
 </script>
 
@@ -1054,6 +1094,61 @@ const footballAssets = computed(() => ({
                             <div class="input-group">
                                 <label>Title</label>
                                 <input type="text" v-model="footballConfig.titleText" class="text-input" />
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Text</span>
+                            </div>
+                            <div class="input-group">
+                                <label>Win Message</label>
+                                <input type="text" v-model="footballConfig.winText" class="text-input" />
+                            </div>
+                            <div class="input-group">
+                                <label>Lose Message</label>
+                                <input type="text" v-model="footballConfig.loseText" class="text-input" />
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Display Options</span>
+                            </div>
+                            <label class="toggle-row">
+                                <input type="checkbox" v-model="footballConfig.showTopPrize" class="toggle-check" />
+                                <span class="toggle-label">Show Top Prize Banner</span>
+                            </label>
+                            <label class="toggle-row">
+                                <input type="checkbox" v-model="footballConfig.hostEnabled" class="toggle-check" />
+                                <span class="toggle-label">Show Commentator (host + mic)</span>
+                            </label>
+                            <div class="input-group" style="margin-top:4px;">
+                                <label>Commentator Image</label>
+                                <label class="upload-box wide" :class="{ 'has-image': footballMedia.hostImage }">
+                                    <img v-if="footballMedia.hostImage" :src="footballMedia.hostImage" />
+                                    <span v-else class="upload-placeholder">Select image</span>
+                                    <input type="file" accept="image/*" @change="handleFootballHostImage" />
+                                </label>
+                                <span class="section-hint">Optional — upload your own host / mascot (PNG, transparent). Defaults to a drawn pundit.</span>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Sound Effects</span>
+                            </div>
+                            <div class="audio-upload-grid">
+                                <label v-for="cue in [
+                                    { key: 'kickSound',    label: 'Kick' },
+                                    { key: 'whistleSound', label: 'Whistle' },
+                                    { key: 'crowdSound',   label: 'Crowd' },
+                                    { key: 'winSound',     label: 'Win (cheer)' },
+                                    { key: 'lossSound',    label: 'Loss' },
+                                ]" :key="cue.key" class="audio-box" :class="{ 'has-audio': footballMedia[cue.key] }">
+                                    <span class="audio-label">{{ footballMedia[cue.key] ? '✓' : '🔊' }} {{ cue.label }}</span>
+                                    <input type="file" accept="audio/*" @change="handleFootballAudio(cue.key)($event)" />
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -1617,6 +1712,80 @@ const footballAssets = computed(() => ({
     max-width: 100%;
     flex-wrap: wrap;
     row-gap: 4px;
+}
+
+/* =========================================
+   TOGGLE ROW
+   ========================================= */
+.toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 4px 0;
+}
+
+.toggle-check {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--orange);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.toggle-label {
+    font-size: 13px;
+    color: var(--text-2);
+}
+
+/* =========================================
+   AUDIO UPLOAD
+   ========================================= */
+.audio-upload-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.audio-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px dashed var(--border);
+    background: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.audio-box:hover {
+    border-color: var(--orange);
+    background: rgba(244, 165, 88, 0.06);
+}
+
+.audio-box.has-audio {
+    border-style: solid;
+    border-color: rgba(244, 165, 88, 0.35);
+    background: rgba(244, 165, 88, 0.05);
+}
+
+.audio-label {
+    font-size: 11px;
+    color: var(--text-3);
+    font-weight: 500;
+    text-align: center;
+    padding: 0 4px;
+}
+
+.audio-box.has-audio .audio-label {
+    color: var(--orange);
+}
+
+.audio-box input {
+    display: none;
 }
 
 /* =========================================

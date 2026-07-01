@@ -1,5 +1,5 @@
 <script setup>
-import { inject, computed, ref, onUnmounted } from 'vue';
+import { inject, computed, ref, onMounted, onUnmounted } from 'vue';
 import { useReveal } from '@/Composables/useReveal';
 import { popConfettiFromEvent } from '@/Composables/useConfettiPop';
 import SlotsGame from '@/Components/Games/SlotsGame.vue';
@@ -43,7 +43,7 @@ const features = computed(() => [
         size: 'interactive', mini: 'upsell', featured: true, badge: badgeInteractive.value,
         icon: getText('ecosystem.feat_upsell_icon', '📱🚀'),
         title: getText('ecosystem.feat_upsell_title', 'Smart Upsell — built into every checkout'),
-        text: getText('ecosystem.feat_upsell_text', 'Triggers automatically at the exact right point in the buy flow. Adds an average +£23 to every ticket order. 87% of buyers take the offer. Click "Pay" on the right to see it fire — exactly as your customers will.'),
+        text: getText('ecosystem.feat_upsell_text', `Triggers automatically at the exact right point in the buy flow. Adds an average +£${Math.round(upsellStats.value?.avg_uplift_gbp ?? 23)} to every ticket order. ${Math.round(upsellStats.value?.modal_acceptance_pct ?? 87)}% of buyers take the offer. Click "Pay" on the right to see it fire — exactly as your customers will.`),
         more: getText('ecosystem.feat_upsell_more', 'Click Pay below to test it →'),
     },
     {
@@ -82,6 +82,20 @@ const features = computed(() => [
         more: getText('ecosystem.feat_notify_more', 'See the message flow →'),
     },
 ]);
+
+/* ============== Upsell stats (fetched from tenant weekly snapshot) ============== */
+const upsellStats = ref(null);
+async function fetchUpsellStats() {
+    try {
+        const res = await fetch('/api/upsell-stats/latest');
+        if (res.ok) {
+            const data = await res.json();
+            if (data.stat) upsellStats.value = data.stat;
+        }
+    } catch {}
+}
+
+onMounted(() => fetchUpsellStats());
 
 /* ============== Card press feedback ============== */
 const pressedIdx = ref(null);
@@ -136,10 +150,10 @@ const checkoutTotal = computed(() => getText('ecosystem.checkout_total', '£12.5
 const checkoutPayLabel = computed(() => getText('ecosystem.checkout_pay_label', 'Pay £12.50 →'));
 
 const upsellTitle = computed(() => getText('ecosystem.upsell_title', 'Wait — quick offer.'));
-const upsellDesc = computed(() => getText('ecosystem.upsell_desc', 'Add <strong>10 more tickets for just £8 extra</strong>. <strong>87%</strong> of buyers take this offer.'));
+const upsellDesc = computed(() => getText('ecosystem.upsell_desc', `Add <strong>10 more tickets for just £8 extra</strong>. <strong>${Math.round(upsellStats.value?.modal_acceptance_pct ?? 87)}%</strong> of buyers take this offer.`));
 const upsellYesLabel = computed(() => getText('ecosystem.upsell_yes_label', 'Add 10 · £20.50'));
 const upsellNoLabel = computed(() => getText('ecosystem.upsell_no_label', 'No thanks'));
-const upsellMeta = computed(() => getText('ecosystem.upsell_meta', 'A/B test winner · <strong>+38% AOV</strong> at checkout'));
+const upsellMeta = computed(() => getText('ecosystem.upsell_meta', `A/B test winner · <strong>+${Math.round(upsellStats.value?.aov_uplift_pct ?? 38)}% AOV</strong> at checkout`));
 
 const upsellResultDefault = computed(() => getText('ecosystem.upsell_result_default', 'Click Pay above to see the upsell trigger →'));
 const upsellResultTriggered = computed(() => getText('ecosystem.upsell_result_triggered', 'Smart upsell modal triggered…'));
