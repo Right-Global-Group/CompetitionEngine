@@ -10,6 +10,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Facades\Schema;
 
 class FeatureRequestResource extends Resource
 {
@@ -174,6 +175,12 @@ class FeatureRequestResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
+        // Guard against the table not existing yet (e.g. before the migration
+        // has run on a fresh deploy) so a missing table never blanks the panel.
+        if (!Schema::hasTable('feature_requests')) {
+            return null;
+        }
+
         return static::getModel()::where('status', 'new')->count() ?: null;
     }
 
