@@ -489,13 +489,6 @@ onBeforeUnmount(() => { stopPower(); cancelSpeech(); sfx.dispose(); cancelAnimat
     <Teleport to="body" :disabled="demoMode">
     <div v-if="modelValue" class="fbg-root" :class="demoMode ? 'fbg-demo' : 'fbg-fixed'">
 
-        <!-- Studio preview chrome (demoMode only) — phone/desktop device frame like the other games -->
-        <div v-if="demoMode" class="fbg-demo-bar">
-            <span class="fbg-demo-bar-label">Preview Mode:</span>
-            <button class="fbg-demo-btn" :class="actualPreviewMode === 'mobile' ? 'is-on' : 'is-off'" @click="togglePreviewMode">📱 Mobile</button>
-            <button class="fbg-demo-btn" :class="actualPreviewMode === 'desktop' ? 'is-on' : 'is-off'" @click="togglePreviewMode">💻 Desktop</button>
-        </div>
-
         <div :class="demoMode ? 'fbg-demo-device fbg-modal-zoom' : 'contents'" :style="demoMode ? frameStyle : undefined">
             <div v-if="demoMode && actualPreviewMode === 'mobile'" class="fbg-demo-statusbar">
                 <span>9:41</span>

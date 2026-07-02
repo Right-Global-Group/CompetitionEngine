@@ -29,7 +29,8 @@ const tabs = [
     { id: 'bingo', name: 'Bingo', icon: '🎱' },
     { id: 'coindrop', name: 'Coin Drop', icon: '🪙' },
     { id: 'balloonpop', name: 'Balloon Pop', icon: '🎈' },
-    { id: 'football', name: 'Football', icon: '⚽' }
+    { id: 'football', name: 'Football', icon: '⚽' },
+    { id: 'fishing', name: 'Fishing', icon: '🎣' }
 ];
 
 // Image uploads (stored as blob URLs)
@@ -430,11 +431,12 @@ const footballMedia = ref({
     lossSound: '',
 });
 
-// Demo ticket so strike() / aim flow fully works in the configurator preview
+// Demo tickets for the football configurator preview
 const footballDemoTickets = [
     { id: 1, number: '001', instant_win: { id: 1, prize: '£50 Cash', value: 50, claimed: false, image_path: null } },
     { id: 2, number: '002', instant_win: false },
 ];
+
 
 // Computed assets for each game
 const slotsAssets = computed(() => ({
@@ -613,7 +615,7 @@ const colorPresets = {
         { name: 'Night', theme: 'night', primary: '#1b5e20', accent: '#cfeaff' },
         { name: 'Retro', theme: 'retro', primary: '#4a3416', accent: '#ffd27a' },
         { name: 'Neon', theme: 'neon', primary: '#0c5a3c', accent: '#3df5ff' },
-    ]
+    ],
 };
 
 const applySlotPreset = (preset) => {
@@ -646,6 +648,7 @@ const applyFootballPreset = (preset) => {
     footballConfig.value.primaryColor = preset.primary;
     footballConfig.value.accentColor = preset.accent;
 };
+
 
 const footballAssets = computed(() => ({
     theme: footballConfig.value.theme,
@@ -1250,6 +1253,24 @@ const footballAssets = computed(() => ({
                             </div>
                         </div>
                     </div>
+
+                    <!-- FISHING Configuration -->
+                    <div v-if="activeTab === 'fishing'" class="config-sections">
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Features</span>
+                            </div>
+                            <div class="feature-list">
+                                <div class="feature-item">🎨 4 ocean themes — Chill, Sunset, Night, Stormy</div>
+                                <div class="feature-item">🖼️ Custom boat, fish & underwater backdrop images</div>
+                                <div class="feature-item">🎣 Cast & reel animated reveal gameplay</div>
+                                <div class="feature-item">🔊 Custom sound effects (cast, splash, reel, win)</div>
+                                <div class="feature-item">✨ Animated fish, bubbles, waves & caustics</div>
+                                <div class="feature-item">🏆 Prize-glow swimmers that match your prizes</div>
+                            </div>
+                        </div>
+                    </div>
+
                         </div>
                     </div>
                 </div>
@@ -1285,6 +1306,26 @@ const footballAssets = computed(() => ({
                             </div>
                             <div v-if="activeTab === 'football'" class="preview-game-football">
                                 <FootballModal :model-value="true" :demoMode="true" previewMode="desktop" :assets="footballAssets" :tickets="footballDemoTickets" />
+                            </div>
+                            <div v-if="activeTab === 'fishing'" class="preview-game-video">
+                                <div class="fish-video-frame">
+                                    <div class="fish-video-header">
+                                        <span class="fish-video-title">{{ fishingConfig.titleText }}</span>
+                                    </div>
+                                    <div class="fish-video-body">
+                                        <div class="fish-video-placeholder">
+                                            <span class="fish-placeholder-emoji">🎣</span>
+                                            <span class="fish-placeholder-text">Fishing Game</span>
+                                            <span class="fish-placeholder-hint">Demo video loading…</span>
+                                        </div>
+                                        <video autoplay loop muted playsinline class="fish-video-el">
+                                            <source src="/games/fishing/demo.mp4" type="video/mp4" />
+                                        </video>
+                                    </div>
+                                    <div class="fish-video-footer">
+                                        <span>{{ fishingConfig.winText }}</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1693,6 +1734,7 @@ const footballAssets = computed(() => ({
     padding-top: 10px;
 }
 
+
 .preview-game-football {
     position: absolute;
     inset: 0;
@@ -1712,6 +1754,117 @@ const footballAssets = computed(() => ({
     max-width: 100%;
     flex-wrap: wrap;
     row-gap: 4px;
+}
+
+.preview-game-video {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #07203a;
+}
+
+.fish-video-frame {
+    width: 100%;
+    max-width: 380px;
+    height: 100%;
+    max-height: 600px;
+    border: 2px solid var(--fish-accent, #ffd54f);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #07203a;
+    box-shadow: 0 0 40px -8px var(--fish-accent, #ffd54f);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.fish-video-header {
+    padding: 12px 16px;
+    background: var(--fish-primary, #0277bd);
+    text-align: center;
+    flex-shrink: 0;
+    transition: background 0.3s;
+}
+
+.fish-video-title {
+    color: var(--fish-accent, #ffd54f);
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: 0.4px;
+    transition: color 0.3s;
+}
+
+.fish-video-body {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: #07203a;
+}
+
+.fish-video-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    z-index: 0;
+}
+
+.fish-placeholder-emoji {
+    font-size: 3.5rem;
+}
+
+.fish-placeholder-text {
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.fish-placeholder-hint {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.fish-video-el {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.fish-video-footer {
+    padding: 10px 16px;
+    background: rgba(0, 0, 0, 0.4);
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--fish-accent, #ffd54f);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+    transition: color 0.3s;
+}
+
+.feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.feature-item {
+    font-size: 12px;
+    color: var(--text-2);
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    line-height: 1.4;
 }
 
 /* =========================================
