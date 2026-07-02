@@ -8,7 +8,6 @@ use App\Http\Controllers\ChangelogController;
 use App\Http\Controllers\ContactSubmissionController;
 use App\Http\Controllers\DocumentationController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ChangelogController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
