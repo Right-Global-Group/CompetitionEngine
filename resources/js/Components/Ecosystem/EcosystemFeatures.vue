@@ -300,8 +300,9 @@ onUnmounted(() => clearTimeout(upsellRearmTimer));
     display: flex;
     gap: 12px;
     width: 170%;
-    transform-origin: top left;
+    transform-origin: top center;
     transform: scale(0.59);
+    margin-left: -35%;
     margin-bottom: -230px;
     pointer-events: none;
 }

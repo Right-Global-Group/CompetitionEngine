@@ -1309,9 +1309,6 @@ const footballAssets = computed(() => ({
                             </div>
                             <div v-if="activeTab === 'fishing'" class="preview-game-video">
                                 <div class="fish-video-frame">
-                                    <div class="fish-video-header">
-                                        <span class="fish-video-title">{{ fishingConfig.titleText }}</span>
-                                    </div>
                                     <div class="fish-video-body">
                                         <div class="fish-video-placeholder">
                                             <span class="fish-placeholder-emoji">🎣</span>
@@ -1321,9 +1318,6 @@ const footballAssets = computed(() => ({
                                         <video autoplay loop muted playsinline class="fish-video-el">
                                             <source src="/games/fishing/demo.mp4" type="video/mp4" />
                                         </video>
-                                    </div>
-                                    <div class="fish-video-footer">
-                                        <span>{{ fishingConfig.winText }}</span>
                                     </div>
                                 </div>
                             </div>
