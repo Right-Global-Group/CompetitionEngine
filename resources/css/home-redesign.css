@@ -1225,7 +1225,7 @@
 
   .brand-logo {
     display: inline-flex; align-items: center; gap: 9px;
-    height: 44px; padding: 0 4px;
+    height: 90px; padding: 0 4px;
     color: rgba(237,228,255,0.72);
     font-weight: 800; font-size: 22px;
     letter-spacing: 0.02em;
@@ -1241,6 +1241,8 @@
     color: white; filter: grayscale(0);
   }
   .brand-logo svg { flex-shrink: 0; }
+  .brand-logo img { height: 60px; width: auto; max-width: 140px; object-fit: contain; flex-shrink: 0; }
+  .brand-logo img.bl-large { height: 80px; max-width: 180px; }
   .brand-logo .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
   .brand-logo .bar { width: 3px; height: 22px; display: inline-block; border-radius: 2px; }
 
@@ -1981,7 +1983,9 @@
     .logo-wall-eyebrow { font-size: 10px; padding: 0 20px; margin-bottom: 18px; letter-spacing: 0.18em; }
     .logo-track { gap: 36px; padding-right: 36px; }
     .logo-rail + .logo-rail { margin-top: 18px; }
-    .brand-logo { font-size: 18px; height: 36px; gap: 7px; }
+    .brand-logo { font-size: 18px; height: 70px; gap: 7px; }
+    .brand-logo img { height: 46px; max-width: 110px; }
+    .brand-logo img.bl-large { height: 62px; max-width: 140px; }
     .bl-condensed { font-size: 20px; }
     .bl-serif { font-size: 20px; }
     .bl-script { font-size: 19px; }

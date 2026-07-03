@@ -7,6 +7,8 @@ import BingoGame from '@/Components/Games/BingoGame.vue';
 import CoinDropGame from '@/Components/Games/CoinDropGame.vue';
 import BalloonPopGame from '@/Components/Games/PopGame.vue';
 import FootballModal from '@/Components/Games/FootballModal.vue';
+import FishingModal from '@/Components/Games/FishingModal.vue';
+import TicketEaterModal from '@/Components/Games/TicketEaterModal.vue';
 import { useReveal } from '@/Composables/useReveal';
 
 const activeTab = ref('slots');
@@ -30,7 +32,8 @@ const tabs = [
     { id: 'coindrop', name: 'Coin Drop', icon: '🪙' },
     { id: 'balloonpop', name: 'Balloon Pop', icon: '🎈' },
     { id: 'football', name: 'Football', icon: '⚽' },
-    { id: 'fishing', name: 'Fishing', icon: '🎣' }
+    { id: 'fishing', name: 'Fishing', icon: '🎣' },
+    { id: 'ticketeater', name: 'Ticket Eater', icon: '👹' }
 ];
 
 // Image uploads (stored as blob URLs)
@@ -437,6 +440,96 @@ const footballDemoTickets = [
     { id: 2, number: '002', instant_win: false },
 ];
 
+// Fishing Configuration
+const fishingConfig = ref({
+    theme: 'stormy',
+    titleText: 'Cast to Win!',
+    winText: 'Reeled in a winner! 🎣',
+    loseText: 'The one that got away…',
+    accentColor: '#ffd54f',
+    primaryColor: '#0277bd',
+    sunEnabled: true,
+    cloudsEnabled: true,
+    showTopPrize: false,
+    introEnabled: true,
+});
+
+const fishingImages = ref({
+    boatImage: '',
+    underwaterImage: '',
+    introTitleImage: '',
+    fish1: '',
+    fish2: '',
+    fish3: '',
+});
+
+const fishingMedia = ref({
+    castSound: '',
+    splashSound: '',
+    reelSound: '',
+    winSound: '',
+    lossSound: '',
+});
+
+const handleFishingImage = (key) => (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (fishingImages.value[key]) URL.revokeObjectURL(fishingImages.value[key]);
+        fishingImages.value[key] = URL.createObjectURL(file);
+    }
+};
+
+const handleFishingAudio = (key) => (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (fishingMedia.value[key]) URL.revokeObjectURL(fishingMedia.value[key]);
+        fishingMedia.value[key] = URL.createObjectURL(file);
+    }
+};
+
+const fishingDemoTickets = [
+    { id: 1, number: '001', instant_win: { id: 1, prize: '£25 Cash', value: 25, claimed: false, image_path: null } },
+    { id: 2, number: '002', instant_win: false },
+    { id: 3, number: '003', instant_win: false },
+    { id: 4, number: '004', instant_win: { id: 2, prize: '£10 Cash', value: 10, claimed: false, image_path: null } },
+    { id: 5, number: '005', instant_win: false },
+];
+
+const fishingDemoCategories = [
+    { id: 1, name: '£25 Cash', value: 25, prize_type: 'cash', image_path: null, available: 1 },
+    { id: 2, name: '£10 Cash', value: 10, prize_type: 'cash', image_path: null, available: 1 },
+];
+
+// Ticket Eater Configuration
+const eaterConfig = ref({
+    theme: 'arcade',
+    titleText: 'Feed the Eater!',
+    winText: '🎉 Winner!',
+    loseText: 'No prize this time…',
+    accentColor: '#ff9800',
+    primaryColor: '#1a0a3f',
+    introEnabled: true,
+    introSubtitle: 'Feed your tickets and win instant prizes!',
+    introButtonText: 'Feed Me! 👹',
+});
+
+const eaterImages = ref({
+    introTitleImage: '',
+});
+
+const handleEaterImage = (key) => (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (eaterImages.value[key]) URL.revokeObjectURL(eaterImages.value[key]);
+        eaterImages.value[key] = URL.createObjectURL(file);
+    }
+};
+
+const eaterDemoCategories = [
+    { id: 1, name: '£50 Cash', value: 50, prize_type: 'cash', image_path: null, available: 1 },
+    { id: 2, name: 'Free Tickets', value: 5, prize_type: 'ticket_bundle', image_path: null, available: 1 },
+    { id: 3, name: '£20 Voucher', value: 20, prize_type: 'voucher', image_path: null, available: 1 },
+];
 
 // Computed assets for each game
 const slotsAssets = computed(() => ({
@@ -616,6 +709,18 @@ const colorPresets = {
         { name: 'Retro', theme: 'retro', primary: '#4a3416', accent: '#ffd27a' },
         { name: 'Neon', theme: 'neon', primary: '#0c5a3c', accent: '#3df5ff' },
     ],
+    fishing: [
+        { name: 'Stormy', theme: 'stormy', primary: '#0277bd', accent: '#ffd54f' },
+        { name: 'Chill', theme: 'chill', primary: '#1f8fc0', accent: '#ffe55c' },
+        { name: 'Sunset', theme: 'sunset', primary: '#9c4a6e', accent: '#ff9d5c' },
+        { name: 'Night', theme: 'night', primary: '#0a2a40', accent: '#9fd0ff' },
+    ],
+    ticketeater: [
+        { name: 'Arcade', theme: 'arcade', primary: '#1a0a3f', accent: '#ff9800' },
+        { name: 'Cave', theme: 'cave', primary: '#1c1609', accent: '#ff8c00' },
+        { name: 'Candy', theme: 'candy', primary: '#320550', accent: '#ff47c0' },
+        { name: 'Spooky', theme: 'spooky', primary: '#0b1c16', accent: '#39ff14' },
+    ],
 };
 
 const applySlotPreset = (preset) => {
@@ -649,6 +754,17 @@ const applyFootballPreset = (preset) => {
     footballConfig.value.accentColor = preset.accent;
 };
 
+const applyFishingPreset = (preset) => {
+    fishingConfig.value.theme = preset.theme;
+    fishingConfig.value.primaryColor = preset.primary;
+    fishingConfig.value.accentColor = preset.accent;
+};
+
+const applyEaterPreset = (preset) => {
+    eaterConfig.value.theme = preset.theme;
+    eaterConfig.value.primaryColor = preset.primary;
+    eaterConfig.value.accentColor = preset.accent;
+};
 
 const footballAssets = computed(() => ({
     theme: footballConfig.value.theme,
@@ -666,6 +782,43 @@ const footballAssets = computed(() => ({
     crowdSound: footballMedia.value.crowdSound,
     winSound: footballMedia.value.winSound,
     lossSound: footballMedia.value.lossSound,
+}));
+
+const fishingAssets = computed(() => ({
+    theme: fishingConfig.value.theme,
+    titleText: fishingConfig.value.titleText,
+    winText: fishingConfig.value.winText,
+    loseText: fishingConfig.value.loseText,
+    accentColor: fishingConfig.value.accentColor,
+    primaryColor: fishingConfig.value.primaryColor,
+    sunEnabled: fishingConfig.value.sunEnabled,
+    cloudsEnabled: fishingConfig.value.cloudsEnabled,
+    showTopPrize: fishingConfig.value.showTopPrize,
+    introEnabled: fishingConfig.value.introEnabled,
+    boatImage: fishingImages.value.boatImage || '',
+    underwaterImage: fishingImages.value.underwaterImage || '',
+    introTitleImage: fishingImages.value.introTitleImage || '',
+    fish1: fishingImages.value.fish1 || '',
+    fish2: fishingImages.value.fish2 || '',
+    fish3: fishingImages.value.fish3 || '',
+    castSound: fishingMedia.value.castSound || '',
+    splashSound: fishingMedia.value.splashSound || '',
+    reelSound: fishingMedia.value.reelSound || '',
+    winSound: fishingMedia.value.winSound || '',
+    lossSound: fishingMedia.value.lossSound || '',
+}));
+
+const eaterAssets = computed(() => ({
+    theme: eaterConfig.value.theme,
+    titleText: eaterConfig.value.titleText,
+    winText: eaterConfig.value.winText,
+    loseText: eaterConfig.value.loseText,
+    accentColor: eaterConfig.value.accentColor,
+    primaryColor: eaterConfig.value.primaryColor,
+    introEnabled: eaterConfig.value.introEnabled,
+    introSubtitle: eaterConfig.value.introSubtitle,
+    introButtonText: eaterConfig.value.introButtonText,
+    introTitleImage: eaterImages.value.introTitleImage || '',
 }));
 </script>
 
@@ -1258,15 +1411,212 @@ const footballAssets = computed(() => ({
                     <div v-if="activeTab === 'fishing'" class="config-sections">
                         <div class="config-section">
                             <div class="section-header">
-                                <span class="section-title">Features</span>
+                                <span class="section-title">Theme</span>
                             </div>
-                            <div class="feature-list">
-                                <div class="feature-item">🎨 4 ocean themes — Chill, Sunset, Night, Stormy</div>
-                                <div class="feature-item">🖼️ Custom boat, fish & underwater backdrop images</div>
-                                <div class="feature-item">🎣 Cast & reel animated reveal gameplay</div>
-                                <div class="feature-item">🔊 Custom sound effects (cast, splash, reel, win)</div>
-                                <div class="feature-item">✨ Animated fish, bubbles, waves & caustics</div>
-                                <div class="feature-item">🏆 Prize-glow swimmers that match your prizes</div>
+                            <div class="preset-grid">
+                                <button
+                                    v-for="preset in colorPresets.fishing"
+                                    :key="preset.name"
+                                    @click="applyFishingPreset(preset)"
+                                    class="preset-btn"
+                                    :class="{ active: fishingConfig.theme === preset.theme }"
+                                    :style="{ '--preset-color': preset.accent }"
+                                >
+                                    <span class="preset-dot" :style="{ background: preset.accent }"></span>
+                                    {{ preset.name }}
+                                </button>
+                            </div>
+                        </div>
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Text</span>
+                            </div>
+                            <div class="input-group">
+                                <label>Title</label>
+                                <input type="text" v-model="fishingConfig.titleText" class="text-input" />
+                            </div>
+                            <div class="input-group">
+                                <label>Win Message</label>
+                                <input type="text" v-model="fishingConfig.winText" class="text-input" />
+                            </div>
+                            <div class="input-group">
+                                <label>Lose Message</label>
+                                <input type="text" v-model="fishingConfig.loseText" class="text-input" />
+                            </div>
+                        </div>
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Colors</span>
+                            </div>
+                            <div class="color-grid">
+                                <div class="color-item">
+                                    <input type="color" v-model="fishingConfig.accentColor" class="color-picker" />
+                                    <span>Accent</span>
+                                </div>
+                                <div class="color-item">
+                                    <input type="color" v-model="fishingConfig.primaryColor" class="color-picker" />
+                                    <span>Primary</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Display Options</span>
+                            </div>
+                            <label class="toggle-row">
+                                <input type="checkbox" v-model="fishingConfig.sunEnabled" class="toggle-check" />
+                                <span class="toggle-label">Show Sun</span>
+                            </label>
+                            <label class="toggle-row">
+                                <input type="checkbox" v-model="fishingConfig.cloudsEnabled" class="toggle-check" />
+                                <span class="toggle-label">Show Clouds</span>
+                            </label>
+                            <label class="toggle-row">
+                                <input type="checkbox" v-model="fishingConfig.showTopPrize" class="toggle-check" />
+                                <span class="toggle-label">Show Top Prize Banner</span>
+                            </label>
+                            <label class="toggle-row">
+                                <input type="checkbox" v-model="fishingConfig.introEnabled" class="toggle-check" />
+                                <span class="toggle-label">Show Intro Screen</span>
+                            </label>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Images</span>
+                            </div>
+                            <div class="upload-row">
+                                <label class="upload-box" :class="{ 'has-image': fishingImages.boatImage }">
+                                    <img v-if="fishingImages.boatImage" :src="fishingImages.boatImage" />
+                                    <span v-else class="upload-placeholder">+ Boat</span>
+                                    <input type="file" accept="image/*" @change="handleFishingImage('boatImage')($event)" />
+                                </label>
+                                <label class="upload-box" :class="{ 'has-image': fishingImages.underwaterImage }">
+                                    <img v-if="fishingImages.underwaterImage" :src="fishingImages.underwaterImage" />
+                                    <span v-else class="upload-placeholder">+ Underwater</span>
+                                    <input type="file" accept="image/*" @change="handleFishingImage('underwaterImage')($event)" />
+                                </label>
+                                <label class="upload-box" :class="{ 'has-image': fishingImages.introTitleImage }">
+                                    <img v-if="fishingImages.introTitleImage" :src="fishingImages.introTitleImage" />
+                                    <span v-else class="upload-placeholder">+ Intro Logo</span>
+                                    <input type="file" accept="image/*" @change="handleFishingImage('introTitleImage')($event)" />
+                                </label>
+                            </div>
+                            <div class="upload-row" style="margin-top:6px;">
+                                <label class="upload-box" :class="{ 'has-image': fishingImages.fish1 }">
+                                    <img v-if="fishingImages.fish1" :src="fishingImages.fish1" />
+                                    <span v-else class="upload-placeholder">+ Fish 1</span>
+                                    <input type="file" accept="image/*" @change="handleFishingImage('fish1')($event)" />
+                                </label>
+                                <label class="upload-box" :class="{ 'has-image': fishingImages.fish2 }">
+                                    <img v-if="fishingImages.fish2" :src="fishingImages.fish2" />
+                                    <span v-else class="upload-placeholder">+ Fish 2</span>
+                                    <input type="file" accept="image/*" @change="handleFishingImage('fish2')($event)" />
+                                </label>
+                                <label class="upload-box" :class="{ 'has-image': fishingImages.fish3 }">
+                                    <img v-if="fishingImages.fish3" :src="fishingImages.fish3" />
+                                    <span v-else class="upload-placeholder">+ Fish 3</span>
+                                    <input type="file" accept="image/*" @change="handleFishingImage('fish3')($event)" />
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Sound Effects</span>
+                            </div>
+                            <div class="audio-upload-grid">
+                                <label v-for="cue in [
+                                    { key: 'castSound',   label: 'Cast' },
+                                    { key: 'splashSound', label: 'Splash' },
+                                    { key: 'reelSound',   label: 'Reel' },
+                                    { key: 'winSound',    label: 'Win' },
+                                    { key: 'lossSound',   label: 'Loss' },
+                                ]" :key="cue.key" class="audio-box" :class="{ 'has-audio': fishingMedia[cue.key] }">
+                                    <span class="audio-label">{{ fishingMedia[cue.key] ? '✓' : '🔊' }} {{ cue.label }}</span>
+                                    <input type="file" accept="audio/*" @change="handleFishingAudio(cue.key)($event)" />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TICKET EATER Configuration -->
+                    <div v-if="activeTab === 'ticketeater'" class="config-sections">
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Theme</span>
+                            </div>
+                            <div class="preset-grid">
+                                <button
+                                    v-for="preset in colorPresets.ticketeater"
+                                    :key="preset.name"
+                                    @click="applyEaterPreset(preset)"
+                                    class="preset-btn"
+                                    :class="{ active: eaterConfig.theme === preset.theme }"
+                                    :style="{ '--preset-color': preset.accent }"
+                                >
+                                    <span class="preset-dot" :style="{ background: preset.accent }"></span>
+                                    {{ preset.name }}
+                                </button>
+                            </div>
+                        </div>
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Text</span>
+                            </div>
+                            <div class="input-group">
+                                <label>Title</label>
+                                <input type="text" v-model="eaterConfig.titleText" class="text-input" />
+                            </div>
+                            <div class="input-group">
+                                <label>Win Message</label>
+                                <input type="text" v-model="eaterConfig.winText" class="text-input" />
+                            </div>
+                            <div class="input-group">
+                                <label>Lose Message</label>
+                                <input type="text" v-model="eaterConfig.loseText" class="text-input" />
+                            </div>
+                        </div>
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Colors</span>
+                            </div>
+                            <div class="color-grid">
+                                <div class="color-item">
+                                    <input type="color" v-model="eaterConfig.accentColor" class="color-picker" />
+                                    <span>Accent</span>
+                                </div>
+                                <div class="color-item">
+                                    <input type="color" v-model="eaterConfig.primaryColor" class="color-picker" />
+                                    <span>Primary</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Intro Screen</span>
+                            </div>
+                            <label class="toggle-row">
+                                <input type="checkbox" v-model="eaterConfig.introEnabled" class="toggle-check" />
+                                <span class="toggle-label">Show Intro Screen</span>
+                            </label>
+                            <div class="input-group" style="margin-top:8px;">
+                                <label>Intro Logo</label>
+                                <label class="upload-box wide" :class="{ 'has-image': eaterImages.introTitleImage }">
+                                    <img v-if="eaterImages.introTitleImage" :src="eaterImages.introTitleImage" />
+                                    <span v-else class="upload-placeholder">Select image</span>
+                                    <input type="file" accept="image/*" @change="handleEaterImage('introTitleImage')($event)" />
+                                </label>
+                            </div>
+                            <div class="input-group">
+                                <label>Subtitle</label>
+                                <input type="text" v-model="eaterConfig.introSubtitle" class="text-input" />
+                            </div>
+                            <div class="input-group">
+                                <label>Button Text</label>
+                                <input type="text" v-model="eaterConfig.introButtonText" class="text-input" />
                             </div>
                         </div>
                     </div>
@@ -1307,19 +1657,11 @@ const footballAssets = computed(() => ({
                             <div v-if="activeTab === 'football'" class="preview-game-football">
                                 <FootballModal :model-value="true" :demoMode="true" previewMode="desktop" :assets="footballAssets" :tickets="footballDemoTickets" />
                             </div>
-                            <div v-if="activeTab === 'fishing'" class="preview-game-video">
-                                <div class="fish-video-frame">
-                                    <div class="fish-video-body">
-                                        <div class="fish-video-placeholder">
-                                            <span class="fish-placeholder-emoji">🎣</span>
-                                            <span class="fish-placeholder-text">Fishing Game</span>
-                                            <span class="fish-placeholder-hint">Demo video loading…</span>
-                                        </div>
-                                        <video autoplay loop muted playsinline class="fish-video-el">
-                                            <source src="/games/fishing/demo.mp4" type="video/mp4" />
-                                        </video>
-                                    </div>
-                                </div>
+                            <div v-if="activeTab === 'fishing'" class="preview-game-football">
+                                <FishingModal :model-value="true" :demoMode="true" previewMode="desktop" :assets="fishingAssets" :tickets="fishingDemoTickets" :instant_win_categories="fishingDemoCategories" />
+                            </div>
+                            <div v-if="activeTab === 'ticketeater'" class="preview-game-football">
+                                <TicketEaterModal :model-value="true" :demoMode="true" previewMode="desktop" :assets="eaterAssets" :instant_win_categories="eaterDemoCategories" />
                             </div>
                         </div>
                     </div>
@@ -1748,117 +2090,6 @@ const footballAssets = computed(() => ({
     max-width: 100%;
     flex-wrap: wrap;
     row-gap: 4px;
-}
-
-.preview-game-video {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: #07203a;
-}
-
-.fish-video-frame {
-    width: 100%;
-    max-width: 380px;
-    height: 100%;
-    max-height: 600px;
-    border: 2px solid var(--fish-accent, #ffd54f);
-    border-radius: 18px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    background: #07203a;
-    box-shadow: 0 0 40px -8px var(--fish-accent, #ffd54f);
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.fish-video-header {
-    padding: 12px 16px;
-    background: var(--fish-primary, #0277bd);
-    text-align: center;
-    flex-shrink: 0;
-    transition: background 0.3s;
-}
-
-.fish-video-title {
-    color: var(--fish-accent, #ffd54f);
-    font-weight: 900;
-    font-size: 1rem;
-    letter-spacing: 0.4px;
-    transition: color 0.3s;
-}
-
-.fish-video-body {
-    flex: 1;
-    position: relative;
-    overflow: hidden;
-    background: #07203a;
-}
-
-.fish-video-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    z-index: 0;
-}
-
-.fish-placeholder-emoji {
-    font-size: 3.5rem;
-}
-
-.fish-placeholder-text {
-    font-size: 1rem;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.fish-placeholder-hint {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.35);
-}
-
-.fish-video-el {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-}
-
-.fish-video-footer {
-    padding: 10px 16px;
-    background: rgba(0, 0, 0, 0.4);
-    text-align: center;
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: var(--fish-accent, #ffd54f);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    flex-shrink: 0;
-    transition: color 0.3s;
-}
-
-.feature-list {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.feature-item {
-    font-size: 12px;
-    color: var(--text-2);
-    padding: 6px 8px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--border);
-    line-height: 1.4;
 }
 
 /* =========================================
