@@ -1,7 +1,6 @@
 <script setup>
-import { inject, computed, ref, onMounted, onUnmounted } from 'vue';
+import { inject, computed, ref, onMounted } from 'vue';
 import { useReveal } from '@/Composables/useReveal';
-import { popConfettiFromEvent } from '@/Composables/useConfettiPop';
 import ScratchGame from '@/Components/Games/ScratchGame.vue';
 import SpinGame from '@/Components/Games/SpinGame.vue';
 
@@ -144,56 +143,8 @@ const rngCertUrl = 'https://access.gaminglabs.com/Certificate/Index?i=618';
 const barHeights = [30, 42, 38, 55, 50, 72, 88, 100];
 const barsTrend = computed(() => getText('ecosystem.bars_trend', '↗ +34% MoM growth'));
 
-/* ============== Smart Upsell checkout demo ============== */
-const checkoutLabel = computed(() => getText('ecosystem.checkout_label', 'Your basket · STAR DRAWS'));
-const checkoutRow1Label = computed(() => getText('ecosystem.checkout_row1_label', 'Friday Cash Draw × 5'));
-const checkoutRow1Price = computed(() => getText('ecosystem.checkout_row1_price', '£10.00'));
-const checkoutRow2Label = computed(() => getText('ecosystem.checkout_row2_label', 'Instant Win — Scratch'));
-const checkoutRow2Price = computed(() => getText('ecosystem.checkout_row2_price', '£2.50'));
-const checkoutTotal = computed(() => getText('ecosystem.checkout_total', '£12.50'));
-const checkoutPayLabel = computed(() => getText('ecosystem.checkout_pay_label', 'Pay £12.50 →'));
-
-const upsellTitle = computed(() => getText('ecosystem.upsell_title', 'Wait — quick offer.'));
-const upsellDesc = computed(() => getText('ecosystem.upsell_desc', `Add <strong>10 more tickets for just £8 extra</strong>. <strong>${Math.round(upsellStats.value?.modal_acceptance_pct ?? 87)}%</strong> of buyers take this offer.`));
-const upsellYesLabel = computed(() => getText('ecosystem.upsell_yes_label', 'Add 10 · £20.50'));
-const upsellNoLabel = computed(() => getText('ecosystem.upsell_no_label', 'No thanks'));
-const upsellMeta = computed(() => getText('ecosystem.upsell_meta', `A/B test winner · <strong>+${Math.round(upsellStats.value?.aov_uplift_pct ?? 38)}% AOV</strong> at checkout`));
-
-const upsellResultDefault = computed(() => getText('ecosystem.upsell_result_default', 'Click Pay above to see the upsell trigger →'));
-const upsellResultTriggered = computed(() => getText('ecosystem.upsell_result_triggered', 'Smart upsell modal triggered…'));
-const upsellResultWin = computed(() => getText('ecosystem.upsell_result_win', '🎉 Smart upsell live. Operator just banked an extra <strong>£8.00</strong>.'));
-const upsellResultNo = computed(() => getText('ecosystem.upsell_result_no', 'No worries — that\'s exactly the kind of choice we <strong>A/B test</strong> for our operators.'));
-const upsellResultRearm = computed(() => getText('ecosystem.upsell_result_rearm', 'Click Pay to see the upsell trigger'));
-
-const upsellShown = ref(false);
-const upsellResultWinState = ref(false);
-const upsellResultText = ref(upsellResultDefault.value);
-let upsellRearmTimer = null;
-
-function handlePay() {
-    upsellShown.value = true;
-    upsellResultWinState.value = false;
-    upsellResultText.value = upsellResultTriggered.value;
-}
-
-function handlePick(pick, event) {
-    upsellShown.value = false;
-    if (pick === 'yes') {
-        upsellResultWinState.value = true;
-        upsellResultText.value = upsellResultWin.value;
-        popConfettiFromEvent(event);
-    } else {
-        upsellResultWinState.value = false;
-        upsellResultText.value = upsellResultNo.value;
-    }
-    clearTimeout(upsellRearmTimer);
-    upsellRearmTimer = setTimeout(() => {
-        upsellResultWinState.value = false;
-        upsellResultText.value = upsellResultRearm.value;
-    }, 6000);
-}
-
-onUnmounted(() => clearTimeout(upsellRearmTimer));
+/* ============== Smart Upsell demo image ============== */
+const upsellImage = computed(() => getText('ecosystem.upsell_image', '/images/upsell/upsell.png'));
 </script>
 
 <template>
@@ -238,25 +189,8 @@ onUnmounted(() => clearTimeout(upsellRearmTimer));
                         <h4>{{ f.title }}</h4>
                         <p>{{ f.text }}</p>
                     </div>
-                    <div>
-                        <div class="checkout-mock">
-                            <div class="checkout-mock-label">{{ checkoutLabel }}</div>
-                            <div class="checkout-row"><span>{{ checkoutRow1Label }}</span><span class="v">{{ checkoutRow1Price }}</span></div>
-                            <div class="checkout-row"><span>{{ checkoutRow2Label }}</span><span class="v">{{ checkoutRow2Price }}</span></div>
-                            <div class="checkout-row total"><span>Total</span><span class="v">{{ checkoutTotal }}</span></div>
-                            <button class="checkout-btn" @click="handlePay">{{ checkoutPayLabel }}</button>
-                            <div class="upsell-modal" :class="{ shown: upsellShown }">
-                                <div class="upsell-modal-icon">🎁</div>
-                                <div class="upsell-modal-title">{{ upsellTitle }}</div>
-                                <div class="upsell-modal-desc" v-html="upsellDesc"></div>
-                                <div class="upsell-modal-buttons">
-                                    <button class="upsell-btn primary" @click="handlePick('yes', $event)">{{ upsellYesLabel }}</button>
-                                    <button class="upsell-btn secondary" @click="handlePick('no', $event)">{{ upsellNoLabel }}</button>
-                                </div>
-                                <div class="upsell-meta" v-html="upsellMeta"></div>
-                            </div>
-                        </div>
-                        <div class="upsell-result-inline" :class="{ win: upsellResultWinState }" v-html="upsellResultText"></div>
+                    <div class="upsell-image-wrap">
+                        <img :src="upsellImage" alt="Smart upsell modal example" class="upsell-image" loading="lazy" />
                     </div>
                 </template>
 

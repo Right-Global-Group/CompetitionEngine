@@ -1318,116 +1318,15 @@
     }
   }
 
-  /* ===== SMART UPSELL ===== */
-  .checkout-mock {
-    position: relative;
-    background: rgba(0,0,0,0.3);
+  /* ===== SMART UPSELL — static demo image ===== */
+  .upsell-image-wrap { display: flex; align-items: center; justify-content: center; height: 100%; }
+  .upsell-image {
+    width: 100%; max-width: 380px; height: auto; max-height: 560px;
+    object-fit: contain;
+    border-radius: 16px;
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 18px;
-    margin-bottom: 14px;
+    box-shadow: 0 20px 50px -20px rgba(0,0,0,0.55);
   }
-  .checkout-mock-label {
-    font-size: 10px; font-weight: 800;
-    color: var(--text-3);
-    letter-spacing: 0.14em; text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .checkout-row {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 9px 0;
-    font-size: 13px; color: var(--text-1);
-    border-bottom: 1px solid var(--border);
-  }
-  .checkout-row:last-of-type { border-bottom: none; }
-  .checkout-row .v { font-variant-numeric: tabular-nums; color: var(--text-0); font-weight: 600; }
-  .checkout-row.total {
-    font-weight: 800; padding-top: 12px; margin-top: 4px;
-    border-top: 2px solid rgba(178,151,219,0.20);
-    border-bottom: none;
-    font-size: 14px;
-  }
-  .checkout-row.total .v { color: var(--orange); font-size: 17px; }
-  .checkout-btn {
-    width: 100%; margin-top: 14px;
-    padding: 12px; border-radius: 10px;
-    background: linear-gradient(135deg, var(--orange), var(--pink));
-    color: white; font-weight: 800; font-size: 12px;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    border: none; cursor: pointer; font-family: inherit;
-    box-shadow: 0 4px 14px var(--orange-glow);
-    transition: transform 0.15s;
-  }
-  .checkout-btn:hover { transform: translateY(-1px); }
-
-  .upsell-modal {
-    position: absolute; inset: 0;
-    background: rgba(20,8,46,0.94);
-    backdrop-filter: blur(10px);
-    border-radius: 14px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 22px 18px; text-align: center;
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.28s ease, transform 0.28s ease;
-    transform: scale(0.96);
-    z-index: 10;
-  }
-  .upsell-modal.shown { opacity: 1; transform: scale(1); pointer-events: auto; }
-  .upsell-modal-icon {
-    font-size: 36px; line-height: 1; margin-bottom: 10px;
-    animation: bob 1.4s ease-in-out infinite;
-  }
-  .upsell-modal-title { font-size: 16px; font-weight: 800; color: white; margin-bottom: 6px; }
-  .upsell-modal-desc {
-    font-size: 12px; color: var(--text-2); margin-bottom: 16px; line-height: 1.5;
-    max-width: 280px;
-  }
-  .upsell-modal-desc strong { color: var(--orange); }
-  .upsell-modal-buttons { display: flex; gap: 8px; width: 100%; max-width: 280px; }
-  .upsell-btn {
-    flex: 1; padding: 11px 8px;
-    border-radius: 8px; border: none; cursor: pointer;
-    font-weight: 800; font-size: 12px;
-    font-family: inherit; transition: all 0.15s;
-    letter-spacing: 0.04em;
-  }
-  .upsell-btn.primary {
-    background: linear-gradient(135deg, var(--orange), var(--pink));
-    color: white; box-shadow: 0 4px 14px var(--orange-glow);
-  }
-  .upsell-btn.primary:hover { transform: translateY(-1px); }
-  .upsell-btn.secondary {
-    background: rgba(255,255,255,0.06);
-    color: var(--text-2);
-    border: 1px solid var(--border);
-  }
-  .upsell-btn.secondary:hover { background: rgba(255,255,255,0.10); color: var(--text-0); }
-
-  .upsell-meta {
-    margin-top: 12px;
-    font-size: 10px; color: var(--text-3);
-    letter-spacing: 0.08em; text-transform: uppercase;
-  }
-  .upsell-meta strong { color: var(--orange); font-weight: 800; }
-
-  /* Inline result line under the checkout — used to confirm the upsell pick */
-  .upsell-result-inline {
-    text-align: center;
-    padding: 11px 14px;
-    border-radius: 10px;
-    background: rgba(0,0,0,0.3); border: 1px solid var(--border);
-    font-size: 12px; color: var(--text-3);
-    min-height: 42px;
-    display: flex; align-items: center; justify-content: center;
-    margin-top: 12px;
-    transition: all 0.25s;
-  }
-  .upsell-result-inline.win {
-    background: linear-gradient(135deg, rgba(244,165,88,0.16), rgba(217,122,168,0.07));
-    border-color: rgba(244,165,88,0.35);
-    color: var(--text-1);
-  }
-  .upsell-result-inline strong { color: var(--orange); font-weight: 800; }
 
   /* ============== WHY OUR FEE — Goldilocks comparison + shipping showcase ============== */
   .fee-grid {
@@ -2182,6 +2081,7 @@
   /* ===== Small mobile (≤ 480px) ===== */
   @media (max-width: 480px) {
     .section { padding: 48px 14px; }
+    .mobile-cta-bar { left: 14px; max-width: calc(100vw - 28px); }
     .nav-inner { padding: 10px 14px; }
     .nav .logo .logo-text { display: none; }   /* hide wordmark, keep just gear */
 
@@ -2237,16 +2137,18 @@
   @media (max-width: 700px) {
     .mobile-cta-bar {
       display: flex;
+      flex-direction: column; align-items: flex-start;
       position: fixed;
-      bottom: 10px; left: 10px; right: 10px;
+      bottom: 10px; left: 16px;
+      width: max-content; max-width: calc(100vw - 32px);
       z-index: 100;
       background: rgba(20,8,46,0.88);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border: 1px solid rgba(178,151,219,0.25);
       border-radius: 14px;
-      padding: 9px 12px;
-      align-items: center; justify-content: space-between; gap: 12px;
+      padding: 8px 10px;
+      gap: 8px;
       font-size: 13px; color: var(--text-1);
       box-shadow: 0 10px 32px rgba(0,0,0,0.4);
       transform: translateY(140%);
@@ -2259,16 +2161,18 @@
       pointer-events: auto;
     }
     .mobile-cta-bar .mobile-cta-text {
-      display: flex; align-items: center; gap: 8px; min-width: 0;
-      font-size: 12px; color: var(--text-2); font-weight: 600;
+      display: flex; align-items: center; gap: 6px; min-width: 0;
+      font-size: 11px; color: var(--text-2); font-weight: 600;
+      white-space: nowrap;
     }
     .mobile-cta-bar .mobile-cta-text .gear {
-      width: 22px; height: 22px; flex-shrink: 0;
+      width: 18px; height: 18px; flex-shrink: 0;
       filter: drop-shadow(0 0 8px rgba(244,165,88,0.40));
     }
     .mobile-cta-bar .btn {
-      padding: 9px 14px; font-size: 12px; font-weight: 800;
-      letter-spacing: 0.04em; flex-shrink: 0;
+      align-self: center;
+      padding: 8px 13px; font-size: 12px; font-weight: 800;
+      letter-spacing: 0.04em; flex-shrink: 0; white-space: nowrap;
     }
 
   }
@@ -2318,9 +2222,9 @@
     .slot-grid { max-width: 220px; gap: 5px; }
     .slot-cell { font-size: 22px; }
 
-    /* Bento Upsell interactive card — checkout demo max-width */
+    /* Bento Upsell interactive card — demo image max-width */
     .feature-card.interactive { padding: 22px; gap: 18px; }
-    .feature-card.interactive .checkout-mock { max-width: 360px; margin: 0 auto; }
+    .feature-card.interactive .upsell-image { max-width: 300px; max-height: 440px; }
 
     /* Hero sub-headline tighter */
     .hero .lead { font-size: 15px; max-width: 100%; margin-top: 22px !important; }
