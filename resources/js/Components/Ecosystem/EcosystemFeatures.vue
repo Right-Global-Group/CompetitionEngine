@@ -121,7 +121,7 @@ const walletCashLabel = computed(() => getText('ecosystem.wallet_cash_label', 'C
 const walletCreditLabel = computed(() => getText('ecosystem.wallet_credit_label', 'Credit 32%'));
 const walletWithdrawLabel = computed(() => getText('ecosystem.wallet_withdraw_label', 'Withdrawable'));
 const walletCashSub = computed(() => getText('ecosystem.wallet_cash_sub', 'Cash wallet'));
-const walletPromoLabel = computed(() => getText('ecosystem.wallet_promo_label', 'Promo / prize'));
+const walletPromoLabel = computed(() => getText('ecosystem.wallet_promo_label', 'Non-withdrawable'));
 const walletCreditSub = computed(() => getText('ecosystem.wallet_credit_sub', 'Site credit'));
 
 /* ============== "Why we built it this way" wallet modal ============== */
