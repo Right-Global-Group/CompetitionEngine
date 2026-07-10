@@ -1163,7 +1163,7 @@
 
   /* Scroll-down hint at hero bottom */
   .scroll-hint {
-    margin-top: 56px;
+    margin-top: 20px;
     display: inline-flex; flex-direction: column; align-items: center;
     color: var(--text-3);
     font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
@@ -1214,8 +1214,11 @@
 
   /* ============== LOGO WALL — full-bleed marquee ============== */
   .logo-wall {
-    width: 100%;
-    padding: 36px 0 32px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    margin-top: 28px;
+    padding: 15px 0 15px;
     position: relative;
     overflow: hidden;
     border-top: 1px solid var(--border);

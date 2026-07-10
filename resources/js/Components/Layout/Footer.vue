@@ -43,7 +43,7 @@ footer {
 @media (max-width: 700px) {
     footer {
         padding: 26px 18px;
-        margin-top: 56px;
+        margin-top: 20px;
     }
     .for-entrants {
         padding: 16px;

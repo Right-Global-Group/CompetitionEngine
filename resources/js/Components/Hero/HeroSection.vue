@@ -1,5 +1,7 @@
 <script setup>
-import { inject, computed, ref, onMounted, watch } from 'vue';
+import { inject, computed, ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
+
+import LogoWall from '@/Components/LogoWall/LogoWall.vue';
 
 const getText = inject('getText', (key, fallback = '') => fallback);
 const siteTexts = inject('siteTexts');
@@ -7,6 +9,7 @@ const siteTexts = inject('siteTexts');
 const eyebrow = computed(() => getText('hero.eyebrow', 'Proven. Certified. UK Voluntary Code Signatory.'));
 const titleBefore = computed(() => getText('hero.title_before', "Don't Blend In."));
 const titleKeyword = computed(() => getText('hero.title_keyword', 'Stand Out.'));
+const titleAfter = computed(() => getText('hero.title_after', ''));
 const subtitle = computed(() => getText('hero.subtitle', 'The UK competition platform that\'s already survived <strong style="color:var(--text-0)">five years</strong> of draw nights. Powered by the only <strong style="color:var(--text-0)">Game Studio</strong> in the category. Built for operators who want to look nothing like the last raffle site you saw.'));
 const buttonPrimary = computed(() => getText('hero.button_primary', 'Book a draw-night demo'));
 const buttonSecondary = computed(() => getText('hero.button_secondary', 'Try Game Studio →'));
@@ -44,17 +47,50 @@ const scrollToBooking = () => {
     }
 };
 
+/* ============== Keep the hero title on one line, shrinking to fit ============== */
+const titleRef = ref(null);
+const MIN_TITLE_FONT = 22;
+
+function fitHeroTitle() {
+    const el = titleRef.value;
+    if (!el) return;
+    el.style.fontSize = '';
+    let size = parseFloat(getComputedStyle(el).fontSize);
+    let guard = 0;
+    while (el.scrollWidth > el.clientWidth + 1 && size > MIN_TITLE_FONT && guard < 60) {
+        size -= 1;
+        el.style.fontSize = size + 'px';
+        guard++;
+    }
+}
+
+let resizeTimer = null;
+function onResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(fitHeroTitle, 120);
+}
+
 onMounted(() => {
     if (!siteTexts.loading) {
         startCounters();
     }
+    nextTick(fitHeroTitle);
+    window.addEventListener('resize', onResize);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('resize', onResize);
+    clearTimeout(resizeTimer);
 });
 
 watch(() => siteTexts.loading, (loading) => {
     if (!loading) {
         startCounters();
+        nextTick(fitHeroTitle);
     }
 });
+
+watch([titleBefore, titleKeyword, titleAfter], () => nextTick(fitHeroTitle));
 </script>
 
 <template>
@@ -63,7 +99,7 @@ watch(() => siteTexts.loading, (loading) => {
 
         <div class="eyebrow"><span class="dot"></span>{{ eyebrow }}</div>
 
-        <h1 class="h1">{{ titleBefore }} <span class="grad-text">{{ titleKeyword }}</span></h1>
+        <h1 ref="titleRef" class="h1 h1-oneline">{{ titleBefore }} <span class="grad-text">{{ titleKeyword }}</span><template v-if="titleAfter">{{ ' ' + titleAfter }}</template></h1>
 
         <p class="lead" style="margin: 28px auto 0;" v-html="subtitle"></p>
 
@@ -76,6 +112,8 @@ watch(() => siteTexts.loading, (loading) => {
             <span class="arr">↗</span>
             <span v-html="growthPromise"></span>
         </div>
+
+        <LogoWall />
 
         <div class="hero-mini-stats">
             <div class="mini-stat"><strong>{{ ordersDisplay }}</strong>&nbsp;orders <span class="pill">last 30d</span></div>
@@ -116,6 +154,13 @@ watch(() => siteTexts.loading, (loading) => {
 
 
 <style scoped>
+.h1-oneline {
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    display: inline-block;
+}
+
 @media (max-width: 820px) {
     .trust-bar {
         display: grid !important;

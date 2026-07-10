@@ -2,7 +2,6 @@
 import { Head } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import HeroSection from '@/Components/Hero/HeroSection.vue';
-import LogoWall from '@/Components/LogoWall/LogoWall.vue';
 import StatsSection from '@/Components/Stats/StatsSection.vue';
 import GameConfigurator from '@/Components/Configurator/GameConfigurator.vue';
 import EcosystemFeatures from '@/Components/Ecosystem/EcosystemFeatures.vue';
@@ -103,7 +102,6 @@ onMounted(() => {
             </svg>
 
             <HeroSection />
-            <LogoWall />
             <GameConfigurator />
             <EcosystemFeatures />
             <NextGenPlatform />
