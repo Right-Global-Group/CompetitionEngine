@@ -33,7 +33,6 @@ const convertFeatures = computed(() => [
             rightLabel: ft('feat1_compare_right_label', '"Buy 10 tickets"'),
             rightMeta: ft('feat1_compare_right_meta', '+23% lift'),
         },
-        expandHint: ft('feat1_expand_hint', 'See the data'),
     },
     {
         icon: ft('feat2_icon', '💡'),
@@ -48,7 +47,6 @@ const convertFeatures = computed(() => [
             rightLabel: ft('feat2_compare_right_label', 'With upsell'),
             rightMeta:  ft('feat2_compare_right_meta',  '+£' + Math.round(upsellStats.value?.avg_uplift_gbp ?? 23) + ' avg'),
         },
-        expandHint: ft('feat2_expand_hint', 'See the data'),
     },
     {
         icon: ft('feat3_icon', '🔄'),
@@ -56,7 +54,6 @@ const convertFeatures = computed(() => [
         desc: ft('feat3_desc', 'Visitors who walk away with tickets in their basket get a nudge automatically — built in, not a £49/month add-on.'),
         detail: ft('feat3_detail', '<strong>Recovery rate:</strong> ~14% of abandoned carts complete purchase within 24h when the automated email + push fires. That\'s ~£18k/month recovered for an average operator.'),
         compare: null,
-        expandHint: ft('feat3_expand_hint', 'See the data'),
     },
     {
         icon: ft('feat4_icon', '📲'),
@@ -64,7 +61,6 @@ const convertFeatures = computed(() => [
         desc: ft('feat4_desc', 'Every operator site meets Facebook\'s strict prize-draw advertising rules out of the box. Unlock the largest paid-acquisition channel without getting your account suspended.'),
         detail: ft('feat4_detail', '<strong>Why this matters:</strong> Facebook auto-suspends prize-draw sites that miss any of 14 specific compliance flags. CompEngine sites pass all 14 by default — operators run paid acquisition from day one.'),
         compare: null,
-        expandHint: ft('feat4_expand_hint', 'See the data'),
     },
     {
         icon: ft('feat5_icon', '🤝'),
@@ -72,7 +68,6 @@ const convertFeatures = computed(() => [
         desc: ft('feat5_desc', 'Built-in viral growth: unique codes, dual rewards for referrer and referee, fraud-prevention with IP tracking. No third-party tool to wire up.'),
         detail: ft('feat5_detail', '<strong>Viral coefficient:</strong> referral-acquired customers spend ~41% more in their first 90 days than paid-traffic customers, and convert 2.1x faster on first order. Free acquisition, higher LTV.'),
         compare: null,
-        expandHint: ft('feat5_expand_hint', 'See the data'),
     },
     {
         icon: ft('feat6_icon', '📈'),
@@ -80,7 +75,6 @@ const convertFeatures = computed(() => [
         desc: ft('feat6_desc', 'See which competitions convert, where users drop off, which traffic source pays back. The reporting most platforms simply don\'t offer.'),
         detail: ft('feat6_detail', '<strong>What you see:</strong> per-competition funnel, traffic-source ROI, drop-off heatmaps, time-to-purchase distribution, and a single LTV chart by acquisition channel. Most operators run on gut feel. You won\'t.'),
         compare: null,
-        expandHint: ft('feat6_expand_hint', 'See the data'),
     },
 ]);
 
@@ -95,6 +89,7 @@ const metricKeys = ['revenue', 'conversion', 'repeat'];
 
 const metrics = computed(() => ({
     revenue: {
+        icon: '💰',
         title: ft('metric_revenue_title', 'Avg operator revenue, month-on-month'),
         pillLabel: ft('metric_revenue_pill', '+247%'),
         buttonLabel: ft('metric_revenue_button', 'Revenue'),
@@ -104,6 +99,7 @@ const metrics = computed(() => ({
         headlineEnd: 147, headlinePrefix: '£', headlineSuffix: 'k', headlineDecimals: 0,
     },
     conversion: {
+        icon: '📈',
         title: ft('metric_conversion_title', 'Avg checkout conversion rate'),
         pillLabel: ft('metric_conversion_pill', '+139%'),
         buttonLabel: ft('metric_conversion_button', 'Conversion %'),
@@ -113,6 +109,7 @@ const metrics = computed(() => ({
         headlineEnd: 4.3, headlinePrefix: '', headlineSuffix: '%', headlineDecimals: 1,
     },
     repeat: {
+        icon: '🔁',
         title: ft('metric_repeat_title', '90-day repeat-buyer rate'),
         pillLabel: ft('metric_repeat_pill', '+217%'),
         buttonLabel: ft('metric_repeat_button', 'Repeat Buyers'),
@@ -195,11 +192,17 @@ function buildGrowthChart() {
                 tooltip: {
                     backgroundColor: '#1d1042', borderColor: '#f4a558', borderWidth: 1,
                     titleFont: { family: 'Inter', weight: '700', size: 12 },
-                    bodyFont: { family: 'Inter', size: 13 },
+                    bodyFont: { family: 'Inter', size: 12 },
                     padding: 12,
+                    cornerRadius: 10,
+                    titleMarginBottom: 8,
+                    bodySpacing: 6,
+                    boxWidth: 10, boxHeight: 10, boxPadding: 4,
+                    usePointStyle: true,
                     callbacks: {
                         title: (items) => 'Month ' + (items[0].dataIndex + 1),
                         label: (ctx) => ctx.dataset.label + ': ' + metrics.value[activeMetric.value].fmt(ctx.parsed.y),
+                        labelPointStyle: () => ({ pointStyle: 'circle', rotation: 0 }),
                     },
                 },
             },
@@ -381,7 +384,6 @@ onUnmounted(() => {
                                     <div class="compare-strip-side ours"><strong>{{ f.compare.rightValue }}</strong>{{ f.compare.rightLabel }}<div class="meta">{{ f.compare.rightMeta }}</div></div>
                                 </div>
                             </div>
-                            <div class="convert-feature-expand-hint"><span class="chev">▾</span> {{ f.expandHint }}</div>
                         </div>
                     </div>
                 </div>
@@ -394,7 +396,7 @@ onUnmounted(() => {
                             class="metric-btn"
                             :class="{ active: activeMetric === m }"
                             @click="switchMetric(m)"
-                        >{{ metrics[m].buttonLabel }}</button>
+                        ><span class="metric-btn-icon">{{ metrics[m].icon }}</span>{{ metrics[m].buttonLabel }}</button>
                     </div>
                     <div class="growth-chart-header">
                         <div>

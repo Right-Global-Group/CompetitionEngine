@@ -10,8 +10,6 @@ function ft(key, fallback) {
 }
 
 const eyebrow = computed(() => ft('eyebrow', 'Independently verifiable · GLI-certified RNG · UK VCOC compliant'));
-const titleBefore = computed(() => ft('title_before', 'Every winner.'));
-const titleKeyword = computed(() => ft('title_keyword', 'Cryptographically proven.'));
 const lead = computed(() => ft('lead', 'Every main prize winner is drawn by our GLI-certified random number generator. Each draw is logged to a tamper-evident SHA-256 hash chain you can verify yourself.'));
 const explainerText = computed(() => ft('explainer_text', '<strong>How to test this yourself:</strong> Each card below lists the hashes recorded against a real draw. Click <strong>Copy</strong> on any hash, paste it into that card\'s <strong>Verify</strong> box, and we\'ll reveal the exact winner, ticket number, prize, and draw timestamp it was recorded against. Or click any hash row to auto-fill the verifier.'));
 
@@ -26,7 +24,7 @@ const verifiedTitle = computed(() => ft('verified_title', 'Hash verified · winn
 /* ============== Draw data (pre-baked demo data, decorative/structural) ============== */
 const DRAWS = [
     {
-        title: 'BMW M3 Competition Pack', meta: 'Drawn 18 May 2026 · STAR DRAWS', image: 'bmw', emoji: '🏎️', label: 'BMW M3 · £75k prize',
+        title: 'BMW M3 Competition Pack', meta: 'Drawn 18 May 2026 · STAR DRAWS', image: 'bmw', label: 'BMW M3 · £75k prize',
         hashes: [
             { seq: 1, full: 'a3f9b2c47e1d8f053a9c6b8d2e4f1a5c7d9b3e6f8c2a4d6e1f3b5a7c9d8e2f4c', winner: { name: 'Sarah K.', ticket: '#04827', prize: 'BMW M3 Competition Pack', timestamp: '18 May 2026 · 21:02:14 UTC', block: '#4,201' } },
             { seq: 2, full: 'b1e2c8d4a5f3e7b9c1d6f2e8a4b7c9d5e3f1a8b6c4d2e9f7a3b5c8d1e6f4a2cd', winner: { name: 'James P.', ticket: '#00193', prize: '£500 cash (instant win)', timestamp: '18 May 2026 · 21:03:02 UTC', block: '#4,202' } },
@@ -34,7 +32,7 @@ const DRAWS = [
         ],
     },
     {
-        title: 'Apple iMac Pro 32"', meta: 'Drawn 14 May 2026 · BLAZE', image: 'imac', emoji: '🖥️', label: 'Apple iMac · £4,999 prize',
+        title: 'Apple iMac Pro 32"', meta: 'Drawn 14 May 2026 · BLAZE', image: 'imac', label: 'Apple iMac · £4,999 prize',
         hashes: [
             { seq: 1, full: 'f4a8c2e6b9d3f5a7c1b4e6d8f2a5c7b3e9d1f4a8c6b2e5d7f1a4c8b6e3d5f9a2', winner: { name: 'Tom R.', ticket: '#08312', prize: 'Apple iMac Pro 32"', timestamp: '14 May 2026 · 19:30:11 UTC', block: '#3,847' } },
             { seq: 2, full: 'b7d3f5a1c4e8b2d6f3a5c7b1e9d4f6a2c8b5e7d1f3a9c4b6e2d8f5a1c7b3e9d4', winner: { name: 'Lia M.', ticket: '#02541', prize: '£200 cash', timestamp: '14 May 2026 · 19:31:02 UTC', block: '#3,848' } },
@@ -42,7 +40,7 @@ const DRAWS = [
         ],
     },
     {
-        title: 'Maldives Trip for Two', meta: 'Drawn 10 May 2026 · KINGS', image: 'maldives', emoji: '🏝️', label: 'Maldives · £12k prize',
+        title: 'Maldives Trip for Two', meta: 'Drawn 10 May 2026 · KINGS', image: 'maldives', label: 'Maldives · £12k prize',
         hashes: [
             { seq: 1, full: '3d7f9a2c5e8b1d4f6a3c9e2b5d8f1a4c7e0b3d6f9a2c5e8b1d4f6a3c9e2b5d8f', winner: { name: 'Sofia G.', ticket: '#07631', prize: 'Maldives Trip for 2', timestamp: '10 May 2026 · 20:00:42 UTC', block: '#3,612' } },
             { seq: 2, full: '7b2e5d8a3c6f9b1d4e7a2c5f8b3d6e9a4c7f1b4e7d2a5c8f3b6e9d2a5c8f3b6e', winner: { name: 'Marcus T.', ticket: '#03210', prize: '£1,000 cash', timestamp: '10 May 2026 · 20:01:33 UTC', block: '#3,613' } },
@@ -50,21 +48,21 @@ const DRAWS = [
         ],
     },
     {
-        title: 'Tesla Model Y', meta: 'Drawn 06 May 2026 · APEX', image: 'tesla', emoji: '⚡', label: 'Tesla Model Y · £52k prize',
+        title: 'Tesla Model Y', meta: 'Drawn 06 May 2026 · APEX', image: 'tesla', label: 'Tesla Model Y · £52k prize',
         hashes: [
             { seq: 1, full: '9e3b7a1d5f8c2b6e4a9d7f1c3b8e2a5d6f9c4b1e7a3d8f5c2b6e9a4d1f7c3b8e', winner: { name: 'Ben C.', ticket: '#23015', prize: 'Tesla Model Y Long Range', timestamp: '06 May 2026 · 21:15:08 UTC', block: '#3,401' } },
             { seq: 2, full: '5c8a2f4d7b1e9c3a6f2d5b8e1c4a7f9d3b6e2c5a8f4d1b7e3c6a9f2d5b8e1c4a', winner: { name: 'Holly W.', ticket: '#11402', prize: '£750 cash', timestamp: '06 May 2026 · 21:16:00 UTC', block: '#3,402' } },
         ],
     },
     {
-        title: 'Rolex Submariner Date', meta: 'Drawn 02 May 2026 · LUXE', image: 'rolex', emoji: '⌚', label: 'Rolex · £10,950 prize',
+        title: 'Rolex Submariner Date', meta: 'Drawn 02 May 2026 · LUXE', image: 'rolex', label: 'Rolex · £10,950 prize',
         hashes: [
             { seq: 1, full: 'e2a5b9c8d1f3a7b4e6c2d9f5a8b1c4e7d3f6a2b5c8e1d4f7a3b6c9e2d5f8a1b4', winner: { name: 'Connor F.', ticket: '#06294', prize: 'Rolex Submariner Date', timestamp: '02 May 2026 · 20:30:11 UTC', block: '#3,188' } },
             { seq: 2, full: '8f1d4a7b2e5c8d3f6a9b4e1c7d2f5a8b3e6c9d4f1a7b2e5c8d3f6a9b4e1c7d2f', winner: { name: 'Zara K.', ticket: '#18027', prize: '£500 site credit', timestamp: '02 May 2026 · 20:31:04 UTC', block: '#3,189' } },
         ],
     },
     {
-        title: '£25,000 Tax-Free Cash', meta: 'Drawn 28 Apr 2026 · BIG WINS', image: 'cash', emoji: '💰', label: '£25,000 · cash prize',
+        title: '£25,000 Tax-Free Cash', meta: 'Drawn 28 Apr 2026 · BIG WINS', image: 'cash', label: '£25,000 · cash prize',
         hashes: [
             { seq: 1, full: 'd6f3a9c2b5e8d1f4a7c3b6e9d2f5a8c1b4e7d3f6a9c2b5e8d1f4a7c3b6e9d2f5', winner: { name: 'Owen H.', ticket: '#09146', prize: '£25,000 tax-free', timestamp: '28 Apr 2026 · 21:00:18 UTC', block: '#3,002' } },
             { seq: 2, full: 'a8b3e6c9d2f5a8b1c4e7d3f6a9c2b5e8d1f4a7c3b6e9d2f5a8c1b4e7d3f6a9c2', winner: { name: 'Maddie L.', ticket: '#21477', prize: '£200 cash', timestamp: '28 Apr 2026 · 21:01:05 UTC', block: '#3,003' } },
@@ -146,7 +144,6 @@ async function copyToClipboard(text) {
     <section ref="sectionRef" class="section reveal" :class="{ visible: revealed }" id="certified-draws">
         <div class="center">
             <div class="eyebrow"><span class="dot"></span>{{ eyebrow }}</div>
-            <h2 class="h2">{{ titleBefore }} <span class="grad-text">{{ titleKeyword }}</span></h2>
             <p class="lead center" style="margin: 18px auto 0;">{{ lead }}</p>
         </div>
 
@@ -158,7 +155,7 @@ async function copyToClipboard(text) {
         <div class="draws-grid">
             <div v-for="(draw, drawIdx) in DRAWS" :key="drawIdx" class="draw-card" :class="drawIdx >= 3 ? 'draw-card--hidden-desktop' : drawIdx >= 1 ? 'draw-card--hidden-mobile' : ''">
                 <div :class="['draw-image', draw.image]">
-                    <span class="draw-image-emoji">{{ draw.emoji }}</span>
+                    <img class="draw-image-photo" :src="`/images/draws/${draw.image}.jpg`" :alt="draw.title" loading="lazy" />
                     <div class="draw-image-label">{{ draw.label }}</div>
                 </div>
                 <div class="draw-card-body">

@@ -37,9 +37,9 @@ class SiteTextSeeder extends Seeder
                 'heading_after' => ''
             ],
             ['section' => 'stats', 'key' => 'stats.description', 'content' => 'Our platform powers successful competitions at scale, every single day.', 'type' => 'paragraph', 'order' => 2],
-            ['section' => 'stats', 'key' => 'stats.value_orders', 'content' => '42000', 'type' => 'number', 'order' => 3],
+            ['section' => 'stats', 'key' => 'stats.value_orders', 'content' => '1500000', 'type' => 'number', 'order' => 3],
             ['section' => 'stats', 'key' => 'stats.label_orders', 'content' => 'Orders Processed', 'type' => 'label', 'order' => 4],
-            ['section' => 'stats', 'key' => 'stats.value_tickets', 'content' => '1250000', 'type' => 'number', 'order' => 5],
+            ['section' => 'stats', 'key' => 'stats.value_tickets', 'content' => '120000000', 'type' => 'number', 'order' => 5],
             ['section' => 'stats', 'key' => 'stats.label_tickets', 'content' => 'Tickets Sold This Month', 'type' => 'label', 'order' => 6],
             ['section' => 'stats', 'key' => 'stats.value_uptime', 'content' => '99.9', 'type' => 'number', 'order' => 7],
             ['section' => 'stats', 'key' => 'stats.label_uptime', 'content' => 'Uptime Percentage', 'type' => 'label', 'order' => 8],

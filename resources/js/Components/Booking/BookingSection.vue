@@ -12,12 +12,10 @@ function bt(key, fallback) {
 }
 
 const eyebrow = computed(() => bt('eyebrow', 'Get started today'));
-const titleBefore = computed(() => bt('title_before', 'Ready to launch the UK\'s'));
-const titleKeyword = computed(() => bt('title_keyword', 'fairest competition platform?'));
+const titleBefore = computed(() => bt('title_before', 'Ready to launch your competition on the UK\'s'));
+const titleKeyword = computed(() => bt('title_keyword', 'most intelligent platform?'));
 const lead = computed(() => bt('lead', '30 minutes. A live demo on your brief. No sales deck, no NDAs, no obligation. Just the platform running with your prize, your game type, your brand — so you can see exactly what you\'d be launching.'));
 const btn1 = computed(() => bt('btn1', 'Book a 30-min demo →'));
-const btn2 = computed(() => bt('btn2', 'Talk to the team'));
-const subtext = computed(() => bt('subtext', 'Typical response under 4 hours · No obligation · Cancel any time'));
 
 function openCalendly() {
     if (window.Calendly) {
@@ -36,9 +34,7 @@ function openCalendly() {
             <p class="lead center" style="margin: 18px auto 0; max-width: 600px;">{{ lead }}</p>
             <div style="display:flex; gap:14px; justify-content:center; margin-top:34px; flex-wrap:wrap;">
                 <button class="btn btn-orange" @click="openCalendly">{{ btn1 }}</button>
-                <button class="btn btn-ghost" @click="openCalendly">{{ btn2 }}</button>
             </div>
-            <p style="font-size:12px; color:var(--text-3); margin-top:20px;">{{ subtext }}</p>
         </div>
     </section>
 </template>

@@ -498,23 +498,42 @@
 
   /* Animated growth chart */
   .growth-chart {
-    background: linear-gradient(180deg, rgba(0,0,0,0.30), rgba(0,0,0,0.15));
-    border-radius: 18px; padding: 28px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.22));
+    border-radius: 20px; padding: 28px;
     border: 1px solid var(--border);
     position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(244,165,88,0.06), 0 24px 60px -28px rgba(0,0,0,0.6);
+  }
+  .growth-chart::before {
+    content: ""; position: absolute; top: -70px; right: -70px;
+    width: 240px; height: 240px; border-radius: 50%;
+    background: radial-gradient(circle, var(--orange-glow), transparent 70%);
+    opacity: 0.55; pointer-events: none;
   }
   .growth-chart-header {
     display: flex; justify-content: space-between; align-items: flex-start;
     margin-bottom: 18px;
+    position: relative; z-index: 1;
   }
   .growth-chart-title { font-size: 13px; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
-  .growth-chart-value { font-size: 32px; font-weight: 800; color: var(--text-0); margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .growth-chart-value {
+    font-size: 36px; font-weight: 800; margin-top: 6px; font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+    background: linear-gradient(135deg, var(--orange), var(--pink));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
   .growth-chart-pill {
     display: inline-flex; align-items: center; gap: 4px;
-    padding: 5px 10px; border-radius: 999px;
+    padding: 6px 12px; border-radius: 999px;
     background: linear-gradient(135deg, var(--orange), var(--pink));
     color: white; font-size: 11px; font-weight: 800; letter-spacing: 0.06em;
-    box-shadow: 0 4px 14px var(--orange-glow);
+    box-shadow: 0 4px 18px var(--orange-glow);
+    animation: pillGlow 2.6s ease-in-out infinite;
+  }
+  @keyframes pillGlow {
+    0%, 100% { box-shadow: 0 4px 18px var(--orange-glow); }
+    50% { box-shadow: 0 4px 26px 2px var(--orange-glow); }
   }
   .growth-chart-pill::before { content: "↑"; font-size: 14px; }
   .growth-chart-svg { width: 100%; height: 200px; display: block; }
@@ -632,19 +651,23 @@
   /* ===== CHART METRIC TOGGLE ===== */
   .chart-toggle {
     display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap;
+    position: relative; z-index: 1;
   }
   .metric-btn {
-    padding: 7px 14px; border-radius: 8px;
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border-radius: 999px;
     background: rgba(255,255,255,0.04); border: 1px solid var(--border);
     color: var(--text-2); font-size: 12px; font-weight: 700; cursor: pointer;
     transition: all 0.18s; font-family: inherit;
     letter-spacing: 0.04em;
   }
-  .metric-btn:hover { background: rgba(255,255,255,0.08); color: var(--text-0); }
+  .metric-btn-icon { font-size: 13px; }
+  .metric-btn:hover { background: rgba(255,255,255,0.08); color: var(--text-0); transform: translateY(-1px); }
   .metric-btn.active {
     background: linear-gradient(135deg, var(--orange), var(--coral));
     color: white; border-color: var(--orange);
-    box-shadow: 0 3px 12px var(--orange-glow);
+    box-shadow: 0 4px 16px var(--orange-glow);
+    transform: translateY(-1px);
   }
 
   /* ===== CHART LEGEND BELOW ===== */
@@ -663,7 +686,7 @@
   }
 
   /* Override growth-chart-svg height for canvas */
-  .growth-chart canvas { width: 100% !important; height: 220px !important; display: block; }
+  .growth-chart canvas { width: 100% !important; height: 220px !important; display: block; position: relative; z-index: 1; }
 
   /* ===== EXPANDABLE CONVERSION FEATURES ===== */
   .convert-feature.expandable {
@@ -854,7 +877,9 @@
     padding: 36px; border-radius: 20px;
     background: var(--bg-card); border: 1px solid var(--border);
     position: relative; transition: all 0.22s;
+    display: flex; flex-direction: column;
   }
+  .price-card > .btn { margin-top: auto; }
   .price-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
   .price-card.popular {
     background: linear-gradient(180deg, rgba(244,165,88,0.12), rgba(217,122,168,0.04));
@@ -905,7 +930,14 @@
     background: rgba(0,0,0,0.30); border: 1px solid var(--border);
     text-align: center;
   }
-  .ai-card .ai-emoji { font-size: 32px; }
+  .ai-card .ai-emoji {
+    width: 46px; height: 46px; margin: 0 auto;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(244,165,88,0.18), rgba(217,122,168,0.10));
+    border: 1px solid rgba(244,165,88,0.25);
+    color: var(--orange);
+  }
   .ai-card h5 { font-size: 14px; font-weight: 700; margin-top: 10px; color: var(--text-0); }
 
   /* ===== FAQ ===== */
@@ -1242,7 +1274,7 @@
   }
   .brand-logo svg { flex-shrink: 0; }
   .brand-logo img { height: 60px; width: auto; max-width: 140px; object-fit: contain; flex-shrink: 0; }
-  .brand-logo img.bl-large { height: 80px; max-width: 180px; }
+  .brand-logo img.bl-large { height: 100px; max-width: 225px; }
   .brand-logo .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
   .brand-logo .bar { width: 3px; height: 22px; display: inline-block; border-radius: 2px; }
 
@@ -1704,6 +1736,13 @@
   .draw-image::before {
     content: ""; position: absolute; inset: 0;
     background: linear-gradient(180deg, transparent 30%, rgba(20,8,46,0.78) 100%);
+    z-index: 1;
+  }
+  .draw-image-photo {
+    position: absolute; inset: 0; z-index: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    display: block;
   }
   .draw-image.bmw      { background: linear-gradient(135deg, #1e3a5f 0%, #2d1659 60%, #5b1208 100%); }
   .draw-image.imac     { background: linear-gradient(135deg, #3a1450 0%, #160730 60%, #5c4612 100%); }
@@ -1712,19 +1751,13 @@
   .draw-image.rolex    { background: linear-gradient(135deg, #1e3a5f 0%, #103a23 60%, #5c4612 100%); }
   .draw-image.cash     { background: linear-gradient(135deg, #5c4612 0%, #5b1208 50%, #2d1659 100%); }
   .draw-image-label {
-    position: relative; z-index: 1;
+    position: relative; z-index: 2;
     font-weight: 800; color: white; font-size: 11px;
     letter-spacing: 0.04em;
     background: rgba(0,0,0,0.45);
     padding: 5px 10px; border-radius: 6px;
     backdrop-filter: blur(6px);
   }
-  .draw-image-emoji {
-    position: relative; z-index: 1;
-    font-size: 26px;
-    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
-  }
-
   .draw-card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
   .draw-card-title { font-size: 15px; font-weight: 700; color: var(--text-0); margin: 0; line-height: 1.3; }
   .draw-card-meta { font-size: 11px; color: var(--text-3); margin: 0; letter-spacing: 0.03em; }
@@ -1985,7 +2018,7 @@
     .logo-rail + .logo-rail { margin-top: 18px; }
     .brand-logo { font-size: 18px; height: 70px; gap: 7px; }
     .brand-logo img { height: 46px; max-width: 110px; }
-    .brand-logo img.bl-large { height: 62px; max-width: 140px; }
+    .brand-logo img.bl-large { height: 78px; max-width: 175px; }
     .bl-condensed { font-size: 20px; }
     .bl-serif { font-size: 20px; }
     .bl-script { font-size: 19px; }
@@ -2085,18 +2118,38 @@
     .calc-tile .breakdown { font-size: 11px; }
     .calc-summary { padding: 16px; font-size: 13px; line-height: 1.5; margin-top: 22px; }
 
-    /* Comparison tabs + table — make table horizontally scrollable */
+    /* Comparison tabs + table — stack as cards instead of a 3-col table */
     .cmp-tabs { gap: 6px; }
     .cmp-tab { padding: 8px 12px; font-size: 11px; }
-    #cmp-content { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 16px; }
-    .cmp-table { font-size: 12px; min-width: 560px; }
-    .cmp-table th, .cmp-table td { padding: 10px 12px; }
+    .cmp-table { font-size: 13px; width: 100% !important; }
+    .cmp-table thead { display: none; }
+    .cmp-table, .cmp-table tbody, .cmp-table tr, .cmp-table td { display: block; width: 100% !important; }
+    .cmp-table tr {
+        margin-bottom: 12px; border: 1px solid var(--border); border-radius: 12px;
+        overflow: hidden; background: rgba(255,255,255,0.03);
+    }
+    .cmp-table tr:last-child { margin-bottom: 0; }
+    .cmp-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+    .cmp-table tr td:last-child { border-bottom: none; }
+    .cmp-table td:first-child {
+        font-weight: 700; color: var(--text-0);
+        background: rgba(255,255,255,0.04);
+    }
+    .cmp-table td.us, .cmp-table td.them {
+        display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .cmp-table td.us::before, .cmp-table td.them::before {
+        content: attr(data-label);
+        font-size: 10px; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 0.05em; color: var(--text-3); flex-shrink: 0;
+    }
+    .cmp-table td.us::before { color: var(--orange); }
 
     /* AI roadmap */
     .ai-block { padding: 26px 18px; }
     .ai-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
     .ai-card { padding: 16px; }
-    .ai-card .ai-emoji { font-size: 26px; }
+    .ai-card .ai-emoji { width: 38px; height: 38px; border-radius: 10px; }
     .ai-card h5 { font-size: 12px; }
 
     /* Pricing */
@@ -2225,13 +2278,13 @@
   /* ============================================================== */
   @media (max-width: 700px) {
     /* Certified draws — compact further on mobile */
-    .draws-explainer { padding: 14px 16px; gap: 12px; margin-top: 22px; font-size: 12px; }
-    .draws-explainer-icon { width: 36px; height: 36px; font-size: 18px; border-radius: 10px; }
-    .draws-grid { margin-top: 22px; }
+    .draws-explainer { padding: 12px 14px; gap: 10px; margin-top: 16px; font-size: 12px; }
+    .draws-explainer-icon { width: 32px; height: 32px; font-size: 16px; border-radius: 9px; }
+    .draws-grid { margin-top: 16px; }
     .draw-card { border-radius: 14px; }
+    .draw-image { aspect-ratio: 3/1; }
     .draw-card-body { padding: 14px; gap: 10px; }
     .draw-card-title { font-size: 14px; }
-    .draw-image-emoji { font-size: 22px; }
     .draw-image-label { font-size: 10px; padding: 4px 8px; }
     .hash-list { padding: 5px; }
     .hash-list-label { font-size: 9px; padding: 3px 6px 2px; }

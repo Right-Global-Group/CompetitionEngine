@@ -157,10 +157,8 @@ watch(() => props.modelValue, (open) => {
     if (open) {
         clearAuto(); clearDemo(); buildCasts();
         showIntro.value = introEnabled.value;
-        if (props.demoMode) { demoTimer = setTimeout(() => { mode.value = 'auto'; startGame(); }, introEnabled.value ? 2000 : 400); }
     }
 }, { immediate: true });
-watch(phase, (p) => { if (props.demoMode && p === 'done') { clearDemo(); demoTimer = setTimeout(() => { buildCasts(); mode.value = 'auto'; startGame(); }, 1600); } });
 onBeforeUnmount(() => { feedTl?.kill(); clearAuto(); clearDemo(); });
 function close() {
     clearAuto();

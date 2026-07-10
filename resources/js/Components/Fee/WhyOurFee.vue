@@ -33,12 +33,14 @@ const usTag = computed(() => ft('us_tag', 'CompEngine — priced to keep shippin
 const usH3 = computed(() => ft('us_h3', 'Your fee funds the next feature.'));
 const usP = computed(() => ft('us_p', 'And the one after that. Five years of consistent shipping. Every new feature included for every operator, automatically, the day it goes live.'));
 const usItems = computed(() => [
+    ft('us_li0', 'In-house development team — no third parties'),
     ft('us_li1', 'Every new feature included — never an upcharge, never a "Pro tier"'),
     ft('us_li2', '<strong>24 features shipped</strong> in the last 12 months, included for everyone'),
     ft('us_li3', 'GLI recertification cycle funded — your seal stays current'),
     ft('us_li4', 'Independent penetration test on a defined cycle'),
     ft('us_li5', 'The team you talk to ships the next feature themselves'),
     ft('us_li6', 'VCOC compliance updates automatic — no upgrade required'),
+    ft('us_li7', 'Fixed-fee options available for operators who scale — so growth never gets penalised'),
 ]);
 const usBottom = computed(() => ft('us_bottom', 'Your fee pays for the platform getting better while you sleep.'));
 

@@ -16,8 +16,8 @@ const lead = computed(() => ct('lead', 'Pick what you\'re considering. We\'ll sh
 /* ============== Tab data (structural/demo data — not admin-managed) ============== */
 const TABLES = {
     rafflex: {
-        tabLabel: ct('tab_rafflex', 'vs RaffleX'),
-        name: ct('tab_rafflex_name', 'RaffleX'),
+        tabLabel: ct('tab_rafflex', 'vs Other SaaS'),
+        name: ct('tab_rafflex_name', 'Other SaaS'),
         rows: [
             ['Years operating in this category', '5+ years', '4+ years'],
             ['Per-order fee', '5–10p', '17p'],
@@ -61,8 +61,6 @@ const TABLES = {
 const TAB_KEYS = ['rafflex', 'flat', 'wp'];
 const activeTab = ref('rafflex');
 const currentTable = computed(() => TABLES[activeTab.value]);
-
-const sourcesNote = computed(() => ct('sources', 'Sources: rafflex.io homepage (May 2026); typical UK flat-fee platform pricing observed at May 2026; CompEngine internal numbers (May 2026 rolling-30-day).'));
 </script>
 
 <template>
@@ -95,12 +93,11 @@ const sourcesNote = computed(() => ct('sources', 'Sources: rafflex.io homepage (
                     <tbody>
                         <tr v-for="(row, i) in currentTable.rows" :key="i">
                             <td>{{ row[0] }}</td>
-                            <td class="us">{{ row[1] }}</td>
-                            <td class="them">{{ row[2] }}</td>
+                            <td class="us" data-label="CompEngine">{{ row[1] }}</td>
+                            <td class="them" :data-label="currentTable.name">{{ row[2] }}</td>
                         </tr>
                     </tbody>
                 </table>
-                <p style="font-size:13px; color:var(--text-3); margin-top:14px;">{{ sourcesNote }}</p>
             </div>
         </div>
     </section>

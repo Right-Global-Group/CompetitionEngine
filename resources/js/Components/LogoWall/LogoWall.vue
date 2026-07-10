@@ -16,7 +16,7 @@ const tenants = [
     { label: 'LuckyDucky', img: '/images/tenant-icons/luckyducky.png' },
     { label: 'Lightning', img: '/images/tenant-icons/lightning.png' },
     { label: 'MsMoneyPenny', img: '/images/tenant-icons/msmoneypenny.png' },
-    { label: 'Vortex', img: '/images/tenant-icons/vortexfavicon.png', large: true },
+    { label: 'Vortex', img: '/images/tenant-icons/vortex.png', large: true },
     { label: 'Jolly', img: '/images/tenant-icons/jolly.png' },
     { label: 'MadMac', img: '/images/tenant-icons/madmac.png' },
     { label: 'Ritas', img: '/images/tenant-icons/ritas.png' },

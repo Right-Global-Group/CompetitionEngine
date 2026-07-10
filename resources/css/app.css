@@ -170,3 +170,15 @@
         }
     }
 }
+
+/* Tawk.to chat widget — shrink and lift on mobile so it doesn't sit on top of
+   fixed-position CTAs (e.g. the booking section button). Tawk injects its
+   widget as an iframe titled "chat widget" and re-applies its own inline
+   bottom/right offsets, so this has to win with !important. */
+@media (max-width: 700px) {
+    iframe[title="chat widget"] {
+        transform: scale(0.8) !important;
+        transform-origin: bottom right !important;
+        bottom: 84px !important;
+    }
+}

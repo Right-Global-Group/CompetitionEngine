@@ -89,7 +89,7 @@ const logout = () => {
             <div class="flex items-center justify-between">
                 <!-- Left: Logo -->
                 <div class="flex items-center cursor-pointer group" @click="scrollToSection('hero')">
-                    <img src="/images/logo.png" alt="Competition Engine" class="h-[4.5rem] md:h-12" />
+                    <img src="/images/logo.png" alt="Competition Engine" class="h-[4.5rem] md:h-15" />
                 </div>
 
                 <!-- Center: Navigation (Desktop only) -->

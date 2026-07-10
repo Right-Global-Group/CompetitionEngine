@@ -104,7 +104,6 @@ onMounted(() => {
 
             <HeroSection />
             <LogoWall />
-            <StatsSection />
             <GameConfigurator />
             <EcosystemFeatures />
             <NextGenPlatform />

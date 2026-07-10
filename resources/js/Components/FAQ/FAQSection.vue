@@ -17,40 +17,40 @@ const lead = computed(() => fq('lead', 'If yours isn\'t here, it\'ll be answered
 
 const FAQS_FALLBACK = [
     {
-        question: 'What does "5–10p per order" actually mean?',
-        answer: 'Each time a customer places an order on your platform — buying tickets, entries, or a bundle — we charge between 5p and 10p. The exact rate depends on your volume tier. There\'s no monthly minimum, no setup fee, and no charge for page views, registrations, or anything that isn\'t an order. Most operators start at 10p and reach 5p within their first three months.',
+        question: 'How do I start a competition website?',
+        answer: 'Book a 30-minute demo and tell us your prize and game type. We handle domain setup, payment gateway connection, and game configuration from there — most operators are live within 1–2 weeks.',
     },
     {
-        question: 'What happens when I need help?',
-        answer: 'You talk to the people who built the platform. We have no first-line support outsourcing — every person on the support team can read the code. On draw nights, there\'s someone monitoring in real time. Our average response time for urgent issues is under 8 minutes.',
+        question: 'What types of competitions do you offer?',
+        answer: 'Raffles, instant-win games (Slots, Scratch Cards, Spin-the-Wheel, Bingo, Coin Drop, Ticket Eater, Fishing, Football, Balloon Pop), and compliant free-entry competitions — all configurable in Game Studio.',
     },
     {
-        question: 'Can I customise the look and feel?',
-        answer: 'Yes — extensively. Game Studio lets you configure every visual and mechanical aspect of each game type. Beyond that, you control colours, typography, layout, and all copy. Your site doesn\'t have to look like any other competition platform on the market.',
+        question: 'How do I stay compliant?',
+        answer: 'CompEngine is built around UK VCOC compliance — free-entry routes, age verification, and separate Cash/Site Credit wallets are enforced at the platform level, and compliance updates ship automatically to every operator.',
     },
     {
-        question: 'Is CompEngine compliant with the UK VCOC?',
-        answer: 'Yes. CompEngine was designed with VCOC compliance as a constraint, not an afterthought. Free-entry routes are built in and automated. Age verification is integrated. Wallet segregation (Cash vs Site Credit) is enforced at the platform level. When VCOC guidance changes, the update ships automatically to all operators.',
+        question: 'How quickly can I launch?',
+        answer: 'Most operators are live within 1–2 weeks of their onboarding call. We\'ve done it in 4 days for operators with an urgent deadline.',
     },
     {
-        question: 'What games can I offer?',
-        answer: 'Slots, Scratch Cards, Spin-the-Wheel, Bingo, Coin Drop, and Balloon Pop — each fully configurable in Game Studio. You can run multiple game types simultaneously, set different reveal mechanics per draw, and preview exactly how each game will look before you publish.',
+        question: 'Can I export my data?',
+        answer: 'Yes — your analytics dashboard shows orders, revenue, ticket counts, and customer lifetime value in real time, and you can export everything. You own your data; we never aggregate or sell it.',
     },
     {
-        question: 'How does the wallet system work?',
-        answer: 'We operate two completely separate wallet balances per customer: Cash (withdrawable, funded by real money) and Site Credit (non-withdrawable, funded by bonuses and winnings you specify). The separation is enforced at the database level — it\'s impossible to accidentally mix them. This matters for VCOC compliance and for your own accounting.',
+        question: 'Do you integrate the payment gateway that accepts apple & google pay?',
+        answer: 'Yes — our UK-licensed payment gateway integration supports Apple Pay and Google Pay alongside standard card payments, so customers can check out in one tap.',
     },
     {
-        question: 'What does GLI certification mean for my operators?',
-        answer: 'GLI (Gaming Laboratories International) is an independent testing body that verifies our RNG is statistically fair and that draw results can\'t be manipulated. The certification is renewed on a defined cycle — the cost is part of our operating budget, not an extra charge. You can display the GLI seal on your platform.',
+        question: 'Is the website secure?',
+        answer: 'Yes — built on enterprise-grade infrastructure with a UK-licensed payment gateway, continuous security monitoring, and independent penetration testing on a defined cycle.',
     },
     {
-        question: 'How long does it take to launch?',
-        answer: 'Most operators are live within 1–2 weeks of their onboarding call. The onboarding process covers domain setup, payment gateway connection, game configuration, and a test draw. We\'ve done it in 4 days for operators with an urgent deadline.',
+        question: 'Is there any limits of tickets or instant wins?',
+        answer: 'No — CompEngine has no hard limits on ticket volume or instant-win prize counts, so your competitions can scale with demand.',
     },
     {
-        question: 'Can I see my own data?',
-        answer: 'Yes — your analytics dashboard shows orders, revenue, ticket counts, game performance, customer lifetime value, and draw results in real time. You can export everything. You own your data. We don\'t aggregate it across operators or sell insights derived from it.',
+        question: 'Can you build a mobile app?',
+        answer: 'Yes — native iOS and Android apps are available, complete with push notifications to keep your audience engaged.',
     },
 ];
 

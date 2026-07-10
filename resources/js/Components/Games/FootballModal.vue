@@ -481,7 +481,11 @@ async function strike() {
 function next() { console.log('[FB] next()', { index: index.value, total: total.value }); showPrize.value = false; if (index.value < total.value - 1) { index.value++; resetShot(); } else finish(); }
 function skipAll() { finish(); }
 function finish() { console.log('[FB] finish() -> done, wins=', wins.value.length); phase.value = 'done'; showPrize.value = false; emit('wins-collected', wins.value.map((w) => ({ prize: w.prize, value: w.value }))); }
-function close() { stopPower(); cancelSpeech(); sfx.stopCrowd(); emit('update:modelValue', false); }
+function close() {
+    stopPower(); cancelSpeech(); sfx.stopCrowd();
+    if (props.demoMode) { buildPens(); showIntro.value = introEnabled.value; return; }
+    emit('update:modelValue', false);
+}
 onBeforeUnmount(() => { stopPower(); cancelSpeech(); sfx.dispose(); cancelAnimationFrame(keeperRaf); });
 </script>
 

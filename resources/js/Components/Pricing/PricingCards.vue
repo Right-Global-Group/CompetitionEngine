@@ -26,11 +26,16 @@ const plans = computed(() => {
     }
     if (plan1Features.length === 0) {
         plan1Features.push(
-            'All game types — including Game Studio',
-            'Full analytics & reporting dashboard',
-            'Personalised onboarding handover',
-            'All future features included automatically',
-            '1–2 week average launch time',
+            'All Game Types and Instant Wins included',
+            'Entry Lists',
+            'Upsells',
+            'Responsible Play options',
+            'Legal Compliance — Terms & Conditions',
+            'All future games and features included',
+            'Gateway Integration',
+            'Website notifications',
+            'Free site migration — including users, wallets and competitions',
+            'No limits',
         );
     }
 
@@ -40,11 +45,10 @@ const plans = computed(() => {
     }
     if (plan2Features.length === 0) {
         plan2Features.push(
-            'Everything in Pay As You Go',
-            'Fixed monthly cost — no per-order charges',
-            'Dedicated account manager',
-            'Priority 24/7 support',
-            'Custom contract & SLA',
+            'Everything in Pay As You Go, without the order fees',
+            'Premium support included',
+            'First dibs on new features',
+            'No limits',
         );
     }
 
@@ -58,7 +62,7 @@ const plans = computed(() => {
             features: plan1Features,
             popular: false,
             badge: '',
-            buttonText: pt('plan1_button', 'Get started'),
+            buttonText: pt('plan1_button', 'Book a Call'),
             action: pt('plan1_action', 'calendly'),
         },
         {
@@ -70,7 +74,7 @@ const plans = computed(() => {
             features: plan2Features,
             popular: true,
             badge: pt('plan2_badge', 'Most operators'),
-            buttonText: pt('plan2_button', 'Book a demo'),
+            buttonText: pt('plan2_button', 'Book a Call'),
             action: pt('plan2_action', 'calendly'),
         },
     ];

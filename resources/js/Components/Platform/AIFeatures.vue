@@ -1,6 +1,7 @@
 <script setup>
 import { inject, computed } from 'vue';
 import { useReveal } from '@/Composables/useReveal';
+import { TrendingUp, Target, BarChart3, PenLine } from '@lucide/vue';
 
 const getText = inject('getText', (key, fallback = '') => fallback);
 const { sectionRef, revealed } = useReveal();
@@ -15,10 +16,10 @@ const titleKeyword = computed(() => at('title_keyword', 'already being built.'))
 const lead = computed(() => at('lead', 'We\'re integrating machine learning into the parts of your business that move money: demand forecasting, customer segmentation, revenue attribution. Public release in phases — existing operators get every feature automatically.'));
 
 const AI_CARDS = [
-    { emoji: '🤖', title: at('card1_title', 'Demand Forecasting'), text: at('card1_text', 'Predict ticket demand per draw type, adjusting prize structures before you publish.') },
-    { emoji: '🎯', title: at('card2_title', 'Smart Targeting'), text: at('card2_text', 'Segment customers by lifetime value and re-engage with dynamically generated offers.') },
-    { emoji: '📊', title: at('card3_title', 'Revenue Insights'), text: at('card3_text', 'ML-attributed revenue per game type, acquisition channel, and promotional mechanic.') },
-    { emoji: '✍️', title: at('card4_title', 'AI Content Assist'), text: at('card4_text', 'Competition titles, rules copy, and email subject lines — generated and A/B tested automatically.') },
+    { icon: TrendingUp, title: at('card1_title', 'Demand Forecasting'), text: at('card1_text', 'Predict ticket demand per draw type, adjusting prize structures before you publish.') },
+    { icon: Target, title: at('card2_title', 'Smart Targeting'), text: at('card2_text', 'Segment customers by lifetime value and re-engage with dynamically generated offers.') },
+    { icon: BarChart3, title: at('card3_title', 'Revenue Insights'), text: at('card3_text', 'ML-attributed revenue per game type, acquisition channel, and promotional mechanic.') },
+    { icon: PenLine, title: at('card4_title', 'AI Content Assist'), text: at('card4_text', 'Competition titles, rules copy, and email subject lines — generated and A/B tested automatically.') },
 ];
 </script>
 
@@ -32,7 +33,7 @@ const AI_CARDS = [
             </div>
             <div class="ai-grid">
                 <div v-for="(card, i) in AI_CARDS" :key="i" class="ai-card">
-                    <div class="ai-emoji">{{ card.emoji }}</div>
+                    <div class="ai-emoji"><component :is="card.icon" :size="26" :stroke-width="1.75" /></div>
                     <h5>{{ card.title }}</h5>
                     <p class="ai-card-text">{{ card.text }}</p>
                 </div>

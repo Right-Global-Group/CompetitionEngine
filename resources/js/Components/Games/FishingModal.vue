@@ -371,10 +371,8 @@ watch(() => props.modelValue, (open) => {
         mode.value = 'all'; clearAuto(); clearDemo(); buildCasts(); startAmbient(); startSwim();
         showIntro.value = introEnabled.value;
         if (showIntro.value && !props.demoMode) playWelcome();
-        if (props.demoMode) demoTimer = setTimeout(() => { mode.value = 'auto'; startGame(); }, introEnabled.value ? 2200 : 500);
     } else { stopAmbient(); stopSwim(); castTl?.kill(); clearAuto(); clearDemo(); cancelSpeech(); }
 }, { immediate: true });
-watch(phase, (p) => { if (props.demoMode && p === 'done') { clearDemo(); demoTimer = setTimeout(() => { buildCasts(); mode.value = 'auto'; startGame(); }, 1600); } });
 watch(showIntro, (on) => {
     if (!on) return;
     nextTick(() => {
