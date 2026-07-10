@@ -51,7 +51,15 @@ const shuffle = (arr) => {
     return a;
 };
 
-const tenantsRow1 = shuffle(tenants);
+function buildRow1() {
+    const vortex = tenants.find((t) => t.label === 'Vortex');
+    const others = shuffle(tenants.filter((t) => t.label !== 'Vortex'));
+    const middle = Math.floor(others.length / 2);
+    others.splice(middle, 0, vortex);
+    return others;
+}
+
+const tenantsRow1 = buildRow1();
 const tenantsRow2 = shuffle(tenants);
 </script>
 
