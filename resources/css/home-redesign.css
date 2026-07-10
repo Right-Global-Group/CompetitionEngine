@@ -1247,9 +1247,9 @@
     display: flex; flex-shrink: 0; align-items: center;
     gap: 56px; padding-right: 56px;
     width: max-content;
-    animation: railScroll 78s linear infinite;
+    animation: railScroll 95s linear infinite;
   }
-  .logo-rail.reverse .logo-track { animation: railScrollReverse 90s linear infinite; }
+  .logo-rail.reverse .logo-track { animation: railScrollReverse 95s linear infinite; }
   .logo-rail + .logo-rail { margin-top: 26px; }
 
   /* Row 1 stays hidden + paused until Vortex's centred start position is computed,
@@ -2211,8 +2211,8 @@
     .verify-hint { font-size: 9px; }
 
     /* Marquee — slower on mobile to reduce GPU strain */
-    .logo-track { animation-duration: 90s !important; }
-    .logo-rail.reverse .logo-track { animation-duration: 100s !important; }
+    .logo-track { animation-duration: 95s !important; }
+    .logo-rail.reverse .logo-track { animation-duration: 95s !important; }
 
     /* Sparkles dimmer + sparser on mobile (saves battery) */
     .gs-sparkles { opacity: 0.25; }

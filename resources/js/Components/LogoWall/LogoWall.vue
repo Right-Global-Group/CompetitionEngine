@@ -8,38 +8,38 @@ const eyebrowAccent = computed(() => getText('logowall.eyebrow_accent', 'leading
 const footerText = computed(() => getText('logowall.footer_text', 'more UK operators trust CompEngine with their draws'));
 
 const tenants = [
-    { label: 'S2A', img: '/images/tenant-icons/s2a.png' },
-    { label: 'Lust Raffles', img: '/images/tenant-icons/lustraffles.png' },
-    { label: 'AutoComps', img: '/images/tenant-icons/autocomps.png' },
-    { label: 'Auwins', img: '/images/tenant-icons/auwins.png' },
-    { label: 'WestCoast', img: '/images/tenant-icons/westcoast.png' },
-    { label: 'LuckyDucky', img: '/images/tenant-icons/luckyducky.png' },
-    { label: 'Lightning', img: '/images/tenant-icons/lightning.png' },
-    { label: 'MsMoneyPenny', img: '/images/tenant-icons/msmoneypenny.png' },
-    { label: 'Vortex', img: '/images/tenant-icons/vortex.png', large: true },
-    { label: 'Jolly', img: '/images/tenant-icons/jolly.png' },
-    { label: 'MadMac', img: '/images/tenant-icons/madmac.png' },
-    { label: 'Ritas', img: '/images/tenant-icons/ritas.png' },
-    { label: 'Winner Winner', img: '/images/tenant-icons/winnerwinner.png' },
-    { label: 'Prize Party', img: '/images/tenant-icons/prizeparty.png' },
-    { label: 'Karma', img: '/images/tenant-icons/karma.png' },
-    { label: 'Deluxe Comps', img: '/images/tenant-icons/deluxe.png' },
-    { label: 'Luxsy Wins', img: '/images/tenant-icons/luxsy.png' },
-    { label: 'WinThisNow', img: '/images/tenant-icons/winthisnow.png' },
-    { label: 'Top Banana', img: '/images/tenant-icons/topbanana.png' },
-    { label: 'MixItUp', img: '/images/tenant-icons/mixitup.png' },
+    { label: 'S2A', img: '/images/tenant-icons/s2a.png', w: 1068, h: 684 },
+    { label: 'Lust Raffles', img: '/images/tenant-icons/lustraffles.png', w: 1122, h: 544 },
+    { label: 'AutoComps', img: '/images/tenant-icons/autocomps.png', w: 1181, h: 591 },
+    { label: 'Auwins', img: '/images/tenant-icons/auwins.png', w: 150, h: 150 },
+    { label: 'WestCoast', img: '/images/tenant-icons/westcoast.png', w: 397, h: 201 },
+    { label: 'LuckyDucky', img: '/images/tenant-icons/luckyducky.png', w: 505, h: 494 },
+    { label: 'Lightning', img: '/images/tenant-icons/lightning.png', w: 321, h: 172 },
+    { label: 'MsMoneyPenny', img: '/images/tenant-icons/msmoneypenny.png', w: 507, h: 353 },
+    { label: 'Vortex', img: '/images/tenant-icons/vortex.png', large: true, w: 370, h: 110 },
+    { label: 'Jolly', img: '/images/tenant-icons/jolly.png', w: 1200, h: 700 },
+    { label: 'MadMac', img: '/images/tenant-icons/madmac.png', w: 1769, h: 1308 },
+    { label: 'Ritas', img: '/images/tenant-icons/ritas.png', w: 2079, h: 1667 },
+    { label: 'Winner Winner', img: '/images/tenant-icons/winnerwinner.png', w: 1024, h: 560 },
+    { label: 'Prize Party', img: '/images/tenant-icons/prizeparty.png', w: 4320, h: 3616 },
+    { label: 'Karma', img: '/images/tenant-icons/karma.png', w: 1179, h: 445 },
+    { label: 'Deluxe Comps', img: '/images/tenant-icons/deluxe.png', w: 343, h: 257 },
+    { label: 'Luxsy Wins', img: '/images/tenant-icons/luxsy.png', w: 512, h: 512 },
+    { label: 'WinThisNow', img: '/images/tenant-icons/winthisnow.png', w: 124, h: 136 },
+    { label: 'Top Banana', img: '/images/tenant-icons/topbanana.png', w: 1024, h: 1024 },
+    { label: 'MixItUp', img: '/images/tenant-icons/mixitup.png', w: 5028, h: 2706 },
     // { label: 'Oche Prizes', img: '/images/tenant-icons/ocheprizes.png' },
-    { label: 'SmashDrop', img: '/images/tenant-icons/smashdrop.png' },
-    { label: 'Wrights', img: '/images/tenant-icons/wrights.png' },
-    { label: 'SunnyGiveaways', img: '/images/tenant-icons/sunnygiveaways.png' },
-    { label: 'House of Hope', img: '/images/tenant-icons/hope.png' },
-    { label: 'Vincere', img: '/images/tenant-icons/vincere.png' },
-    { label: 'MPComps', img: '/images/tenant-icons/mpower.png' },
-    { label: 'Podium', img: '/images/tenant-icons/podium.png' },
-    { label: 'CrazyCat', img: '/images/tenant-icons/crazycat.png' },
-    { label: 'Padel Comps', img: '/images/tenant-icons/padel.png' },
-    { label: 'Belter Competition', img: '/images/tenant-icons/belter.png' },
-    { label: 'Prize Hunter', img: '/images/tenant-icons/prizehunter.png' },
+    { label: 'SmashDrop', img: '/images/tenant-icons/smashdrop.png', w: 1000, h: 469 },
+    { label: 'Wrights', img: '/images/tenant-icons/wrights.png', w: 2560, h: 891 },
+    { label: 'SunnyGiveaways', img: '/images/tenant-icons/sunnygiveaways.png', w: 600, h: 400 },
+    { label: 'House of Hope', img: '/images/tenant-icons/hope.png', w: 1024, h: 1024 },
+    { label: 'Vincere', img: '/images/tenant-icons/vincere.png', w: 1997, h: 609 },
+    { label: 'MPComps', img: '/images/tenant-icons/mpower.png', w: 680, h: 264 },
+    { label: 'Podium', img: '/images/tenant-icons/podium.png', w: 1404, h: 456 },
+    { label: 'CrazyCat', img: '/images/tenant-icons/crazycat.png', w: 1100, h: 1100 },
+    { label: 'Padel Comps', img: '/images/tenant-icons/padel.png', w: 926, h: 610 },
+    { label: 'Belter Competition', img: '/images/tenant-icons/belter.png', w: 206, h: 127 },
+    { label: 'Prize Hunter', img: '/images/tenant-icons/prizehunter.png', w: 1267, h: 659 },
 ];
 
 const shuffle = (arr) => {
@@ -67,22 +67,10 @@ const rail1Ref = ref(null);
 const track1Ref = ref(null);
 const vortexReady = ref(false);
 
-function waitForImages(container) {
-    const imgs = Array.from(container.querySelectorAll('img'));
-    return Promise.all(imgs.map((img) => {
-        if (img.complete) return Promise.resolve();
-        return new Promise((resolve) => {
-            img.addEventListener('load', resolve, { once: true });
-            img.addEventListener('error', resolve, { once: true });
-        });
-    }));
-}
-
-async function centerVortex() {
+function centerVortex() {
     const track = track1Ref.value;
     const rail = rail1Ref.value;
     if (!track || !rail) return;
-    await waitForImages(track);
 
     const children = Array.from(track.children).slice(0, tenantsRow1.length);
     const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
@@ -117,7 +105,7 @@ function onResize() {
 
 onMounted(() => {
     nextTick(centerVortex);
-    setTimeout(() => { vortexReady.value = true; }, 1500);
+    setTimeout(() => { vortexReady.value = true; }, 200);
     window.addEventListener('resize', onResize);
 });
 
@@ -142,7 +130,7 @@ onUnmounted(() => {
                         :key="`row1-${n}-${i}`"
                         class="brand-logo"
                     >
-                        <img :src="tenant.img" :alt="tenant.label" :class="{ 'bl-large': tenant.large }" />
+                        <img :src="tenant.img" :alt="tenant.label" :width="tenant.w" :height="tenant.h" :class="{ 'bl-large': tenant.large }" />
                     </div>
                 </template>
             </div>
@@ -156,7 +144,7 @@ onUnmounted(() => {
                         :key="`row2-${n}-${i}`"
                         class="brand-logo"
                     >
-                        <img :src="tenant.img" :alt="tenant.label" :class="{ 'bl-large': tenant.large }" />
+                        <img :src="tenant.img" :alt="tenant.label" :width="tenant.w" :height="tenant.h" :class="{ 'bl-large': tenant.large }" />
                     </div>
                 </template>
             </div>
