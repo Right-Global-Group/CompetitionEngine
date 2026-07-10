@@ -1,5 +1,5 @@
 <script setup>
-import { inject, computed } from 'vue';
+import { inject, computed, ref, onMounted, onUnmounted, nextTick } from 'vue';
 
 const getText = inject('getText');
 
@@ -61,6 +61,67 @@ function buildRow1() {
 
 const tenantsRow1 = buildRow1();
 const tenantsRow2 = shuffle(tenants);
+
+/* ============== Precisely centre the Vortex logo in the top row on load ============== */
+const rail1Ref = ref(null);
+const track1Ref = ref(null);
+
+function waitForImages(container) {
+    const imgs = Array.from(container.querySelectorAll('img'));
+    return Promise.all(imgs.map((img) => {
+        if (img.complete) return Promise.resolve();
+        return new Promise((resolve) => {
+            img.addEventListener('load', resolve, { once: true });
+            img.addEventListener('error', resolve, { once: true });
+        });
+    }));
+}
+
+async function centerVortex() {
+    const track = track1Ref.value;
+    const rail = rail1Ref.value;
+    if (!track || !rail) return;
+    await waitForImages(track);
+
+    const children = Array.from(track.children).slice(0, tenantsRow1.length);
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+
+    let cumulativeLeft = 0;
+    let vortexLeft = null;
+    let vortexWidth = 0;
+    for (const child of children) {
+        if (vortexLeft === null) {
+            const img = child.querySelector('img');
+            if (img && img.alt === 'Vortex') {
+                vortexLeft = cumulativeLeft;
+                vortexWidth = child.offsetWidth;
+            }
+        }
+        cumulativeLeft += child.offsetWidth + gap;
+    }
+    if (vortexLeft === null) return;
+
+    const railWidth = rail.clientWidth;
+    const vortexCenter = vortexLeft + vortexWidth / 2;
+    const startX = railWidth / 2 - vortexCenter;
+    track.style.setProperty('--start-x', startX + 'px');
+}
+
+let resizeTimer = null;
+function onResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(centerVortex, 120);
+}
+
+onMounted(() => {
+    nextTick(centerVortex);
+    window.addEventListener('resize', onResize);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('resize', onResize);
+    clearTimeout(resizeTimer);
+});
 </script>
 
 <template>
@@ -70,8 +131,8 @@ const tenantsRow2 = shuffle(tenants);
             <span class="live-pill">Live</span>
         </div>
 
-        <div class="logo-rail">
-            <div class="logo-track">
+        <div class="logo-rail" ref="rail1Ref">
+            <div class="logo-track" ref="track1Ref">
                 <template v-for="n in 2" :key="`row1-${n}`">
                     <div
                         v-for="(tenant, i) in tenantsRow1"

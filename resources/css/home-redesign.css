@@ -1252,7 +1252,7 @@
   .logo-rail.reverse .logo-track { animation: railScrollReverse 70s linear infinite; }
   .logo-rail + .logo-rail { margin-top: 26px; }
 
-  @keyframes railScroll        { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
+  @keyframes railScroll        { from { transform: translateX(var(--start-x, 0px)); } to { transform: translateX(calc(var(--start-x, 0px) - 50%)); } }
   @keyframes railScrollReverse { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
   .logo-wall:hover .logo-track { animation-play-state: paused; }
