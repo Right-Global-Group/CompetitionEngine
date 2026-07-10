@@ -65,6 +65,7 @@ const tenantsRow2 = shuffle(tenants);
 /* ============== Precisely centre the Vortex logo in the top row on load ============== */
 const rail1Ref = ref(null);
 const track1Ref = ref(null);
+const vortexReady = ref(false);
 
 function waitForImages(container) {
     const imgs = Array.from(container.querySelectorAll('img'));
@@ -105,6 +106,7 @@ async function centerVortex() {
     const vortexCenter = vortexLeft + vortexWidth / 2;
     const startX = railWidth / 2 - vortexCenter;
     track.style.setProperty('--start-x', startX + 'px');
+    vortexReady.value = true;
 }
 
 let resizeTimer = null;
@@ -115,6 +117,7 @@ function onResize() {
 
 onMounted(() => {
     nextTick(centerVortex);
+    setTimeout(() => { vortexReady.value = true; }, 1500);
     window.addEventListener('resize', onResize);
 });
 
@@ -131,7 +134,7 @@ onUnmounted(() => {
             <span class="live-pill">Live</span>
         </div>
 
-        <div class="logo-rail" ref="rail1Ref">
+        <div class="logo-rail row1" :class="{ ready: vortexReady }" ref="rail1Ref">
             <div class="logo-track" ref="track1Ref">
                 <template v-for="n in 2" :key="`row1-${n}`">
                     <div

@@ -1247,10 +1247,17 @@
     display: flex; flex-shrink: 0; align-items: center;
     gap: 56px; padding-right: 56px;
     width: max-content;
-    animation: railScroll 60s linear infinite;
+    animation: railScroll 78s linear infinite;
   }
-  .logo-rail.reverse .logo-track { animation: railScrollReverse 70s linear infinite; }
+  .logo-rail.reverse .logo-track { animation: railScrollReverse 90s linear infinite; }
   .logo-rail + .logo-rail { margin-top: 26px; }
+
+  /* Row 1 stays hidden + paused until Vortex's centred start position is computed,
+     so it appears already-centred instead of snapping into place after load. */
+  .logo-rail.row1 { opacity: 0; }
+  .logo-rail.row1 .logo-track { animation-play-state: paused; }
+  .logo-rail.row1.ready { opacity: 1; transition: opacity 0.18s ease; }
+  .logo-rail.row1.ready .logo-track { animation-play-state: running; }
 
   @keyframes railScroll        { from { transform: translateX(var(--start-x, 0px)); } to { transform: translateX(calc(var(--start-x, 0px) - 50%)); } }
   @keyframes railScrollReverse { from { transform: translateX(-50%); } to { transform: translateX(0); } }
