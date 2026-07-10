@@ -132,7 +132,7 @@
   .center { text-align: center; }
 
   /* ===== Hero ===== */
-  .hero { padding: 100px 28px 40px; max-width: 1280px; margin: 0 auto; text-align: center; position: relative; }
+  .hero { padding: 120px 28px 40px; max-width: 1280px; margin: 0 auto; text-align: center; position: relative; }
   .hero-logo-big {
     width: 92px; height: 92px; margin: 0 auto 28px;
     filter: drop-shadow(0 0 24px rgba(244,165,88,0.45));
