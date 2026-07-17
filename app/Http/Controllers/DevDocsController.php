@@ -29,6 +29,7 @@ class DevDocsController extends Controller
         return [
             ['title' => 'How to Deploy',       'slug' => 'how-to-deploy'],
             ['title' => 'App Exclusive Setup',  'slug' => 'app-exclusive-setup'],
+            ['title' => 'Provisioning Deploy Keys', 'slug' => 'provision-deploy-key'],
         ];
     }
 

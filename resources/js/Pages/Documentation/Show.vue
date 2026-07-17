@@ -165,7 +165,7 @@ function sectionLabel(section) {
                 <Link :href="route('docs.index')" class="text-white font-bold text-lg whitespace-nowrap">
                     Help Center
                 </Link>
-                <p class="max-w-3xl" style="padding-top: 0.3rem; font-size: 0.75rem; color: #6b7280!important; line-height:1!important; margin-bottom:0!important;">Last updated: 11th June 2026</p>
+                <p class="max-w-3xl" style="padding-top: 0.3rem; font-size: 0.75rem; color: #6b7280!important; line-height:1!important; margin-bottom:0!important;">Last updated: 17th July 2026</p>
             </div>
 
             <!-- Centre: search -->

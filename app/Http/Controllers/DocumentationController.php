@@ -292,6 +292,7 @@ class DocumentationController extends Controller
                     ['title' => 'ID Verification',       'slug' => 'customers/id-verification'],
                     ['title' => 'FAQs',                  'slug' => 'customers/faqs'],
                     ['title' => 'Checkout Flow',         'slug' => 'customers/checkout-flow'],
+                    ['title' => 'Refer a Friend',        'slug' => 'customers/refer-a-friend'],
                 ],
             ],
             [
@@ -311,6 +312,7 @@ class DocumentationController extends Controller
                     ['title' => 'Settings',              'slug' => 'admin/settings'],
                     ['title' => 'Integrations',          'slug' => 'admin/integrations'],
                     ['title' => 'App Exclusives',        'slug' => 'admin/app-exclusives'],
+                    ['title' => 'Referrals',             'slug' => 'admin/referrals'],
                 ],
             ],
         ];
