@@ -33,6 +33,11 @@
     <h4>Safe Play</h4>
     <p>Spend limits, pausing and responsible gambling</p>
   </a>
+  <a class="docs-card" href="docs/customers/refer-a-friend">
+    <div class="docs-card-icon">🎁</div>
+    <h4>Refer a Friend</h4>
+    <p>Share your link and earn rewards</p>
+  </a>
 </div>
 
 ---
@@ -52,6 +57,7 @@
 * [ID Verification](customers/id-verification)
 * [FAQs](customers/faqs)
 * [Checkout Flow](customers/checkout-flow)
+* [Refer a Friend](customers/refer-a-friend)
 
   </div>
   <div>
@@ -71,6 +77,7 @@
 * [Coupons](admin/coupons)
 * [Settings](admin/settings)
 * [Integrations](admin/integrations)
+* [Referrals](admin/referrals)
 
   </div>
 </div>

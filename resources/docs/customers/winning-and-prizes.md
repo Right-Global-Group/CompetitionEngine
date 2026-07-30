@@ -16,6 +16,22 @@ Some instant win prizes are paid to your wallet automatically as withdrawable ca
 
 ---
 
+## Bundle Bonus Tickets
+
+Some competitions run a **bundle deal** — buy a certain number of tickets and get extra tickets free, either on that same competition or on a different one. This isn't a prize you win; it's an automatic bonus for the size of your order.
+
+If a competition has an active bundle deal, you'll see it called out on the competition page and in your basket as you adjust your quantity — for example *"Buy 2–10 tickets, get the same number free"*. Once your order qualifies, this updates to confirm what you're getting, e.g. *"You're getting 3 free tickets on [competition]"*.
+
+Only **paid** tickets count towards a bundle — tickets from a free entry route don't qualify, and each order is judged on its own (buying tickets across two separate orders doesn't combine to reach a bundle threshold).
+
+Your bonus tickets are added automatically when your order completes, and are shown on your **order confirmation page** with a **Bundle Bonus** label — either as extra tickets added to the competition you bought on, or as a new line for the other competition they were awarded to.
+
+{% hint style="info" %}
+If the competition the bonus tickets would go to has already ended or sold out by the time your order is processed, the bonus can't be awarded. If this happens to you, get in touch with the team.
+{% endhint %}
+
+---
+
 ## Main Draw Prizes
 
 The main draw happens when a competition ends. The winning ticket is selected and the winner is announced. If you win the main draw, the team will contact you by email and notification to let you know.

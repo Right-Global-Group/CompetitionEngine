@@ -38,21 +38,22 @@ class SiteText extends Model
     public static function getSections(): array
     {
         return [
-            'hero' => 'Hero Section',
-            'stats' => 'Stats Section',
-            'launch' => 'Launch Steps',
+            'hero'       => 'Hero Section',
+            'stats'      => 'Stats Section',
             'configurator' => 'Game Configurator',
-            'ecosystem' => 'Ecosystem Features',
-            'nextgen' => 'Next Gen Platform',
-            'ai' => 'AI Features',
-            'modern' => 'Modern Platform',
-            'comparison' => 'Comparison Table',
-            'pricing' => 'Pricing Cards',
-            'faq' => 'FAQ Section',
-            'booking' => 'Booking Section',
-            'footer' => 'Footer',
-            'about' => 'About Page',
-            'contact' => 'Contact Page',
+            'ecosystem'  => 'Ecosystem Features',
+            'convert'    => 'Built to Convert (Platform)',
+            'cert'       => 'Certified Draws',
+            'fee'        => 'Why Our Fee',
+            'cmp'        => 'Comparison Table',
+            'ai'         => 'AI Features',
+            'pricing'    => 'Pricing Cards',
+            'faq'        => 'FAQ Section',
+            'cta'        => 'Final CTA / Booking',
+            'mobile_cta' => 'Mobile CTA Bar',
+            'footer'     => 'Footer',
+            'about'      => 'About Page',
+            'contact'    => 'Contact Page',
         ];
     }
 

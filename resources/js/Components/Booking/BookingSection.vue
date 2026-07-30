@@ -1,76 +1,40 @@
 <script setup>
-    import { inject, computed } from 'vue';
-    
-    const getText = inject('getText', (key, fallback = '') => fallback);
-    const siteTexts = inject('siteTexts');
-    
-    const calendlyUrl = 'https://calendly.com/contact-compengine/30min';
+import { inject, computed } from 'vue';
+import { useReveal } from '@/Composables/useReveal';
 
-        
-    // Get heading parts
-    const headingParts = computed(() => {
-        const parts = [];
-        
-        const before = getText('booking.heading_before', 'Book Your');
-        const keyword = getText('booking.heading_keyword', 'Free Consultation');
-        const after = getText('booking.heading_after', '');
-        
-        if (before && before.trim()) {
-            parts.push({ text: before + ' ', isKeyword: false });
-        }
-        
-        if (keyword && keyword.trim()) {
-            parts.push({ text: keyword, isKeyword: true });
-        }
-        
-        if (after && after.trim()) {
-            parts.push({ text: ' ' + after, isKeyword: false });
-        }
-        
-        return parts;
-    });
-    
-    const openCalendly = () => {
+const getText = inject('getText', (key, fallback = '') => fallback);
+const { sectionRef, revealed } = useReveal();
+
+const calendlyUrl = 'https://calendly.com/contact-compengine/30min';
+
+function bt(key, fallback) {
+    return getText(`cta.${key}`, fallback);
+}
+
+const eyebrow = computed(() => bt('eyebrow', 'Get started today'));
+const titleBefore = computed(() => bt('title_before', 'Ready to launch your competition on the UK\'s'));
+const titleKeyword = computed(() => bt('title_keyword', 'most intelligent platform?'));
+const lead = computed(() => bt('lead', '30 minutes. A live demo on your brief. No sales deck, no NDAs, no obligation. Just the platform running with your prize, your game type, your brand — so you can see exactly what you\'d be launching.'));
+const btn1 = computed(() => bt('btn1', 'Book a 30-min demo →'));
+
+function openCalendly() {
+    if (window.Calendly) {
+        window.Calendly.initPopupWidget({ url: calendlyUrl });
+    } else {
         window.open(calendlyUrl, '_blank');
-    };
-    </script>
-    
-    <template>
-        <section id="booking" class="py-20 bg-[#161B22]">
-            <div class="container mx-auto px-4 sm:px-6">
-                <div v-if="!siteTexts.loading" class="text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        <template v-for="(part, index) in headingParts" :key="`heading-part-${index}`">
-                            <span v-if="part.isKeyword" class="keyword-animate">{{ part.text }}</span>
-                            <template v-else>{{ part.text }}</template>
-                        </template>
-                    </h2>
-                    <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
-                        See Competition Engine in action. Choose a time that works for you.
-                    </p>
-                    <button
-                        @click="openCalendly"
-                        class="bg-accent-purple text-white font-semibold px-8 py-4 rounded-lg hover:bg-accent-orange transition glow-button text-lg"
-                    >
-                        Schedule a Call
-                    </button>
-                </div>
-    
-                <!-- Loading fallback -->
-                <div v-else class="text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        Book Your <span class="keyword-animate">Free Consultation</span>
-                    </h2>
-                    <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
-                        See Competition Engine in action. Choose a time that works for you.
-                    </p>
-                    <button
-                        @click="openCalendly"
-                        class="bg-accent-purple text-white font-semibold px-8 py-4 rounded-lg hover:bg-accent-orange transition glow-button text-lg"
-                    >
-                        Schedule a Call
-                    </button>
-                </div>
+    }
+}
+</script>
+
+<template>
+    <section ref="sectionRef" class="section reveal" :class="{ visible: revealed }" id="booking">
+        <div class="final-cta">
+            <div class="eyebrow" style="justify-content:center;"><span class="dot"></span>{{ eyebrow }}</div>
+            <h2 class="h2" style="margin-top:18px;">{{ titleBefore }}<br /><span class="grad-text">{{ titleKeyword }}</span></h2>
+            <p class="lead center" style="margin: 18px auto 0; max-width: 600px;">{{ lead }}</p>
+            <div style="display:flex; gap:14px; justify-content:center; margin-top:34px; flex-wrap:wrap;">
+                <button class="btn btn-orange" @click="openCalendly">{{ btn1 }}</button>
             </div>
-        </section>
-    </template>
+        </div>
+    </section>
+</template>

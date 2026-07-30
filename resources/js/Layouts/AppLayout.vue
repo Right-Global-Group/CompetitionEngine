@@ -22,14 +22,8 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="min-h-screen bg-dark-purple">
-        <!-- Animated Background Blobs -->
-        <div class="blob-container">
-            <div class="blob blob1"></div>
-            <div class="blob blob2"></div>
-        </div>
-
-        <!-- Mouse Follower (now with correct z-index) -->
+    <div class="min-h-screen">
+        <!-- Mouse Follower -->
         <div id="mouse-follower" ref="mouseFollower"></div>
 
         <!-- Header -->
@@ -46,37 +40,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.blob-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    overflow: hidden;
-}
-
-.blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.3;
-}
-
-.blob1 {
-    width: 400px;
-    height: 400px;
-    background-color: rgba(106, 63, 244, 0.5);
-    animation: blob-move 20s infinite alternate;
-}
-
-.blob2 {
-    width: 300px;
-    height: 300px;
-    background-color: rgba(255, 153, 0, 0.5);
-    animation: blob-move 25s infinite alternate-reverse;
-}
-
 #mouse-follower {
     position: fixed;
     top: 0;
@@ -86,9 +49,9 @@ onMounted(() => {
     background: radial-gradient(circle, rgba(106, 63, 244, 0.15) 0%, rgba(106, 63, 244, 0) 70%);
     border-radius: 50%;
     pointer-events: none;
-    z-index: 9999; /* Changed from -1 to 9999 */
+    z-index: 9999;
     transform: translate(-50%, -50%);
     will-change: transform;
-    mix-blend-mode: screen; /* Added for better blending */
+    mix-blend-mode: screen;
 }
 </style>

@@ -3,11 +3,12 @@ import { Head, Link, router } from '@inertiajs/vue3';
 import { ref, onMounted, watch } from 'vue';
 
 const props = defineProps({
-    html:        String,
-    nav:         Array,
-    currentSlug: String,
-    title:       String,
-    isAdmin:     Boolean,
+    html:              String,
+    nav:               Array,
+    currentSlug:       String,
+    title:             String,
+    isAdmin:           Boolean,
+    isSuperSuperAdmin: Boolean,
 });
 
 // ── Sidebar / TOC ──────────────────────────────────────────────────────────
@@ -164,7 +165,7 @@ function sectionLabel(section) {
                 <Link :href="route('docs.index')" class="text-white font-bold text-lg whitespace-nowrap">
                     Help Center
                 </Link>
-                <p class="max-w-3xl" style="padding-top: 0.3rem; font-size: 0.75rem; color: #6b7280!important; line-height:1!important; margin-bottom:0!important;">Last updated: 11th June 2026</p>
+                <p class="max-w-3xl" style="padding-top: 0.3rem; font-size: 0.75rem; color: #6b7280!important; line-height:1!important; margin-bottom:0!important;">Last updated: 17th July 2026</p>
             </div>
 
             <!-- Centre: search -->
@@ -243,6 +244,18 @@ function sectionLabel(section) {
 
             <!-- Right: nav links -->
             <div class="flex items-center gap-3 flex-shrink-0">
+                <!-- Developer Docs — only shown to super-super-admins -->
+                <a
+                    v-if="isSuperSuperAdmin"
+                    href="/dev-docs/unlock"
+                    class="hidden sm:inline-flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition px-2.5 py-1.5 rounded border border-white/10 hover:border-white/20 whitespace-nowrap"
+                >
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                    </svg>
+                    Dev Docs
+                </a>
+
                 <!-- Back to admin — only shown to admin users -->
                 <a
                     v-if="isAdmin"

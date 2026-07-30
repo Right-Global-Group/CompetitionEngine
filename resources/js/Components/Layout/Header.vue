@@ -89,17 +89,18 @@ const logout = () => {
             <div class="flex items-center justify-between">
                 <!-- Left: Logo -->
                 <div class="flex items-center cursor-pointer group" @click="scrollToSection('hero')">
-                    <img src="/images/logo.png" alt="Competition Engine" class="h-[4.5rem] md:h-12" />
+                    <img src="/images/logo.png" alt="Competition Engine" class="h-[4.5rem] md:h-15" />
                 </div>
 
                 <!-- Center: Navigation (Desktop only) -->
                 <nav class="hidden md:flex items-center justify-center space-x-8 absolute left-1/2 -translate-x-1/2">
                     <a href="/" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Home</a>
+                    <button @click="scrollToSection('game-studio')" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Games</button>
                     <button @click="scrollToSection('ecosystem')" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Features</button>
-                    <button @click="scrollToSection('comparison')" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Comparison</button>
                     <button @click="scrollToSection('pricing')" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Pricing</button>
                     <button @click="scrollToSection('faq')" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">FAQ</button>
                     <a href="/about" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">About</a>
+                    <a href="/blog" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Blog</a>
                     <a href="/contact" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Contact</a>
                 </nav>
 
@@ -206,11 +207,12 @@ const logout = () => {
             <div v-show="mobileMenuOpen" class="md:hidden glass-effect border-t border-gray-700">
                 <nav class="w-full px-4 py-4 space-y-1">
                     <a href="/" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Home</a>
+                    <button @click="scrollToSection('game-studio')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Games</button>
                     <button @click="scrollToSection('ecosystem')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Features</button>
-                    <button @click="scrollToSection('comparison')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Comparison</button>
                     <button @click="scrollToSection('pricing')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Pricing</button>
                     <button @click="scrollToSection('faq')" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">FAQ</button>
                     <a href="/about" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">About</a>
+                    <a href="/blog" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Blog</a>
                     <a href="/contact" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Contact</a>
                     
                     <!-- User Section (Mobile) -->

@@ -12,6 +12,11 @@ class Admin extends Model
 
     protected $fillable = [
         'user_id',
+        'is_super_super_admin',
+    ];
+
+    protected $casts = [
+        'is_super_super_admin' => 'boolean',
     ];
 
     public function user(): BelongsTo

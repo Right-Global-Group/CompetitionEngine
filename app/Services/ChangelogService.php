@@ -97,7 +97,7 @@ class ChangelogService
         }
     
         $tenantNames = [
-            'vortex', 'jolly', 'jollyvip', 'phatlads', 'ritas', 'winthisnow', 'karma',
+            'vortex', 'jolly', 'jollyvip', 'ritas', 'winthisnow', 'karma',
             'autocomps', 'marras', 'luckyducky', 'lightning', 'winnerwinner', 'maxxx',
             'enchantedlives', 'lustraffles', 'obrienslaravel', 'demo', 'ritasriches',
             'westcoast', 'missmoneypenny', 'auwins', 'sunnysgiveaways', 'itsyourluckyday',

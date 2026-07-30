@@ -16,10 +16,12 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'docs_password',
     ];
 
     protected $hidden = [
         'password',
+        'docs_password',
         'remember_token',
     ];
 
@@ -28,6 +30,7 @@ class User extends Authenticatable implements FilamentUser
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'docs_password' => 'hashed',
         ];
     }
 
@@ -39,6 +42,11 @@ class User extends Authenticatable implements FilamentUser
     public function isAdmin(): bool
     {
         return $this->admin()->exists();
+    }
+
+    public function isSuperSuperAdmin(): bool
+    {
+        return $this->admin?->is_super_super_admin === true;
     }
 
     public function canAccessPanel(Panel $panel): bool

@@ -12,6 +12,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Illuminate\Support\Str;
@@ -26,27 +27,72 @@ class ChangelogManager extends Page implements HasForms
     protected static ?int    $navigationSort  = 2;
     protected static string  $view            = 'filament.pages.changelog-manager';
 
-    public array  $entries   = [];
-    public bool   $showForm  = false;
+    public array   $data      = [];
+    public array   $entries   = [];
+    public bool    $showForm  = false;
     public ?string $editingSha = null;
-
-    // Form fields
-    public string $entryTitle = '';
-    public string $body     = '';
-    public string $category = 'general';
-    public string $tenant   = 'all';
-    public string $date     = '';
 
     public function mount(): void
     {
         $this->entries = ChangelogEntry::all();
-        $this->date    = now()->format('Y-m-d');
+        $this->form->fill(['category' => 'general', 'tenant' => 'all', 'date' => now()->format('Y-m-d')]);
+    }
+
+    public function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                TextInput::make('entryTitle')
+                    ->label('Title')
+                    ->required()
+                    ->maxLength(255)
+                    ->columnSpanFull(),
+
+                Textarea::make('body')
+                    ->label('Body')
+                    ->rows(3)
+                    ->columnSpanFull(),
+
+                Select::make('category')
+                    ->label('Category')
+                    ->options([
+                        'feature'     => 'Feature',
+                        'improvement' => 'Improvement',
+                        'bugfix'      => 'Bug Fix',
+                        'design'      => 'Design',
+                        'performance' => 'Performance',
+                        'security'    => 'Security',
+                        'general'     => 'General',
+                    ])
+                    ->required()
+                    ->default('general'),
+
+                Select::make('tenant')
+                    ->label('Product')
+                    ->options([
+                        'all'     => 'All products',
+                        'games'   => 'Games',
+                        'racing'  => 'Racing',
+                        'sports'  => 'Sports',
+                        'charity' => 'Charity',
+                        'admin'   => 'Admin',
+                        'api'     => 'API',
+                    ])
+                    ->default('all'),
+
+                DatePicker::make('date')
+                    ->label('Date')
+                    ->required()
+                    ->default(now()),
+            ])
+            ->columns(2)
+            ->statePath('data');
     }
 
     public function openCreate(): void
     {
-        $this->reset(['entryTitle', 'body', 'category', 'tenant', 'editingSha']);
-        $this->date     = now()->format('Y-m-d');
+        $this->editingSha = null;
+        $this->form->fill(['category' => 'general', 'tenant' => 'all', 'date' => now()->format('Y-m-d')]);
         $this->showForm = true;
     }
 
@@ -56,53 +102,52 @@ class ChangelogManager extends Page implements HasForms
         if (! $entry) return;
 
         $this->editingSha = $sha;
-        $this->entryTitle = $entry['title'];
-        $this->body       = $entry['body'] ?? '';
-        $this->category   = $entry['category'];
-        $this->tenant     = $entry['tenants'][0] ?? 'all';
-        $this->date       = $entry['date'];
-        $this->showForm   = true;
+        $this->form->fill([
+            'entryTitle' => $entry['title'],
+            'body'       => $entry['body'] ?? '',
+            'category'   => $entry['category'],
+            'tenant'     => $entry['tenants'][0] ?? 'all',
+            'date'       => $entry['date'],
+        ]);
+        $this->showForm = true;
     }
 
     public function save(): void
     {
-        $this->validate([
-            'entryTitle' => 'required|string|max:255',
-            'body'     => 'nullable|string',
-            'category' => 'required|string',
-            'date'     => 'required|date',
-        ]);
+        $data = $this->form->getState();
 
         $categoryMap = ChangelogEntry::categoryMap();
-        $dt          = Carbon::parse($this->date);
+        $dt          = Carbon::parse($data['date']);
         $sha         = $this->editingSha ?? Str::lower(Str::random(7));
 
-        $entry = [
+        ChangelogEntry::upsert([
             'sha'        => $sha,
             'source'     => 'commit',
-            'title' => $this->entryTitle,
-            'body'       => $this->body ?? '',
-            'category'   => $this->category,
-            'tenants'    => [$this->tenant],
+            'title'      => $data['entryTitle'],
+            'body'       => $data['body'] ?? '',
+            'category'   => $data['category'],
+            'tenants'    => [$data['tenant']],
             'date'       => $dt->toDateString(),
             'date_label' => $dt->format('j M Y'),
             'year'       => (int) $dt->format('Y'),
             'month'      => (int) $dt->format('n'),
             'timestamp'  => $dt->timestamp,
             'author'     => 'admin',
-            'meta'       => $categoryMap[$this->category] ?? $categoryMap['general'],
-        ];
+            'meta'       => $categoryMap[$data['category']] ?? $categoryMap['general'],
+        ]);
 
-        ChangelogEntry::upsert($entry);
-
-        // Flush service cache so page reflects immediately
         app(ChangelogService::class)->flush();
 
         $this->entries  = ChangelogEntry::all();
         $this->showForm = false;
 
-        Notification::make()->title($this->editingSha ? 'Entry updated' : 'Entry added')->success()->send();
-        $this->reset(['entryTitle', 'body', 'category', 'tenant', 'editingSha']);
+        Notification::make()
+            ->title($this->editingSha ? 'Entry updated' : 'Entry added')
+            ->success()
+            ->send();
+
+        $this->editingSha = null;
+        $this->form->fill(['category' => 'general', 'tenant' => 'all', 'date' => now()->format('Y-m-d')]);
     }
 
     public function deleteEntry(string $sha): void
@@ -115,8 +160,9 @@ class ChangelogManager extends Page implements HasForms
 
     public function cancel(): void
     {
-        $this->showForm = false;
-        $this->reset(['title', 'body', 'category', 'tenant', 'editingSha']);
+        $this->showForm   = false;
+        $this->editingSha = null;
+        $this->form->fill(['category' => 'general', 'tenant' => 'all', 'date' => now()->format('Y-m-d')]);
     }
 
     protected function getHeaderActions(): array

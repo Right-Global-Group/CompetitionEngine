@@ -18,7 +18,7 @@ export default {
             colors: {
                 'accent-purple': '#6A3FF4',
                 'accent-orange': '#FF9900',
-                'dark-purple': '#1B142C',
+                'dark-purple': '#14082e',
                 'darker-purple': '#11052C',
             },
         },
