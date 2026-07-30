@@ -102,6 +102,47 @@ You can add multiple rules to create tiered pricing — for example, 5% off for 
 
 ---
 
+## Promo Bundles
+
+Promo Bundles let you give customers **free bonus tickets** for buying tickets — either on the same competition or on a different one. This is separate from the **Ticket Bundle** instant win prize type covered above: Instant Wins are something a customer can *win* on a ticket; a Promo Bundle is an automatic bonus applied at checkout for *buying enough tickets*, with no draw involved.
+
+{% hint style="info" %}
+Only one Promo Bundle can be active on a competition at a time. Saving a new one asks you to confirm replacing the current one.
+{% endhint %}
+
+### Bundle Type
+
+| Type | How it works |
+|------|--------------|
+| **Buy One Get One Free** | Set a **Min Tickets** and **Max Tickets** range. Any paid order quantity that falls within that range earns the same number of tickets free. |
+| **Custom Bundle** | Set **Tickets Purchased** and **Tickets Free**. The order must match the purchased quantity *exactly* — no partial credit for buying more or fewer. |
+| **Tiered Bundle** | Add up to 10 tiers, each a **"Buy at least…"** quantity paired with a **Tickets Free** amount. The highest tier the order reaches applies — tiers don't stack. For example: buy 5+ get 1 free, buy 10+ get 2 free, buy 20+ get 10 free; an order of 12 tickets earns the 10-ticket tier's reward (2 free). |
+
+Only **paid** tickets count toward any of these thresholds — free-entry tickets don't contribute.
+
+### Other settings
+
+| Field | What it does |
+|-------|-------------|
+| **Free Tickets Competition** | Which competition the bonus tickets are added to. Defaults to the same competition, but you can pick a different one — useful for cross-promoting a new competition. |
+| **Expires At** | Optional. The bundle stops offering once this passes. |
+
+Buy thresholds can't be set higher than the selling competition's own ticket pool, and free amounts can't exceed the target competition's ticket pool — beyond that there's no fixed cap on quantities.
+
+### Status
+
+An active bundle shows a plain-English summary of its current rule. If its target competition ends, sells out, or is archived before it can award tickets, it automatically shows as **⚠ Deactivated** rather than continuing to promise a reward it can't deliver — no customer receives bonus tickets for a competition that's no longer open. An **⚠ Expired** tag appears once the Expires At date has passed.
+
+### Bundle Library
+
+Every bundle you create is kept in a library so you can reactivate it on a different competition later instead of recreating it from scratch. The library shows usage stats per bundle — which competitions it's run on, how many orders used it, and when.
+
+### Reporting
+
+The admin Orders list can be filtered by bundle type (Buy One Get One Free, Custom, Tiered, or any), so you can pull up exactly which orders included a bundle bonus.
+
+---
+
 ## Games
 
 A game can be attached to a competition to add an interactive element to the entry experience. Select a game from the Game section on the competition form. If no games have been configured, this section will be empty.

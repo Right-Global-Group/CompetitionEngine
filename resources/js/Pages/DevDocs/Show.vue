@@ -61,6 +61,7 @@ watch(() => props.html, () => {
         <header class="dev-docs-header">
             <div class="dev-docs-header-left">
                 <span class="dev-docs-logo">🔒 Developer Docs</span>
+                <span style="padding-top: 0.3rem; font-size: 0.75rem; color: #6b7280; line-height: 1;">Last updated: 17th July 2026</span>
             </div>
             <div class="dev-docs-header-right">
                 <a href="/admin" class="dev-docs-nav-link">← Admin panel</a>

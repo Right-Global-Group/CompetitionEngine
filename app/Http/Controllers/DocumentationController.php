@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 use League\CommonMark\Environment\Environment;
@@ -23,16 +24,27 @@ class DocumentationController extends Controller
         abort(404);
     }
 
+    private function guardAuthenticated(): void
+    {
+        if (!auth()->check()) {
+            abort(404);
+        }
+    }
+
     public function password(Request $request)
     {
+        $this->guardAuthenticated();
+
         return Inertia::render('Documentation/Password');
     }
 
     public function unlock(Request $request)
     {
+        $this->guardAuthenticated();
+
         $request->validate(['password' => 'required|string']);
 
-        if ($request->password !== config('app.documentation_password')) {
+        if (!$this->passwordMatches($request->password)) {
             return back()->withErrors(['password' => 'Incorrect password.']);
         }
 
@@ -41,8 +53,21 @@ class DocumentationController extends Controller
         return redirect()->intended(route('docs.index'));
     }
 
+    private function passwordMatches(string $password): bool
+    {
+        $docsPassword = auth()->user()->docs_password ?? null;
+
+        if ($docsPassword !== null) {
+            return Hash::check($password, $docsPassword);
+        }
+
+        return $password === config('app.documentation_password');
+    }
+
     public function index()
     {
+        $this->guardAuthenticated();
+
         if (!$this->isUnlocked()) {
             $this->abort404();
         }
@@ -62,6 +87,8 @@ class DocumentationController extends Controller
 
     public function show(string $section, string $slug)
     {
+        $this->guardAuthenticated();
+
         if (!$this->isUnlocked()) {
             $this->abort404();
         }
@@ -88,6 +115,10 @@ class DocumentationController extends Controller
 
     public function search(Request $request): JsonResponse
     {
+        if (!auth()->check()) {
+            abort(404);
+        }
+
         if (!$this->isUnlocked()) {
             return response()->json([], 403);
         }
