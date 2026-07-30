@@ -1262,7 +1262,8 @@
   @keyframes railScroll        { from { transform: translateX(var(--start-x, 0px)); } to { transform: translateX(calc(var(--start-x, 0px) - 50%)); } }
   @keyframes railScrollReverse { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
-  .logo-wall:hover .logo-track { animation-play-state: paused; }
+  .logo-rail.reverse:hover .logo-track { animation-play-state: paused; }
+  .logo-rail.row1.ready:hover .logo-track { animation-play-state: paused; }
   @media (prefers-reduced-motion: reduce) { .logo-track { animation: none; } }
 
   .brand-logo {

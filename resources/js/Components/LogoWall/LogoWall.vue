@@ -9,7 +9,6 @@ const footerText = computed(() => getText('logowall.footer_text', 'more UK opera
 
 const tenants = [
     { label: 'S2A', img: '/images/tenant-icons/s2a.png', w: 1068, h: 684 },
-    { label: 'Lust Raffles', img: '/images/tenant-icons/lustraffles.png', w: 1122, h: 544 },
     { label: 'AutoComps', img: '/images/tenant-icons/autocomps.png', w: 1181, h: 591 },
     { label: 'Auwins', img: '/images/tenant-icons/auwins.png', w: 150, h: 150 },
     { label: 'WestCoast', img: '/images/tenant-icons/westcoast.png', w: 397, h: 201 },
