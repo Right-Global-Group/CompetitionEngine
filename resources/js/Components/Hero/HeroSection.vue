@@ -40,10 +40,13 @@ function startCounters() {
     animateCount(ticketsDisplay, ticketsTarget.value);
 }
 
-const scrollToBooking = () => {
-    const element = document.getElementById('booking');
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+const calendlyUrl = 'https://calendly.com/contact-compengine/30min';
+
+const openCalendly = () => {
+    if (window.Calendly) {
+        window.Calendly.initPopupWidget({ url: calendlyUrl });
+    } else {
+        window.open(calendlyUrl, '_blank');
     }
 };
 
@@ -104,7 +107,7 @@ watch([titleBefore, titleKeyword, titleAfter], () => nextTick(fitHeroTitle));
         <p class="lead" style="margin: 28px auto 0;" v-html="subtitle"></p>
 
         <div class="hero-cta">
-            <button @click="scrollToBooking" class="btn btn-primary btn-large">{{ buttonPrimary }}</button>
+            <button @click="openCalendly" class="btn btn-primary btn-large">{{ buttonPrimary }}</button>
             <a href="#game-studio" class="btn btn-ghost btn-large">{{ buttonSecondary }}</a>
         </div>
 
