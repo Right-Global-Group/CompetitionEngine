@@ -504,17 +504,25 @@ const fishingDemoCategories = [
 const eaterConfig = ref({
     theme: 'arcade',
     titleText: 'Feed the Eater!',
-    winText: '🎉 Winner!',
-    loseText: 'No prize this time…',
-    accentColor: '#ff9800',
-    primaryColor: '#1a0a3f',
+    accentColor: '#ffd54f',
+    primaryColor: '#6c5ce7',
+    showTopPrize: false,
     introEnabled: true,
-    introSubtitle: 'Feed your tickets and win instant prizes!',
-    introButtonText: 'Feed Me! 👹',
+    introWelcomeText: 'Welcome to {name}',
+    introSubtitle: 'Roll through your tickets to reveal instant prizes',
+    introButtonText: 'Start 👹',
 });
 
 const eaterImages = ref({
     introTitleImage: '',
+    mascotImage: '',
+    mascotImage2: '',
+    mascotImage3: '',
+    ticketImage: '',
+    risingTicketImage: '',
+    backgroundImage: '',
+    pouchImage: '',
+    prizeImage: '',
 });
 
 const handleEaterImage = (key) => (event) => {
@@ -522,6 +530,22 @@ const handleEaterImage = (key) => (event) => {
     if (file) {
         if (eaterImages.value[key]) URL.revokeObjectURL(eaterImages.value[key]);
         eaterImages.value[key] = URL.createObjectURL(file);
+    }
+};
+
+const eaterMedia = ref({
+    feedSound: '',
+    gulpSound: '',
+    winSound: '',
+    collectSound: '',
+    welcomeSound: '',
+});
+
+const handleEaterAudio = (key) => (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        if (eaterMedia.value[key]) URL.revokeObjectURL(eaterMedia.value[key]);
+        eaterMedia.value[key] = URL.createObjectURL(file);
     }
 };
 
@@ -716,10 +740,10 @@ const colorPresets = {
         { name: 'Night', theme: 'night', primary: '#0a2a40', accent: '#9fd0ff' },
     ],
     ticketeater: [
-        { name: 'Arcade', theme: 'arcade', primary: '#1a0a3f', accent: '#ff9800' },
-        { name: 'Cave', theme: 'cave', primary: '#1c1609', accent: '#ff8c00' },
-        { name: 'Candy', theme: 'candy', primary: '#320550', accent: '#ff47c0' },
-        { name: 'Spooky', theme: 'spooky', primary: '#0b1c16', accent: '#39ff14' },
+        { name: 'Arcade', theme: 'arcade', primary: '#6c5ce7', accent: '#ffd54f' },
+        { name: 'Cave', theme: 'cave', primary: '#3f9c78', accent: '#8effc8' },
+        { name: 'Candy', theme: 'candy', primary: '#cf4d83', accent: '#fff36b' },
+        { name: 'Spooky', theme: 'spooky', primary: '#5a9c33', accent: '#9dff5c' },
     ],
 };
 
@@ -811,14 +835,27 @@ const fishingAssets = computed(() => ({
 const eaterAssets = computed(() => ({
     theme: eaterConfig.value.theme,
     titleText: eaterConfig.value.titleText,
-    winText: eaterConfig.value.winText,
-    loseText: eaterConfig.value.loseText,
     accentColor: eaterConfig.value.accentColor,
     primaryColor: eaterConfig.value.primaryColor,
+    showTopPrize: eaterConfig.value.showTopPrize,
     introEnabled: eaterConfig.value.introEnabled,
+    introWelcomeText: eaterConfig.value.introWelcomeText,
     introSubtitle: eaterConfig.value.introSubtitle,
     introButtonText: eaterConfig.value.introButtonText,
     introTitleImage: eaterImages.value.introTitleImage || '',
+    mascotImage: eaterImages.value.mascotImage || '',
+    mascotImage2: eaterImages.value.mascotImage2 || '',
+    mascotImage3: eaterImages.value.mascotImage3 || '',
+    ticketImage: eaterImages.value.ticketImage || '',
+    risingTicketImage: eaterImages.value.risingTicketImage || '',
+    backgroundImage: eaterImages.value.backgroundImage || '',
+    pouchImage: eaterImages.value.pouchImage || '',
+    prizeImage: eaterImages.value.prizeImage || '',
+    feedSound: eaterMedia.value.feedSound || '',
+    gulpSound: eaterMedia.value.gulpSound || '',
+    winSound: eaterMedia.value.winSound || '',
+    collectSound: eaterMedia.value.collectSound || '',
+    welcomeSound: eaterMedia.value.welcomeSound || '',
 }));
 </script>
 
@@ -1569,14 +1606,6 @@ const eaterAssets = computed(() => ({
                                 <label>Title</label>
                                 <input type="text" v-model="eaterConfig.titleText" class="text-input" />
                             </div>
-                            <div class="input-group">
-                                <label>Win Message</label>
-                                <input type="text" v-model="eaterConfig.winText" class="text-input" />
-                            </div>
-                            <div class="input-group">
-                                <label>Lose Message</label>
-                                <input type="text" v-model="eaterConfig.loseText" class="text-input" />
-                            </div>
                         </div>
                         <div class="config-section">
                             <div class="section-header">
@@ -1596,6 +1625,16 @@ const eaterAssets = computed(() => ({
 
                         <div class="config-section">
                             <div class="section-header">
+                                <span class="section-title">Display Options</span>
+                            </div>
+                            <label class="toggle-row">
+                                <input type="checkbox" v-model="eaterConfig.showTopPrize" class="toggle-check" />
+                                <span class="toggle-label">Show Top Prize Banner</span>
+                            </label>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
                                 <span class="section-title">Intro Screen</span>
                             </div>
                             <label class="toggle-row">
@@ -1611,12 +1650,86 @@ const eaterAssets = computed(() => ({
                                 </label>
                             </div>
                             <div class="input-group">
+                                <label>Welcome Message</label>
+                                <input type="text" v-model="eaterConfig.introWelcomeText" class="text-input" />
+                            </div>
+                            <div class="input-group">
                                 <label>Subtitle</label>
                                 <input type="text" v-model="eaterConfig.introSubtitle" class="text-input" />
                             </div>
                             <div class="input-group">
                                 <label>Button Text</label>
                                 <input type="text" v-model="eaterConfig.introButtonText" class="text-input" />
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Scene Art</span>
+                            </div>
+                            <div class="upload-row">
+                                <label class="upload-box" :class="{ 'has-image': eaterImages.mascotImage }">
+                                    <img v-if="eaterImages.mascotImage" :src="eaterImages.mascotImage" />
+                                    <span v-else class="upload-placeholder">+ Mascot 1</span>
+                                    <input type="file" accept="image/*" @change="handleEaterImage('mascotImage')($event)" />
+                                </label>
+                                <label class="upload-box" :class="{ 'has-image': eaterImages.mascotImage2 }">
+                                    <img v-if="eaterImages.mascotImage2" :src="eaterImages.mascotImage2" />
+                                    <span v-else class="upload-placeholder">+ Mascot 2</span>
+                                    <input type="file" accept="image/*" @change="handleEaterImage('mascotImage2')($event)" />
+                                </label>
+                                <label class="upload-box" :class="{ 'has-image': eaterImages.mascotImage3 }">
+                                    <img v-if="eaterImages.mascotImage3" :src="eaterImages.mascotImage3" />
+                                    <span v-else class="upload-placeholder">+ Mascot 3</span>
+                                    <input type="file" accept="image/*" @change="handleEaterImage('mascotImage3')($event)" />
+                                </label>
+                            </div>
+                            <div class="upload-row" style="margin-top:6px;">
+                                <label class="upload-box" :class="{ 'has-image': eaterImages.ticketImage }">
+                                    <img v-if="eaterImages.ticketImage" :src="eaterImages.ticketImage" />
+                                    <span v-else class="upload-placeholder">+ Main Ticket</span>
+                                    <input type="file" accept="image/*" @change="handleEaterImage('ticketImage')($event)" />
+                                </label>
+                                <label class="upload-box" :class="{ 'has-image': eaterImages.risingTicketImage }">
+                                    <img v-if="eaterImages.risingTicketImage" :src="eaterImages.risingTicketImage" />
+                                    <span v-else class="upload-placeholder">+ Rising Ticket</span>
+                                    <input type="file" accept="image/*" @change="handleEaterImage('risingTicketImage')($event)" />
+                                </label>
+                                <label class="upload-box" :class="{ 'has-image': eaterImages.backgroundImage }">
+                                    <img v-if="eaterImages.backgroundImage" :src="eaterImages.backgroundImage" />
+                                    <span v-else class="upload-placeholder">+ Background</span>
+                                    <input type="file" accept="image/*" @change="handleEaterImage('backgroundImage')($event)" />
+                                </label>
+                            </div>
+                            <div class="upload-row" style="margin-top:6px;">
+                                <label class="upload-box" :class="{ 'has-image': eaterImages.pouchImage }">
+                                    <img v-if="eaterImages.pouchImage" :src="eaterImages.pouchImage" />
+                                    <span v-else class="upload-placeholder">+ Pouch</span>
+                                    <input type="file" accept="image/*" @change="handleEaterImage('pouchImage')($event)" />
+                                </label>
+                                <label class="upload-box" :class="{ 'has-image': eaterImages.prizeImage }">
+                                    <img v-if="eaterImages.prizeImage" :src="eaterImages.prizeImage" />
+                                    <span v-else class="upload-placeholder">+ Fallback Prize</span>
+                                    <input type="file" accept="image/*" @change="handleEaterImage('prizeImage')($event)" />
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="section-header">
+                                <span class="section-title">Sound Effects</span>
+                            </div>
+                            <div class="audio-upload-grid">
+                                <label v-for="cue in [
+                                    { key: 'feedSound',    label: 'Feed' },
+                                    { key: 'gulpSound',    label: 'Gulp' },
+                                    { key: 'winSound',     label: 'Win' },
+                                    { key: 'collectSound', label: 'Collect' },
+                                    { key: 'welcomeSound', label: 'Welcome' },
+                                ]" :key="cue.key" class="audio-box" :class="{ 'has-audio': eaterMedia[cue.key] }">
+                                    <span class="audio-label">{{ eaterMedia[cue.key] ? '✓' : '🔊' }} {{ cue.label }}</span>
+                                    <input type="file" accept="audio/*" @change="handleEaterAudio(cue.key)($event)" />
+                                </label>
                             </div>
                         </div>
                     </div>
