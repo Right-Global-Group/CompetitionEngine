@@ -91,10 +91,6 @@
             <div class="field-value">{{ $submission->created_at->format('F j, Y \a\t g:i A') }}</div>
         </div>
 
-        <div class="field">
-            <div class="field-label">IP Address:</div>
-            <div class="field-value">{{ $submission->ip_address }}</div>
-        </div>
     </div>
 
     <div class="footer">
