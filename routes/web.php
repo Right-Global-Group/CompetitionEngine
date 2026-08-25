@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\SiteTextController;
 use App\Http\Controllers\Api\TenantActivityController;
 use App\Http\Controllers\Api\TenantFeeReportController;
 use App\Http\Controllers\Api\TenantMessagesController;
+use App\Http\Controllers\Api\TenantSmsCreditController;
 use App\Http\Controllers\Api\TenantUpsellStatsController;
 use App\Http\Controllers\ContactSubmissionController;
 use App\Http\Controllers\DevDocsController;
@@ -71,6 +72,9 @@ Route::prefix('api')->group(function () {
 
     // Tenant fee reporting — tenants POST daily fee totals here
     Route::post('/fees/report', [TenantFeeReportController::class, 'store']);
+
+    // SMS credit snapshots — tenants POST their remaining QuickSMS credit here
+    Route::post('/sms-credit/report', [TenantSmsCreditController::class, 'store']);
 
     // Feature / improvement requests — tenant admins POST suggestions here
     Route::post('/feature-requests', [FeatureRequestController::class, 'store']);
