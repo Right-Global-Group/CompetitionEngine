@@ -21,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->validateCsrfTokens(except: [
             'api/fees/report',
+            'api/sms-credit/report',
             'api/messages',
             'api/activity',
             'api/upsell-stats',
