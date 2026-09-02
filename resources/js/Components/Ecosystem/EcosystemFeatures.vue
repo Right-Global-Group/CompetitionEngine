@@ -69,6 +69,8 @@ const features = computed(() => [
     {
         size: 'std', mini: 'rng', featured: false,
         icon: getText('ecosystem.feat_rng_icon', '✅'),
+        image: getText('ecosystem.feat_rng_image', '/images/gli-rng-certified.png'),
+        imageAlt: 'Gaming Labs Certified RNG',
         title: getText('ecosystem.feat_rng_title', 'GLI RNG Certified'),
         text: getText('ecosystem.feat_rng_text', 'Our GLI certificate ensures that not only are our draws and ticket distribution verifiable they are certified by an independent third party with true experience. No cutting corners.'),
         more: getText('ecosystem.feat_rng_more', 'See the certification →'),
@@ -197,7 +199,8 @@ const upsellImage = computed(() => getText('ecosystem.upsell_image', '/images/up
                 <!-- WIDE / STD cards -->
                 <template v-else>
                     <span v-if="f.featured" class="badge">{{ f.badge }}</span>
-                    <span class="icon">{{ f.icon }}</span>
+                    <img v-if="f.image" :src="f.image" :alt="f.imageAlt || f.title" class="icon-img" loading="lazy" />
+                    <span v-else class="icon">{{ f.icon }}</span>
                     <h4>{{ f.title }}</h4>
                     <p>{{ f.text }}</p>
 
