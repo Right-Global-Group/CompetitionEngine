@@ -17,6 +17,9 @@ const badgeHero = computed(() => getText('ecosystem.badge_hero', '✦ Only on Co
 const badgeInteractive = computed(() => getText('ecosystem.badge_interactive', '✦ Hands-on demo ✦'));
 const badgeStandard = computed(() => getText('ecosystem.badge_standard', 'Only on CompEngine'));
 
+/* ============== RNG certification link ============== */
+const rngCertUrl = 'https://access.gaminglabs.com/Certificate/Index?i=618';
+
 const features = computed(() => [
     {
         size: 'hero', mini: 'slot', featured: true, badge: badgeHero.value,
@@ -71,9 +74,10 @@ const features = computed(() => [
         icon: getText('ecosystem.feat_rng_icon', '✅'),
         image: getText('ecosystem.feat_rng_image', '/images/gli-rng-certified.png'),
         imageAlt: 'Gaming Labs Certified RNG',
+        imageHref: rngCertUrl,
         title: getText('ecosystem.feat_rng_title', 'GLI RNG Certified'),
         text: getText('ecosystem.feat_rng_text', 'Our GLI certificate ensures that not only are our draws and ticket distribution verifiable they are certified by an independent third party with true experience. No cutting corners.'),
-        more: getText('ecosystem.feat_rng_more', 'See the certification →'),
+        hideMore: true,
     },
     {
         size: 'std', mini: null, featured: false,
@@ -138,8 +142,6 @@ const vcocLabel = computed(() => getText('ecosystem.vcoc_label', 'UK Voluntary C
 const vcocValue = computed(() => getText('ecosystem.vcoc_value', 'Mapped end-to-end · since May 2026'));
 const vcocUrl = 'https://www.gov.uk/government/publications/voluntary-code-of-good-practice-for-prize-draw-operators/voluntary-code-of-good-practice-for-prize-draw-operators';
 
-/* ============== RNG certification link ============== */
-const rngCertUrl = 'https://access.gaminglabs.com/Certificate/Index?i=618';
 
 /* ============== Mini bars chart ============== */
 const barHeights = [30, 42, 38, 55, 50, 72, 88, 100];
@@ -199,7 +201,10 @@ const upsellImage = computed(() => getText('ecosystem.upsell_image', '/images/up
                 <!-- WIDE / STD cards -->
                 <template v-else>
                     <span v-if="f.featured" class="badge">{{ f.badge }}</span>
-                    <img v-if="f.image" :src="f.image" :alt="f.imageAlt || f.title" class="icon-img" loading="lazy" />
+                    <a v-if="f.image && f.imageHref" :href="f.imageHref" target="_blank" rel="noopener noreferrer" class="icon-link" @click.stop>
+                        <img :src="f.image" :alt="f.imageAlt || f.title" class="icon-img" loading="lazy" />
+                    </a>
+                    <img v-else-if="f.image" :src="f.image" :alt="f.imageAlt || f.title" class="icon-img" loading="lazy" />
                     <span v-else class="icon">{{ f.icon }}</span>
                     <h4>{{ f.title }}</h4>
                     <p>{{ f.text }}</p>
@@ -239,14 +244,6 @@ const upsellImage = computed(() => getText('ecosystem.upsell_image', '/images/up
                         v-else-if="f.mini === 'compliance'"
                         class="more"
                         :href="vcocUrl"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        @click.stop
-                    >{{ f.more }}</a>
-                    <a
-                        v-else-if="f.mini === 'rng'"
-                        class="more"
-                        :href="rngCertUrl"
                         target="_blank"
                         rel="noopener noreferrer"
                         @click.stop
