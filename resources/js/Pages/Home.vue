@@ -5,7 +5,7 @@ import { inject, onMounted, onBeforeUnmount } from 'vue';
 import UltraNav from '@/Components/Ultra/UltraNav.vue';
 import UltraHero from '@/Components/Ultra/UltraHero.vue';
 import UltraLogoWall from '@/Components/Ultra/UltraLogoWall.vue';
-import GameConfigurator from '@/Components/Configurator/GameConfigurator.vue';
+import UltraGameStudio from '@/Components/Ultra/UltraGameStudio.vue';
 import UltraEcosystem from '@/Components/Ultra/UltraEcosystem.vue';
 import UltraEasy from '@/Components/Ultra/UltraEasy.vue';
 import UltraConvert from '@/Components/Ultra/UltraConvert.vue';
@@ -21,8 +21,6 @@ import UltraSticky from '@/Components/Ultra/UltraSticky.vue';
 
 import { initUltraHome } from '@/ultra/homeFx';
 
-// Legacy styles only scope the real Game Studio block (.ce-legacy); everything else is home-ultra.css
-import '../../css/home-redesign.css';
 import '../../css/home-ultra.css';
 
 const getText = inject('getText', (key, fallback = '') => fallback);
@@ -73,16 +71,7 @@ onBeforeUnmount(() => {
             <UltraNav />
             <UltraHero :orders="orders" :tickets="tickets" />
             <UltraLogoWall />
-        </div>
-    </div>
-
-    <!-- The real Game Studio (nine playable games) keeps its own styles -->
-    <div class="ce-legacy">
-        <GameConfigurator />
-    </div>
-
-    <div class="ce-home">
-        <div class="page">
+            <UltraGameStudio />
             <UltraEcosystem />
             <UltraEasy />
             <UltraConvert />

@@ -1,5 +1,5 @@
-import { ref, computed, mergeProps, useSSRContext, unref, onMounted, inject, withCtx, createVNode, createTextVNode, toDisplayString, createBlock, openBlock, Fragment, renderList, useModel, withModifiers, createCommentVNode, defineComponent, withDirectives, vModelText, onUnmounted, renderSlot, watch, nextTick, onBeforeUnmount, reactive, withKeys, createSSRApp, h as h$1 } from "vue";
-import { ssrRenderAttrs, ssrInterpolate, ssrRenderStyle, ssrRenderClass, ssrRenderComponent, ssrRenderSlot, ssrRenderList, ssrGetDynamicModelProps, ssrLooseContain, ssrRenderAttr, ssrIncludeBooleanAttr, ssrRenderTeleport, renderToString } from "vue/server-renderer";
+import { ref, computed, mergeProps, useSSRContext, unref, onMounted, inject, withCtx, createVNode, createTextVNode, toDisplayString, createBlock, openBlock, Fragment, renderList, useModel, withModifiers, createCommentVNode, defineComponent, withDirectives, vModelText, onUnmounted, renderSlot, watch, nextTick, onBeforeUnmount, reactive, resolveDynamicComponent, withKeys, createSSRApp, h as h$1 } from "vue";
+import { ssrRenderAttrs, ssrInterpolate, ssrRenderStyle, ssrRenderClass, ssrRenderComponent, ssrRenderSlot, ssrRenderList, ssrGetDynamicModelProps, ssrLooseContain, ssrRenderAttr, ssrIncludeBooleanAttr, ssrRenderTeleport, ssrRenderVNode, renderToString } from "vue/server-renderer";
 import { usePage, Head, Link, useForm, router, createInertiaApp } from "@inertiajs/vue3";
 import * as THREE from "three";
 import axios from "axios";
@@ -15220,921 +15220,224 @@ _sfc_main$l.setup = (props, ctx) => {
   return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
 };
 const TicketEaterModal = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-3643a4e2"]]);
-function useReveal() {
-  const sectionRef = ref(null);
-  const revealed = ref(false);
-  let observer = null;
-  onMounted(() => {
-    if (!sectionRef.value) return;
-    observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          revealed.value = true;
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    observer.observe(sectionRef.value);
-  });
-  onUnmounted(() => {
-    if (observer) observer.disconnect();
-  });
-  return { sectionRef, revealed };
-}
+const CALENDLY = "https://calendly.com/contact-compengine/30min";
+const TILE_BOX = 420;
+const PANEL_BOX = 600;
+const CYCLE_MS = 3200;
 const _sfc_main$k = {
-  __name: "GameConfigurator",
+  __name: "UltraGameStudio",
   __ssrInlineRender: true,
   setup(__props) {
-    const activeTab = ref("slots");
-    const getText = inject("getText", (key, fallback = "") => fallback);
-    inject("siteTexts");
-    const { sectionRef, revealed } = useReveal();
-    const badgeText = computed(() => getText("gamestudio.badge", "Only on CompEngine"));
-    const titleBefore = computed(() => getText("gamestudio.title_before", "Game Studio."));
-    const titleKeyword = computed(() => getText("gamestudio.title_keyword", "Built by you."));
-    const lead = computed(() => getText("gamestudio.lead", "Other UK competition platforms give operators a handful of fixed game presets. We give a studio. Pick a game, theme it, brand it, preview every change live."));
-    const tryMeText = computed(() => getText("gamestudio.try_me", "🎮 Try it — no signup needed"));
-    const tabs = [
-      { id: "slots", name: "Slots", icon: "🎰" },
-      { id: "scratch", name: "Scratch", icon: "🎫" },
-      { id: "spin", name: "Spinny", icon: "🎡" },
-      { id: "bingo", name: "Bingo", icon: "🎱" },
-      { id: "coindrop", name: "Coin Drop", icon: "🪙" },
-      { id: "balloonpop", name: "Balloon Pop", icon: "🎈" },
-      { id: "football", name: "Football", icon: "⚽" },
-      { id: "fishing", name: "Fishing", icon: "🎣" },
-      { id: "ticketeater", name: "Ticket Eater", icon: "👹" }
+    const THEMES = [
+      { name: "Ocean", primary: "#00CED1", secondary: "#1a5a7a", accent: "#00FFFF", machine: "#1a5a7a" },
+      { name: "Royal", primary: "#9333EA", secondary: "#581C87", accent: "#A855F7", machine: "#581C87" },
+      { name: "Fire", primary: "#EF4444", secondary: "#7F1D1D", accent: "#F97316", machine: "#7F1D1D" },
+      { name: "Forest", primary: "#22C55E", secondary: "#14532D", accent: "#4ADE80", machine: "#14532D" },
+      { name: "Gold", primary: "#F59E0B", secondary: "#78350F", accent: "#FCD34D", machine: "#78350F" }
     ];
-    const slotsImages = ref({
-      titleImage: "",
-      background: "",
-      spinButtonImage: ""
-    });
-    const spinImages = ref({
-      background: ""
-    });
-    const scratchImages = ref({
-      overlay: "",
-      background: "",
-      header: ""
-    });
-    const bingoImages = ref({
-      background: "",
-      header: "",
-      cardCover: ""
-    });
-    const coinDropImages = ref({
-      background: "",
-      header: "",
-      titleImage: "",
-      dropButtonImage: "",
-      ballImage: "",
-      winBucketImage: "",
-      loseBucketImage: "",
-      tubeImage: "",
-      machineImage: "",
-      footerImage: ""
-    });
-    const balloonPopImages = ref({
-      background: "",
-      header: "",
-      titleImage: "",
-      popItemImage: ""
-    });
-    const slotsConfig = ref({
-      titleText: "LUCKY SLOTS",
-      titleColor: "#00FFFF",
-      primaryColor: "#00CED1",
-      secondaryColor: "#1a5a7a",
-      accentColor: "#00FFFF",
-      textColor: "#FFFFFF",
-      machineBgColor: "#1a5a7a",
-      matchTextColor: "#7FDBFF",
-      inventoryEmoji: "🎣",
-      inventoryButtonColor: "#FFD700",
-      prizesModalBgColor: "#1F2937",
-      prizesTitleColor: "#FFD700",
-      prizesCardBorderColor: "#FFD700",
-      prizesCardBgColor: "#374151",
-      prizesValueColor: "#10B981"
-    });
-    const scratchConfig = ref({
-      textColour: "#FFFFFF",
-      wonTextColour: "#00FF00",
-      loseTextColour: "#FF4444",
-      accentColour: "#FFD700"
-    });
-    const spinConfig = ref({
-      titleText: "SPIN TO WIN",
-      titleColor: "#FFD700",
-      wheelEdgeColor: "#00aeff",
-      walletText: "",
-      walletColor: "#8b5cf6"
-    });
-    const bingoConfig = ref({
-      bgStart: "#1e3a8a",
-      bgEnd: "#1e40af",
-      frameColor: "#3b82f6",
-      frameGlow: "#60a5fa",
-      squareBg: "#374151",
-      squareText: "#e5e7eb",
-      diamond1: "#06b6d4",
-      diamond2: "#67e8f9",
-      winnerGlow: "#10b981",
-      winnerBg: "#059669",
-      popupStart: "#10b981",
-      popupEnd: "#059669",
-      diamondEmoji: "💎"
-    });
-    const coinDropConfig = ref({
-      titleText: "COIN DROP!",
-      titleColor: "#FFD700",
-      primaryColor: "#e94560",
-      secondaryColor: "#1a1a2e",
-      accentColor: "#ffd700",
-      boardBgColor: "#1a1a2e",
-      pegColor: "#ffffff",
-      pegGlowColor: "#e94560",
-      ballColor: "#ffd700",
-      ballGlowColor: "#ffaa00",
-      winBucketColor: "#00ff88",
-      loseBucketColor: "#ff4444",
-      trailColor: "#e94560",
-      pegShape: "hexagon"
-    });
-    const balloonPopConfig = ref({
-      titleText: "POP TO WIN!",
-      titleColor: "#FFD700",
-      primaryColor: "#e94560",
-      secondaryColor: "#1a1a2e",
-      accentColor: "#ffd700",
-      popBgColor: "#1a1a2e",
-      popItemType: "balloon",
-      popWinColor: "#00ff88",
-      popLoseColor: "#ff4444",
-      popSubtitleText: "Pop balloons to reveal your prize!"
-    });
-    const footballConfig = ref({
-      theme: "classic",
-      titleText: "Take Your Shot!",
-      winText: "GOAL! You scored!",
-      loseText: "Saved! Unlucky…",
-      primaryColor: "#1b5e20",
-      accentColor: "#ffeb3b",
-      goalColor: "#f59e0b",
-      showTopPrize: true,
-      hostEnabled: true
-    });
-    const footballMedia = ref({
-      hostImage: "",
-      kickSound: "",
-      whistleSound: "",
-      crowdSound: "",
-      winSound: "",
-      lossSound: ""
-    });
-    const footballDemoTickets = [
-      { id: 1, number: "001", instant_win: { id: 1, prize: "£50 Cash", value: 50, claimed: false, image_path: null } },
-      { id: 2, number: "002", instant_win: false }
+    const EMOJI = ["🎣", "🎁", "🏆", "💎", "⭐", "🎯", "🎪", "🎲"];
+    const GAMES = [
+      { id: "slots", name: "Slots", tag: "Match 3", icon: "spark", comp: SlotsGame, titleKey: "titleText", emoji: true },
+      { id: "scratch", name: "Scratch", tag: "Reveal", icon: "gift", comp: ScratchGame },
+      { id: "spin", name: "Spinny", tag: "Spin", icon: "target", comp: SpinGame, titleKey: "titleText" },
+      { id: "bingo", name: "Bingo", tag: "Line", icon: "dice", comp: BingoGame },
+      { id: "coindrop", name: "Coin Drop", tag: "Drop", icon: "cash", comp: CoinDropGame, titleKey: "titleText" },
+      { id: "balloonpop", name: "Balloon Pop", tag: "Pop", icon: "star", comp: BalloonPopGame, titleKey: "titleText", subKey: "popSubtitleText" },
+      { id: "football", name: "Football", tag: "Shoot", icon: "target", comp: FootballModal, titleKey: "titleText", winKey: "winText" },
+      { id: "fishing", name: "Fishing", tag: "Hook", icon: "fish", comp: FishingModal, titleKey: "titleText", winKey: "winText" },
+      { id: "ticketeater", name: "Ticket Eater", tag: "Feed", icon: "doc", comp: TicketEaterModal, titleKey: "titleText" }
     ];
-    const fishingConfig = ref({
-      theme: "stormy",
-      titleText: "Cast to Win!",
-      winText: "Reeled in a winner! 🎣",
-      loseText: "The one that got away…",
-      accentColor: "#ffd54f",
-      primaryColor: "#0277bd",
-      sunEnabled: true,
-      cloudsEnabled: true,
-      showTopPrize: false,
-      introEnabled: true
+    const cfg = reactive({
+      slots: { titleText: "LUCKY SLOTS", titleColor: "#00FFFF", primaryColor: "#00CED1", secondaryColor: "#1a5a7a", accentColor: "#00FFFF", textColor: "#FFFFFF", machineBgColor: "#1a5a7a", matchTextColor: "#7FDBFF", inventoryEmoji: "🎣", inventoryButtonColor: "#FFD700", prizesModalBgColor: "#1F2937", prizesTitleColor: "#FFD700", prizesCardBorderColor: "#FFD700", prizesCardBgColor: "#374151", prizesValueColor: "#10B981" },
+      scratch: { textColour: "#FFFFFF", wonTextColour: "#00FF00", loseTextColour: "#FF4444", accentColour: "#FFD700" },
+      spin: { titleText: "SPIN TO WIN", titleColor: "#FFD700", wheelEdgeColor: "#00aeff", walletText: "", walletColor: "#8b5cf6" },
+      bingo: { bgStart: "#1e3a8a", bgEnd: "#1e40af", frameColor: "#3b82f6", frameGlow: "#60a5fa", squareBg: "#374151", squareText: "#e5e7eb", diamond1: "#06b6d4", diamond2: "#67e8f9", winnerGlow: "#10b981", winnerBg: "#059669", popupStart: "#10b981", popupEnd: "#059669", diamondEmoji: "💎" },
+      coindrop: { titleText: "COIN DROP!", titleColor: "#FFD700", primaryColor: "#e94560", secondaryColor: "#1a1a2e", accentColor: "#ffd700", boardBgColor: "#1a1a2e", pegColor: "#ffffff", pegGlowColor: "#e94560", ballColor: "#ffd700", ballGlowColor: "#ffaa00", winBucketColor: "#00ff88", loseBucketColor: "#ff4444", trailColor: "#e94560", pegShape: "hexagon" },
+      balloonpop: { titleText: "POP TO WIN!", titleColor: "#FFD700", primaryColor: "#e94560", secondaryColor: "#1a1a2e", accentColor: "#ffd700", popBgColor: "#1a1a2e", popItemType: "balloon", popWinColor: "#00ff88", popLoseColor: "#ff4444", popSubtitleText: "Pop balloons to reveal your prize!" },
+      football: { theme: "classic", titleText: "Take Your Shot!", winText: "GOAL! You scored!", loseText: "Saved! Unlucky…", primaryColor: "#1b5e20", accentColor: "#ffeb3b", goalColor: "#f59e0b", showTopPrize: true, hostEnabled: true },
+      fishing: { theme: "stormy", titleText: "Cast to Win!", winText: "Reeled in a winner! 🎣", loseText: "The one that got away…", accentColor: "#ffd54f", primaryColor: "#0277bd", sunEnabled: true, cloudsEnabled: true, showTopPrize: false, introEnabled: true },
+      ticketeater: { theme: "arcade", titleText: "Feed the Eater!", accentColor: "#ffd54f", primaryColor: "#6c5ce7", showTopPrize: false, introEnabled: true, introWelcomeText: "Welcome to {name}", introSubtitle: "Roll through your tickets to reveal instant prizes", introButtonText: "Start 👹" }
     });
-    const fishingImages = ref({
-      boatImage: "",
-      underwaterImage: "",
-      introTitleImage: "",
-      fish1: "",
-      fish2: "",
-      fish3: ""
-    });
-    const fishingMedia = ref({
-      castSound: "",
-      splashSound: "",
-      reelSound: "",
-      winSound: "",
-      lossSound: ""
-    });
-    const fishingDemoTickets = [
-      { id: 1, number: "001", instant_win: { id: 1, prize: "£25 Cash", value: 25, claimed: false, image_path: null } },
-      { id: 2, number: "002", instant_win: false },
-      { id: 3, number: "003", instant_win: false },
-      { id: 4, number: "004", instant_win: { id: 2, prize: "£10 Cash", value: 10, claimed: false, image_path: null } },
-      { id: 5, number: "005", instant_win: false }
-    ];
-    const fishingDemoCategories = [
-      { id: 1, name: "£25 Cash", value: 25, prize_type: "cash", image_path: null, available: 1 },
-      { id: 2, name: "£10 Cash", value: 10, prize_type: "cash", image_path: null, available: 1 }
-    ];
-    const eaterConfig = ref({
-      theme: "arcade",
-      titleText: "Feed the Eater!",
-      accentColor: "#ffd54f",
-      primaryColor: "#6c5ce7",
-      showTopPrize: false,
-      introEnabled: true,
-      introWelcomeText: "Welcome to {name}",
-      introSubtitle: "Roll through your tickets to reveal instant prizes",
-      introButtonText: "Start 👹"
-    });
-    const eaterImages = ref({
-      introTitleImage: "",
-      mascotImage: "",
-      mascotImage2: "",
-      mascotImage3: "",
-      ticketImage: "",
-      risingTicketImage: "",
-      backgroundImage: "",
-      pouchImage: "",
-      prizeImage: ""
-    });
-    const eaterMedia = ref({
-      feedSound: "",
-      gulpSound: "",
-      winSound: "",
-      collectSound: "",
-      welcomeSound: ""
-    });
-    const eaterDemoCategories = [
-      { id: 1, name: "£50 Cash", value: 50, prize_type: "cash", image_path: null, available: 1 },
-      { id: 2, name: "Free Tickets", value: 5, prize_type: "ticket_bundle", image_path: null, available: 1 },
-      { id: 3, name: "£20 Voucher", value: 20, prize_type: "voucher", image_path: null, available: 1 }
-    ];
-    const slotsAssets = computed(() => ({
-      titleText: slotsConfig.value.titleText,
-      titleColor: slotsConfig.value.titleColor,
-      primaryColor: slotsConfig.value.primaryColor,
-      secondaryColor: slotsConfig.value.secondaryColor,
-      accentColor: slotsConfig.value.accentColor,
-      textColor: slotsConfig.value.textColor,
-      machineBgColor: slotsConfig.value.machineBgColor,
-      matchTextColor: slotsConfig.value.matchTextColor,
-      inventoryEmoji: slotsConfig.value.inventoryEmoji,
-      inventoryButtonColor: slotsConfig.value.inventoryButtonColor,
-      prizesModalBgColor: slotsConfig.value.prizesModalBgColor,
-      prizesTitleColor: slotsConfig.value.prizesTitleColor,
-      prizesCardBorderColor: slotsConfig.value.prizesCardBorderColor,
-      prizesCardBgColor: slotsConfig.value.prizesCardBgColor,
-      prizesValueColor: slotsConfig.value.prizesValueColor,
-      // Images
-      titleImage: slotsImages.value.titleImage,
-      background: slotsImages.value.background,
-      spinButtonImage: slotsImages.value.spinButtonImage,
-      machineImage: "",
-      footerImage: "",
-      header: ""
-    }));
-    const spinAssets = computed(() => ({
-      titleText: spinConfig.value.titleText,
-      titleColor: spinConfig.value.titleColor,
-      wheelEdgeColor: spinConfig.value.wheelEdgeColor,
-      walletText: spinConfig.value.walletText,
-      walletColor: spinConfig.value.walletColor,
-      background: spinImages.value.background
-    }));
-    const scratchAssets = computed(() => ({
-      background: scratchImages.value.background,
-      overlay: scratchImages.value.overlay,
-      header: scratchImages.value.header,
-      textColour: scratchConfig.value.textColour,
-      wonTextColour: scratchConfig.value.wonTextColour,
-      loseTextColour: scratchConfig.value.loseTextColour,
-      accentColour: scratchConfig.value.accentColour
-    }));
-    const bingoAssets = computed(() => ({
-      background: bingoImages.value.background,
-      header: bingoImages.value.header,
-      cardCover: bingoImages.value.cardCover,
-      bgStart: bingoConfig.value.bgStart,
-      bgEnd: bingoConfig.value.bgEnd,
-      frameColor: bingoConfig.value.frameColor,
-      frameGlow: bingoConfig.value.frameGlow,
-      squareBg: bingoConfig.value.squareBg,
-      squareText: bingoConfig.value.squareText,
-      diamond1: bingoConfig.value.diamond1,
-      diamond2: bingoConfig.value.diamond2,
-      winnerGlow: bingoConfig.value.winnerGlow,
-      winnerBg: bingoConfig.value.winnerBg,
-      popupStart: bingoConfig.value.popupStart,
-      popupEnd: bingoConfig.value.popupEnd,
-      diamondEmoji: bingoConfig.value.diamondEmoji
-    }));
-    const coinDropAssets = computed(() => ({
-      name: "Coin Drop",
-      titleText: coinDropConfig.value.titleText,
-      titleColor: coinDropConfig.value.titleColor,
-      primaryColor: coinDropConfig.value.primaryColor,
-      secondaryColor: coinDropConfig.value.secondaryColor,
-      accentColor: coinDropConfig.value.accentColor,
-      textColor: "#FFFFFF",
-      boardBgColor: coinDropConfig.value.boardBgColor,
-      pegColor: coinDropConfig.value.pegColor,
-      pegGlowColor: coinDropConfig.value.pegGlowColor,
-      ballColor: coinDropConfig.value.ballColor,
-      ballGlowColor: coinDropConfig.value.ballGlowColor,
-      winBucketColor: coinDropConfig.value.winBucketColor,
-      loseBucketColor: coinDropConfig.value.loseBucketColor,
-      trailColor: coinDropConfig.value.trailColor,
-      pegShape: coinDropConfig.value.pegShape,
-      background: coinDropImages.value.background || "",
-      header: coinDropImages.value.header || "",
-      titleImage: coinDropImages.value.titleImage || "",
-      dropButtonImage: coinDropImages.value.dropButtonImage || "",
-      ballImage: coinDropImages.value.ballImage || "",
-      winBucketImage: coinDropImages.value.winBucketImage || "",
-      loseBucketImage: coinDropImages.value.loseBucketImage || "",
-      tubeImage: coinDropImages.value.tubeImage || "",
-      machineImage: "",
-      footerImage: "",
-      gameBackground: coinDropImages.value.background || "",
-      welcomeSound: "",
-      dropSound: "",
-      winSound: "",
-      lossSound: ""
-    }));
-    const balloonPopAssets = computed(() => ({
-      name: "Balloon Pop",
-      titleText: balloonPopConfig.value.titleText,
-      titleColor: balloonPopConfig.value.titleColor,
-      primaryColor: balloonPopConfig.value.primaryColor,
-      secondaryColor: balloonPopConfig.value.secondaryColor,
-      accentColor: balloonPopConfig.value.accentColor,
-      textColor: "#FFFFFF",
-      popBgColor: balloonPopConfig.value.popBgColor,
-      popItemType: balloonPopConfig.value.popItemType,
-      popWinColor: balloonPopConfig.value.popWinColor,
-      popLoseColor: balloonPopConfig.value.popLoseColor,
-      popSubtitleText: balloonPopConfig.value.popSubtitleText,
-      background: balloonPopImages.value.background || "",
-      header: balloonPopImages.value.header || "",
-      titleImage: balloonPopImages.value.titleImage || "",
-      popItemImage: balloonPopImages.value.popItemImage || "",
-      popItemColors: ["#FF4C4C", "#FFEB3B", "#64B5F6", "#81C784", "#9575CD", "#FF8A80", "#FFB74D", "#4DD0E1", "#F06292", "#FFD700"],
-      popConfettiColors: ["#FFD700", "#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4", "#FFEAA7"],
-      popSound: "",
-      welcomeSound: "",
-      winSound: "",
-      lossSound: "",
-      popItemLabel: ""
-    }));
-    const emojiOptions = ["🎣", "🎁", "🏆", "💎", "⭐", "🎯", "🎪", "🎲"];
-    const colorPresets = {
-      slots: [
-        { name: "Ocean", primary: "#00CED1", secondary: "#1a5a7a", accent: "#00FFFF", machine: "#1a5a7a" },
-        { name: "Royal", primary: "#9333EA", secondary: "#581C87", accent: "#A855F7", machine: "#581C87" },
-        { name: "Fire", primary: "#EF4444", secondary: "#7F1D1D", accent: "#F97316", machine: "#7F1D1D" },
-        { name: "Forest", primary: "#22C55E", secondary: "#14532D", accent: "#4ADE80", machine: "#14532D" },
-        { name: "Gold", primary: "#F59E0B", secondary: "#78350F", accent: "#FCD34D", machine: "#78350F" }
+    const themeIdx = reactive({ slots: 0, scratch: 4, spin: 0, bingo: 0, coindrop: 2, balloonpop: 2, football: 3, fishing: 0, ticketeater: 1 });
+    const demo = {
+      footballTickets: [
+        { id: 1, number: "001", instant_win: { id: 1, prize: "£50 Cash", value: 50, claimed: false, image_path: null } },
+        { id: 2, number: "002", instant_win: false }
       ],
-      spin: [
-        { name: "Neon Blue", edge: "#00aeff", title: "#FFD700" },
-        { name: "Purple Glow", edge: "#9333EA", title: "#F0ABFC" },
-        { name: "Fire Red", edge: "#EF4444", title: "#FCD34D" },
-        { name: "Emerald", edge: "#10B981", title: "#FFFFFF" },
-        { name: "Sunset", edge: "#F97316", title: "#FEF3C7" }
+      fishingTickets: [
+        { id: 1, number: "001", instant_win: { id: 1, prize: "£25 Cash", value: 25, claimed: false, image_path: null } },
+        { id: 2, number: "002", instant_win: false },
+        { id: 3, number: "003", instant_win: false },
+        { id: 4, number: "004", instant_win: { id: 2, prize: "£10 Cash", value: 10, claimed: false, image_path: null } },
+        { id: 5, number: "005", instant_win: false }
       ],
-      coindrop: [
-        { name: "Classic", primary: "#e94560", accent: "#ffd700", ball: "#ffd700" },
-        { name: "Emerald", primary: "#10B981", accent: "#34D399", ball: "#6EE7B7" },
-        { name: "Purple", primary: "#9333EA", accent: "#C084FC", ball: "#E9D5FF" },
-        { name: "Fire", primary: "#EF4444", accent: "#F97316", ball: "#FBBF24" }
+      fishingCategories: [
+        { id: 1, name: "£25 Cash", value: 25, prize_type: "cash", image_path: null, available: 1 },
+        { id: 2, name: "£10 Cash", value: 10, prize_type: "cash", image_path: null, available: 1 }
       ],
-      balloonpop: [
-        { name: "Classic", primary: "#e94560", accent: "#ffd700" },
-        { name: "Ocean", primary: "#06B6D4", accent: "#67E8F9" },
-        { name: "Forest", primary: "#22C55E", accent: "#86EFAC" },
-        { name: "Sunset", primary: "#F97316", accent: "#FCD34D" }
-      ],
-      football: [
-        { name: "Classic", theme: "classic", primary: "#1b5e20", accent: "#ffeb3b" },
-        { name: "Night", theme: "night", primary: "#1b5e20", accent: "#cfeaff" },
-        { name: "Retro", theme: "retro", primary: "#4a3416", accent: "#ffd27a" },
-        { name: "Neon", theme: "neon", primary: "#0c5a3c", accent: "#3df5ff" }
-      ],
-      fishing: [
-        { name: "Stormy", theme: "stormy", primary: "#0277bd", accent: "#ffd54f" },
-        { name: "Chill", theme: "chill", primary: "#1f8fc0", accent: "#ffe55c" },
-        { name: "Sunset", theme: "sunset", primary: "#9c4a6e", accent: "#ff9d5c" },
-        { name: "Night", theme: "night", primary: "#0a2a40", accent: "#9fd0ff" }
-      ],
-      ticketeater: [
-        { name: "Arcade", theme: "arcade", primary: "#6c5ce7", accent: "#ffd54f" },
-        { name: "Cave", theme: "cave", primary: "#3f9c78", accent: "#8effc8" },
-        { name: "Candy", theme: "candy", primary: "#cf4d83", accent: "#fff36b" },
-        { name: "Spooky", theme: "spooky", primary: "#5a9c33", accent: "#9dff5c" }
+      eaterCategories: [
+        { id: 1, name: "£50 Cash", value: 50, prize_type: "cash", image_path: null, available: 1 },
+        { id: 2, name: "Free Tickets", value: 5, prize_type: "ticket_bundle", image_path: null, available: 1 },
+        { id: 3, name: "£20 Voucher", value: 20, prize_type: "voucher", image_path: null, available: 1 }
       ]
     };
-    const footballAssets = computed(() => ({
-      theme: footballConfig.value.theme,
-      titleText: footballConfig.value.titleText,
-      winText: footballConfig.value.winText,
-      loseText: footballConfig.value.loseText,
-      primaryColor: footballConfig.value.primaryColor,
-      accentColor: footballConfig.value.accentColor,
-      goalColor: footballConfig.value.goalColor,
-      showTopPrize: footballConfig.value.showTopPrize,
-      hostEnabled: footballConfig.value.hostEnabled,
-      hostImage: footballMedia.value.hostImage,
-      kickSound: footballMedia.value.kickSound,
-      whistleSound: footballMedia.value.whistleSound,
-      crowdSound: footballMedia.value.crowdSound,
-      winSound: footballMedia.value.winSound,
-      lossSound: footballMedia.value.lossSound
-    }));
-    const fishingAssets = computed(() => ({
-      theme: fishingConfig.value.theme,
-      titleText: fishingConfig.value.titleText,
-      winText: fishingConfig.value.winText,
-      loseText: fishingConfig.value.loseText,
-      accentColor: fishingConfig.value.accentColor,
-      primaryColor: fishingConfig.value.primaryColor,
-      sunEnabled: fishingConfig.value.sunEnabled,
-      cloudsEnabled: fishingConfig.value.cloudsEnabled,
-      showTopPrize: fishingConfig.value.showTopPrize,
-      introEnabled: fishingConfig.value.introEnabled,
-      boatImage: fishingImages.value.boatImage || "",
-      underwaterImage: fishingImages.value.underwaterImage || "",
-      introTitleImage: fishingImages.value.introTitleImage || "",
-      fish1: fishingImages.value.fish1 || "",
-      fish2: fishingImages.value.fish2 || "",
-      fish3: fishingImages.value.fish3 || "",
-      castSound: fishingMedia.value.castSound || "",
-      splashSound: fishingMedia.value.splashSound || "",
-      reelSound: fishingMedia.value.reelSound || "",
-      winSound: fishingMedia.value.winSound || "",
-      lossSound: fishingMedia.value.lossSound || ""
-    }));
-    const eaterAssets = computed(() => ({
-      theme: eaterConfig.value.theme,
-      titleText: eaterConfig.value.titleText,
-      accentColor: eaterConfig.value.accentColor,
-      primaryColor: eaterConfig.value.primaryColor,
-      showTopPrize: eaterConfig.value.showTopPrize,
-      introEnabled: eaterConfig.value.introEnabled,
-      introWelcomeText: eaterConfig.value.introWelcomeText,
-      introSubtitle: eaterConfig.value.introSubtitle,
-      introButtonText: eaterConfig.value.introButtonText,
-      introTitleImage: eaterImages.value.introTitleImage || "",
-      mascotImage: eaterImages.value.mascotImage || "",
-      mascotImage2: eaterImages.value.mascotImage2 || "",
-      mascotImage3: eaterImages.value.mascotImage3 || "",
-      ticketImage: eaterImages.value.ticketImage || "",
-      risingTicketImage: eaterImages.value.risingTicketImage || "",
-      backgroundImage: eaterImages.value.backgroundImage || "",
-      pouchImage: eaterImages.value.pouchImage || "",
-      prizeImage: eaterImages.value.prizeImage || "",
-      feedSound: eaterMedia.value.feedSound || "",
-      gulpSound: eaterMedia.value.gulpSound || "",
-      winSound: eaterMedia.value.winSound || "",
-      collectSound: eaterMedia.value.collectSound || "",
-      welcomeSound: eaterMedia.value.welcomeSound || ""
-    }));
+    const noImages = { titleImage: "", background: "", spinButtonImage: "", machineImage: "", footerImage: "", header: "" };
+    const assets = {
+      slots: computed(() => ({ ...cfg.slots, ...noImages })),
+      scratch: computed(() => ({ background: "", overlay: "", header: "", ...cfg.scratch })),
+      spin: computed(() => ({ ...cfg.spin, background: "" })),
+      bingo: computed(() => ({ background: "", header: "", cardCover: "", ...cfg.bingo })),
+      coindrop: computed(() => ({ name: "Coin Drop", textColor: "#FFFFFF", ...cfg.coindrop, background: "", header: "", titleImage: "", dropButtonImage: "", ballImage: "", winBucketImage: "", loseBucketImage: "", tubeImage: "", machineImage: "", footerImage: "", gameBackground: "", welcomeSound: "", dropSound: "", winSound: "", lossSound: "" })),
+      balloonpop: computed(() => ({ name: "Balloon Pop", textColor: "#FFFFFF", ...cfg.balloonpop, background: "", header: "", titleImage: "", popItemImage: "", popItemColors: ["#FF4C4C", "#FFEB3B", "#64B5F6", "#81C784", "#9575CD", "#FF8A80", "#FFB74D", "#4DD0E1", "#F06292", "#FFD700"], popConfettiColors: ["#FFD700", "#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4", "#FFEAA7"], popSound: "", welcomeSound: "", winSound: "", lossSound: "", popItemLabel: "" })),
+      football: computed(() => ({ ...cfg.football, hostImage: "", kickSound: "", whistleSound: "", crowdSound: "", winSound: "", lossSound: "" })),
+      fishing: computed(() => ({ ...cfg.fishing, boatImage: "", underwaterImage: "", introTitleImage: "", fish1: "", fish2: "", fish3: "", castSound: "", splashSound: "", reelSound: "", winSound: "", lossSound: "" })),
+      ticketeater: computed(() => ({ ...cfg.ticketeater, introTitleImage: "", mascotImage: "", mascotImage2: "", mascotImage3: "", ticketImage: "", risingTicketImage: "", backgroundImage: "", pouchImage: "", prizeImage: "", feedSound: "", gulpSound: "", winSound: "", collectSound: "", welcomeSound: "" }))
+    };
+    function gameProps(id, mode) {
+      const base = { demoMode: true, previewMode: mode };
+      switch (id) {
+        case "slots":
+          return { ...base, slotsAssets: assets.slots.value, showMachine: true };
+        case "scratch":
+          return { ...base, scratchAssets: assets.scratch.value };
+        case "spin":
+          return { ...base, spinAssets: assets.spin.value };
+        case "bingo":
+          return { ...base, assets: assets.bingo.value, prizes: [], tickets: [] };
+        case "coindrop":
+          return { ...base, coinDropAssets: assets.coindrop.value, tickets: [], showGameBoard: true };
+        case "balloonpop":
+          return { ...base, popGameAssets: assets.balloonpop.value, tickets: [], showGameBoard: true };
+        case "football":
+          return { ...base, modelValue: true, assets: assets.football.value, tickets: demo.footballTickets };
+        case "fishing":
+          return { ...base, modelValue: true, assets: assets.fishing.value, tickets: demo.fishingTickets, instant_win_categories: demo.fishingCategories };
+        case "ticketeater":
+          return { ...base, modelValue: true, assets: assets.ticketeater.value, instant_win_categories: demo.eaterCategories };
+      }
+      return base;
+    }
+    const wallEl = ref(null);
+    const gridEl = ref(null);
+    const previewEl = ref(null);
+    ref(null);
+    const tileEls = ref([]);
+    const mounted = ref(GAMES.map(() => false));
+    const cur = ref(-1);
+    const sel = ref(-1);
+    const tileZoom = ref(1);
+    const previewZoom = ref(1);
+    let cycleTimer = null, visible = false, ro = null, tileIo = null, wallIo = null;
+    const reduced = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const tileTitle = (g2) => (g2.titleKey ? cfg[g2.id][g2.titleKey] : g2.name).toString().toUpperCase();
+    const themeOf = (id) => THEMES[themeIdx[id]];
+    const selected = computed(() => sel.value > -1 ? GAMES[sel.value] : null);
+    const selCfg = computed(() => selected.value ? cfg[selected.value.id] : null);
+    function fit() {
+      const t3 = tileEls.value[0];
+      if (t3) {
+        const w2 = t3.getBoundingClientRect().width;
+        if (w2) tileZoom.value = Math.max(0.3, Math.min(1.2, w2 / TILE_BOX));
+      }
+      const p2 = previewEl.value;
+      if (p2) {
+        const w2 = p2.getBoundingClientRect().width;
+        if (w2) previewZoom.value = Math.max(0.3, Math.min(1.2, w2 / PANEL_BOX));
+      }
+    }
+    function focus(i2) {
+      cur.value = i2;
+      clearTimeout(cycleTimer);
+      if (visible && !reduced()) cycleTimer = setTimeout(() => focus((cur.value + 1) % GAMES.length), CYCLE_MS);
+    }
+    onMounted(() => {
+      fit();
+      ro = new ResizeObserver(fit);
+      if (gridEl.value) ro.observe(gridEl.value);
+      if (previewEl.value) ro.observe(previewEl.value);
+      tileIo = new IntersectionObserver((entries) => {
+        entries.forEach((e2) => {
+          if (e2.isIntersecting) {
+            const i2 = +e2.target.dataset.i;
+            mounted.value[i2] = true;
+            tileIo.unobserve(e2.target);
+          }
+        });
+      }, { rootMargin: "320px 0px" });
+      tileEls.value.forEach((el) => el && tileIo.observe(el));
+      wallIo = new IntersectionObserver((entries) => {
+        entries.forEach((e2) => {
+          visible = e2.isIntersecting;
+          if (visible) focus(cur.value > -1 ? cur.value : 0);
+          else clearTimeout(cycleTimer);
+        });
+      }, { threshold: 0.2 });
+      if (wallEl.value) wallIo.observe(wallEl.value);
+    });
+    onBeforeUnmount(() => {
+      clearTimeout(cycleTimer);
+      ro == null ? void 0 : ro.disconnect();
+      tileIo == null ? void 0 : tileIo.disconnect();
+      wallIo == null ? void 0 : wallIo.disconnect();
+    });
     return (_ctx, _push, _parent, _attrs) => {
-      var _a, _b;
-      _push(`<section${ssrRenderAttrs(mergeProps({
-        ref_key: "sectionRef",
-        ref: sectionRef,
-        id: "game-studio",
-        class: ["section reveal", { visible: unref(revealed) }],
-        style: { "position": "relative" }
-      }, _attrs))} data-v-dd8ae836><div class="center" style="${ssrRenderStyle({ "margin-bottom": "24px", "position": "relative" })}" data-v-dd8ae836><div class="mega-badge" data-v-dd8ae836><span class="spark" data-v-dd8ae836>✦</span> ${ssrInterpolate(badgeText.value)} <span class="spark" data-v-dd8ae836>✦</span></div><h2 class="h2" data-v-dd8ae836>${ssrInterpolate(titleBefore.value)} <span class="grad-text" data-v-dd8ae836>${ssrInterpolate(titleKeyword.value)}</span></h2><p class="lead center" style="${ssrRenderStyle({ "margin": "18px auto 0" })}" data-v-dd8ae836>${ssrInterpolate(lead.value)}</p><div style="${ssrRenderStyle({ "margin-top": "22px" })}" data-v-dd8ae836><a href="#game-studio" class="try-me" data-v-dd8ae836>${ssrInterpolate(tryMeText.value)}</a></div></div><div class="gs-block" data-v-dd8ae836><div class="grid lg:grid-cols-12 gap-5 max-w-[1400px] mx-auto" data-v-dd8ae836><div class="lg:col-span-5 xl:col-span-4" data-v-dd8ae836><div class="config-card" data-v-dd8ae836><div class="tab-container" data-v-dd8ae836><!--[-->`);
-      ssrRenderList(tabs, (tab) => {
-        _push(`<button class="${ssrRenderClass(["tab-pill", activeTab.value === tab.id ? "active" : ""])}" data-v-dd8ae836><span class="tab-icon" data-v-dd8ae836>${ssrInterpolate(tab.icon)}</span><span class="tab-label" data-v-dd8ae836>${ssrInterpolate(tab.name)}</span></button>`);
+      _push(`<section${ssrRenderAttrs(mergeProps({ id: "game-studio" }, _attrs))}><div class="wrap"><div class="sec-head center"><span class="eyebrow"><i class="dot"></i>✦ Only on CompEngine ✦</span><h2>Game Studio. <span class="grad">Built by you.</span></h2><p class="lead">Other UK competition platforms give operators a handful of fixed game presets. We give a studio. Pick a game, theme it, brand it, preview every change live.</p></div></div><div class="${ssrRenderClass([{ open: sel.value > -1 }, "wrap gamewall"])}" id="gamewall" style="${ssrRenderStyle({ "--sc-dur": CYCLE_MS + "ms", "--z": tileZoom.value })}"><div class="gw-head"><span class="tag" id="gw-live"><i class="dot"></i>All nine games, live</span><span class="hand">tap any square to play it</span></div><div class="gw-body"><div class="gw-grid" id="gw-grid"><!--[-->`);
+      ssrRenderList(GAMES, (g2, i2) => {
+        _push(`<div role="button" tabindex="0"${ssrRenderAttr("data-i", i2)} class="${ssrRenderClass([{ on: cur.value === i2, sel: sel.value === i2 }, "g-tile"])}" style="${ssrRenderStyle({ "--gp": themeOf(g2.id).primary, "--ga": themeOf(g2.id).accent })}"${ssrRenderAttr("aria-label", "Customise " + g2.name)}${ssrRenderAttr("data-track", "gamewall_" + g2.id)}><div class="gv"><div class="gbox" style="${ssrRenderStyle({ "--gw": TILE_BOX + "px" })}"><div class="gplay">`);
+        if (mounted.value[i2]) {
+          ssrRenderVNode(_push, createVNode(resolveDynamicComponent(g2.comp), mergeProps({ ref_for: true }, gameProps(g2.id, "mobile")), null), _parent);
+        } else {
+          _push(`<!---->`);
+        }
+        _push(`</div></div></div><span class="lbl"><span><i class="ic"${ssrRenderAttr("data-i", g2.icon)}></i> <span class="tt">${ssrInterpolate(tileTitle(g2))}</span></span><small>${ssrInterpolate(g2.tag)}</small></span><span class="play"><i class="ic" data-i="pen"></i></span><i class="bar"></i></div>`);
       });
-      _push(`<!--]--></div><div class="config-content custom-scrollbar" data-v-dd8ae836>`);
-      if (activeTab.value === "slots") {
-        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Theme</span></div><div class="preset-grid" data-v-dd8ae836><!--[-->`);
-        ssrRenderList(colorPresets.slots, (preset) => {
-          _push(`<button class="preset-btn" style="${ssrRenderStyle({ "--preset-color": preset.primary })}" data-v-dd8ae836><span class="preset-dot" style="${ssrRenderStyle({ background: preset.primary })}" data-v-dd8ae836></span> ${ssrInterpolate(preset.name)}</button>`);
+      _push(`<!--]--></div><div class="gw-panel card" id="gw-panel" style="${ssrRenderStyle(sel.value > -1 ? null : { display: "none" })}"><div class="gw-ph"><div><small class="muted">Customise</small><b id="gw-pname">${ssrInterpolate(selected.value ? selected.value.name : "")}</b></div><button type="button" class="gw-x" id="gw-close" aria-label="Close customiser"><i class="ic" data-i="x"></i></button></div><div class="gw-preview" id="gw-preview" style="${ssrRenderStyle({ "--gp": selected.value ? themeOf(selected.value.id).primary : null, "--z": previewZoom.value })}"><div class="gv"><div class="gbox" style="${ssrRenderStyle({ "--gw": PANEL_BOX + "px" })}"><div class="gplay">`);
+      if (selected.value) {
+        ssrRenderVNode(_push, createVNode(resolveDynamicComponent(selected.value.comp), mergeProps({
+          key: selected.value.id
+        }, gameProps(selected.value.id, "desktop")), null), _parent);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div></div></div></div><p class="gw-hint">This is the real game — play it. Every change below updates it live.</p><div class="gs-row"><label>Theme</label><div class="chips" id="gw-themes"><!--[-->`);
+      ssrRenderList(THEMES, (t3, k) => {
+        _push(`<button type="button" class="${ssrRenderClass([{ on: selected.value && themeIdx[selected.value.id] === k }, "chip"])}"><i class="sw" style="${ssrRenderStyle({ "--c": t3.primary })}"></i>${ssrInterpolate(t3.name)}</button>`);
+      });
+      _push(`<!--]--></div></div>`);
+      if (selected.value && selected.value.titleKey) {
+        _push(`<div class="gs-row"><label for="gw-title">Title</label><input class="gw-input" id="gw-title" maxlength="24" autocomplete="off" spellcheck="false"${ssrRenderAttr("value", selCfg.value[selected.value.titleKey])}></div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      if (selected.value && selected.value.winKey) {
+        _push(`<div class="gs-row"><label for="gw-win">Win message</label><input class="gw-input" id="gw-win" maxlength="32" autocomplete="off" spellcheck="false"${ssrRenderAttr("value", selCfg.value[selected.value.winKey])}></div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      if (selected.value && selected.value.subKey) {
+        _push(`<div class="gs-row"><label for="gw-sub">Subtitle</label><input class="gw-input" id="gw-sub" maxlength="40" autocomplete="off" spellcheck="false"${ssrRenderAttr("value", selCfg.value[selected.value.subKey])}></div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      if (selected.value && selected.value.emoji) {
+        _push(`<div class="gs-row"><label>Inventory icon</label><div class="chips" id="gw-icons"><!--[-->`);
+        ssrRenderList(EMOJI, (e2) => {
+          _push(`<button type="button" class="${ssrRenderClass([{ on: selCfg.value.inventoryEmoji === e2 }, "chip gw-emoji"])}">${ssrInterpolate(e2)}</button>`);
         });
-        _push(`<!--]--></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Branding</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Title</label><input type="text"${ssrRenderAttr("value", slotsConfig.value.titleText)} class="text-input" data-v-dd8ae836></div><div class="upload-row" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": slotsImages.value.titleImage }, "upload-box"])}" data-v-dd8ae836>`);
-        if (slotsImages.value.titleImage) {
-          _push(`<img${ssrRenderAttr("src", slotsImages.value.titleImage)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Logo</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": slotsImages.value.background }, "upload-box"])}" data-v-dd8ae836>`);
-        if (slotsImages.value.background) {
-          _push(`<img${ssrRenderAttr("src", slotsImages.value.background)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ BG</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": slotsImages.value.spinButtonImage }, "upload-box"])}" data-v-dd8ae836>`);
-        if (slotsImages.value.spinButtonImage) {
-          _push(`<img${ssrRenderAttr("src", slotsImages.value.spinButtonImage)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Btn</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", slotsConfig.value.primaryColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Primary</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", slotsConfig.value.accentColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Accent</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", slotsConfig.value.titleColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Title</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", slotsConfig.value.machineBgColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Machine</span></div></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Inventory Button</span></div><div class="emoji-row" data-v-dd8ae836><!--[-->`);
-        ssrRenderList(emojiOptions, (emoji) => {
-          _push(`<button class="${ssrRenderClass(["emoji-btn", slotsConfig.value.inventoryEmoji === emoji ? "active" : ""])}" data-v-dd8ae836>${ssrInterpolate(emoji)}</button>`);
-        });
-        _push(`<!--]--></div><div class="color-item inline-color" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", slotsConfig.value.inventoryButtonColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Button Color</span></div></div></div>`);
+        _push(`<!--]--></div></div>`);
       } else {
         _push(`<!---->`);
       }
-      if (activeTab.value === "scratch") {
-        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Images</span></div><div class="upload-row" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": scratchImages.value.header }, "upload-box"])}" data-v-dd8ae836>`);
-        if (scratchImages.value.header) {
-          _push(`<img${ssrRenderAttr("src", scratchImages.value.header)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Header</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": scratchImages.value.background }, "upload-box"])}" data-v-dd8ae836>`);
-        if (scratchImages.value.background) {
-          _push(`<img${ssrRenderAttr("src", scratchImages.value.background)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ BG</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": scratchImages.value.overlay }, "upload-box"])}" data-v-dd8ae836>`);
-        if (scratchImages.value.overlay) {
-          _push(`<img${ssrRenderAttr("src", scratchImages.value.overlay)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Overlay</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", scratchConfig.value.wonTextColour)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Win</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", scratchConfig.value.loseTextColour)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Lose</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", scratchConfig.value.accentColour)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Accent</span></div></div></div></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (activeTab.value === "spin") {
-        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Theme</span></div><div class="preset-grid" data-v-dd8ae836><!--[-->`);
-        ssrRenderList(colorPresets.spin, (preset) => {
-          _push(`<button class="preset-btn" style="${ssrRenderStyle({ "--preset-color": preset.edge })}" data-v-dd8ae836><span class="preset-dot" style="${ssrRenderStyle({ background: preset.edge })}" data-v-dd8ae836></span> ${ssrInterpolate(preset.name)}</button>`);
-        });
-        _push(`<!--]--></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Branding</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Title</label><input type="text"${ssrRenderAttr("value", spinConfig.value.titleText)} class="text-input" data-v-dd8ae836></div><div class="upload-row single" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": spinImages.value.background }, "upload-box wide"])}" data-v-dd8ae836>`);
-        if (spinImages.value.background) {
-          _push(`<img${ssrRenderAttr("src", spinImages.value.background)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Background Image</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", spinConfig.value.titleColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Title</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", spinConfig.value.wheelEdgeColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Wheel</span></div></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Wallet Card</span><span class="section-hint" data-v-dd8ae836>Leave empty to hide</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Brand Text</label><input type="text"${ssrRenderAttr("value", spinConfig.value.walletText)} placeholder="YOUR BRAND" class="text-input" data-v-dd8ae836></div><div class="color-item inline-color" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", spinConfig.value.walletColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Card Color</span></div></div></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (activeTab.value === "bingo") {
-        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Images</span></div><div class="upload-row" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": bingoImages.value.header }, "upload-box"])}" data-v-dd8ae836>`);
-        if (bingoImages.value.header) {
-          _push(`<img${ssrRenderAttr("src", bingoImages.value.header)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Header</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": bingoImages.value.cardCover }, "upload-box"])}" data-v-dd8ae836>`);
-        if (bingoImages.value.cardCover) {
-          _push(`<img${ssrRenderAttr("src", bingoImages.value.cardCover)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Card</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": bingoImages.value.background }, "upload-box"])}" data-v-dd8ae836>`);
-        if (bingoImages.value.background) {
-          _push(`<img${ssrRenderAttr("src", bingoImages.value.background)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ BG</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Icon</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Diamond Emoji</label><input type="text"${ssrRenderAttr("value", bingoConfig.value.diamondEmoji)} class="text-input text-center text-2xl" data-v-dd8ae836></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", bingoConfig.value.bgStart)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>BG Start</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", bingoConfig.value.bgEnd)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>BG End</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", bingoConfig.value.frameColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Frame</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", bingoConfig.value.diamond1)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Diamond 1</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", bingoConfig.value.diamond2)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Diamond 2</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", bingoConfig.value.winnerGlow)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Winner</span></div></div></div></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (activeTab.value === "coindrop") {
-        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Theme</span></div><div class="preset-grid" data-v-dd8ae836><!--[-->`);
-        ssrRenderList(colorPresets.coindrop, (preset) => {
-          _push(`<button class="preset-btn" style="${ssrRenderStyle({ "--preset-color": preset.primary })}" data-v-dd8ae836><span class="preset-dot" style="${ssrRenderStyle({ background: preset.primary })}" data-v-dd8ae836></span> ${ssrInterpolate(preset.name)}</button>`);
-        });
-        _push(`<!--]--></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Branding</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Title</label><input type="text"${ssrRenderAttr("value", coinDropConfig.value.titleText)} class="text-input" data-v-dd8ae836></div><div class="upload-row" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": coinDropImages.value.header }, "upload-box"])}" data-v-dd8ae836>`);
-        if (coinDropImages.value.header) {
-          _push(`<img${ssrRenderAttr("src", coinDropImages.value.header)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Header</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": coinDropImages.value.background }, "upload-box"])}" data-v-dd8ae836>`);
-        if (coinDropImages.value.background) {
-          _push(`<img${ssrRenderAttr("src", coinDropImages.value.background)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ BG</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": coinDropImages.value.titleImage }, "upload-box"])}" data-v-dd8ae836>`);
-        if (coinDropImages.value.titleImage) {
-          _push(`<img${ssrRenderAttr("src", coinDropImages.value.titleImage)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Logo</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", coinDropConfig.value.titleColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Title</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", coinDropConfig.value.ballColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Ball</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", coinDropConfig.value.pegColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Pegs</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", coinDropConfig.value.winBucketColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Win Bucket</span></div></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Peg Shape</span></div><div class="preset-grid" data-v-dd8ae836><button class="${ssrRenderClass([{ "active": coinDropConfig.value.pegShape === "circle" }, "preset-btn"])}" data-v-dd8ae836> Circle </button><button class="${ssrRenderClass([{ "active": coinDropConfig.value.pegShape === "hexagon" }, "preset-btn"])}" data-v-dd8ae836> Hexagon </button></div></div></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (activeTab.value === "football") {
-        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Theme</span></div><div class="preset-grid" data-v-dd8ae836><!--[-->`);
-        ssrRenderList(colorPresets.football, (preset) => {
-          _push(`<button class="${ssrRenderClass([{ "active": footballConfig.value.theme === preset.theme }, "preset-btn"])}" data-v-dd8ae836>${ssrInterpolate(preset.name)}</button>`);
-        });
-        _push(`<!--]--></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Branding</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Title</label><input type="text"${ssrRenderAttr("value", footballConfig.value.titleText)} class="text-input" data-v-dd8ae836></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Text</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Win Message</label><input type="text"${ssrRenderAttr("value", footballConfig.value.winText)} class="text-input" data-v-dd8ae836></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Lose Message</label><input type="text"${ssrRenderAttr("value", footballConfig.value.loseText)} class="text-input" data-v-dd8ae836></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Display Options</span></div><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(footballConfig.value.showTopPrize) ? ssrLooseContain(footballConfig.value.showTopPrize, null) : footballConfig.value.showTopPrize) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Top Prize Banner</span></label><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(footballConfig.value.hostEnabled) ? ssrLooseContain(footballConfig.value.hostEnabled, null) : footballConfig.value.hostEnabled) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Commentator (host + mic)</span></label><div class="input-group" style="${ssrRenderStyle({ "margin-top": "4px" })}" data-v-dd8ae836><label data-v-dd8ae836>Commentator Image</label><label class="${ssrRenderClass([{ "has-image": footballMedia.value.hostImage }, "upload-box wide"])}" data-v-dd8ae836>`);
-        if (footballMedia.value.hostImage) {
-          _push(`<img${ssrRenderAttr("src", footballMedia.value.hostImage)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>Select image</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><span class="section-hint" data-v-dd8ae836>Optional — upload your own host / mascot (PNG, transparent). Defaults to a drawn pundit.</span></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Sound Effects</span></div><div class="audio-upload-grid" data-v-dd8ae836><!--[-->`);
-        ssrRenderList([
-          { key: "kickSound", label: "Kick" },
-          { key: "whistleSound", label: "Whistle" },
-          { key: "crowdSound", label: "Crowd" },
-          { key: "winSound", label: "Win (cheer)" },
-          { key: "lossSound", label: "Loss" }
-        ], (cue) => {
-          _push(`<label class="${ssrRenderClass([{ "has-audio": footballMedia.value[cue.key] }, "audio-box"])}" data-v-dd8ae836><span class="audio-label" data-v-dd8ae836>${ssrInterpolate(footballMedia.value[cue.key] ? "✓" : "🔊")} ${ssrInterpolate(cue.label)}</span><input type="file" accept="audio/*" data-v-dd8ae836></label>`);
-        });
-        _push(`<!--]--></div></div></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (activeTab.value === "balloonpop") {
-        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Theme</span></div><div class="preset-grid" data-v-dd8ae836><!--[-->`);
-        ssrRenderList(colorPresets.balloonpop, (preset) => {
-          _push(`<button class="preset-btn" style="${ssrRenderStyle({ "--preset-color": preset.primary })}" data-v-dd8ae836><span class="preset-dot" style="${ssrRenderStyle({ background: preset.primary })}" data-v-dd8ae836></span> ${ssrInterpolate(preset.name)}</button>`);
-        });
-        _push(`<!--]--></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Branding</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Title</label><input type="text"${ssrRenderAttr("value", balloonPopConfig.value.titleText)} class="text-input" data-v-dd8ae836></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Subtitle</label><input type="text"${ssrRenderAttr("value", balloonPopConfig.value.popSubtitleText)} class="text-input" placeholder="Pop balloons to reveal your prize!" data-v-dd8ae836></div><div class="upload-row" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": balloonPopImages.value.header }, "upload-box"])}" data-v-dd8ae836>`);
-        if (balloonPopImages.value.header) {
-          _push(`<img${ssrRenderAttr("src", balloonPopImages.value.header)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Header</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": balloonPopImages.value.background }, "upload-box"])}" data-v-dd8ae836>`);
-        if (balloonPopImages.value.background) {
-          _push(`<img${ssrRenderAttr("src", balloonPopImages.value.background)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ BG</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": balloonPopImages.value.titleImage }, "upload-box"])}" data-v-dd8ae836>`);
-        if (balloonPopImages.value.titleImage) {
-          _push(`<img${ssrRenderAttr("src", balloonPopImages.value.titleImage)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Logo</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", balloonPopConfig.value.titleColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Title</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", balloonPopConfig.value.primaryColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Primary</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", balloonPopConfig.value.popWinColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Win</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", balloonPopConfig.value.popLoseColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Lose</span></div></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Item Type</span></div><div class="preset-grid" data-v-dd8ae836><button class="${ssrRenderClass([{ "active": balloonPopConfig.value.popItemType === "balloon" }, "preset-btn"])}" data-v-dd8ae836> 🎈 Balloon </button><button class="${ssrRenderClass([{ "active": balloonPopConfig.value.popItemType === "bubble" }, "preset-btn"])}" data-v-dd8ae836> 🫧 Bubble </button></div></div></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (activeTab.value === "fishing") {
-        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Theme</span></div><div class="preset-grid" data-v-dd8ae836><!--[-->`);
-        ssrRenderList(colorPresets.fishing, (preset) => {
-          _push(`<button class="${ssrRenderClass([{ active: fishingConfig.value.theme === preset.theme }, "preset-btn"])}" style="${ssrRenderStyle({ "--preset-color": preset.accent })}" data-v-dd8ae836><span class="preset-dot" style="${ssrRenderStyle({ background: preset.accent })}" data-v-dd8ae836></span> ${ssrInterpolate(preset.name)}</button>`);
-        });
-        _push(`<!--]--></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Text</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Title</label><input type="text"${ssrRenderAttr("value", fishingConfig.value.titleText)} class="text-input" data-v-dd8ae836></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Win Message</label><input type="text"${ssrRenderAttr("value", fishingConfig.value.winText)} class="text-input" data-v-dd8ae836></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Lose Message</label><input type="text"${ssrRenderAttr("value", fishingConfig.value.loseText)} class="text-input" data-v-dd8ae836></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", fishingConfig.value.accentColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Accent</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", fishingConfig.value.primaryColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Primary</span></div></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Display Options</span></div><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(fishingConfig.value.sunEnabled) ? ssrLooseContain(fishingConfig.value.sunEnabled, null) : fishingConfig.value.sunEnabled) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Sun</span></label><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(fishingConfig.value.cloudsEnabled) ? ssrLooseContain(fishingConfig.value.cloudsEnabled, null) : fishingConfig.value.cloudsEnabled) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Clouds</span></label><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(fishingConfig.value.showTopPrize) ? ssrLooseContain(fishingConfig.value.showTopPrize, null) : fishingConfig.value.showTopPrize) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Top Prize Banner</span></label><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(fishingConfig.value.introEnabled) ? ssrLooseContain(fishingConfig.value.introEnabled, null) : fishingConfig.value.introEnabled) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Intro Screen</span></label></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Images</span></div><div class="upload-row" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": fishingImages.value.boatImage }, "upload-box"])}" data-v-dd8ae836>`);
-        if (fishingImages.value.boatImage) {
-          _push(`<img${ssrRenderAttr("src", fishingImages.value.boatImage)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Boat</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": fishingImages.value.underwaterImage }, "upload-box"])}" data-v-dd8ae836>`);
-        if (fishingImages.value.underwaterImage) {
-          _push(`<img${ssrRenderAttr("src", fishingImages.value.underwaterImage)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Underwater</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": fishingImages.value.introTitleImage }, "upload-box"])}" data-v-dd8ae836>`);
-        if (fishingImages.value.introTitleImage) {
-          _push(`<img${ssrRenderAttr("src", fishingImages.value.introTitleImage)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Intro Logo</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div><div class="upload-row" style="${ssrRenderStyle({ "margin-top": "6px" })}" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": fishingImages.value.fish1 }, "upload-box"])}" data-v-dd8ae836>`);
-        if (fishingImages.value.fish1) {
-          _push(`<img${ssrRenderAttr("src", fishingImages.value.fish1)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Fish 1</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": fishingImages.value.fish2 }, "upload-box"])}" data-v-dd8ae836>`);
-        if (fishingImages.value.fish2) {
-          _push(`<img${ssrRenderAttr("src", fishingImages.value.fish2)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Fish 2</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": fishingImages.value.fish3 }, "upload-box"])}" data-v-dd8ae836>`);
-        if (fishingImages.value.fish3) {
-          _push(`<img${ssrRenderAttr("src", fishingImages.value.fish3)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Fish 3</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Sound Effects</span></div><div class="audio-upload-grid" data-v-dd8ae836><!--[-->`);
-        ssrRenderList([
-          { key: "castSound", label: "Cast" },
-          { key: "splashSound", label: "Splash" },
-          { key: "reelSound", label: "Reel" },
-          { key: "winSound", label: "Win" },
-          { key: "lossSound", label: "Loss" }
-        ], (cue) => {
-          _push(`<label class="${ssrRenderClass([{ "has-audio": fishingMedia.value[cue.key] }, "audio-box"])}" data-v-dd8ae836><span class="audio-label" data-v-dd8ae836>${ssrInterpolate(fishingMedia.value[cue.key] ? "✓" : "🔊")} ${ssrInterpolate(cue.label)}</span><input type="file" accept="audio/*" data-v-dd8ae836></label>`);
-        });
-        _push(`<!--]--></div></div></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (activeTab.value === "ticketeater") {
-        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Theme</span></div><div class="preset-grid" data-v-dd8ae836><!--[-->`);
-        ssrRenderList(colorPresets.ticketeater, (preset) => {
-          _push(`<button class="${ssrRenderClass([{ active: eaterConfig.value.theme === preset.theme }, "preset-btn"])}" style="${ssrRenderStyle({ "--preset-color": preset.accent })}" data-v-dd8ae836><span class="preset-dot" style="${ssrRenderStyle({ background: preset.accent })}" data-v-dd8ae836></span> ${ssrInterpolate(preset.name)}</button>`);
-        });
-        _push(`<!--]--></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Text</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Title</label><input type="text"${ssrRenderAttr("value", eaterConfig.value.titleText)} class="text-input" data-v-dd8ae836></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", eaterConfig.value.accentColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Accent</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", eaterConfig.value.primaryColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Primary</span></div></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Display Options</span></div><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(eaterConfig.value.showTopPrize) ? ssrLooseContain(eaterConfig.value.showTopPrize, null) : eaterConfig.value.showTopPrize) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Top Prize Banner</span></label></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Intro Screen</span></div><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(eaterConfig.value.introEnabled) ? ssrLooseContain(eaterConfig.value.introEnabled, null) : eaterConfig.value.introEnabled) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Intro Screen</span></label><div class="input-group" style="${ssrRenderStyle({ "margin-top": "8px" })}" data-v-dd8ae836><label data-v-dd8ae836>Intro Logo</label><label class="${ssrRenderClass([{ "has-image": eaterImages.value.introTitleImage }, "upload-box wide"])}" data-v-dd8ae836>`);
-        if (eaterImages.value.introTitleImage) {
-          _push(`<img${ssrRenderAttr("src", eaterImages.value.introTitleImage)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>Select image</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Welcome Message</label><input type="text"${ssrRenderAttr("value", eaterConfig.value.introWelcomeText)} class="text-input" data-v-dd8ae836></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Subtitle</label><input type="text"${ssrRenderAttr("value", eaterConfig.value.introSubtitle)} class="text-input" data-v-dd8ae836></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Button Text</label><input type="text"${ssrRenderAttr("value", eaterConfig.value.introButtonText)} class="text-input" data-v-dd8ae836></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Scene Art</span></div><div class="upload-row" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": eaterImages.value.mascotImage }, "upload-box"])}" data-v-dd8ae836>`);
-        if (eaterImages.value.mascotImage) {
-          _push(`<img${ssrRenderAttr("src", eaterImages.value.mascotImage)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Mascot 1</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": eaterImages.value.mascotImage2 }, "upload-box"])}" data-v-dd8ae836>`);
-        if (eaterImages.value.mascotImage2) {
-          _push(`<img${ssrRenderAttr("src", eaterImages.value.mascotImage2)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Mascot 2</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": eaterImages.value.mascotImage3 }, "upload-box"])}" data-v-dd8ae836>`);
-        if (eaterImages.value.mascotImage3) {
-          _push(`<img${ssrRenderAttr("src", eaterImages.value.mascotImage3)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Mascot 3</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div><div class="upload-row" style="${ssrRenderStyle({ "margin-top": "6px" })}" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": eaterImages.value.ticketImage }, "upload-box"])}" data-v-dd8ae836>`);
-        if (eaterImages.value.ticketImage) {
-          _push(`<img${ssrRenderAttr("src", eaterImages.value.ticketImage)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Main Ticket</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": eaterImages.value.risingTicketImage }, "upload-box"])}" data-v-dd8ae836>`);
-        if (eaterImages.value.risingTicketImage) {
-          _push(`<img${ssrRenderAttr("src", eaterImages.value.risingTicketImage)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Rising Ticket</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": eaterImages.value.backgroundImage }, "upload-box"])}" data-v-dd8ae836>`);
-        if (eaterImages.value.backgroundImage) {
-          _push(`<img${ssrRenderAttr("src", eaterImages.value.backgroundImage)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Background</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div><div class="upload-row" style="${ssrRenderStyle({ "margin-top": "6px" })}" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": eaterImages.value.pouchImage }, "upload-box"])}" data-v-dd8ae836>`);
-        if (eaterImages.value.pouchImage) {
-          _push(`<img${ssrRenderAttr("src", eaterImages.value.pouchImage)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Pouch</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": eaterImages.value.prizeImage }, "upload-box"])}" data-v-dd8ae836>`);
-        if (eaterImages.value.prizeImage) {
-          _push(`<img${ssrRenderAttr("src", eaterImages.value.prizeImage)} data-v-dd8ae836>`);
-        } else {
-          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Fallback Prize</span>`);
-        }
-        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Sound Effects</span></div><div class="audio-upload-grid" data-v-dd8ae836><!--[-->`);
-        ssrRenderList([
-          { key: "feedSound", label: "Feed" },
-          { key: "gulpSound", label: "Gulp" },
-          { key: "winSound", label: "Win" },
-          { key: "collectSound", label: "Collect" },
-          { key: "welcomeSound", label: "Welcome" }
-        ], (cue) => {
-          _push(`<label class="${ssrRenderClass([{ "has-audio": eaterMedia.value[cue.key] }, "audio-box"])}" data-v-dd8ae836><span class="audio-label" data-v-dd8ae836>${ssrInterpolate(eaterMedia.value[cue.key] ? "✓" : "🔊")} ${ssrInterpolate(cue.label)}</span><input type="file" accept="audio/*" data-v-dd8ae836></label>`);
-        });
-        _push(`<!--]--></div></div></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`</div></div></div><div class="lg:col-span-7 xl:col-span-8" data-v-dd8ae836><div class="preview-card" data-v-dd8ae836><div class="preview-header" data-v-dd8ae836><span class="preview-title" data-v-dd8ae836>Preview</span><span class="preview-badge" data-v-dd8ae836>${ssrInterpolate((_a = tabs.find((t3) => t3.id === activeTab.value)) == null ? void 0 : _a.icon)} ${ssrInterpolate((_b = tabs.find((t3) => t3.id === activeTab.value)) == null ? void 0 : _b.name)}</span></div><div class="preview-container" data-v-dd8ae836>`);
-      if (activeTab.value === "slots") {
-        _push(`<div class="preview-game" data-v-dd8ae836>`);
-        _push(ssrRenderComponent(SlotsGame, {
-          demoMode: true,
-          previewMode: "desktop",
-          slotsAssets: slotsAssets.value,
-          showMachine: true
-        }, null, _parent));
-        _push(`</div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (activeTab.value === "scratch") {
-        _push(`<div class="preview-game" data-v-dd8ae836>`);
-        _push(ssrRenderComponent(ScratchGame, {
-          demoMode: true,
-          previewMode: "desktop",
-          scratchAssets: scratchAssets.value
-        }, null, _parent));
-        _push(`</div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (activeTab.value === "spin") {
-        _push(`<div class="preview-game" data-v-dd8ae836>`);
-        _push(ssrRenderComponent(SpinGame, {
-          demoMode: true,
-          previewMode: "desktop",
-          spinAssets: spinAssets.value
-        }, null, _parent));
-        _push(`</div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (activeTab.value === "bingo") {
-        _push(`<div class="preview-game" data-v-dd8ae836>`);
-        _push(ssrRenderComponent(BingoGame, {
-          demoMode: true,
-          previewMode: "desktop",
-          assets: bingoAssets.value,
-          prizes: [],
-          tickets: []
-        }, null, _parent));
-        _push(`</div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (activeTab.value === "coindrop") {
-        _push(`<div class="preview-game" data-v-dd8ae836>`);
-        _push(ssrRenderComponent(CoinDropGame, {
-          demoMode: true,
-          previewMode: "desktop",
-          coinDropAssets: coinDropAssets.value,
-          tickets: [],
-          showGameBoard: true
-        }, null, _parent));
-        _push(`</div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (activeTab.value === "balloonpop") {
-        _push(`<div class="preview-game" data-v-dd8ae836>`);
-        _push(ssrRenderComponent(BalloonPopGame, {
-          demoMode: true,
-          previewMode: "desktop",
-          popGameAssets: balloonPopAssets.value,
-          tickets: [],
-          showGameBoard: true
-        }, null, _parent));
-        _push(`</div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (activeTab.value === "football") {
-        _push(`<div class="preview-game-football" data-v-dd8ae836>`);
-        _push(ssrRenderComponent(FootballModal, {
-          "model-value": true,
-          demoMode: true,
-          previewMode: "desktop",
-          assets: footballAssets.value,
-          tickets: footballDemoTickets
-        }, null, _parent));
-        _push(`</div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (activeTab.value === "fishing") {
-        _push(`<div class="preview-game-football" data-v-dd8ae836>`);
-        _push(ssrRenderComponent(FishingModal, {
-          "model-value": true,
-          demoMode: true,
-          previewMode: "desktop",
-          assets: fishingAssets.value,
-          tickets: fishingDemoTickets,
-          instant_win_categories: fishingDemoCategories
-        }, null, _parent));
-        _push(`</div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (activeTab.value === "ticketeater") {
-        _push(`<div class="preview-game-football" data-v-dd8ae836>`);
-        _push(ssrRenderComponent(TicketEaterModal, {
-          "model-value": true,
-          demoMode: true,
-          previewMode: "desktop",
-          assets: eaterAssets.value,
-          instant_win_categories: eaterDemoCategories
-        }, null, _parent));
-        _push(`</div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`</div></div></div></div></div></section>`);
+      _push(`<div class="gw-foot"><a${ssrRenderAttr("href", CALENDLY)} target="_blank" rel="noopener" class="btn btn-primary" data-track="game_studio_panel_book_demo" data-calendly>Ship this on my site</a><span class="muted small">Live in 1–2 weeks. No developers.</span></div></div></div></div><div class="wrap gs-cta"><a${ssrRenderAttr("href", CALENDLY)} target="_blank" rel="noopener" class="btn btn-ghost" data-track="game_studio_book_demo" data-calendly>Book a Demo</a><span class="hand">every one of these, yours to theme</span></div></section>`);
     };
   }
 };
 const _sfc_setup$k = _sfc_main$k.setup;
 _sfc_main$k.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Configurator/GameConfigurator.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraGameStudio.vue");
   return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
 };
-const GameConfigurator = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-dd8ae836"]]);
 const _sfc_main$j = {};
 function _sfc_ssrRender$b(_ctx, _push, _parent, _attrs) {
   _push(`<section${ssrRenderAttrs(mergeProps({
@@ -16571,7 +15874,7 @@ function initUltraHome(opts) {
     A: { h1: 'The <span class="grad">Ultimate Competition</span> Platform' },
     B: { h1: 'Launch a competition site that <span class="grad">actually converts.</span>' }
   };
-  var CALENDLY = "https://calendly.com/contact-compengine/30min";
+  var CALENDLY2 = "https://calendly.com/contact-compengine/30min";
   var UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid", "landing_variant", "package"];
   var OPERATORS = [["Top Banana", "topbanana"], ["WestCoast", "westcoast"], ["Jolly", "jolly"], ["Vincere", "vincere"], ["Podium", "podium"], ["S2A", "s2a"], ["Auwins", "auwins"], ["MixItUp", "mixitup"], ["MadMac", "madmac"], ["MPComps", "mpower"], ["Wrights", "wrights"], ["MsMoneyPenny", "msmoneypenny"], ["AutoComps", "autocomps"], ["Prize Hunter", "prizehunter"], ["Vortex", "vortex"], ["Padel Comps", "padel"], ["Luxsy Wins", "luxsy"], ["LuckyDucky", "luckyducky"], ["Karma", "karma"], ["WinThisNow", "winthisnow"], ["Deluxe Comps", "deluxe"], ["CrazyCat", "crazycat"], ["Lightning", "lightning"], ["SunnyGiveaways", "sunnygiveaways"], ["SmashDrop", "smashdrop"], ["Winner Winner", "winnerwinner"], ["Ritas", "ritas"], ["Belter Competition", "belter"], ["House of Hope", "hope"], ["Prize Party", "prizeparty"]];
   var $2 = function(s2, r2) {
@@ -16727,7 +16030,7 @@ function initUltraHome(opts) {
     });
   }
   function calendlyUrl() {
-    var u2 = new URL(CALENDLY);
+    var u2 = new URL(CALENDLY2);
     ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(function(k) {
       if (utm[k]) u2.searchParams.set(k, utm[k]);
     });
@@ -18020,9 +17323,7 @@ const _sfc_main$7 = {
         tickets: unref(tickets)
       }, null, _parent));
       _push(ssrRenderComponent(UltraLogoWall, null, null, _parent));
-      _push(`</div></div><div class="ce-legacy">`);
-      _push(ssrRenderComponent(GameConfigurator, null, null, _parent));
-      _push(`</div><div class="ce-home"><div class="page">`);
+      _push(ssrRenderComponent(_sfc_main$k, null, null, _parent));
       _push(ssrRenderComponent(UltraEcosystem, null, null, _parent));
       _push(ssrRenderComponent(UltraEasy, null, null, _parent));
       _push(ssrRenderComponent(UltraConvert, null, null, _parent));
