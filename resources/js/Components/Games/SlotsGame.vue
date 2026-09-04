@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue';
+import axios from 'axios';
+import { siteCreditLabel } from '@/utils/prizeLabel';
 import SlotsReels from './SlotsReels.vue';
 import SlotsControlPanel from './SlotsControlPanel.vue';
 import SlotsInventoryModal from './SlotsInventoryModal.vue';
@@ -49,8 +51,8 @@ interface SlotsAssets {
     prizesCardBorderColor?: string;
     prizesCardBgColor?: string;
     prizesValueColor?: string;
-    walletText?: string;
-    walletColor?: string;
+    winGlowColor?: string;
+    machineBorderColor?: string;
 }
 
 interface Prize {
@@ -59,6 +61,8 @@ interface Prize {
     image: string;
     value: number;
     ticketNumber?: string;
+    no_auto_credit?: boolean;
+    is_ticket_bundle?: boolean;
 }
 
 interface InstantWinCategory {
@@ -66,6 +70,7 @@ interface InstantWinCategory {
     name: string;
     image_path: string;
     value: number;
+    no_auto_credit?: boolean;
 }
 
 const props = defineProps<{
@@ -91,6 +96,7 @@ const availablePrizes = ref<Prize[]>([]);
 const wonPrizes = ref<Prize[]>([]);
 const currentWinningPrize = ref<Prize | null>(null);
 const lastWin = ref(0);
+const totalFreeTickets = ref(0);
 
 // Audio refs for sound effects
 const spinSound = ref<HTMLAudioElement | null>(null);
@@ -195,15 +201,28 @@ const titleClasses = computed(() => {
 
 // Extract available prizes from instant_win_categories (passed from backend)
 const extractPrizesFromTickets = (): Prize[] => {
+    const emojiList = ['🍒', '🍋', '🍊', '🍉', '🍇', '🍓', '💎', '⭐', '🔔', '7️⃣', '💰', '🎰'];
+
     // First, try to use instant_win_categories if available
     if (props.instant_win_categories && props.instant_win_categories.length > 0) {
-        return props.instant_win_categories.map(cat => ({
+    return props.instant_win_categories.map((cat, index) => {
+        const isBundle = (cat as any).prize_type === 'ticket_bundle';
+        console.log(`[Slots] category id=${cat.id} name=${cat.name} prize_type=${(cat as any).prize_type} isBundle=${isBundle}`);
+        return {
             id: cat.id,
-            name: cat.name,
-            image: cat.image_path,
-            value: cat.value,
-        }));
-    }
+            name: isBundle
+                ? `${Math.floor(cat.value)} Free Ticket${cat.value !== 1 ? 's' : ''}`
+                : (siteCreditLabel((cat as any).prize_type, cat.value) ?? cat.name),
+            category_name: cat.name,
+            image: cat.image_path && cat.image_path.trim() !== ''
+                ? cat.image_path
+                : `data:image/svg+xml,...`,
+            value: isBundle ? 0 : cat.value,
+            no_auto_credit: cat.no_auto_credit || isBundle,
+            is_ticket_bundle: isBundle,
+        };
+    });
+}
 
     // Fallback: try to extract from winning tickets
     if (!props.tickets || props.tickets.length === 0) {
@@ -222,7 +241,7 @@ const extractPrizesFromTickets = (): Prize[] => {
             if (categoryId && !uniquePrizes.has(categoryId)) {
                 uniquePrizes.set(categoryId, {
                     id: categoryId,
-                    name: instantWin.name || instantWin.prize,
+                    name: siteCreditLabel((instantWin as any).prize_type, instantWin.value) ?? (instantWin.name || instantWin.prize),
                     image: instantWin.image_path || '',
                     value: parseFloat(String(instantWin.value)) || 0,
                 });
@@ -237,8 +256,13 @@ const extractPrizesFromTickets = (): Prize[] => {
         return prizesWithImages;
     }
 
+    // If we have prizes but none have images, add emoji fallbacks to them
     if (prizesArray.length > 0) {
-        return prizesArray;
+        const emojiList = ['🍒', '🍋', '🍊', '🍉', '🍇', '🍓', '💎', '⭐', '🔔', '7️⃣', '💰', '🎰'];
+        return prizesArray.map((prize, index) => ({
+            ...prize,
+            image: `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">${emojiList[index % emojiList.length]}</text></svg>`)}`
+        }));
     }
 
     return generateDemoPrizes();
@@ -306,32 +330,7 @@ const handleSpin = () => {
             currentWinningPrize.value = randomPrize;
         }
     } else if (currentTicket) {
-        // Check if this ticket is a winner (instant_win is pre-determined by backend)
-        const instantWinData = currentTicket.instant_win;
-        const hasInstantWin = instantWinData !== false && instantWinData !== null;
-        const prizeText = hasInstantWin ? (instantWinData as InstantWin).prize : null;
-        const isWinner = hasInstantWin && prizeText !== 'NO WIN';
-
-        if (isWinner && hasInstantWin) {
-            const instantWin = instantWinData as InstantWin;
-
-            // Try to match by category_id first (for proper image display)
-            let matchingPrize = availablePrizes.value.find(
-                p => p.id === instantWin.category_id
-            );
-
-            // If no match found, create prize directly from instant_win data
-            if (!matchingPrize) {
-                matchingPrize = {
-                    id: instantWin.category_id || instantWin.id,
-                    name: instantWin.prize || 'Winner!',
-                    image: instantWin.image_path || '',
-                    value: parseFloat(String(instantWin.value)) || 0,
-                };
-            }
-
-            currentWinningPrize.value = matchingPrize;
-        }
+        currentWinningPrize.value = resolveWinningPrize(currentTicket);
 
         // Emit ticket-played event
         emit('ticket-played', currentTicket.id);
@@ -342,18 +341,133 @@ const handleSpin = () => {
     }
 };
 
-const handleSpinComplete = () => {
+/** Determine the winning prize for a ticket (or null for a loss). Shared by handleSpin and finishAll. */
+function resolveWinningPrize(ticket: Ticket): Prize | null {
+    const instantWinData = ticket.instant_win;
+    const hasInstantWin = instantWinData !== false && instantWinData !== null;
+    const prizeText = hasInstantWin ? (instantWinData as InstantWin).prize : null;
+    const isWinner = hasInstantWin && prizeText !== 'NO WIN';
+
+    if (!isWinner || !hasInstantWin) return null;
+
+    const instantWin = instantWinData as InstantWin;
+    const isNoAutoCredit = instantWin.category_id && props.instant_win_categories?.length
+        ? props.instant_win_categories.some(c => c.id === instantWin.category_id && c.no_auto_credit)
+        : false;
+
+    let matchingPrize = availablePrizes.value.find(
+        p => p.id === instantWin.category_id
+    );
+
+    if (!matchingPrize) {
+        matchingPrize = {
+            id: instantWin.category_id || instantWin.id,
+            name: instantWin.prize || 'Winner!',
+            image: instantWin.image_path || '',
+            value: parseFloat(String(instantWin.value)) || 0,
+            no_auto_credit: isNoAutoCredit,
+        };
+    } else {
+        matchingPrize = {
+            ...matchingPrize,
+            no_auto_credit: isNoAutoCredit,
+        };
+    }
+
+    // Ticket bundles are a quantity of free tickets, not cash — force this regardless
+    // of whether a catalog match was found, since the fallback branch above would
+    // otherwise treat the bundle quantity as a cash value.
+    const isTicketBundle = (instantWin as any).prize_type === 'ticket_bundle';
+    if (isTicketBundle) {
+        matchingPrize = {
+            ...matchingPrize,
+            value: 0,
+            is_ticket_bundle: true,
+            no_auto_credit: true,
+        };
+    }
+
+    const scLabel = siteCreditLabel((instantWin as any).prize_type, matchingPrize.value ?? instantWin.value);
+    if (scLabel) matchingPrize = { ...matchingPrize, name: scLabel };
+
+    return matchingPrize;
+}
+
+/** Instantly resolve every remaining ticket without playing the reel animation. */
+function finishAll() {
+    if (props.demoMode || isSpinning.value) return;
+
+    // Compute the unplayed list once instead of re-filtering the full ticket list on
+    // every ticket via getNextTicket() — that was O(n²) and slow on a 1000+ order.
+    const playedIds = new Set(props.playedTickets || []);
+    const unplayed = (props.tickets || []).filter((t) => !playedIds.has(t.id));
+
+    for (const ticket of unplayed) {
+        const prize = resolveWinningPrize(ticket);
+        if (prize) {
+            const winAmount = prize.value;
+            lastWin.value = Math.round((lastWin.value + winAmount) * 100) / 100;
+            if (prize.is_ticket_bundle) {
+                const iw = ticket.instant_win;
+                totalFreeTickets.value += Math.floor(parseFloat(String((iw as any).value)) || 0);
+            }
+            wonPrizes.value.push({ ...prize, ticketNumber: ticket.number });
+            winCounter.value++;
+            emit('prize-won', prize);
+        }
+        emit('ticket-played', ticket.id);
+    }
+}
+
+interface SpinCompletePayload {
+    reel1: Prize;
+    reel2: Prize;
+    reel3: Prize;
+    paylineMatch: boolean;
+}
+
+const handleSpinComplete = (payload?: SpinCompletePayload) => {
+    // Get the ticket that was just played (works for both win and loss)
+    const playedIds = props.playedTickets || [];
+    const lastPlayedTicketId = playedIds[playedIds.length - 1];
+    const lastTicket = props.tickets?.find(t => t.id === lastPlayedTicketId);
+
+    // Fire-and-forget audit log for real (non-demo) spins.
+    // Wrapped in try/catch so any synchronous error (bad payload, missing axios, etc.)
+    // is fully isolated from gameplay. Async errors handled by .catch on the promise.
+    try {
+        if (!props.demoMode && payload && lastTicket) {
+            axios.post('/api/games/slot-spin-log', {
+                competition_id: lastTicket.competition_id,
+                ticket_id: lastTicket.id,
+                ticket_number: String(lastTicket.number ?? ''),
+                reel1_prize_id: payload.reel1?.id ?? null,
+                reel2_prize_id: payload.reel2?.id ?? null,
+                reel3_prize_id: payload.reel3?.id ?? null,
+                reel1_image: payload.reel1?.image ?? null,
+                reel2_image: payload.reel2?.image ?? null,
+                reel3_image: payload.reel3?.image ?? null,
+                client_payline_match: !!payload.paylineMatch,
+                spun_at: new Date().toISOString(),
+            }).catch(() => {
+                // Silent — audit log failures must not interrupt gameplay
+            });
+        }
+    } catch (e) {
+        // Never let an audit-logging error reach gameplay
+    }
+
     // Check if it was a win
     if (currentWinningPrize.value) {
-        // Get the ticket number that was just played
-        const playedTickets = props.playedTickets || [];
-        const lastPlayedTicketId = playedTickets[playedTickets.length - 1];
-        const ticket = props.tickets?.find(t => t.id === lastPlayedTicketId);
-        const ticketNumber = ticket?.number || 'UNKNOWN';
+        const ticketNumber = lastTicket?.number || 'UNKNOWN';
 
         // Calculate win amount
         const winAmount = currentWinningPrize.value.value;
-        lastWin.value = winAmount;
+        lastWin.value = Math.round((lastWin.value + winAmount) * 100) / 100;
+        if (currentWinningPrize.value.is_ticket_bundle && lastTicket) {
+            const iw = lastTicket.instant_win;
+            totalFreeTickets.value += Math.floor(parseFloat(String((iw as any).value)) || 0);
+        }
 
         // Add to won prizes with ticket number
         const prizeWithTicket = {
@@ -384,8 +498,6 @@ const handleSpinComplete = () => {
             highlightWinners();
         }, 100);
     } else {
-        lastWin.value = 0;
-
         // Play loss sound - use custom sound if available
         if (lossSound.value && props.slotsAssets.lossSound) {
             lossSound.value.currentTime = 0;
@@ -396,11 +508,11 @@ const handleSpinComplete = () => {
     // Reset spinning state immediately (no delay)
     isSpinning.value = false;
 
-    // Keep winning prize visible for 3 seconds, then clear
+    // Keep winning prize visible for 6 seconds, then clear
     if (currentWinningPrize.value) {
         setTimeout(() => {
             currentWinningPrize.value = null;
-        }, 3000);
+        }, 6000);
     }
 };
 
@@ -432,10 +544,7 @@ watch(() => props.tickets, () => {
     }
 }, { immediate: true });
 
-onMounted(() => {
-    // Extract prizes from tickets (like Scratchy does)
-    availablePrizes.value = extractPrizesFromTickets();
-});
+onMounted(() => {});
 </script>
 
 <template>
@@ -446,20 +555,18 @@ onMounted(() => {
             :prizes="availablePrizes"
             :winningPrize="currentWinningPrize"
             :demoMode="props.demoMode"
-            :previewMode="props.previewMode"
             :canSpin="canSpin"
             :colors="{
-                primary: slotsAssets.primaryColor || '#00CED1',
-                secondary: slotsAssets.secondaryColor || '#1a5a7a',
-                accent: slotsAssets.accentColor || '#00FFFF',
-                text: slotsAssets.textColor || '#FFFFFF'
+                primary: '#00CED1',
+                secondary: '#1a5a7a',
+                accent: '#00FFFF',
+                text: '#FFFFFF'
             }"
             :spinsLeft="spinsLeft"
             :lastWin="lastWin"
+            :totalFreeTickets="totalFreeTickets"
             :spinButtonImage="slotsAssets.spinButtonImage"
             :titleImage="slotsAssets.titleImage"
-            :titleText="slotsAssets.titleText"
-            :titleColor="slotsAssets.titleColor"
             :background="slotsAssets.background"
             :animateTitle="props.animateTitle"
             :showMachine="props.showMachine"
@@ -472,11 +579,21 @@ onMounted(() => {
             :prizesCardBorderColor="slotsAssets.prizesCardBorderColor"
             :prizesCardBgColor="slotsAssets.prizesCardBgColor"
             :prizesValueColor="slotsAssets.prizesValueColor"
-            :walletText="slotsAssets.walletText"
-            :walletColor="slotsAssets.walletColor"
+            :winGlowColor="slotsAssets.winGlowColor"
+            :machineBorderColor="slotsAssets.machineBorderColor"
             @spin-complete="handleSpinComplete"
             @spin="handleSpin"
         />
+
+        <!-- Reveal All -->
+        <button
+            v-if="!demoMode && spinsLeft > 0"
+            class="slots-reveal-all-btn"
+            :style="{ color: slotsAssets.primaryColor, borderColor: slotsAssets.primaryColor }"
+            @click="finishAll"
+        >
+            Reveal All
+        </button>
 
         <!-- Stats Info Panel (Hidden - moved into SlotsReels) -->
         <div
@@ -579,6 +696,33 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.slots-reveal-all-btn {
+    position: absolute;
+    /* Sits below the modal's close (X) button, which is top-4 (16px) + 40px tall —
+       12px alone put this button right underneath/behind the X. */
+    top: 64px;
+    right: 12px;
+    z-index: 30;
+    /* color/border-color are set inline from slotsAssets.primaryColor (tenant-
+       configurable) — these are just structural fallbacks if that's ever empty. */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFD700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    white-space: nowrap;
+}
+
+.slots-reveal-all-btn:hover {
+    background: rgba(255, 215, 0, 0.22);
+    transform: scale(1.04);
+}
+
 @keyframes pulse {
     0%, 100% {
         opacity: 1;

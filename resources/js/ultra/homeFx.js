@@ -241,8 +241,36 @@ function makeSlot(el, opts) {
     logo: function (on) { logo.classList.toggle('on', !!on); }
   };
 }
-var heroSlot = makeSlot($('[data-slot="hero"]'), { track: 'hero_slot' });
-makeSlot($('[data-slot="bento"]'), { track: 'ecosystem_slot' });
+$$('[data-slot]').forEach(function (el) { makeSlot(el, { track: el.getAttribute('data-slot') + '_slot' }); });
+
+/* ============================================================
+   MINI DEMO SITE in the hero phone — carousel + slow auto-scroll
+   ============================================================ */
+(function demoSite() {
+  var site = $('#site'), car = $('#site-carousel'); if (!site) return;
+  if (car) {
+    var slides = $$('.slide', car), dots = $$('.dots i', car), k = 0;
+    var iv = setInterval(function () { if (document.hidden) return; k = (k + 1) % slides.length; slides.forEach(function (s, i) { s.classList.toggle('on', i === k); }); dots.forEach(function (d, i) { d.classList.toggle('on', i === k); }); }, 3200);
+    cleanups.push(function () { clearInterval(iv); });
+  }
+  if (RM) return;
+  var dir = 1, pause = 120, raf, on = false;
+  function step() {
+    if (!alive || !on) return;
+    var max = site.scrollHeight - site.clientHeight;
+    if (max > 0) {
+      if (pause > 0) pause--;
+      else {
+        site.scrollTop += dir * 0.5;
+        if (dir > 0 && site.scrollTop >= max - 0.5) { dir = -1; pause = 100; }
+        else if (dir < 0 && site.scrollTop <= 0.5) { dir = 1; pause = 150; }
+      }
+    }
+    raf = requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (e) { on = e.isIntersecting; cancelAnimationFrame(raf); if (on) raf = requestAnimationFrame(step); }); }).observe(site);
+  else { on = true; raf = requestAnimationFrame(step); }
+})();
 
 /* Phone tilt (desktop pointer only) */
 (function tilt() {
@@ -264,15 +292,41 @@ makeSlot($('[data-slot="bento"]'), { track: 'ecosystem_slot' });
     ticking = false;
     var y = window.scrollY, h = document.documentElement.scrollHeight - window.innerHeight;
     prog.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, y / h) : 0) + ')';
-    if (!RM) gear.style.transform = 'rotate(' + (y * 0.06) + 'deg)';
     var past = y > hero.offsetTop + hero.offsetHeight - 80;
     root.classList.toggle('scrolled', past);
     sticky.classList.toggle('on', past);
     sticky.setAttribute('aria-hidden', past ? 'false' : 'true');
+    var fl = $('#float-pkg');
+    if (fl) {
+      var pr = $('#pricing'), prIn = false;
+      if (pr) { var pb = pr.getBoundingClientRect(); prIn = pb.top < window.innerHeight * 0.85 && pb.bottom > 0; }
+      var showFl = past && !prIn;
+      fl.classList.toggle('on', showFl);
+      fl.setAttribute('aria-hidden', showFl ? 'false' : 'true');
+    }
     scrollDepth();
   }
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   update();
+})();
+
+/* ============================================================
+   BIG GEAR — runs like an engine: steady spin, scroll adds torque, then settles
+   ============================================================ */
+(function engine() {
+  var gear = $('#big-gear'), hero = $('#hero'); if (!gear || RM) return;
+  var angle = 0, vel = 0.9, lastY = window.scrollY, last = performance.now(), on = true, raf;
+  function frame(now) {
+    var dt = Math.min(64, now - last); last = now;
+    var dy = window.scrollY - lastY; lastY = window.scrollY;
+    vel += Math.abs(dy) * 0.015;                 // scrolling feeds the engine
+    vel += (0.9 - vel) * 0.03;                   // …and it settles back to idle revs
+    angle = (angle + vel * dt * 0.06) % 360;
+    gear.style.transform = 'rotate(' + angle.toFixed(2) + 'deg)';
+    if (on && alive) raf = requestAnimationFrame(frame);
+  }
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (e) { on = e.isIntersecting; if (on) { cancelAnimationFrame(raf); last = performance.now(); raf = requestAnimationFrame(frame); } }); }).observe(hero);
+  else raf = requestAnimationFrame(frame);
 })();
 
 /* ============================================================
@@ -435,33 +489,36 @@ $$('#counters [data-target]').forEach(function (el) { once(el, function () { cou
 })();
 
 /* ============================================================
-   COMPARISON
+   COMPARISON — what moves the needle, with a verdict
    ============================================================ */
 (function comparison() {
+  // status: 1 = clear advantage, 2 = fine / partial, 0 = gap
   var ROWS = [
-    ['Years operating in this category', '5+ years', '4+ years', 'n/a — depends on the agency'],
-    ['Per-order fee', '5–10p', '17p', 'plugin licences + hosting + dev time'],
-    ['Game customisation', 'Game Studio, build your own', '7+ fixed presets', 'theme-dependent'],
-    ['Independent penetration test', 'Yes, published', 'Not published', 'your responsibility'],
-    ['Separate Cash + Site Credit wallets', 'Yes', 'Not advertised', 'plugin-dependent'],
-    ['RNG / draw certification', 'GLI', 'GLI Verified', 'none'],
-    ['VCOC alignment in product', 'Built in from launch', 'Added recently', 'manual'],
-    ['Public order / ticket numbers (30d)', '<span data-cmp-live></span>', 'Not published', 'n/a']
+    { l: 'Per-order fee', why: 'The number that compounds every month', ce: ['5–10p', 1], saas: ['17p', 0], wp: ['Plugin licences + hosting + a developer on call', 0] },
+    { l: 'Your own games', why: 'Nine games you theme, brand and preview live', ce: ['Game Studio — build your own', 1], saas: ['7+ fixed presets, same as every other site', 0], wp: ['Whatever the theme ships with', 0] },
+    { l: 'Years operating in this category', why: 'Draw nights are where platforms break', ce: ['5+ years', 1], saas: ['4+ years', 2], wp: ['Depends on the agency', 0] },
+    { l: 'Independent penetration test', why: "Your customers' card data rides on this", ce: ['Yes — published', 1], saas: ['Not published', 0], wp: ['Your responsibility', 0] },
+    { l: 'Separate cash and site-credit wallets', why: 'Clean accounting and compliance by design', ce: ['Built in', 1], saas: ['Not advertised', 0], wp: ['Plugin-dependent', 0] },
+    { l: 'RNG / draw certification', why: 'Provably fair draws your customers can verify', ce: ['GLI certified + SHA-256 hash chain', 1], saas: ['GLI verified', 2], wp: ['None', 0] },
+    { l: 'UK Voluntary Code alignment', why: 'Free entry, age checks and wallet rules, automatically', ce: ['Built in from launch', 1], saas: ['Added recently', 2], wp: ['Manual', 0] },
+    { l: 'Every feature included', why: 'No "Pro tier" appearing once you are locked in', ce: ['Always — 24 features shipped this year', 1], saas: ['Depends on plan', 2], wp: ['Every plugin is another licence', 0] },
+    { l: 'Public order / ticket numbers (30d)', why: 'Proof it runs at scale', ce: ['LIVE', 1], saas: ['Not published', 0], wp: ['n/a', 0] }
   ];
   var body = $('#cmp-body'), head = $('#cmp-other-head'), wrap = $('#cmp'), note = $('#cmp-assume');
+  if (!body) return;
   var live = function () { return fmt(opts.orders) + ' orders · ' + fmt(opts.tickets) + ' tickets'; };
+  var mark = function (st) { return st === 1 ? '<span class="ic ok">' + ICONS.check + '</span>' : st === 2 ? '<span class="ic mid">' + ICONS.minus + '</span>' : '<span class="ic no">' + ICONS.x + '</span>'; };
   function render(mode) {
     body.innerHTML = ROWS.map(function (r) {
-      var ce = r[1].indexOf('data-cmp-live') > -1 ? live() : r[1];
-      var other = mode === 'saas' ? r[2] : r[3];
-      var ok = /^(Yes|GLI$|Built in|5\+|Game Studio)/.test(ce);
-      return '<tr><td>' + r[0] + '</td><td class="ce">' + (ok ? '<span class="ic ok">' + ICONS.check + '</span>' : '') + ce + '</td><td class="other">' + other + '</td></tr>';
+      var ce = r.ce[0] === 'LIVE' ? live() : r.ce[0];
+      var other = mode === 'saas' ? r.saas : r.wp;
+      return '<tr><td><b>' + r.l + '</b><small>' + r.why + '</small></td><td class="ce">' + mark(r.ce[1]) + ce + '</td><td class="other st' + other[1] + '">' + mark(other[1]) + other[0] + '</td></tr>';
     }).join('');
     head.textContent = mode === 'saas' ? 'Other SaaS' : 'WordPress + plugins';
     note.textContent = mode === 'saas' ? 'CompEngine figures are rolling 30-day numbers; Other SaaS values are taken from public pricing and marketing pages.' : 'WordPress + plugins varies by theme, plugin stack and developer, so no figures are stated.';
   }
   $$('.seg button').forEach(function (b) {
-    b.addEventListener('click', function () {
+    on(b, 'click', function () {
       $$('.seg button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
       wrap.classList.add('swap');
       setTimeout(function () { render(b.dataset.cmp); wrap.classList.remove('swap'); }, RM ? 0 : 220);
@@ -667,7 +724,6 @@ $$('.more-btn').forEach(function (b) {
     o.tickets = o.tickets || pick(QTY); o.comp = o.comp || pick(COMPS); o.where = o.where || pick(WHERE); o.ts = Date.now();
     addRow(o);
     if (heroVisible && !RM) showPush(o);
-    if (orders !== null && !RM) { orders = bump(ordersEl, 1, orders); tickets = bump(ticketsEl, o.tickets, tickets); }
     window.ceTrack('live_order_shown', { demo: DEMO_DRIFT });
   };
   // seed three rows so the feed never looks empty
@@ -694,7 +750,7 @@ $$('.more-btn').forEach(function (b) {
   var cv = $('#tickets'); if (!cv || RM) return;
   var ctx = cv.getContext('2d'), W = 0, H = 0, DPR = Math.min(2, window.devicePixelRatio || 1), on = false, raf, mx = 0, my = 0;
   var COLS = [[244,165,88],[236,138,130],[217,122,168],[178,151,219],[91,127,196]];
-  var N = isDesktop() ? 34 : 14, T = [], F = 700;
+  var N = isDesktop() ? 12 : 5, T = [], F = 700;
   function reset(t, far) { t.x = (Math.random() - 0.5) * 1.6; t.y = (Math.random() - 0.5) * 1.4; t.z = far ? 900 + Math.random() * 500 : Math.random() * 1400; t.r = Math.random() * Math.PI * 2; t.vr = (Math.random() - 0.5) * 0.01; t.vz = 0.6 + Math.random() * 1.1; t.c = COLS[Math.floor(Math.random() * COLS.length)]; t.w = 120 + Math.random() * 60; return t; }
   for (var i = 0; i < N; i++) T.push(reset({}, false));
   function size() { var r = cv.getBoundingClientRect(); W = r.width; H = r.height; cv.width = W * DPR; cv.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0); }

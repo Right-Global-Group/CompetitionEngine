@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, nextTick } from 'vue';
 import gsap from 'gsap';
+import { siteCreditLabel } from '@/utils/prizeLabel';
 import confetti from 'canvas-confetti';
 
 interface Assets {
@@ -57,6 +58,7 @@ interface Prize {
     name: string;
     image: string;
     value: number;
+    no_auto_credit?: boolean;
 }
 
 interface Props {
@@ -101,6 +103,8 @@ interface CardState {
     revealed: boolean;
     isWinner: boolean;
     prizeValue: number;
+    prizeNoAutoCredit: boolean;
+    prizeName: string;
     revealedSquares: Set<number>;
     animating: boolean;
 }
@@ -109,9 +113,34 @@ const cards = ref<CardState[]>([]);
 const totalWinnings = ref(0);
 const totalPrizes = ref(0);
 const showPopup = ref(false);
-const popupPrize = ref<{ value: number; isFullHouse: boolean } | null>(null);
+const popupPrize = ref<{ value: number; isFullHouse: boolean; noAutoCredit: boolean; prizeName: string } | null>(null);
 const processedTickets = ref<Set<number>>(new Set());
 const modalContentRef = ref<HTMLElement | null>(null);
+const isRevealingAll = ref(false);
+const showEndState = ref(false);
+const revealAllTimeoutIds: ReturnType<typeof setTimeout>[] = [];
+const REVEAL_ALL_MAX_TOTAL_MS = 3000;
+
+// Large orders (1000+ tickets) would otherwise mount every 5x5 card at once —
+// cap the initial render and let the user expand on demand. Sliced from the
+// front only, so indices stay aligned with `cards` for revealCard(index).
+const CARD_DISPLAY_LIMIT = 150;
+const showAllCards = ref(false);
+const visibleCards = computed(() => (
+    showAllCards.value || cards.value.length <= CARD_DISPLAY_LIMIT
+        ? cards.value
+        : cards.value.slice(0, CARD_DISPLAY_LIMIT)
+));
+
+// Check if all cards have been revealed
+const allRevealed = computed(() => cards.value.length > 0 && cards.value.every(c => c.revealed));
+
+// Generate a storage key from ticket IDs for persistence
+const storageKey = computed(() => {
+    if (!props.tickets || props.tickets.length === 0) return '';
+    const ids = props.tickets.map(t => t.id).sort().join('-');
+    return `bingo_state_${ids}`;
+});
 
 // Default colors
 const colors = computed(() => ({
@@ -184,14 +213,14 @@ const generateWinnerDiamonds = (prizeValue: number): number[] => {
         }
     }
 
-    // Random pattern if no rule matched
+    // Random pattern if no rule matched — only pick from rows/columns/diagonals (0-7), never Full House or Cross
     if (patternIndex === -1) {
-        patternIndex = Math.floor(Math.random() * WINNING_PATTERNS.length);
+        patternIndex = Math.floor(Math.random() * 8);
     }
 
-    // Validate
+    // Validate — clamp to safe range if somehow out of bounds
     if (patternIndex < 0 || patternIndex >= WINNING_PATTERNS.length) {
-        patternIndex = Math.floor(Math.random() * WINNING_PATTERNS.length);
+        patternIndex = Math.floor(Math.random() * 8);
     }
 
     return [...WINNING_PATTERNS[patternIndex]];
@@ -209,6 +238,8 @@ const initializeCards = () => {
                 revealed: false,
                 isWinner: false,
                 prizeValue: 0,
+                prizeNoAutoCredit: false,
+                prizeName: '',
                 revealedSquares: new Set(),
                 animating: false,
             },
@@ -219,6 +250,8 @@ const initializeCards = () => {
                 revealed: false,
                 isWinner: true,
                 prizeValue: 25,
+                prizeNoAutoCredit: false,
+                prizeName: 'Demo Prize',
                 revealedSquares: new Set(),
                 animating: false,
             },
@@ -229,6 +262,8 @@ const initializeCards = () => {
                 revealed: false,
                 isWinner: false,
                 prizeValue: 0,
+                prizeNoAutoCredit: false,
+                prizeName: '',
                 revealedSquares: new Set(),
                 animating: false,
             },
@@ -239,6 +274,8 @@ const initializeCards = () => {
                 revealed: false,
                 isWinner: true,
                 prizeValue: 100,
+                prizeNoAutoCredit: false,
+                prizeName: 'Big Prize',
                 revealedSquares: new Set(),
                 animating: false,
             },
@@ -249,6 +286,8 @@ const initializeCards = () => {
                 revealed: false,
                 isWinner: false,
                 prizeValue: 0,
+                prizeNoAutoCredit: false,
+                prizeName: '',
                 revealedSquares: new Set(),
                 animating: false,
             },
@@ -259,6 +298,8 @@ const initializeCards = () => {
                 revealed: false,
                 isWinner: false,
                 prizeValue: 0,
+                prizeNoAutoCredit: false,
+                prizeName: '',
                 revealedSquares: new Set(),
                 animating: false,
             },
@@ -267,17 +308,30 @@ const initializeCards = () => {
         // Real mode: create cards from tickets
         cards.value = props.tickets.map(ticket => {
             const isWinner = ticket.instant_win !== false;
-            const prizeValue = isWinner ? Number((ticket.instant_win as InstantWin).value) || 0 : 0;
+            const instantWinData = isWinner ? (ticket.instant_win as InstantWin) : null;
+            const rawValue = isWinner ? Number(instantWinData!.value) || 0 : 0;
+            const isTicketBundle = isWinner && (instantWinData as any)?.prize_type === 'ticket_bundle';
+            const categoryId = isWinner ? instantWinData!.category_id : 0;
+            const prizeNoAutoCredit = (isWinner && categoryId
+                ? props.prizes.some(p => p.id === categoryId && p.no_auto_credit)
+                : false) || isTicketBundle;
+
+            const rawPrizeName = isWinner ? instantWinData!.prize || '' : '';
+            const prizeName = isTicketBundle
+                ? `${rawValue > 0 ? Math.floor(rawValue) : ''} Free Ticket${rawValue !== 1 ? 's' : ''}`.trim()
+                : (siteCreditLabel((instantWinData as any)?.prize_type, rawValue) ?? rawPrizeName);
 
             return {
                 ticket,
                 numbers: generateCardNumbers(),
                 diamondPositions: isWinner
-                    ? generateWinnerDiamonds(prizeValue)
+                    ? generateWinnerDiamonds(isTicketBundle ? 0 : rawValue)
                     : generateLoserDiamonds(),
                 revealed: false,
                 isWinner,
-                prizeValue,
+                prizeValue: isTicketBundle ? 0 : rawValue,
+                prizeNoAutoCredit,
+                prizeName,
                 revealedSquares: new Set(),
                 animating: false,
             };
@@ -285,6 +339,9 @@ const initializeCards = () => {
 
         // Shuffle cards
         cards.value.sort(() => Math.random() - 0.5);
+
+        // Try to restore saved state
+        restoreSavedState();
     }
 };
 
@@ -342,8 +399,8 @@ const animateTotalWinnings = (newValue: number) => {
 };
 
 // Show win popup with animation
-const showWinPopup = (value: number, isFullHouse: boolean) => {
-    popupPrize.value = { value, isFullHouse };
+const showWinPopup = (value: number, isFullHouse: boolean, noAutoCredit: boolean = false, prizeName: string = '') => {
+    popupPrize.value = { value, isFullHouse, noAutoCredit, prizeName };
     showPopup.value = true;
 
     nextTick(() => {
@@ -523,6 +580,10 @@ const revealCard = async (cardIndex: number) => {
         }
 
         card.animating = false;
+        saveBingoState();
+        if (!isRevealingAll.value) {
+            checkEndState();
+        }
     });
 };
 
@@ -595,12 +656,12 @@ const runFullHouseAnimation = (
 
     // Step 6: Update totals + effects
     tl.call(() => {
-        const newTotal = totalWinnings.value + card.prizeValue;
-        animateTotalWinnings(newTotal);
-        totalPrizes.value += 1;
+        const correctTotal = cards.value.filter(c => c.isWinner && processedTickets.value.has(c.ticket.id)).reduce((s, c) => s + c.prizeValue, 0);
+        animateTotalWinnings(correctTotal);
+        totalPrizes.value = cards.value.filter(c => c.isWinner && processedTickets.value.has(c.ticket.id)).length;
 
         // Show popup
-        showWinPopup(card.prizeValue, true);
+        showWinPopup(card.prizeValue, true, card.prizeNoAutoCredit, card.prizeName);
 
         // Fire confetti - more particles for full house
         fireConfetti(250, 90);
@@ -674,12 +735,12 @@ const runStandardWinAnimation = (
 
     // Step 3: Update totals + effects
     tl.call(() => {
-        const newTotal = totalWinnings.value + card.prizeValue;
-        animateTotalWinnings(newTotal);
-        totalPrizes.value += 1;
+        const correctTotal = cards.value.filter(c => c.isWinner && processedTickets.value.has(c.ticket.id)).reduce((s, c) => s + c.prizeValue, 0);
+        animateTotalWinnings(correctTotal);
+        totalPrizes.value = cards.value.filter(c => c.isWinner && processedTickets.value.has(c.ticket.id)).length;
 
         // Show popup
-        showWinPopup(card.prizeValue, false);
+        showWinPopup(card.prizeValue, false, card.prizeNoAutoCredit, card.prizeName);
 
         // Fire confetti
         fireConfetti(100, 70);
@@ -725,8 +786,139 @@ const showDiamond = (card: CardState, index: number): boolean => {
     return card.revealedSquares.has(index) && card.diamondPositions.includes(index);
 };
 
-// Colors are reactive through the computed property - no need to reinitialize cards
-// Cards will automatically update their colors when assets change
+// Reveal all cards with staggered animation
+const revealAllCards = async () => {
+    if (isRevealingAll.value) return;
+    isRevealingAll.value = true;
+
+    const unrevealed = cards.value
+        .map((card, index) => ({ card, index }))
+        .filter(({ card }) => !card.revealed && !card.animating);
+
+    if (unrevealed.length === 0) {
+        isRevealingAll.value = false;
+        return;
+    }
+
+    // Bounded stagger so a huge order (1000+ tickets) still finishes in a few seconds.
+    const stagger = Math.min(150, REVEAL_ALL_MAX_TOTAL_MS / unrevealed.length);
+
+    revealAllTimeoutIds.length = 0;
+    for (let i = 0; i < unrevealed.length; i++) {
+        const id = setTimeout(() => {
+            revealCard(unrevealed[i].index);
+            if (i === unrevealed.length - 1) {
+                const finishId = setTimeout(() => {
+                    isRevealingAll.value = false;
+                    checkEndState();
+                }, 500);
+                revealAllTimeoutIds.push(finishId);
+            }
+        }, i * stagger);
+        revealAllTimeoutIds.push(id);
+    }
+};
+
+// Cancel the remaining stagger and instantly reveal whatever's left
+const skipRevealAll = () => {
+    if (!isRevealingAll.value) return;
+
+    revealAllTimeoutIds.forEach((id) => clearTimeout(id));
+    revealAllTimeoutIds.length = 0;
+
+    cards.value.forEach((card, index) => {
+        if (!card.revealed && !card.animating) {
+            revealCard(index);
+        }
+    });
+
+    isRevealingAll.value = false;
+    checkEndState();
+};
+
+// Check and show end state when all cards are revealed
+const checkEndState = () => {
+    if (allRevealed.value && !showEndState.value) {
+        const tryShow = () => {
+            const anyAnimating = cards.value.some(c => c.animating);
+            if (anyAnimating) {
+                setTimeout(tryShow, 100);
+                return;
+            }
+            // All animations done — snap to correct values and show
+            totalWinnings.value = cards.value.filter(c => c.isWinner).reduce((sum, c) => sum + c.prizeValue, 0);
+            totalPrizes.value = cards.value.filter(c => c.isWinner).length;
+            showEndState.value = true;
+            if (totalPrizes.value > 0) fireConfetti(200, 90);
+            clearSavedState();
+        };
+        setTimeout(tryShow, 800);
+    }
+};
+
+// Save bingo state to sessionStorage
+const saveBingoState = () => {
+    if (props.demoMode || !storageKey.value) return;
+    try {
+        const state = {
+            revealedIndexes: cards.value.map((c, i) => c.revealed ? i : -1).filter(i => i >= 0),
+            revealedSquares: cards.value.map(c => [...c.revealedSquares]),
+            totalWinnings: totalWinnings.value,
+            totalPrizes: totalPrizes.value,
+            processedTickets: [...processedTickets.value],
+            cardOrder: cards.value.map(c => c.ticket.id),
+        };
+        sessionStorage.setItem(storageKey.value, JSON.stringify(state));
+    } catch (e) {
+        // sessionStorage may be unavailable
+    }
+};
+
+// Restore bingo state from sessionStorage
+const restoreSavedState = (): boolean => {
+    if (props.demoMode || !storageKey.value) return false;
+    try {
+        const saved = sessionStorage.getItem(storageKey.value);
+        if (!saved) return false;
+        const state = JSON.parse(saved);
+        if (!state.cardOrder || !state.revealedIndexes) return false;
+
+        const orderedCards: CardState[] = [];
+        for (const ticketId of state.cardOrder) {
+            const card = cards.value.find(c => c.ticket.id === ticketId);
+            if (card) orderedCards.push(card);
+        }
+        if (orderedCards.length !== cards.value.length) return false;
+        cards.value = orderedCards;
+
+        for (const idx of state.revealedIndexes) {
+            if (idx < cards.value.length) {
+                cards.value[idx].revealed = true;
+                const savedSquares = state.revealedSquares?.[idx] || [];
+                cards.value[idx].revealedSquares = new Set(savedSquares);
+            }
+        }
+
+        totalWinnings.value = state.totalWinnings || 0;
+        totalPrizes.value = state.totalPrizes || 0;
+        processedTickets.value = new Set(state.processedTickets || []);
+
+        if (allRevealed.value) {
+            showEndState.value = true;
+        }
+
+        return true;
+    } catch (e) {
+        return false;
+    }
+};
+
+// Clear saved state
+const clearSavedState = () => {
+    if (storageKey.value) {
+        try { sessionStorage.removeItem(storageKey.value); } catch (e) {}
+    }
+};
 
 onMounted(() => {
     initializeCards();
@@ -776,10 +968,25 @@ onMounted(() => {
             </div>
         </div>
 
+        <!-- Reveal All Button -->
+        <div v-if="!allRevealed && !showEndState" class="flex justify-center mb-4 flex-shrink-0">
+            <button
+                @click="isRevealingAll ? skipRevealAll() : revealAllCards()"
+                :disabled="allRevealed"
+                class="px-6 py-2 rounded-full font-bold text-sm text-white transition-all"
+                :style="{
+                    background: `linear-gradient(135deg, ${colors.frameColor}, ${colors.frameGlow})`,
+                    cursor: 'pointer',
+                }"
+            >
+                {{ isRevealingAll ? 'Skip' : 'Reveal All' }}
+            </button>
+        </div>
+
         <!-- Bingo Cards Grid -->
         <div class="bingo-grid grid grid-cols-3 gap-1.5 w-full mx-auto">
             <div
-                v-for="(card, cardIndex) in cards"
+                v-for="(card, cardIndex) in visibleCards"
                 :key="card.ticket.id"
                 :data-card-index="cardIndex"
                 class="bingo-card relative rounded-lg overflow-hidden"
@@ -805,7 +1012,8 @@ onMounted(() => {
                 >
                     <template v-if="card.revealed && card.isWinner">
                         <div class="text-[9px]">WIN!</div>
-                        <div>£{{ Number(card.prizeValue).toFixed(0) }}</div>
+                        <div v-if="!card.prizeNoAutoCredit">&pound;{{ Number(card.prizeValue).toFixed(2) }}</div>
+                        <div v-else class="text-[8px]">{{ card.prizeName }}</div>
                     </template>
                     <template v-else>
                         <div class="pt-0.5">#{{ card.ticket.number }}</div>
@@ -845,7 +1053,8 @@ onMounted(() => {
                             style="background: rgba(0,0,0,0.85); z-index: 10;"
                         >
                             <span class="text-yellow-400 font-black text-sm md:text-xl drop-shadow-lg animate-pulse">FULL HOUSE!</span>
-                            <span class="text-white font-semibold text-xs md:text-base">£{{ Number(card.prizeValue).toFixed(2) }}</span>
+                            <span v-if="!card.prizeNoAutoCredit" class="text-white font-semibold text-xs md:text-base">&pound;{{ Number(card.prizeValue).toFixed(2) }}</span>
+                            <span v-else class="text-white font-semibold text-xs md:text-base">{{ card.prizeName }}</span>
                         </div>
                     </Transition>
                 </div>
@@ -877,6 +1086,41 @@ onMounted(() => {
             </div>
         </div>
 
+        <div v-if="cards.length > CARD_DISPLAY_LIMIT && !showAllCards" class="flex justify-center my-3">
+            <button
+                class="px-6 py-2 rounded-full font-bold text-sm text-white transition-all"
+                :style="{ background: `linear-gradient(135deg, ${colors.frameColor}, ${colors.frameGlow})` }"
+                @click="showAllCards = true"
+            >
+                Show all {{ cards.length }} tickets
+            </button>
+        </div>
+
+        <!-- End State Overlay -->
+        <Transition name="fullhouse">
+            <div
+                v-if="showEndState"
+                class="absolute inset-0 flex flex-col items-center justify-center z-30 rounded-lg"
+                style="background: rgba(0,0,0,0.9);"
+            >
+                <div v-if="totalPrizes > 0" class="text-center">
+                    <div class="text-yellow-400 text-4xl font-black mb-2 animate-pulse">CONGRATULATIONS!</div>
+                    <div class="text-white text-lg mb-1">You won <span class="text-yellow-400 font-bold">{{ totalPrizes }}</span> {{ totalPrizes === 1 ? 'prize' : 'prizes' }}!</div>
+                    <div class="text-3xl font-black mt-2 prize-amount">£{{ totalWinnings.toFixed(2) }}</div>
+                </div>
+                <div v-else class="text-center">
+                    <div class="text-gray-400 text-2xl font-bold mb-2">Better luck next time!</div>
+                    <div class="text-gray-500 text-sm">No prizes this round</div>
+                </div>
+                <button
+                    @click="showEndState = false"
+                    class="mt-6 px-6 py-2 rounded-full font-bold text-sm text-white bg-white/20 hover:bg-white/30 transition-colors"
+                >
+                    Close
+                </button>
+            </div>
+        </Transition>
+
         <!-- Win Popup -->
         <Teleport to="body">
             <div
@@ -895,9 +1139,16 @@ onMounted(() => {
                         {{ popupPrize.isFullHouse ? 'FULL HOUSE!' : 'YOU WON!' }}
                     </div>
                     <div
+                        v-if="!popupPrize.noAutoCredit"
                         class="text-5xl font-black prize-amount"
                     >
-                        £{{ popupPrize.value.toFixed(2) }}
+                        &pound;{{ popupPrize.value.toFixed(2) }}
+                    </div>
+                    <div
+                        v-else
+                        class="text-3xl font-black prize-amount"
+                    >
+                        {{ popupPrize.prizeName }}
                     </div>
                     <!-- Sparkle particles -->
                     <div class="sparkle-container absolute inset-0 pointer-events-none overflow-hidden">

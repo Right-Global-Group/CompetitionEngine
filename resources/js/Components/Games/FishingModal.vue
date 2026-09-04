@@ -1,8 +1,18 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, reactive, ref, watch } from 'vue';
 import gsap from 'gsap';
-import SpriteCharacter from '@/Components/Games/SpriteCharacter.vue';
+import { siteCreditLabel } from '@/utils/prizeLabel';
+import { useSpriteFrames } from '@/games/spriteFrames';
 
+/**
+ * Fishing — "cast & reveal" instant-win game. Outcome is server-decided (lives on each ticket's
+ * instant_win); the cast/reel is purely the animated reveal. Config-native (game_settings.config).
+ *
+ * Two-zone scene: sky + rolling waves on top, a deep underwater world below (drifting fish, seabed,
+ * seaweed, bubbles, god-rays). A boat + fisherman (PNG, drawn fallback) bobs on the surface and the
+ * rod swings to pay a line down to the hook — reel a fish = win, empty hook = lose. GSAP for the
+ * cast/reel sequence; CSS for the ambient life (waves, fish, bubbles, seaweed).
+ */
 const props = withDefaults(defineProps<{
     modelValue?: boolean;
     demoMode?: boolean;
@@ -23,11 +33,18 @@ const demoPreviewMode = ref<'mobile' | 'desktop'>('mobile');
 const togglePreviewMode = () => { demoPreviewMode.value = demoPreviewMode.value === 'mobile' ? 'desktop' : 'mobile'; };
 const actualPreviewMode = computed(() => props.demoMode ? demoPreviewMode.value : (props.previewMode || 'desktop'));
 const frameClass = computed(() => props.demoMode ? (actualPreviewMode.value === 'mobile' ? 'is-mobile' : 'is-desktop') : '');
-const CORE = { x: 32, y: 10, w: 936, h: 1404 };
-const CORE_CX = CORE.x + CORE.w / 2;
+// ── responsive scene framing ──
+// The live game renders FULL-SCREEN on every device, so the SVG must adapt to any aspect ratio
+// without letterbox bars. We keep an authored "core" (sun + boat + waterline + seabed) that is
+// always fully visible, then widen the ocean sideways (landscape) or extend it downward (portrait)
+// to fill whatever shape the screen is. The boat/rod/hook stay in absolute coords so their physics
+// never move — only the framing around them changes.
+const CORE = { x: 32, y: 10, w: 936, h: 1404 };   // the framing that must always stay on-screen
+const CORE_CX = CORE.x + CORE.w / 2;               // 500 — horizontal anchor for widening
 const stageEl = ref<HTMLElement | null>(null);
-const stageAspect = ref(CORE.w / CORE.h);
+const stageAspect = ref(CORE.w / CORE.h);          // width / height of the live stage element
 let stageRO: ResizeObserver | null = null;
+// (re)attach a ResizeObserver whenever the stage element appears (modal opens) / changes
 watch(stageEl, (el) => {
     stageRO?.disconnect();
     if (el && typeof ResizeObserver !== 'undefined') {
@@ -39,18 +56,22 @@ watch(stageEl, (el) => {
     }
 }, { flush: 'post' });
 
+// viewBox whose aspect ratio exactly matches the stage, so preserveAspectRatio never crops the core
 const view = computed(() => {
     const ar = stageAspect.value;
     const coreAspect = CORE.w / CORE.h;
     if (ar >= coreAspect) {
+        // landscape / wide: keep the full height, widen the ocean around the boat
         const h = CORE.h, w = h * ar;
         return { x: CORE_CX - w / 2, y: CORE.y, w, h };
     }
+    // portrait / tall: keep the full width, extend deeper underwater
     const w = CORE.w, h = w / ar;
     return { x: CORE.x, y: CORE.y, w, h };
 });
 const sceneViewBox = computed(() => `${view.value.x} ${view.value.y} ${view.value.w} ${view.value.h}`);
 
+// background fill bounds — always overshoot the viewBox so sky / sea / sand reach every edge
 const bg = computed(() => {
     const v = view.value;
     return { x: v.x - 200, w: v.w + 400, top: v.y - 100, bottom: v.y + v.h + 200, floor: v.y + v.h };
@@ -64,43 +85,57 @@ const accent = computed(() => a.value.accentColor || '#ffd54f');
 const primary = computed(() => a.value.primaryColor || '#0277bd');
 const textColor = computed(() => a.value.textColor || '#ffffff');
 const sunEnabled = computed(() => a.value.sunEnabled !== false);
-const sunImage = computed(() => a.value.sunImage || '/games/fishing/sun-default.png?v=1');
+const sunImage = computed(() => a.value.sunImage || '/games/fishing/sun-default.png?v=1');  // default sun (admin upload overrides; clear field to keep the per-theme drawn sun/moon)
 const cloudsEnabled = computed(() => a.value.cloudsEnabled !== false);
 const showTopPrize = computed(() => a.value.showTopPrize === true);
 
-const boatImage = computed(() => a.value.boatImage || '/games/fishing/boat-default.png?v=2');
-const fishImage = computed(() => a.value.fishImage || '/games/fishing/fish-default.png?v=1');
-const fishImgs = computed(() => [a.value.fish1, a.value.fish2, a.value.fish3].filter(Boolean) as string[]);
-const fishFaceSign = computed(() => (a.value.fishFaceLeft ? -1 : 1));
-const fishermanSheet = computed(() => a.value.fishermanSheet || '');
+const boatImage = computed(() => a.value.boatImage || '/games/fishing/boat-default.png?v=2');  // default boat; admin upload overrides
+const fishImage = computed(() => a.value.fishImage || '/games/fishing/fish-default.png?v=1');  // default catch (a shark!); admin upload overrides
+const fishermanSheet = computed(() => a.value.fishermanSheet || ''); // optional separate fisherman
 const spriteChroma = computed(() => a.value.spriteChroma === true);
 const fishermanFrames = computed(() => { const n = Number(a.value.fishermanFrames) || 0; return n > 0 ? n : 1; });
 const boatOk = ref(true);
+// Fisherman sheet sliced to per-frame data URLs for a native SVG <image> — iOS Safari renders
+// <foreignObject> content unscaled/misplaced, so canvas-in-foreignObject is off-limits (see spriteFrames.ts).
+const { urls: fishermanFrameUrls } = useSpriteFrames(
+    () => fishermanSheet.value, () => fishermanFrames.value, () => spriteChroma.value,
+);
+const fishermanFrameUrl = computed(() => fishermanFrameUrls.value[0] || '');
 
 // intro
 const introEnabled = computed(() => a.value.introEnabled !== false);
 const introTitleImage = computed(() => a.value.introTitleImage || '');
 const introSubtitle = computed(() => a.value.introSubtitle || 'Cast your line to reel in instant prizes');
 const introButtonText = computed(() => a.value.introButtonText || 'Cast Off 🎣');
-const introVoiceEnabled = computed(() => a.value.introVoiceEnabled === true);
+const introVoiceEnabled = computed(() => a.value.introVoiceEnabled === true);  // OFF by default — only speaks if explicitly enabled (uploaded Welcome Sound always plays)
 const gameName = computed(() => a.value.name || '');
 const welcomeMsg = computed(() => (a.value.introWelcomeText || 'Welcome to {name}').replace('{name}', gameName.value || 'the catch'));
 const showIntro = ref(false);
 
-// ── theme palette ──
+// ── theme palette: sky, sea surface, deep water, seabed, sun, glow ──
 const THEMES: Record<string, Record<string, string>> = {
+    // Chill — calm bright day, turquoise water.
     chill:   { skyTop: '#7ecbff', skyBot: '#cdeeff', surfTop: '#3fb6e0', surfBot: '#1f8fc0', deepTop: '#1f8fc0', deepBot: '#063a63', sand: '#e6cf86', weed: '#1f8f5a', sun: '#fff2a8', glow: '#ffe55c', foam: '#f2fcff' },
+    // Sunset — warm dusk.
     sunset:  { skyTop: '#3a2a66', skyBot: '#ffb27a', surfTop: '#e0795f', surfBot: '#9c4a6e', deepTop: '#7a3a6a', deepBot: '#241036', sand: '#caa05e', weed: '#7a5a2a', sun: '#fff1c2', glow: '#ff9d5c', foam: '#ffe9d6' },
+    // Night Time — moonlit, deep navy.
     night:   { skyTop: '#050a1f', skyBot: '#122a4a', surfTop: '#14405e', surfBot: '#0a2a40', deepTop: '#0a2a40', deepBot: '#02101c', sand: '#2a3d4a', weed: '#14564a', sun: '#eaf4ff', glow: '#9fd0ff', foam: '#bcd8ec' },
+    // Stormy — grey, moody, choppy.
     stormy:  { skyTop: '#2e3742', skyBot: '#6b7b85', surfTop: '#3c5560', surfBot: '#24383f', deepTop: '#24383f', deepBot: '#0c181c', sand: '#5a5f52', weed: '#3e5a44', sun: '#b9c6cd', glow: '#d2dbe0', foam: '#dbe4e8' },
 };
 const pal = computed(() => THEMES[String(a.value.theme || 'stormy')] || THEMES.stormy);
-const underwaterImage = computed(() => a.value.underwaterImage || '/games/fishing/underwater-default.png?v=1');
+const underwaterImage = computed(() => a.value.underwaterImage || '/games/fishing/underwater-default.png?v=1');  // default shipwreck backdrop; admin upload overrides
 
-// ── decorative underwater fish ──
+// ── decorative underwater fish (CSS-drifting; purely ambient) ──
 const FISH_PALETTE = ['#ffb74d', '#ff8a65', '#4fc3f7', '#ba68c8', '#aed581', '#fff176'];
+// decoFish is a COMPUTED defined below (after `wins`) — the swimmers are the player's own remaining
+// instant-win prizes, not generic fish.
 const bubbles = Array.from({ length: 24 }, (_, i) => ({
-    id: i, x: 40 + ((i * 137) % 920), r: 3 + ((i * 7) % 5) * 1.6, dur: 5 + ((i * 3) % 6), delay: -((i * 1.7) % 7),
+    id: i,
+    x: 40 + ((i * 137) % 920),
+    r: 3 + ((i * 7) % 5) * 1.6,
+    dur: 5 + ((i * 3) % 6),
+    delay: -((i * 1.7) % 7),
 }));
 const weeds = Array.from({ length: 9 }, (_, i) => ({ id: i, x: 70 + i * 108 + ((i * 13) % 30), h: 90 + ((i * 29) % 90), delay: -((i * 0.6) % 3) }));
 
@@ -121,46 +156,66 @@ function categoryFor(iw: any) {
 function buildCasts() {
     casts.value = (props.tickets || []).map((t) => {
         const iw = t?.instant_win; const won = isWin(t); const cat: any = won ? categoryFor(iw) : null;
+        const val = Number(iw?.value || cat?.value || 0);
+        const pType = iw?.prize_type ?? cat?.prize_type;
         return {
             id: t.id ?? t.number, number: String(t.number ?? t.id ?? ''), win: won,
-            prize: won ? String(iw.prize) : '',
-            value: Number(iw?.value || cat?.value || 0),
+            prize: won ? (siteCreditLabel(pType, val) ?? String(iw.prize)) : '',
+            value: val,
             image: iw?.image_path || cat?.image_path || '',
             isBundle: won && ((iw?.prize_type ?? cat?.prize_type) === 'ticket_bundle'),
         };
     });
     index.value = 0; caughtIds.value = []; resetCast(); rebuildSwimmers();
 }
+// Play mode (chosen on the intro): 'all' = every ticket, 'winners' = wins only, 'auto' = all hands-free.
 const mode = ref<'all' | 'winners' | 'auto'>('all');
-const speed = ref<1 | 1.5 | 2>(1);
+const speed = ref<1 | 1.5 | 2>(1);  // game pace — set on the intro; scales the cast/reel/reveal timeline
 const playList = computed(() => mode.value === 'winners' ? casts.value.filter((c) => c.win) : casts.value);
 const current = computed<Cast | null>(() => playList.value[index.value] ?? null);
 const total = computed(() => playList.value.length);
 const caught = computed(() => playList.value.slice(0, phase.value === 'done' ? total.value : index.value + (phase.value === 'result' ? 1 : 0)).filter((c) => c.win).length);
 const wins = computed(() => casts.value.filter((c) => c.win));
 
+// The swimmers are the DISTINCT instant-win categories the player won — ONE fish per category they
+// can win (win 6 different prizes → 6 different fish). A category's fish keeps swimming until EVERY
+// one of that player's wins for it has been reeled in, then it leaves. Prize with no image → the
+// game's title/brand logo; if there's no logo either → a drawn fish.
 const caughtIds = ref<any[]>([]);
-const catKey = (w: any) => String(w.image || w.prize || w.id);
+const catKey = (w: any) => String(w.image || w.prize || w.id);  // identity of a prize category
+// Swimmers are JS-POSITIONED (a rAF loop drifts each one's x), so the hook can travel to a REAL
+// swimming fish and reel THAT one up — not a fake that slides in from the edge.
 const decoFish = ref<any[]>([]);
 function makeSwimmer(id: string, image: string, i: number, chance = false, value = 0) {
-    const baseY = 700 + Math.random() * 600;
+    const baseY = 700 + Math.random() * 600;            // deep — well under the boat, random height per fish
     return {
         id, image, chance, value,
         color: FISH_PALETTE[i % FISH_PALETTE.length],
-        x: 80 + Math.random() * 840, baseY, y: baseY,
-        bobAmp: 30 + Math.random() * 80, bobSpeed: 0.3 + Math.random() * 0.5,
-        phase: Math.random() * Math.PI * 2, size: 0.9 + Math.random() * 0.5,
-        dir: Math.random() < 0.5 ? 1 : -1, speed: 48 + Math.random() * 70,
-        hooked: false, caught: false, haloR: 70, haloDelay: -(i * 0.5),
-        wDur: 0.5 + (i % 4) * 0.13, wDelay: -(i * 0.17),
+        x: 80 + Math.random() * 840,                    // scattered across the width (incl. under the boat)
+        baseY, y: baseY,
+        bobAmp: 30 + Math.random() * 80,                // slowly roams up/down so depths keep varying
+        bobSpeed: 0.3 + Math.random() * 0.5,
+        phase: Math.random() * Math.PI * 2,
+        size: 0.9 + Math.random() * 0.5,
+        dir: Math.random() < 0.5 ? 1 : -1,
+        speed: 48 + Math.random() * 70,                 // px/sec drift
+        hooked: false,                                  // physics: holds still for the incoming hook
+        caught: false,                                  // visual: glow + sparkle, only once the hook is ON it
+        haloR: 70,                                      // pulsating prize-glow radius (set per-prize below)
+        haloDelay: -(i * 0.5),
+        wDur: 0.5 + (i % 4) * 0.13,
+        wDelay: -(i * 0.17),
     };
 }
 function rebuildSwimmers() {
+    // 1) Catchable WIN fish — one per distinct prize the player still has to reel in.
     const seen = new Set<string>();
     const distinct = wins.value
         .filter((w) => { const k = catKey(w); if (seen.has(k)) return false; seen.add(k); return true; })
         .filter((w) => wins.value.some((x) => catKey(x) === catKey(w) && !caughtIds.value.includes(x.id)));
     const list: any[] = distinct.map((w, i) => makeSwimmer(catKey(w), w.image || introTitleImage.value || fishImage.value, i, false, Number(w.value) || 0));
+    // 2) Ambient "chance" fish — the OTHER prizes still out there. The player isn't winning these, but
+    //    seeing them swim makes the pond feel full of chances. They're decoration only (not catchable).
     const winKeys = new Set(list.map((s) => s.id));
     const chanceSeen = new Set<string>();
     let ci = list.length;
@@ -170,12 +225,13 @@ function rebuildSwimmers() {
         if (winKeys.has(key) || chanceSeen.has(key)) continue;
         chanceSeen.add(key);
         list.push(makeSwimmer('chance:' + key, c.image_path || introTitleImage.value || fishImage.value, ci++, true, Number(c.value) || 0));
-        if (list.length >= distinct.length + 8) break;
+        if (list.length >= distinct.length + 8) break;  // cap so it never over-clutters
     }
+    // 3) Always keep some life in the water (studio preview / no categories supplied).
     if (!list.length) {
-        const imgs = fishImgs.value;
-        for (let i = 0; i < 5; i++) list.push(makeSwimmer('amb:' + i, imgs.length ? imgs[i % imgs.length] : '', i, true));
+        for (let i = 0; i < 5; i++) list.push(makeSwimmer('amb:' + i, '', i, true));
     }
+    // Size each prize's glow halo by its value — the biggest prize (£1000+ etc.) gets a HUGE glow.
     const topVal = Math.max(1, ...list.map((f) => Number(f.value) || 0));
     list.forEach((f) => { f.haloR = 60 + Math.pow(Math.min(1, (Number(f.value) || 0) / topVal), 0.55) * 95; });
     decoFish.value = list;
@@ -183,17 +239,18 @@ function rebuildSwimmers() {
 let swimRAF = 0; let swimLast = 0;
 function stepSwim(t: number) {
     const dt = swimLast ? Math.min(0.05, (t - swimLast) / 1000) : 0; swimLast = t;
-    const v = view.value, left = v.x - 140, right = v.x + v.w + 140;
+    const v = view.value, left = v.x - 140, right = v.x + v.w + 140;   // wrap fully OFF-screen so there's no "teleport"
     for (const sw of decoFish.value) {
         if (sw.hooked) continue;
         sw.x += sw.speed * sw.dir * dt;
         if (sw.x > right) sw.x = left; else if (sw.x < left) sw.x = right;
-        sw.y = sw.baseY + Math.sin(t / 1000 * sw.bobSpeed + sw.phase) * sw.bobAmp;
+        sw.y = sw.baseY + Math.sin(t / 1000 * sw.bobSpeed + sw.phase) * sw.bobAmp;   // gentle vertical roam → varied depths
     }
     swimRAF = requestAnimationFrame(stepSwim);
 }
 function startSwim() { stopSwim(); swimLast = 0; swimRAF = requestAnimationFrame(stepSwim); }
 function stopSwim() { if (swimRAF) { cancelAnimationFrame(swimRAF); swimRAF = 0; } }
+// After a catch: if more of that prize is still to be won, the fish re-enters; otherwise it's gone.
 function respawnOrRemove(sw: any) {
     if (wins.value.some((w) => catKey(w) === sw.id && !caughtIds.value.includes(w.id))) { sw.hooked = false; sw.caught = false; const v = view.value; sw.x = sw.dir === 1 ? v.x - 120 : v.x + v.w + 120; }
     else { decoFish.value = decoFish.value.filter((s) => s !== sw); }
@@ -210,6 +267,7 @@ const topPrizeLabel = computed(() => {
     const p: any = topPrize.value; if (!p) return '';
     const name = String(p.name || '').trim(); const v = Number(p.value);
     if (p.prize_type === 'ticket_bundle') return (!v || /ticket/i.test(name)) ? name : `${name ? name + ' · ' : ''}${Math.floor(v)} Free Ticket${v == 1 ? '' : 's'}`;
+    const sc = siteCreditLabel(p.prize_type, v); if (sc) return sc;
     const money = v ? `£${v % 1 === 0 ? v : v.toFixed(2)}` : '';
     return (!money || /£\s*\d/.test(name)) ? name : `${name} · ${money}`;
 });
@@ -221,17 +279,22 @@ const currentValueLabel = computed(() => {
 });
 
 // ── scene anchors + animated state ──
-const SURFACE_Y = 580;
-const rodTipLocal = computed(() => ({ x: 745, y: -64 }));
-const HOOK_REST = { x: 745, y: 400 };
-const HOOK_DEPTH = { x: 690, y: 1000 };
+const SURFACE_Y = 580;                         // waterline
+const rodTipLocal = computed(() => ({ x: 745, y: -64 }));  // line origin = the drawn rod's tip (we always draw the rod, so the line meets the hook)
+const HOOK_REST = { x: 745, y: 400 };          // hook hangs here from the rod tip before a cast
+const HOOK_DEPTH = { x: 690, y: 1000 };        // where the hook waits underwater
+// Where the boat group's local origin sits (above the waterline). Operators nudge `boat_waterline`
+// to seat their PNG exactly on the sea — the boat, fisherman, rod and line all follow it.
 const boatWaterline = computed(() => Number(a.value.boatWaterline) || 0);
 const boatBaseY = computed(() => SURFACE_Y - 185 + boatWaterline.value);
 
+// ── tiled surface waves + seabed ──
+// Generated to span the (variable) background width so they never fall short of the screen edges
+// when the scene is widened for landscape. SEG/period stay 240/480 to keep the CSS roll seamless.
 const SEG = 240;
 const waveSpan = computed(() => {
     const v = view.value;
-    return { x0: Math.floor((v.x - 480) / 480) * 480, x1: v.x + v.w + 480 };
+    return { x0: Math.floor((v.x - 480) / 480) * 480, x1: v.x + v.w + 480 };  // x0 aligned to the 480 roll period
 });
 function tiledWave(y: number, a1: number, a2: number) {
     const { x0, x1 } = waveSpan.value;
@@ -250,8 +313,12 @@ function seabed(top: number) {
 }
 const sandPath = computed(() => seabed(bg.value.floor - 118));
 const ridgePath = computed(() => seabed(bg.value.floor - 165));
-const scene = reactive({ rodAngle: 0, hookX: HOOK_REST.x, hookY: HOOK_REST.y, fishO: 0, fishX: HOOK_DEPTH.x, fishY: HOOK_DEPTH.y });
-const boat = reactive({ rot: 0, y: 0, x: 0, sy: 1 });
+const scene = reactive({
+    rodAngle: 0,
+    hookX: HOOK_REST.x, hookY: HOOK_REST.y,
+    fishO: 0, fishX: HOOK_DEPTH.x, fishY: HOOK_DEPTH.y, // the hooked (winning) fish
+});
+const boat = reactive({ rot: 0, y: 0, x: 0, sy: 1 });  // sy = subtle vertical pitch (fakes 3D bob on an angled boat PNG)
 const sunSpin = reactive({ a: 0 });
 let ambient: gsap.core.Timeline | null = null;
 let castTl: gsap.core.Timeline | null = null;
@@ -260,10 +327,11 @@ function startAmbient() {
     stopAmbient();
     ambient = gsap.timeline();
     gsap.to(sunSpin, { a: 360, duration: 70, repeat: -1, ease: 'none' });
+    // desynced rock / bob / sway so the boat rides the swell naturally
     gsap.to(boat, { rot: 2.6, duration: 2.9, repeat: -1, yoyo: true, ease: 'sine.inOut' });
     gsap.to(boat, { y: 12, duration: 3.5, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-    gsap.fromTo(boat, { x: -75 }, { x: 75, duration: 8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-    gsap.to(boat, { sy: 1.04, duration: 3.4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    gsap.fromTo(boat, { x: -75 }, { x: 75, duration: 8, repeat: -1, yoyo: true, ease: 'sine.inOut' });  // glides left ↔ right across the swell
+    gsap.to(boat, { sy: 1.04, duration: 3.4, repeat: -1, yoyo: true, ease: 'sine.inOut' });  // gentle pitch for a 3D float
 }
 function stopAmbient() { gsap.killTweensOf([sunSpin, boat]); ambient?.kill(); ambient = null; }
 function resetCast() {
@@ -271,6 +339,9 @@ function resetCast() {
     phase.value = 'ready'; showPrize.value = false;
     Object.assign(scene, { rodAngle: 0, hookX: HOOK_REST.x, hookY: HOOK_REST.y, fishO: 0, fishX: HOOK_DEPTH.x, fishY: HOOK_DEPTH.y });
 }
+// The line leaves the ACTUAL rod tip and follows the boat: take the rod-tip point in the boat's
+// local frame (swung by the rod angle), then run it through the same transform the boat group uses,
+// so the string stays attached to the tip however the boat bobs/rolls/pitches.
 const rodTip = computed(() => {
     const ra = (scene.rodAngle || 0) * Math.PI / 180, rc = Math.cos(ra), rs = Math.sin(ra);
     const RT = rodTipLocal.value;
@@ -287,8 +358,11 @@ function castNow() {
     if (phase.value !== 'ready') return;
     if (!current.value) { finish(); return; }
     const c = current.value;
+    // For a WIN, aim the hook at an ACTUAL swimming fish of THIS prize and hold it; for an empty hook,
+    // a random spot. The fish is glued to the line on the way up, so the hook reels in a REAL swimmer.
     let target = c.win ? decoFish.value.find((sw) => sw.id === catKey(c) && !sw.hooked && !sw.chance) : null;
     if (c.win && !target) {
+        // safety: no live fish for this exact prize — spawn the right one so the catch ALWAYS matches the win
         target = { id: catKey(c), image: c.image || introTitleImage.value || fishImage.value, color: FISH_PALETTE[0],
                    x: 120 + Math.random() * 760, baseY: 760, y: 760, bobAmp: 0, bobSpeed: 0, phase: 0,
                    size: 1.1, dir: 1, speed: 0, hooked: true, wDur: 0.6, wDelay: 0 };
@@ -296,29 +370,33 @@ function castNow() {
     }
     let tx: number, ty: number;
     if (target) {
-        target.hooked = true;
-        tx = Math.max(150, Math.min(850, target.x));
-        ty = Math.max(640, Math.min(1340, target.y));
-        target.x = tx; target.y = ty;
+        target.hooked = true;                                   // it spots the bait and holds still
+        tx = Math.max(150, Math.min(850, target.x));            // keep the catch on-screen
+        ty = Math.max(640, Math.min(1340, target.y));           // wherever it's swimming (deep, varied) — don't yank it
+        target.x = tx; target.y = ty;                           // align it to where the hook will arrive
     } else {
-        tx = 260 + Math.round(Math.random() * 480);
-        ty = 880 + Math.round(Math.random() * 460);
+        tx = 260 + Math.round(Math.random() * 480);             // roams wide across the water
+        ty = 880 + Math.round(Math.random() * 460);             // deep below the boat, sometimes near the seabed
     }
     play(a.value.castSound);
     phase.value = 'casting';
     castTl?.kill();
-    const tl = gsap.timeline(); castTl = tl; tl.timeScale(speed.value);
+    const tl = gsap.timeline(); castTl = tl; tl.timeScale(speed.value);  // 1x / 1.5x / 2x game pace
+    // rod whips back then forward
     tl.to(scene, { rodAngle: -28, duration: 0.22, ease: 'power2.out' })
       .to(scene, { rodAngle: 22, duration: 0.16, ease: 'power3.in' });
+    // hook arcs out and sinks straight to the fish (or the random spot)
     tl.to(scene, { hookX: tx, duration: 0.9, ease: 'power1.inOut' }, '<')
       .to(scene, { hookY: SURFACE_Y - 6, duration: 0.32, ease: 'power2.out' }, '<')
       .add(() => play(a.value.splashSound))
       .to(scene, { hookY: ty, duration: 1.1, ease: 'power1.in' });
     tl.to(scene, { rodAngle: 4, duration: 0.4, ease: 'sine.out' }, '<');
+    // wait for a bite — the hook bobs right by the fish
     tl.add(() => { phase.value = 'waiting'; });
     tl.to(scene, { hookY: ty + 16, duration: 0.5, repeat: 1, yoyo: true, ease: 'sine.inOut' });
-    if (target) tl.to(target, { y: ty + 16, duration: 0.5, repeat: 1, yoyo: true, ease: 'sine.inOut' }, '<');
-    tl.add(() => { phase.value = 'reeling'; play(a.value.reelSound); if (target) target.caught = true; });
+    if (target) tl.to(target, { y: ty + 16, duration: 0.5, repeat: 1, yoyo: true, ease: 'sine.inOut' }, '<');  // fish nibbles with the bait
+    // reel it up — the hooked fish rides the line all the way to the boat
+    tl.add(() => { phase.value = 'reeling'; play(a.value.reelSound); if (target) target.caught = true; });  // glow ONLY once the hook is on it
     if (target) {
         tl.to(scene, { hookX: HOOK_REST.x, hookY: HOOK_REST.y + 30, duration: 1.2, ease: 'power2.inOut',
                        onUpdate: () => { target.x = scene.hookX; target.y = scene.hookY + 22; } });
@@ -329,6 +407,7 @@ function castNow() {
         phase.value = 'result';
         play(c.win ? a.value.winSound : a.value.lossSound);
         if (c.win) { showPrize.value = true; if (!caughtIds.value.includes(c.id)) caughtIds.value.push(c.id); if (target) respawnOrRemove(target); }
+        // Auto: advance to the next cast by itself (longer pause on a win so the prize card reads).
         if (mode.value === 'auto') { clearAuto(); autoTimer = setTimeout(() => next(), (c.win ? 1700 : 750) / speed.value); }
     });
 }
@@ -337,6 +416,7 @@ function next() {
     showPrize.value = false;
     if (index.value < total.value - 1) { index.value += 1; resetCast(); }
     else { finish(); return; }
+    // Auto: kick off the next cast hands-free.
     if (mode.value === 'auto') { autoTimer = setTimeout(() => castNow(), 500 / speed.value); }
 }
 function finish() { phase.value = 'done'; showPrize.value = false; emit('wins-collected', wins.value.map((w) => ({ prize: w.prize, value: w.value }))); }
@@ -344,6 +424,7 @@ const prompt = computed(() => phase.value === 'ready' ? titleText.value
     : phase.value === 'casting' ? 'Casting…' : phase.value === 'waiting' ? 'Wait for a bite…'
     : phase.value === 'reeling' ? 'Reel it in!' : phase.value === 'result' ? (current.value?.win ? winText.value : loseText.value) : '');
 
+// ── sound (uploaded clips only; kept light) ──
 let audio: HTMLAudioElement | null = null;
 function play(src?: string) { if (!src || props.demoMode) return; try { audio = new Audio(src); audio.volume = 0.85; void audio.play(); } catch { /* */ } }
 function playWelcome() {
@@ -357,10 +438,12 @@ let autoTimer: ReturnType<typeof setTimeout> | null = null;
 function clearAuto() { if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; } }
 let demoTimer: ReturnType<typeof setTimeout> | null = null;
 function clearDemo() { if (demoTimer) { clearTimeout(demoTimer); demoTimer = null; } }
+// Called by the intro's start button — enters the game with whatever mode the player selected.
 function startGame() {
     clearDemo();
     showIntro.value = false;
     index.value = 0; resetCast();
+    // Winners-Only with no winning tickets → skip straight to the (friendly) "no catch" tally.
     if (mode.value === 'winners' && !playList.value.length) { finish(); return; }
     if (mode.value === 'auto') { clearAuto(); autoTimer = setTimeout(() => castNow(), 500 / speed.value); }
 }
@@ -371,9 +454,18 @@ watch(() => props.modelValue, (open) => {
         mode.value = 'all'; clearAuto(); clearDemo(); buildCasts(); startAmbient(); startSwim();
         showIntro.value = introEnabled.value;
         if (showIntro.value && !props.demoMode) playWelcome();
+        // Studio preview: auto-run the live gameplay (cast → catch prizes) so it's not idle.
+        if (props.demoMode) demoTimer = setTimeout(() => { mode.value = 'auto'; startGame(); }, introEnabled.value ? 2200 : 500);
     } else { stopAmbient(); stopSwim(); castTl?.kill(); clearAuto(); clearDemo(); cancelSpeech(); }
 }, { immediate: true });
+// (Auto mode drives itself from castNow's result callback + next().)
+// Studio preview only: when a demo run finishes, rebuild + replay so the gameplay loops forever.
+watch(phase, (p) => { if (props.demoMode && p === 'done') { clearDemo(); demoTimer = setTimeout(() => { buildCasts(); mode.value = 'auto'; startGame(); }, 1600); } });
+// Intro entrance: the settings card slams in with a big overshoot, then the rows + chips + start
+// button spring up. (It does NOT auto-start — the player picks settings and taps the button.)
 watch(showIntro, (on) => {
+    // NB: do NOT clearAuto() here — when the Cast Off button sets showIntro=false it has already
+    // scheduled the first auto cast; this watcher fires async right after and would cancel it.
     if (!on) return;
     nextTick(() => {
         const el = introCard.value; if (!el) return;
@@ -392,6 +484,7 @@ onBeforeUnmount(() => { stopAmbient(); stopSwim(); castTl?.kill(); clearAuto(); 
 function close() {
     clearAuto(); cancelSpeech();
     if (props.demoMode) {
+        // Studio preview: there's no parent modal to close, so reset back to the intro (replayable).
         mode.value = 'all'; speed.value = 1; buildCasts(); showIntro.value = introEnabled.value;
         return;
     }
@@ -404,6 +497,11 @@ function close() {
     <teleport to="body" :disabled="demoMode">
         <div v-if="modelValue || demoMode" class="fsh-root" :class="frameClass">
             <div class="fsh-frame">
+                <div v-if="demoMode" class="fsh-preview-toggle">
+                    <span>Preview:</span>
+                    <button :class="{ on: demoPreviewMode === 'mobile' }" @click="togglePreviewMode">📱 Mobile</button>
+                    <button :class="{ on: demoPreviewMode === 'desktop' }" @click="togglePreviewMode">🖥 Desktop</button>
+                </div>
                 <button v-if="!demoMode" class="fsh-close" @click="close" aria-label="Close">✕</button>
 
                 <div class="fsh-hud">
@@ -423,33 +521,44 @@ function close() {
                             <radialGradient id="fsh-sun" cx="0.5" cy="0.5" r="0.5"><stop offset="0" :stop-color="pal.sun" /><stop offset="0.55" :stop-color="pal.glow" /><stop offset="1" :stop-color="pal.glow" stop-opacity="0" /></radialGradient>
                             <linearGradient id="fsh-ray" x1="0" y1="0" x2="0" y2="1"><stop offset="0" :stop-color="pal.glow" stop-opacity="0.28" /><stop offset="1" :stop-color="pal.glow" stop-opacity="0" /></linearGradient>
                             <filter id="fsh-glow" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="0" stdDeviation="7" :flood-color="pal.glow" flood-opacity="0.9" /></filter>
+                            <!-- animated water ripple (turbulence + displacement + slight blur) for the underwater image -->
                             <filter id="fsh-ripple" x="-8%" y="-8%" width="116%" height="116%">
                                 <feTurbulence type="fractalNoise" baseFrequency="0.01 0.018" numOctaves="2" seed="5" result="n"><animate attributeName="baseFrequency" dur="13s" values="0.01 0.018;0.017 0.032;0.01 0.018" repeatCount="indefinite" /></feTurbulence>
                                 <feDisplacementMap in="SourceGraphic" in2="n" scale="36" xChannelSelector="R" yChannelSelector="G" result="d" />
                                 <feGaussianBlur in="d" stdDeviation="1.2" />
                             </filter>
+                            <!-- ripple + soft glow for the DRAWN swimming fish (wobble + underwater shimmer) -->
                             <filter id="fsh-ripple-fish" x="-60%" y="-60%" width="220%" height="220%">
                                 <feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="2" seed="9" result="n"><animate attributeName="baseFrequency" dur="8s" values="0.02 0.03;0.03 0.044;0.02 0.03" repeatCount="indefinite" /></feTurbulence>
                                 <feDisplacementMap in="SourceGraphic" in2="n" scale="15" xChannelSelector="R" yChannelSelector="G" result="d" />
                                 <feDropShadow in="d" dx="0" dy="0" stdDeviation="7" :flood-color="pal.glow" flood-opacity="0.8" />
                             </filter>
+                            <!-- soft theme-coloured glow for the prize-image swimmers (no displacement — keeps PNGs crisp) -->
                             <filter id="fsh-fishglow" x="-55%" y="-55%" width="210%" height="210%">
                                 <feDropShadow dx="0" dy="0" stdDeviation="8" :flood-color="pal.glow" flood-opacity="0.75" />
                             </filter>
+                            <!-- bright, celebratory glow for the fish AS IT'S being reeled in (the "wow" catch moment) -->
                             <filter id="fsh-catchglow" x="-160%" y="-160%" width="420%" height="420%">
                                 <feDropShadow dx="0" dy="0" stdDeviation="18" :flood-color="accent" flood-opacity="0.98" result="s1" />
                                 <feDropShadow in="s1" dx="0" dy="0" stdDeviation="46" :flood-color="accent" flood-opacity="0.55" />
                             </filter>
+                            <!-- radial prize glow for the floating swimmers (radius set per-prize in JS — bigger prize, bigger glow) -->
                             <radialGradient id="fsh-halo" cx="0.5" cy="0.5" r="0.5"><stop offset="0" :stop-color="accent" stop-opacity="0.6" /><stop offset="0.45" :stop-color="accent" stop-opacity="0.3" /><stop offset="1" :stop-color="accent" stop-opacity="0" /></radialGradient>
+                            <!-- fades the underwater backdrop into the surface so there's no hard waterline cut -->
                             <linearGradient id="fsh-blend" x1="0" y1="0" x2="0" y2="1"><stop offset="0" :stop-color="pal.surfBot" stop-opacity="0.95" /><stop offset="0.5" :stop-color="pal.surfBot" stop-opacity="0.35" /><stop offset="1" :stop-color="pal.surfBot" stop-opacity="0" /></linearGradient>
+                            <!-- clips the (rippled, oversized) underwater image so it never peeks above the waterline -->
                             <clipPath id="fsh-underclip"><rect :x="bg.x" :y="SURFACE_Y" :width="bg.w" :height="bg.bottom - SURFACE_Y" /></clipPath>
+                            <!-- depth vignette — darkens toward the seabed so it feels deep -->
                             <linearGradient id="fsh-depth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" :stop-color="pal.deepBot" stop-opacity="0" /><stop offset="0.55" :stop-color="pal.deepBot" stop-opacity="0" /><stop offset="1" :stop-color="pal.deepBot" stop-opacity="0.6" /></linearGradient>
+                            <!-- surface bands fade to transparent at the bottom so the waves melt into the water (no hard edge) -->
                             <linearGradient id="fsh-surf-a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" :stop-color="pal.surfTop" stop-opacity="0.92" /><stop offset="1" :stop-color="pal.surfTop" stop-opacity="0" /></linearGradient>
                             <linearGradient id="fsh-surf-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" :stop-color="pal.surfBot" stop-opacity="0.85" /><stop offset="1" :stop-color="pal.surfBot" stop-opacity="0" /></linearGradient>
                         </defs>
 
+                        <!-- SKY -->
                         <rect :x="bg.x" :y="bg.top" :width="bg.w" :height="SURFACE_Y - bg.top + 20" fill="url(#fsh-sky)" />
                         <g v-if="sunEnabled" transform="translate(815 120)">
+                            <!-- soft, theme-coloured glow bloom behind the sun/moon (pulses gently for a realistic shimmer) -->
                             <g class="fsh-sunglow">
                                 <circle r="158" fill="url(#fsh-sun)" opacity="0.38" />
                                 <circle r="104" fill="url(#fsh-sun)" opacity="0.6" />
@@ -465,10 +574,12 @@ function close() {
                             <g class="fsh-cloud fsh-cloud-b" opacity="0.8"><ellipse cx="0" cy="0" rx="46" ry="20" /><ellipse cx="38" cy="7" rx="34" ry="17" /></g>
                         </g>
 
+                        <!-- UNDERWATER BACKDROP — your image, else the drawn deep scene -->
                         <image v-if="underwaterImage" :href="underwaterImage" :x="bg.x" :y="SURFACE_Y - 16" :width="bg.w" :height="bg.bottom - SURFACE_Y + 16" preserveAspectRatio="xMidYMid slice" filter="url(#fsh-ripple)" clip-path="url(#fsh-underclip)" />
                         <template v-else>
                             <rect :x="bg.x" :y="SURFACE_Y" :width="bg.w" :height="bg.bottom - SURFACE_Y" fill="url(#fsh-deep)" />
                             <g opacity="0.55"><polygon :points="`700,${SURFACE_Y} 760,${SURFACE_Y} 1020,1180 880,1180`" fill="url(#fsh-ray)" /><polygon :points="`320,${SURFACE_Y} 380,${SURFACE_Y} 240,1180 120,1180`" fill="url(#fsh-ray)" /></g>
+                            <!-- seabed: back ridge for depth, sandy floor, rocks, swaying weeds (anchored to the visible floor) -->
                             <path :d="ridgePath" :fill="pal.deepBot" opacity="0.55" />
                             <path :d="sandPath" :fill="pal.sand" />
                             <g :fill="pal.deepBot" opacity="0.8"><ellipse cx="170" :cy="bg.floor-100" rx="62" ry="26" /><ellipse cx="830" :cy="bg.floor-92" rx="74" ry="30" /><ellipse cx="540" :cy="bg.floor-80" rx="42" ry="17" /></g>
@@ -476,24 +587,30 @@ function close() {
                                 <g v-for="w in weeds" :key="'w'+w.id" class="fsh-weed" :style="{ '--delay': w.delay+'s' }" :transform="`translate(${w.x} ${bg.floor-108})`"><path :d="`M0 0 q-14 ${-w.h*0.5} 2 ${-w.h} q14 ${w.h*0.4} -2 0 Z`" /></g>
                             </g>
                         </template>
+                        <!-- soft blend so the underwater meets the surface gradually (no hard waterline cut) -->
                         <rect :x="bg.x" :y="SURFACE_Y" :width="bg.w" height="180" fill="url(#fsh-blend)" />
+                        <!-- depth: darken toward the seabed so it feels deep -->
                         <rect :x="bg.x" :y="SURFACE_Y" :width="bg.w" :height="bg.bottom - SURFACE_Y" fill="url(#fsh-depth)" />
+                        <!-- caustics: drifting light shimmer over the underwater (image OR drawn) so it always reads as water -->
                         <g class="fsh-caustics" :fill="pal.foam">
                             <ellipse class="fsh-caustic c1" cx="300" :cy="SURFACE_Y+150" rx="250" ry="22" />
                             <ellipse class="fsh-caustic c2" cx="720" :cy="SURFACE_Y+330" rx="290" ry="26" />
                             <ellipse class="fsh-caustic c3" cx="430" :cy="SURFACE_Y+540" rx="230" ry="20" />
                         </g>
+                        <!-- drifting fish (JS-positioned so the hook can grab a real one) + rising bubbles -->
                         <g v-for="f in decoFish" :key="f.id" :transform="`translate(${f.x} ${f.y})`">
+                            <!-- pulsating prize glow — bigger prizes get a bigger halo (top prize = huge) -->
                             <circle class="fsh-prizehalo" :r="f.haloR" :style="{ animationDelay: f.haloDelay.toFixed(2) + 's' }" fill="url(#fsh-halo)" />
+                            <!-- celebratory burst around the catch as it's reeled up (the "wow" moment — only once hooked) -->
                             <g v-if="f.caught" class="fsh-catch-fx" :fill="accent">
                                 <circle class="fsh-catch-ring" r="70" fill="none" :stroke="accent" stroke-width="4" />
                                 <g v-for="s in 8" :key="'s'+s" :transform="`rotate(${s * 45}) translate(0 -76)`">
                                     <path class="fsh-spark" :style="{ animationDelay: (s * 0.09).toFixed(2) + 's' }" d="M0 -11 L3 -3 L11 0 L3 3 L0 11 L-3 3 L-11 0 L-3 -3 Z" />
                                 </g>
                             </g>
-                            <g :transform="`scale(${(f.image ? 1 : f.dir * fishFaceSign) * f.size} ${f.size})`">
+                            <g :transform="`scale(${(f.image ? 1 : f.dir) * f.size} ${f.size})`">
                                 <g class="fsh-wiggle" :style="{ animationDuration: f.wDur.toFixed(2) + 's', animationDelay: f.wDelay.toFixed(2) + 's' }">
-                                    <g v-if="f.image" :filter="f.caught ? 'url(#fsh-catchglow)' : 'url(#fsh-fishglow)'"><foreignObject x="-52" y="-38" width="104" height="76"><img :src="f.image" style="width:100%;height:100%;object-fit:contain" alt="" /></foreignObject></g>
+                                    <g v-if="f.image" :filter="f.caught ? 'url(#fsh-catchglow)' : 'url(#fsh-fishglow)'"><image :href="f.image" x="-52" y="-38" width="104" height="76" preserveAspectRatio="xMidYMid meet" /></g>
                                     <g v-else :filter="f.caught ? 'url(#fsh-catchglow)' : 'url(#fsh-ripple-fish)'">
                                         <ellipse cx="0" cy="0" rx="26" ry="14" :fill="f.color" />
                                         <path d="M-22 0 l-20 -13 v26 z" :fill="f.color" />
@@ -504,32 +621,45 @@ function close() {
                         </g>
                         <circle v-for="b in bubbles" :key="'b'+b.id" class="fsh-bubble" :cx="b.x" :cy="bg.floor - 120" :r="b.r" :fill="pal.foam" :style="{ '--dur': b.dur+'s', '--delay': b.delay+'s' }" />
 
+                        <!-- LINE + HOOK -->
                         <path :d="linePath" fill="none" :stroke="textColor" stroke-width="2" opacity="0.85" />
                         <g :transform="`translate(${scene.hookX} ${scene.hookY})`">
                             <path d="M0 0 v16 a9 9 0 1 0 9 -9" fill="none" :stroke="textColor" stroke-width="3" stroke-linecap="round" />
                         </g>
+                        <!-- (the hooked catch is the real swimmer above — it grabs onto the line and rides it up) -->
 
+                        <!-- BACK swell — drawn BEHIND the boat so it nestles down between the waves -->
                         <g class="fsh-wave fsh-wave-back"><path :d="waveBackPath" fill="url(#fsh-surf-a)" /></g>
 
+                        <!-- BOAT + FISHERMAN + ROD — three independent layers so the rod (and the line
+                             that leaves its tip) always meets the hook, whatever art is used. Generated
+                             boat art should be JUST the boat: side-on, hull flat along the bottom edge,
+                             no rod, no people. It drifts gently left-right + bobs, sitting between the waves. -->
                         <g :transform="`translate(${500 + boat.x} ${boatBaseY}) rotate(${boat.rot}) scale(1 ${boat.sy}) translate(-500 ${boat.y})`">
-                            <foreignObject v-if="boatImage && boatOk" x="90" y="-150" width="820" height="385"><img :src="boatImage" style="width:100%;height:100%;object-fit:contain;object-position:center bottom" alt="" @error="boatOk = false" /></foreignObject>
+                            <!-- boat: your PNG (hull on the bottom edge), else a drawn boat -->
+                            <image v-if="boatImage && boatOk" :href="boatImage" x="90" y="-150" width="820" height="385" preserveAspectRatio="xMidYMax meet" @error="boatOk = false" />
                             <g v-else>
                                 <path d="M250 150 q250 96 500 0 l-58 104 q-190 70 -384 0 z" :fill="primary" />
                                 <path d="M250 150 q250 96 500 0 l-12 22 q-238 86 -476 0 z" fill="#fff" opacity="0.22" />
                             </g>
-                            <foreignObject v-if="fishermanSheet" x="452" y="-118" width="150" height="180"><SpriteCharacter :sheet="fishermanSheet" :frames="fishermanFrames" :frame="0" :chroma-key="spriteChroma" /></foreignObject>
+
+                            <!-- fisherman: stands on the deck (sprite/PNG, else a simple drawn one) -->
+                            <image v-if="fishermanFrameUrl" :href="fishermanFrameUrl" x="452" y="-118" width="150" height="180" preserveAspectRatio="xMidYMax meet" />
                             <g v-else transform="translate(540 30)">
                                 <rect x="-16" y="-4" width="34" height="20" rx="7" fill="#34495e" />
                                 <path d="M-16 -4 q16 -14 32 0 l-5 -46 q-11 -8 -22 0 z" :fill="primary" />
                                 <circle cx="0" cy="-58" r="15" fill="#e9b489" />
                                 <path d="M-15 -62 a15 10 0 0 1 30 0 z" fill="#caa15e" /><rect x="-19" y="-63" width="38" height="5" rx="2" fill="#caa15e" />
                             </g>
+
+                            <!-- rod: always drawn from the hands to the tip; the line starts at the SAME tip -->
                             <g :transform="`rotate(${scene.rodAngle} 527 24)`">
                                 <line x1="527" y1="24" :x2="rodTipLocal.x" :y2="rodTipLocal.y" stroke="#6d4c33" stroke-width="7" stroke-linecap="round" />
                                 <circle :cx="rodTipLocal.x" :cy="rodTipLocal.y" r="4" :fill="accent" />
                             </g>
                         </g>
 
+                        <!-- FRONT swell + foam — drawn OVER the boat's lower hull so it sits IN the water -->
                         <g class="fsh-wave fsh-wave-front"><path :d="waveFrontFill" fill="url(#fsh-surf-b)" /></g>
                         <g class="fsh-wave fsh-wave-front"><path :d="waveFrontLine" fill="none" :stroke="pal.foam" stroke-width="6" stroke-linecap="round" opacity="0.6" /></g>
                     </svg>
@@ -551,17 +681,20 @@ function close() {
                             <img v-if="introTitleImage" :src="introTitleImage" class="fsh-intro-logo" alt="" />
                             <div class="fsh-intro-welcome" :style="{ color: textColor }">{{ welcomeMsg }}</div>
                             <div class="fsh-intro-sub">{{ introSubtitle }}</div>
+
                             <div class="fsh-set-label">Choose your settings</div>
                             <div class="fsh-chip-row">
                                 <button class="fsh-chip" :style="mode !== 'auto' ? { borderColor: accent, background: accent, color: '#06223a' } : {}" @click="mode = 'all'">🎣 Manual</button>
                                 <button class="fsh-chip" :style="mode === 'auto' ? { borderColor: accent, background: accent, color: '#06223a' } : {}" @click="mode = 'auto'">⚡ Auto</button>
                             </div>
+
                             <div class="fsh-set-label">Speed</div>
                             <div class="fsh-chip-row">
                                 <button class="fsh-chip" :style="speed === 1 ? { borderColor: accent, background: accent, color: '#06223a' } : {}" @click="speed = 1">1×</button>
                                 <button class="fsh-chip" :style="speed === 1.5 ? { borderColor: accent, background: accent, color: '#06223a' } : {}" @click="speed = 1.5">1.5×</button>
                                 <button class="fsh-chip" :style="speed === 2 ? { borderColor: accent, background: accent, color: '#06223a' } : {}" @click="speed = 2">2×</button>
                             </div>
+
                             <button class="fsh-cta fsh-intro-start fsh-cast-pulse" :style="{ background: accent }" @click="startGame">{{ introButtonText }}</button>
                         </div>
                     </div>
@@ -598,7 +731,9 @@ function close() {
 <style scoped>
 .fsh-root { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: #07203a; padding: 0; }
 .fsh-root.is-mobile, .fsh-root.is-desktop { position: relative; inset: auto; background: transparent; padding: 0; }
+/* LIVE = true full-screen on every device — fills the whole viewport, no surrounding bars */
 .fsh-frame { position: relative; width: 100%; height: 100%; overflow: hidden; background: #07203a; }
+/* Admin demo previews keep a boxed device frame so they sit inside the settings page */
 .is-mobile .fsh-frame, .is-desktop .fsh-frame { width: auto; height: min(660px, 84vh); max-width: 94vw; border-radius: 18px; box-shadow: 0 24px 60px rgba(0,0,0,.5); transition: height .28s ease, width .28s ease; }
 .is-mobile .fsh-frame { aspect-ratio: 1000 / 1500; }
 .is-desktop .fsh-frame { height: min(560px, 80vh); aspect-ratio: 1500 / 1000; }
@@ -630,6 +765,7 @@ function close() {
 .fsh-intro-logo { max-width: 60%; max-height: 110px; object-fit: contain; }
 .fsh-intro-welcome { font-size: 1.4rem; font-weight: 900; text-shadow: 0 2px 10px rgba(0,0,0,.6); }
 .fsh-intro-sub { font-size: 0.9rem; color: rgba(255,255,255,.85); }
+/* intro settings card */
 .fsh-intro { overflow: hidden; }
 .fsh-intro-card { position: relative; z-index: 2; background: rgba(6,18,32,.9); border: 2px solid; border-radius: 22px; padding: 1.3rem 1.3rem 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 6px; max-width: 92%; --glow: #ffd54f; animation: fsh-glow-pulse 2.6s ease-in-out infinite; }
 @keyframes fsh-glow-pulse { 0%,100% { box-shadow: 0 0 20px -6px var(--glow); } 50% { box-shadow: 0 0 48px 0 var(--glow); } }
@@ -639,6 +775,7 @@ function close() {
 .fsh-chip:hover { background: rgba(255,255,255,.16); }
 .fsh-chip:active { transform: scale(.95); }
 .fsh-intro-start { margin-top: 14px; width: 100%; }
+/* rising bubbles behind the card */
 .fsh-dive-bubbles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .fsh-dive-bub { position: absolute; bottom: -24px; aspect-ratio: 1; border-radius: 50%; background: rgba(255,255,255,.28); animation: fsh-dive-rise linear infinite; }
 @keyframes fsh-dive-rise { 0% { transform: translateY(0) scale(.5); opacity: 0; } 12% { opacity: .5; } 100% { transform: translateY(-115vh) scale(1.1); opacity: 0; } }
@@ -646,11 +783,15 @@ function close() {
 @keyframes fsh-cast-pulse { 0%,100% { transform: scale(1); box-shadow: 0 6px 16px rgba(0,0,0,.4); } 50% { transform: scale(1.05); box-shadow: 0 8px 28px 1px rgba(255,255,255,.45); } }
 .fsh-fade-enter-active, .fsh-fade-leave-active { transition: opacity .3s; }
 .fsh-fade-enter-from, .fsh-fade-leave-to { opacity: 0; }
+
+/* ── ambient life (CSS — light + GPU-friendly) ── */
 .fsh-cloud { animation: fsh-drift-cloud linear infinite; }
 .fsh-cloud-a { animation-duration: 46s; transform: translate(200px, 110px); }
 .fsh-cloud-b { animation-duration: 64s; animation-delay: -20s; transform: translate(560px, 188px); }
 @keyframes fsh-drift-cloud { from { transform: translate(-160px, var(--cy, 110px)); } to { transform: translate(1160px, var(--cy, 110px)); } }
 .fsh-cloud-a { --cy: 110px; } .fsh-cloud-b { --cy: 188px; }
+
+.fsh-fish { animation: fsh-swim linear infinite; animation-duration: var(--dur); animation-delay: var(--delay); }
 .fsh-wiggle { transform-box: fill-box; transform-origin: center; animation: fsh-wiggle ease-in-out infinite; }
 @keyframes fsh-wiggle { 0%, 100% { transform: skewX(0deg) scaleY(1); } 25% { transform: skewX(9deg) scaleY(0.93); } 75% { transform: skewX(-9deg) scaleY(0.93); } }
 .fsh-sunglow { transform-box: fill-box; transform-origin: center; animation: fsh-sunglow 5s ease-in-out infinite; }
@@ -662,10 +803,14 @@ function close() {
 @keyframes fsh-catch-ring { 0% { transform: scale(0.45); opacity: 0.95; } 100% { transform: scale(1.9); opacity: 0; } }
 .fsh-spark { transform-box: fill-box; transform-origin: center; animation: fsh-spark 0.8s ease-in-out infinite; }
 @keyframes fsh-spark { 0%, 100% { opacity: 0; transform: scale(0.2); } 50% { opacity: 1; transform: scale(1); } }
+@keyframes fsh-swim { from { transform: translateX(-120px); } to { transform: translateX(1120px); } }
+
 .fsh-bubble { animation: fsh-rise ease-in infinite; animation-duration: var(--dur); animation-delay: var(--delay); opacity: 0; }
 @keyframes fsh-rise { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 0.5; } 100% { transform: translateY(-760px) translateX(18px); opacity: 0; } }
+
 .fsh-weed { transform-box: fill-box; transform-origin: bottom center; animation: fsh-sway 3.6s ease-in-out infinite; animation-delay: var(--delay); }
 @keyframes fsh-sway { 0%,100% { transform: rotate(-7deg); } 50% { transform: rotate(7deg); } }
+
 .fsh-wave path { animation: fsh-roll linear infinite; }
 .fsh-wave-back path { animation-duration: 7s; }
 .fsh-wave-front path { animation-duration: 4.5s; }
@@ -674,6 +819,8 @@ function close() {
 .fsh-wave-front { animation-duration: 4s; animation-delay: -1s; }
 @keyframes fsh-roll { from { transform: translateX(0); } to { transform: translateX(-480px); } }
 @keyframes fsh-swell { 0%,100% { transform: translateY(0); } 50% { transform: translateY(12px); } }
+
+/* caustics — drifting light shimmer over the underwater, so even a static image breathes like water */
 .fsh-caustic { mix-blend-mode: screen; opacity: 0; animation: fsh-caustic 8s ease-in-out infinite; }
 .fsh-caustic.c2 { animation-duration: 10.5s; animation-delay: -3s; }
 .fsh-caustic.c3 { animation-duration: 13s; animation-delay: -6s; }

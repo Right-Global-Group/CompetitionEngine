@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref, watch } from 'vue';
 import { createFootballSfx } from '@/games/footballSfx';
-import SpriteCharacter from '@/Components/Games/SpriteCharacter.vue';
+import { siteCreditLabel } from '@/utils/prizeLabel';
+import { useSpriteFrames } from '@/games/spriteFrames';
 
 /**
  * Football — original penalty shootout (our own design). Cinematic stadium, animated crowd,
@@ -33,8 +34,8 @@ const togglePreviewMode = () => { demoPreviewMode.value = demoPreviewMode.value 
 const actualPreviewMode = computed(() => props.demoMode ? demoPreviewMode.value : (props.previewMode || 'desktop'));
 const frameClass = computed(() => props.demoMode ? (actualPreviewMode.value === 'mobile' ? 'is-mobile' : 'is-desktop') : '');
 const frameStyle = computed(() => actualPreviewMode.value === 'mobile'
-    ? { width: '420px', maxWidth: '100%', height: '650px', border: '1px solid #444', borderRadius: '12px' }
-    : { width: '700px', maxWidth: '100%', height: '650px', border: '1px solid #444', borderRadius: '4px' });
+    ? { width: '420px', height: '650px', border: '1px solid #444', borderRadius: '12px' }
+    : { width: '700px', height: '650px', border: '1px solid #444', borderRadius: '4px' });
 
 const a = computed(() => props.assets || {});
 const titleText = computed(() => a.value.titleText || 'Step up to the spot');
@@ -67,6 +68,17 @@ const keeperFrames = computed(() => { if (!a.value.keeperSheet) return 5; const 
 const strikerFrames = computed(() => { if (!a.value.strikerSheet) return 3; const set = Number(a.value.strikerFrames) || 0; return set > 0 ? set : strikerAutoFrames.value; });
 const keeperImage = computed(() => a.value.keeperImage || '');
 const strikerImage = computed(() => a.value.strikerImage || '');
+
+// Pre-sliced per-frame data URLs, shown via native SVG <image> — see spriteFrames.ts for why
+// <foreignObject> is off-limits here (iOS Safari renders it unscaled, characters end up misplaced).
+const { urls: keeperFrameUrls } = useSpriteFrames(
+    () => keeperSheet.value, () => keeperFrames.value, () => spriteChroma.value,
+    () => { keeperSheetOk.value = false; },
+);
+const { urls: strikerFrameUrls } = useSpriteFrames(
+    () => strikerSheet.value, () => strikerFrames.value, () => spriteChroma.value,
+    () => { strikerSheetOk.value = false; },
+);
 const kitColor = computed(() => a.value.primaryColor || '#e11d48');     // striker kit
 const accent = computed(() => a.value.accentColor || '#22e1b3');         // our accent (teal)
 const keeperKit = computed(() => a.value.goalColor && a.value.goalColor !== '#eeeeee' ? a.value.goalColor : '#f59e0b');
@@ -129,6 +141,7 @@ const topPrizeLabel = computed(() => {
         if (!v || /ticket/i.test(name)) return name;
         return `${name ? name + ' · ' : ''}${Math.floor(v)} Free Ticket${v == 1 ? '' : 's'}`;
     }
+    const sc = siteCreditLabel(p.prize_type, v); if (sc) return sc;
     const money = v ? `£${v % 1 === 0 ? v : v.toFixed(2)}` : '';
     // Avoid showing the amount twice when the prize name already includes a £ figure (e.g. "£0.10 Cash").
     return (!money || /£\s*\d/.test(name)) ? name : `${name} · ${money}`;
@@ -175,9 +188,11 @@ const fans = (() => {
 })();
 
 // Camera flashes — sporadic bright pops scattered across the crowd, like phones & cameras going off.
+// Kept modest: every flash is an infinitely-animating gradient circle, and older phones pay for each
+// one on every SVG repaint — 48 reads the same as 95 at a fraction of the cost.
 const flashes = (() => {
     const out: any[] = [];
-    for (let i = 0; i < 95; i++) {
+    for (let i = 0; i < 48; i++) {
         const mega = i % 6 === 0;
         out.push({
             x: +(6 + ((i * 137) % 988)).toFixed(1),
@@ -245,12 +260,14 @@ function buildPens() {
         const iw = t?.instant_win;
         const won = isWin(t);
         const cat: any = won ? categoryFor(iw) : null;
+        const val = Number(iw?.value || cat?.value || 0);
+        const pType = iw?.prize_type ?? cat?.prize_type;
         return {
             id: t.id ?? t.number,
             number: String(t.number ?? t.id ?? ''),
             win: won,
-            prize: won ? String(iw.prize) : '',
-            value: Number(iw?.value || cat?.value || 0),
+            prize: won ? (siteCreditLabel(pType, val) ?? String(iw.prize)) : '',
+            value: val,
             image: iw?.image_path || cat?.image_path || '',
             // Ticket bundles carry a ticket count, not a £ value — flagged so the reveal never shows £.
             isBundle: won && ((iw?.prize_type ?? cat?.prize_type) === 'ticket_bundle'),
@@ -351,18 +368,25 @@ const keepArmRTf = computed(() => kicked.value ? 'rotate(-58deg)' : '');
 // the walk cycle. To walk or dive RIGHT we just MIRROR the same frames (flipX) — so a sheet only needs
 // one walking direction + one dive, half as many frames for the AI to keep consistent.
 const keeperWalk = ref(0); // steady flip-book tick — even timing keeps the leg cycle from stuttering
-let keeperRaf = 0, keeperT0 = 0;
+let keeperRaf = 0, keeperT0 = 0, keeperLast = 0;
 const keeperPhase = ref(2.5);
 // Patrol: starts ~60% right, walks LEFT, switches and walks RIGHT. Position glides every frame on the
 // GPU (translate3d); the leg frames flip-book over the top at a steady rate — the competitor's recipe.
+// Reactive writes are capped at ~30fps (a patrol glide can't use more) and the loop only runs while
+// the modal is OPEN — it used to tick at 60fps for the whole checkout visit, dragging weak devices.
 function keeperLoop(t: number) {
     if (!keeperT0) keeperT0 = t;
-    const elapsed = (t - keeperT0) / 1000;
-    keeperPhase.value = 2.5 + elapsed * 0.9;
-    if (!kicked.value) keeperWalk.value = Math.floor(elapsed * 7); // ~7fps leg cycle
+    if (t - keeperLast >= 33) {
+        keeperLast = t;
+        const elapsed = (t - keeperT0) / 1000;
+        keeperPhase.value = 2.5 + elapsed * 0.9;
+        if (!kicked.value) keeperWalk.value = Math.floor(elapsed * 7); // ~7fps leg cycle
+    }
     keeperRaf = requestAnimationFrame(keeperLoop);
 }
-keeperRaf = requestAnimationFrame(keeperLoop);
+function startKeeperLoop() { if (!keeperRaf) keeperRaf = requestAnimationFrame(keeperLoop); }
+function stopKeeperLoop() { if (keeperRaf) cancelAnimationFrame(keeperRaf); keeperRaf = 0; }
+watch(() => props.modelValue, (open) => { open ? startKeeperLoop() : stopKeeperLoop(); }, { immediate: true });
 const keeperMovingRight = computed(() => Math.cos(keeperPhase.value) >= 0);
 // Idle = he PATROLS his line: glides right→left→right (the body translation is what reads as travel),
 // his legs cycle while he moves, and he settles to a stand at each turn. GPU-composited so it's smooth.
@@ -378,6 +402,10 @@ const keeperFrame = computed(() => {
 const keeperFlip = computed(() => kicked.value ? (keepLand.value.x - KEEP.x) > 25 : keeperMovingRight.value);
 // striker frames: 0 stand, 1 run, 2 kick.
 const strikerFrame = computed(() => (!moving.value ? 0 : !kicked.value ? Math.min(1, strikerFrames.value - 1) : Math.min(2, strikerFrames.value - 1)));
+// Current frame as a data URL (empty until the sheet is sliced — the drawn figure covers the gap).
+// Clamped because the urls array can lag one tick behind a frame-count change while re-slicing.
+const keeperFrameUrl = computed(() => keeperFrameUrls.value[Math.min(keeperFrame.value, keeperFrameUrls.value.length - 1)] || '');
+const strikerFrameUrl = computed(() => strikerFrameUrls.value[Math.min(strikerFrame.value, strikerFrameUrls.value.length - 1)] || '');
 const trailTf = computed(() => kicked.value ? `translate(${SPOT.x}px, ${SPOT.y}px)` : '');
 // Striker: stands by behind-left of the ball, then runs onto it when he strikes (the .run kick swings).
 const strikerSvgTf = computed(() => moving.value
@@ -412,9 +440,15 @@ function playWelcome() {
 }
 function startGame() { cancelSpeech(); showIntro.value = false; sfx.resume(); }
 
-function step() { console.log('[FB] step()', { phase: phase.value }); if (phase.value === 'ready') { sfx.resume(); phase.value = 'aim'; console.log('[FB] phase -> aim'); } }
+// First-shot onboarding: a pointing finger + tap ripple walk the player through the three steps
+// (step up → tap to aim → shoot). They disappear for good once the first penalty is struck.
+const showHints = ref(true);
+
+function step() { if (phase.value === 'ready') { sfx.resume(); phase.value = 'aim'; } }
 function onAim(e: PointerEvent) {
-    if (phase.value !== 'aim') { console.log('[FB] onAim ignored, phase=', phase.value); return; }
+    // Live during BOTH aim and power: the first tap arms the power meter, and any tap after that
+    // simply re-places the shot — players expect to be able to change their mind before shooting.
+    if (phase.value !== 'aim' && phase.value !== 'power') return;
     // Map the tap to SVG user-space via the live coordinate matrix, so the ball flies EXACTLY where
     // you tapped regardless of how the scene is scaled/letterboxed (contain/cover/any viewBox).
     const el = e.currentTarget as SVGGraphicsElement;
@@ -425,11 +459,9 @@ function onAim(e: PointerEvent) {
     pt.x = e.clientX; pt.y = e.clientY;
     const loc = pt.matrixTransform(ctm.inverse());
     aim.value = { x: Math.max(GOAL.x1 + 34, Math.min(GOAL.x2 - 34, loc.x)), y: Math.max(GOAL.y1 + 30, Math.min(GOAL.y2 - 18, loc.y)) };
-    console.log('[FB] onAim TAP', { client: [Math.round(e.clientX), Math.round(e.clientY)], loc: [Math.round(loc.x), Math.round(loc.y)], aim: JSON.stringify(aim.value) });
-    startPower();
+    if (phase.value === 'aim') startPower();
 }
 function startPower() {
-    console.log('[FB] startPower() -> phase=power, aim=', JSON.stringify(aim.value));
     phase.value = 'power'; power.value = 0; powerDir = 1;
     const loop = () => { power.value += powerDir * 3; if (power.value >= 100) { power.value = 100; powerDir = -1; } if (power.value <= 0) { power.value = 0; powerDir = 1; } rafId = requestAnimationFrame(loop); };
     rafId = requestAnimationFrame(loop);
@@ -447,6 +479,7 @@ function makeParticles() {
 
 async function strike() {
     if (phase.value !== 'power' || !current.value) return;
+    showHints.value = false;                        // they've done the full flow once — retire the finger guides
     stopPower();
     phase.value = 'shooting';                       // striker starts his run-up to the ball
     cue('whistle', a.value.whistleSound);
@@ -478,20 +511,23 @@ async function strike() {
         if (phase.value === 'result' && current.value && !current.value.win) next();
     }
 }
-function next() { console.log('[FB] next()', { index: index.value, total: total.value }); showPrize.value = false; if (index.value < total.value - 1) { index.value++; resetShot(); } else finish(); }
+function next() { showPrize.value = false; if (index.value < total.value - 1) { index.value++; resetShot(); } else finish(); }
 function skipAll() { finish(); }
-function finish() { console.log('[FB] finish() -> done, wins=', wins.value.length); phase.value = 'done'; showPrize.value = false; emit('wins-collected', wins.value.map((w) => ({ prize: w.prize, value: w.value }))); }
-function close() {
-    stopPower(); cancelSpeech(); sfx.stopCrowd();
-    if (props.demoMode) { buildPens(); showIntro.value = introEnabled.value; return; }
-    emit('update:modelValue', false);
-}
+function finish() { phase.value = 'done'; showPrize.value = false; emit('wins-collected', wins.value.map((w) => ({ prize: w.prize, value: w.value }))); }
+function close() { stopPower(); cancelSpeech(); sfx.stopCrowd(); emit('update:modelValue', false); }
 onBeforeUnmount(() => { stopPower(); cancelSpeech(); sfx.dispose(); cancelAnimationFrame(keeperRaf); });
 </script>
 
 <template>
     <Teleport to="body" :disabled="demoMode">
     <div v-if="modelValue" class="fbg-root" :class="demoMode ? 'fbg-demo' : 'fbg-fixed'">
+
+        <!-- Studio preview chrome (demoMode only) — phone/desktop device frame like the other games -->
+        <div v-if="demoMode" class="fbg-demo-bar">
+            <span class="fbg-demo-bar-label">Preview Mode:</span>
+            <button class="fbg-demo-btn" :class="actualPreviewMode === 'mobile' ? 'is-on' : 'is-off'" @click="togglePreviewMode">📱 Mobile</button>
+            <button class="fbg-demo-btn" :class="actualPreviewMode === 'desktop' ? 'is-on' : 'is-off'" @click="togglePreviewMode">💻 Desktop</button>
+        </div>
 
         <div :class="demoMode ? 'fbg-demo-device fbg-modal-zoom' : 'contents'" :style="demoMode ? frameStyle : undefined">
             <div v-if="demoMode && actualPreviewMode === 'mobile'" class="fbg-demo-statusbar">
@@ -596,10 +632,12 @@ onBeforeUnmount(() => { stopPower(); cancelSpeech(); sfx.dispose(); cancelAnimat
 
                 <!-- GOALKEEPER -->
                 <g :filter="isNeon ? 'url(#fbg-neonM)' : undefined" :style="{ transform: keepTf, transformBox: 'view-box', transformOrigin: '500px 268px', transition: kicked ? 'transform .5s cubic-bezier(.3,.7,.4,1)' : 'none' }">
-                    <g v-if="keeperSheet && keeperSheetOk" :style="{ transform: keeperShuffleTf, willChange: 'transform' }">
-                        <foreignObject x="425" y="160" width="150" height="190">
-                            <SpriteCharacter :sheet="keeperSheet" :frames="keeperFrames" :frame="keeperFrame" :flip-x="keeperFlip" :chroma-key="spriteChroma" @error="keeperSheetOk = false" />
-                        </foreignObject>
+                    <g v-if="keeperSheet && keeperSheetOk && keeperFrameUrl" :style="{ transform: keeperShuffleTf, willChange: 'transform' }">
+                        <!-- Frames are drawn facing LEFT; the mirror is a native SVG transform around the
+                             box centre (x 425 + 150/2 = 500) so it works on iOS Safari too. -->
+                        <image :href="keeperFrameUrl" x="425" y="160" width="150" height="190"
+                            preserveAspectRatio="xMidYMax meet"
+                            :transform="keeperFlip ? 'translate(1000 0) scale(-1 1)' : undefined" />
                     </g>
                     <image v-else-if="keeperImage" :href="keeperImage" x="448" y="196" width="104" height="140" />
                     <g v-else class="fbg-keeper-tall">
@@ -646,9 +684,8 @@ onBeforeUnmount(() => { stopPower(); cancelSpeech(); sfx.dispose(); cancelAnimat
                     :style="{ transform: strikerShadowTf, transformBox: 'view-box', transformOrigin: '0px 0px', transition: 'transform .5s cubic-bezier(.4,.1,.3,1)' }" />
                 <!-- STRIKER (in-scene so it scales & stays aligned with the pitch at any framing) -->
                 <g class="fbg-striker-svg" :class="{ run: moving }" :filter="isNeon ? 'url(#fbg-neonM)' : undefined" :style="{ transform: strikerSvgTf, transformBox: 'view-box', transformOrigin: '0px 0px', transition: 'transform .5s cubic-bezier(.4,.1,.3,1)' }">
-                    <foreignObject v-if="strikerSheet && strikerSheetOk" x="0" y="0" width="80" height="120">
-                        <SpriteCharacter :sheet="strikerSheet" :frames="strikerFrames" :frame="strikerFrame" :chroma-key="spriteChroma" @error="strikerSheetOk = false" />
-                    </foreignObject>
+                    <image v-if="strikerSheet && strikerSheetOk && strikerFrameUrl" :href="strikerFrameUrl"
+                        x="0" y="0" width="80" height="120" preserveAspectRatio="xMidYMax meet" />
                     <image v-else-if="strikerImage" :href="strikerImage" x="0" y="0" width="80" height="120" />
                     <g v-else>
                         <path d="M40 60 q-4 22 -10 40" stroke="#e9b489" stroke-width="9" stroke-linecap="round" fill="none" />
@@ -699,8 +736,23 @@ onBeforeUnmount(() => { stopPower(); cancelSpeech(); sfx.dispose(); cancelAnimat
                         :style="{ '--dx': p.dx + 'px', '--dy': p.dy + 'px', '--rot': p.rot + 'deg', animationDelay: p.delay + 's' }" />
                 </g>
 
-                <!-- aim capture — CTM-mapped so the ball flies exactly where you tap, at any framing -->
-                <rect v-if="phase === 'aim'" x="-3000" y="-3000" width="7000" height="7000" fill="transparent" style="cursor: crosshair" @pointerdown="onAim" />
+                <!-- aim capture — CTM-mapped so the ball flies exactly where you tap, at any framing.
+                     Stays live through the POWER phase so a second tap re-places the shot. -->
+                <rect v-if="phase === 'aim' || phase === 'power'" x="-3000" y="-3000" width="7000" height="7000" fill="transparent" style="cursor: crosshair" @pointerdown="onAim" />
+
+                <!-- first-shot guide: a rippling tap-target + finger in the goal (SMIL-animated so it
+                     behaves on iOS Safari); pointer-events off so it never eats the aim tap -->
+                <g v-if="phase === 'aim' && showHints" pointer-events="none">
+                    <circle :cx="GOAL.x1 + 95" :cy="GOAL.y1 + 70" fill="none" :stroke="accent" stroke-width="5">
+                        <animate attributeName="r" values="12;44" dur="1.1s" repeatCount="indefinite" />
+                        <animate attributeName="opacity" values="0.95;0" dur="1.1s" repeatCount="indefinite" />
+                    </circle>
+                    <circle :cx="GOAL.x1 + 95" :cy="GOAL.y1 + 70" r="9" :fill="accent" opacity="0.9" />
+                    <text :x="GOAL.x1 + 112" :y="GOAL.y1 + 132" font-size="52" text-anchor="middle">
+                        👆
+                        <animateTransform attributeName="transform" type="translate" values="0 0; 0 -14; 0 0" dur="0.9s" repeatCount="indefinite" />
+                    </text>
+                </g>
             </svg>
 
             <div class="fbg-hud">PENALTY {{ Math.min(index + 1, total) }}/{{ total }} <span :style="{ color: accent }">·</span> ⚽ {{ scored }}</div>
@@ -724,10 +776,13 @@ onBeforeUnmount(() => { stopPower(); cancelSpeech(); sfx.dispose(); cancelAnimat
         </div>
 
         <div class="fbg-lower">
+            <!-- first-shot guide: bouncing finger points at the button the player needs next -->
+            <div v-if="showHints && (phase === 'ready' || phase === 'power')" class="fbg-finger" aria-hidden="true">👆</div>
             <button v-if="phase === 'ready'" class="fbg-cta" :style="{ background: kitColor, color: textColor }" @click="step">Step up ⚽</button>
-            <p v-else-if="phase === 'aim'" class="fbg-hint" :style="{ color: textColor }">Tap where you want to place it 🎯</p>
+            <p v-else-if="phase === 'aim'" class="fbg-hint" :style="{ color: textColor }">Tap the goal where you want the ball 🎯</p>
             <button v-else-if="phase === 'power'" class="fbg-cta fbg-shoot" :style="{ background: accent, color: '#04231b' }" @click="strike">SHOOT! 💥</button>
             <button v-else-if="phase === 'shooting'" class="fbg-cta" disabled :style="{ color: textColor }">Striking…</button>
+            <p v-if="phase === 'power'" class="fbg-subhint" :style="{ color: textColor }">Not happy? Tap the goal to re-aim</p>
             <button v-if="phase === 'ready' && total > 1" class="fbg-skip" :style="{ color: textColor }" @click="skipAll">Skip remaining</button>
         </div>
 
@@ -770,7 +825,7 @@ onBeforeUnmount(() => { stopPower(); cancelSpeech(); sfx.dispose(); cancelAnimat
         <transition name="fade">
             <div v-if="showPrize && current" class="fbg-overlay">
                 <div class="fbg-card" :style="{ borderColor: accent }">
-                    <div class="fbg-goal" :style="{ color: accent }">GOAL! ⚽��</div>
+                    <div class="fbg-goal" :style="{ color: accent }">GOAL! ⚽🔥</div>
                     <div class="fbg-visual"><img v-if="current.image" :src="current.image" alt="prize" /><img v-else-if="introTitleImage" :src="introTitleImage" alt="logo" /><span v-else>🏆</span></div>
                     <div class="fbg-won" :style="{ color: textColor }">{{ winText }}</div>
                     <div class="fbg-name" :style="{ color: accent }">{{ current.prize }}</div>
@@ -812,12 +867,6 @@ onBeforeUnmount(() => { stopPower(); cancelSpeech(); sfx.dispose(); cancelAnimat
 </template>
 
 <style scoped>
-
-.fbg-demo-device {
-    min-width: 0;
-    max-width: 100%;
-}
-
 /* LIVE: full-screen modal overlay (teleported to body). PREVIEW (demoMode): inline in the pane. */
 .fbg-fixed { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 0; background: #070b1c; }
 .fbg-fixed .fbg { width: 100%; max-width: min(1560px, 100vw); height: 100dvh; max-height: 100dvh; border-radius: 0; display: flex; flex-direction: column; overflow: hidden; }
@@ -827,27 +876,8 @@ onBeforeUnmount(() => { stopPower(); cancelSpeech(); sfx.dispose(); cancelAnimat
 .fbg-inline { position: relative; width: 100%; }
 
 /* ── Studio preview device-frame (demoMode) — phone/desktop chrome, like the other game modals ── */
-.fbg-demo { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center;
-    width: 100%;          /* ADD THIS */
-    min-width: 0;         /* ADD THIS */
-    overflow: hidden;     /* ADD THIS */
-}
-
-.fbg-demo-bar { 
-    margin-bottom: 1rem; 
-    display: flex; 
-    align-items: center; 
-    gap: 0.75rem; 
-    background: #1f2937; 
-    border-radius: 0.5rem; 
-    padding: 0.5rem 0.75rem;
-    width: 100%;          /* ADD THIS */
-    box-sizing: border-box; /* ADD THIS */
-    flex-wrap: wrap;      /* ADD THIS */
-}
+.fbg-demo { display: flex; flex-direction: column; align-items: center; }
+.fbg-demo-bar { margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; background: #1f2937; border-radius: 0.5rem; padding: 0.5rem 0.75rem; }
 .fbg-demo-bar-label { color: #fff; font-size: 0.875rem; font-weight: 500; }
 .fbg-demo-btn { padding: 0.25rem 0.75rem; border: none; border-radius: 0.25rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: background-color .15s ease; }
 .fbg-demo-btn.is-on { background: #3b82f6; color: #fff; }
@@ -975,12 +1005,19 @@ onBeforeUnmount(() => { stopPower(); cancelSpeech(); sfx.dispose(); cancelAnimat
 .fbg-particle { transform-box: fill-box; transform-origin: center; animation: fbg-burst 0.9s ease-out forwards; }
 @keyframes fbg-burst { 0% { transform: translate(0,0) rotate(0); opacity: 1; } 100% { transform: translate(var(--dx), var(--dy)) rotate(var(--rot)); opacity: 0; } }
 
-.fbg-hud { position: absolute; top: 8px; left: 10px; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.1em; color: rgba(255,255,255,.88); background: rgba(0,0,0,.35); padding: 3px 8px; border-radius: 5px; }
+.fbg-hud { position: absolute; top: 8px; left: 10px; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.1em; color: rgba(255,255,255,.88); background: rgba(0,0,0,.35); padding: 3px 8px; border-radius: 5px; pointer-events: none; }
 .fbg-flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
 .fbg-flash.on { animation: fbg-flash 0.4s ease; }
 @keyframes fbg-flash { 0% { opacity: 0; } 18% { opacity: 0.75; } 100% { opacity: 0; } }
 
-.fbg-lower { position: absolute; bottom: 0; left: 0; right: 0; z-index: 10; padding: 1.4rem 0.9rem 0.9rem; text-align: center; background: linear-gradient(to top, rgba(0,0,0,.62), rgba(0,0,0,0)); }
+/* pointer-events: none on the bar, auto on its buttons — so during the aim/power phases a tap on the
+   bottom scrim (or the hint text) still reaches the goal-aim capture rect behind it. */
+.fbg-lower { position: absolute; bottom: 0; left: 0; right: 0; z-index: 10; padding: 1.4rem 0.9rem 0.9rem; text-align: center; background: linear-gradient(to top, rgba(0,0,0,.62), rgba(0,0,0,0)); pointer-events: none; }
+.fbg-lower .fbg-cta, .fbg-lower .fbg-skip { pointer-events: auto; }
+/* first-shot guide finger — hovers over the CTA's right edge like a hand about to tap it */
+.fbg-finger { position: absolute; left: calc(50% + 52px); bottom: 0.4rem; font-size: 2.3rem; line-height: 1; z-index: 11; animation: fbg-finger-bob 0.9s ease-in-out infinite; filter: drop-shadow(0 4px 8px rgba(0,0,0,.65)); }
+@keyframes fbg-finger-bob { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-12px) scale(1.08); } }
+.fbg-subhint { margin-top: 0.45rem; font-size: 0.78rem; font-weight: 700; opacity: 0.85; text-shadow: 0 1px 4px rgba(0,0,0,.7); }
 .fbg-cta { border: none; border-radius: 0.72rem; padding: 0.72rem 1.9rem; font-weight: 900; font-size: 1rem; letter-spacing: 0.03em; cursor: pointer; transition: transform .12s ease; box-shadow: 0 6px 20px rgba(0,0,0,.35); }
 .fbg-cta:not(:disabled):hover { transform: translateY(-2px); }
 .fbg-cta:disabled { opacity: 0.7; cursor: default; }

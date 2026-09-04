@@ -1,3 +1,7 @@
+<script setup>
+import GameEmbed from '@/Components/Ultra/GameEmbed.vue';
+</script>
+
 <template>
 <section id="ecosystem" class="cv">
   <div class="wrap">
@@ -8,7 +12,7 @@
     <div class="bento" id="bento">
       <div class="card b-gs"><span class="only">Only on CompEngine</span>
         <h3>Game Studio</h3>
-        <div class="viz"><div class="slot lg" data-slot="bento" style="--slot-primary:#f4a558;--slot-accent:#d97aa8;width:min(100%,520px);margin:0 auto"></div></div>
+        <div class="viz viz-game"><GameEmbed game="slots" mode="tile" /></div>
         <p>Theme it, brand it, preview it live. No developers, no presets.</p>
         <a href="#game-studio" class="link" data-track="ecosystem_try_it">Try it live ↑</a>
       </div>

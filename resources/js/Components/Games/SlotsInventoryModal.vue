@@ -9,6 +9,7 @@ interface InstantWin {
     won?: boolean;
     description?: string;
     ticketNumber?: string;
+    no_auto_credit?: boolean;
 }
 
 interface SlotsAssets {
@@ -257,8 +258,11 @@ const scanningLineStyle = computed(() => ({
                                         }">
                                             Value
                                         </span>
-                                        <span class="font-black text-lg" :style="valueTextStyle">
-                                            £{{ prize.value.toLocaleString() }}
+                                        <span v-if="!prize.no_auto_credit" class="font-black text-lg" :style="valueTextStyle">
+                                            &pound;{{ prize.value.toLocaleString() }}
+                                        </span>
+                                        <span v-else class="font-black text-lg" :style="valueTextStyle">
+                                            {{ prize.name }}
                                         </span>
                                     </div>
                                 </div>
@@ -327,7 +331,7 @@ const scanningLineStyle = computed(() => ({
                                             Value
                                         </span>
                                         <span class="font-black text-lg" :style="valueTextStyle">
-                                            £{{ prize.value.toLocaleString() }}
+                                            {{ prize.no_auto_credit ? 'Up to ' : '' }}&pound;{{ prize.value.toLocaleString() }}
                                         </span>
                                     </div>
                                 </div>

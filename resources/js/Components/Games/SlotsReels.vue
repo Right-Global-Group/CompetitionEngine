@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, computed } from 'vue';
+import { usePage } from '@inertiajs/vue3';
 import gsap from 'gsap';
 
 interface Prize {
@@ -7,6 +8,8 @@ interface Prize {
     name: string;
     image: string;
     value: number;
+    no_auto_credit?: boolean;
+    is_ticket_bundle?: boolean;
 }
 
 interface Props {
@@ -14,7 +17,6 @@ interface Props {
     prizes: Prize[];
     winningPrize?: Prize | null;
     demoMode?: boolean;
-    previewMode?: 'mobile' | 'desktop';
     canSpin?: boolean;
     colors?: {
         primary: string;
@@ -23,11 +25,10 @@ interface Props {
         text: string;
     };
     lastWin?: number;
+    totalFreeTickets?: number;
     spinsLeft?: number;
     spinButtonImage?: string;
     titleImage?: string;
-    titleText?: string;
-    titleColor?: string;
     background?: string;
     animateTitle?: boolean;
     showMachine?: boolean;
@@ -40,13 +41,14 @@ interface Props {
     prizesCardBorderColor?: string;
     prizesCardBgColor?: string;
     prizesValueColor?: string;
+    winGlowColor?: string;
+    machineBorderColor?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
     prizes: () => [],
     winningPrize: null,
     demoMode: false,
-    previewMode: 'desktop',
     canSpin: true,
     colors: () => ({
         primary: '#00CED1',
@@ -55,11 +57,10 @@ const props = withDefaults(defineProps<Props>(), {
         text: '#FFFFFF'
     }),
     lastWin: 0,
+    totalFreeTickets: 0,
     spinsLeft: 0,
     spinButtonImage: '',
     titleImage: '',
-    titleText: 'LUCKY SLOTS',
-    titleColor: '#00FFFF',
     background: '',
     animateTitle: false,
     showMachine: true,
@@ -71,17 +72,28 @@ const props = withDefaults(defineProps<Props>(), {
     prizesTitleColor: '#FFD700',
     prizesCardBorderColor: '#FFD700',
     prizesCardBgColor: '#374151',
-    prizesValueColor: '#10B981'
+    prizesValueColor: '#10B981',
+    winGlowColor: '#FFD700',
+    machineBorderColor: '#00BFFF'
 });
 
+// Convert hex to RGB components for CSS custom properties
+function hexToRgb(hex: string): string {
+    const h = hex.replace('#', '');
+    const r = parseInt(h.substring(0, 2), 16);
+    const g = parseInt(h.substring(2, 4), 16);
+    const b = parseInt(h.substring(4, 6), 16);
+    return `${r}, ${g}, ${b}`;
+}
+
+const winGlowRgb = computed(() => hexToRgb(props.winGlowColor || '#FFD700'));
+
 const emit = defineEmits<{
-    'spin-complete': [];
+    'spin-complete': [payload: { reel1: Prize; reel2: Prize; reel3: Prize; paylineMatch: boolean }];
     'spin': [];
 }>();
 
-// Mobile/Desktop mode
-const isMobile = computed(() => props.previewMode === 'mobile');
-
+const page = usePage();
 const reel1 = ref<HTMLElement | null>(null);
 const reel2 = ref<HTMLElement | null>(null);
 const reel3 = ref<HTMLElement | null>(null);
@@ -90,6 +102,8 @@ const bubblesContainer = ref<HTMLElement | null>(null);
 const showPrizesModal = ref(false);
 const showWinReveal = ref(false);
 const showGoldFlames = ref(false);
+const currentTenant = computed(() => page.props.currentTenant || 'vortex');
+
 
 // Audio context for Web Audio API
 let audioCtx: AudioContext | null = null;
@@ -117,51 +131,70 @@ function playSound(freq: number, dur: number, type: OscillatorType = 'sine', vol
 function playTick() { playSound(300 + Math.random() * 200, 0.05, 'square', 0.1); }
 function playStop() { playSound(200, 0.15, 'triangle', 0.2); }
 
-// Theme colors derived from props (reactive)
+// Lucky Fish theme - Fixed configuration
 const luckyFishTheme = computed(() => ({
-    bg: `linear-gradient(180deg, ${props.colors.secondary} 0%, ${adjustColor(props.colors.secondary, -30)} 50%, ${adjustColor(props.colors.secondary, -60)} 100%)`,
-    title: props.titleText,
-    machine: props.machineBgColor,
-    border: props.titleColor || props.colors.accent,
+    bg: 'linear-gradient(180deg, #006994 0%, #004466 50%, #002233 100%)',
+    title: '🐟 LUCKY FISH 🐟',
+    machine: 'linear-gradient(145deg, #1a5a7a 0%, #0d3d52 50%, #082530 100%)',
+    border: props.machineBorderColor || '#00BFFF',
     reelBg: 'linear-gradient(180deg, #000 0%, #0a1929 50%, #000 100%)',
 }));
-
-// Helper to darken/lighten colors
-function adjustColor(color: string, amount: number): string {
-    // Simple hex color adjustment
-    if (!color || !color.startsWith('#')) return color;
-    const hex = color.replace('#', '');
-    const num = parseInt(hex, 16);
-    const r = Math.max(0, Math.min(255, (num >> 16) + amount));
-    const g = Math.max(0, Math.min(255, ((num >> 8) & 0x00FF) + amount));
-    const b = Math.max(0, Math.min(255, (num & 0x0000FF) + amount));
-    return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
-}
 
 // Demo emojis for slots preview
 const demoEmojis = ['🍒', '🍋', '🍊', '🍉', '🍇', '🍓', '💎', '⭐', '🔔', '7️⃣', '💰', '🎰'];
 
+function emojiSvg(emoji: string): string {
+    return `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">${emoji}</text></svg>`)}`;
+}
+
+// A losing spin needs an "odd one out" symbol. A comp with only 1 or 2 instant-win
+// categories cannot supply that from real prizes alone, and the old fallbacks collapsed
+// every loss into a 3-in-a-row of the same prize (looked like a jackpot, no win fired,
+// and every spin was logged as a mismatch). So when there are fewer than 3 real prizes
+// we add ONE decoy "no win" symbol (a red cross) to the reel strip. It uses a NEGATIVE id
+// so it can never collide with a category id, carries no value, is never a winning
+// target, and never appears in the prizes modal.
+const DECOY_ID = -1;
+const decoyPrize: Prize = {
+    id: DECOY_ID,
+    name: '❌',
+    image: emojiSvg('❌'),
+    value: 0,
+    no_auto_credit: true,
+};
+
+const decoyPrizes = computed<Prize[]>(() => {
+    const real = props.prizes?.length ?? 0;
+    return real > 0 && real < 3 ? [decoyPrize] : [];
+});
+
+// Every symbol that can appear on the reel strip: real prizes plus the decoy when padded.
+const reelPool = computed<Prize[]>(() => [...(props.prizes ?? []), ...decoyPrizes.value]);
+
 function getRandomPrize(): Prize {
-    // In demo mode with no real prizes, use random emojis
-    if (props.demoMode && (!props.prizes || props.prizes.length === 0)) {
+    // If no prizes available (demo mode OR empty prizes array), use random emojis
+    if (!props.prizes || props.prizes.length === 0) {
         const emoji = demoEmojis[Math.floor(Math.random() * demoEmojis.length)];
         return {
             id: Math.random(),
             name: emoji,
-            image: `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">${emoji}</text></svg>`,
+            image: `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">${emoji}</text></svg>`)}`,
             value: 0
         };
     }
 
-    // Get a random prize from available prizes
-    const prize = props.prizes[Math.floor(Math.random() * props.prizes.length)];
+    // Get a random symbol from the reel pool (real prizes + decoys when padded)
+    const pool = reelPool.value;
+    const prize = pool[Math.floor(Math.random() * pool.length)];
 
-    // If prize has no image or empty image, generate emoji fallback
-    if (!prize.image || prize.image.trim() === '') {
+    // If prize is undefined or has no image/empty image, generate emoji fallback
+    if (!prize || !prize.image || prize.image.trim() === '') {
         const emoji = demoEmojis[Math.floor(Math.random() * demoEmojis.length)];
         return {
-            ...prize,
-            image: `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">${emoji}</text></svg>`
+            id: prize?.id ?? Math.random(),
+            name: prize?.name ?? emoji,
+            image: `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">${emoji}</text></svg>`)}`,
+            value: prize?.value ?? 0
         };
     }
 
@@ -207,7 +240,7 @@ function createParticleBurst() {
 
 // Spin logic - predetermine what each reel will land on
 async function spin() {
-    if (isAnimating.value || props.prizes.length === 0) {
+    if (isAnimating.value) {
         return;
     }
 
@@ -230,14 +263,25 @@ async function spin() {
         reel3Target = props.winningPrize;
     } else {
         // LOSS: Use near-miss patterns to tease players (50% of losses)
-        const availablePrizes = [...props.prizes];
+        // availablePrizes = full reel pool (padded with decoys when < 3 real prizes) so
+        // the odd-one-out always exists. tease pool = real prizes only, so a near-miss
+        // always teases a real prize, never a decoy. Identical to before when no decoys.
+        const availablePrizes = reelPool.value.length > 0
+            ? [...reelPool.value]
+            : demoEmojis.map((emoji, index) => ({
+                id: index,
+                name: emoji,
+                image: emojiSvg(emoji),
+                value: 0
+            }));
+        const teasePrizes = props.prizes.length > 0 ? [...props.prizes] : availablePrizes;
 
         // Randomly select a pattern (50% near-miss, 50% all different)
         const rand = Math.random();
 
         if (rand < 0.166) {
             // PATTERN 1: Left + Middle match (16.6% chance)
-            const matchingPrize = availablePrizes[Math.floor(Math.random() * availablePrizes.length)];
+            const matchingPrize = teasePrizes[Math.floor(Math.random() * teasePrizes.length)];
             reel1Target = matchingPrize;
             reel2Target = matchingPrize;
 
@@ -247,7 +291,7 @@ async function spin() {
                 : availablePrizes[0];
         } else if (rand < 0.332) {
             // PATTERN 2: Middle + Right match (16.6% chance)
-            const matchingPrize = availablePrizes[Math.floor(Math.random() * availablePrizes.length)];
+            const matchingPrize = teasePrizes[Math.floor(Math.random() * teasePrizes.length)];
             reel2Target = matchingPrize;
             reel3Target = matchingPrize;
 
@@ -257,7 +301,7 @@ async function spin() {
                 : availablePrizes[0];
         } else if (rand < 0.50) {
             // PATTERN 3: Left + Right match (16.8% chance)
-            const matchingPrize = availablePrizes[Math.floor(Math.random() * availablePrizes.length)];
+            const matchingPrize = teasePrizes[Math.floor(Math.random() * teasePrizes.length)];
             reel1Target = matchingPrize;
             reel3Target = matchingPrize;
 
@@ -265,6 +309,16 @@ async function spin() {
             reel2Target = reel2Options.length > 0
                 ? reel2Options[Math.floor(Math.random() * reel2Options.length)]
                 : availablePrizes[0];
+        } else if (availablePrizes.length < 3) {
+            // PATTERN 4a: Genuine loss with a padded pool (1 real prize + the decoy).
+            // Three distinct symbols are impossible, so show the real prize on ONE random
+            // reel and the "no win" decoy on the other two. Never 3-of-a-kind.
+            const realPrize = teasePrizes[Math.floor(Math.random() * teasePrizes.length)];
+            const decoy = availablePrizes.find(p => p.id !== realPrize.id) ?? decoyPrize;
+            const realReel = Math.floor(Math.random() * 3);
+            reel1Target = realReel === 0 ? realPrize : decoy;
+            reel2Target = realReel === 1 ? realPrize : decoy;
+            reel3Target = realReel === 2 ? realPrize : decoy;
         } else {
             // PATTERN 4: All different (50% chance - genuine loss, no tease)
             reel1Target = availablePrizes[Math.floor(Math.random() * availablePrizes.length)];
@@ -284,9 +338,9 @@ async function spin() {
     // Start all 3 reels spinning at once, but they'll stop one by one (left to right)
     // Longer durations + bigger gaps between stops for dramatic effect
     const spinPromises = [
-        spinReel(1, 2000, reel1Target), // Stops first
-        spinReel(2, 2800, reel2Target), // Stops second (800ms later)
-        spinReel(3, 3600, reel3Target)  // Stops last (1600ms after first)
+        spinReel(1, 3000, reel1Target), // Stops first
+        spinReel(2, 4200, reel2Target), // Stops second (1200ms later)
+        spinReel(3, 5400, reel3Target)  // Stops last (2400ms after first)
     ];
 
     // Wait for all reels to complete
@@ -300,10 +354,10 @@ async function spin() {
         setTimeout(() => {
             showWinReveal.value = true;
 
-            // Hide after 3 seconds
+            // Hide after 6 seconds
             setTimeout(() => {
                 showWinReveal.value = false;
-            }, 3000);
+            }, 6000);
         }, 500);
     } else {
         // Clear gold flames on loss
@@ -311,7 +365,44 @@ async function spin() {
     }
 
     isAnimating.value = false;
-    emit('spin-complete');
+    try {
+        const paylineMatch = (
+            reel1Target?.id === reel2Target?.id
+            && reel2Target?.id === reel3Target?.id
+        );
+        emit('spin-complete', {
+            reel1: reel1Target,
+            reel2: reel2Target,
+            reel3: reel3Target,
+            paylineMatch,
+        });
+    } catch (e) {
+        // Never break the spin loop because of audit payload construction
+        emit('spin-complete', {
+            reel1: reel1Target,
+            reel2: reel2Target,
+            reel3: reel3Target,
+            paylineMatch: false,
+        });
+    }
+}
+
+// Add this function
+const imagesPreloaded = ref(false);
+
+function preloadImages(prizes: Prize[]): Promise<void[]> {
+    return Promise.all(
+        prizes.map(prize => new Promise<void>((resolve) => {
+            if (!prize.image || prize.image.startsWith('data:')) {
+                resolve();
+                return;
+            }
+            const img = new Image();
+            img.onload = () => resolve();
+            img.onerror = () => resolve();
+            img.src = prize.image;
+        }))
+    );
 }
 
 function spinReel(reelNum: number, duration: number, targetPrize: Prize): Promise<Prize> {
@@ -319,8 +410,8 @@ function spinReel(reelNum: number, duration: number, targetPrize: Prize): Promis
         const inner = reelNum === 1 ? reel1.value : reelNum === 2 ? reel2.value : reel3.value;
         if (!inner) return resolve(getRandomPrize());
 
-        // Determine symbol height based on viewport or preview mode
-        const SYMBOL_HEIGHT = isMobile.value ? 50 : (window.innerWidth <= 550 ? 75 : 100);
+        // Determine symbol height based on viewport (like HTML reference)
+        const SYMBOL_HEIGHT = window.innerWidth <= 550 ? 75 : 100;
 
         // Get current position (or start at -SYMBOL_HEIGHT for first spin)
         const currentTransform = inner.style.transform;
@@ -365,13 +456,15 @@ function spinReel(reelNum: number, duration: number, targetPrize: Prize): Promis
             for (let i = 0; i < existingCount; i++) {
                 const img = existingSymbols[i] as HTMLImageElement;
                 const prizeName = img.alt;
-                const prize = props.prizes.find(p => p.name === prizeName) || getRandomPrize();
+                const prize = reelPool.value.find(p => p.name === prizeName) || getRandomPrize();
                 newSymbols.push(prize);
             }
 
-            // Calculate how many new symbols to append
-            const symbolsNeeded = Math.max(targetIndex + 50, existingCount + 20);
-            const newSymbolsToAdd = symbolsNeeded - existingCount;
+            // Calculate how many new symbols to append AND ACTUALLY ADD THEM
+            const symbolsNeeded = Math.max(targetIndex + 100, existingCount + 30);
+            for (let j = existingCount; j < symbolsNeeded; j++) {
+                newSymbols.push(getRandomPrize());
+            }
         }
 
         // Use the targetIndex we already calculated
@@ -392,11 +485,17 @@ function spinReel(reelNum: number, duration: number, targetPrize: Prize): Promis
         }
 
         // Build/Update HTML
+        // Helper to build symbol HTML with onerror fallback
+        const buildSymbolHTML = (prize: Prize) => {
+            const fallbackSvg = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">🎰</text></svg>')}`;
+            return `<div class="symbol"><img src="${prize.image}" alt="${prize.name}" onerror="this.onerror=null;this.src='${fallbackSvg}'" /></div>`;
+        };
+
         if (shouldReplaceHTML) {
             // Full HTML replacement (reset or first spin)
             let html = '';
             for (const prize of newSymbols) {
-                html += `<div class="symbol"><img src="${prize.image}" alt="${prize.name}" /></div>`;
+                html += buildSymbolHTML(prize);
             }
             inner.innerHTML = html;
         } else {
@@ -414,7 +513,7 @@ function spinReel(reelNum: number, duration: number, targetPrize: Prize): Promis
             let appendHTML = '';
             for (let i = existingCount; i < newSymbols.length; i++) {
                 const prize = newSymbols[i];
-                appendHTML += `<div class="symbol"><img src="${prize.image}" alt="${prize.name}" /></div>`;
+                appendHTML += buildSymbolHTML(prize);
             }
             inner.insertAdjacentHTML('beforeend', appendHTML);
         }
@@ -434,10 +533,10 @@ function spinReel(reelNum: number, duration: number, targetPrize: Prize): Promis
                 symbol.style.margin = '0';
                 symbol.style.padding = '0';
                 symbol.style.boxSizing = 'border-box';
+                symbol.style.flexShrink = '0';
             });
         } else {
             // Only force styling on newly appended symbols (optimization!)
-            const newlyAddedCount = symbolElements.length - existingCount;
             for (let i = existingCount; i < symbolElements.length; i++) {
                 const symbol = symbolElements[i] as HTMLElement;
                 symbol.style.height = `${SYMBOL_HEIGHT}px`;
@@ -449,6 +548,7 @@ function spinReel(reelNum: number, duration: number, targetPrize: Prize): Promis
                 symbol.style.margin = '0';
                 symbol.style.padding = '0';
                 symbol.style.boxSizing = 'border-box';
+                symbol.style.flexShrink = '0';
             }
         }
 
@@ -487,8 +587,10 @@ function spinReel(reelNum: number, duration: number, targetPrize: Prize): Promis
 }
 
 const handleSpin = () => {
+    if (!imagesPreloaded.value) {
+        return; // Don't spin until images are ready
+    }
     if (props.canSpin && !isAnimating.value) {
-        // GSAP: Bubbly button press effect
         const button = document.querySelector('.spin-btn');
         if (button) {
             gsap.to(button, {
@@ -538,8 +640,8 @@ const reelsInitialized = ref(false);
 function initializeReels() {
     if (reelsInitialized.value) return; // Already initialized
 
-    // Determine symbol height based on viewport or preview mode
-    const SYMBOL_HEIGHT = isMobile.value ? 50 : (window.innerWidth <= 550 ? 75 : 100);
+    // Determine symbol height based on viewport (like HTML reference)
+    const SYMBOL_HEIGHT = window.innerWidth <= 550 ? 75 : 100;
 
     // Initialize reels
     const reels = [reel1, reel2, reel3];
@@ -548,11 +650,12 @@ function initializeReels() {
         if (!inner) continue;
 
         // Build 200 RANDOM symbols initially (prevent all reels showing same pattern)
+        const fallbackSvg = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">🎰</text></svg>')}`;
         let html = '';
         const initialSymbols: string[] = [];
         for (let j = 0; j < 200; j++) {
             const prize = getRandomPrize(); // Use getRandomPrize() which has emoji fallback
-            html += `<div class="symbol"><img src="${prize.image}" alt="${prize.name}" /></div>`;
+            html += `<div class="symbol"><img src="${prize.image}" alt="${prize.name}" onerror="this.onerror=null;this.src='${fallbackSvg}'" /></div>`;
             initialSymbols.push(prize.name);
         }
         inner.innerHTML = html;
@@ -570,6 +673,7 @@ function initializeReels() {
             symbol.style.margin = '0';
             symbol.style.padding = '0';
             symbol.style.boxSizing = 'border-box';
+            symbol.style.flexShrink = '0';
         });
 
         // Simple initial position - one symbol down (like HTML reference)
@@ -580,9 +684,13 @@ function initializeReels() {
 }
 
 // Watch for showMachine to become true and initialize reels
-watch(() => props.showMachine, (newVal) => {
+watch(() => props.showMachine, async (newVal) => {
     if (newVal && !reelsInitialized.value) {
-        // Wait for DOM to update
+        if (!imagesPreloaded.value) {
+            imagesPreloaded.value = false;
+            await preloadImages(props.prizes);
+            imagesPreloaded.value = true;
+        }
         setTimeout(() => {
             initializeReels();
         }, 100);
@@ -590,23 +698,28 @@ watch(() => props.showMachine, (newVal) => {
 });
 
 // Watch for prizes changes and reinitialize if needed
-watch(() => props.prizes, (newPrizes, oldPrizes) => {
-    // Reinitialize if prizes changed from empty to populated, or changed significantly
-    if (props.showMachine && reelsInitialized.value && newPrizes && newPrizes.length > 0) {
-        if (!oldPrizes || oldPrizes.length === 0 || oldPrizes.length !== newPrizes.length) {
-            reelsInitialized.value = false;
-            setTimeout(() => {
-                initializeReels();
-            }, 100);
+watch(() => props.prizes, async (newPrizes, oldPrizes) => {
+    if (newPrizes) {
+        imagesPreloaded.value = false;
+        await preloadImages(newPrizes);
+        imagesPreloaded.value = true;
+
+        if (props.showMachine && newPrizes.length > 0) {
+            if (!oldPrizes || oldPrizes.length === 0 || oldPrizes.length !== newPrizes.length) {
+                reelsInitialized.value = false;
+                setTimeout(() => initializeReels(), 100);
+            }
         }
     }
 });
 
-onMounted(() => {
-    // Create bubbles background
+onMounted(async () => {
     createBubbles();
 
-    // Initialize reels if showMachine is already true (no intro video)
+    imagesPreloaded.value = false;
+    await preloadImages(props.prizes);
+    imagesPreloaded.value = true;
+
     if (props.showMachine) {
         initializeReels();
     }
@@ -616,18 +729,23 @@ onMounted(() => {
 <template>
     <div
         class="slots-container"
-        :class="{ 'slots-container-demo': demoMode, 'slots-container-mobile': isMobile }"
+        :class="{ 'slots-container-demo': demoMode }"
         :style="{
-            backgroundImage: background ? `url(${background})` : 'none',
-            backgroundColor: background ? 'transparent' : luckyFishTheme.bg,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
+            background: background
+                ? `url(${background}) center/cover no-repeat`
+                : luckyFishTheme.bg,
+            '--win-glow': winGlowColor,
+            '--win-glow-rgb': winGlowRgb,
+            '--machine-border': machineBorderColor,
         }"
     >
         <!-- Bubbles Background (only if no custom background) -->
         <div v-if="!background" ref="bubblesContainer" class="bubbles"></div>
 
+        <!-- Swimming Fish (only if no custom background) -->
+        <div v-if="!background" class="swimming-fish" style="top: 15%; animation-duration: 25s;">🐠</div>
+        <div v-if="!background" class="swimming-fish" style="top: 75%; animation-duration: 30s; animation-delay: -10s;">🐟</div>
+        <div v-if="!background" class="swimming-fish" style="top: 45%; animation-duration: 35s; animation-delay: -20s; font-size: 35px;">🦈</div>
 
         <!-- Title Only (visible during video, floating above everything) -->
         <div v-if="!showMachine" class="title title-floating-only">
@@ -638,7 +756,7 @@ onMounted(() => {
 
         <!-- Main Slot Machine (zooms in after video) -->
         <transition name="modal-card-zoom">
-            <div v-if="showMachine" class="slot-machine" :class="{ 'slot-machine-win': showGoldFlames, 'slot-machine-demo': demoMode, 'slot-machine-mobile': isMobile }" :style="{ background: machineBgColor, border: isMobile ? `3px solid ${luckyFishTheme.border}` : `5px solid ${luckyFishTheme.border}` }">
+            <div v-if="showMachine" class="slot-machine" :class="{ 'slot-machine-win': showGoldFlames, 'slot-machine-demo': demoMode }" :style="{ background: machineBgColor, border: `5px solid ${luckyFishTheme.border}` }">
 
                 <!-- Title (inside card) -->
                 <div class="title">
@@ -657,11 +775,18 @@ onMounted(() => {
                             <div class="value">{{ spinsLeft }}</div>
                         </div>
                         <div class="balance-box">
-                            <div class="label">Last Win</div>
-                            <div class="value win-value">{{ lastWin }}</div>
+                            <div class="label">Total Win</div>
+                            <div class="value win-value">{{ lastWin.toFixed(2) }}</div>
+                            <div v-if="totalFreeTickets > 0" class="value free-tickets-value">🎟️ +{{ totalFreeTickets }}</div>
                         </div>
                         <!-- Treasure Chest Button -->
                         <button @click="showPrizesModal = true" class="chest-btn" title="View all prizes" :style="{ background: `linear-gradient(180deg, ${inventoryButtonColor} 0%, ${inventoryButtonColor}dd 100%)` }">
+                            <span 
+                                v-if="currentTenant === 'auwins'" 
+                                style="display: block; font-size: 0.5rem; font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase; color: #000; margin-bottom: 2px; line-height: 1;"
+                            >
+                                Instant Wins
+                            </span>
                             {{ inventoryEmoji }}
                         </button>
                     </div>
@@ -701,17 +826,19 @@ onMounted(() => {
                         <!-- Spin Button -->
                         <button
                             @click="handleSpin"
-                            :disabled="!canSpin || isAnimating"
+                            :disabled="!canSpin || isAnimating || !imagesPreloaded"
                             class="spin-btn spin-btn-full"
                             :class="{ 'spin-btn-image': spinButtonImage, 'btn-spinning': isAnimating }"
                             :style="{
                                 background: isAnimating
                                     ? 'linear-gradient(180deg, #555 0%, #333 100%)'
+                                    : !imagesPreloaded
+                                    ? 'linear-gradient(180deg, #555 0%, #333 100%)'
                                     : `linear-gradient(180deg, ${colors.primary} 0%, ${colors.secondary} 50%, #006666 100%)`,
                                 borderColor: luckyFishTheme.border
                             }">
-                            <img v-if="spinButtonImage" :src="spinButtonImage" alt="Spin" class="spin-btn-img" />
-                            <span v-else>{{ isAnimating ? '🌊 SPINNING... 🌊' : '🌊 SPIN 🌊' }}</span>
+                            <img v-if="spinButtonImage && imagesPreloaded" :src="spinButtonImage" alt="Spin" class="spin-btn-img" />
+                            <span v-else>{{ isAnimating ? '🌊 SPINNING... 🌊' : !imagesPreloaded ? '⏳ LOADING...' : '🌊 SPIN 🌊' }}</span>
                         </button>
                     </div>
                 </div>
@@ -738,8 +865,11 @@ onMounted(() => {
                             border: `3px solid ${prizesCardBorderColor}99`
                         }">
                             <img :src="prize.image" :alt="prize.name" class="prize-image" />
-                            <div class="prize-name">{{ prize.name }}</div>
-                            <div class="prize-value" :style="{ color: prizesValueColor }">£{{ prize.value }}</div>
+                            <div class="prize-name">{{ prize.no_auto_credit ? (prize.category_name || prize.name) : prize.name }}</div>
+                            <div class="prize-value" :style="{ color: prizesValueColor }">
+                                <template v-if="prize.no_auto_credit">{{ prize.name }}</template>
+                                <template v-else>&pound;{{ prize.value }}</template>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -764,7 +894,7 @@ onMounted(() => {
                             <img :src="winningPrize.image" :alt="winningPrize.name" class="prize-reveal-image" />
                         </div>
                         <div class="prize-reveal-name">{{ winningPrize.name }}</div>
-                        <div class="prize-reveal-value">£{{ winningPrize.value }}</div>
+                        <div v-if="!winningPrize.no_auto_credit" class="prize-reveal-value">&pound;{{ winningPrize.value }}</div>
                     </div>
 
                     <!-- Explosion particles -->
@@ -789,6 +919,12 @@ onMounted(() => {
     padding: 20px;
     position: relative;
     overflow: hidden;
+}
+
+@media (max-width: 550px) {
+    .slots-container {
+        padding: 5px;
+    }
 }
 
 .slots-container-demo {
@@ -858,7 +994,7 @@ onMounted(() => {
 /* Win State - Gold Flames Around Edges */
 .slot-machine-win {
     animation: flame-border 1.2s ease-in-out infinite alternate;
-    border: 5px solid #FFD700 !important;
+    border: 5px solid var(--win-glow, #FFD700) !important;
 }
 
 .slot-machine-win::before {
@@ -871,9 +1007,9 @@ onMounted(() => {
     border-radius: 35px;
     background: linear-gradient(45deg,
         transparent 0%,
-        rgba(255, 140, 0, 0.12) 25%,
-        rgba(255, 215, 0, 0.15) 50%,
-        rgba(255, 69, 0, 0.12) 75%,
+        rgba(var(--win-glow-rgb, 255, 215, 0), 0.12) 25%,
+        rgba(var(--win-glow-rgb, 255, 215, 0), 0.15) 50%,
+        rgba(var(--win-glow-rgb, 255, 215, 0), 0.12) 75%,
         transparent 100%
     );
     filter: blur(8px);
@@ -892,11 +1028,11 @@ onMounted(() => {
     border-radius: 33px;
     background: linear-gradient(
         -45deg,
-        rgba(255, 69, 0, 0.15),
-        rgba(255, 140, 0, 0.18),
-        rgba(255, 215, 0, 0.2),
-        rgba(255, 140, 0, 0.18),
-        rgba(255, 69, 0, 0.15)
+        rgba(var(--win-glow-rgb, 255, 215, 0), 0.15),
+        rgba(var(--win-glow-rgb, 255, 215, 0), 0.18),
+        rgba(var(--win-glow-rgb, 255, 215, 0), 0.2),
+        rgba(var(--win-glow-rgb, 255, 215, 0), 0.18),
+        rgba(var(--win-glow-rgb, 255, 215, 0), 0.15)
     );
     background-size: 400% 400%;
     animation: flame-gradient 2s ease infinite;
@@ -909,29 +1045,29 @@ onMounted(() => {
     0% {
         box-shadow:
             0 20px 60px rgba(0,0,0,0.6),
-            0 0 20px rgba(255, 215, 0, 0.3),
-            0 0 40px rgba(255, 140, 0, 0.2),
-            0 0 60px rgba(255, 69, 0, 0.12),
-            inset 0 0 15px rgba(255, 215, 0, 0.08);
-        border-color: #FFD700;
+            0 0 20px rgba(var(--win-glow-rgb, 255, 215, 0), 0.3),
+            0 0 40px rgba(var(--win-glow-rgb, 255, 215, 0), 0.2),
+            0 0 60px rgba(var(--win-glow-rgb, 255, 215, 0), 0.12),
+            inset 0 0 15px rgba(var(--win-glow-rgb, 255, 215, 0), 0.08);
+        border-color: var(--win-glow, #FFD700);
     }
     30% {
         box-shadow:
             0 20px 60px rgba(0,0,0,0.6),
-            0 0 28px rgba(255, 215, 0, 0.4),
-            0 0 50px rgba(255, 140, 0, 0.25),
-            0 0 70px rgba(255, 69, 0, 0.15),
-            inset 0 0 20px rgba(255, 215, 0, 0.1);
-        border-color: #FFD700;
+            0 0 28px rgba(var(--win-glow-rgb, 255, 215, 0), 0.4),
+            0 0 50px rgba(var(--win-glow-rgb, 255, 215, 0), 0.25),
+            0 0 70px rgba(var(--win-glow-rgb, 255, 215, 0), 0.15),
+            inset 0 0 20px rgba(var(--win-glow-rgb, 255, 215, 0), 0.1);
+        border-color: var(--win-glow, #FFD700);
     }
     100% {
         box-shadow:
             0 20px 60px rgba(0,0,0,0.6),
-            0 0 35px rgba(255, 215, 0, 0.5),
-            0 0 60px rgba(255, 140, 0, 0.3),
-            0 0 80px rgba(255, 69, 0, 0.18),
-            inset 0 0 25px rgba(255, 215, 0, 0.12);
-        border-color: #FFA500;
+            0 0 35px rgba(var(--win-glow-rgb, 255, 215, 0), 0.5),
+            0 0 60px rgba(var(--win-glow-rgb, 255, 215, 0), 0.3),
+            0 0 80px rgba(var(--win-glow-rgb, 255, 215, 0), 0.18),
+            inset 0 0 25px rgba(var(--win-glow-rgb, 255, 215, 0), 0.12);
+        border-color: var(--win-glow, #FFD700);
     }
 }
 
@@ -997,12 +1133,12 @@ onMounted(() => {
 }
 
 .title-floating-only p {
-    color: #FFD700;
+    color: var(--win-glow, #FFD700);
     font-size: 1.4rem;
     font-weight: bold;
     text-shadow:
-        0 0 20px rgba(255,215,0,0.9),
-        0 0 40px rgba(255,215,0,0.6),
+        0 0 20px rgba(var(--win-glow-rgb, 255, 215, 0), 0.9),
+        0 0 40px rgba(var(--win-glow-rgb, 255, 215, 0), 0.6),
         2px 2px 0 rgba(0,0,0,0.7);
 }
 
@@ -1129,7 +1265,7 @@ onMounted(() => {
 .balance-box {
     flex: 1;
     background: linear-gradient(180deg, #001a2e 0%, #000d17 100%);
-    border: 3px solid #00BFFF;
+    border: 3px solid var(--machine-border, #00BFFF);
     border-radius: 15px;
     padding: 15px;
     text-align: center;
@@ -1137,7 +1273,7 @@ onMounted(() => {
 
 .balance-box .label {
     font-size: 0.75rem;
-    color: #00BFFF;
+    color: var(--machine-border, #00BFFF);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -1150,8 +1286,16 @@ onMounted(() => {
 }
 
 .balance-box .value.win-value {
-    color: #FFD700;
-    text-shadow: 0 0 15px rgba(255,215,0,0.7);
+    color: var(--win-glow, #FFD700);
+    text-shadow: 0 0 15px rgba(var(--win-glow-rgb, 255, 215, 0), 0.7);
+}
+
+.balance-box .value.free-tickets-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #4ade80;
+    text-shadow: none;
+    margin-top: 2px;
 }
 
 .slot-window {
@@ -1173,13 +1317,13 @@ onMounted(() => {
     top: 50%;
     transform: translateY(-50%);
     height: 100px; /* Match symbol height - will be 75px on mobile */
-    border: 3px solid #FFD700;
+    border: 3px solid var(--win-glow, #FFD700);
     border-left: none;
     border-right: none;
     pointer-events: none;
     box-shadow:
-        0 0 20px rgba(255,215,0,0.5),
-        inset 0 0 30px rgba(255,215,0,0.1);
+        0 0 20px rgba(var(--win-glow-rgb, 255, 215, 0), 0.5),
+        inset 0 0 30px rgba(var(--win-glow-rgb, 255, 215, 0), 0.1);
     z-index: 5;
 }
 
@@ -1189,9 +1333,9 @@ onMounted(() => {
     left: 5px;
     top: 50%;
     transform: translateY(-50%);
-    color: #FFD700;
+    color: var(--win-glow, #FFD700);
     font-size: 24px;
-    text-shadow: 0 0 10px #FFD700;
+    text-shadow: 0 0 10px var(--win-glow, #FFD700);
 }
 
 .payline-indicator::after {
@@ -1200,9 +1344,9 @@ onMounted(() => {
     right: 5px;
     top: 50%;
     transform: translateY(-50%) scaleX(-1);
-    color: #FFD700;
+    color: var(--win-glow, #FFD700);
     font-size: 24px;
-    text-shadow: 0 0 10px #FFD700;
+    text-shadow: 0 0 10px var(--win-glow, #FFD700);
 }
 
 /* Reels */
@@ -1229,16 +1373,16 @@ onMounted(() => {
 
 @keyframes gold-flash {
     0% {
-        filter: drop-shadow(0 0 0px rgba(255,215,0,0));
+        filter: drop-shadow(0 0 0px rgba(var(--win-glow-rgb, 255, 215, 0), 0));
     }
     40% {
-        filter: drop-shadow(0 0 15px rgba(255,215,0,0.4));
+        filter: drop-shadow(0 0 15px rgba(var(--win-glow-rgb, 255, 215, 0), 0.4));
     }
     60% {
-        filter: drop-shadow(0 0 30px rgba(255,215,0,0.8));
+        filter: drop-shadow(0 0 30px rgba(var(--win-glow-rgb, 255, 215, 0), 0.8));
     }
     100% {
-        filter: drop-shadow(0 0 0px rgba(255,215,0,0));
+        filter: drop-shadow(0 0 0px rgba(var(--win-glow-rgb, 255, 215, 0), 0));
     }
 }
 
@@ -1291,7 +1435,7 @@ onMounted(() => {
 /* Winning State - Gold Flash Effect */
 .reel-winning {
     animation: gold-pulse 1s ease-in-out 5;
-    border-color: #FFD700 !important;
+    border-color: var(--win-glow, #FFD700) !important;
 }
 
 @keyframes gold-pulse {
@@ -1304,16 +1448,16 @@ onMounted(() => {
     40% {
         box-shadow:
             0 10px 30px rgba(0,0,0,0.6),
-            0 5px 15px rgba(255,215,0,0.3),
-            0 0 10px rgba(255,140,0,0.2),
-            inset 0 0 10px rgba(255,215,0,0.1);
+            0 5px 15px rgba(var(--win-glow-rgb, 255, 215, 0), 0.3),
+            0 0 10px rgba(var(--win-glow-rgb, 255, 215, 0), 0.2),
+            inset 0 0 10px rgba(var(--win-glow-rgb, 255, 215, 0), 0.1);
     }
     60% {
         box-shadow:
-            0 10px 30px rgba(255,215,0,0.4),
-            0 0 20px rgba(255,215,0,0.6),
-            0 0 40px rgba(255,140,0,0.4),
-            inset 0 0 20px rgba(255,215,0,0.2);
+            0 10px 30px rgba(var(--win-glow-rgb, 255, 215, 0), 0.4),
+            0 0 20px rgba(var(--win-glow-rgb, 255, 215, 0), 0.6),
+            0 0 40px rgba(var(--win-glow-rgb, 255, 215, 0), 0.4),
+            inset 0 0 20px rgba(var(--win-glow-rgb, 255, 215, 0), 0.2);
     }
     100% {
         box-shadow:
@@ -1327,10 +1471,13 @@ onMounted(() => {
     position: absolute;
     width: 100%;
     transition: none; /* Default: no transition */
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
 
 .reel-inner.spinning {
-    transition: transform 1200ms cubic-bezier(0.15, 0.85, 0.35, 1.02);
+    /* Transition is controlled by JS - do not override here */
 }
 
 .symbol {
@@ -1351,6 +1498,7 @@ onMounted(() => {
         inset 0 0 20px rgba(0,191,255,0.1);
     overflow: hidden !important;
     position: relative;
+    flex-shrink: 0;
 }
 
 .symbol img {
@@ -1358,18 +1506,16 @@ onMounted(() => {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 90%; /* 90% of 100px = 90px (leaves 5px padding each side) */
-    max-height: 90%;
-    width: auto;
-    height: auto;
+    width: 90%;
+    height: 90%;
     object-fit: contain;
     display: block;
     border-radius: 5px;
 }
 
 .symbol.winner {
-    filter: drop-shadow(0 0 25px rgba(255,215,0,1)) drop-shadow(0 0 50px rgba(255,215,0,0.8));
-    border: 3px solid rgba(255,215,0,0.9) !important;
+    filter: drop-shadow(0 0 25px rgba(var(--win-glow-rgb, 255, 215, 0), 1)) drop-shadow(0 0 50px rgba(var(--win-glow-rgb, 255, 215, 0), 0.8));
+    border: 3px solid rgba(var(--win-glow-rgb, 255, 215, 0), 0.9) !important;
 }
 
 /* Controls */
@@ -1788,7 +1934,7 @@ onMounted(() => {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, rgba(0,0,0,0.95) 100%);
+    background: radial-gradient(circle, rgba(var(--win-glow-rgb, 255, 215, 0), 0.3) 0%, rgba(0,0,0,0.95) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1891,11 +2037,11 @@ onMounted(() => {
 .win-text {
     font-family: 'Luckiest Guy', cursive;
     font-size: 4rem;
-    color: #FFD700;
+    color: var(--win-glow, #FFD700);
     text-shadow:
-        0 0 20px rgba(255,215,0,1),
-        0 0 40px rgba(255,215,0,0.8),
-        0 0 60px rgba(255,215,0,0.6),
+        0 0 20px rgba(var(--win-glow-rgb, 255, 215, 0), 1),
+        0 0 40px rgba(var(--win-glow-rgb, 255, 215, 0), 0.8),
+        0 0 60px rgba(var(--win-glow-rgb, 255, 215, 0), 0.6),
         4px 4px 0 rgba(0,0,0,0.5);
     margin-bottom: 30px;
     animation: text-pulse 1s ease-in-out infinite;
@@ -1912,7 +2058,7 @@ onMounted(() => {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 0 30px rgba(255,215,0,0.8));
+    filter: drop-shadow(0 0 30px rgba(var(--win-glow-rgb, 255, 215, 0), 0.8));
     animation: prize-spin 2s ease-in-out infinite;
 }
 
@@ -1929,10 +2075,10 @@ onMounted(() => {
 .prize-reveal-value {
     font-family: 'Luckiest Guy', cursive;
     font-size: 3.5rem;
-    color: #FFD700;
+    color: var(--win-glow, #FFD700);
     text-shadow:
-        0 0 20px rgba(255,215,0,1),
-        0 0 40px rgba(255,215,0,0.6),
+        0 0 20px rgba(var(--win-glow-rgb, 255, 215, 0), 1),
+        0 0 40px rgba(var(--win-glow-rgb, 255, 215, 0), 0.6),
         4px 4px 0 rgba(0,0,0,0.5);
 }
 
@@ -2026,7 +2172,8 @@ onMounted(() => {
 @media (max-width: 550px) {
     .slot-machine {
         padding: 15px;
-        margin: 10px;
+        margin: 5px;
+        max-width: 100%;
     }
 
     .title h1 {
@@ -2060,10 +2207,8 @@ onMounted(() => {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        max-width: 90%; /* 90% of 75px = 67.5px (leaves ~4px padding each side) */
-        max-height: 90%;
-        width: auto;
-        height: auto;
+        width: 90%;
+        height: 90%;
         object-fit: contain;
         display: block;
         border-radius: 4px;

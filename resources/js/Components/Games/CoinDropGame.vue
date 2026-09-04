@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue';
-
-import CoinDropInventoryModal from './CoinDropInventoryModal.vue';
+import { usePage } from '@inertiajs/vue3';
+import { siteCreditLabel } from '@/utils/prizeLabel';
 
 interface InstantWin {
     id: number;
@@ -60,6 +60,7 @@ interface Prize {
     image: string;
     value: number;
     ticketNumber?: string;
+    no_auto_credit?: boolean;
 }
 
 interface InstantWinCategory {
@@ -67,6 +68,7 @@ interface InstantWinCategory {
     name: string;
     image_path: string;
     value: number;
+    no_auto_credit?: boolean;
 }
 
 interface Peg {
@@ -202,18 +204,43 @@ const topPrize = computed(() => {
     if (!props.instant_win_categories || props.instant_win_categories.length === 0) {
         return null;
     }
-    // Find the category with the highest value
-    return props.instant_win_categories.reduce((max, cat) =>
-        (cat.value > (max?.value || 0)) ? cat : max, props.instant_win_categories[0]);
+    // Prefer non-ticket-bundle categories (bundles use ticket counts, not £ values)
+    const nonBundle = props.instant_win_categories.filter((cat: any) => cat.prize_type !== 'ticket_bundle');
+    const pool = nonBundle.length > 0 ? nonBundle : props.instant_win_categories;
+    const top = pool.reduce((max, cat) =>
+        (cat.value > (max?.value || 0)) ? cat : max, pool[0]);
+    return top ? { ...top, isNoAutoCredit: top.no_auto_credit === true, isTicketBundle: top.prize_type === 'ticket_bundle' } : null;
 });
-
-const showInventory = ref(false);
 
 // Show prizes modal
 const showPrizesModal = ref(false);
 
 // Show reveal wins modal (shows what instant wins are available on tickets)
 const showRevealWinsModal = ref(false);
+// Large orders (1000+ tickets) would otherwise render every ticket's prize card at
+// once when this modal opens — cap it and let the user expand on demand.
+const PRIZE_CARD_DISPLAY_LIMIT = 150;
+const showAllPrizeCards = ref(false);
+function isWinningTicket(ticket: Ticket): boolean {
+    return ticket.instant_win !== false && !!ticket.instant_win && ticket.instant_win.prize !== 'NO WIN';
+}
+
+const visiblePrizeCardTickets = computed(() => {
+    if (!props.tickets) return [];
+    const playedIds = new Set(props.playedTickets || []);
+    // Rank only ever uses a ticket's outcome once it's actually been played/revealed —
+    // an unplayed ticket must never be sorted by its (secret) win/loss, or its position
+    // in the list alone would spoil the outcome before you've dropped or revealed it.
+    const rank = (t: Ticket) => {
+        if (!playedIds.has(t.id)) return 2;
+        return isWinningTicket(t) ? 0 : 1;
+    };
+    const sorted = [...props.tickets].sort((a, b) => rank(a) - rank(b));
+    if (showAllPrizeCards.value || sorted.length <= PRIZE_CARD_DISPLAY_LIMIT) {
+        return sorted;
+    }
+    return sorted.slice(0, PRIZE_CARD_DISPLAY_LIMIT);
+});
 
 // Initialize pegs - responsive to screen size
 function initPegs() {
@@ -222,7 +249,9 @@ function initPegs() {
     const isSmallMobile = isMobile.value && canvasWidth <= 365;
 
     const startY = isSmallMobile ? 50 : 70; // Push pegs lower on canvas
-    const rows = isSmallMobile ? 8 : (isMobile.value ? 10 : 14); // 8 rows for iPhone SE, 10 for other mobile
+    const tenant = Object.keys((usePage().props.tenantFeatures ?? {}) as object)[0] ?? '';
+    const baseRows = isSmallMobile ? 8 : (isMobile.value ? 10 : 14); // 8 rows for iPhone SE, 10 for other mobile
+    const rows = tenant === 'winnerwinner' ? baseRows - 1 : baseRows;
     const spacing = isSmallMobile ? 24 : (isMobile.value ? 28 : 32); // Horizontal spacing
     const rowSpacing = isSmallMobile ? 32 : (isMobile.value ? 40 : 42); // More vertical spacing between rows
 
@@ -283,6 +312,53 @@ function getNextTicket(): Ticket | null {
     return unplayedTickets.length > 0 ? unplayedTickets[0] : null;
 }
 
+/** Determine the winning prize for a ticket (or null for a loss). Shared by createBall and finishAll. */
+function resolvePrizeForTicket(ticket: Ticket): Prize | null {
+    const instantWinData = ticket.instant_win;
+    const hasInstantWin = instantWinData !== false && instantWinData !== null;
+    const prizeText = hasInstantWin ? (instantWinData as InstantWin).prize : null;
+    const isWinner = hasInstantWin && prizeText !== 'NO WIN';
+
+    if (!isWinner || !hasInstantWin) return null;
+
+    const instantWin = instantWinData as InstantWin;
+    const isNoAutoCredit = instantWin.category_id && props.instant_win_categories?.length
+        ? props.instant_win_categories.some(c => c.id === instantWin.category_id && c.no_auto_credit)
+        : false;
+    const isTicketBundle = (instantWin as any).prize_type === 'ticket_bundle';
+    const rawValue = parseFloat(String(instantWin.value)) || 0;
+
+    return {
+        id: instantWin.category_id || instantWin.id,
+        name: isTicketBundle
+            ? `${Math.floor(rawValue)} Free Ticket${rawValue !== 1 ? 's' : ''}`
+            : (siteCreditLabel((instantWin as any).prize_type, rawValue) ?? (instantWin.prize || 'Winner!')),
+        image: instantWin.image_path || '',
+        value: isTicketBundle ? 0 : rawValue,
+        no_auto_credit: isNoAutoCredit || isTicketBundle,
+    };
+}
+
+/** Instantly resolve every remaining ticket without dropping a ball for each. */
+function finishAll() {
+    if (props.demoMode) return;
+
+    // Compute the unplayed list once instead of re-filtering the full ticket list on
+    // every ticket via getNextTicket() — that was O(n²) and slow on a 1000+ order.
+    const playedIds = new Set(props.playedTickets || []);
+    const unplayed = (props.tickets || []).filter((t) => !playedIds.has(t.id));
+
+    for (const ticket of unplayed) {
+        const prize = resolvePrizeForTicket(ticket);
+        emit('ticket-played', ticket.id);
+        if (prize) {
+            winCounter.value++;
+            lastWin.value = prize.value;
+            emit('prize-won', prize);
+        }
+    }
+}
+
 // Create a new ball
 function createBall() {
     if (!canDrop.value) return;
@@ -294,21 +370,8 @@ function createBall() {
     if (props.demoMode) {
         isWinner = Math.random() > 0.5;
     } else if (currentTicket) {
-        const instantWinData = currentTicket.instant_win;
-        const hasInstantWin = instantWinData !== false && instantWinData !== null;
-        const prizeText = hasInstantWin ? (instantWinData as InstantWin).prize : null;
-        isWinner = hasInstantWin && prizeText !== 'NO WIN';
-
-        if (isWinner && hasInstantWin) {
-            const instantWin = instantWinData as InstantWin;
-            prize = {
-                id: instantWin.category_id || instantWin.id,
-                name: instantWin.prize || 'Winner!',
-                image: instantWin.image_path || '',
-                value: parseFloat(String(instantWin.value)) || 0,
-            };
-        }
-
+        prize = resolvePrizeForTicket(currentTicket);
+        isWinner = prize !== null;
         emit('ticket-played', currentTicket.id);
     }
 
@@ -698,7 +761,7 @@ function update() {
                     // Win animation is based on ball.isWinner (ticket instant win status)
                     if (ball.isWinner) {
                         winCounter.value++;
-                        lastWin.value = ball.prize?.value || 100;
+                        lastWin.value = ball.prize?.value || 0;
                         currentWinningPrize.value = ball.prize || null;
 
                         // Show corner toast instead of overlay
@@ -1119,10 +1182,6 @@ function handleCanvasClick(e: MouseEvent) {
     }
 }
 
-const handleOpenInventory = () => {
-    showInventory.value = true;
-};
-
 // Handle drop button click
 function handleDrop() {
     hasClickedDrop.value = true; // Hide the arrow after first click
@@ -1185,7 +1244,11 @@ onUnmounted(() => {
                         </div>
                         <div class="stat-item">
                             <span class="stat-label">LAST WIN</span>
-                            <span class="stat-value" :style="{ color: coinDropAssets.accentColor }">{{ lastWin > 0 ? `£${lastWin}` : '---' }}</span>
+                            <span class="stat-value" :style="{ color: coinDropAssets.accentColor }">
+                                <template v-if="currentWinningPrize && currentWinningPrize.no_auto_credit">{{ currentWinningPrize.name }}</template>
+                                <template v-else-if="lastWin > 0">&pound;{{ lastWin }}</template>
+                                <template v-else>---</template>
+                            </span>
                         </div>
                     </div>
 
@@ -1201,18 +1264,13 @@ onUnmounted(() => {
                             <span>REVEAL</span>
                         </button>
 
-                        <!-- Prizes Inventory Button - Right side of pegs -->
+                        <!-- Instant Wins Button - Right side of pegs -->
                         <button
-                            @click="showInventory = true"
-                            class="prizes-inventory-btn"
-                            :style="{ 
-                                '--btn-primary': coinDropAssets.primaryColor || '#e94560',
-                                '--btn-accent': coinDropAssets.accentColor || '#ffd700',
-                                '--btn-win': coinDropAssets.winBucketColor || '#00ff88'
-                            }"
+                            @click="showPrizesModal = true"
+                            class="instant-wins-corner-btn"
+                            :style="{ '--btn-accent': coinDropAssets.accentColor || '#ffd700' }"
                         >
-                            <span class="prizes-icon">🏆</span>
-                            <span class="prizes-text">PRIZES</span>
+                            <span>PRIZES</span>
                         </button>
 
                         <canvas
@@ -1253,7 +1311,10 @@ onUnmounted(() => {
                                 <img v-if="topPrize.image_path" :src="topPrize.image_path" :alt="topPrize.name" class="top-prize-img" />
                                 <div class="top-prize-info">
                                     <span class="top-prize-name">{{ topPrize.name }}</span>
-                                    <span class="top-prize-value" :style="{ color: coinDropAssets.accentColor }">£{{ topPrize.value }}</span>
+                                    <span class="top-prize-value" :style="{ color: coinDropAssets.accentColor }">
+                                        <template v-if="topPrize.isTicketBundle">{{ Math.floor(topPrize.value) }} Free Ticket{{ topPrize.value != 1 ? 's' : '' }}</template>
+                                        <template v-else>{{ topPrize.isNoAutoCredit ? 'Up to ' : '' }}&pound;{{ topPrize.value }}</template>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -1274,7 +1335,7 @@ onUnmounted(() => {
                 <div class="win-toast-content">
                     <div class="win-toast-title">WINNER!</div>
                     <div class="win-toast-prize">{{ currentWinningPrize.name }}</div>
-                    <div class="win-toast-value">£{{ currentWinningPrize.value }}</div>
+                    <div v-if="!currentWinningPrize.no_auto_credit" class="win-toast-value">&pound;{{ currentWinningPrize.value }}</div>
                 </div>
                 <img v-if="currentWinningPrize.image" :src="currentWinningPrize.image" :alt="currentWinningPrize.name" class="win-toast-img" />
             </div>
@@ -1299,7 +1360,10 @@ onUnmounted(() => {
                             <img v-if="prize.image_path" :src="prize.image_path" :alt="prize.name" class="prize-card-img" />
                             <div class="prize-card-placeholder" v-else>?</div>
                             <div class="prize-card-name">{{ prize.name }}</div>
-                            <div class="prize-card-value" :style="{ color: coinDropAssets.accentColor }">£{{ prize.value }}</div>
+                            <div class="prize-card-value" :style="{ color: coinDropAssets.accentColor }">
+                                <template v-if="(prize as any).prize_type === 'ticket_bundle'">{{ Math.floor(prize.value) }} Free Ticket{{ prize.value !== 1 ? 's' : '' }}</template>
+                                <template v-else>{{ prize.no_auto_credit ? 'Up to ' : '' }}&pound;{{ prize.value }}</template>
+                            </div>
                         </div>
                     </div>
 
@@ -1318,23 +1382,46 @@ onUnmounted(() => {
                     <h2 class="prizes-modal-title" style="color: #00ff88;">YOUR INSTANT WINS</h2>
                     <p class="reveal-wins-subtitle">These are the prizes waiting for you!</p>
 
+                    <button
+                        v-if="!demoMode && tickets?.some((t) => !playedTickets?.includes(t.id))"
+                        class="reveal-all-claim-btn"
+                        :style="{ color: coinDropAssets.winBucketColor, borderColor: coinDropAssets.winBucketColor }"
+                        @click="finishAll"
+                    >
+                        Reveal All Remaining
+                    </button>
+
                     <div class="prizes-grid" v-if="tickets && tickets.length > 0">
                         <div
-                            v-for="ticket in tickets"
+                            v-for="ticket in visiblePrizeCardTickets"
                             :key="ticket.id"
                             class="prize-card"
                             :class="{
-                                'winner-card': ticket.instant_win !== false && ticket.instant_win && ticket.instant_win.prize !== 'NO WIN',
+                                'winner-card': playedTickets?.includes(ticket.id) && ticket.instant_win !== false && ticket.instant_win && ticket.instant_win.prize !== 'NO WIN',
                                 'played-card': playedTickets?.includes(ticket.id)
                             }"
                         >
                             <div v-if="playedTickets?.includes(ticket.id)" class="played-badge">PLAYED</div>
-                            <template v-if="ticket.instant_win !== false && ticket.instant_win && ticket.instant_win.prize !== 'NO WIN'">
+                            <template v-if="!playedTickets?.includes(ticket.id)">
+                                <div class="prize-card-placeholder" style="opacity: 0.4;">?</div>
+                                <div class="prize-card-name" style="opacity: 0.4;">Not yet played</div>
+                            </template>
+                            <template v-else-if="ticket.instant_win !== false && ticket.instant_win && ticket.instant_win.prize !== 'NO WIN'">
                                 <div class="winner-badge">WINNER!</div>
                                 <img v-if="ticket.instant_win.image_path" :src="ticket.instant_win.image_path" :alt="ticket.instant_win.prize" class="prize-card-img" />
                                 <div class="prize-card-placeholder winner-placeholder" v-else>WIN</div>
-                                <div class="prize-card-name">{{ ticket.instant_win.prize }}</div>
-                                <div class="prize-card-value" style="color: #00ff88;">£{{ ticket.instant_win.value }}</div>
+                                <div class="prize-card-name">
+                                    <template v-if="(ticket.instant_win as any).prize_type === 'ticket_bundle'">
+                                        {{ Math.floor((ticket.instant_win as any).value) }} Free Ticket{{ (ticket.instant_win as any).value !== 1 ? 's' : '' }}
+                                    </template>
+                                    <template v-else>{{ ticket.instant_win.prize }}</template>
+                                </div>
+                                <div class="prize-card-value" style="color: #00ff88;">
+                                    <template v-if="(ticket.instant_win as any).prize_type === 'ticket_bundle'">
+                                        {{ Math.floor((ticket.instant_win as any).value) }} Free Ticket{{ (ticket.instant_win as any).value !== 1 ? 's' : '' }}
+                                    </template>
+                                    <template v-else>&pound;{{ ticket.instant_win.value }}</template>
+                                </div>
                             </template>
                             <template v-else>
                                 <div class="prize-card-placeholder">X</div>
@@ -1343,18 +1430,21 @@ onUnmounted(() => {
                             <div class="ticket-number">Ticket #{{ ticket.number }}</div>
                         </div>
                     </div>
+                    <button
+                        v-if="tickets && tickets.length > PRIZE_CARD_DISPLAY_LIMIT && !showAllPrizeCards"
+                        class="reveal-all-claim-btn"
+                        :style="{ color: coinDropAssets.winBucketColor, borderColor: coinDropAssets.winBucketColor }"
+                        @click="showAllPrizeCards = true"
+                    >
+                        Show all {{ tickets.length }} tickets
+                    </button>
 
-                    <div v-else class="no-tickets-message">
+                    <div v-if="!tickets || tickets.length === 0" class="no-tickets-message">
                         <p>No tickets available</p>
                     </div>
                 </div>
             </div>
         </Transition>
-
-        <CoinDropInventoryModal 
-            v-model="showInventory"
-            :coinDropAssets="coinDropAssets"
-        />
 
         <!-- Audio Elements -->
         <audio v-if="coinDropAssets.dropSound" ref="dropSound" :src="coinDropAssets.dropSound" preload="auto"></audio>
@@ -1364,157 +1454,6 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-
-/* ============================================
-   PRIZES INVENTORY BUTTON (Top Right)
-   ============================================ */
-
-   .prizes-inventory-btn {
-    position: absolute;
-    top: 75px;
-    right: 20px;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    padding: 8px 10px;
-    min-width: 65px;
-    cursor: pointer;
-    border-radius: 14px;
-    border: 2px solid var(--btn-accent);
-    background: linear-gradient(135deg, 
-        color-mix(in srgb, var(--btn-primary) 40%, transparent),
-        color-mix(in srgb, var(--btn-primary) 20%, transparent)
-    );
-    backdrop-filter: blur(12px);
-    box-shadow: 
-        0 4px 15px color-mix(in srgb, var(--btn-accent) 30%, transparent),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    animation: prizesPulse 2s ease-in-out infinite;
-}
-
-.prizes-inventory-btn:hover {
-    transform: scale(1.1) translateY(-2px);
-    border-color: var(--btn-win);
-    background: linear-gradient(135deg, 
-        color-mix(in srgb, var(--btn-primary) 60%, transparent),
-        color-mix(in srgb, var(--btn-primary) 40%, transparent)
-    );
-    box-shadow: 
-        0 8px 25px color-mix(in srgb, var(--btn-accent) 50%, transparent),
-        0 0 30px color-mix(in srgb, var(--btn-accent) 40%, transparent),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-}
-
-.prizes-inventory-btn:active {
-    transform: scale(1.05) translateY(0);
-}
-
-.prizes-icon {
-    font-size: 1.3rem;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
-    animation: iconBounce 2s ease-in-out infinite;
-}
-
-.prizes-text {
-    font-size: 0.6rem;
-    font-weight: 800;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    color: white;
-    text-shadow: 
-        0 1px 2px rgba(0, 0, 0, 0.8),
-        0 0 8px var(--btn-accent);
-}
-
-.prizes-badge {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    min-width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 6px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, var(--btn-win), color-mix(in srgb, var(--btn-win) 70%, black));
-    color: #000;
-    font-size: 0.65rem;
-    font-weight: 900;
-    border: 2px solid var(--btn-win);
-    box-shadow: 
-        0 0 12px var(--btn-win),
-        0 2px 6px rgba(0, 0, 0, 0.4);
-    animation: badgePulse 1.5s ease-in-out infinite;
-}
-
-@keyframes prizesPulse {
-    0%, 100% {
-        box-shadow: 
-            0 4px 15px color-mix(in srgb, var(--btn-accent) 30%, transparent),
-            inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    }
-    50% {
-        box-shadow: 
-            0 4px 20px color-mix(in srgb, var(--btn-accent) 50%, transparent),
-            0 0 25px color-mix(in srgb, var(--btn-accent) 30%, transparent),
-            inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    }
-}
-
-@keyframes iconBounce {
-    0%, 100% {
-        transform: translateY(0) scale(1);
-    }
-    50% {
-        transform: translateY(-3px) scale(1.1);
-    }
-}
-
-@keyframes badgePulse {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow: 
-            0 0 12px var(--btn-win),
-            0 2px 6px rgba(0, 0, 0, 0.4);
-    }
-    50% {
-        transform: scale(1.15);
-        box-shadow: 
-            0 0 20px var(--btn-win),
-            0 0 30px var(--btn-win),
-            0 2px 6px rgba(0, 0, 0, 0.4);
-    }
-}
-
-/* Small mobile adjustments */
-@media (max-width: 420px) {
-    .prizes-inventory-btn {
-        top: 55px;
-        padding: 6px 8px;
-        min-width: 55px;
-    }
-
-    .prizes-icon {
-        font-size: 1.1rem;
-    }
-
-    .prizes-text {
-        font-size: 0.5rem;
-    }
-
-    .prizes-badge {
-        min-width: 18px;
-        height: 18px;
-        font-size: 0.6rem;
-    }
-}
-
-
 .coin-drop-container {
     width: 100%;
     min-height: 100%;
@@ -2137,6 +2076,43 @@ onUnmounted(() => {
     font-size: 0.9rem;
 }
 
+/* ============================================
+   INSTANT WINS CORNER BUTTON (Top Right)
+   ============================================ */
+
+.instant-wins-corner-btn {
+    position: absolute;
+    top: 75px; /* Aligned with 2nd-3rd peg row inside canvas */
+    right: 2px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+    background: color-mix(in srgb, var(--primary) 25%, transparent);
+    border: 1px solid var(--primary);
+    border-radius: 12px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.instant-wins-corner-btn:hover {
+    background: color-mix(in srgb, var(--primary) 40%, transparent);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.instant-wins-corner-btn .prizes-icon {
+    font-size: 0.9rem;
+}
+
 .prizes-icon {
     font-size: 1.1rem;
 }
@@ -2149,14 +2125,35 @@ onUnmounted(() => {
     margin: -15px 0 20px;
 }
 
+.reveal-all-claim-btn {
+    /* color/border-color are set inline from coinDropAssets.winBucketColor (tenant-
+       configurable) — these are just structural fallbacks if that's ever empty. */
+    display: block;
+    margin: 0 auto 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #00ff88;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reveal-all-claim-btn:hover {
+    background: rgba(0, 255, 136, 0.28);
+    transform: scale(1.04);
+}
+
 .winner-card {
     background: linear-gradient(180deg, rgba(0, 255, 136, 0.2) 0%, rgba(0, 255, 136, 0.05) 100%) !important;
     border-color: rgba(0, 255, 136, 0.5) !important;
 }
 
-.played-card {
-    opacity: 0.5;
-}
+/* played-card no longer dims to 0.5 opacity — the "PLAYED" badge plus the card's own
+   content (win/no-win vs the neutral "Not yet played" state) already distinguish it,
+   and the fade made revealed cards look unintentionally washed out/translucent. */
 
 .winner-badge {
     position: absolute;

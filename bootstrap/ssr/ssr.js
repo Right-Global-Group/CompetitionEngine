@@ -1,9 +1,8 @@
-import { ref, computed, mergeProps, useSSRContext, unref, onMounted, inject, withCtx, createVNode, createTextVNode, toDisplayString, createBlock, openBlock, Fragment, renderList, useModel, withModifiers, createCommentVNode, defineComponent, withDirectives, vModelText, onUnmounted, renderSlot, watch, nextTick, onBeforeUnmount, reactive, resolveDynamicComponent, withKeys, createSSRApp, h as h$1 } from "vue";
-import { ssrRenderAttrs, ssrInterpolate, ssrRenderStyle, ssrRenderClass, ssrRenderComponent, ssrRenderSlot, ssrRenderList, ssrGetDynamicModelProps, ssrLooseContain, ssrRenderAttr, ssrIncludeBooleanAttr, ssrRenderTeleport, ssrRenderVNode, renderToString } from "vue/server-renderer";
+import { ref, computed, mergeProps, useSSRContext, unref, onMounted, inject, withCtx, createVNode, createTextVNode, toDisplayString, createBlock, openBlock, Fragment, renderList, useModel, withModifiers, createCommentVNode, defineComponent, withDirectives, vModelText, onUnmounted, renderSlot, watch, shallowRef, defineAsyncComponent, nextTick, onBeforeUnmount, resolveDynamicComponent, reactive, withKeys, createSSRApp, h as h$1 } from "vue";
+import { ssrRenderAttrs, ssrInterpolate, ssrRenderStyle, ssrRenderClass, ssrRenderComponent, ssrRenderSlot, ssrRenderList, ssrGetDynamicModelProps, ssrLooseContain, ssrRenderAttr, ssrIncludeBooleanAttr, ssrRenderVNode, ssrRenderTeleport, renderToString } from "vue/server-renderer";
 import { usePage, Head, Link, useForm, router, createInertiaApp } from "@inertiajs/vue3";
 import * as THREE from "three";
 import axios from "axios";
-import "canvas-confetti";
 import createServer from "@inertiajs/vue3/server";
 function _assertThisInitialized(self) {
   if (self === void 0) {
@@ -4024,7 +4023,7 @@ _forEachName("x,y,z,top,right,bottom,left,width,height,fontSize,padding,margin,p
 gsap$2.registerPlugin(CSSPlugin);
 var gsapWithCSS = gsap$2.registerPlugin(CSSPlugin) || gsap$2;
 gsapWithCSS.core.Tween;
-const _sfc_main$14 = {
+const _sfc_main$11 = {
   __name: "Header",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4071,11 +4070,11 @@ const _sfc_main$14 = {
     };
   }
 };
-const _sfc_setup$14 = _sfc_main$14.setup;
-_sfc_main$14.setup = (props, ctx) => {
+const _sfc_setup$11 = _sfc_main$11.setup;
+_sfc_main$11.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Layout/Header.vue");
-  return _sfc_setup$14 ? _sfc_setup$14(props, ctx) : void 0;
+  return _sfc_setup$11 ? _sfc_setup$11(props, ctx) : void 0;
 };
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -4084,7 +4083,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$13 = {
+const _sfc_main$10 = {
   __name: "Footer",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4094,14 +4093,14 @@ const _sfc_main$13 = {
     };
   }
 };
-const _sfc_setup$13 = _sfc_main$13.setup;
-_sfc_main$13.setup = (props, ctx) => {
+const _sfc_setup$10 = _sfc_main$10.setup;
+_sfc_main$10.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Layout/Footer.vue");
-  return _sfc_setup$13 ? _sfc_setup$13(props, ctx) : void 0;
+  return _sfc_setup$10 ? _sfc_setup$10(props, ctx) : void 0;
 };
-const Footer = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["__scopeId", "data-v-114c6461"]]);
-const _sfc_main$12 = {
+const Footer = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["__scopeId", "data-v-114c6461"]]);
+const _sfc_main$$ = {
   __name: "AppLayout",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4120,7 +4119,7 @@ const _sfc_main$12 = {
     });
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<div${ssrRenderAttrs(mergeProps({ class: "min-h-screen" }, _attrs))} data-v-6218a5cc><div id="mouse-follower" data-v-6218a5cc></div>`);
-      _push(ssrRenderComponent(_sfc_main$14, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$11, null, null, _parent));
       _push(`<main data-v-6218a5cc>`);
       ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
       _push(`</main>`);
@@ -4129,13 +4128,13 @@ const _sfc_main$12 = {
     };
   }
 };
-const _sfc_setup$12 = _sfc_main$12.setup;
-_sfc_main$12.setup = (props, ctx) => {
+const _sfc_setup$$ = _sfc_main$$.setup;
+_sfc_main$$.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Layouts/AppLayout.vue");
-  return _sfc_setup$12 ? _sfc_setup$12(props, ctx) : void 0;
+  return _sfc_setup$$ ? _sfc_setup$$(props, ctx) : void 0;
 };
-const AppLayout = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["__scopeId", "data-v-6218a5cc"]]);
+const AppLayout = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["__scopeId", "data-v-6218a5cc"]]);
 function _defineProperties(target, props) {
   for (var i2 = 0; i2 < props.length; i2++) {
     var descriptor = props[i2];
@@ -6346,7 +6345,7 @@ ScrollTrigger.core = {
   }
 };
 _getGSAP2() && gsap.registerPlugin(ScrollTrigger);
-const _sfc_main$11 = {
+const _sfc_main$_ = {
   __name: "About",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6599,32 +6598,32 @@ const _sfc_main$11 = {
     };
   }
 };
-const _sfc_setup$11 = _sfc_main$11.setup;
-_sfc_main$11.setup = (props, ctx) => {
+const _sfc_setup$_ = _sfc_main$_.setup;
+_sfc_main$_.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/About.vue");
-  return _sfc_setup$11 ? _sfc_setup$11(props, ctx) : void 0;
+  return _sfc_setup$_ ? _sfc_setup$_(props, ctx) : void 0;
 };
-const About = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["__scopeId", "data-v-65ee555d"]]);
+const About = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["__scopeId", "data-v-65ee555d"]]);
 const __vite_glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: About
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$10 = {};
-function _sfc_ssrRender$e(_ctx, _push, _parent, _attrs) {
+const _sfc_main$Z = {};
+function _sfc_ssrRender$d(_ctx, _push, _parent, _attrs) {
   _push(`<svg${ssrRenderAttrs(mergeProps({
     viewBox: "0 0 316 316",
     xmlns: "http://www.w3.org/2000/svg"
   }, _attrs))}><path d="M305.8 81.125C305.77 80.995 305.69 80.885 305.65 80.755C305.56 80.525 305.49 80.285 305.37 80.075C305.29 79.935 305.17 79.815 305.07 79.685C304.94 79.515 304.83 79.325 304.68 79.175C304.55 79.045 304.39 78.955 304.25 78.845C304.09 78.715 303.95 78.575 303.77 78.475L251.32 48.275C249.97 47.495 248.31 47.495 246.96 48.275L194.51 78.475C194.33 78.575 194.19 78.725 194.03 78.845C193.89 78.955 193.73 79.045 193.6 79.175C193.45 79.325 193.34 79.515 193.21 79.685C193.11 79.815 192.99 79.935 192.91 80.075C192.79 80.285 192.71 80.525 192.63 80.755C192.58 80.875 192.51 80.995 192.48 81.125C192.38 81.495 192.33 81.875 192.33 82.265V139.625L148.62 164.795V52.575C148.62 52.185 148.57 51.805 148.47 51.435C148.44 51.305 148.36 51.195 148.32 51.065C148.23 50.835 148.16 50.595 148.04 50.385C147.96 50.245 147.84 50.125 147.74 49.995C147.61 49.825 147.5 49.635 147.35 49.485C147.22 49.355 147.06 49.265 146.92 49.155C146.76 49.025 146.62 48.885 146.44 48.785L93.99 18.585C92.64 17.805 90.98 17.805 89.63 18.585L37.18 48.785C37 48.885 36.86 49.035 36.7 49.155C36.56 49.265 36.4 49.355 36.27 49.485C36.12 49.635 36.01 49.825 35.88 49.995C35.78 50.125 35.66 50.245 35.58 50.385C35.46 50.595 35.38 50.835 35.3 51.065C35.25 51.185 35.18 51.305 35.15 51.435C35.05 51.805 35 52.185 35 52.575V232.235C35 233.795 35.84 235.245 37.19 236.025L142.1 296.425C142.33 296.555 142.58 296.635 142.82 296.725C142.93 296.765 143.04 296.835 143.16 296.865C143.53 296.965 143.9 297.015 144.28 297.015C144.66 297.015 145.03 296.965 145.4 296.865C145.5 296.835 145.59 296.775 145.69 296.745C145.95 296.655 146.21 296.565 146.45 296.435L251.36 236.035C252.72 235.255 253.55 233.815 253.55 232.245V174.885L303.81 145.945C305.17 145.165 306 143.725 306 142.155V82.265C305.95 81.875 305.89 81.495 305.8 81.125ZM144.2 227.205L100.57 202.515L146.39 176.135L196.66 147.195L240.33 172.335L208.29 190.625L144.2 227.205ZM244.75 114.995V164.795L226.39 154.225L201.03 139.625V89.825L219.39 100.395L244.75 114.995ZM249.12 57.105L292.81 82.265L249.12 107.425L205.43 82.265L249.12 57.105ZM114.49 184.425L96.13 194.995V85.305L121.49 70.705L139.85 60.135V169.815L114.49 184.425ZM91.76 27.425L135.45 52.585L91.76 77.745L48.07 52.585L91.76 27.425ZM43.67 60.135L62.03 70.705L87.39 85.305V202.545V202.555V202.565C87.39 202.735 87.44 202.895 87.46 203.055C87.49 203.265 87.49 203.485 87.55 203.695V203.705C87.6 203.875 87.69 204.035 87.76 204.195C87.84 204.375 87.89 204.575 87.99 204.745C87.99 204.745 87.99 204.755 88 204.755C88.09 204.905 88.22 205.035 88.33 205.175C88.45 205.335 88.55 205.495 88.69 205.635L88.7 205.645C88.82 205.765 88.98 205.855 89.12 205.965C89.28 206.085 89.42 206.225 89.59 206.325C89.6 206.325 89.6 206.325 89.61 206.335C89.62 206.335 89.62 206.345 89.63 206.345L139.87 234.775V285.065L43.67 229.705V60.135ZM244.75 229.705L148.58 285.075V234.775L219.8 194.115L244.75 179.875V229.705ZM297.2 139.625L253.49 164.795V114.995L278.85 100.395L297.21 89.825V139.625H297.2Z"></path></svg>`);
 }
-const _sfc_setup$10 = _sfc_main$10.setup;
-_sfc_main$10.setup = (props, ctx) => {
+const _sfc_setup$Z = _sfc_main$Z.setup;
+_sfc_main$Z.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ApplicationLogo.vue");
-  return _sfc_setup$10 ? _sfc_setup$10(props, ctx) : void 0;
+  return _sfc_setup$Z ? _sfc_setup$Z(props, ctx) : void 0;
 };
-const ApplicationLogo = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["ssrRender", _sfc_ssrRender$e]]);
-const _sfc_main$$ = {
+const ApplicationLogo = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["ssrRender", _sfc_ssrRender$d]]);
+const _sfc_main$Y = {
   __name: "GuestLayout",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6648,13 +6647,13 @@ const _sfc_main$$ = {
     };
   }
 };
-const _sfc_setup$$ = _sfc_main$$.setup;
-_sfc_main$$.setup = (props, ctx) => {
+const _sfc_setup$Y = _sfc_main$Y.setup;
+_sfc_main$Y.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Layouts/GuestLayout.vue");
-  return _sfc_setup$$ ? _sfc_setup$$(props, ctx) : void 0;
+  return _sfc_setup$Y ? _sfc_setup$Y(props, ctx) : void 0;
 };
-const _sfc_main$_ = {
+const _sfc_main$X = {
   __name: "InputError",
   __ssrInlineRender: true,
   props: {
@@ -6670,13 +6669,13 @@ const _sfc_main$_ = {
     };
   }
 };
-const _sfc_setup$_ = _sfc_main$_.setup;
-_sfc_main$_.setup = (props, ctx) => {
+const _sfc_setup$X = _sfc_main$X.setup;
+_sfc_main$X.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/InputError.vue");
-  return _sfc_setup$_ ? _sfc_setup$_(props, ctx) : void 0;
+  return _sfc_setup$X ? _sfc_setup$X(props, ctx) : void 0;
 };
-const _sfc_main$Z = {
+const _sfc_main$W = {
   __name: "InputLabel",
   __ssrInlineRender: true,
   props: {
@@ -6698,26 +6697,26 @@ const _sfc_main$Z = {
     };
   }
 };
-const _sfc_setup$Z = _sfc_main$Z.setup;
-_sfc_main$Z.setup = (props, ctx) => {
+const _sfc_setup$W = _sfc_main$W.setup;
+_sfc_main$W.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/InputLabel.vue");
-  return _sfc_setup$Z ? _sfc_setup$Z(props, ctx) : void 0;
+  return _sfc_setup$W ? _sfc_setup$W(props, ctx) : void 0;
 };
-const _sfc_main$Y = {};
-function _sfc_ssrRender$d(_ctx, _push, _parent, _attrs) {
+const _sfc_main$V = {};
+function _sfc_ssrRender$c(_ctx, _push, _parent, _attrs) {
   _push(`<button${ssrRenderAttrs(mergeProps({ class: "inline-flex items-center rounded-md border border-transparent bg-gray-800 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition duration-150 ease-in-out hover:bg-gray-700 focus:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-gray-900" }, _attrs))}>`);
   ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</button>`);
 }
-const _sfc_setup$Y = _sfc_main$Y.setup;
-_sfc_main$Y.setup = (props, ctx) => {
+const _sfc_setup$V = _sfc_main$V.setup;
+_sfc_main$V.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/PrimaryButton.vue");
-  return _sfc_setup$Y ? _sfc_setup$Y(props, ctx) : void 0;
+  return _sfc_setup$V ? _sfc_setup$V(props, ctx) : void 0;
 };
-const PrimaryButton = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["ssrRender", _sfc_ssrRender$d]]);
-const _sfc_main$X = {
+const PrimaryButton = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["ssrRender", _sfc_ssrRender$c]]);
+const _sfc_main$U = {
   __name: "TextInput",
   __ssrInlineRender: true,
   props: {
@@ -6747,13 +6746,13 @@ const _sfc_main$X = {
     };
   }
 };
-const _sfc_setup$X = _sfc_main$X.setup;
-_sfc_main$X.setup = (props, ctx) => {
+const _sfc_setup$U = _sfc_main$U.setup;
+_sfc_main$U.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/TextInput.vue");
-  return _sfc_setup$X ? _sfc_setup$X(props, ctx) : void 0;
+  return _sfc_setup$U ? _sfc_setup$U(props, ctx) : void 0;
 };
-const _sfc_main$W = {
+const _sfc_main$T = {
   __name: "ConfirmPassword",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6766,16 +6765,16 @@ const _sfc_main$W = {
       });
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$$, _attrs, {
+      _push(ssrRenderComponent(_sfc_main$Y, _attrs, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(ssrRenderComponent(unref(Head), { title: "Confirm Password" }, null, _parent2, _scopeId));
             _push2(`<div class="mb-4 text-sm text-gray-600"${_scopeId}> This is a secure area of the application. Please confirm your password before continuing. </div><form${_scopeId}><div${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$Z, {
+            _push2(ssrRenderComponent(_sfc_main$W, {
               for: "password",
               value: "Password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$X, {
+            _push2(ssrRenderComponent(_sfc_main$U, {
               id: "password",
               type: "password",
               class: "mt-1 block w-full",
@@ -6785,7 +6784,7 @@ const _sfc_main$W = {
               autocomplete: "current-password",
               autofocus: ""
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$_, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               class: "mt-2",
               message: unref(form).errors.password
             }, null, _parent2, _scopeId));
@@ -6814,11 +6813,11 @@ const _sfc_main$W = {
                 onSubmit: withModifiers(submit, ["prevent"])
               }, [
                 createVNode("div", null, [
-                  createVNode(_sfc_main$Z, {
+                  createVNode(_sfc_main$W, {
                     for: "password",
                     value: "Password"
                   }),
-                  createVNode(_sfc_main$X, {
+                  createVNode(_sfc_main$U, {
                     id: "password",
                     type: "password",
                     class: "mt-1 block w-full",
@@ -6828,7 +6827,7 @@ const _sfc_main$W = {
                     autocomplete: "current-password",
                     autofocus: ""
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$_, {
+                  createVNode(_sfc_main$X, {
                     class: "mt-2",
                     message: unref(form).errors.password
                   }, null, 8, ["message"])
@@ -6853,17 +6852,17 @@ const _sfc_main$W = {
     };
   }
 };
-const _sfc_setup$W = _sfc_main$W.setup;
-_sfc_main$W.setup = (props, ctx) => {
+const _sfc_setup$T = _sfc_main$T.setup;
+_sfc_main$T.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/ConfirmPassword.vue");
-  return _sfc_setup$W ? _sfc_setup$W(props, ctx) : void 0;
+  return _sfc_setup$T ? _sfc_setup$T(props, ctx) : void 0;
 };
 const __vite_glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$W
+  default: _sfc_main$T
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$V = {
+const _sfc_main$S = {
   __name: "ForgotPassword",
   __ssrInlineRender: true,
   props: {
@@ -6879,7 +6878,7 @@ const _sfc_main$V = {
       form.post(route("password.email"));
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$$, _attrs, {
+      _push(ssrRenderComponent(_sfc_main$Y, _attrs, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(ssrRenderComponent(unref(Head), { title: "Forgot Password" }, null, _parent2, _scopeId));
@@ -6890,11 +6889,11 @@ const _sfc_main$V = {
               _push2(`<!---->`);
             }
             _push2(`<form${_scopeId}><div${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$Z, {
+            _push2(ssrRenderComponent(_sfc_main$W, {
               for: "email",
               value: "Email"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$X, {
+            _push2(ssrRenderComponent(_sfc_main$U, {
               id: "email",
               type: "email",
               class: "mt-1 block w-full",
@@ -6904,7 +6903,7 @@ const _sfc_main$V = {
               autofocus: "",
               autocomplete: "username"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$_, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               class: "mt-2",
               message: unref(form).errors.email
             }, null, _parent2, _scopeId));
@@ -6937,11 +6936,11 @@ const _sfc_main$V = {
                 onSubmit: withModifiers(submit, ["prevent"])
               }, [
                 createVNode("div", null, [
-                  createVNode(_sfc_main$Z, {
+                  createVNode(_sfc_main$W, {
                     for: "email",
                     value: "Email"
                   }),
-                  createVNode(_sfc_main$X, {
+                  createVNode(_sfc_main$U, {
                     id: "email",
                     type: "email",
                     class: "mt-1 block w-full",
@@ -6951,7 +6950,7 @@ const _sfc_main$V = {
                     autofocus: "",
                     autocomplete: "username"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$_, {
+                  createVNode(_sfc_main$X, {
                     class: "mt-2",
                     message: unref(form).errors.email
                   }, null, 8, ["message"])
@@ -6976,17 +6975,17 @@ const _sfc_main$V = {
     };
   }
 };
-const _sfc_setup$V = _sfc_main$V.setup;
-_sfc_main$V.setup = (props, ctx) => {
+const _sfc_setup$S = _sfc_main$S.setup;
+_sfc_main$S.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/ForgotPassword.vue");
-  return _sfc_setup$V ? _sfc_setup$V(props, ctx) : void 0;
+  return _sfc_setup$S ? _sfc_setup$S(props, ctx) : void 0;
 };
 const __vite_glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$V
+  default: _sfc_main$S
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$U = {
+const _sfc_main$R = {
   __name: "Checkbox",
   __ssrInlineRender: true,
   props: {
@@ -7021,13 +7020,13 @@ const _sfc_main$U = {
     };
   }
 };
-const _sfc_setup$U = _sfc_main$U.setup;
-_sfc_main$U.setup = (props, ctx) => {
+const _sfc_setup$R = _sfc_main$R.setup;
+_sfc_main$R.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Checkbox.vue");
-  return _sfc_setup$U ? _sfc_setup$U(props, ctx) : void 0;
+  return _sfc_setup$R ? _sfc_setup$R(props, ctx) : void 0;
 };
-const _sfc_main$T = {
+const _sfc_main$Q = {
   __name: "Login",
   __ssrInlineRender: true,
   props: {
@@ -7050,7 +7049,7 @@ const _sfc_main$T = {
       });
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$$, _attrs, {
+      _push(ssrRenderComponent(_sfc_main$Y, _attrs, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d;
           if (_push2) {
@@ -7090,11 +7089,11 @@ const _sfc_main$T = {
               _: 1
             }, _parent2, _scopeId));
             _push2(`</div><form${_scopeId}><div${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$Z, {
+            _push2(ssrRenderComponent(_sfc_main$W, {
               for: "email",
               value: "Email"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$X, {
+            _push2(ssrRenderComponent(_sfc_main$U, {
               id: "email",
               type: "email",
               class: "mt-1 block w-full text-gray-900",
@@ -7104,16 +7103,16 @@ const _sfc_main$T = {
               autofocus: "",
               autocomplete: "username"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$_, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               class: "mt-2",
               message: (_a = unref(form).errors) == null ? void 0 : _a.email
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="mt-4"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$Z, {
+            _push2(ssrRenderComponent(_sfc_main$W, {
               for: "password",
               value: "Password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$X, {
+            _push2(ssrRenderComponent(_sfc_main$U, {
               id: "password",
               type: "password",
               class: "mt-1 block w-full text-gray-900",
@@ -7122,12 +7121,12 @@ const _sfc_main$T = {
               required: "",
               autocomplete: "current-password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$_, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               class: "mt-2",
               message: (_b = unref(form).errors) == null ? void 0 : _b.password
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="mt-4 block"${_scopeId}><label class="flex items-center"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$U, {
+            _push2(ssrRenderComponent(_sfc_main$R, {
               name: "remember",
               checked: unref(form).remember,
               "onUpdate:checked": ($event) => unref(form).remember = $event
@@ -7203,11 +7202,11 @@ const _sfc_main$T = {
                 onSubmit: withModifiers(submit, ["prevent"])
               }, [
                 createVNode("div", null, [
-                  createVNode(_sfc_main$Z, {
+                  createVNode(_sfc_main$W, {
                     for: "email",
                     value: "Email"
                   }),
-                  createVNode(_sfc_main$X, {
+                  createVNode(_sfc_main$U, {
                     id: "email",
                     type: "email",
                     class: "mt-1 block w-full text-gray-900",
@@ -7217,17 +7216,17 @@ const _sfc_main$T = {
                     autofocus: "",
                     autocomplete: "username"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$_, {
+                  createVNode(_sfc_main$X, {
                     class: "mt-2",
                     message: (_c = unref(form).errors) == null ? void 0 : _c.email
                   }, null, 8, ["message"])
                 ]),
                 createVNode("div", { class: "mt-4" }, [
-                  createVNode(_sfc_main$Z, {
+                  createVNode(_sfc_main$W, {
                     for: "password",
                     value: "Password"
                   }),
-                  createVNode(_sfc_main$X, {
+                  createVNode(_sfc_main$U, {
                     id: "password",
                     type: "password",
                     class: "mt-1 block w-full text-gray-900",
@@ -7236,14 +7235,14 @@ const _sfc_main$T = {
                     required: "",
                     autocomplete: "current-password"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$_, {
+                  createVNode(_sfc_main$X, {
                     class: "mt-2",
                     message: (_d = unref(form).errors) == null ? void 0 : _d.password
                   }, null, 8, ["message"])
                 ]),
                 createVNode("div", { class: "mt-4 block" }, [
                   createVNode("label", { class: "flex items-center" }, [
-                    createVNode(_sfc_main$U, {
+                    createVNode(_sfc_main$R, {
                       name: "remember",
                       checked: unref(form).remember,
                       "onUpdate:checked": ($event) => unref(form).remember = $event
@@ -7281,17 +7280,17 @@ const _sfc_main$T = {
     };
   }
 };
-const _sfc_setup$T = _sfc_main$T.setup;
-_sfc_main$T.setup = (props, ctx) => {
+const _sfc_setup$Q = _sfc_main$Q.setup;
+_sfc_main$Q.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/Login.vue");
-  return _sfc_setup$T ? _sfc_setup$T(props, ctx) : void 0;
+  return _sfc_setup$Q ? _sfc_setup$Q(props, ctx) : void 0;
 };
 const __vite_glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$T
+  default: _sfc_main$Q
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$S = {
+const _sfc_main$P = {
   __name: "Register",
   __ssrInlineRender: true,
   setup(__props) {
@@ -7307,16 +7306,16 @@ const _sfc_main$S = {
       });
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$$, _attrs, {
+      _push(ssrRenderComponent(_sfc_main$Y, _attrs, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(ssrRenderComponent(unref(Head), { title: "Register" }, null, _parent2, _scopeId));
             _push2(`<form${_scopeId}><div${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$Z, {
+            _push2(ssrRenderComponent(_sfc_main$W, {
               for: "name",
               value: "Name"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$X, {
+            _push2(ssrRenderComponent(_sfc_main$U, {
               id: "name",
               type: "text",
               class: "mt-1 block w-full",
@@ -7326,16 +7325,16 @@ const _sfc_main$S = {
               autofocus: "",
               autocomplete: "name"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$_, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               class: "mt-2",
               message: unref(form).errors.name
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="mt-4"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$Z, {
+            _push2(ssrRenderComponent(_sfc_main$W, {
               for: "email",
               value: "Email"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$X, {
+            _push2(ssrRenderComponent(_sfc_main$U, {
               id: "email",
               type: "email",
               class: "mt-1 block w-full",
@@ -7344,16 +7343,16 @@ const _sfc_main$S = {
               required: "",
               autocomplete: "username"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$_, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               class: "mt-2",
               message: unref(form).errors.email
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="mt-4"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$Z, {
+            _push2(ssrRenderComponent(_sfc_main$W, {
               for: "password",
               value: "Password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$X, {
+            _push2(ssrRenderComponent(_sfc_main$U, {
               id: "password",
               type: "password",
               class: "mt-1 block w-full",
@@ -7362,16 +7361,16 @@ const _sfc_main$S = {
               required: "",
               autocomplete: "new-password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$_, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               class: "mt-2",
               message: unref(form).errors.password
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="mt-4"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$Z, {
+            _push2(ssrRenderComponent(_sfc_main$W, {
               for: "password_confirmation",
               value: "Confirm Password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$X, {
+            _push2(ssrRenderComponent(_sfc_main$U, {
               id: "password_confirmation",
               type: "password",
               class: "mt-1 block w-full",
@@ -7380,7 +7379,7 @@ const _sfc_main$S = {
               required: "",
               autocomplete: "new-password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$_, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               class: "mt-2",
               message: unref(form).errors.password_confirmation
             }, null, _parent2, _scopeId));
@@ -7423,11 +7422,11 @@ const _sfc_main$S = {
                 onSubmit: withModifiers(submit, ["prevent"])
               }, [
                 createVNode("div", null, [
-                  createVNode(_sfc_main$Z, {
+                  createVNode(_sfc_main$W, {
                     for: "name",
                     value: "Name"
                   }),
-                  createVNode(_sfc_main$X, {
+                  createVNode(_sfc_main$U, {
                     id: "name",
                     type: "text",
                     class: "mt-1 block w-full",
@@ -7437,17 +7436,17 @@ const _sfc_main$S = {
                     autofocus: "",
                     autocomplete: "name"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$_, {
+                  createVNode(_sfc_main$X, {
                     class: "mt-2",
                     message: unref(form).errors.name
                   }, null, 8, ["message"])
                 ]),
                 createVNode("div", { class: "mt-4" }, [
-                  createVNode(_sfc_main$Z, {
+                  createVNode(_sfc_main$W, {
                     for: "email",
                     value: "Email"
                   }),
-                  createVNode(_sfc_main$X, {
+                  createVNode(_sfc_main$U, {
                     id: "email",
                     type: "email",
                     class: "mt-1 block w-full",
@@ -7456,17 +7455,17 @@ const _sfc_main$S = {
                     required: "",
                     autocomplete: "username"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$_, {
+                  createVNode(_sfc_main$X, {
                     class: "mt-2",
                     message: unref(form).errors.email
                   }, null, 8, ["message"])
                 ]),
                 createVNode("div", { class: "mt-4" }, [
-                  createVNode(_sfc_main$Z, {
+                  createVNode(_sfc_main$W, {
                     for: "password",
                     value: "Password"
                   }),
-                  createVNode(_sfc_main$X, {
+                  createVNode(_sfc_main$U, {
                     id: "password",
                     type: "password",
                     class: "mt-1 block w-full",
@@ -7475,17 +7474,17 @@ const _sfc_main$S = {
                     required: "",
                     autocomplete: "new-password"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$_, {
+                  createVNode(_sfc_main$X, {
                     class: "mt-2",
                     message: unref(form).errors.password
                   }, null, 8, ["message"])
                 ]),
                 createVNode("div", { class: "mt-4" }, [
-                  createVNode(_sfc_main$Z, {
+                  createVNode(_sfc_main$W, {
                     for: "password_confirmation",
                     value: "Confirm Password"
                   }),
-                  createVNode(_sfc_main$X, {
+                  createVNode(_sfc_main$U, {
                     id: "password_confirmation",
                     type: "password",
                     class: "mt-1 block w-full",
@@ -7494,7 +7493,7 @@ const _sfc_main$S = {
                     required: "",
                     autocomplete: "new-password"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$_, {
+                  createVNode(_sfc_main$X, {
                     class: "mt-2",
                     message: unref(form).errors.password_confirmation
                   }, null, 8, ["message"])
@@ -7528,17 +7527,17 @@ const _sfc_main$S = {
     };
   }
 };
-const _sfc_setup$S = _sfc_main$S.setup;
-_sfc_main$S.setup = (props, ctx) => {
+const _sfc_setup$P = _sfc_main$P.setup;
+_sfc_main$P.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/Register.vue");
-  return _sfc_setup$S ? _sfc_setup$S(props, ctx) : void 0;
+  return _sfc_setup$P ? _sfc_setup$P(props, ctx) : void 0;
 };
 const __vite_glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$S
+  default: _sfc_main$P
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$R = {
+const _sfc_main$O = {
   __name: "ResetPassword",
   __ssrInlineRender: true,
   props: {
@@ -7565,16 +7564,16 @@ const _sfc_main$R = {
       });
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$$, _attrs, {
+      _push(ssrRenderComponent(_sfc_main$Y, _attrs, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(ssrRenderComponent(unref(Head), { title: "Reset Password" }, null, _parent2, _scopeId));
             _push2(`<form${_scopeId}><div${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$Z, {
+            _push2(ssrRenderComponent(_sfc_main$W, {
               for: "email",
               value: "Email"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$X, {
+            _push2(ssrRenderComponent(_sfc_main$U, {
               id: "email",
               type: "email",
               class: "mt-1 block w-full",
@@ -7584,16 +7583,16 @@ const _sfc_main$R = {
               autofocus: "",
               autocomplete: "username"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$_, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               class: "mt-2",
               message: unref(form).errors.email
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="mt-4"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$Z, {
+            _push2(ssrRenderComponent(_sfc_main$W, {
               for: "password",
               value: "Password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$X, {
+            _push2(ssrRenderComponent(_sfc_main$U, {
               id: "password",
               type: "password",
               class: "mt-1 block w-full",
@@ -7602,16 +7601,16 @@ const _sfc_main$R = {
               required: "",
               autocomplete: "new-password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$_, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               class: "mt-2",
               message: unref(form).errors.password
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="mt-4"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$Z, {
+            _push2(ssrRenderComponent(_sfc_main$W, {
               for: "password_confirmation",
               value: "Confirm Password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$X, {
+            _push2(ssrRenderComponent(_sfc_main$U, {
               id: "password_confirmation",
               type: "password",
               class: "mt-1 block w-full",
@@ -7620,7 +7619,7 @@ const _sfc_main$R = {
               required: "",
               autocomplete: "new-password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$_, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               class: "mt-2",
               message: unref(form).errors.password_confirmation
             }, null, _parent2, _scopeId));
@@ -7648,11 +7647,11 @@ const _sfc_main$R = {
                 onSubmit: withModifiers(submit, ["prevent"])
               }, [
                 createVNode("div", null, [
-                  createVNode(_sfc_main$Z, {
+                  createVNode(_sfc_main$W, {
                     for: "email",
                     value: "Email"
                   }),
-                  createVNode(_sfc_main$X, {
+                  createVNode(_sfc_main$U, {
                     id: "email",
                     type: "email",
                     class: "mt-1 block w-full",
@@ -7662,17 +7661,17 @@ const _sfc_main$R = {
                     autofocus: "",
                     autocomplete: "username"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$_, {
+                  createVNode(_sfc_main$X, {
                     class: "mt-2",
                     message: unref(form).errors.email
                   }, null, 8, ["message"])
                 ]),
                 createVNode("div", { class: "mt-4" }, [
-                  createVNode(_sfc_main$Z, {
+                  createVNode(_sfc_main$W, {
                     for: "password",
                     value: "Password"
                   }),
-                  createVNode(_sfc_main$X, {
+                  createVNode(_sfc_main$U, {
                     id: "password",
                     type: "password",
                     class: "mt-1 block w-full",
@@ -7681,17 +7680,17 @@ const _sfc_main$R = {
                     required: "",
                     autocomplete: "new-password"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$_, {
+                  createVNode(_sfc_main$X, {
                     class: "mt-2",
                     message: unref(form).errors.password
                   }, null, 8, ["message"])
                 ]),
                 createVNode("div", { class: "mt-4" }, [
-                  createVNode(_sfc_main$Z, {
+                  createVNode(_sfc_main$W, {
                     for: "password_confirmation",
                     value: "Confirm Password"
                   }),
-                  createVNode(_sfc_main$X, {
+                  createVNode(_sfc_main$U, {
                     id: "password_confirmation",
                     type: "password",
                     class: "mt-1 block w-full",
@@ -7700,7 +7699,7 @@ const _sfc_main$R = {
                     required: "",
                     autocomplete: "new-password"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$_, {
+                  createVNode(_sfc_main$X, {
                     class: "mt-2",
                     message: unref(form).errors.password_confirmation
                   }, null, 8, ["message"])
@@ -7725,17 +7724,17 @@ const _sfc_main$R = {
     };
   }
 };
-const _sfc_setup$R = _sfc_main$R.setup;
-_sfc_main$R.setup = (props, ctx) => {
+const _sfc_setup$O = _sfc_main$O.setup;
+_sfc_main$O.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/ResetPassword.vue");
-  return _sfc_setup$R ? _sfc_setup$R(props, ctx) : void 0;
+  return _sfc_setup$O ? _sfc_setup$O(props, ctx) : void 0;
 };
 const __vite_glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$R
+  default: _sfc_main$O
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$Q = {
+const _sfc_main$N = {
   __name: "VerifyEmail",
   __ssrInlineRender: true,
   props: {
@@ -7753,7 +7752,7 @@ const _sfc_main$Q = {
       () => props.status === "verification-link-sent"
     );
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$$, _attrs, {
+      _push(ssrRenderComponent(_sfc_main$Y, _attrs, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(ssrRenderComponent(unref(Head), { title: "Email Verification" }, null, _parent2, _scopeId));
@@ -7839,17 +7838,17 @@ const _sfc_main$Q = {
     };
   }
 };
-const _sfc_setup$Q = _sfc_main$Q.setup;
-_sfc_main$Q.setup = (props, ctx) => {
+const _sfc_setup$N = _sfc_main$N.setup;
+_sfc_main$N.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/VerifyEmail.vue");
-  return _sfc_setup$Q ? _sfc_setup$Q(props, ctx) : void 0;
+  return _sfc_setup$N ? _sfc_setup$N(props, ctx) : void 0;
 };
 const __vite_glob_0_6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$Q
+  default: _sfc_main$N
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$P = {
+const _sfc_main$M = {
   __name: "Blog",
   __ssrInlineRender: true,
   props: {
@@ -7965,17 +7964,17 @@ const _sfc_main$P = {
     };
   }
 };
-const _sfc_setup$P = _sfc_main$P.setup;
-_sfc_main$P.setup = (props, ctx) => {
+const _sfc_setup$M = _sfc_main$M.setup;
+_sfc_main$M.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Blog.vue");
-  return _sfc_setup$P ? _sfc_setup$P(props, ctx) : void 0;
+  return _sfc_setup$M ? _sfc_setup$M(props, ctx) : void 0;
 };
 const __vite_glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$P
+  default: _sfc_main$M
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$O = {
+const _sfc_main$L = {
   __name: "BlogShow",
   __ssrInlineRender: true,
   props: {
@@ -8067,17 +8066,17 @@ const _sfc_main$O = {
     };
   }
 };
-const _sfc_setup$O = _sfc_main$O.setup;
-_sfc_main$O.setup = (props, ctx) => {
+const _sfc_setup$L = _sfc_main$L.setup;
+_sfc_main$L.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/BlogShow.vue");
-  return _sfc_setup$O ? _sfc_setup$O(props, ctx) : void 0;
+  return _sfc_setup$L ? _sfc_setup$L(props, ctx) : void 0;
 };
 const __vite_glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$O
+  default: _sfc_main$L
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$N = /* @__PURE__ */ defineComponent({
+const _sfc_main$K = /* @__PURE__ */ defineComponent({
   __name: "Changelog",
   __ssrInlineRender: true,
   props: {
@@ -8367,18 +8366,18 @@ const _sfc_main$N = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _sfc_setup$N = _sfc_main$N.setup;
-_sfc_main$N.setup = (props, ctx) => {
+const _sfc_setup$K = _sfc_main$K.setup;
+_sfc_main$K.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Changelog.vue");
-  return _sfc_setup$N ? _sfc_setup$N(props, ctx) : void 0;
+  return _sfc_setup$K ? _sfc_setup$K(props, ctx) : void 0;
 };
-const Changelog = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__scopeId", "data-v-caebb0c0"]]);
+const Changelog = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__scopeId", "data-v-caebb0c0"]]);
 const __vite_glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Changelog
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$M = {
+const _sfc_main$J = {
   __name: "Password",
   __ssrInlineRender: true,
   setup(__props) {
@@ -8396,17 +8395,17 @@ const _sfc_main$M = {
     };
   }
 };
-const _sfc_setup$M = _sfc_main$M.setup;
-_sfc_main$M.setup = (props, ctx) => {
+const _sfc_setup$J = _sfc_main$J.setup;
+_sfc_main$J.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Changelog/Password.vue");
-  return _sfc_setup$M ? _sfc_setup$M(props, ctx) : void 0;
+  return _sfc_setup$J ? _sfc_setup$J(props, ctx) : void 0;
 };
 const __vite_glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$M
+  default: _sfc_main$J
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$L = {
+const _sfc_main$I = {
   __name: "Contact",
   __ssrInlineRender: true,
   setup(__props) {
@@ -8797,18 +8796,18 @@ const _sfc_main$L = {
     };
   }
 };
-const _sfc_setup$L = _sfc_main$L.setup;
-_sfc_main$L.setup = (props, ctx) => {
+const _sfc_setup$I = _sfc_main$I.setup;
+_sfc_main$I.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Contact.vue");
-  return _sfc_setup$L ? _sfc_setup$L(props, ctx) : void 0;
+  return _sfc_setup$I ? _sfc_setup$I(props, ctx) : void 0;
 };
-const Contact = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__scopeId", "data-v-7e550bc2"]]);
+const Contact = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__scopeId", "data-v-7e550bc2"]]);
 const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Contact
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$K = {
+const _sfc_main$H = {
   __name: "Dropdown",
   __ssrInlineRender: true,
   props: {
@@ -8861,13 +8860,13 @@ const _sfc_main$K = {
     };
   }
 };
-const _sfc_setup$K = _sfc_main$K.setup;
-_sfc_main$K.setup = (props, ctx) => {
+const _sfc_setup$H = _sfc_main$H.setup;
+_sfc_main$H.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Dropdown.vue");
-  return _sfc_setup$K ? _sfc_setup$K(props, ctx) : void 0;
+  return _sfc_setup$H ? _sfc_setup$H(props, ctx) : void 0;
 };
-const _sfc_main$J = {
+const _sfc_main$G = {
   __name: "DropdownLink",
   __ssrInlineRender: true,
   props: {
@@ -8896,13 +8895,13 @@ const _sfc_main$J = {
     };
   }
 };
-const _sfc_setup$J = _sfc_main$J.setup;
-_sfc_main$J.setup = (props, ctx) => {
+const _sfc_setup$G = _sfc_main$G.setup;
+_sfc_main$G.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/DropdownLink.vue");
-  return _sfc_setup$J ? _sfc_setup$J(props, ctx) : void 0;
+  return _sfc_setup$G ? _sfc_setup$G(props, ctx) : void 0;
 };
-const _sfc_main$I = {
+const _sfc_main$F = {
   __name: "NavLink",
   __ssrInlineRender: true,
   props: {
@@ -8938,13 +8937,13 @@ const _sfc_main$I = {
     };
   }
 };
-const _sfc_setup$I = _sfc_main$I.setup;
-_sfc_main$I.setup = (props, ctx) => {
+const _sfc_setup$F = _sfc_main$F.setup;
+_sfc_main$F.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/NavLink.vue");
-  return _sfc_setup$I ? _sfc_setup$I(props, ctx) : void 0;
+  return _sfc_setup$F ? _sfc_setup$F(props, ctx) : void 0;
 };
-const _sfc_main$H = {
+const _sfc_main$E = {
   __name: "ResponsiveNavLink",
   __ssrInlineRender: true,
   props: {
@@ -8980,13 +8979,13 @@ const _sfc_main$H = {
     };
   }
 };
-const _sfc_setup$H = _sfc_main$H.setup;
-_sfc_main$H.setup = (props, ctx) => {
+const _sfc_setup$E = _sfc_main$E.setup;
+_sfc_main$E.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ResponsiveNavLink.vue");
-  return _sfc_setup$H ? _sfc_setup$H(props, ctx) : void 0;
+  return _sfc_setup$E ? _sfc_setup$E(props, ctx) : void 0;
 };
-const _sfc_main$G = {
+const _sfc_main$D = {
   __name: "AuthenticatedLayout",
   __ssrInlineRender: true,
   setup(__props) {
@@ -9013,7 +9012,7 @@ const _sfc_main$G = {
         _: 1
       }, _parent));
       _push(`</div><div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">`);
-      _push(ssrRenderComponent(_sfc_main$I, {
+      _push(ssrRenderComponent(_sfc_main$F, {
         href: _ctx.route("dashboard"),
         active: _ctx.route().current("dashboard")
       }, {
@@ -9035,7 +9034,7 @@ const _sfc_main$G = {
         _push(`<!---->`);
       }
       _push(`<div class="relative ms-3">`);
-      _push(ssrRenderComponent(_sfc_main$K, {
+      _push(ssrRenderComponent(_sfc_main$H, {
         align: "right",
         width: "48"
       }, {
@@ -9069,7 +9068,7 @@ const _sfc_main$G = {
         }),
         content: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(ssrRenderComponent(_sfc_main$J, {
+            _push2(ssrRenderComponent(_sfc_main$G, {
               href: _ctx.route("profile.edit")
             }, {
               default: withCtx((_3, _push3, _parent3, _scopeId2) => {
@@ -9083,7 +9082,7 @@ const _sfc_main$G = {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$J, {
+            _push2(ssrRenderComponent(_sfc_main$G, {
               href: _ctx.route("logout"),
               method: "post",
               as: "button"
@@ -9101,7 +9100,7 @@ const _sfc_main$G = {
             }, _parent2, _scopeId));
           } else {
             return [
-              createVNode(_sfc_main$J, {
+              createVNode(_sfc_main$G, {
                 href: _ctx.route("profile.edit")
               }, {
                 default: withCtx(() => [
@@ -9109,7 +9108,7 @@ const _sfc_main$G = {
                 ]),
                 _: 1
               }, 8, ["href"]),
-              createVNode(_sfc_main$J, {
+              createVNode(_sfc_main$G, {
                 href: _ctx.route("logout"),
                 method: "post",
                 as: "button"
@@ -9134,7 +9133,7 @@ const _sfc_main$G = {
         block: showingNavigationDropdown.value,
         hidden: !showingNavigationDropdown.value
       }, "sm:hidden"])}"><div class="space-y-1 pb-3 pt-2">`);
-      _push(ssrRenderComponent(_sfc_main$H, {
+      _push(ssrRenderComponent(_sfc_main$E, {
         href: _ctx.route("dashboard"),
         active: _ctx.route().current("dashboard")
       }, {
@@ -9150,7 +9149,7 @@ const _sfc_main$G = {
         _: 1
       }, _parent));
       if (isAdmin.value) {
-        _push(ssrRenderComponent(_sfc_main$H, { href: "/admin" }, {
+        _push(ssrRenderComponent(_sfc_main$E, { href: "/admin" }, {
           default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(` ⚙️ Admin Panel `);
@@ -9166,7 +9165,7 @@ const _sfc_main$G = {
         _push(`<!---->`);
       }
       _push(`</div><div class="border-t border-gray-200 pb-1 pt-4"><div class="px-4"><div class="text-base font-medium text-gray-800">${ssrInterpolate(_ctx.$page.props.auth.user.name)}</div><div class="text-sm font-medium text-gray-500">${ssrInterpolate(_ctx.$page.props.auth.user.email)}</div></div><div class="mt-3 space-y-1">`);
-      _push(ssrRenderComponent(_sfc_main$H, {
+      _push(ssrRenderComponent(_sfc_main$E, {
         href: _ctx.route("profile.edit")
       }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
@@ -9180,7 +9179,7 @@ const _sfc_main$G = {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$H, {
+      _push(ssrRenderComponent(_sfc_main$E, {
         href: _ctx.route("logout"),
         method: "post",
         as: "button"
@@ -9210,20 +9209,20 @@ const _sfc_main$G = {
     };
   }
 };
-const _sfc_setup$G = _sfc_main$G.setup;
-_sfc_main$G.setup = (props, ctx) => {
+const _sfc_setup$D = _sfc_main$D.setup;
+_sfc_main$D.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Layouts/AuthenticatedLayout.vue");
-  return _sfc_setup$G ? _sfc_setup$G(props, ctx) : void 0;
+  return _sfc_setup$D ? _sfc_setup$D(props, ctx) : void 0;
 };
-const _sfc_main$F = {
+const _sfc_main$C = {
   __name: "Dashboard",
   __ssrInlineRender: true,
   setup(__props) {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), { title: "Dashboard" }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$G, null, {
+      _push(ssrRenderComponent(_sfc_main$D, null, {
         header: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<h2 class="text-xl font-semibold leading-tight text-gray-800"${_scopeId}> Dashboard </h2>`);
@@ -9254,17 +9253,17 @@ const _sfc_main$F = {
     };
   }
 };
-const _sfc_setup$F = _sfc_main$F.setup;
-_sfc_main$F.setup = (props, ctx) => {
+const _sfc_setup$C = _sfc_main$C.setup;
+_sfc_main$C.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Dashboard.vue");
-  return _sfc_setup$F ? _sfc_setup$F(props, ctx) : void 0;
+  return _sfc_setup$C ? _sfc_setup$C(props, ctx) : void 0;
 };
 const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$F
+  default: _sfc_main$C
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$E = {
+const _sfc_main$B = {
   __name: "Password",
   __ssrInlineRender: true,
   setup(__props) {
@@ -9282,17 +9281,17 @@ const _sfc_main$E = {
     };
   }
 };
-const _sfc_setup$E = _sfc_main$E.setup;
-_sfc_main$E.setup = (props, ctx) => {
+const _sfc_setup$B = _sfc_main$B.setup;
+_sfc_main$B.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/DevDocs/Password.vue");
-  return _sfc_setup$E ? _sfc_setup$E(props, ctx) : void 0;
+  return _sfc_setup$B ? _sfc_setup$B(props, ctx) : void 0;
 };
 const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$E
+  default: _sfc_main$B
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$D = {
+const _sfc_main$A = {
   __name: "Show",
   __ssrInlineRender: true,
   props: {
@@ -9374,17 +9373,17 @@ const _sfc_main$D = {
     };
   }
 };
-const _sfc_setup$D = _sfc_main$D.setup;
-_sfc_main$D.setup = (props, ctx) => {
+const _sfc_setup$A = _sfc_main$A.setup;
+_sfc_main$A.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/DevDocs/Show.vue");
-  return _sfc_setup$D ? _sfc_setup$D(props, ctx) : void 0;
+  return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
 };
 const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$D
+  default: _sfc_main$A
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$C = {
+const _sfc_main$z = {
   __name: "Password",
   __ssrInlineRender: true,
   setup(__props) {
@@ -9402,17 +9401,17 @@ const _sfc_main$C = {
     };
   }
 };
-const _sfc_setup$C = _sfc_main$C.setup;
-_sfc_main$C.setup = (props, ctx) => {
+const _sfc_setup$z = _sfc_main$z.setup;
+_sfc_main$z.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Documentation/Password.vue");
-  return _sfc_setup$C ? _sfc_setup$C(props, ctx) : void 0;
+  return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
 };
 const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$C
+  default: _sfc_main$z
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$B = {
+const _sfc_main$y = {
   __name: "Show",
   __ssrInlineRender: true,
   props: {
@@ -9646,18 +9645,18 @@ const _sfc_main$B = {
     };
   }
 };
-const _sfc_setup$B = _sfc_main$B.setup;
-_sfc_main$B.setup = (props, ctx) => {
+const _sfc_setup$y = _sfc_main$y.setup;
+_sfc_main$y.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Documentation/Show.vue");
-  return _sfc_setup$B ? _sfc_setup$B(props, ctx) : void 0;
+  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
 };
 const __vite_glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$B
+  default: _sfc_main$y
 }, Symbol.toStringTag, { value: "Module" }));
 const calendly = "https://calendly.com/contact-compengine/30min";
-const _sfc_main$A = {
+const _sfc_main$x = {
   __name: "UltraNav",
   __ssrInlineRender: true,
   setup(__props) {
@@ -9690,2063 +9689,2639 @@ const _sfc_main$A = {
     };
   }
 };
-const _sfc_setup$A = _sfc_main$A.setup;
-_sfc_main$A.setup = (props, ctx) => {
+const _sfc_setup$x = _sfc_main$x.setup;
+_sfc_main$x.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraNav.vue");
-  return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
+  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
 };
-const _sfc_main$z = {
+const _sfc_main$w = {
   __name: "UltraHero",
   __ssrInlineRender: true,
   props: { orders: { type: Number, default: 15e5 }, tickets: { type: Number, default: 12e7 } },
   setup(__props) {
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({ id: "hero" }, _attrs))}><canvas class="tickets" id="tickets" aria-hidden="true"></canvas><div class="wrap"><div class="hero-grid"><div class="hero-copy"><span class="eyebrow"><i class="dot"></i>Proven. Certified. UK Voluntary Code Signatory.</span><h1 id="hero-h1">The <span class="grad">Ultimate Competition</span> Platform</h1><p class="sub" id="hero-sub">Build Competitions beyond presets. Create unique competition experiences for your customers.</p><div class="cta-row"><a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" class="btn btn-primary btn-lg" id="hero-cta" data-track="hero_book_demo" data-calendly>Book a Demo</a><a href="#game-studio" class="btn btn-ghost btn-lg" data-track="hero_game_studio">Game Studio</a></div><div class="cta-note hand"><svg viewBox="0 0 30 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 2c2 10 6 18 20 22"></path><path d="M18 20l6 4-1 6"></path></svg>30 mins. No sales deck.</div><div class="proof"><i class="ic" data-i="trend"></i><span>Operators on CompEngine grow revenue <b>+47%</b> on average in their first 90 days</span></div><div class="mini-trust"><span><i class="ic" data-i="shield"></i>GLI certified</span><span><i class="ic" data-i="shield"></i>Pen tested</span><span><i class="ic" data-i="shield"></i>VCOC signatory</span></div></div><div class="hero-visual" id="hero-visual"><div class="mesh" aria-hidden="true"></div><canvas class="aurora" id="aurora" width="160" height="160" aria-hidden="true"></canvas><div class="big-gear" id="big-gear" aria-hidden="true"><span class="gear-svg" data-gear></span></div><div class="phone-wrap"><div class="phone" id="phone"><span class="glare"></span><div class="push" id="push" aria-hidden="true"><span class="ic"></span><div><b>New order</b><span id="push-txt"></span></div></div><span class="btn-side"></span><span class="btn-side l"></span><span class="btn-side l2"></span><div class="phone-bar"><span>9:41</span><span>yourbrand.co.uk</span><span>●●●</span></div><div class="slot" data-slot="hero"></div><div class="phone-list" aria-hidden="true"><div><img src="/images/draws/bmw.jpg" alt="" loading="lazy"><span>BMW M3 Competition Pack</span><small>84% sold</small><i style="${ssrRenderStyle({ "--p": "84%" })}"></i></div><div><img src="/images/draws/cash.jpg" alt="" loading="lazy"><span>£25,000 Tax-Free Cash</span><small>61% sold</small><i style="${ssrRenderStyle({ "--p": "61%" })}"></i></div><div><img src="/images/draws/rolex.jpg" alt="" loading="lazy"><span>Rolex Submariner Date</span><small>37% sold</small><i style="${ssrRenderStyle({ "--p": "37%" })}"></i></div></div></div><div class="phone-shadow" aria-hidden="true"></div></div></div></div><div class="counters" id="counters"><div class="counter"><b class="tnum" data-live="orders_30d"${ssrRenderAttr("data-target", __props.orders)} data-format="num">0</b><span>orders · last 30d</span></div><div class="counter"><b class="tnum" data-live="tickets_30d"${ssrRenderAttr("data-target", __props.tickets)} data-format="num">0</b><span>tickets · last 30d</span></div><div class="counter"><b class="tnum" data-live="years" data-target="5" data-format="plus">0</b><span>yrs operating</span></div></div><div class="feed card" id="feed" aria-live="polite" aria-label="Live orders"><div class="feed-head"><span class="tag green"><i class="dot green"></i>Live orders</span><span class="muted small" id="feed-rate">across CompEngine sites</span></div><div class="feed-list" id="feed-list"></div></div></div></section>`);
+      _push(`<section${ssrRenderAttrs(mergeProps({ id: "hero" }, _attrs))}><canvas class="tickets" id="tickets" aria-hidden="true"></canvas><div class="wrap"><div class="hero-grid"><div class="hero-copy"><span class="eyebrow"><i class="dot"></i>Proven. Certified. UK Voluntary Code Signatory.</span><h1 id="hero-h1">The <span class="grad">Ultimate Competition</span> Platform</h1><p class="sub" id="hero-sub">Build Competitions beyond presets. Create unique competition experiences for your customers.</p><div class="cta-row"><a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" class="btn btn-primary btn-lg" id="hero-cta" data-track="hero_book_demo" data-calendly>Book a Demo</a><a href="#game-studio" class="btn btn-ghost btn-lg" data-track="hero_game_studio">Game Studio</a></div><div class="cta-note hand"><svg viewBox="0 0 30 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 2c2 10 6 18 20 22"></path><path d="M18 20l6 4-1 6"></path></svg>30 mins. No sales deck.</div><div class="proof"><i class="ic" data-i="trend"></i><span>Operators on CompEngine grow revenue <b>+47%</b> on average in their first 90 days</span></div><div class="mini-trust"><span><i class="ic" data-i="shield"></i>GLI certified</span><span><i class="ic" data-i="shield"></i>Pen tested</span><span><i class="ic" data-i="shield"></i>VCOC signatory</span></div></div><div class="hero-visual" id="hero-visual"><div class="mesh" aria-hidden="true"></div><canvas class="aurora" id="aurora" width="160" height="160" aria-hidden="true"></canvas><div class="big-gear" id="big-gear" aria-hidden="true"><span class="gear-svg" data-gear></span></div><div class="phone-wrap"><div class="phone" id="phone"><span class="glare"></span><div class="push" id="push" aria-hidden="true"><span class="ic"></span><div><b>New order</b><span id="push-txt"></span></div></div><span class="btn-side"></span><span class="btn-side l"></span><span class="btn-side l2"></span><div class="phone-bar"><span>9:41</span><span>yourbrand.co.uk</span><span>●●●</span></div><div class="site" id="site" aria-hidden="true"><div class="site-head"><b>YOUR<span>BRAND</span></b><span class="site-menu"><i></i><i></i><i></i></span></div><div class="site-carousel" id="site-carousel"><div class="slide on"><img src="/images/draws/bmw.jpg" alt="" loading="lazy"><div class="cap"><small>Win this week</small><b>BMW M3 Competition Pack</b><span>£2.99 a ticket · draws Friday 8pm</span><em>Enter now</em></div></div><div class="slide"><img src="/images/draws/tesla.jpg" alt="" loading="lazy"><div class="cap"><small>Win this week</small><b>Tesla Model Y</b><span>£3.49 a ticket · 71% sold</span><em>Enter now</em></div></div><div class="slide"><img src="/images/draws/cash.jpg" alt="" loading="lazy"><div class="cap"><small>Win this week</small><b>£25,000 Tax-Free Cash</b><span>£0.99 a ticket · draws tonight</span><em>Enter now</em></div></div><div class="dots"><i class="on"></i><i></i><i></i></div></div><div class="site-sec"><b>Live competitions</b><span>View all</span></div><div class="site-grid"><div class="comp"><img src="/images/draws/rolex.jpg" alt="" loading="lazy"><b>Rolex Submariner Date</b><span>£1.49 · <em>37% sold</em></span><i style="${ssrRenderStyle({ "--p": "37%" })}"></i></div><div class="comp"><img src="/images/draws/imac.jpg" alt="" loading="lazy"><b>Apple iMac Pro 32&quot;</b><span>£0.79 · <em>58% sold</em></span><i style="${ssrRenderStyle({ "--p": "58%" })}"></i></div><div class="comp"><img src="/images/draws/maldives.jpg" alt="" loading="lazy"><b>Maldives Trip for Two</b><span>£2.49 · <em>81% sold</em></span><i style="${ssrRenderStyle({ "--p": "81%" })}"></i></div><div class="comp"><img src="/images/draws/cash.jpg" alt="" loading="lazy"><b>£10,000 Cash</b><span>£0.99 · <em>64% sold</em></span><i style="${ssrRenderStyle({ "--p": "64%" })}"></i></div></div><div class="site-sec"><b>Instant wins</b><span>Play now</span></div><div class="site-iw"><span>🎰 Slots</span><span>🎫 Scratch</span><span>🎡 Spinny</span><span>🪙 Coin Drop</span><span>⚽ Football</span></div><div class="site-sec"><b>Recent winners</b></div><div class="site-win"><div><i>SK</i><span><b>Sarah K.</b> won the BMW M3</span><small>2h ago</small></div><div><i>JP</i><span><b>James P.</b> won £500 cash</span><small>5h ago</small></div><div><i>AH</i><span><b>Amira H.</b> won a Rolex Submariner</span><small>1d ago</small></div></div><div class="site-foot">GLI-certified draws · UK-licensed payments · free entry route</div></div></div><div class="phone-shadow" aria-hidden="true"></div></div></div></div><div class="counters" id="counters"><div class="counter"><b class="tnum" data-live="orders_30d"${ssrRenderAttr("data-target", __props.orders)} data-format="num">0</b><span>orders · last 30d</span></div><div class="counter"><b class="tnum" data-live="tickets_30d"${ssrRenderAttr("data-target", __props.tickets)} data-format="num">0</b><span>tickets · last 30d</span></div><div class="counter"><b class="tnum" data-live="years" data-target="5" data-format="plus">0</b><span>yrs operating</span></div></div><div class="feed card" id="feed" aria-live="polite" aria-label="Live orders"><div class="feed-head"><span class="tag green"><i class="dot green"></i>Live orders</span><span class="muted small" id="feed-rate">across CompEngine sites</span></div><div class="feed-list" id="feed-list"></div></div></div></section>`);
     };
   }
 };
-const _sfc_setup$z = _sfc_main$z.setup;
-_sfc_main$z.setup = (props, ctx) => {
-  const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraHero.vue");
-  return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
-};
-const _sfc_main$y = {};
-function _sfc_ssrRender$c(_ctx, _push, _parent, _attrs) {
-  _push(`<!--[--><section class="ce-logowall" aria-label="Operators on CompEngine"><div class="wrap" style="${ssrRenderStyle({ "text-align": "center" })}"><span class="eyebrow"><i class="dot green"></i>Powering some of the UK&#39;s leading competition operators<span style="${ssrRenderStyle({ "margin-left": "6px", "color": "var(--green)" })}">LIVE</span></span></div><div class="marquee" style="${ssrRenderStyle({ "margin-top": "24px" })}"><div class="track" id="marquee-a"></div></div><div class="marquee rev"><div class="track" id="marquee-b"></div></div><div class="wrap"><p class="plus"><b>+ 200</b> more UK operators trust CompEngine with their draws</p><div class="trust"><div class="card"><i class="ic" data-i="cert"></i><div><b>GLI Certified</b><span>RNG independently verified</span></div></div><div class="card"><i class="ic" data-i="lock"></i><div><b>Pen Tested</b><span>By an independent firm</span></div></div><div class="card"><i class="ic" data-i="doc"></i><div><b>VCOC Signatory</b><span>UK Voluntary Code, May 2026</span></div></div><div class="card"><i class="ic" data-i="award"></i><div><b>Industry Recognised</b><span>Industry proven</span></div></div></div><p class="hand" style="${ssrRenderStyle({ "text-align": "center", "margin-top": "28px" })}">the fun bit&#39;s below ↓</p></div></section><div class="kinetic" aria-hidden="true"><div class="k-track" id="k-track"></div></div><!--]-->`);
-}
-const _sfc_setup$y = _sfc_main$y.setup;
-_sfc_main$y.setup = (props, ctx) => {
-  const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraLogoWall.vue");
-  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
-};
-const UltraLogoWall = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["ssrRender", _sfc_ssrRender$c]]);
-const _sfc_main$x = /* @__PURE__ */ defineComponent({
-  __name: "SlotsReels",
-  __ssrInlineRender: true,
-  props: {
-    isSpinning: { type: Boolean },
-    prizes: { default: () => [] },
-    winningPrize: { default: null },
-    demoMode: { type: Boolean, default: false },
-    previewMode: { default: "desktop" },
-    canSpin: { type: Boolean, default: true },
-    colors: { default: () => ({
-      primary: "#00CED1",
-      secondary: "#1a5a7a",
-      accent: "#00FFFF",
-      text: "#FFFFFF"
-    }) },
-    lastWin: { default: 0 },
-    spinsLeft: { default: 0 },
-    spinButtonImage: { default: "" },
-    titleImage: { default: "" },
-    titleText: { default: "LUCKY SLOTS" },
-    titleColor: { default: "#00FFFF" },
-    background: { default: "" },
-    animateTitle: { type: Boolean, default: false },
-    showMachine: { type: Boolean, default: true },
-    machineBgColor: { default: "#1a5a7a" },
-    inventoryEmoji: { default: "🎣" },
-    inventoryButtonColor: { default: "#FFD700" },
-    matchTextColor: { default: "#7FDBFF" },
-    prizesModalBgColor: { default: "#1F2937" },
-    prizesTitleColor: { default: "#FFD700" },
-    prizesCardBorderColor: { default: "#FFD700" },
-    prizesCardBgColor: { default: "#374151" },
-    prizesValueColor: { default: "#10B981" }
-  },
-  emits: ["spin-complete", "spin"],
-  setup(__props, { emit: __emit }) {
-    const props = __props;
-    const emit = __emit;
-    const isMobile = computed(() => props.previewMode === "mobile");
-    const reel1 = ref(null);
-    const reel2 = ref(null);
-    const reel3 = ref(null);
-    const isAnimating = ref(false);
-    const bubblesContainer = ref(null);
-    const showPrizesModal = ref(false);
-    const showWinReveal = ref(false);
-    const showGoldFlames = ref(false);
-    let audioCtx = null;
-    function initAudio() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-    }
-    function playSound(freq, dur, type = "sine", vol = 0.3) {
-      if (!audioCtx) return;
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.frequency.value = freq;
-      osc.type = type;
-      gain.gain.setValueAtTime(vol, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + dur);
-      osc.start();
-      osc.stop(audioCtx.currentTime + dur);
-    }
-    function playTick() {
-      playSound(300 + Math.random() * 200, 0.05, "square", 0.1);
-    }
-    function playStop() {
-      playSound(200, 0.15, "triangle", 0.2);
-    }
-    const luckyFishTheme = computed(() => ({
-      bg: `linear-gradient(180deg, ${props.colors.secondary} 0%, ${adjustColor(props.colors.secondary, -30)} 50%, ${adjustColor(props.colors.secondary, -60)} 100%)`,
-      title: props.titleText,
-      machine: props.machineBgColor,
-      border: props.titleColor || props.colors.accent,
-      reelBg: "linear-gradient(180deg, #000 0%, #0a1929 50%, #000 100%)"
-    }));
-    function adjustColor(color, amount) {
-      if (!color || !color.startsWith("#")) return color;
-      const hex = color.replace("#", "");
-      const num = parseInt(hex, 16);
-      const r2 = Math.max(0, Math.min(255, (num >> 16) + amount));
-      const g2 = Math.max(0, Math.min(255, (num >> 8 & 255) + amount));
-      const b2 = Math.max(0, Math.min(255, (num & 255) + amount));
-      return `#${(r2 << 16 | g2 << 8 | b2).toString(16).padStart(6, "0")}`;
-    }
-    const demoEmojis = ["🍒", "🍋", "🍊", "🍉", "🍇", "🍓", "💎", "⭐", "🔔", "7️⃣", "💰", "🎰"];
-    function getRandomPrize() {
-      if (props.demoMode && (!props.prizes || props.prizes.length === 0)) {
-        const emoji = demoEmojis[Math.floor(Math.random() * demoEmojis.length)];
-        return {
-          id: Math.random(),
-          name: emoji,
-          image: `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">${emoji}</text></svg>`,
-          value: 0
-        };
-      }
-      const prize = props.prizes[Math.floor(Math.random() * props.prizes.length)];
-      if (!prize.image || prize.image.trim() === "") {
-        const emoji = demoEmojis[Math.floor(Math.random() * demoEmojis.length)];
-        return {
-          ...prize,
-          image: `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">${emoji}</text></svg>`
-        };
-      }
-      return prize;
-    }
-    async function spin() {
-      if (isAnimating.value || props.prizes.length === 0) {
-        return;
-      }
-      initAudio();
-      isAnimating.value = true;
-      document.querySelectorAll(".symbol.winner").forEach((s2) => s2.classList.remove("winner"));
-      showGoldFlames.value = false;
-      let reel1Target;
-      let reel2Target;
-      let reel3Target;
-      if (props.winningPrize) {
-        reel1Target = props.winningPrize;
-        reel2Target = props.winningPrize;
-        reel3Target = props.winningPrize;
-      } else {
-        const availablePrizes = [...props.prizes];
-        const rand = Math.random();
-        if (rand < 0.166) {
-          const matchingPrize = availablePrizes[Math.floor(Math.random() * availablePrizes.length)];
-          reel1Target = matchingPrize;
-          reel2Target = matchingPrize;
-          const reel3Options = availablePrizes.filter((p2) => p2.id !== matchingPrize.id);
-          reel3Target = reel3Options.length > 0 ? reel3Options[Math.floor(Math.random() * reel3Options.length)] : availablePrizes[0];
-        } else if (rand < 0.332) {
-          const matchingPrize = availablePrizes[Math.floor(Math.random() * availablePrizes.length)];
-          reel2Target = matchingPrize;
-          reel3Target = matchingPrize;
-          const reel1Options = availablePrizes.filter((p2) => p2.id !== matchingPrize.id);
-          reel1Target = reel1Options.length > 0 ? reel1Options[Math.floor(Math.random() * reel1Options.length)] : availablePrizes[0];
-        } else if (rand < 0.5) {
-          const matchingPrize = availablePrizes[Math.floor(Math.random() * availablePrizes.length)];
-          reel1Target = matchingPrize;
-          reel3Target = matchingPrize;
-          const reel2Options = availablePrizes.filter((p2) => p2.id !== matchingPrize.id);
-          reel2Target = reel2Options.length > 0 ? reel2Options[Math.floor(Math.random() * reel2Options.length)] : availablePrizes[0];
-        } else {
-          reel1Target = availablePrizes[Math.floor(Math.random() * availablePrizes.length)];
-          const reel2Options = availablePrizes.filter((p2) => p2.id !== reel1Target.id);
-          reel2Target = reel2Options.length > 0 ? reel2Options[Math.floor(Math.random() * reel2Options.length)] : availablePrizes[0];
-          const reel3Options = availablePrizes.filter((p2) => p2.id !== reel1Target.id && p2.id !== reel2Target.id);
-          reel3Target = reel3Options.length > 0 ? reel3Options[Math.floor(Math.random() * reel3Options.length)] : availablePrizes[Math.min(1, availablePrizes.length - 1)];
-        }
-      }
-      const spinPromises = [
-        spinReel(1, 2e3, reel1Target),
-        // Stops first
-        spinReel(2, 2800, reel2Target),
-        // Stops second (800ms later)
-        spinReel(3, 3600, reel3Target)
-        // Stops last (1600ms after first)
-      ];
-      await Promise.all(spinPromises);
-      if (props.winningPrize) {
-        showGoldFlames.value = true;
-        setTimeout(() => {
-          showWinReveal.value = true;
-          setTimeout(() => {
-            showWinReveal.value = false;
-          }, 3e3);
-        }, 500);
-      } else {
-        showGoldFlames.value = false;
-      }
-      isAnimating.value = false;
-      emit("spin-complete");
-    }
-    function spinReel(reelNum, duration, targetPrize) {
-      return new Promise((resolve) => {
-        var _a;
-        const inner = reelNum === 1 ? reel1.value : reelNum === 2 ? reel2.value : reel3.value;
-        if (!inner) return resolve(getRandomPrize());
-        const SYMBOL_HEIGHT = isMobile.value ? 50 : window.innerWidth <= 550 ? 75 : 100;
-        const currentTransform = inner.style.transform;
-        let currentY = currentTransform ? parseInt(((_a = currentTransform.match(/-?\d+/)) == null ? void 0 : _a[0]) || `-${SYMBOL_HEIGHT}`) : -SYMBOL_HEIGHT;
-        const RESET_THRESHOLD = 150;
-        const currentIndex = Math.abs(Math.floor(currentY / SYMBOL_HEIGHT));
-        let didReset = false;
-        if (currentIndex > RESET_THRESHOLD) {
-          currentY = -(20 * SYMBOL_HEIGHT);
-          didReset = true;
-        }
-        const symbolsToSpin = 19;
-        const resetCurrentIndex = Math.abs(Math.floor(currentY / SYMBOL_HEIGHT));
-        const targetIndex = resetCurrentIndex + 1 + symbolsToSpin;
-        const existingSymbols = Array.from(inner.querySelectorAll(".symbol img"));
-        const existingCount = existingSymbols.length;
-        let newSymbols = [];
-        let shouldReplaceHTML = false;
-        if (didReset || existingCount === 0) {
-          shouldReplaceHTML = true;
-          const symbolsNeeded = 300;
-          for (let j2 = 0; j2 < symbolsNeeded; j2++) {
-            newSymbols.push(getRandomPrize());
-          }
-        } else {
-          for (let i2 = 0; i2 < existingCount; i2++) {
-            const img = existingSymbols[i2];
-            const prizeName = img.alt;
-            const prize = props.prizes.find((p2) => p2.name === prizeName) || getRandomPrize();
-            newSymbols.push(prize);
-          }
-        }
-        const RESULT_INDEX = targetIndex;
-        newSymbols[RESULT_INDEX] = targetPrize;
-        const resultPrize = newSymbols[RESULT_INDEX];
-        inner.style.transition = "none";
-        if (didReset) {
-          inner.style.transform = `translateY(${currentY}px)`;
-        }
-        if (shouldReplaceHTML) {
-          let html = "";
-          for (const prize of newSymbols) {
-            html += `<div class="symbol"><img src="${prize.image}" alt="${prize.name}" /></div>`;
-          }
-          inner.innerHTML = html;
-        } else {
-          if (RESULT_INDEX < existingCount) {
-            const targetSymbolImg = existingSymbols[RESULT_INDEX];
-            if (targetSymbolImg) {
-              targetSymbolImg.src = targetPrize.image;
-              targetSymbolImg.alt = targetPrize.name;
-            }
-          }
-          newSymbols.length - existingCount;
-          let appendHTML = "";
-          for (let i2 = existingCount; i2 < newSymbols.length; i2++) {
-            const prize = newSymbols[i2];
-            appendHTML += `<div class="symbol"><img src="${prize.image}" alt="${prize.name}" /></div>`;
-          }
-          inner.insertAdjacentHTML("beforeend", appendHTML);
-        }
-        const symbolElements = inner.querySelectorAll(".symbol");
-        if (shouldReplaceHTML) {
-          symbolElements.forEach((el) => {
-            const symbol = el;
-            symbol.style.height = `${SYMBOL_HEIGHT}px`;
-            symbol.style.minHeight = `${SYMBOL_HEIGHT}px`;
-            symbol.style.maxHeight = `${SYMBOL_HEIGHT}px`;
-            symbol.style.width = `${SYMBOL_HEIGHT}px`;
-            symbol.style.display = "block";
-            symbol.style.overflow = "hidden";
-            symbol.style.margin = "0";
-            symbol.style.padding = "0";
-            symbol.style.boxSizing = "border-box";
-          });
-        } else {
-          symbolElements.length - existingCount;
-          for (let i2 = existingCount; i2 < symbolElements.length; i2++) {
-            const symbol = symbolElements[i2];
-            symbol.style.height = `${SYMBOL_HEIGHT}px`;
-            symbol.style.minHeight = `${SYMBOL_HEIGHT}px`;
-            symbol.style.maxHeight = `${SYMBOL_HEIGHT}px`;
-            symbol.style.width = `${SYMBOL_HEIGHT}px`;
-            symbol.style.display = "block";
-            symbol.style.overflow = "hidden";
-            symbol.style.margin = "0";
-            symbol.style.padding = "0";
-            symbol.style.boxSizing = "border-box";
-          }
-        }
-        inner.offsetHeight;
-        const tickInterval = setInterval(playTick, 70);
-        const spinDistance = symbolsToSpin * SYMBOL_HEIGHT;
-        const newPosition = currentY - spinDistance;
-        inner.style.transition = `transform ${duration}ms cubic-bezier(0.33, 0.0, 0.2, 1)`;
-        inner.style.transform = `translateY(${newPosition}px)`;
-        setTimeout(() => {
-          var _a2;
-          clearInterval(tickInterval);
-          playStop();
-          inner.style.transition = "none";
-          const symbols = inner.querySelectorAll(".symbol");
-          (_a2 = symbols[RESULT_INDEX]) == null ? void 0 : _a2.classList.add("winner");
-          resolve(resultPrize);
-        }, duration);
-      });
-    }
-    function createBubbles() {
-      if (!bubblesContainer.value) return;
-      for (let i2 = 0; i2 < 15; i2++) {
-        const bubble = document.createElement("div");
-        bubble.className = "bubble";
-        const size = 8 + Math.random() * 25;
-        bubble.style.width = size + "px";
-        bubble.style.height = size + "px";
-        bubble.style.left = Math.random() * 100 + "%";
-        bubble.style.animationDuration = 6 + Math.random() * 8 + "s";
-        bubble.style.animationDelay = -Math.random() * 8 + "s";
-        bubblesContainer.value.appendChild(bubble);
-      }
-    }
-    watch(() => props.isSpinning, (newVal) => {
-      if (newVal && !isAnimating.value) {
-        spin();
-      }
-    });
-    const reelsInitialized = ref(false);
-    function initializeReels() {
-      if (reelsInitialized.value) return;
-      const SYMBOL_HEIGHT = isMobile.value ? 50 : window.innerWidth <= 550 ? 75 : 100;
-      const reels = [reel1, reel2, reel3];
-      for (let i2 = 0; i2 < 3; i2++) {
-        const inner = reels[i2].value;
-        if (!inner) continue;
-        let html = "";
-        const initialSymbols = [];
-        for (let j2 = 0; j2 < 200; j2++) {
-          const prize = getRandomPrize();
-          html += `<div class="symbol"><img src="${prize.image}" alt="${prize.name}" /></div>`;
-          initialSymbols.push(prize.name);
-        }
-        inner.innerHTML = html;
-        const symbolElements = inner.querySelectorAll(".symbol");
-        symbolElements.forEach((el) => {
-          const symbol = el;
-          symbol.style.height = `${SYMBOL_HEIGHT}px`;
-          symbol.style.minHeight = `${SYMBOL_HEIGHT}px`;
-          symbol.style.maxHeight = `${SYMBOL_HEIGHT}px`;
-          symbol.style.width = `${SYMBOL_HEIGHT}px`;
-          symbol.style.display = "block";
-          symbol.style.overflow = "hidden";
-          symbol.style.margin = "0";
-          symbol.style.padding = "0";
-          symbol.style.boxSizing = "border-box";
-        });
-        inner.style.transform = `translateY(-${SYMBOL_HEIGHT}px)`;
-      }
-      reelsInitialized.value = true;
-    }
-    watch(() => props.showMachine, (newVal) => {
-      if (newVal && !reelsInitialized.value) {
-        setTimeout(() => {
-          initializeReels();
-        }, 100);
-      }
-    });
-    watch(() => props.prizes, (newPrizes, oldPrizes) => {
-      if (props.showMachine && reelsInitialized.value && newPrizes && newPrizes.length > 0) {
-        if (!oldPrizes || oldPrizes.length === 0 || oldPrizes.length !== newPrizes.length) {
-          reelsInitialized.value = false;
-          setTimeout(() => {
-            initializeReels();
-          }, 100);
-        }
-      }
-    });
-    onMounted(() => {
-      createBubbles();
-      if (props.showMachine) {
-        initializeReels();
-      }
-    });
-    return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({
-        class: ["slots-container", { "slots-container-demo": __props.demoMode, "slots-container-mobile": isMobile.value }],
-        style: {
-          backgroundImage: __props.background ? `url(${__props.background})` : "none",
-          backgroundColor: __props.background ? "transparent" : luckyFishTheme.value.bg,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat"
-        }
-      }, _attrs))} data-v-8e1c7f96>`);
-      if (!__props.background) {
-        _push(`<div class="bubbles" data-v-8e1c7f96></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (!__props.showMachine) {
-        _push(`<div class="title title-floating-only" data-v-8e1c7f96>`);
-        if (__props.titleImage) {
-          _push(`<img${ssrRenderAttr("src", __props.titleImage)} alt="Game Title" class="${ssrRenderClass(["title-image", { "title-zoom-animation": __props.animateTitle }])}" data-v-8e1c7f96>`);
-        } else {
-          _push(`<h1 style="${ssrRenderStyle({ color: luckyFishTheme.value.border })}" class="${ssrRenderClass({ "title-zoom-animation": __props.animateTitle })}" data-v-8e1c7f96>${ssrInterpolate(luckyFishTheme.value.title)}</h1>`);
-        }
-        _push(`<p style="${ssrRenderStyle({ color: __props.matchTextColor })}" data-v-8e1c7f96>Match 3 in a row to win!</p></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (__props.showMachine) {
-        _push(`<div class="${ssrRenderClass([{ "slot-machine-win": showGoldFlames.value, "slot-machine-demo": __props.demoMode, "slot-machine-mobile": isMobile.value }, "slot-machine"])}" style="${ssrRenderStyle({ background: __props.machineBgColor, border: isMobile.value ? `3px solid ${luckyFishTheme.value.border}` : `5px solid ${luckyFishTheme.value.border}` })}" data-v-8e1c7f96><div class="title" data-v-8e1c7f96>`);
-        if (__props.titleImage) {
-          _push(`<img${ssrRenderAttr("src", __props.titleImage)} alt="Game Title" class="title-image" data-v-8e1c7f96>`);
-        } else {
-          _push(`<h1 style="${ssrRenderStyle({ color: luckyFishTheme.value.border })}" data-v-8e1c7f96>${ssrInterpolate(luckyFishTheme.value.title)}</h1>`);
-        }
-        _push(`<p style="${ssrRenderStyle({ color: __props.matchTextColor })}" data-v-8e1c7f96>Match 3 in a row to win!</p></div>`);
-        if (__props.showMachine) {
-          _push(`<div data-v-8e1c7f96><div class="balance-bar" data-v-8e1c7f96><div class="balance-box" data-v-8e1c7f96><div class="label" data-v-8e1c7f96>Spins Left</div><div class="value" data-v-8e1c7f96>${ssrInterpolate(__props.spinsLeft)}</div></div><div class="balance-box" data-v-8e1c7f96><div class="label" data-v-8e1c7f96>Last Win</div><div class="value win-value" data-v-8e1c7f96>${ssrInterpolate(__props.lastWin)}</div></div><button class="chest-btn" title="View all prizes" style="${ssrRenderStyle({ background: `linear-gradient(180deg, ${__props.inventoryButtonColor} 0%, ${__props.inventoryButtonColor}dd 100%)` })}" data-v-8e1c7f96>${ssrInterpolate(__props.inventoryEmoji)}</button></div></div>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`<div class="slot-window" style="${ssrRenderStyle({
-          background: luckyFishTheme.value.reelBg,
-          border: `4px solid ${luckyFishTheme.value.border}`,
-          opacity: __props.showMachine ? 1 : 0,
-          transform: __props.showMachine ? "scale(1)" : "scale(0.95)",
-          transition: "opacity 0.8s ease, transform 0.8s ease",
-          pointerEvents: __props.showMachine ? "auto" : "none"
-        })}" data-v-8e1c7f96><div class="payline-indicator" data-v-8e1c7f96></div><div class="${ssrRenderClass([{ "reels-spinning": isAnimating.value, "reels-winning": showGoldFlames.value }, "reels-container"])}" data-v-8e1c7f96><div class="${ssrRenderClass([{ "reel-winning": showGoldFlames.value }, "reel"])}" data-v-8e1c7f96><div class="reel-inner" data-v-8e1c7f96></div></div><div class="${ssrRenderClass([{ "reel-winning": showGoldFlames.value }, "reel"])}" data-v-8e1c7f96><div class="reel-inner" data-v-8e1c7f96></div></div><div class="${ssrRenderClass([{ "reel-winning": showGoldFlames.value }, "reel"])}" data-v-8e1c7f96><div class="reel-inner" data-v-8e1c7f96></div></div></div></div>`);
-        if (__props.showMachine) {
-          _push(`<div data-v-8e1c7f96><div class="controls" data-v-8e1c7f96><button${ssrIncludeBooleanAttr(!__props.canSpin || isAnimating.value) ? " disabled" : ""} class="${ssrRenderClass([{ "spin-btn-image": __props.spinButtonImage, "btn-spinning": isAnimating.value }, "spin-btn spin-btn-full"])}" style="${ssrRenderStyle({
-            background: isAnimating.value ? "linear-gradient(180deg, #555 0%, #333 100%)" : `linear-gradient(180deg, ${__props.colors.primary} 0%, ${__props.colors.secondary} 50%, #006666 100%)`,
-            borderColor: luckyFishTheme.value.border
-          })}" data-v-8e1c7f96>`);
-          if (__props.spinButtonImage) {
-            _push(`<img${ssrRenderAttr("src", __props.spinButtonImage)} alt="Spin" class="spin-btn-img" data-v-8e1c7f96>`);
-          } else {
-            _push(`<span data-v-8e1c7f96>${ssrInterpolate(isAnimating.value ? "🌊 SPINNING... 🌊" : "🌊 SPIN 🌊")}</span>`);
-          }
-          _push(`</button></div></div>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`</div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (showPrizesModal.value) {
-        _push(`<div class="modal-overlay" data-v-8e1c7f96><div class="modal-content" style="${ssrRenderStyle({
-          background: `linear-gradient(180deg, ${__props.prizesModalBgColor} 0%, ${__props.prizesModalBgColor}dd 100%)`,
-          border: `4px solid ${__props.prizesCardBorderColor}`,
-          boxShadow: `0 0 50px ${__props.prizesCardBorderColor}80, 0 20px 60px rgba(0,0,0,0.8)`
-        })}" data-v-8e1c7f96><button class="modal-close" data-v-8e1c7f96>✕</button><h2 class="modal-title" style="${ssrRenderStyle({
-          color: __props.prizesTitleColor,
-          textShadow: `0 0 20px ${__props.prizesTitleColor}80`
-        })}" data-v-8e1c7f96>${ssrInterpolate(__props.inventoryEmoji)} Available Prizes ${ssrInterpolate(__props.inventoryEmoji)}</h2><div class="prizes-grid" data-v-8e1c7f96><!--[-->`);
-        ssrRenderList(__props.prizes, (prize) => {
-          _push(`<div class="prize-card" style="${ssrRenderStyle({
-            background: `${__props.prizesCardBgColor}cc`,
-            border: `3px solid ${__props.prizesCardBorderColor}99`
-          })}" data-v-8e1c7f96><img${ssrRenderAttr("src", prize.image)}${ssrRenderAttr("alt", prize.name)} class="prize-image" data-v-8e1c7f96><div class="prize-name" data-v-8e1c7f96>${ssrInterpolate(prize.name)}</div><div class="prize-value" style="${ssrRenderStyle({ color: __props.prizesValueColor })}" data-v-8e1c7f96>£${ssrInterpolate(prize.value)}</div></div>`);
-        });
-        _push(`<!--]--></div></div></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (showWinReveal.value && __props.winningPrize) {
-        _push(`<div class="win-reveal-overlay" data-v-8e1c7f96><div class="win-reveal-content" data-v-8e1c7f96><div class="reels-merge" data-v-8e1c7f96><div class="merge-reel merge-reel-1" data-v-8e1c7f96></div><div class="merge-reel merge-reel-2" data-v-8e1c7f96></div><div class="merge-reel merge-reel-3" data-v-8e1c7f96></div></div><div class="prize-reveal" data-v-8e1c7f96><div class="win-text" data-v-8e1c7f96>🎉 YOU WON! 🎉</div><div class="prize-image-container" data-v-8e1c7f96><img${ssrRenderAttr("src", __props.winningPrize.image)}${ssrRenderAttr("alt", __props.winningPrize.name)} class="prize-reveal-image" data-v-8e1c7f96></div><div class="prize-reveal-name" data-v-8e1c7f96>${ssrInterpolate(__props.winningPrize.name)}</div><div class="prize-reveal-value" data-v-8e1c7f96>£${ssrInterpolate(__props.winningPrize.value)}</div></div><div class="explosion-particles" data-v-8e1c7f96><!--[-->`);
-        ssrRenderList(20, (i2) => {
-          _push(`<div class="particle" style="${ssrRenderStyle({ "--angle": i2 * 18 + "deg" })}" data-v-8e1c7f96>💥</div>`);
-        });
-        _push(`<!--]--></div></div></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`</div>`);
-    };
-  }
-});
-const _sfc_setup$x = _sfc_main$x.setup;
-_sfc_main$x.setup = (props, ctx) => {
-  const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/SlotsReels.vue");
-  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
-};
-const SlotsReels = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-8e1c7f96"]]);
-const _sfc_main$w = /* @__PURE__ */ defineComponent({
-  __name: "SlotsInventoryModal",
-  __ssrInlineRender: true,
-  props: {
-    modelValue: { type: Boolean },
-    wonPrizes: { default: () => [] },
-    availablePrizes: { default: () => [] },
-    slotsAssets: { default: () => ({
-      inventoryEmoji: "🎣",
-      prizesModalBgColor: "#1F2937",
-      prizesTitleColor: "#FFD700",
-      prizesCardBorderColor: "#FFD700",
-      prizesCardBgColor: "#374151",
-      prizesValueColor: "#10B981"
-    }) }
-  },
-  emits: ["update:modelValue"],
-  setup(__props, { emit: __emit }) {
-    const props = __props;
-    const totalWonValue = computed(() => {
-      return props.wonPrizes.reduce((sum, prize) => sum + prize.value, 0);
-    });
-    const formattedTotalValue = computed(() => {
-      return `£${totalWonValue.value.toLocaleString()}`;
-    });
-    const modalBgColor = computed(() => props.slotsAssets.prizesModalBgColor || "#1F2937");
-    const titleColor = computed(() => props.slotsAssets.prizesTitleColor || "#FFD700");
-    const cardBorderColor = computed(() => props.slotsAssets.prizesCardBorderColor || "#FFD700");
-    const cardBgColor = computed(() => props.slotsAssets.prizesCardBgColor || "#374151");
-    const valueColor = computed(() => props.slotsAssets.prizesValueColor || "#10B981");
-    const emoji = computed(() => props.slotsAssets.inventoryEmoji || "🎣");
-    const containerStyle = computed(() => ({
-      background: `linear-gradient(to bottom right, ${modalBgColor.value}, ${modalBgColor.value}DD, ${modalBgColor.value})`,
-      borderColor: `${cardBorderColor.value}80`,
-      boxShadow: `0 0 40px ${cardBorderColor.value}4D`
-    }));
-    const titleDividerStyle = computed(() => ({
-      background: `linear-gradient(to right, transparent, ${titleColor.value}80, transparent)`
-    }));
-    const titleTextStyle = computed(() => ({
-      color: titleColor.value,
-      fontFamily: "Impact, sans-serif",
-      textShadow: `0 0 10px ${titleColor.value}`
-    }));
-    const prizeCardStyle = computed(() => ({
-      background: `linear-gradient(to bottom right, ${cardBgColor.value}DD, ${cardBgColor.value}, ${cardBgColor.value}DD)`,
-      borderColor: cardBorderColor.value
-    }));
-    const valueTextStyle = computed(() => ({
-      color: valueColor.value,
-      fontFamily: "Impact, sans-serif",
-      textShadow: `0 0 8px ${valueColor.value}`
-    }));
-    const contentStyle = computed(() => ({
-      backgroundColor: `${modalBgColor.value}DD`
-    }));
-    const headerStyle = computed(() => ({
-      background: `linear-gradient(to right, ${cardBorderColor.value}40, ${modalBgColor.value}40, ${cardBorderColor.value}40)`,
-      borderColor: `${cardBorderColor.value}30`
-    }));
-    const footerStyle = computed(() => ({
-      background: `linear-gradient(to right, ${cardBorderColor.value}40, ${modalBgColor.value}40, ${cardBorderColor.value}40)`,
-      borderColor: `${cardBorderColor.value}30`
-    }));
-    const scanningLineStyle = computed(() => ({
-      background: `linear-gradient(to right, transparent, ${cardBorderColor.value}, transparent)`
-    }));
-    return (_ctx, _push, _parent, _attrs) => {
-      ssrRenderTeleport(_push, (_push2) => {
-        if (__props.modelValue) {
-          _push2(`<div class="fixed inset-0 z-[80] flex items-center justify-center p-4" style="${ssrRenderStyle({ backgroundColor: `${modalBgColor.value}1A` })}" data-v-d0f61d96><div class="relative w-full max-w-4xl max-h-[90vh] rounded-xl border-2 shadow-2xl overflow-hidden" style="${ssrRenderStyle(containerStyle.value)}" data-v-d0f61d96><div class="absolute top-0 left-0 right-0 h-px animate-scan-horizontal" style="${ssrRenderStyle(scanningLineStyle.value)}" data-v-d0f61d96></div><div class="relative border-b-2 px-6 py-4" style="${ssrRenderStyle(headerStyle.value)}" data-v-d0f61d96><div class="flex items-center justify-between" data-v-d0f61d96><div class="flex items-center gap-3" data-v-d0f61d96><div class="text-3xl animate-pulse" data-v-d0f61d96>${ssrInterpolate(emoji.value)}</div><div data-v-d0f61d96><h2 class="text-2xl font-black uppercase tracking-wider" style="${ssrRenderStyle({
-            color: titleColor.value,
-            fontFamily: "Impact, sans-serif",
-            textShadow: `0 0 15px ${titleColor.value}, 2px 2px 0 ${modalBgColor.value}`
-          })}" data-v-d0f61d96> PRIZE INVENTORY </h2><p class="text-xs uppercase tracking-widest" style="${ssrRenderStyle({
-            color: titleColor.value,
-            fontFamily: "Courier New, monospace",
-            textShadow: `0 0 5px ${titleColor.value}`
-          })}" data-v-d0f61d96> YOUR WINS &amp; AVAILABLE PRIZES </p></div></div><button class="rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 border-2 group" style="${ssrRenderStyle({
-            backgroundColor: `${cardBgColor.value}80`,
-            borderColor: `${cardBorderColor.value}30`,
-            color: titleColor.value
-          })}" aria-label="Close inventory" data-v-d0f61d96><span class="text-xl group-hover:rotate-90 transition-transform duration-300" data-v-d0f61d96>✕</span></button></div>`);
-          if (__props.wonPrizes.length > 0) {
-            _push2(`<div class="mt-3 border rounded-lg px-4 py-2 flex items-center justify-between" style="${ssrRenderStyle({
-              background: `linear-gradient(to right, ${cardBgColor.value}66, ${cardBgColor.value}99, ${cardBgColor.value}66)`,
-              borderColor: `${cardBorderColor.value}80`
-            })}" data-v-d0f61d96><span class="text-sm font-bold uppercase tracking-wider" style="${ssrRenderStyle({
-              color: titleColor.value,
-              fontFamily: "Courier New, monospace",
-              textShadow: `0 0 8px ${titleColor.value}`
-            })}" data-v-d0f61d96> 💰 TOTAL WINNINGS </span><span class="text-xl font-black" style="${ssrRenderStyle({
-              color: valueColor.value,
-              fontFamily: "Impact, sans-serif",
-              textShadow: `0 0 12px ${valueColor.value}, 2px 2px 0 ${valueColor.value}DD`
-            })}" data-v-d0f61d96>${ssrInterpolate(formattedTotalValue.value)}</span></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`</div><div class="relative overflow-y-auto max-h-[calc(90vh-200px)] px-6 py-4 custom-scrollbar" style="${ssrRenderStyle(contentStyle.value)}" data-v-d0f61d96>`);
-          if (__props.wonPrizes.length > 0) {
-            _push2(`<div class="mb-6" data-v-d0f61d96><div class="flex items-center gap-2 mb-3" data-v-d0f61d96><div class="h-px flex-1" style="${ssrRenderStyle(titleDividerStyle.value)}" data-v-d0f61d96></div><h3 class="text-lg font-black uppercase tracking-wider flex items-center gap-2" style="${ssrRenderStyle(titleTextStyle.value)}" data-v-d0f61d96><span class="text-2xl" data-v-d0f61d96>${ssrInterpolate(emoji.value)}</span> YOUR WINS (${ssrInterpolate(__props.wonPrizes.length)}) <span class="text-2xl" data-v-d0f61d96>${ssrInterpolate(emoji.value)}</span></h3><div class="h-px flex-1" style="${ssrRenderStyle(titleDividerStyle.value)}" data-v-d0f61d96></div></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-v-d0f61d96><!--[-->`);
-            ssrRenderList(__props.wonPrizes, (prize) => {
-              _push2(`<div class="group relative border-2 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300" style="${ssrRenderStyle(prizeCardStyle.value)}" data-v-d0f61d96><div class="absolute top-2 right-2 z-10 text-xs font-black px-2 py-1 rounded-full uppercase tracking-wider animate-pulse" style="${ssrRenderStyle({
-                backgroundColor: valueColor.value,
-                color: "#FFFFFF"
-              })}" data-v-d0f61d96> ✓ WON </div>`);
-              if (prize.ticketNumber) {
-                _push2(`<div class="absolute top-2 left-2 z-10 text-xs font-black px-2 py-1 rounded border-2 uppercase tracking-wider" style="${ssrRenderStyle({
-                  backgroundColor: `${cardBorderColor.value}E6`,
-                  color: "#FFFFFF",
-                  borderColor: cardBorderColor.value,
-                  fontFamily: "Courier New, monospace"
-                })}" data-v-d0f61d96> 🎫 ${ssrInterpolate(prize.ticketNumber)}</div>`);
-              } else {
-                _push2(`<!---->`);
-              }
-              _push2(`<div class="relative h-40 overflow-hidden" style="${ssrRenderStyle({ backgroundColor: `${cardBgColor.value}66` })}" data-v-d0f61d96>`);
-              if (prize.image) {
-                _push2(`<img${ssrRenderAttr("src", prize.image)}${ssrRenderAttr("alt", prize.name)} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-v-d0f61d96>`);
-              } else {
-                _push2(`<div class="w-full h-full flex items-center justify-center" style="${ssrRenderStyle({
-                  background: `linear-gradient(to bottom right, ${cardBgColor.value}, ${cardBgColor.value}DD)`
-                })}" data-v-d0f61d96><span class="text-xs font-bold uppercase text-center px-2" style="${ssrRenderStyle({ color: "#FFFFFF" })}" data-v-d0f61d96>${ssrInterpolate(prize.name)}</span></div>`);
-              }
-              _push2(`<div class="absolute inset-0" style="${ssrRenderStyle({
-                background: `linear-gradient(to top, ${cardBgColor.value}CC, transparent, transparent)`
-              })}" data-v-d0f61d96></div></div><div class="p-3" data-v-d0f61d96><h4 class="font-bold text-sm mb-1 line-clamp-2" style="${ssrRenderStyle({ color: "#FFFFFF" })}" data-v-d0f61d96>${ssrInterpolate(prize.name)}</h4>`);
-              if (prize.description) {
-                _push2(`<p class="text-xs mb-2 line-clamp-1" style="${ssrRenderStyle({ color: "#FFFFFF99" })}" data-v-d0f61d96>${ssrInterpolate(prize.description)}</p>`);
-              } else {
-                _push2(`<!---->`);
-              }
-              _push2(`<div class="flex items-center justify-between" data-v-d0f61d96><span class="text-xs font-bold uppercase tracking-wider" style="${ssrRenderStyle({
-                color: titleColor.value,
-                fontFamily: "Courier New, monospace",
-                textShadow: `0 0 5px ${titleColor.value}`
-              })}" data-v-d0f61d96> Value </span><span class="font-black text-lg" style="${ssrRenderStyle(valueTextStyle.value)}" data-v-d0f61d96> £${ssrInterpolate(prize.value.toLocaleString())}</span></div></div><div style="${ssrRenderStyle({
-                backgroundColor: `${cardBorderColor.value}00`
-              })}" class="${ssrRenderClass([{ "group-hover:bg-opacity-10": true }, "absolute inset-0 transition-all duration-300 pointer-events-none"])}" data-v-d0f61d96></div></div>`);
-            });
-            _push2(`<!--]--></div></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`<div class="${ssrRenderClass(__props.wonPrizes.length > 0 ? "" : "mt-0")}" data-v-d0f61d96><div class="flex items-center gap-2 mb-3" data-v-d0f61d96><div class="h-px flex-1" style="${ssrRenderStyle(titleDividerStyle.value)}" data-v-d0f61d96></div><h3 class="text-lg font-black uppercase tracking-wider flex items-center gap-2" style="${ssrRenderStyle(titleTextStyle.value)}" data-v-d0f61d96><span class="text-2xl" data-v-d0f61d96>${ssrInterpolate(emoji.value)}</span> AVAILABLE PRIZES (${ssrInterpolate(__props.availablePrizes.length)}) <span class="text-2xl" data-v-d0f61d96>${ssrInterpolate(emoji.value)}</span></h3><div class="h-px flex-1" style="${ssrRenderStyle(titleDividerStyle.value)}" data-v-d0f61d96></div></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-v-d0f61d96><!--[-->`);
-          ssrRenderList(__props.availablePrizes, (prize) => {
-            _push2(`<div class="group relative border-2 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300" style="${ssrRenderStyle(prizeCardStyle.value)}" data-v-d0f61d96><div class="relative h-40 overflow-hidden" style="${ssrRenderStyle({ backgroundColor: `${cardBgColor.value}66` })}" data-v-d0f61d96>`);
-            if (prize.image) {
-              _push2(`<img${ssrRenderAttr("src", prize.image)}${ssrRenderAttr("alt", prize.name)} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100" data-v-d0f61d96>`);
-            } else {
-              _push2(`<div class="w-full h-full flex items-center justify-center" style="${ssrRenderStyle({
-                background: `linear-gradient(to bottom right, ${cardBgColor.value}, ${cardBgColor.value}DD)`
-              })}" data-v-d0f61d96><span class="text-xs font-bold uppercase text-center px-2" style="${ssrRenderStyle({ color: "#FFFFFF" })}" data-v-d0f61d96>${ssrInterpolate(prize.name)}</span></div>`);
-            }
-            _push2(`<div class="absolute inset-0" style="${ssrRenderStyle({
-              background: `linear-gradient(to top, ${cardBgColor.value}CC, transparent, transparent)`
-            })}" data-v-d0f61d96></div></div><div class="p-3" data-v-d0f61d96><h4 class="font-bold text-sm mb-1 line-clamp-2" style="${ssrRenderStyle({ color: "#FFFFFF" })}" data-v-d0f61d96>${ssrInterpolate(prize.name)}</h4>`);
-            if (prize.description) {
-              _push2(`<p class="text-xs mb-2 line-clamp-1" style="${ssrRenderStyle({ color: "#FFFFFF99" })}" data-v-d0f61d96>${ssrInterpolate(prize.description)}</p>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<div class="flex items-center justify-between" data-v-d0f61d96><span class="text-xs font-bold uppercase tracking-wider" style="${ssrRenderStyle({
-              color: titleColor.value,
-              fontFamily: "Courier New, monospace",
-              textShadow: `0 0 5px ${titleColor.value}`
-            })}" data-v-d0f61d96> Value </span><span class="font-black text-lg" style="${ssrRenderStyle(valueTextStyle.value)}" data-v-d0f61d96> £${ssrInterpolate(prize.value.toLocaleString())}</span></div></div><div style="${ssrRenderStyle({
-              backgroundColor: `${cardBorderColor.value}00`
-            })}" class="${ssrRenderClass([{ "group-hover:bg-opacity-10": true }, "absolute inset-0 transition-all duration-300 pointer-events-none"])}" data-v-d0f61d96></div></div>`);
-          });
-          _push2(`<!--]--></div></div></div><div class="relative border-t-2 px-6 py-3" style="${ssrRenderStyle(footerStyle.value)}" data-v-d0f61d96><div class="flex items-center justify-between" data-v-d0f61d96><p class="text-xs uppercase tracking-widest" style="${ssrRenderStyle({
-            color: titleColor.value,
-            fontFamily: "Courier New, monospace",
-            textShadow: `0 0 5px ${titleColor.value}`
-          })}" data-v-d0f61d96>${ssrInterpolate(emoji.value)} KEEP SPINNING TO WIN MORE PRIZES! </p><button class="px-4 py-2 font-bold text-sm uppercase tracking-wider rounded border-2 transition-all duration-300 shadow-lg" style="${ssrRenderStyle({
-            background: `linear-gradient(to right, ${cardBorderColor.value}, ${cardBorderColor.value}DD)`,
-            color: "#FFFFFF",
-            borderColor: `${cardBorderColor.value}80`,
-            fontFamily: "Impact, sans-serif",
-            boxShadow: `0 0 15px ${cardBorderColor.value}66`
-          })}" data-v-d0f61d96> CLOSE </button></div></div></div></div>`);
-        } else {
-          _push2(`<!---->`);
-        }
-      }, "body", false, _parent);
-    };
-  }
-});
 const _sfc_setup$w = _sfc_main$w.setup;
 _sfc_main$w.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/SlotsInventoryModal.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraHero.vue");
   return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
 };
-const SlotsInventoryModal = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-d0f61d96"]]);
-const _sfc_main$v = /* @__PURE__ */ defineComponent({
-  __name: "SlotsGame",
-  __ssrInlineRender: true,
-  props: {
-    demoMode: { type: Boolean },
-    previewMode: {},
-    slotsAssets: {},
-    tickets: {},
-    playedTickets: {},
-    instant_win_categories: {},
-    animateTitle: { type: Boolean },
-    showMachine: { type: Boolean }
-  },
-  emits: ["ticket-played", "prize-won"],
-  setup(__props, { emit: __emit }) {
-    const props = __props;
-    const emit = __emit;
-    const isSpinning = ref(false);
-    const winCounter = ref(0);
-    const showInventory = ref(false);
-    const availablePrizes = ref([]);
-    const wonPrizes = ref([]);
-    const currentWinningPrize = ref(null);
-    const lastWin = ref(0);
-    const spinSound = ref(null);
-    const winSound = ref(null);
-    const lossSound = ref(null);
-    let audioCtx = null;
-    function initAudio() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-    }
-    function playWin() {
-      initAudio();
-      if (!audioCtx) return;
-      const notes = [523, 659, 784, 1047];
-      notes.forEach((freq, i2) => {
-        setTimeout(() => {
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
-          osc.frequency.value = freq;
-          osc.type = "sine";
-          gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
-          osc.start();
-          osc.stop(audioCtx.currentTime + 0.3);
-        }, i2 * 100);
-      });
-    }
-    function playBigWin() {
-      initAudio();
-      if (!audioCtx) return;
-      const notes = [523, 587, 659, 784, 880, 988, 1047, 1319];
-      notes.forEach((freq, i2) => {
-        setTimeout(() => {
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
-          osc.frequency.value = freq;
-          osc.type = "sine";
-          gain.gain.setValueAtTime(0.35, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
-          osc.start();
-          osc.stop(audioCtx.currentTime + 0.35);
-        }, i2 * 80);
-      });
-    }
-    const spinsLeft = computed(() => {
-      var _a;
-      if (props.demoMode) {
-        return 9;
-      }
-      if (!props.tickets) {
-        return 0;
-      }
-      return props.tickets.length - (((_a = props.playedTickets) == null ? void 0 : _a.length) || 0);
-    });
-    const jackpot = computed(() => {
-      if (props.demoMode) {
-        return { value: 1e4, name: "MEGA JACKPOT" };
-      }
-      if (availablePrizes.value.length === 0) {
-        return { value: 0, name: "NO PRIZE" };
-      }
-      const highestPrize = availablePrizes.value.reduce(
-        (max, prize) => prize.value > max.value ? prize : max
-      );
-      return { value: highestPrize.value, name: highestPrize.name };
-    });
-    const canSpin = computed(() => spinsLeft.value > 0 && !isSpinning.value);
-    computed(() => {
-      if (props.demoMode) {
-        return "DEMO";
-      }
-      const nextTicket = getNextTicket();
-      return nextTicket ? nextTicket.number : null;
-    });
-    const isMobile = computed(() => props.previewMode === "mobile");
-    computed(() => ({
-      color: props.slotsAssets.titleColor,
-      textShadow: `0 0 10px ${props.slotsAssets.titleColor}, 0 0 20px ${props.slotsAssets.titleColor}`
-    }));
-    computed(() => {
-      const baseClasses = "font-black uppercase tracking-widest drop-shadow-lg text-center";
-      return isMobile.value ? `${baseClasses} text-2xl` : `${baseClasses} text-4xl animate-pulse`;
-    });
-    const extractPrizesFromTickets = () => {
-      if (props.instant_win_categories && props.instant_win_categories.length > 0) {
-        return props.instant_win_categories.map((cat) => ({
-          id: cat.id,
-          name: cat.name,
-          image: cat.image_path,
-          value: cat.value
-        }));
-      }
-      if (!props.tickets || props.tickets.length === 0) {
-        return generateDemoPrizes();
-      }
-      const uniquePrizes = /* @__PURE__ */ new Map();
-      props.tickets.forEach((ticket) => {
-        if (ticket.instant_win && ticket.instant_win !== false) {
-          const instantWin = ticket.instant_win;
-          const categoryId = instantWin.category_id;
-          if (categoryId && !uniquePrizes.has(categoryId)) {
-            uniquePrizes.set(categoryId, {
-              id: categoryId,
-              name: instantWin.name || instantWin.prize,
-              image: instantWin.image_path || "",
-              value: parseFloat(String(instantWin.value)) || 0
-            });
-          }
-        }
-      });
-      const prizesArray = Array.from(uniquePrizes.values());
-      const prizesWithImages = prizesArray.filter((p2) => p2.image && p2.image.trim() !== "");
-      if (prizesWithImages.length > 0) {
-        return prizesWithImages;
-      }
-      if (prizesArray.length > 0) {
-        return prizesArray;
-      }
-      return generateDemoPrizes();
-    };
-    const generateDemoPrizes = () => {
-      const emojiPrizes = [
-        { emoji: "💎", name: "Diamond", value: 1e3 },
-        { emoji: "🍒", name: "Cherry", value: 100 },
-        { emoji: "⭐", name: "Star", value: 250 },
-        { emoji: "7️⃣", name: "Lucky Seven", value: 777 },
-        { emoji: "🔔", name: "Bell", value: 300 },
-        { emoji: "🍋", name: "Lemon", value: 150 },
-        { emoji: "🍊", name: "Orange", value: 200 },
-        { emoji: "🍉", name: "Watermelon", value: 350 },
-        { emoji: "🍇", name: "Grapes", value: 180 },
-        { emoji: "💰", name: "Money Bag", value: 500 },
-        { emoji: "🎰", name: "Jackpot", value: 5e3 },
-        { emoji: "🍓", name: "Strawberry", value: 220 }
-      ];
-      return emojiPrizes.map((prize, index) => ({
-        id: index + 1,
-        name: prize.name,
-        // Use SVG data URL to render emoji as image
-        image: `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">${prize.emoji}</text></svg>`)}`,
-        value: prize.value
-      }));
-    };
-    const getNextTicket = () => {
-      if (!props.tickets || props.demoMode) {
-        return null;
-      }
-      const playedIds = props.playedTickets || [];
-      const unplayedTickets = props.tickets.filter((ticket) => !playedIds.includes(ticket.id));
-      return unplayedTickets.length > 0 ? unplayedTickets[0] : null;
-    };
-    const handleSpin = () => {
-      if (!canSpin.value || isSpinning.value) {
-        return;
-      }
-      isSpinning.value = true;
-      currentWinningPrize.value = null;
-      if (spinSound.value) {
-        spinSound.value.currentTime = 0;
-        spinSound.value.play().catch(() => {
-        });
-      }
-      const currentTicket = getNextTicket();
-      if (props.demoMode) {
-        const isWinner = Math.random() > 0.5;
-        if (isWinner) {
-          const demoPrizes = generateDemoPrizes();
-          const randomPrize = demoPrizes[Math.floor(Math.random() * demoPrizes.length)];
-          currentWinningPrize.value = randomPrize;
-        }
-      } else if (currentTicket) {
-        const instantWinData = currentTicket.instant_win;
-        const hasInstantWin = instantWinData !== false && instantWinData !== null;
-        const prizeText = hasInstantWin ? instantWinData.prize : null;
-        const isWinner = hasInstantWin && prizeText !== "NO WIN";
-        if (isWinner && hasInstantWin) {
-          const instantWin = instantWinData;
-          let matchingPrize = availablePrizes.value.find(
-            (p2) => p2.id === instantWin.category_id
-          );
-          if (!matchingPrize) {
-            matchingPrize = {
-              id: instantWin.category_id || instantWin.id,
-              name: instantWin.prize || "Winner!",
-              image: instantWin.image_path || "",
-              value: parseFloat(String(instantWin.value)) || 0
-            };
-          }
-          currentWinningPrize.value = matchingPrize;
-        }
-        emit("ticket-played", currentTicket.id);
-      } else {
-        isSpinning.value = false;
-        return;
-      }
-    };
-    const handleSpinComplete = () => {
-      var _a;
-      if (currentWinningPrize.value) {
-        const playedTickets = props.playedTickets || [];
-        const lastPlayedTicketId = playedTickets[playedTickets.length - 1];
-        const ticket = (_a = props.tickets) == null ? void 0 : _a.find((t3) => t3.id === lastPlayedTicketId);
-        const ticketNumber = (ticket == null ? void 0 : ticket.number) || "UNKNOWN";
-        const winAmount = currentWinningPrize.value.value;
-        lastWin.value = winAmount;
-        const prizeWithTicket = {
-          ...currentWinningPrize.value,
-          ticketNumber
-        };
-        wonPrizes.value.push(prizeWithTicket);
-        winCounter.value++;
-        emit("prize-won", currentWinningPrize.value);
-        if (winSound.value && props.slotsAssets.winSound) {
-          winSound.value.currentTime = 0;
-          winSound.value.play().catch(() => {
-          });
-        } else if (winAmount >= 100) {
-          playBigWin();
-        } else {
-          playWin();
-        }
-        setTimeout(() => {
-          highlightWinners();
-        }, 100);
-      } else {
-        lastWin.value = 0;
-        if (lossSound.value && props.slotsAssets.lossSound) {
-          lossSound.value.currentTime = 0;
-          lossSound.value.play().catch(() => {
-          });
-        }
-      }
-      isSpinning.value = false;
-      if (currentWinningPrize.value) {
-        setTimeout(() => {
-          currentWinningPrize.value = null;
-        }, 3e3);
-      }
-    };
-    function highlightWinners() {
-      for (let i2 = 1; i2 <= 3; i2++) {
-        const reel = document.querySelector(`#reel${i2} .reel-inner`);
-        if (reel) {
-          const symbols = reel.querySelectorAll(".symbol");
-          if (symbols[1]) {
-            symbols[1].classList.add("winner");
-          }
-        }
-      }
-    }
-    watch(() => props.tickets, () => {
-      if (props.tickets && props.tickets.length > 0) {
-        availablePrizes.value = extractPrizesFromTickets();
-      }
-    }, { immediate: true });
-    onMounted(() => {
-      availablePrizes.value = extractPrizesFromTickets();
-    });
-    return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({
-        class: ["flex-1 flex flex-col relative", __props.demoMode ? "" : "overflow-hidden"]
-      }, _attrs))} data-v-721e497f>`);
-      _push(ssrRenderComponent(SlotsReels, {
-        isSpinning: isSpinning.value,
-        prizes: availablePrizes.value,
-        winningPrize: currentWinningPrize.value,
-        demoMode: props.demoMode,
-        previewMode: props.previewMode,
-        canSpin: canSpin.value,
-        colors: {
-          primary: __props.slotsAssets.primaryColor || "#00CED1",
-          secondary: __props.slotsAssets.secondaryColor || "#1a5a7a",
-          accent: __props.slotsAssets.accentColor || "#00FFFF",
-          text: __props.slotsAssets.textColor || "#FFFFFF"
-        },
-        spinsLeft: spinsLeft.value,
-        lastWin: lastWin.value,
-        spinButtonImage: __props.slotsAssets.spinButtonImage,
-        titleImage: __props.slotsAssets.titleImage,
-        titleText: __props.slotsAssets.titleText,
-        titleColor: __props.slotsAssets.titleColor,
-        background: __props.slotsAssets.background,
-        animateTitle: props.animateTitle,
-        showMachine: props.showMachine,
-        machineBgColor: __props.slotsAssets.machineBgColor,
-        inventoryEmoji: __props.slotsAssets.inventoryEmoji,
-        inventoryButtonColor: __props.slotsAssets.inventoryButtonColor,
-        matchTextColor: __props.slotsAssets.matchTextColor,
-        prizesModalBgColor: __props.slotsAssets.prizesModalBgColor,
-        prizesTitleColor: __props.slotsAssets.prizesTitleColor,
-        prizesCardBorderColor: __props.slotsAssets.prizesCardBorderColor,
-        prizesCardBgColor: __props.slotsAssets.prizesCardBgColor,
-        prizesValueColor: __props.slotsAssets.prizesValueColor,
-        walletText: __props.slotsAssets.walletText,
-        walletColor: __props.slotsAssets.walletColor,
-        onSpinComplete: handleSpinComplete,
-        onSpin: handleSpin
-      }, null, _parent));
-      _push(`<div class="hidden absolute bottom-0 left-0 right-0 z-20 border-t-4 px-4 py-4 shadow-2xl" style="${ssrRenderStyle({
-        background: "linear-gradient(to top, rgba(101, 67, 33, 0.95), rgba(101, 67, 33, 0.85), transparent)",
-        borderColor: "#DAA520",
-        boxShadow: "0 -10px 40px rgba(218,165,32,0.4), inset 0 2px 10px rgba(255,255,255,0.1)"
-      })}" data-v-721e497f><div class="max-w-4xl mx-auto flex items-center justify-between gap-4" data-v-721e497f><div class="flex flex-col items-center transform transition-all duration-300 hover:scale-110" data-v-721e497f><span class="text-xs sm:text-sm font-bold uppercase tracking-wide" style="${ssrRenderStyle({ color: "#DAA520" })}" data-v-721e497f>Spins</span><span class="text-2xl sm:text-3xl font-black transition-all duration-300" style="${ssrRenderStyle({
-        color: __props.slotsAssets.primaryColor,
-        textShadow: `0 0 20px ${__props.slotsAssets.primaryColor}, 0 4px 12px ${__props.slotsAssets.primaryColor}60`
-      })}" data-v-721e497f>${ssrInterpolate(spinsLeft.value)}</span></div><div class="flex flex-col items-center transform transition-all duration-300 hover:scale-110" data-v-721e497f><span class="text-xs sm:text-sm font-bold uppercase tracking-wide" style="${ssrRenderStyle({ color: "#DAA520" })}" data-v-721e497f>Wins</span><span class="text-2xl sm:text-3xl font-black transition-all duration-300" style="${ssrRenderStyle({
-        color: __props.slotsAssets.accentColor,
-        textShadow: `0 0 20px ${__props.slotsAssets.accentColor}, 0 4px 12px ${__props.slotsAssets.accentColor}60`
-      })}" data-v-721e497f>${ssrInterpolate(winCounter.value)}</span></div><div class="flex flex-col items-center flex-1 relative overflow-hidden rounded-lg p-2 transform transition-all duration-300 hover:scale-105" data-v-721e497f><span class="text-xs sm:text-sm font-bold uppercase tracking-wide" style="${ssrRenderStyle({ color: "#DAA520" })}" data-v-721e497f>Top Prize</span><span class="text-xl sm:text-2xl font-black relative z-10" style="${ssrRenderStyle({
-        background: `linear-gradient(135deg, ${__props.slotsAssets.primaryColor}, ${__props.slotsAssets.accentColor}, ${__props.slotsAssets.primaryColor})`,
-        backgroundSize: "200% 100%",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        animation: "shimmer 3s ease-in-out infinite"
-      })}" data-v-721e497f> £${ssrInterpolate(jackpot.value.value.toLocaleString())}</span></div><button class="relative flex flex-col items-center justify-center px-4 py-2 rounded-xl transition-all duration-300 hover:scale-110 active:scale-95 shadow-lg" style="${ssrRenderStyle({
-        background: `linear-gradient(135deg, ${__props.slotsAssets.primaryColor}30, ${__props.slotsAssets.accentColor}30)`,
-        color: __props.slotsAssets.primaryColor,
-        border: `2px solid ${__props.slotsAssets.primaryColor}`,
-        boxShadow: `0 0 20px ${__props.slotsAssets.primaryColor}40`
-      })}" data-v-721e497f>`);
-      if (wonPrizes.value.length > 0) {
-        _push(`<span class="absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-black text-white shadow-lg" style="${ssrRenderStyle({
-          background: `linear-gradient(135deg, ${__props.slotsAssets.accentColor}, ${__props.slotsAssets.primaryColor})`
-        })}" data-v-721e497f>${ssrInterpolate(wonPrizes.value.length)}</span>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`<svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-v-721e497f><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" data-v-721e497f></path></svg><span class="text-xs font-black mt-1" data-v-721e497f>PRIZES</span></button></div></div>`);
-      _push(ssrRenderComponent(SlotsInventoryModal, {
-        modelValue: showInventory.value,
-        "onUpdate:modelValue": ($event) => showInventory.value = $event,
-        wonPrizes: wonPrizes.value,
-        availablePrizes: availablePrizes.value,
-        slotsAssets: __props.slotsAssets
-      }, null, _parent));
-      if (__props.slotsAssets.spinSound) {
-        _push(`<audio${ssrRenderAttr("src", __props.slotsAssets.spinSound)} preload="auto" data-v-721e497f></audio>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (__props.slotsAssets.winSound) {
-        _push(`<audio${ssrRenderAttr("src", __props.slotsAssets.winSound)} preload="auto" data-v-721e497f></audio>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (__props.slotsAssets.lossSound) {
-        _push(`<audio${ssrRenderAttr("src", __props.slotsAssets.lossSound)} preload="auto" data-v-721e497f></audio>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`</div>`);
-    };
-  }
-});
+const _sfc_main$v = {};
+function _sfc_ssrRender$b(_ctx, _push, _parent, _attrs) {
+  _push(`<!--[--><section class="ce-logowall" aria-label="Operators on CompEngine"><div class="wrap" style="${ssrRenderStyle({ "text-align": "center" })}"><span class="eyebrow"><i class="dot green"></i>Powering some of the UK&#39;s leading competition operators<span style="${ssrRenderStyle({ "margin-left": "6px", "color": "var(--green)" })}">LIVE</span></span></div><div class="marquee" style="${ssrRenderStyle({ "margin-top": "24px" })}"><div class="track" id="marquee-a"></div></div><div class="marquee rev"><div class="track" id="marquee-b"></div></div><div class="wrap"><p class="plus"><b>+ 200</b> more UK operators trust CompEngine with their draws</p><div class="trust"><div class="card"><i class="ic" data-i="cert"></i><div><b>GLI Certified</b><span>RNG independently verified</span></div></div><div class="card"><i class="ic" data-i="lock"></i><div><b>Pen Tested</b><span>By an independent firm</span></div></div><div class="card"><i class="ic" data-i="doc"></i><div><b>VCOC Signatory</b><span>UK Voluntary Code, May 2026</span></div></div><div class="card"><i class="ic" data-i="award"></i><div><b>Industry Recognised</b><span>Industry proven</span></div></div></div><p class="hand" style="${ssrRenderStyle({ "text-align": "center", "margin-top": "28px" })}">the fun bit&#39;s below ↓</p></div></section><div class="kinetic" aria-hidden="true"><div class="k-track" id="k-track"></div></div><!--]-->`);
+}
 const _sfc_setup$v = _sfc_main$v.setup;
 _sfc_main$v.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/SlotsGame.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraLogoWall.vue");
   return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
 };
-const SlotsGame = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__scopeId", "data-v-721e497f"]]);
-const _sfc_main$u = /* @__PURE__ */ defineComponent({
-  __name: "SpinGame",
+const UltraLogoWall = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["ssrRender", _sfc_ssrRender$b]]);
+const gamePlayers = {
+  slots: () => import("./assets/SlotsModal-wswDreW4.js"),
+  scratchy: () => import("./assets/ScratchyModal-D1CkCzpl.js"),
+  spinny: () => import("./assets/SpinnyModal-COVDxCXm.js"),
+  bingo: () => import("./assets/BingoModal-BvrWLnZJ.js"),
+  coindrop: () => import("./assets/CoinDropModal-3H0gaBbU.js"),
+  popgame: () => import("./assets/PopGameModal-BuT_tcuE.js"),
+  football: () => import("./assets/FootballModal-Bl6Ev3Y6.js"),
+  fishing: () => import("./assets/FishingModal-CBI7qq-o.js"),
+  ticketeater: () => import("./assets/TicketEaterModal-BvuwjVCL.js")
+};
+const PRIZE_IMG = (symbol, bg) => "data:image/svg+xml," + encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><rect width="120" height="120" rx="22" fill="${bg}"/><text x="60" y="80" font-size="60" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" fill="#ffffff">${symbol}</text></svg>`
+);
+const demoCategories = [
+  { id: 1, name: "£500 Cash", value: 500, image_path: PRIZE_IMG("£", "#16a34a"), available: 2 },
+  { id: 2, name: "Gift Voucher", value: 50, image_path: PRIZE_IMG("★", "#7c3aed"), available: 5 },
+  { id: 3, name: "Free Entry", value: 10, image_path: PRIZE_IMG("✓", "#0ea5e9"), available: 9 }
+];
+function makeDemoTickets(count = 10) {
+  return Array.from({ length: count }, (_2, i2) => {
+    const hasPrize = i2 % 3 === 0;
+    const cat = demoCategories[(i2 / 3 | 0) % demoCategories.length];
+    return {
+      id: i2 + 1,
+      number: String(i2 + 1).padStart(3, "0"),
+      competition_id: 0,
+      instant_win: hasPrize ? { id: i2 + 1, prize: cat.name, category_id: cat.id, value: cat.value } : false
+    };
+  });
+}
+const STUDIO_SCHEMAS = {
+  "slots": {
+    "key": "slots",
+    "label": "Slots",
+    "schema": [
+      {
+        "key": "background",
+        "prop": "background",
+        "type": "media",
+        "label": "Intro Video / Background",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "video",
+          "help": "Video plays 5s intro, then freezes as background"
+        }
+      },
+      {
+        "key": "title_image",
+        "prop": "titleImage",
+        "type": "media",
+        "label": "Title Image",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Game logo (PNG with transparency)"
+        }
+      },
+      {
+        "key": "spin_button_image",
+        "prop": "spinButtonImage",
+        "type": "media",
+        "label": "Spin Button",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Custom button graphic"
+        }
+      },
+      {
+        "key": "welcome_sound",
+        "prop": "welcomeSound",
+        "type": "media",
+        "label": "Welcome Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio",
+          "help": "Plays when the game opens"
+        }
+      },
+      {
+        "key": "spin_sound",
+        "prop": "spinSound",
+        "type": "media",
+        "label": "Spin Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio",
+          "help": "Plays when the reels spin"
+        }
+      },
+      {
+        "key": "win_sound",
+        "prop": "winSound",
+        "type": "media",
+        "label": "Win Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio",
+          "help": "Plays when a prize is revealed"
+        }
+      },
+      {
+        "key": "loss_sound",
+        "prop": "lossSound",
+        "type": "media",
+        "label": "Loss Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio",
+          "help": "Plays when no win is revealed"
+        }
+      },
+      {
+        "key": "machine_bg_color",
+        "prop": "machineBgColor",
+        "type": "color",
+        "label": "Modal Background",
+        "group": "Colors & Style",
+        "default": "#1a5a7a",
+        "meta": {
+          "help": "Supports alpha (8-digit hex)"
+        }
+      },
+      {
+        "key": "inventory_emoji",
+        "prop": "inventoryEmoji",
+        "type": "text",
+        "label": "Inventory Emoji",
+        "group": "Colors & Style",
+        "default": "🎣",
+        "meta": []
+      },
+      {
+        "key": "inventory_button_color",
+        "prop": "inventoryButtonColor",
+        "type": "color",
+        "label": "Inventory Button Color",
+        "group": "Colors & Style",
+        "default": "#FFD700",
+        "meta": []
+      },
+      {
+        "key": "match_text_color",
+        "prop": "matchTextColor",
+        "type": "color",
+        "label": "Match Text Color",
+        "group": "Colors & Style",
+        "default": "#7FDBFF",
+        "meta": []
+      },
+      {
+        "key": "win_glow_color",
+        "prop": "winGlowColor",
+        "type": "color",
+        "label": "Win Glow Color",
+        "group": "Colors & Style",
+        "default": "#FFD700",
+        "meta": {
+          "help": 'Payline, win flames, symbol highlight, and "YOU WON" text'
+        }
+      },
+      {
+        "key": "machine_border_color",
+        "prop": "machineBorderColor",
+        "type": "color",
+        "label": "Machine Border Color",
+        "group": "Colors & Style",
+        "default": "#00BFFF",
+        "meta": {
+          "help": "Slot machine frame, reel borders, and balance box"
+        }
+      },
+      {
+        "key": "prizes_modal_bg_color",
+        "prop": "prizesModalBgColor",
+        "type": "color",
+        "label": "Modal Background",
+        "group": "Prizes Modal",
+        "default": "#1F2937",
+        "meta": []
+      },
+      {
+        "key": "prizes_title_color",
+        "prop": "prizesTitleColor",
+        "type": "color",
+        "label": "Title Color",
+        "group": "Prizes Modal",
+        "default": "#FFD700",
+        "meta": []
+      },
+      {
+        "key": "prizes_card_border_color",
+        "prop": "prizesCardBorderColor",
+        "type": "color",
+        "label": "Card Border",
+        "group": "Prizes Modal",
+        "default": "#FFD700",
+        "meta": []
+      },
+      {
+        "key": "prizes_card_bg_color",
+        "prop": "prizesCardBgColor",
+        "type": "color",
+        "label": "Card Background",
+        "group": "Prizes Modal",
+        "default": "#374151",
+        "meta": []
+      },
+      {
+        "key": "prizes_value_color",
+        "prop": "prizesValueColor",
+        "type": "color",
+        "label": "Prize Value",
+        "group": "Prizes Modal",
+        "default": "#10B981",
+        "meta": []
+      }
+    ]
+  },
+  "scratchy": {
+    "key": "scratchy",
+    "label": "Scratchy",
+    "schema": [
+      {
+        "key": "background",
+        "prop": "background",
+        "type": "media",
+        "label": "Background Image",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Full-screen backdrop behind the game"
+        }
+      },
+      {
+        "key": "overlay",
+        "prop": "overlay",
+        "type": "media",
+        "label": "Overlay Image",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Scratch surface layer (if empty, uses metallic gradient)"
+        }
+      },
+      {
+        "key": "header",
+        "prop": "header",
+        "type": "media",
+        "label": "Header Image",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Logo/banner shown above the cards"
+        }
+      },
+      {
+        "key": "scratchy_intro_video",
+        "prop": "scratchyIntroVideo",
+        "type": "media",
+        "label": "Intro Video / Animation",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "video",
+          "help": "MP4, WebM or animated WebP — plays for 3 seconds before the lobby"
+        }
+      },
+      {
+        "key": "scratchy_layout",
+        "prop": "scratchyLayout",
+        "type": "select",
+        "label": "Layout",
+        "group": "Layout",
+        "default": "single",
+        "meta": {
+          "options": [
+            {
+              "value": "single",
+              "label": "Single"
+            },
+            {
+              "value": "grid",
+              "label": "Grid"
+            }
+          ]
+        }
+      },
+      {
+        "key": "scratchy_card_bg",
+        "prop": "scratchyCardBg",
+        "type": "color",
+        "label": "Card Background",
+        "group": "Card Styling",
+        "default": "",
+        "meta": []
+      },
+      {
+        "key": "scratchy_card_border",
+        "prop": "scratchyCardBorder",
+        "type": "color",
+        "label": "Card Border",
+        "group": "Card Styling",
+        "default": "",
+        "meta": []
+      },
+      {
+        "key": "accentColour",
+        "prop": "accentColour",
+        "type": "color",
+        "label": "Accent / Glow",
+        "group": "Card Styling",
+        "default": "#52b77b",
+        "meta": []
+      },
+      {
+        "key": "scratchy_surface_color",
+        "prop": "scratchySurfaceColor",
+        "type": "color",
+        "label": "Scratch Surface",
+        "group": "Card Styling",
+        "default": "",
+        "meta": {
+          "help": "Empty = silver metallic"
+        }
+      },
+      {
+        "key": "scratchy_button_color",
+        "prop": "scratchyButtonColor",
+        "type": "color",
+        "label": "Button Color",
+        "group": "Card Styling",
+        "default": "",
+        "meta": {
+          "help": "Empty = theme secondary"
+        }
+      },
+      {
+        "key": "scratchy_container_bg",
+        "prop": "scratchyContainerBg",
+        "type": "color",
+        "label": "Container Background",
+        "group": "Card Styling",
+        "default": "",
+        "meta": []
+      },
+      {
+        "key": "scratchy_title_text",
+        "prop": "scratchyTitleText",
+        "type": "text",
+        "label": "Title Text",
+        "group": "Card Styling",
+        "default": "",
+        "meta": []
+      },
+      {
+        "key": "scratchy_title_color",
+        "prop": "scratchyTitleColor",
+        "type": "color",
+        "label": "Title Color",
+        "group": "Card Styling",
+        "default": "#ffffff",
+        "meta": []
+      },
+      {
+        "key": "textColour",
+        "prop": "textColour",
+        "type": "color",
+        "label": "Overlay Text",
+        "group": "Text Colors",
+        "default": "#eeeeee",
+        "meta": {
+          "help": "Ticket # on scratch surface"
+        }
+      },
+      {
+        "key": "wonTextColour",
+        "prop": "wonTextColour",
+        "type": "color",
+        "label": "Win Text",
+        "group": "Text Colors",
+        "default": "#ffffff",
+        "meta": []
+      },
+      {
+        "key": "loseTextColour",
+        "prop": "loseTextColour",
+        "type": "color",
+        "label": "Lose Text",
+        "group": "Text Colors",
+        "default": "#000000",
+        "meta": []
+      },
+      {
+        "key": "welcome_sound",
+        "prop": "welcomeSound",
+        "type": "media",
+        "label": "Welcome Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio",
+          "help": "Plays when the game opens"
+        }
+      },
+      {
+        "key": "scratch_sound",
+        "prop": "scratchSound",
+        "type": "media",
+        "label": "Scratch Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio",
+          "help": "Loops while scratching"
+        }
+      },
+      {
+        "key": "win_sound",
+        "prop": "winSound",
+        "type": "media",
+        "label": "Win Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio",
+          "help": "Plays when a prize is revealed"
+        }
+      },
+      {
+        "key": "loss_sound",
+        "prop": "lossSound",
+        "type": "media",
+        "label": "Loss Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio",
+          "help": 'Plays when "NO WIN" is revealed'
+        }
+      },
+      {
+        "key": "scratchy_show_top_prize",
+        "prop": "scratchyShowTopPrize",
+        "type": "toggle",
+        "label": "Show Top Prize Banner",
+        "group": "Display Options",
+        "default": true,
+        "meta": {
+          "help": "Displays the highest prize on the lobby and game screen"
+        }
+      }
+    ]
+  },
+  "spinny": {
+    "key": "spinny",
+    "label": "Spinny",
+    "schema": [
+      {
+        "key": "background",
+        "prop": "background",
+        "type": "media",
+        "label": "Background Image",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image"
+        }
+      },
+      {
+        "key": "header",
+        "prop": "header",
+        "type": "media",
+        "label": "Header Image",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image"
+        }
+      },
+      {
+        "key": "logo",
+        "prop": "logo",
+        "type": "media",
+        "label": "Winner Segment Logo",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Small icon for wheel segments"
+        }
+      },
+      {
+        "key": "title_text",
+        "prop": "titleText",
+        "type": "text",
+        "label": "Wheel Title",
+        "group": "Text & Colors",
+        "default": "SPIN WHEEL",
+        "meta": []
+      },
+      {
+        "key": "title_color",
+        "prop": "titleColor",
+        "type": "color",
+        "label": "Title Color",
+        "group": "Text & Colors",
+        "default": "#793181",
+        "meta": []
+      },
+      {
+        "key": "wallet_text",
+        "prop": "walletText",
+        "type": "text",
+        "label": "Wallet Card Text",
+        "group": "Text & Colors",
+        "default": "SPIN WALLET",
+        "meta": {
+          "help": "Text on floating credit card"
+        }
+      },
+      {
+        "key": "wallet_color",
+        "prop": "walletColor",
+        "type": "color",
+        "label": "Wallet Card Color",
+        "group": "Text & Colors",
+        "default": "#8b5cf6",
+        "meta": {
+          "help": "Primary card color"
+        }
+      },
+      {
+        "key": "wheel_edge_color",
+        "prop": "wheelEdgeColor",
+        "type": "color",
+        "label": "Wheel Edge Glow",
+        "group": "Text & Colors",
+        "default": "#00aeffff",
+        "meta": {
+          "help": "Gradient glow around wheel"
+        }
+      }
+    ]
+  },
+  "bingo": {
+    "key": "bingo",
+    "label": "Bingo",
+    "schema": [
+      {
+        "key": "diamond_emoji",
+        "prop": "diamondEmoji",
+        "type": "text",
+        "label": "Diamond / Emoji Symbol",
+        "group": "Symbol",
+        "default": "💎",
+        "meta": {
+          "help": "Shown on winning squares (💎 🌟 ⭐ 🎯)"
+        }
+      },
+      {
+        "key": "bg_start",
+        "prop": "bgStart",
+        "type": "color",
+        "label": "Modal BG (Start)",
+        "group": "Theme Colors",
+        "default": "#1e3a8a",
+        "meta": []
+      },
+      {
+        "key": "bg_end",
+        "prop": "bgEnd",
+        "type": "color",
+        "label": "Modal BG (End)",
+        "group": "Theme Colors",
+        "default": "#1e40af",
+        "meta": []
+      },
+      {
+        "key": "frame_color",
+        "prop": "frameColor",
+        "type": "color",
+        "label": "Card Border",
+        "group": "Theme Colors",
+        "default": "#3b82f6",
+        "meta": []
+      },
+      {
+        "key": "frame_glow",
+        "prop": "frameGlow",
+        "type": "color",
+        "label": "Border Glow",
+        "group": "Theme Colors",
+        "default": "#60a5fa",
+        "meta": []
+      },
+      {
+        "key": "square_bg",
+        "prop": "squareBg",
+        "type": "color",
+        "label": "Square BG",
+        "group": "Theme Colors",
+        "default": "#374151",
+        "meta": []
+      },
+      {
+        "key": "square_text",
+        "prop": "squareText",
+        "type": "color",
+        "label": "Square Text",
+        "group": "Theme Colors",
+        "default": "#e5e7eb",
+        "meta": []
+      },
+      {
+        "key": "diamond_1",
+        "prop": "diamond1",
+        "type": "color",
+        "label": "Diamond Color 1",
+        "group": "Theme Colors",
+        "default": "#06b6d4",
+        "meta": []
+      },
+      {
+        "key": "diamond_2",
+        "prop": "diamond2",
+        "type": "color",
+        "label": "Diamond Color 2",
+        "group": "Theme Colors",
+        "default": "#67e8f9",
+        "meta": []
+      },
+      {
+        "key": "winner_glow",
+        "prop": "winnerGlow",
+        "type": "color",
+        "label": "Winner Glow",
+        "group": "Theme Colors",
+        "default": "#10b981",
+        "meta": []
+      },
+      {
+        "key": "winner_bg",
+        "prop": "winnerBg",
+        "type": "color",
+        "label": "Winner BG",
+        "group": "Theme Colors",
+        "default": "#059669",
+        "meta": []
+      },
+      {
+        "key": "popup_start",
+        "prop": "popupStart",
+        "type": "color",
+        "label": "Popup Start",
+        "group": "Theme Colors",
+        "default": "#10b981",
+        "meta": []
+      },
+      {
+        "key": "popup_end",
+        "prop": "popupEnd",
+        "type": "color",
+        "label": "Popup End",
+        "group": "Theme Colors",
+        "default": "#059669",
+        "meta": []
+      },
+      {
+        "key": "pattern_rules",
+        "prop": "patternRules",
+        "type": "pattern_rules",
+        "label": "Pattern Rules",
+        "group": "Pattern Rules",
+        "default": [],
+        "meta": {
+          "help": "Set patterns based on prize value ranges. Leave empty for random patterns.",
+          "patternNames": [
+            "Top Row",
+            "Middle Row",
+            "Bottom Row",
+            "Left Column",
+            "Middle Column",
+            "Right Column",
+            "Diagonal TL-BR",
+            "Diagonal TR-BL",
+            "Cross Pattern (5 Squares)",
+            "Full House (All 9)"
+          ],
+          "itemRules": {
+            "pattern_rules.*.from": [
+              "required_with:pattern_rules",
+              "numeric",
+              "min:0"
+            ],
+            "pattern_rules.*.to": [
+              "required_with:pattern_rules",
+              "numeric",
+              "min:0"
+            ],
+            "pattern_rules.*.pattern": [
+              "required_with:pattern_rules",
+              "integer",
+              "min:0",
+              "max:9"
+            ]
+          },
+          "itemDefault": {
+            "from": 0,
+            "to": 99.99,
+            "pattern": 0
+          }
+        }
+      },
+      {
+        "key": "background",
+        "prop": "background",
+        "type": "media",
+        "label": "Background Image",
+        "group": "Images",
+        "default": "",
+        "meta": {
+          "accept": "image"
+        }
+      },
+      {
+        "key": "header",
+        "prop": "header",
+        "type": "media",
+        "label": "Header / Banner",
+        "group": "Images",
+        "default": "",
+        "meta": {
+          "accept": "image"
+        }
+      },
+      {
+        "key": "card_cover",
+        "prop": "cardCover",
+        "type": "media",
+        "label": "Card Cover",
+        "group": "Images",
+        "default": "",
+        "meta": {
+          "accept": "image"
+        }
+      },
+      {
+        "key": "reveal_sound",
+        "prop": "revealSound",
+        "type": "media",
+        "label": "Reveal Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "win_sound",
+        "prop": "winSound",
+        "type": "media",
+        "label": "Win Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "loss_sound",
+        "prop": "lossSound",
+        "type": "media",
+        "label": "Loss Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      }
+    ]
+  },
+  "coindrop": {
+    "key": "coindrop",
+    "label": "Coin Drop",
+    "schema": [
+      {
+        "key": "background",
+        "prop": "background",
+        "type": "media",
+        "label": "Intro Video / Background",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "video",
+          "help": "Video plays 5s intro, then freezes as background"
+        }
+      },
+      {
+        "key": "title_image",
+        "prop": "titleImage",
+        "type": "media",
+        "label": "Title Image",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Game logo (PNG with transparency)"
+        }
+      },
+      {
+        "key": "game_background",
+        "prop": "gameBackground",
+        "type": "media",
+        "label": "Game Background",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Background image for the game board area"
+        }
+      },
+      {
+        "key": "drop_button_image",
+        "prop": "dropButtonImage",
+        "type": "media",
+        "label": "Drop Button",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Custom button graphic"
+        }
+      },
+      {
+        "key": "ball_image",
+        "prop": "ballImage",
+        "type": "media",
+        "label": "Ball/Coin Image",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Custom coin/ball graphic (PNG with transparency recommended)"
+        }
+      },
+      {
+        "key": "tube_image",
+        "prop": "tubeImage",
+        "type": "media",
+        "label": "Drop Tube Image",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Custom tube/dispenser image where coins drop from"
+        }
+      },
+      {
+        "key": "win_bucket_image",
+        "prop": "winBucketImage",
+        "type": "media",
+        "label": "Win Bucket Image",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Image for winning buckets (replaces green color)"
+        }
+      },
+      {
+        "key": "lose_bucket_image",
+        "prop": "loseBucketImage",
+        "type": "media",
+        "label": "Lose Bucket Image",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Image for losing buckets (replaces red color)"
+        }
+      },
+      {
+        "key": "welcome_sound",
+        "prop": "welcomeSound",
+        "type": "media",
+        "label": "Welcome Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "drop_sound",
+        "prop": "dropSound",
+        "type": "media",
+        "label": "Drop Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "win_sound",
+        "prop": "winSound",
+        "type": "media",
+        "label": "Win Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "loss_sound",
+        "prop": "lossSound",
+        "type": "media",
+        "label": "Loss Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "peg_shape",
+        "prop": "pegShape",
+        "type": "select",
+        "label": "Peg Shape",
+        "group": "Colors & Style",
+        "default": "hexagon",
+        "meta": {
+          "options": [
+            {
+              "value": "hexagon",
+              "label": "Hexagon"
+            },
+            {
+              "value": "circle",
+              "label": "Circle"
+            },
+            {
+              "value": "square",
+              "label": "Square"
+            }
+          ]
+        }
+      },
+      {
+        "key": "board_bg_color",
+        "prop": "boardBgColor",
+        "type": "color",
+        "label": "Board Background",
+        "group": "Colors & Style",
+        "default": "#1a1a2e",
+        "meta": []
+      },
+      {
+        "key": "peg_color",
+        "prop": "pegColor",
+        "type": "color",
+        "label": "Peg Border Color",
+        "group": "Colors & Style",
+        "default": "#ffffff",
+        "meta": []
+      },
+      {
+        "key": "peg_glow_color",
+        "prop": "pegGlowColor",
+        "type": "color",
+        "label": "Peg Glow Color",
+        "group": "Colors & Style",
+        "default": "#e94560",
+        "meta": []
+      },
+      {
+        "key": "ball_color",
+        "prop": "ballColor",
+        "type": "color",
+        "label": "Ball Color",
+        "group": "Colors & Style",
+        "default": "#ffd700",
+        "meta": []
+      },
+      {
+        "key": "ball_glow_color",
+        "prop": "ballGlowColor",
+        "type": "color",
+        "label": "Ball Glow Color",
+        "group": "Colors & Style",
+        "default": "#ffaa00",
+        "meta": []
+      },
+      {
+        "key": "win_bucket_color",
+        "prop": "winBucketColor",
+        "type": "color",
+        "label": "Win Bucket Color",
+        "group": "Colors & Style",
+        "default": "#00ff88",
+        "meta": []
+      },
+      {
+        "key": "lose_bucket_color",
+        "prop": "loseBucketColor",
+        "type": "color",
+        "label": "Lose Bucket Color",
+        "group": "Colors & Style",
+        "default": "#ff4444",
+        "meta": []
+      },
+      {
+        "key": "primary_color",
+        "prop": "primaryColor",
+        "type": "color",
+        "label": "Primary Color",
+        "group": "Colors & Style",
+        "default": "#e94560",
+        "meta": []
+      },
+      {
+        "key": "secondary_color",
+        "prop": "secondaryColor",
+        "type": "color",
+        "label": "Secondary Color",
+        "group": "Colors & Style",
+        "default": "#1a1a2e",
+        "meta": []
+      },
+      {
+        "key": "accent_color",
+        "prop": "accentColor",
+        "type": "color",
+        "label": "Accent Color",
+        "group": "Colors & Style",
+        "default": "#ffd700",
+        "meta": []
+      },
+      {
+        "key": "trail_color",
+        "prop": "trailColor",
+        "type": "color",
+        "label": "Ball Trail Glow",
+        "group": "Colors & Style",
+        "default": "#e94560",
+        "meta": []
+      }
+    ]
+  },
+  "popgame": {
+    "key": "popgame",
+    "label": "Pop Game",
+    "schema": [
+      {
+        "key": "pop_subtitle_text",
+        "prop": "popSubtitleText",
+        "type": "text",
+        "label": "Lobby Subtitle Text",
+        "group": "Lobby",
+        "default": "",
+        "meta": {
+          "help": "Text shown below the title on the lobby screen (leave empty for default)"
+        }
+      },
+      {
+        "key": "pop_item_label",
+        "prop": "popItemLabel",
+        "type": "text",
+        "label": "Pop Item Label",
+        "group": "Lobby",
+        "default": "",
+        "meta": {
+          "help": 'What to call the items (e.g. "gifts", "boxes", "stars"). Used in How to Play text. Leave empty for auto-detect from item type.'
+        }
+      },
+      {
+        "key": "title_text",
+        "prop": "titleText",
+        "type": "text",
+        "label": "Title Text",
+        "group": "Lobby Title",
+        "default": "POP TO WIN!",
+        "meta": []
+      },
+      {
+        "key": "title_color",
+        "prop": "titleColor",
+        "type": "color",
+        "label": "Title Color",
+        "group": "Lobby Title",
+        "default": "#FFD700",
+        "meta": []
+      },
+      {
+        "key": "text_color",
+        "prop": "textColor",
+        "type": "color",
+        "label": "Text Color",
+        "group": "Lobby Title",
+        "default": "#FFFFFF",
+        "meta": []
+      },
+      {
+        "key": "pop_item_type",
+        "prop": "popItemType",
+        "type": "select",
+        "label": "Pop Item Type",
+        "group": "Pop Item Type",
+        "default": "balloon",
+        "meta": {
+          "help": "Choose what users will pop",
+          "options": [
+            {
+              "value": "balloon",
+              "label": "Balloon"
+            },
+            {
+              "value": "present",
+              "label": "Present"
+            },
+            {
+              "value": "egg",
+              "label": "Egg"
+            }
+          ]
+        }
+      },
+      {
+        "key": "title_image",
+        "prop": "titleImage",
+        "type": "media",
+        "label": "Title Image",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Game logo (PNG with transparency)"
+        }
+      },
+      {
+        "key": "background",
+        "prop": "background",
+        "type": "media",
+        "label": "Background Image",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Background for lobby and game board (uses background color as fallback)"
+        }
+      },
+      {
+        "key": "header",
+        "prop": "header",
+        "type": "media",
+        "label": "Header Image",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Banner shown above the game"
+        }
+      },
+      {
+        "key": "pop_item_image",
+        "prop": "popItemImage",
+        "type": "media",
+        "label": "Custom Pop Item Image",
+        "group": "Visual Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Replaces default balloon/present with custom image"
+        }
+      },
+      {
+        "key": "welcome_sound",
+        "prop": "welcomeSound",
+        "type": "media",
+        "label": "Welcome Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "pop_sound",
+        "prop": "popSound",
+        "type": "media",
+        "label": "Pop Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "win_sound",
+        "prop": "winSound",
+        "type": "media",
+        "label": "Win Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "loss_sound",
+        "prop": "lossSound",
+        "type": "media",
+        "label": "Loss Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "pop_item_colors",
+        "prop": "popItemColors",
+        "type": "json",
+        "label": "Item Colors",
+        "group": "Item Colors",
+        "default": [
+          "#FF4C4C",
+          "#FFEB3B",
+          "#64B5F6",
+          "#81C784",
+          "#9575CD",
+          "#FF8A80",
+          "#FFB74D",
+          "#4DD0E1",
+          "#F06292",
+          "#FFD700"
+        ],
+        "meta": {
+          "help": "Colors for balloons/presents (1-15)",
+          "itemDefault": "#FF4C4C",
+          "min": 1,
+          "max": 15
+        }
+      },
+      {
+        "key": "pop_confetti_colors",
+        "prop": "popConfettiColors",
+        "type": "json",
+        "label": "Confetti Colors",
+        "group": "Confetti Colors",
+        "default": [
+          "#FFD700",
+          "#FF6B6B",
+          "#4ECDC4",
+          "#45B7D1",
+          "#96CEB4",
+          "#FFEAA7"
+        ],
+        "meta": {
+          "help": "Win celebration colors (1-10)",
+          "itemDefault": "#FFD700",
+          "min": 1,
+          "max": 10
+        }
+      },
+      {
+        "key": "pop_bg_color",
+        "prop": "popBgColor",
+        "type": "color",
+        "label": "Background Color",
+        "group": "Theme Colors",
+        "default": "#1a1a2e",
+        "meta": []
+      },
+      {
+        "key": "pop_win_color",
+        "prop": "popWinColor",
+        "type": "color",
+        "label": "Win Color",
+        "group": "Theme Colors",
+        "default": "#00ff88",
+        "meta": []
+      },
+      {
+        "key": "pop_lose_color",
+        "prop": "popLoseColor",
+        "type": "color",
+        "label": "Lose Color",
+        "group": "Theme Colors",
+        "default": "#ff4444",
+        "meta": []
+      },
+      {
+        "key": "primary_color",
+        "prop": "primaryColor",
+        "type": "color",
+        "label": "Primary Color",
+        "group": "Theme Colors",
+        "default": "#e94560",
+        "meta": []
+      },
+      {
+        "key": "secondary_color",
+        "prop": "secondaryColor",
+        "type": "color",
+        "label": "Secondary Color",
+        "group": "Theme Colors",
+        "default": "#1a1a2e",
+        "meta": []
+      },
+      {
+        "key": "accent_color",
+        "prop": "accentColor",
+        "type": "color",
+        "label": "Accent Color",
+        "group": "Theme Colors",
+        "default": "#ffd700",
+        "meta": []
+      }
+    ]
+  },
+  "football": {
+    "key": "football",
+    "label": "Football",
+    "schema": [
+      {
+        "key": "intro_enabled",
+        "prop": "introEnabled",
+        "type": "toggle",
+        "label": "Show Intro Screen",
+        "group": "Intro",
+        "default": true,
+        "meta": []
+      },
+      {
+        "key": "intro_title_image",
+        "prop": "introTitleImage",
+        "type": "media",
+        "label": "Title Image",
+        "group": "Intro",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Shown on the intro screen — your logo / brand art (PNG with transparency)"
+        }
+      },
+      {
+        "key": "intro_welcome_text",
+        "prop": "introWelcomeText",
+        "type": "text",
+        "label": "Welcome Message",
+        "group": "Intro",
+        "default": "Welcome to {name}",
+        "meta": {
+          "help": 'Use {name} to insert the game name, e.g. "Welcome to {name}"'
+        }
+      },
+      {
+        "key": "intro_subtitle",
+        "prop": "introSubtitle",
+        "type": "text",
+        "label": "Subtitle",
+        "group": "Intro",
+        "default": "Beat the keeper to win instant prizes",
+        "meta": []
+      },
+      {
+        "key": "intro_button_text",
+        "prop": "introButtonText",
+        "type": "text",
+        "label": "Start Button Text",
+        "group": "Intro",
+        "default": "Kick Off ⚽",
+        "meta": []
+      },
+      {
+        "key": "intro_voice_enabled",
+        "prop": "introVoiceEnabled",
+        "type": "toggle",
+        "label": "Speak welcome aloud (auto voice)",
+        "group": "Intro",
+        "default": true,
+        "meta": {
+          "help": "Reads the welcome message using the device voice when no Welcome Sound is uploaded"
+        }
+      },
+      {
+        "key": "welcome_sound",
+        "prop": "welcomeSound",
+        "type": "media",
+        "label": "Welcome Sound",
+        "group": "Intro",
+        "default": "",
+        "meta": {
+          "accept": "audio",
+          "help": "Optional — plays on the intro and overrides the spoken welcome"
+        }
+      },
+      {
+        "key": "theme",
+        "prop": "theme",
+        "type": "select",
+        "label": "Theme",
+        "group": "Look",
+        "default": "classic",
+        "meta": {
+          "help": "Restyles the pitch, stadium and sky",
+          "options": [
+            {
+              "value": "classic",
+              "label": "Classic (Daytime)"
+            },
+            {
+              "value": "night",
+              "label": "Night Match"
+            },
+            {
+              "value": "retro",
+              "label": "Retro"
+            },
+            {
+              "value": "neon",
+              "label": "Neon Arcade"
+            }
+          ]
+        }
+      },
+      {
+        "key": "ball_image",
+        "prop": "ballImage",
+        "type": "media",
+        "label": "Ball Image",
+        "group": "Assets",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional custom football art (PNG with transparency)"
+        }
+      },
+      {
+        "key": "ball_color",
+        "prop": "ballColor",
+        "type": "color",
+        "label": "Ball Color",
+        "group": "Assets",
+        "default": "#ffffff",
+        "meta": []
+      },
+      {
+        "key": "goal_color",
+        "prop": "goalColor",
+        "type": "color",
+        "label": "Goal / Net Color",
+        "group": "Assets",
+        "default": "#eeeeee",
+        "meta": []
+      },
+      {
+        "key": "keeper_sheet",
+        "prop": "keeperSheet",
+        "type": "media",
+        "label": "Goalkeeper Sprite Sheet",
+        "group": "Animated Characters",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional — a horizontal PNG strip of equal frames. Frame order: 1) ready, 2) dive LEFT, 3) dive RIGHT. Leave blank for the drawn keeper."
+        }
+      },
+      {
+        "key": "keeper_frames",
+        "prop": "keeperFrames",
+        "type": "number",
+        "label": "Keeper Frames",
+        "group": "Animated Characters",
+        "default": 0,
+        "meta": {
+          "help": "Leave at 0 to auto-detect (single image = 1 frame, strip = its real frame count). Set a number only to force it. For an animated strip the last two frames should be dive-left and dive-right; the rest are the walk cycle."
+        }
+      },
+      {
+        "key": "striker_sheet",
+        "prop": "strikerSheet",
+        "type": "media",
+        "label": "Striker Sprite Sheet",
+        "group": "Animated Characters",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional — a horizontal PNG strip of equal frames. Frame order: 1) stand, 2) run, 3) kick. Leave blank for the drawn striker."
+        }
+      },
+      {
+        "key": "striker_frames",
+        "prop": "strikerFrames",
+        "type": "number",
+        "label": "Striker Frames",
+        "group": "Animated Characters",
+        "default": 0,
+        "meta": {
+          "help": "Leave at 0 to auto-detect (single image = 1 frame, strip = its real frame count). Set a number only to force it. For an animated strip use 3 frames: 1) stand, 2) run, 3) kick."
+        }
+      },
+      {
+        "key": "sprite_chroma",
+        "prop": "spriteChroma",
+        "type": "toggle",
+        "label": "Auto-remove sprite background",
+        "group": "Animated Characters",
+        "default": false,
+        "meta": {
+          "help": "Turn on for AI-generated sheets (e.g. Gemini) that come with a solid or checkerboard background instead of real transparency — the game strips it automatically."
+        }
+      },
+      {
+        "key": "title_text",
+        "prop": "titleText",
+        "type": "text",
+        "label": "Title",
+        "group": "Text",
+        "default": "Take Your Shot!",
+        "meta": []
+      },
+      {
+        "key": "win_text",
+        "prop": "winText",
+        "type": "text",
+        "label": "Win Message",
+        "group": "Text",
+        "default": "GOAL! You scored!",
+        "meta": []
+      },
+      {
+        "key": "lose_text",
+        "prop": "loseText",
+        "type": "text",
+        "label": "Lose Message",
+        "group": "Text",
+        "default": "Saved! Unlucky…",
+        "meta": []
+      },
+      {
+        "key": "primary_color",
+        "prop": "primaryColor",
+        "type": "color",
+        "label": "Primary",
+        "group": "Colors",
+        "default": "#1b5e20",
+        "meta": []
+      },
+      {
+        "key": "accent_color",
+        "prop": "accentColor",
+        "type": "color",
+        "label": "Accent",
+        "group": "Colors",
+        "default": "#ffeb3b",
+        "meta": []
+      },
+      {
+        "key": "text_color",
+        "prop": "textColor",
+        "type": "color",
+        "label": "Text",
+        "group": "Colors",
+        "default": "#ffffff",
+        "meta": []
+      },
+      {
+        "key": "kick_sound",
+        "prop": "kickSound",
+        "type": "media",
+        "label": "Kick Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "whistle_sound",
+        "prop": "whistleSound",
+        "type": "media",
+        "label": "Whistle Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "crowd_sound",
+        "prop": "crowdSound",
+        "type": "media",
+        "label": "Crowd Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "win_sound",
+        "prop": "winSound",
+        "type": "media",
+        "label": "Win Sound (cheer)",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "loss_sound",
+        "prop": "lossSound",
+        "type": "media",
+        "label": "Loss Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "show_top_prize",
+        "prop": "showTopPrize",
+        "type": "toggle",
+        "label": "Show Top Prize Banner",
+        "group": "Display Options",
+        "default": true,
+        "meta": []
+      },
+      {
+        "key": "host_enabled",
+        "prop": "hostEnabled",
+        "type": "toggle",
+        "label": "Show Commentator (host + mic)",
+        "group": "Display Options",
+        "default": true,
+        "meta": []
+      },
+      {
+        "key": "host_image",
+        "prop": "hostImage",
+        "type": "media",
+        "label": "Commentator Image",
+        "group": "Display Options",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional — upload your own host / mascot (PNG, transparent). Defaults to a drawn pundit."
+        }
+      }
+    ]
+  },
+  "fishing": {
+    "key": "fishing",
+    "label": "Fishing",
+    "schema": [
+      {
+        "key": "intro_enabled",
+        "prop": "introEnabled",
+        "type": "toggle",
+        "label": "Show Intro Screen",
+        "group": "Intro",
+        "default": true,
+        "meta": []
+      },
+      {
+        "key": "intro_title_image",
+        "prop": "introTitleImage",
+        "type": "media",
+        "label": "Title Image",
+        "group": "Intro",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Shown on the intro screen — your logo / brand art (PNG with transparency)"
+        }
+      },
+      {
+        "key": "intro_welcome_text",
+        "prop": "introWelcomeText",
+        "type": "text",
+        "label": "Welcome Message",
+        "group": "Intro",
+        "default": "Welcome to {name}",
+        "meta": {
+          "help": "Use {name} to insert the game name"
+        }
+      },
+      {
+        "key": "intro_subtitle",
+        "prop": "introSubtitle",
+        "type": "text",
+        "label": "Subtitle",
+        "group": "Intro",
+        "default": "Cast your line to reel in instant prizes",
+        "meta": []
+      },
+      {
+        "key": "intro_button_text",
+        "prop": "introButtonText",
+        "type": "text",
+        "label": "Start Button Text",
+        "group": "Intro",
+        "default": "Cast Off 🎣",
+        "meta": []
+      },
+      {
+        "key": "intro_voice_enabled",
+        "prop": "introVoiceEnabled",
+        "type": "toggle",
+        "label": "Speak welcome aloud (auto voice)",
+        "group": "Intro",
+        "default": false,
+        "meta": {
+          "help": "OFF by default. When ON, reads the welcome message aloud using the device voice if no Welcome Sound is uploaded. The uploaded Welcome Sound always plays regardless."
+        }
+      },
+      {
+        "key": "welcome_sound",
+        "prop": "welcomeSound",
+        "type": "media",
+        "label": "Welcome Sound",
+        "group": "Intro",
+        "default": "",
+        "meta": {
+          "accept": "audio",
+          "help": "Optional — plays on the intro and overrides the spoken welcome"
+        }
+      },
+      {
+        "key": "theme",
+        "prop": "theme",
+        "type": "select",
+        "label": "Theme",
+        "group": "Look",
+        "default": "stormy",
+        "meta": {
+          "help": "Restyles the sky, sea and lighting",
+          "options": [
+            {
+              "value": "chill",
+              "label": "Chill"
+            },
+            {
+              "value": "sunset",
+              "label": "Sunset"
+            },
+            {
+              "value": "night",
+              "label": "Night Time"
+            },
+            {
+              "value": "stormy",
+              "label": "Stormy"
+            }
+          ]
+        }
+      },
+      {
+        "key": "sun_enabled",
+        "prop": "sunEnabled",
+        "type": "toggle",
+        "label": "Show Sun",
+        "group": "Look",
+        "default": true,
+        "meta": []
+      },
+      {
+        "key": "sun_image",
+        "prop": "sunImage",
+        "type": "media",
+        "label": "Sun Image",
+        "group": "Look",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional — your own sun / moon art (PNG, transparent). Defaults to a drawn sun."
+        }
+      },
+      {
+        "key": "clouds_enabled",
+        "prop": "cloudsEnabled",
+        "type": "toggle",
+        "label": "Show Clouds",
+        "group": "Look",
+        "default": true,
+        "meta": []
+      },
+      {
+        "key": "underwater_image",
+        "prop": "underwaterImage",
+        "type": "media",
+        "label": "Underwater Image",
+        "group": "Scene Art",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional — a full backdrop for the underwater world (reef, deep sea, treasure…). Fish + line animate on top, with a light shimmer over it. The drawn seabed is used when blank."
+        }
+      },
+      {
+        "key": "boat_image",
+        "prop": "boatImage",
+        "type": "media",
+        "label": "Boat Image",
+        "group": "Scene Art",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional — your own boat art (PNG, transparent). Side-on, hull flat along the bottom edge, no rod/people. Defaults to a drawn boat."
+        }
+      },
+      {
+        "key": "boat_waterline",
+        "prop": "boatWaterline",
+        "type": "number",
+        "label": "Boat Waterline (nudge up / down)",
+        "group": "Scene Art",
+        "default": 0,
+        "meta": {
+          "help": "Fine-tune where the boat sits on the water. Increase to sink it LOWER into the sea (closes any gap under the hull); decrease to LIFT it. A tightly-cropped boat PNG usually sits right at 0."
+        }
+      },
+      {
+        "key": "fisherman_sheet",
+        "prop": "fishermanSheet",
+        "type": "media",
+        "label": "Fisherman Image",
+        "group": "Scene Art",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional — fisherman art or a horizontal sprite strip (idle, cast, reel). Defaults to a drawn fisherman."
+        }
+      },
+      {
+        "key": "fisherman_frames",
+        "prop": "fishermanFrames",
+        "type": "number",
+        "label": "Fisherman Frames",
+        "group": "Scene Art",
+        "default": 0,
+        "meta": {
+          "help": "Leave 0 to auto-detect (single image = 1 frame, strip = its frame count). For an animated strip use 3: 1) idle, 2) cast, 3) reel."
+        }
+      },
+      {
+        "key": "fish_image",
+        "prop": "fishImage",
+        "type": "media",
+        "label": "Caught Fish Image",
+        "group": "Scene Art",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional — the fish shown on a winning catch. Defaults to a drawn fish."
+        }
+      },
+      {
+        "key": "sprite_chroma",
+        "prop": "spriteChroma",
+        "type": "toggle",
+        "label": "Auto-remove image background",
+        "group": "Scene Art",
+        "default": false,
+        "meta": {
+          "help": "Turn on for AI-generated art (e.g. Gemini) that has a solid/checkerboard background instead of real transparency."
+        }
+      },
+      {
+        "key": "title_text",
+        "prop": "titleText",
+        "type": "text",
+        "label": "Title",
+        "group": "Text",
+        "default": "Cast to Win!",
+        "meta": []
+      },
+      {
+        "key": "win_text",
+        "prop": "winText",
+        "type": "text",
+        "label": "Win Message",
+        "group": "Text",
+        "default": "Reeled in a winner! 🎣",
+        "meta": []
+      },
+      {
+        "key": "lose_text",
+        "prop": "loseText",
+        "type": "text",
+        "label": "Lose Message",
+        "group": "Text",
+        "default": "The one that got away…",
+        "meta": []
+      },
+      {
+        "key": "primary_color",
+        "prop": "primaryColor",
+        "type": "color",
+        "label": "Primary",
+        "group": "Colors",
+        "default": "#0277bd",
+        "meta": []
+      },
+      {
+        "key": "accent_color",
+        "prop": "accentColor",
+        "type": "color",
+        "label": "Accent",
+        "group": "Colors",
+        "default": "#ffd54f",
+        "meta": []
+      },
+      {
+        "key": "text_color",
+        "prop": "textColor",
+        "type": "color",
+        "label": "Text",
+        "group": "Colors",
+        "default": "#ffffff",
+        "meta": []
+      },
+      {
+        "key": "cast_sound",
+        "prop": "castSound",
+        "type": "media",
+        "label": "Cast Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "splash_sound",
+        "prop": "splashSound",
+        "type": "media",
+        "label": "Splash Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "reel_sound",
+        "prop": "reelSound",
+        "type": "media",
+        "label": "Reel Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "win_sound",
+        "prop": "winSound",
+        "type": "media",
+        "label": "Win Sound (catch)",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "loss_sound",
+        "prop": "lossSound",
+        "type": "media",
+        "label": "Loss Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "show_top_prize",
+        "prop": "showTopPrize",
+        "type": "toggle",
+        "label": "Show Top Prize Banner",
+        "group": "Display Options",
+        "default": false,
+        "meta": []
+      }
+    ]
+  },
+  "ticketeater": {
+    "key": "ticketeater",
+    "label": "Ticket Eater",
+    "schema": [
+      {
+        "key": "intro_enabled",
+        "prop": "introEnabled",
+        "type": "toggle",
+        "label": "Show Intro Screen",
+        "group": "Intro",
+        "default": true,
+        "meta": []
+      },
+      {
+        "key": "intro_title_image",
+        "prop": "introTitleImage",
+        "type": "media",
+        "label": "Title Image",
+        "group": "Intro",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Shown on the intro screen — your logo / brand art (PNG with transparency)"
+        }
+      },
+      {
+        "key": "intro_welcome_text",
+        "prop": "introWelcomeText",
+        "type": "text",
+        "label": "Welcome Message",
+        "group": "Intro",
+        "default": "Welcome to {name}",
+        "meta": {
+          "help": "Use {name} to insert the game name"
+        }
+      },
+      {
+        "key": "intro_subtitle",
+        "prop": "introSubtitle",
+        "type": "text",
+        "label": "Subtitle",
+        "group": "Intro",
+        "default": "Feed your tickets to the monster",
+        "meta": []
+      },
+      {
+        "key": "intro_button_text",
+        "prop": "introButtonText",
+        "type": "text",
+        "label": "Start Button Text",
+        "group": "Intro",
+        "default": "Feed the Eater 👹",
+        "meta": []
+      },
+      {
+        "key": "welcome_sound",
+        "prop": "welcomeSound",
+        "type": "media",
+        "label": "Welcome Sound",
+        "group": "Intro",
+        "default": "",
+        "meta": {
+          "accept": "audio",
+          "help": "Optional — plays on the intro"
+        }
+      },
+      {
+        "key": "theme",
+        "prop": "theme",
+        "type": "select",
+        "label": "Theme",
+        "group": "Look",
+        "default": "arcade",
+        "meta": {
+          "help": "Restyles the room, conveyor and lighting",
+          "options": [
+            {
+              "value": "arcade",
+              "label": "Arcade (neon)"
+            },
+            {
+              "value": "cave",
+              "label": "Cave (lair)"
+            },
+            {
+              "value": "candy",
+              "label": "Candy"
+            },
+            {
+              "value": "spooky",
+              "label": "Spooky"
+            }
+          ]
+        }
+      },
+      {
+        "key": "mascot_image",
+        "prop": "mascotImage",
+        "type": "media",
+        "label": "Mascot Frame 1 (normal)",
+        "group": "Scene Art",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional — a mascot / character (PNG, transparent) that sits above the tickets. This is the normal state (before any win). It lights up + wiggles as wins come in. Separate from the Title image."
+        }
+      },
+      {
+        "key": "mascot_image_2",
+        "prop": "mascotImage2",
+        "type": "media",
+        "label": "Mascot Frame 2 (after 1st win)",
+        "group": "Scene Art",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional — swaps in once the first win lands. Falls back to Frame 1 if blank."
+        }
+      },
+      {
+        "key": "mascot_image_3",
+        "prop": "mascotImage3",
+        "type": "media",
+        "label": "Mascot Frame 3 (3+ wins)",
+        "group": "Scene Art",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional — swaps in once 3 wins land in the same game. Falls back to Frame 2 if blank."
+        }
+      },
+      {
+        "key": "ticket_image",
+        "prop": "ticketImage",
+        "type": "media",
+        "label": "Main Ticket Image (the reader)",
+        "group": "Scene Art",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional — the big reader ticket in the middle (PNG, transparent). The rolling number is drawn on top. Defaults to a clean drawn ticket."
+        }
+      },
+      {
+        "key": "rising_ticket_image",
+        "prop": "risingTicketImage",
+        "type": "media",
+        "label": "Rising Ticket Image (the ones going in)",
+        "group": "Scene Art",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional — the small tickets that flow up into the reader (PNG, transparent). Shown rotated vertical. Defaults to a drawn ticket. Use a different design from the main ticket."
+        }
+      },
+      {
+        "key": "background_image",
+        "prop": "backgroundImage",
+        "type": "media",
+        "label": "Background Image",
+        "group": "Scene Art",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional — a full backdrop behind the ticket. The drawn themed background is used when blank."
+        }
+      },
+      {
+        "key": "pouch_image",
+        "prop": "pouchImage",
+        "type": "media",
+        "label": "Pouch / Inventory Image",
+        "group": "Scene Art",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Optional — the pouch that won prizes drop into (PNG, transparent). Defaults to a drawn pouch."
+        }
+      },
+      {
+        "key": "prize_image",
+        "prop": "prizeImage",
+        "type": "media",
+        "label": "Fallback Prize Image",
+        "group": "Scene Art",
+        "default": "",
+        "meta": {
+          "accept": "image",
+          "help": "Only used if a winning instant-win has NO image of its own — the win reveal normally shows the real competition instant-win image. Defaults to a trophy."
+        }
+      },
+      {
+        "key": "title_text",
+        "prop": "titleText",
+        "type": "text",
+        "label": "Title",
+        "group": "Text",
+        "default": "Feed the Eater!",
+        "meta": []
+      },
+      {
+        "key": "win_text",
+        "prop": "winText",
+        "type": "text",
+        "label": "Win Message",
+        "group": "Text",
+        "default": "Yum! It coughed up a prize! 🎉",
+        "meta": []
+      },
+      {
+        "key": "lose_text",
+        "prop": "loseText",
+        "type": "text",
+        "label": "Lose Message",
+        "group": "Text",
+        "default": "Gulp… nothing that time",
+        "meta": []
+      },
+      {
+        "key": "primary_color",
+        "prop": "primaryColor",
+        "type": "color",
+        "label": "Primary",
+        "group": "Colors",
+        "default": "#6c5ce7",
+        "meta": []
+      },
+      {
+        "key": "accent_color",
+        "prop": "accentColor",
+        "type": "color",
+        "label": "Accent",
+        "group": "Colors",
+        "default": "#ffd54f",
+        "meta": []
+      },
+      {
+        "key": "number_color",
+        "prop": "numberColor",
+        "type": "color",
+        "label": "Ticket Number Colour",
+        "group": "Colors",
+        "default": "",
+        "meta": {
+          "help": "Colour of the rolling ticket number. Leave blank to use the theme colour."
+        }
+      },
+      {
+        "key": "text_color",
+        "prop": "textColor",
+        "type": "color",
+        "label": "Text",
+        "group": "Colors",
+        "default": "#ffffff",
+        "meta": []
+      },
+      {
+        "key": "feed_sound",
+        "prop": "feedSound",
+        "type": "media",
+        "label": "Feed Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "chomp_sound",
+        "prop": "chompSound",
+        "type": "media",
+        "label": "Chomp Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "gulp_sound",
+        "prop": "gulpSound",
+        "type": "media",
+        "label": "Gulp Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "win_sound",
+        "prop": "winSound",
+        "type": "media",
+        "label": "Win Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "collect_sound",
+        "prop": "collectSound",
+        "type": "media",
+        "label": "Collect Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio",
+          "help": "Plays when a won prize is collected into the pouch"
+        }
+      },
+      {
+        "key": "loss_sound",
+        "prop": "lossSound",
+        "type": "media",
+        "label": "Loss Sound",
+        "group": "Sound Effects",
+        "default": "",
+        "meta": {
+          "accept": "audio"
+        }
+      },
+      {
+        "key": "show_top_prize",
+        "prop": "showTopPrize",
+        "type": "toggle",
+        "label": "Show Top Prize Banner",
+        "group": "Display Options",
+        "default": false,
+        "meta": []
+      }
+    ]
+  }
+};
+function schemaFor(key) {
+  return STUDIO_SCHEMAS[key] && STUDIO_SCHEMAS[key].schema || [];
+}
+function defaultsFor(key) {
+  const out = {};
+  for (const f2 of schemaFor(key)) out[f2.key] = f2.default;
+  return out;
+}
+function assetsFor(key, config3) {
+  const out = {};
+  const cfg = config3 || {};
+  for (const f2 of schemaFor(key)) out[f2.prop] = cfg[f2.key] !== void 0 ? cfg[f2.key] : f2.default;
+  return out;
+}
+const visible = (el) => !!el && el.offsetParent !== null && !el.disabled;
+const click = (root, sel) => {
+  const el = root.querySelector(sel);
+  if (visible(el)) {
+    el.click();
+    return true;
+  }
+  return false;
+};
+const clickText = (root, re) => {
+  const el = [...root.querySelectorAll("button")].find((b2) => re.test(b2.textContent || "") && visible(b2));
+  if (el) {
+    el.click();
+    return true;
+  }
+  return false;
+};
+const pointer = (el, type, x, y2) => el.dispatchEvent(new PointerEvent(type, { bubbles: true, cancelable: true, clientX: x, clientY: y2, pointerId: 1, pointerType: "mouse", isPrimary: true, button: 0 }));
+const PLANS = {
+  slots: { every: 5200, tick: (r2) => {
+    click(r2, ".controls button");
+  } },
+  spinny: { every: 7500, tick: (r2) => {
+    click(r2, ".static-highlight-segment") || click(r2, "svg");
+  } },
+  scratchy: { every: 7e3, tick: (r2, n2) => {
+    if (n2 % 2 === 0) clickText(r2, /reveal all/i);
+    else clickText(r2, /replay/i);
+  } },
+  bingo: { every: 6e3, tick: (r2, n2) => {
+    if (!clickText(r2, /reveal/i)) return n2 > 1 ? "done" : void 0;
+  } },
+  coindrop: { every: 4200, tick: (r2) => {
+    if (!click(r2, ".drop-button:not([disabled])")) return "done";
+  } },
+  popgame: { every: 1100, tick: (r2) => {
+    if (!click(r2, ".pop-item-container:not(.popped)")) return "done";
+  } },
+  football: {
+    every: 1300,
+    tick: (r2, n2, state) => {
+      if (click(r2, ".fbg-intro-cta")) return;
+      if (clickText(r2, /step up/i)) {
+        state.aimed = false;
+        return;
+      }
+      if (click(r2, ".fbg-shoot")) {
+        state.aimed = false;
+        return;
+      }
+      const rect = r2.querySelector('rect[style*="crosshair"]');
+      if (rect && !state.aimed) {
+        const b2 = rect.closest("svg").getBoundingClientRect();
+        const x = b2.left + b2.width * (0.3 + Math.random() * 0.4), y2 = b2.top + b2.height * (0.2 + Math.random() * 0.25);
+        pointer(rect, "pointerdown", x, y2);
+        pointer(rect, "pointerup", x, y2);
+        state.aimed = true;
+        return;
+      }
+      if (clickText(r2, /next penalty|collect/i)) {
+        state.aimed = false;
+        return;
+      }
+      if (clickText(r2, /^close$/i)) return "done";
+    }
+  },
+  fishing: { every: 0 },
+  // plays itself in demo mode
+  ticketeater: { every: 2500, tick: (r2) => {
+    click(r2, ".te-intro-start") || click(r2, ".te-release");
+  } }
+};
+function startAutopilot(rootEl, gameKey, onDone) {
+  const plan = PLANS[gameKey];
+  if (!plan || !plan.every) return () => {
+  };
+  let n2 = 0, timer = null, stopped = false;
+  const state = {};
+  const loop = () => {
+    if (stopped) return;
+    let result;
+    try {
+      result = plan.tick(rootEl, n2++, state);
+    } catch (e2) {
+    }
+    if (result === "done") {
+      onDone && onDone();
+      return;
+    }
+    timer = setTimeout(loop, plan.every);
+  };
+  timer = setTimeout(loop, 1200 + Math.random() * 800);
+  return () => {
+    stopped = true;
+    clearTimeout(timer);
+  };
+}
+const FRAME_W = 440;
+const FRAME_H = 700;
+const _sfc_main$u = {
+  __name: "GameEmbed",
   __ssrInlineRender: true,
   props: {
-    demoMode: { type: Boolean },
-    previewMode: {},
-    spinAssets: {},
-    tickets: {},
-    playedTickets: {}
+    game: { type: String, required: true },
+    config: { type: Object, default: () => ({}) },
+    mode: { type: String, default: "tile" },
+    // 'tile' | 'preview'
+    autoplay: { type: Boolean, default: true },
+    active: { type: Boolean, default: true }
+    // mount only when true (lazy)
   },
-  emits: ["ticket-played", "prize-won"],
-  setup(__props, { emit: __emit }) {
+  setup(__props, { expose: __expose }) {
     const props = __props;
-    const isSpinning = ref(false);
-    const isAnimating = ref(false);
-    ref(null);
-    ref(null);
-    const staticSegmentText = ref("TAP TO SPIN");
-    const showResult = ref(false);
-    const currentTicketNumber = ref("");
-    const resultComplete = ref(false);
-    const showWinnerCard = ref(false);
-    const hideFloatingCard = ref(false);
-    const isCardAnimatingToCorner = ref(false);
-    const currentPrizeAmount = ref("");
-    const segments = [
-      { index: 0, color: "#ffffff", text: "UNLUCKY", isWin: false },
-      { index: 1, color: "#f3e8ff", text: "WINNER", isWin: true },
-      { index: 2, color: "#ffffff", text: "UNLUCKY", isWin: false },
-      { index: 3, color: "#f3e8ff", text: "LUCKY", isWin: true },
-      { index: 4, color: "#ffffff", text: "UNLUCKY", isWin: false },
-      { index: 5, color: "#f3e8ff", text: "WINNER", isWin: true },
-      { index: 6, color: "#ffffff", text: "UNLUCKY", isWin: false },
-      { index: 7, color: "#f3e8ff", text: "LUCKY", isWin: true },
-      { index: 8, color: "#ffffff", text: "UNLUCKY", isWin: false },
-      { index: 9, color: "#f3e8ff", text: "WINNER", isWin: true },
-      { index: 10, color: "#ffffff", text: "UNLUCKY", isWin: false },
-      { index: 11, color: "#ffffff", text: "UNLUCKY", isWin: false }
-    ];
-    const spinsLeft = computed(() => {
+    const box = ref(null);
+    const play = ref(null);
+    const zoom = ref(1);
+    const epoch = ref(0);
+    const Player = shallowRef(null);
+    let ro = null, stopPilot = null, remountTimer = null;
+    const assets = computed(() => assetsFor(props.game, props.config));
+    const tickets = makeDemoTickets(props.game === "popgame" ? 30 : 10);
+    function fit() {
       var _a;
-      if (props.demoMode) {
-        return 9;
+      const host = (_a = box.value) == null ? void 0 : _a.parentElement;
+      if (!host || props.mode !== "tile") {
+        zoom.value = 1;
+        return;
       }
-      if (!props.tickets) {
-        return 0;
+      const r2 = host.getBoundingClientRect();
+      if (!r2.width) return;
+      zoom.value = Math.max(0.25, Math.min(1.1, Math.min(r2.width / FRAME_W, r2.height / FRAME_H)));
+    }
+    function stop() {
+      if (stopPilot) stopPilot();
+      stopPilot = null;
+      clearTimeout(remountTimer);
+    }
+    async function arm() {
+      stop();
+      if (!props.autoplay || props.mode !== "tile" || !Player.value) return;
+      await nextTick();
+      remountTimer = setTimeout(() => {
+        if (!play.value) return;
+        stopPilot = startAutopilot(play.value, props.game, () => {
+          remountTimer = setTimeout(() => {
+            epoch.value++;
+            arm();
+          }, 3500);
+        });
+      }, 900);
+    }
+    watch(() => props.active, async (on) => {
+      if (on && !Player.value) {
+        const loader = gamePlayers[props.game];
+        if (loader) Player.value = defineAsyncComponent(loader);
+        await nextTick();
+        arm();
       }
-      return props.tickets.length - (((_a = props.playedTickets) == null ? void 0 : _a.length) || 0);
-    });
-    const canSpin = computed(() => spinsLeft.value > 0 && !isSpinning.value && !isAnimating.value && !showResult.value && resultComplete.value);
-    const maskSize = computed(() => props.previewMode === "mobile" ? "70%" : "70%");
-    const maskEdge = computed(() => props.previewMode === "mobile" ? "75%" : "75%");
-    const isDesktop = computed(() => props.previewMode === "desktop");
-    const isMobile = computed(() => props.previewMode === "mobile");
-    const getStaticSegmentFill = computed(() => {
-      if (showResult.value) {
-        if (staticSegmentText.value === "UNLUCKY") {
-          return "#ff0000";
-        } else if (staticSegmentText.value === "WINNER" || staticSegmentText.value === "LUCKY") {
-          return "#00ff00";
-        }
-      }
-      return props.spinAssets.wheelEdgeColor || "#00aeffff";
-    });
-    const titleStyle = computed(() => ({
-      color: props.spinAssets.titleColor,
-      textShadow: `0 0 5px ${props.spinAssets.titleColor}, 0 0 10px ${props.spinAssets.titleColor}, 0 0 15px ${props.spinAssets.titleColor}, 0 0 20px ${props.spinAssets.wheelEdgeColor || "#00aeffff"}`
-    }));
-    const titleClasses = computed(() => {
-      const baseClasses = isMobile.value ? "" : "animate-pulse";
-      return isDesktop.value ? `${baseClasses} desktop-title` : `${baseClasses} mobile-title`;
-    });
-    const walletGradient = computed(() => {
-      const color = props.spinAssets.walletColor || "#8b5cf6";
-      return `linear-gradient(135deg, ${color} 0%, ${color}dd 50%, ${color}bb 100%)`;
-    });
+    }, { immediate: true });
     onMounted(() => {
-      resultComplete.value = true;
-      if (canSpin.value) {
-        setTimeout(animateTapToSpin, 200);
-      }
+      var _a;
+      fit();
+      ro = new ResizeObserver(fit);
+      if ((_a = box.value) == null ? void 0 : _a.parentElement) ro.observe(box.value.parentElement);
     });
-    const animateText = () => {
-      if (isSpinning.value || isAnimating.value || showResult.value || !canSpin.value || isMobile.value) {
-        return;
-      }
-      const tapToSpinText = document.querySelector(".tap-to-spin-text");
-      const tapToSpinLetters = document.querySelectorAll(".tap-to-spin-letter");
-      const trianglePointer = document.querySelector(".triangle-pointer");
-      const centerHub = document.querySelector('circle[cx="90"], circle[cx="75"]');
-      const centerDiamond = document.querySelector('g:has(path[d*="M90 150"], path[d*="M75 125"])');
-      if (tapToSpinText || tapToSpinLetters.length > 0) {
-        const textElements = tapToSpinText ? [tapToSpinText] : Array.from(tapToSpinLetters);
-        const pointerElements = [trianglePointer, centerHub, centerDiamond].filter(Boolean);
-        gsapWithCSS.killTweensOf([...textElements, ...pointerElements]);
-        gsapWithCSS.fromTo(
-          textElements,
-          {
-            opacity: 0,
-            y: 15,
-            scale: 0.9
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.8,
-            ease: "back.out(1.2)",
-            stagger: 0.1,
-            onComplete: () => startPulseAnimation(textElements, pointerElements)
-          }
-        );
-      }
-    };
-    const startPulseAnimation = (textElements, pointerElements) => {
-      if (isMobile.value) {
-        return;
-      }
-      const casinoPulse = () => {
-        if (isSpinning.value || isAnimating.value || showResult.value || !canSpin.value) {
-          return;
-        }
-        const tl = gsapWithCSS.timeline();
-        tl.to([...textElements, ...pointerElements], {
-          scale: 1.2,
-          duration: 0.25,
-          ease: "power2.out",
-          transformOrigin: "center center"
-        }).to(
-          [...textElements, ...pointerElements],
-          {
-            scale: 1,
-            duration: 0.5,
-            ease: "elastic.out(1, 0.4)",
-            transformOrigin: "center center"
-          },
-          "-=0.1"
-        );
-        setTimeout(() => {
-          if (!isSpinning.value && !isAnimating.value && !showResult.value && canSpin.value) {
-            casinoPulse();
-          }
-        }, 2e3);
-      };
-      setTimeout(casinoPulse, 1e3);
-      gsapWithCSS.to(textElements, {
-        y: -3,
-        duration: 1.5,
-        ease: "power2.inOut",
-        repeat: -1,
-        yoyo: true,
-        stagger: 0.1
-      });
-    };
-    const animateTapToSpin = () => {
-      if (resultComplete.value && canSpin.value && staticSegmentText.value === "TAP TO SPIN") {
-        animateText();
-      }
-    };
-    const generateSvgWheel = () => {
-      const segmentCount = segments.length;
-      const anglePerSegment = 360 / segmentCount;
-      return segments.map((segment, index) => ({
-        ...segment,
-        startAngle: index * anglePerSegment,
-        endAngle: index * anglePerSegment + anglePerSegment,
-        centerAngle: index * anglePerSegment + anglePerSegment / 2
-      }));
-    };
-    const createSvgPath = (segment, cx, cy, r2, anglePerSegment) => {
-      const deg2rad = (deg) => deg * Math.PI / 180;
-      const startRad = deg2rad(segment.startAngle);
-      const endRad = deg2rad(segment.endAngle);
-      const x1 = cx + r2 * Math.cos(startRad);
-      const y1 = cy + r2 * Math.sin(startRad);
-      const x2 = cx + r2 * Math.cos(endRad);
-      const y2 = cy + r2 * Math.sin(endRad);
-      const arcFlag = anglePerSegment <= 180 ? 0 : 1;
-      return [`M ${cx},${cy}`, `L ${x1},${y1}`, `A ${r2},${r2} 0 ${arcFlag},1 ${x2},${y2}`, "Z"].join(" ");
-    };
-    const getSegmentTextPosition = (segment, cx, cy, r2) => {
-      const deg2rad = (deg) => deg * Math.PI / 180;
-      const centerAngleRad = deg2rad(segment.centerAngle);
-      const textRadius = r2 * 0.7;
-      return {
-        x: cx + textRadius * Math.cos(centerAngleRad),
-        y: cy + textRadius * Math.sin(centerAngleRad)
-      };
-    };
-    const createStaticSegmentPath = (cx, cy, r2, anglePerSegment) => {
-      const deg2rad = (deg) => deg * Math.PI / 180;
-      const extendedRadius = r2 + 3;
-      const startAngle = 270 - anglePerSegment / 2;
-      const endAngle = 270 + anglePerSegment / 2;
-      const startRad = deg2rad(startAngle);
-      const endRad = deg2rad(endAngle);
-      const x1 = cx + extendedRadius * Math.cos(startRad);
-      const y1 = cy + extendedRadius * Math.sin(startRad);
-      const x2 = cx + extendedRadius * Math.cos(endRad);
-      const y2 = cy + extendedRadius * Math.sin(endRad);
-      const arcFlag = anglePerSegment <= 180 ? 0 : 1;
-      return [`M ${cx},${cy}`, `L ${x1},${y1}`, `A ${extendedRadius},${extendedRadius} 0 ${arcFlag},1 ${x2},${y2}`, "Z"].join(" ");
-    };
+    onBeforeUnmount(() => {
+      stop();
+      ro == null ? void 0 : ro.disconnect();
+    });
+    __expose({ restart: () => {
+      epoch.value++;
+      arm();
+    } });
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<div${ssrRenderAttrs(mergeProps({
-        class: "spin-game-wrapper",
-        style: {
-          backgroundImage: __props.spinAssets.background ? `url(${__props.spinAssets.background})` : "none",
-          backgroundColor: __props.spinAssets.background ? "transparent" : "#0a0a1a",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
-        }
-      }, _attrs))} data-v-9d548857><div class="flex-1 flex flex-col relative overflow-hidden" data-v-9d548857><div class="flex-1 flex flex-col justify-center items-center relative z-20" style="${ssrRenderStyle({ marginTop: isDesktop.value ? "40px" : "30px" })}" data-v-9d548857><div class="wheel-title mb-4" data-v-9d548857><span class="${ssrRenderClass(titleClasses.value)}" style="${ssrRenderStyle(titleStyle.value)}" data-v-9d548857>${ssrInterpolate(__props.spinAssets.titleText)}</span></div></div><div class="relative w-full h-3/5 overflow-hidden" style="${ssrRenderStyle({ marginTop: isMobile.value ? "80px" : "0" })}" data-v-9d548857><div class="absolute left-1/2 transform -translate-x-1/2 overflow-hidden rounded-full" style="${ssrRenderStyle(`bottom: -70%; width: 180%; height: 160%; mask: radial-gradient(circle at center, white ${maskSize.value}, transparent ${maskEdge.value}); -webkit-mask: radial-gradient(circle at center, white ${maskSize.value}, transparent ${maskEdge.value});`)}" data-v-9d548857>`);
-      if (isMobile.value) {
-        _push(`<div class="absolute inset-0 rounded-full" style="${ssrRenderStyle(`background: radial-gradient(circle, transparent 35%, ${__props.spinAssets.wheelEdgeColor || "#00aeffff"} 65%, transparent 80%); opacity: 0.5;`)}" data-v-9d548857></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`<div class="relative w-full h-full overflow-hidden rounded-full" data-v-9d548857><div class="relative w-full h-full rounded-full shadow-2xl overflow-hidden" style="${ssrRenderStyle(`transform-origin: 50% 50%; mask: radial-gradient(circle, white ${maskSize.value === "70%" ? "65%" : "45%"}, transparent ${maskSize.value === "70%" ? "70%" : "50%"}); -webkit-mask: radial-gradient(circle, white ${maskSize.value === "70%" ? "65%" : "45%"}, transparent ${maskSize.value === "70%" ? "70%" : "50%"});`)}" data-v-9d548857><svg viewBox="0 0 264 264" class="w-full h-full absolute inset-0 z-10" xmlns="http://www.w3.org/2000/svg" style="${ssrRenderStyle(`mask: radial-gradient(circle, white ${maskSize.value === "70%" ? "65%" : "45%"}, transparent ${maskSize.value === "70%" ? "70%" : "50%"}); -webkit-mask: radial-gradient(circle, white ${maskSize.value === "70%" ? "65%" : "45%"}, transparent ${maskSize.value === "70%" ? "70%" : "50%"});`)}" data-v-9d548857><defs data-v-9d548857><clipPath id="wheelClip" data-v-9d548857><circle cx="132" cy="132" r="120" data-v-9d548857></circle></clipPath>`);
-      if (!isMobile.value) {
-        _push(`<linearGradient id="neonPurpleGradient" x1="0%" y1="0%" x2="100%" y2="100%" data-v-9d548857><stop offset="0%" style="${ssrRenderStyle(`stop-color: ${__props.spinAssets.wheelEdgeColor || "#db07f2"}`)}" data-v-9d548857></stop><stop offset="50%" style="${ssrRenderStyle(`stop-color: ${__props.spinAssets.wheelEdgeColor || "#a855f7"}`)}" data-v-9d548857></stop><stop offset="100%" style="${ssrRenderStyle(`stop-color: ${__props.spinAssets.wheelEdgeColor || "#7c3aed"}`)}" data-v-9d548857></stop></linearGradient>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (!isMobile.value) {
-        _push(`<filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%" data-v-9d548857><feGaussianBlur stdDeviation="3" result="coloredBlur" data-v-9d548857></feGaussianBlur><feMerge data-v-9d548857><feMergeNode in="coloredBlur" data-v-9d548857></feMergeNode><feMergeNode in="SourceGraphic" data-v-9d548857></feMergeNode></feMerge></filter>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`<radialGradient id="explosiveRim" data-v-9d548857><stop offset="75%" style="${ssrRenderStyle({ "stop-color": "transparent" })}" data-v-9d548857></stop><stop offset="88%" style="${ssrRenderStyle(isMobile.value ? `stop-color: ${__props.spinAssets.wheelEdgeColor || "#00aeffff"}; stop-opacity: 0.7` : `stop-color: ${__props.spinAssets.wheelEdgeColor || "#00aeffff"}; stop-opacity: 0.6`)}" data-v-9d548857></stop><stop offset="95%" style="${ssrRenderStyle(isMobile.value ? `stop-color: ${__props.spinAssets.wheelEdgeColor || "#00aeffff"}; stop-opacity: 0.9` : "stop-color: #ffffff; stop-opacity: 1")}" data-v-9d548857></stop><stop offset="100%" style="${ssrRenderStyle(isMobile.value ? "stop-color: #ffffff; stop-opacity: 0.8" : "stop-color: #ffffff; stop-opacity: 1")}" data-v-9d548857></stop></radialGradient></defs><g clip-path="url(#wheelClip)" data-v-9d548857><circle cx="132" cy="132" r="120" fill="#ffffff" stroke="none" data-v-9d548857></circle><g class="wheel-segments" data-v-9d548857><!--[-->`);
-      ssrRenderList(generateSvgWheel(), (segment) => {
-        _push(`<g data-v-9d548857><path${ssrRenderAttr("d", createSvgPath(segment, 132, 132, 120, 360 / segments.length))}${ssrRenderAttr("fill", segment.color)} stroke="#ffffff"${ssrRenderAttr("stroke-width", isDesktop.value ? "2" : "1")} opacity="1" data-v-9d548857></path>`);
-        if (segment.isWin) {
-          _push(`<g data-v-9d548857>`);
-          if (__props.spinAssets.logo) {
-            _push(`<g data-v-9d548857><defs data-v-9d548857><clipPath${ssrRenderAttr("id", `logoClip${segment.index}`)} data-v-9d548857><circle${ssrRenderAttr("cx", getSegmentTextPosition(segment, 132, 132, 120).x - 8)}${ssrRenderAttr("cy", getSegmentTextPosition(segment, 132, 132, 120).y)}${ssrRenderAttr("r", isDesktop.value ? "4" : "3")} data-v-9d548857></circle></clipPath></defs><image${ssrRenderAttr("x", getSegmentTextPosition(segment, 132, 132, 120).x - 12)}${ssrRenderAttr("y", getSegmentTextPosition(segment, 132, 132, 120).y - 4)}${ssrRenderAttr("width", isDesktop.value ? "8" : "6")}${ssrRenderAttr("height", isDesktop.value ? "8" : "6")}${ssrRenderAttr("href", __props.spinAssets.logo)}${ssrRenderAttr("clip-path", `url(#logoClip${segment.index})`)}${ssrRenderAttr("transform", `rotate(${segment.centerAngle}, ${getSegmentTextPosition(segment, 132, 132, 120).x - 8}, ${getSegmentTextPosition(segment, 132, 132, 120).y})`)} data-v-9d548857></image></g>`);
-          } else {
-            _push(`<g data-v-9d548857><circle${ssrRenderAttr("cx", getSegmentTextPosition(segment, 132, 132, 120).x - 8)}${ssrRenderAttr("cy", getSegmentTextPosition(segment, 132, 132, 120).y)}${ssrRenderAttr("r", isDesktop.value ? "4" : "3")}${ssrRenderAttr("fill", isMobile.value ? __props.spinAssets.wheelEdgeColor || "#00aeffff" : "url(#neonPurpleGradient)")}${ssrRenderAttr("filter", isMobile.value ? "none" : "url(#neonGlow)")}${ssrRenderAttr("transform", `rotate(${segment.centerAngle}, ${getSegmentTextPosition(segment, 132, 132, 120).x - 8}, ${getSegmentTextPosition(segment, 132, 132, 120).y})`)} data-v-9d548857></circle><path${ssrRenderAttr("d", `M${getSegmentTextPosition(segment, 132, 132, 120).x - 8} ${getSegmentTextPosition(segment, 132, 132, 120).y - 2}
-                                  L${getSegmentTextPosition(segment, 132, 132, 120).x - 6} ${getSegmentTextPosition(segment, 132, 132, 120).y}
-                                  L${getSegmentTextPosition(segment, 132, 132, 120).x - 8} ${getSegmentTextPosition(segment, 132, 132, 120).y + 2}
-                                  L${getSegmentTextPosition(segment, 132, 132, 120).x - 10} ${getSegmentTextPosition(segment, 132, 132, 120).y} Z`)} fill="#ffffff"${ssrRenderAttr("transform", `rotate(${segment.centerAngle}, ${getSegmentTextPosition(segment, 132, 132, 120).x - 8}, ${getSegmentTextPosition(segment, 132, 132, 120).y})`)} data-v-9d548857></path></g>`);
-          }
-          _push(`<text${ssrRenderAttr("x", getSegmentTextPosition(segment, 132, 132, 120).x + 4)}${ssrRenderAttr("y", getSegmentTextPosition(segment, 132, 132, 120).y)} text-anchor="middle" dominant-baseline="central"${ssrRenderAttr("font-size", isDesktop.value ? "7" : "5")} font-family="Arial Black, sans-serif" font-weight="900"${ssrRenderAttr("fill", isMobile.value ? __props.spinAssets.wheelEdgeColor || "#00aeffff" : "url(#neonPurpleGradient)")}${ssrRenderAttr("filter", isMobile.value ? "none" : "url(#neonGlow)")} stroke="#ffffff"${ssrRenderAttr("stroke-width", isDesktop.value ? "0.3" : "0.2")}${ssrRenderAttr("transform", `rotate(${segment.centerAngle}, ${getSegmentTextPosition(segment, 132, 132, 120).x + 4}, ${getSegmentTextPosition(segment, 132, 132, 120).y})`)} data-v-9d548857>${ssrInterpolate(segment.text)}</text></g>`);
-        } else {
-          _push(`<g data-v-9d548857><text${ssrRenderAttr("x", getSegmentTextPosition(segment, 132, 132, 120).x)}${ssrRenderAttr("y", getSegmentTextPosition(segment, 132, 132, 120).y)} text-anchor="middle" dominant-baseline="central"${ssrRenderAttr("font-size", isDesktop.value ? "7" : "5")} font-family="Arial, sans-serif" font-weight="400" fill="#9ca3af" stroke="#ffffff"${ssrRenderAttr("stroke-width", isDesktop.value ? "0.2" : "0.1")}${ssrRenderAttr("transform", `rotate(${segment.centerAngle}, ${getSegmentTextPosition(segment, 132, 132, 120).x}, ${getSegmentTextPosition(segment, 132, 132, 120).y})`)} data-v-9d548857>${ssrInterpolate(segment.text)}</text></g>`);
-        }
-        _push(`</g>`);
-      });
-      _push(`<!--]--></g><circle cx="132" cy="132" r="120" fill="url(#explosiveRim)" stroke="none" data-v-9d548857></circle></g></svg></div></div><svg viewBox="0 0 264 264" class="w-full h-full absolute inset-0 z-30 rounded-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" data-v-9d548857><defs data-v-9d548857><clipPath id="staticClip" data-v-9d548857><circle cx="132" cy="132" r="125" data-v-9d548857></circle></clipPath></defs><g clip-path="url(#staticClip)" data-v-9d548857><path${ssrRenderAttr("d", createStaticSegmentPath(132, 132, 120, 360 / segments.length))}${ssrRenderAttr("fill", isSpinning.value ? "rgba(255, 255, 255, 0.1)" : getStaticSegmentFill.value)} stroke="#ffffff"${ssrRenderAttr("stroke-width", isSpinning.value ? isDesktop.value ? "4" : "3" : isDesktop.value ? "3" : "2")}${ssrRenderAttr("stroke-opacity", isSpinning.value ? "0.8" : "1")} class="${ssrRenderClass([{
-        "clickable-segment": canSpin.value && resultComplete.value,
-        "disabled-segment": !canSpin.value || !resultComplete.value || isSpinning.value || isAnimating.value || showResult.value,
-        "spinning-fade": isSpinning.value
-      }, "static-highlight-segment"])}" style="${ssrRenderStyle({ "pointer-events": "all" })}" data-v-9d548857></path><rect x="102" y="12" width="60" height="60" fill="transparent" class="${ssrRenderClass({ "clickable-overlay": canSpin.value && resultComplete.value && !isSpinning.value && !isAnimating.value && !showResult.value })}" style="${ssrRenderStyle({
-        pointerEvents: "all",
-        cursor: canSpin.value && resultComplete.value && !isSpinning.value && !isAnimating.value && !showResult.value ? "pointer" : "not-allowed"
-      })}" data-v-9d548857></rect><g transform="translate(132, 30)" class="static-text-container" data-v-9d548857>`);
-      if (staticSegmentText.value === "TAP TO SPIN") {
-        _push(`<text text-anchor="middle" class="tap-to-spin-text" style="${ssrRenderStyle({
-          fontSize: isDesktop.value ? "11px" : "9px",
-          fontFamily: "Arial Black, sans-serif",
-          fontWeight: 900,
-          perspective: "100px"
-        })}" fill="#ffffff" transform="rotate(-8)" data-v-9d548857><tspan x="0" dy="2" class="tap-to-spin-letter tap-to-line" data-v-9d548857>TAP TO</tspan><tspan x="0" dy="10" class="tap-to-spin-letter spin-word-main" data-v-9d548857>SPIN</tspan></text>`);
-      } else if (staticSegmentText.value === "NO SPINS") {
-        _push(`<text text-anchor="middle" style="${ssrRenderStyle({
-          fontSize: isDesktop.value ? "9px" : "7px",
-          fontFamily: "Arial Black, sans-serif",
-          fontWeight: 900
-        })}" fill="#ff6b6b" data-v-9d548857><tspan x="0" dy="0" data-v-9d548857>NO</tspan><tspan x="0" dy="10" data-v-9d548857>SPINS</tspan><tspan x="0" dy="20" data-v-9d548857>LEFT</tspan></text>`);
-      } else if (staticSegmentText.value && showResult.value) {
-        _push(`<text text-anchor="middle" class="${ssrRenderClass([[staticSegmentText.value === "WINNER" || staticSegmentText.value === "LUCKY" ? "winner-text" : staticSegmentText.value === "UNLUCKY" ? "unlucky-text" : "", showResult.value ? "result-reveal" : ""], "result-text"])}" style="${ssrRenderStyle({
-          fontSize: isDesktop.value ? "9px" : "7px",
-          fontFamily: "Arial, sans-serif",
-          fontWeight: "bold"
-        })}" fill="#ffffff" data-v-9d548857><tspan x="0" dy="6" data-v-9d548857>${ssrInterpolate(staticSegmentText.value)}</tspan>`);
-        if (currentTicketNumber.value) {
-          _push(`<tspan x="0" dy="12" style="${ssrRenderStyle({ fontSize: isDesktop.value ? "7px" : "5px" })}" class="ticket-number" data-v-9d548857>${ssrInterpolate(currentTicketNumber.value)}</tspan>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`</text>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`</g></g></svg><div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40" data-v-9d548857><div class="flex flex-col items-center pointer-container" data-v-9d548857><svg${ssrRenderAttr("width", isDesktop.value ? "180" : "150")}${ssrRenderAttr("height", isDesktop.value ? "288" : "240")}${ssrRenderAttr("viewBox", isDesktop.value ? "0 0 180 288" : "0 0 150 240")} class="${ssrRenderClass(isMobile.value ? "" : "drop-shadow-2xl filter brightness-125")}" data-v-9d548857><defs data-v-9d548857>`);
-      if (isDesktop.value) {
-        _push(`<linearGradient id="ultimateTriangle" x1="0%" y1="0%" x2="0%" y2="100%" data-v-9d548857><stop offset="0%" style="${ssrRenderStyle({ "stop-color": "#ffffff", "stop-opacity": "1" })}" data-v-9d548857></stop><stop offset="10%" style="${ssrRenderStyle({ "stop-color": "#ffff00", "stop-opacity": "1" })}" data-v-9d548857></stop><stop offset="30%" style="${ssrRenderStyle(`stop-color: ${__props.spinAssets.wheelEdgeColor || "#00aeffff"}; stop-opacity: 1`)}" data-v-9d548857></stop><stop offset="60%" style="${ssrRenderStyle(`stop-color: ${__props.spinAssets.wheelEdgeColor || "#00aeffff"}; stop-opacity: 1`)}" data-v-9d548857></stop><stop offset="100%" style="${ssrRenderStyle({ "stop-color": "#000000", "stop-opacity": "1" })}" data-v-9d548857></stop></linearGradient>`);
-      } else {
-        _push(`<linearGradient id="ultimateTriangle" x1="0%" y1="0%" x2="0%" y2="100%" data-v-9d548857><stop offset="0%" style="${ssrRenderStyle({ "stop-color": "#ffffff" })}" data-v-9d548857></stop><stop offset="50%" style="${ssrRenderStyle(`stop-color: ${__props.spinAssets.wheelEdgeColor || "#00aeffff"}`)}" data-v-9d548857></stop><stop offset="100%" style="${ssrRenderStyle(`stop-color: ${__props.spinAssets.wheelEdgeColor || "#00aeffff"}`)}" data-v-9d548857></stop></linearGradient>`);
-      }
-      if (isDesktop.value) {
-        _push(`<radialGradient id="ultimateCircle" data-v-9d548857><stop offset="0%" style="${ssrRenderStyle({ "stop-color": "#ffffff" })}" data-v-9d548857></stop><stop offset="20%" style="${ssrRenderStyle({ "stop-color": "#ffff00" })}" data-v-9d548857></stop><stop offset="50%" style="${ssrRenderStyle(`stop-color: ${__props.spinAssets.wheelEdgeColor || "#00aeffff"}`)}" data-v-9d548857></stop><stop offset="80%" style="${ssrRenderStyle(`stop-color: ${__props.spinAssets.wheelEdgeColor || "#00aeffff"}`)}" data-v-9d548857></stop><stop offset="100%" style="${ssrRenderStyle({ "stop-color": "#000000" })}" data-v-9d548857></stop></radialGradient>`);
-      } else {
-        _push(`<radialGradient id="ultimateCircle" data-v-9d548857><stop offset="0%" style="${ssrRenderStyle({ "stop-color": "#ffffff" })}" data-v-9d548857></stop><stop offset="50%" style="${ssrRenderStyle(`stop-color: ${__props.spinAssets.wheelEdgeColor || "#00aeffff"}`)}" data-v-9d548857></stop><stop offset="100%" style="${ssrRenderStyle(`stop-color: ${__props.spinAssets.wheelEdgeColor || "#00aeffff"}`)}" data-v-9d548857></stop></radialGradient>`);
-      }
-      if (!isMobile.value) {
-        _push(`<filter id="ultimateShadow" x="-50%" y="-50%" width="200%" height="200%" data-v-9d548857><feDropShadow${ssrRenderAttr("dx", isDesktop.value ? "8" : "2")}${ssrRenderAttr("dy", isDesktop.value ? "10" : "3")}${ssrRenderAttr("stdDeviation", isDesktop.value ? "15" : "4")} flood-color="#000000"${ssrRenderAttr("flood-opacity", isDesktop.value ? "0.9" : "0.5")} data-v-9d548857></feDropShadow></filter>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (isDesktop.value) {
-        _push(`<filter id="ultimateGlow" x="-100%" y="-100%" width="300%" height="300%" data-v-9d548857><feGaussianBlur stdDeviation="8" result="coloredBlur" data-v-9d548857></feGaussianBlur><feMerge data-v-9d548857><feMergeNode in="coloredBlur" data-v-9d548857></feMergeNode><feMergeNode in="SourceGraphic" data-v-9d548857></feMergeNode></feMerge></filter>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`</defs><path${ssrRenderAttr("d", isDesktop.value ? "M90 -12 Q74 50 55 108 Q82 96 90 100 Q98 96 125 108 Q106 50 90 -12 Z" : "M75 -10 Q62 42 46 90 Q68 80 75 83 Q82 80 104 90 Q88 42 75 -10 Z")} fill="url(#ultimateTriangle)" stroke="#000000"${ssrRenderAttr("stroke-width", isDesktop.value ? "4" : "2")} stroke-linejoin="round" stroke-linecap="round"${ssrRenderAttr("filter", isMobile.value ? "none" : "url(#ultimateShadow)")}${ssrRenderAttr("transform", isDesktop.value ? "translate(0, 42)" : "translate(0, 35)")} class="triangle-pointer" data-v-9d548857></path><circle${ssrRenderAttr("cx", isDesktop.value ? "90" : "75")}${ssrRenderAttr("cy", isDesktop.value ? "168" : "140")}${ssrRenderAttr("r", isDesktop.value ? "48" : "40")} fill="url(#ultimateCircle)" stroke="#000000"${ssrRenderAttr("stroke-width", isDesktop.value ? "5" : "2")}${ssrRenderAttr("filter", isMobile.value ? "none" : "url(#ultimateShadow)")} data-v-9d548857></circle>`);
-      if (isDesktop.value) {
-        _push(`<circle${ssrRenderAttr("cx", 90)}${ssrRenderAttr("cy", 168)}${ssrRenderAttr("r", 38)} fill="url(#ultimateTriangle)" opacity="0.9" filter="url(#ultimateGlow)" data-v-9d548857></circle>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`<g${ssrRenderAttr("filter", isDesktop.value && !isMobile.value ? "url(#ultimateGlow)" : "none")} data-v-9d548857><path${ssrRenderAttr("d", isDesktop.value ? "M90 150 L106 168 L90 186 L74 168 Z" : "M75 125 L88 140 L75 155 L62 140 Z")} fill="#ffffff" opacity="1" data-v-9d548857></path><path${ssrRenderAttr("d", isDesktop.value ? "M90 156 L100 168 L90 180 L80 168 Z" : "M75 130 L83 140 L75 150 L67 140 Z")} fill="#ffff00" opacity="0.9" data-v-9d548857></path><circle${ssrRenderAttr("cx", isDesktop.value ? "90" : "75")}${ssrRenderAttr("cy", isDesktop.value ? "168" : "140")}${ssrRenderAttr("r", isDesktop.value ? "4" : "3")}${ssrRenderAttr("fill", __props.spinAssets.wheelEdgeColor || "#00aeffff")} data-v-9d548857></circle></g>`);
-      if (!isMobile.value) {
-        _push(`<g class="static-sparkles" data-v-9d548857><circle${ssrRenderAttr("cx", isDesktop.value ? "48" : "40")}${ssrRenderAttr("cy", isDesktop.value ? "144" : "120")}${ssrRenderAttr("r", isDesktop.value ? "4" : "3")} fill="#ffff00" opacity="0.6" data-v-9d548857></circle><circle${ssrRenderAttr("cx", isDesktop.value ? "132" : "110")}${ssrRenderAttr("cy", isDesktop.value ? "150" : "125")}${ssrRenderAttr("r", isDesktop.value ? "3" : "2")}${ssrRenderAttr("fill", __props.spinAssets.wheelEdgeColor || "#00aeffff")} opacity="0.5" data-v-9d548857></circle><circle${ssrRenderAttr("cx", isDesktop.value ? "54" : "45")}${ssrRenderAttr("cy", isDesktop.value ? "186" : "155")}${ssrRenderAttr("r", isDesktop.value ? "4" : "3.5")} fill="#ffffff" opacity="0.7" data-v-9d548857></circle><circle${ssrRenderAttr("cx", isDesktop.value ? "126" : "105")}${ssrRenderAttr("cy", isDesktop.value ? "180" : "150")}${ssrRenderAttr("r", isDesktop.value ? "3" : "2.5")} fill="#00ff88" opacity="0.4" data-v-9d548857></circle></g>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`</svg></div></div></div></div>`);
-      if (__props.spinAssets.walletText && !hideFloatingCard.value) {
-        _push(`<div class="${ssrRenderClass([{ "floating-wallet-demo": __props.demoMode }, "floating-wallet-container"])}" data-v-9d548857><div class="floating-credit-card" data-v-9d548857><div class="credit-card-3d" data-v-9d548857><div class="credit-card-front" data-v-9d548857><div class="card-gradient" style="${ssrRenderStyle({ background: walletGradient.value })}" data-v-9d548857><div class="card-header-section" data-v-9d548857><div class="brand-title" data-v-9d548857><p class="brand-text" data-v-9d548857>${ssrInterpolate(__props.spinAssets.walletText)}</p></div><div class="card-chip" data-v-9d548857></div></div><div class="card-body" data-v-9d548857><p class="prize-message" data-v-9d548857>SPIN TO WIN</p></div><div class="card-footer" data-v-9d548857><span class="card-number" data-v-9d548857>**** **** **** ****</span></div><div class="card-shine-effect" data-v-9d548857></div></div></div></div></div></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (showWinnerCard.value) {
-        _push(`<div class="${ssrRenderClass([{ "winner-card-demo": __props.demoMode }, "winner-card-overlay"])}" data-v-9d548857><div class="${ssrRenderClass([{
-          "slide-to-corner": isCardAnimatingToCorner.value && !isMobile.value,
-          "slide-to-corner-mobile": isCardAnimatingToCorner.value && isMobile.value
-        }, "winner-card-container"])}" data-v-9d548857><div class="winner-card" data-v-9d548857><div class="card-inner" data-v-9d548857><div class="card-front" data-v-9d548857><div class="card-content" style="${ssrRenderStyle({ background: walletGradient.value })}" data-v-9d548857><div class="card-header" data-v-9d548857><div class="brand-section" data-v-9d548857><p class="brand-text" data-v-9d548857>${ssrInterpolate(__props.spinAssets.walletText || "WINNER")}</p></div><div class="card-chip" data-v-9d548857></div></div><div class="prize-section" data-v-9d548857><p class="prize-amount" data-v-9d548857>${ssrInterpolate(currentPrizeAmount.value)}</p></div><div class="card-footer" data-v-9d548857><span class="card-number" data-v-9d548857>**** **** **** ****</span></div><div class="card-shine-effect" data-v-9d548857></div></div></div></div></div></div></div>`);
+        ref_key: "box",
+        ref: box,
+        class: ["gbox", "gbox-" + __props.mode],
+        style: { "--gw": FRAME_W + "px", zoom: zoom.value }
+      }, _attrs))}><div class="${ssrRenderClass([[__props.mode === "tile" ? "embed-tile" : "embed-preview"], "gplay"])}">`);
+      if (Player.value) {
+        ssrRenderVNode(_push, createVNode(resolveDynamicComponent(Player.value), {
+          key: epoch.value,
+          modelValue: true,
+          demoMode: true,
+          assets: assets.value,
+          tickets: unref(tickets),
+          instant_win_categories: unref(demoCategories)
+        }, null), _parent);
       } else {
         _push(`<!---->`);
       }
       _push(`</div></div>`);
     };
   }
-});
+};
 const _sfc_setup$u = _sfc_main$u.setup;
 _sfc_main$u.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/SpinGame.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/GameEmbed.vue");
   return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
 };
-const SpinGame = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-9d548857"]]);
 const _sfc_main$t = /* @__PURE__ */ defineComponent({
-  __name: "ScratchGame",
+  __name: "TextField",
   __ssrInlineRender: true,
   props: {
-    demoMode: { type: Boolean, default: false },
-    previewMode: { default: "desktop" },
-    scratchAssets: { default: () => ({
-      background: "",
-      overlay: "",
-      header: "",
-      textColour: "#FFFFFF",
-      wonTextColour: "#00FF00",
-      loseTextColour: "#FF4444",
-      accentColour: "#FFD700"
-    }) },
-    tickets: { default: () => [] }
+    field: {},
+    modelValue: {}
   },
-  setup(__props) {
-    var _a, _b, _c, _d, _e, _f, _g;
-    const props = __props;
-    const isMobile = computed(() => props.previewMode === "mobile");
-    const scratchOverlay = ref(((_a = props.scratchAssets) == null ? void 0 : _a.overlay) || "");
-    const textColour = ref(((_b = props.scratchAssets) == null ? void 0 : _b.textColour) || "#FFFFFF");
-    const wonTextColour = ref(((_c = props.scratchAssets) == null ? void 0 : _c.wonTextColour) || "#00FF00");
-    const loseTextColour = ref(((_d = props.scratchAssets) == null ? void 0 : _d.loseTextColour) || "#FF4444");
-    const accentColour = ref(((_e = props.scratchAssets) == null ? void 0 : _e.accentColour) || "#FFD700");
-    const backgroundImage = ref(((_f = props.scratchAssets) == null ? void 0 : _f.background) || "");
-    const headerImage = ref(((_g = props.scratchAssets) == null ? void 0 : _g.header) || "");
-    watch(
-      () => props.scratchAssets,
-      (newVal) => {
-        if (newVal) {
-          scratchOverlay.value = newVal.overlay || "";
-          textColour.value = newVal.textColour || "#FFFFFF";
-          wonTextColour.value = newVal.wonTextColour || "#00FF00";
-          loseTextColour.value = newVal.loseTextColour || "#FF4444";
-          accentColour.value = newVal.accentColour || "#FFD700";
-          backgroundImage.value = newVal.background || "";
-          headerImage.value = newVal.header || "";
-        }
-      },
-      { deep: true }
-    );
-    const ticketsData = ref([]);
-    const isRevealing = ref(false);
-    const ticketsGrid = ref(null);
-    const demoTickets = computed(() => {
-      if (props.tickets && props.tickets.length > 0) {
-        return props.tickets;
-      }
-      const demoPrizes = ["£50 WINNER!", "NO WIN", "£100 PRIZE!", "NO WIN", "£25 BONUS!", "NO WIN"];
-      return demoPrizes.map((prize, i2) => ({
-        id: i2,
-        number: (i2 + 1).toString(),
-        instant_win: { prize }
-      }));
-    });
-    function createTicketElement(id, prize) {
-      var _a2, _b2;
-      const wrapper = document.createElement("div");
-      wrapper.className = "scratch-card-wrapper";
-      const container = document.createElement("div");
-      container.className = "scratch-card-container";
-      const prizeContent = document.createElement("div");
-      const prizeTextColour = prize.text !== "NO WIN" ? wonTextColour.value : loseTextColour.value;
-      const glowEffect = `0px 0px 8px ${accentColour.value}, 0 0 20px ${accentColour.value}`;
-      prizeContent.className = "scratch-card-prize";
-      prizeContent.style.color = prizeTextColour;
-      prizeContent.style.textShadow = glowEffect;
-      prizeContent.style.opacity = "0";
-      prizeContent.style.visibility = "hidden";
-      const ticketNumber = ((_a2 = demoTickets.value[id]) == null ? void 0 : _a2.number) || (id + 1).toString();
-      const prizeString = prize.text.replace("<br>", " ");
-      prizeContent.innerHTML = `
-        <span class="ticket-number">#${ticketNumber}</span>
-        <span class="prize-text" style="text-shadow: ${glowEffect}">${prizeString}</span>`;
-      const canvas = document.createElement("canvas");
-      canvas.className = "scratch-canvas";
-      container.appendChild(prizeContent);
-      container.appendChild(canvas);
-      wrapper.appendChild(container);
-      (_b2 = ticketsGrid.value) == null ? void 0 : _b2.appendChild(wrapper);
-      const ctx = canvas.getContext("2d", { willReadFrequently: true });
-      const ticketState = {
-        id,
-        prize,
-        isScratched: false,
-        isRevealed: false,
-        canvas,
-        ctx,
-        wrapper,
-        prizeContent,
-        container
-      };
-      requestAnimationFrame(() => {
-        initCanvas(ticketState);
-      });
-      let isDrawing = false;
-      let lastX = 0;
-      let lastY = 0;
-      let checkProgressRAF = null;
-      function getCoords(e2) {
-        const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
-        let clientX, clientY;
-        if (e2 instanceof MouseEvent) {
-          clientX = e2.clientX;
-          clientY = e2.clientY;
-        } else if (e2 instanceof TouchEvent && e2.touches.length > 0) {
-          clientX = e2.touches[0].clientX;
-          clientY = e2.touches[0].clientY;
-        } else {
-          clientX = 0;
-          clientY = 0;
-        }
-        return [(clientX - rect.left) * scaleX, (clientY - rect.top) * scaleY];
-      }
-      function checkScratchProgress() {
-        if (ticketState.isRevealed || !ctx || !canvas) {
-          return;
-        }
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const pixels = imageData.data;
-        let transparentPixels = 0;
-        for (let i2 = 3; i2 < pixels.length; i2 += 4) {
-          if (pixels[i2] === 0) {
-            transparentPixels++;
-          }
-        }
-        const scratchedArea = transparentPixels / (pixels.length / 4);
-        if (scratchedArea > 0.5) {
-          revealTicket(ticketState);
-        }
-      }
-      function scratchOnWindow(e2) {
-        if (!isDrawing || ticketState.isRevealed || !ctx || !canvas) {
-          return;
-        }
-        e2.preventDefault();
-        const [currentX, currentY] = getCoords(e2);
-        ctx.globalCompositeOperation = "destination-out";
-        ctx.lineWidth = canvas.width * 0.2;
-        ctx.lineCap = "round";
-        ctx.lineJoin = "round";
-        ctx.beginPath();
-        ctx.moveTo(lastX, lastY);
-        ctx.lineTo(currentX, currentY);
-        ctx.stroke();
-        lastX = currentX;
-        lastY = currentY;
-        if (checkProgressRAF) {
-          cancelAnimationFrame(checkProgressRAF);
-        }
-        checkProgressRAF = requestAnimationFrame(checkScratchProgress);
-      }
-      function endScratchOnWindow() {
-        if (!isDrawing) {
-          return;
-        }
-        isDrawing = false;
-        if (container) {
-          container.style.cursor = "grab";
-        }
-        window.removeEventListener("mousemove", scratchOnWindow);
-        window.removeEventListener("mouseup", endScratchOnWindow);
-        window.removeEventListener("touchmove", scratchOnWindow);
-        window.removeEventListener("touchend", endScratchOnWindow);
-        window.removeEventListener("touchcancel", endScratchOnWindow);
-        if (checkProgressRAF) {
-          cancelAnimationFrame(checkProgressRAF);
-        }
-        checkScratchProgress();
-      }
-      function startScratch(e2) {
-        if (ticketState.isRevealed) {
-          return;
-        }
-        e2.preventDefault();
-        isDrawing = true;
-        if (container) {
-          container.style.cursor = "grabbing";
-        }
-        [lastX, lastY] = getCoords(e2);
-        window.addEventListener("mousemove", scratchOnWindow);
-        window.addEventListener("mouseup", endScratchOnWindow);
-        window.addEventListener("touchmove", scratchOnWindow, { passive: false });
-        window.addEventListener("touchend", endScratchOnWindow);
-        window.addEventListener("touchcancel", endScratchOnWindow);
-      }
-      canvas.addEventListener("mousedown", startScratch);
-      canvas.addEventListener("touchstart", startScratch, { passive: false });
-      return ticketState;
-    }
-    function initCanvas(ticket) {
-      if (!ticket.canvas || !ticket.ctx || !ticket.prizeContent) {
-        return;
-      }
-      const { canvas, ctx, prizeContent } = ticket;
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width;
-      canvas.height = rect.height;
-      ctx.fillStyle = "#666666";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = textColour.value;
-      ctx.font = `900 ${canvas.width / 3}px Inter, sans-serif`;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText((ticket.id + 1).toString(), canvas.width / 2, canvas.height / 2);
-      if (scratchOverlay.value) {
-        const overlayImage = new Image();
-        overlayImage.crossOrigin = "anonymous";
-        overlayImage.src = scratchOverlay.value;
-        overlayImage.onload = () => {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.globalCompositeOperation = "source-over";
-          ctx.drawImage(overlayImage, 0, 0, canvas.width, canvas.height);
-          ctx.fillStyle = textColour.value;
-          ctx.font = `900 ${canvas.width / 3}px Inter, sans-serif`;
-          ctx.textAlign = "center";
-          ctx.textBaseline = "middle";
-          ctx.fillText((ticket.id + 1).toString(), canvas.width / 2, canvas.height / 2);
-          prizeContent.style.opacity = "1";
-          prizeContent.style.visibility = "visible";
-        };
-        overlayImage.onerror = () => {
-          drawFallbackOverlay(ctx, canvas, ticket.id, prizeContent);
-        };
-        setTimeout(() => {
-          if (prizeContent.style.opacity === "0") {
-            drawFallbackOverlay(ctx, canvas, ticket.id, prizeContent);
-          }
-        }, 3e3);
-      } else {
-        drawFallbackOverlay(ctx, canvas, ticket.id, prizeContent);
-      }
-    }
-    function drawFallbackOverlay(ctx, canvas, ticketId, prizeContent) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0, "#4B5563");
-      gradient.addColorStop(0.5, "#6B7280");
-      gradient.addColorStop(1, "#4B5563");
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "rgba(255,255,255,0.1)";
-      ctx.beginPath();
-      ctx.moveTo(0, 0);
-      ctx.lineTo(canvas.width * 0.3, 0);
-      ctx.lineTo(0, canvas.height * 0.3);
-      ctx.closePath();
-      ctx.fill();
-      ctx.fillStyle = textColour.value;
-      ctx.font = `900 ${canvas.width / 3}px Inter, sans-serif`;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText((ticketId + 1).toString(), canvas.width / 2, canvas.height / 2);
-      prizeContent.style.opacity = "1";
-      prizeContent.style.visibility = "visible";
-    }
-    function setupGame() {
-      isRevealing.value = false;
-      ticketsData.value = [];
-      if (ticketsGrid.value) {
-        ticketsGrid.value.innerHTML = "";
-      }
-      const tickets = demoTickets.value;
-      const mappedTickets = tickets.map(
-        (ticket, index) => {
-          var _a2;
-          return createTicketElement(index, {
-            text: ((_a2 = ticket.instant_win) == null ? void 0 : _a2.prize) ?? "NO WIN"
-          });
-        }
-      );
-      ticketsData.value = mappedTickets;
-    }
-    function revealTicket(ticket, _instant) {
-      if (ticket.isRevealed) {
-        return;
-      }
-      ticket.isRevealed = true;
-      if (!ticket.canvas) {
-        return;
-      }
-      ticket.canvas.style.transition = "opacity 0.5s";
-      ticket.canvas.style.opacity = "0";
-      setTimeout(() => {
-        if (ticket.canvas && ticket.canvas.parentNode) {
-          ticket.canvas.parentNode.removeChild(ticket.canvas);
-        }
-      }, 500);
-      if (!ticket.isScratched) {
-        ticket.isScratched = true;
-      }
-    }
-    const gameKey = computed(() => {
-      return `${scratchOverlay.value}-${textColour.value}-${wonTextColour.value}-${loseTextColour.value}-${accentColour.value}`;
-    });
-    watch(gameKey, () => {
-      setupGame();
-    });
-    onMounted(() => {
-      setupGame();
-    });
+  emits: ["update:modelValue"],
+  setup(__props, { emit: __emit }) {
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({
-        class: "scratch-game-container",
-        style: {
-          backgroundImage: backgroundImage.value ? `url(${backgroundImage.value})` : "none",
-          backgroundColor: backgroundImage.value ? "transparent" : "#1a1a2e"
-        }
-      }, _attrs))} data-v-b780eac5><div class="scratch-game-content" data-v-b780eac5>`);
-      if (headerImage.value) {
-        _push(`<img${ssrRenderAttr("src", headerImage.value)} alt="Scratch Game" class="scratch-header-image" data-v-b780eac5>`);
+      var _a, _b;
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-white/5 rounded-xl p-4 border border-white/10" }, _attrs))}><label class="block mb-2 font-semibold text-white text-sm">${ssrInterpolate(__props.field.label)}</label><input type="text"${ssrRenderAttr("value", __props.modelValue)}${ssrRenderAttr("placeholder", ((_a = __props.field.meta) == null ? void 0 : _a.placeholder) || "")} class="w-full px-3 py-2 bg-white/5 text-white text-sm border border-white/10 rounded-lg outline-none">`);
+      if ((_b = __props.field.meta) == null ? void 0 : _b.help) {
+        _push(`<p class="text-gray-500 text-xs mt-1">${ssrInterpolate(__props.field.meta.help)}</p>`);
       } else {
-        _push(`<h2 class="scratch-title" style="${ssrRenderStyle({ color: accentColour.value, textShadow: `0 0 20px ${accentColour.value}80` })}" data-v-b780eac5> 🎫 Scratch to Win! 🎫 </h2>`);
+        _push(`<!---->`);
       }
-      _push(`<p class="scratch-subtitle" data-v-b780eac5>Scratch off 50% to reveal your prize</p><div class="${ssrRenderClass(["scratch-grid", { "scratch-grid-mobile": isMobile.value }])}" data-v-b780eac5></div><div class="scratch-controls" data-v-b780eac5><button${ssrIncludeBooleanAttr(isRevealing.value) ? " disabled" : ""} class="scratch-btn reveal-btn" style="${ssrRenderStyle({
-        background: `linear-gradient(135deg, ${accentColour.value}, ${accentColour.value}aa)`,
-        boxShadow: `0 4px 15px ${accentColour.value}40`
-      })}" data-v-b780eac5>${ssrInterpolate(isRevealing.value ? "Revealing..." : "Reveal All")}</button><button${ssrIncludeBooleanAttr(isRevealing.value) ? " disabled" : ""} class="scratch-btn reset-btn" data-v-b780eac5> Reset </button></div></div></div>`);
+      _push(`</div>`);
     };
   }
 });
 const _sfc_setup$t = _sfc_main$t.setup;
 _sfc_main$t.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/ScratchGame.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Studio/fields/TextField.vue");
   return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
 };
-const ScratchGame = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-b780eac5"]]);
 const _sfc_main$s = /* @__PURE__ */ defineComponent({
-  __name: "BingoGame",
+  __name: "ColorField",
   __ssrInlineRender: true,
   props: {
-    assets: {},
-    prizes: {},
-    tickets: {},
-    demoMode: { type: Boolean, default: false },
-    previewMode: { default: "mobile" }
+    field: {},
+    modelValue: {}
   },
-  emits: ["ticket-played"],
+  emits: ["update:modelValue"],
   setup(__props, { emit: __emit }) {
-    const props = __props;
-    const WINNING_PATTERNS = [
-      [0, 1, 2],
-      // 0: Top row
-      [3, 4, 5],
-      // 1: Middle row
-      [6, 7, 8],
-      // 2: Bottom row
-      [0, 3, 6],
-      // 3: Left column
-      [1, 4, 7],
-      // 4: Middle column
-      [2, 5, 8],
-      // 5: Right column
-      [0, 4, 8],
-      // 6: Diagonal TL-BR
-      [2, 4, 6],
-      // 7: Diagonal TR-BL
-      [0, 2, 4, 6, 8],
-      // 8: Cross Pattern (5 squares)
-      [0, 1, 2, 3, 4, 5, 6, 7, 8]
-      // 9: Full House (all 9)
-    ];
-    const cards = ref([]);
-    const totalWinnings = ref(0);
-    const totalPrizes = ref(0);
-    const showPopup = ref(false);
-    const popupPrize = ref(null);
-    ref(/* @__PURE__ */ new Set());
-    const modalContentRef = ref(null);
-    const colors = computed(() => ({
-      bgStart: props.assets.bgStart || "#1e3a8a",
-      bgEnd: props.assets.bgEnd || "#1e40af",
-      frameColor: props.assets.frameColor || "#3b82f6",
-      frameGlow: props.assets.frameGlow || "#60a5fa",
-      squareBg: props.assets.squareBg || "#374151",
-      squareText: props.assets.squareText || "#e5e7eb",
-      diamond1: props.assets.diamond1 || "#06b6d4",
-      diamond2: props.assets.diamond2 || "#67e8f9",
-      winnerGlow: props.assets.winnerGlow || "#10b981",
-      winnerBg: props.assets.winnerBg || "#059669",
-      popupStart: props.assets.popupStart || "#10b981",
-      popupEnd: props.assets.popupEnd || "#059669"
-    }));
-    const diamondEmoji = computed(() => props.assets.diamondEmoji || "💎");
-    const generateCardNumbers = () => {
-      const numbers = [];
-      const used = /* @__PURE__ */ new Set();
-      while (numbers.length < 9) {
-        const num = Math.floor(Math.random() * 90) + 1;
-        if (!used.has(num)) {
-          used.add(num);
-          numbers.push(num);
-        }
-      }
-      return numbers;
-    };
-    const generateLoserDiamonds = () => {
-      const safePatterns = [
-        [0, 4, 6],
-        [1, 3, 8],
-        [2, 4, 7],
-        [0, 5, 7],
-        [1, 6, 8]
-      ];
-      for (let attempt = 0; attempt < 100; attempt++) {
-        const positions = [];
-        while (positions.length < 3) {
-          const pos = Math.floor(Math.random() * 9);
-          if (!positions.includes(pos)) positions.push(pos);
-        }
-        const formsLine = WINNING_PATTERNS.some(
-          (pattern) => pattern.every((pos) => positions.includes(pos))
-        );
-        if (!formsLine) return positions;
-      }
-      return safePatterns[Math.floor(Math.random() * safePatterns.length)];
-    };
-    const generateWinnerDiamonds = (prizeValue) => {
-      let patternIndex = -1;
-      if (props.assets.patternRules && props.assets.patternRules.length > 0) {
-        for (const rule of props.assets.patternRules) {
-          if (prizeValue >= rule.from && prizeValue <= rule.to) {
-            patternIndex = rule.pattern;
-            break;
-          }
-        }
-      }
-      if (patternIndex === -1) {
-        patternIndex = Math.floor(Math.random() * WINNING_PATTERNS.length);
-      }
-      if (patternIndex < 0 || patternIndex >= WINNING_PATTERNS.length) {
-        patternIndex = Math.floor(Math.random() * WINNING_PATTERNS.length);
-      }
-      return [...WINNING_PATTERNS[patternIndex]];
-    };
-    const initializeCards = () => {
-      if (props.demoMode) {
-        cards.value = [
-          {
-            ticket: { id: 1, number: "001", competition_id: 1, instant_win: false },
-            numbers: generateCardNumbers(),
-            diamondPositions: generateLoserDiamonds(),
-            revealed: false,
-            isWinner: false,
-            prizeValue: 0,
-            revealedSquares: /* @__PURE__ */ new Set(),
-            animating: false
-          },
-          {
-            ticket: { id: 2, number: "002", competition_id: 1, instant_win: { id: 1, name: "Demo Prize", prize: "£25.00", value: 25, claimed: false, image_path: null, category_id: 1 } },
-            numbers: generateCardNumbers(),
-            diamondPositions: generateWinnerDiamonds(25),
-            revealed: false,
-            isWinner: true,
-            prizeValue: 25,
-            revealedSquares: /* @__PURE__ */ new Set(),
-            animating: false
-          },
-          {
-            ticket: { id: 3, number: "003", competition_id: 1, instant_win: false },
-            numbers: generateCardNumbers(),
-            diamondPositions: generateLoserDiamonds(),
-            revealed: false,
-            isWinner: false,
-            prizeValue: 0,
-            revealedSquares: /* @__PURE__ */ new Set(),
-            animating: false
-          },
-          {
-            ticket: { id: 4, number: "004", competition_id: 1, instant_win: { id: 2, name: "Big Prize", prize: "£100.00", value: 100, claimed: false, image_path: null, category_id: 2 } },
-            numbers: generateCardNumbers(),
-            diamondPositions: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-            // Full house demo
-            revealed: false,
-            isWinner: true,
-            prizeValue: 100,
-            revealedSquares: /* @__PURE__ */ new Set(),
-            animating: false
-          },
-          {
-            ticket: { id: 5, number: "005", competition_id: 1, instant_win: false },
-            numbers: generateCardNumbers(),
-            diamondPositions: generateLoserDiamonds(),
-            revealed: false,
-            isWinner: false,
-            prizeValue: 0,
-            revealedSquares: /* @__PURE__ */ new Set(),
-            animating: false
-          },
-          {
-            ticket: { id: 6, number: "006", competition_id: 1, instant_win: false },
-            numbers: generateCardNumbers(),
-            diamondPositions: generateLoserDiamonds(),
-            revealed: false,
-            isWinner: false,
-            prizeValue: 0,
-            revealedSquares: /* @__PURE__ */ new Set(),
-            animating: false
-          }
-        ];
-      } else {
-        cards.value = props.tickets.map((ticket) => {
-          const isWinner = ticket.instant_win !== false;
-          const prizeValue = isWinner ? Number(ticket.instant_win.value) || 0 : 0;
-          return {
-            ticket,
-            numbers: generateCardNumbers(),
-            diamondPositions: isWinner ? generateWinnerDiamonds(prizeValue) : generateLoserDiamonds(),
-            revealed: false,
-            isWinner,
-            prizeValue,
-            revealedSquares: /* @__PURE__ */ new Set(),
-            animating: false
-          };
-        });
-        cards.value.sort(() => Math.random() - 0.5);
-      }
-    };
-    const isWinningSquare = (card, index) => {
-      return card.revealed && card.isWinner && card.diamondPositions.includes(index) && card.revealedSquares.has(index);
-    };
-    const showDiamond = (card, index) => {
-      return card.revealedSquares.has(index) && card.diamondPositions.includes(index);
-    };
-    onMounted(() => {
-      initializeCards();
-    });
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({
-        ref_key: "modalContentRef",
-        ref: modalContentRef,
-        class: "bingo-modal-content relative flex flex-col",
-        style: {
-          background: __props.assets.background ? `url(${__props.assets.background}) center/cover no-repeat` : `linear-gradient(135deg, ${colors.value.bgStart} 0%, ${colors.value.bgEnd} 50%, ${colors.value.bgStart} 100%)`,
-          height: "100%",
-          padding: __props.demoMode ? "8px" : "20px 10px",
-          overflow: "auto"
-        }
-      }, _attrs))} data-v-1f5cbe26>`);
-      if (__props.assets.header) {
-        _push(`<div class="text-center mb-4 flex-shrink-0" data-v-1f5cbe26><img${ssrRenderAttr("src", __props.assets.header)} alt="Header" class="${ssrRenderClass([__props.demoMode ? "max-h-[60px] object-contain" : "", "max-w-[280px] mx-auto"])}" data-v-1f5cbe26></div>`);
+      var _a, _b;
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-white/5 rounded-xl p-4 border border-white/10" }, _attrs))}><label class="block mb-2 font-semibold text-white text-xs">${ssrInterpolate(__props.field.label)}</label><div class="flex flex-col gap-2"><input type="color"${ssrRenderAttr("value", __props.modelValue || "#000000")} class="w-full h-12 cursor-pointer rounded-lg border-2 border-white/20"><input type="text"${ssrRenderAttr("value", __props.modelValue)}${ssrRenderAttr("placeholder", ((_a = __props.field.meta) == null ? void 0 : _a.placeholder) || "")} class="px-3 py-1.5 bg-white/5 text-white text-xs border border-white/10 rounded-lg outline-none"></div>`);
+      if ((_b = __props.field.meta) == null ? void 0 : _b.help) {
+        _push(`<p class="text-gray-500 text-xs mt-1">${ssrInterpolate(__props.field.meta.help)}</p>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`<div class="flex flex-wrap justify-center gap-2 mb-4 flex-shrink-0" data-v-1f5cbe26><div class="${ssrRenderClass([__props.demoMode ? "text-sm" : "text-lg", "total-winnings-display px-4 py-2 rounded-full backdrop-blur-md text-white font-bold"])}" style="${ssrRenderStyle({
-        background: "rgba(0, 0, 0, 0.5)",
-        border: "2px solid rgba(255, 255, 255, 0.3)"
-      })}" data-v-1f5cbe26> Total Winnings: £${ssrInterpolate(totalWinnings.value.toFixed(2))}</div>`);
-      if (totalPrizes.value > 0) {
-        _push(`<div class="${ssrRenderClass([__props.demoMode ? "text-sm" : "text-lg", "px-4 py-2 rounded-full backdrop-blur-md text-white font-bold"])}" style="${ssrRenderStyle({
-          background: "rgba(0, 0, 0, 0.5)",
-          border: "2px solid rgba(255, 255, 255, 0.3)"
-        })}" data-v-1f5cbe26> Prizes: ${ssrInterpolate(totalPrizes.value)}</div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`</div><div class="bingo-grid grid grid-cols-3 gap-1.5 w-full mx-auto" data-v-1f5cbe26><!--[-->`);
-      ssrRenderList(cards.value, (card, cardIndex) => {
-        _push(`<div${ssrRenderAttr("data-card-index", cardIndex)} class="bingo-card relative rounded-lg overflow-hidden" style="${ssrRenderStyle({
-          border: `2px solid ${colors.value.frameColor}`,
-          boxShadow: `0 0 6px ${colors.value.frameGlow}40`,
-          background: colors.value.squareBg
-        })}" data-v-1f5cbe26><div class="bingo-caption text-center py-0.5 px-1 font-bold text-[10px] leading-tight" style="${ssrRenderStyle({
-          background: card.revealed ? card.isWinner ? `linear-gradient(145deg, ${colors.value.winnerGlow}, ${colors.value.winnerBg})` : `linear-gradient(145deg, ${colors.value.bgEnd}, ${colors.value.bgStart})` : `linear-gradient(145deg, ${colors.value.bgEnd}, ${colors.value.bgStart})`,
-          color: colors.value.squareText,
-          borderBottom: `1px solid ${colors.value.frameColor}`,
-          height: "28px"
-        })}" data-v-1f5cbe26>`);
-        if (card.revealed && card.isWinner) {
-          _push(`<!--[--><div class="text-[9px]" data-v-1f5cbe26>WIN!</div><div data-v-1f5cbe26>£${ssrInterpolate(Number(card.prizeValue).toFixed(0))}</div><!--]-->`);
-        } else {
-          _push(`<div class="pt-0.5" data-v-1f5cbe26>#${ssrInterpolate(card.ticket.number)}</div>`);
-        }
-        _push(`</div><div class="relative p-1" data-v-1f5cbe26><div class="grid grid-cols-3 gap-0.5" data-v-1f5cbe26><!--[-->`);
-        ssrRenderList(card.numbers, (num, idx) => {
-          _push(`<div class="bingo-square bingo-square-tall flex items-center justify-center rounded font-bold text-xs md:text-sm" style="${ssrRenderStyle({
-            background: showDiamond(card, idx) ? isWinningSquare(card, idx) ? `linear-gradient(145deg, ${colors.value.winnerGlow}, ${colors.value.winnerBg})` : `linear-gradient(145deg, ${colors.value.diamond1}, ${colors.value.diamond2})` : colors.value.squareBg,
-            color: showDiamond(card, idx) ? "#fff" : colors.value.squareText,
-            border: `1px solid ${colors.value.frameColor}40`
-          })}" data-v-1f5cbe26>`);
-          if (showDiamond(card, idx)) {
-            _push(`<span class="diamond-emoji text-sm md:text-base" data-v-1f5cbe26>${ssrInterpolate(diamondEmoji.value)}</span>`);
-          } else if (card.revealed) {
-            _push(`<span data-v-1f5cbe26>${ssrInterpolate(num)}</span>`);
-          } else {
-            _push(`<span data-v-1f5cbe26>${ssrInterpolate(num)}</span>`);
-          }
-          _push(`</div>`);
-        });
-        _push(`<!--]--></div>`);
-        if (card.revealed && card.isWinner && card.diamondPositions.length === 9 && card.revealedSquares.size === 9) {
-          _push(`<div class="absolute inset-0.5 flex flex-col items-center justify-center rounded pointer-events-none" style="${ssrRenderStyle({ "background": "rgba(0,0,0,0.85)", "z-index": "10" })}" data-v-1f5cbe26><span class="text-yellow-400 font-black text-sm md:text-xl drop-shadow-lg animate-pulse" data-v-1f5cbe26>FULL HOUSE!</span><span class="text-white font-semibold text-xs md:text-base" data-v-1f5cbe26>£${ssrInterpolate(Number(card.prizeValue).toFixed(2))}</span></div>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`</div>`);
-        if (!card.revealed && __props.assets.cardCover) {
-          _push(`<div class="bingo-cover-overlay absolute inset-0 cursor-pointer hover:opacity-90 transition-opacity flex items-center justify-center rounded-lg z-20" style="${ssrRenderStyle({
-            background: `url(${__props.assets.cardCover}) center/cover no-repeat`
-          })}" data-v-1f5cbe26><span class="sr-only" data-v-1f5cbe26>Tap to reveal</span></div>`);
-        } else if (!card.revealed) {
-          _push(`<div class="bingo-cover-overlay absolute left-0 right-0 bottom-0 cursor-pointer flex items-center justify-center text-white font-bold text-[10px] z-20" style="${ssrRenderStyle([{ "top": "28px" }, {
-            background: `linear-gradient(145deg, ${colors.value.bgStart}, ${colors.value.bgEnd})`
-          }])}" data-v-1f5cbe26><span class="tap-text" data-v-1f5cbe26>TAP TO REVEAL</span></div>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`</div>`);
-      });
-      _push(`<!--]--></div>`);
-      ssrRenderTeleport(_push, (_push2) => {
-        if (showPopup.value && popupPrize.value) {
-          _push2(`<div class="fixed inset-0 flex items-center justify-center z-[100000] pointer-events-none" data-v-1f5cbe26><div class="win-popup-content text-center p-8 rounded-2xl shadow-2xl" style="${ssrRenderStyle({
-            background: `linear-gradient(135deg, ${colors.value.popupStart}, ${colors.value.popupEnd})`,
-            boxShadow: `0 10px 40px rgba(0,0,0,0.3), 0 0 80px ${colors.value.popupStart}80`,
-            border: "3px solid rgba(255,255,255,0.3)"
-          })}" data-v-1f5cbe26><div class="text-white text-2xl font-black tracking-wider mb-2" data-v-1f5cbe26>${ssrInterpolate(popupPrize.value.isFullHouse ? "FULL HOUSE!" : "YOU WON!")}</div><div class="text-5xl font-black prize-amount" data-v-1f5cbe26> £${ssrInterpolate(popupPrize.value.value.toFixed(2))}</div><div class="sparkle-container absolute inset-0 pointer-events-none overflow-hidden" data-v-1f5cbe26><!--[-->`);
-          ssrRenderList(6, (i2) => {
-            _push2(`<div class="sparkle" style="${ssrRenderStyle({ "--delay": `${i2 * 0.1}s`, "--angle": `${i2 * 60}deg` })}" data-v-1f5cbe26></div>`);
-          });
-          _push2(`<!--]--></div></div></div>`);
-        } else {
-          _push2(`<!---->`);
-        }
-      }, "body", false, _parent);
       _push(`</div>`);
     };
   }
@@ -11754,1049 +12329,85 @@ const _sfc_main$s = /* @__PURE__ */ defineComponent({
 const _sfc_setup$s = _sfc_main$s.setup;
 _sfc_main$s.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/BingoGame.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Studio/fields/ColorField.vue");
   return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
 };
-const BingoGame = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-1f5cbe26"]]);
 const _sfc_main$r = /* @__PURE__ */ defineComponent({
-  __name: "CoinDropInventoryModal",
+  __name: "MediaField",
   __ssrInlineRender: true,
   props: {
-    modelValue: { type: Boolean },
-    wonPrizes: { default: () => [
-      {
-        id: 1,
-        name: "Gold Coin",
-        image: `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">🪙</text></svg>')}`,
-        value: 500,
-        won: true,
-        ticketNumber: "CD-0042"
-      },
-      {
-        id: 2,
-        name: "Diamond Drop",
-        image: `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">💎</text></svg>')}`,
-        value: 1e3,
-        won: true,
-        ticketNumber: "CD-0137"
-      },
-      {
-        id: 3,
-        name: "Money Bag",
-        image: `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">💰</text></svg>')}`,
-        value: 750,
-        won: true,
-        ticketNumber: "CD-0289"
-      }
-    ] },
-    availablePrizes: { default: () => [
-      {
-        id: 102,
-        name: "Diamond Drop",
-        image: `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">💎</text></svg>')}`,
-        value: 1e3
-      },
-      {
-        id: 103,
-        name: "Lucky Seven",
-        image: `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">7️⃣</text></svg>')}`,
-        value: 777
-      },
-      {
-        id: 104,
-        name: "Money Bag",
-        image: `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">💰</text></svg>')}`,
-        value: 500
-      },
-      {
-        id: 105,
-        name: "Gold Coin",
-        image: `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">🪙</text></svg>')}`,
-        value: 500
-      },
-      {
-        id: 106,
-        name: "Golden Bell",
-        image: `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">🔔</text></svg>')}`,
-        value: 300
-      },
-      {
-        id: 107,
-        name: "Star Prize",
-        image: `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="60">⭐</text></svg>')}`,
-        value: 250
-      }
-    ] },
-    coinDropAssets: { default: () => ({
-      inventoryEmoji: "🪙",
-      prizesModalBgColor: "#1a1a2e",
-      prizesTitleColor: "#ffd700",
-      prizesCardBorderColor: "#ffd700",
-      prizesCardBgColor: "#16213e",
-      prizesValueColor: "#00ff88",
-      primaryColor: "#e94560",
-      accentColor: "#ffd700",
-      winBucketColor: "#00ff88"
-    }) }
+    field: {},
+    modelValue: {}
   },
   emits: ["update:modelValue"],
   setup(__props, { emit: __emit }) {
     const props = __props;
-    const totalWonValue = computed(() => {
-      return props.wonPrizes.reduce((sum, prize) => sum + prize.value, 0);
+    ref(null);
+    const fileName = ref("");
+    const accept = (() => {
+      var _a, _b;
+      const a2 = (_b = (_a = props.field) == null ? void 0 : _a.meta) == null ? void 0 : _b.accept;
+      if (a2 === "image") return "image/*";
+      if (a2 === "video") return "video/*,image/*";
+      if (a2 === "audio") return "audio/*";
+      return "image/*,video/*,audio/*";
+    })();
+    onBeforeUnmount(() => {
     });
-    computed(() => {
-      return `£${totalWonValue.value.toLocaleString()}`;
-    });
-    const modalBgColor = computed(() => props.coinDropAssets.prizesModalBgColor || "#1a1a2e");
-    const titleColor = computed(() => props.coinDropAssets.prizesTitleColor || "#ffd700");
-    const cardBorderColor = computed(() => props.coinDropAssets.prizesCardBorderColor || "#ffd700");
-    const cardBgColor = computed(() => props.coinDropAssets.prizesCardBgColor || "#16213e");
-    const valueColor = computed(() => props.coinDropAssets.prizesValueColor || "#00ff88");
-    computed(() => props.coinDropAssets.primaryColor || "#e94560");
-    const accentColor = computed(() => props.coinDropAssets.accentColor || "#ffd700");
-    const emoji = computed(() => props.coinDropAssets.inventoryEmoji || "🪙");
-    const containerStyle = computed(() => ({
-      background: modalBgColor.value,
-      borderColor: cardBorderColor.value,
-      boxShadow: `0 0 40px ${cardBorderColor.value}4D`
-    }));
-    const titleDividerStyle = computed(() => ({
-      background: `linear-gradient(to right, transparent, ${cardBorderColor.value}80, transparent)`
-    }));
-    const titleTextStyle = computed(() => ({
-      color: titleColor.value,
-      fontFamily: "Impact, sans-serif",
-      textShadow: `0 0 10px ${titleColor.value}`
-    }));
-    const prizeCardStyle = computed(() => ({
-      background: cardBgColor.value,
-      borderColor: cardBorderColor.value
-    }));
-    const valueTextStyle = computed(() => ({
-      color: valueColor.value,
-      fontFamily: "Impact, sans-serif",
-      textShadow: `0 0 8px ${valueColor.value}`
-    }));
-    const contentStyle = computed(() => ({
-      backgroundColor: modalBgColor.value
-    }));
-    const headerStyle = computed(() => ({
-      background: `linear-gradient(to right, ${cardBorderColor.value}40, ${modalBgColor.value}40, ${cardBorderColor.value}40)`,
-      borderColor: `${cardBorderColor.value}30`
-    }));
-    const footerStyle = computed(() => ({
-      background: `linear-gradient(to right, ${cardBorderColor.value}40, ${modalBgColor.value}40, ${cardBorderColor.value}40)`,
-      borderColor: `${cardBorderColor.value}30`
-    }));
-    const scanningLineStyle = computed(() => ({
-      background: `linear-gradient(to right, transparent, ${cardBorderColor.value}, transparent)`
-    }));
-    computed(() => ({
-      filter: `drop-shadow(0 0 8px ${accentColor.value}) drop-shadow(0 0 15px ${accentColor.value}80)`
-    }));
+    const isVideo = (u2) => /\.(mp4|webm|ogg|mov)$/i.test(u2) || fileName.value && /\.(mp4|webm|ogg|mov)$/i.test(fileName.value);
+    const isAudio = (u2) => {
+      var _a;
+      return /\.(mp3|wav|m4a)$/i.test(u2) || fileName.value && /\.(mp3|wav|m4a)$/i.test(fileName.value) || ((_a = props.field.meta) == null ? void 0 : _a.accept) === "audio";
+    };
     return (_ctx, _push, _parent, _attrs) => {
-      ssrRenderTeleport(_push, (_push2) => {
-        if (__props.modelValue) {
-          _push2(`<div class="fixed inset-0 z-[80] flex items-center justify-center p-4" style="${ssrRenderStyle({ backgroundColor: `${modalBgColor.value}33` })}" data-v-e9709567><div class="relative w-full max-w-4xl max-h-[90vh] rounded-xl border-2 shadow-2xl overflow-hidden" style="${ssrRenderStyle(containerStyle.value)}" data-v-e9709567><div class="absolute top-0 left-0 right-0 h-px animate-scan-horizontal" style="${ssrRenderStyle(scanningLineStyle.value)}" data-v-e9709567></div><div class="relative border-b-2 px-6 py-4" style="${ssrRenderStyle(headerStyle.value)}" data-v-e9709567><div class="flex items-center justify-between" data-v-e9709567><div class="flex items-center gap-3" data-v-e9709567><div class="text-3xl animate-pulse" data-v-e9709567>${ssrInterpolate(emoji.value)}</div><div data-v-e9709567><h2 class="text-2xl font-black uppercase tracking-wider" style="${ssrRenderStyle({
-            color: titleColor.value,
-            fontFamily: "Impact, sans-serif",
-            textShadow: `0 0 15px ${titleColor.value}, 2px 2px 0 ${modalBgColor.value}`
-          })}" data-v-e9709567> PRIZE INVENTORY </h2><p class="text-xs uppercase tracking-widest" style="${ssrRenderStyle({
-            color: titleColor.value,
-            fontFamily: "Courier New, monospace",
-            textShadow: `0 0 5px ${titleColor.value}`
-          })}" data-v-e9709567> YOUR WINS &amp; AVAILABLE PRIZES </p></div></div><button class="rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 border-2 group" style="${ssrRenderStyle({
-            backgroundColor: `${cardBgColor.value}80`,
-            borderColor: `${cardBorderColor.value}30`,
-            color: titleColor.value
-          })}" aria-label="Close inventory" data-v-e9709567><span class="text-xl group-hover:rotate-90 transition-transform duration-300" data-v-e9709567>✕</span></button></div></div><div class="relative overflow-y-auto max-h-[calc(90vh-200px)] px-6 py-4 custom-scrollbar" style="${ssrRenderStyle(contentStyle.value)}" data-v-e9709567><div class="${ssrRenderClass(__props.wonPrizes.length > 0 ? "" : "mt-0")}" data-v-e9709567><div class="flex items-center gap-2 mb-3" data-v-e9709567><div class="h-px flex-1" style="${ssrRenderStyle(titleDividerStyle.value)}" data-v-e9709567></div><h3 class="text-lg font-black uppercase tracking-wider flex items-center gap-2" style="${ssrRenderStyle(titleTextStyle.value)}" data-v-e9709567><span class="text-2xl" data-v-e9709567>${ssrInterpolate(emoji.value)}</span> AVAILABLE PRIZES (${ssrInterpolate(__props.availablePrizes.length)}) <span class="text-2xl" data-v-e9709567>${ssrInterpolate(emoji.value)}</span></h3><div class="h-px flex-1" style="${ssrRenderStyle(titleDividerStyle.value)}" data-v-e9709567></div></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-v-e9709567><!--[-->`);
-          ssrRenderList(__props.availablePrizes, (prize) => {
-            _push2(`<div class="group relative border-2 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300" style="${ssrRenderStyle(prizeCardStyle.value)}" data-v-e9709567><div class="relative h-40 overflow-hidden" style="${ssrRenderStyle({ backgroundColor: `${cardBgColor.value}66` })}" data-v-e9709567>`);
-            if (prize.image) {
-              _push2(`<img${ssrRenderAttr("src", prize.image)}${ssrRenderAttr("alt", prize.name)} class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100" data-v-e9709567>`);
-            } else {
-              _push2(`<div class="w-full h-full flex items-center justify-center" style="${ssrRenderStyle({
-                background: `linear-gradient(to bottom right, ${cardBgColor.value}, ${cardBgColor.value}DD)`
-              })}" data-v-e9709567><span class="text-xs font-bold uppercase text-center px-2" style="${ssrRenderStyle({ color: "#FFFFFF" })}" data-v-e9709567>${ssrInterpolate(prize.name)}</span></div>`);
-            }
-            _push2(`<div class="absolute inset-0" style="${ssrRenderStyle({
-              background: `linear-gradient(to top, ${cardBgColor.value}CC, transparent, transparent)`
-            })}" data-v-e9709567></div></div><div class="p-3" data-v-e9709567><h4 class="font-bold text-sm mb-1 line-clamp-2" style="${ssrRenderStyle({ color: "#FFFFFF" })}" data-v-e9709567>${ssrInterpolate(prize.name)}</h4>`);
-            if (prize.description) {
-              _push2(`<p class="text-xs mb-2 line-clamp-1" style="${ssrRenderStyle({ color: "#FFFFFF99" })}" data-v-e9709567>${ssrInterpolate(prize.description)}</p>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<div class="flex items-center justify-between" data-v-e9709567><span class="text-xs font-bold uppercase tracking-wider" style="${ssrRenderStyle({
-              color: titleColor.value,
-              fontFamily: "Courier New, monospace",
-              textShadow: `0 0 5px ${titleColor.value}`
-            })}" data-v-e9709567> Value </span><span class="font-black text-lg" style="${ssrRenderStyle(valueTextStyle.value)}" data-v-e9709567> £${ssrInterpolate(prize.value.toLocaleString())}</span></div></div><div style="${ssrRenderStyle({
-              backgroundColor: `${cardBorderColor.value}00`
-            })}" class="${ssrRenderClass([{ "group-hover:bg-opacity-10": true }, "absolute inset-0 transition-all duration-300 pointer-events-none"])}" data-v-e9709567></div></div>`);
-          });
-          _push2(`<!--]--></div></div></div><div class="relative border-t-2 px-6 py-3" style="${ssrRenderStyle(footerStyle.value)}" data-v-e9709567><div class="flex items-center justify-between" data-v-e9709567><p class="text-xs uppercase tracking-widest" style="${ssrRenderStyle({
-            color: titleColor.value,
-            fontFamily: "Courier New, monospace",
-            textShadow: `0 0 5px ${titleColor.value}`
-          })}" data-v-e9709567>${ssrInterpolate(emoji.value)} KEEP DROPPING TO WIN MORE PRIZES! </p><button class="px-4 py-2 font-bold text-sm uppercase tracking-wider rounded border-2 transition-all duration-300 shadow-lg" style="${ssrRenderStyle({
-            background: `linear-gradient(to right, ${cardBorderColor.value}, ${cardBorderColor.value}DD)`,
-            color: "#FFFFFF",
-            borderColor: `${cardBorderColor.value}80`,
-            fontFamily: "Impact, sans-serif",
-            boxShadow: `0 0 15px ${cardBorderColor.value}66`
-          })}" data-v-e9709567> CLOSE </button></div></div></div></div>`);
+      var _a, _b;
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-white/5 rounded-xl p-4 border border-white/10" }, _attrs))}><label class="block mb-2 font-semibold text-white text-sm">${ssrInterpolate(__props.field.label)}</label><label class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg border border-dashed border-white/20 bg-white/5 hover:bg-white/10 cursor-pointer text-sm text-white/80 transition"><span class="truncate">${ssrInterpolate(fileName.value || `Upload ${((_a = __props.field.meta) == null ? void 0 : _a.accept) || "file"}`)}</span><span class="shrink-0 px-2 py-1 rounded-md bg-gradient-to-r from-pink-600 to-purple-600 text-white text-xs font-bold">Choose</span><input type="file"${ssrRenderAttr("accept", unref(accept))} class="hidden"></label>`);
+      if ((_b = __props.field.meta) == null ? void 0 : _b.help) {
+        _push(`<p class="text-gray-400 text-xs mt-2">${ssrInterpolate(__props.field.meta.help)}</p>`);
+      } else {
+        _push(`<!---->`);
+      }
+      if (__props.modelValue) {
+        _push(`<div class="mt-3 space-y-2">`);
+        if (isVideo(__props.modelValue)) {
+          _push(`<video${ssrRenderAttr("src", __props.modelValue)} class="w-full h-32 object-cover rounded-lg border border-pink-500/50" muted autoplay loop playsinline></video>`);
+        } else if (isAudio(__props.modelValue)) {
+          _push(`<audio${ssrRenderAttr("src", __props.modelValue)} controls class="w-full"></audio>`);
         } else {
-          _push2(`<!---->`);
+          _push(`<img${ssrRenderAttr("src", __props.modelValue)} class="w-full h-32 object-cover rounded-lg border border-pink-500/50" alt="">`);
         }
-      }, "body", false, _parent);
+        _push(`<button type="button" class="w-full px-3 py-2 bg-red-500/20 hover:bg-red-500/30 border border-red-500/50 text-red-300 text-sm font-semibold rounded-lg transition-all">Remove</button></div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div>`);
     };
   }
 });
 const _sfc_setup$r = _sfc_main$r.setup;
 _sfc_main$r.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/CoinDropInventoryModal.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Studio/fields/MediaField.vue");
   return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
 };
-const CoinDropInventoryModal = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-e9709567"]]);
-const GRAVITY = 0.15;
-const FRICTION = 0.995;
-const BOUNCE = 0.45;
-const PEG_RADIUS = 4.5;
-const MIN_BOUNCE_VELOCITY = 0.8;
-const TERMINAL_VELOCITY = 5;
-const PEG_SOUND_COOLDOWN = 100;
 const _sfc_main$q = /* @__PURE__ */ defineComponent({
-  __name: "CoinDropGame",
+  __name: "SelectField",
   __ssrInlineRender: true,
   props: {
-    demoMode: { type: Boolean },
-    previewMode: {},
-    coinDropAssets: {},
-    tickets: {},
-    playedTickets: {},
-    instant_win_categories: {},
-    animateTitle: { type: Boolean },
-    showGameBoard: { type: Boolean }
+    field: {},
+    modelValue: {}
   },
-  emits: ["ticket-played", "prize-won"],
+  emits: ["update:modelValue"],
   setup(__props, { emit: __emit }) {
-    const props = __props;
-    const emit = __emit;
-    const canvasRef = ref(null);
-    const containerRef = ref(null);
-    const isDropping = ref(false);
-    const winCounter = ref(0);
-    const showWinReveal = ref(false);
-    const currentWinningPrize = ref(null);
-    const lastWin = ref(0);
-    const gameInitialized = ref(false);
-    const hasClickedDrop = ref(false);
-    ref(null);
-    const winSound = ref(null);
-    const lossSound = ref(null);
-    const ballImageLoaded = ref(null);
-    const winBucketImageLoaded = ref(null);
-    const loseBucketImageLoaded = ref(null);
-    const tubeImageLoaded = ref(null);
-    let pegs = [];
-    let balls = [];
-    let buckets = [];
-    let particles = [];
-    let animationFrameId = null;
-    let ctx = null;
-    let canvasWidth = 420;
-    let canvasHeight = 620;
-    const dropsLeft = computed(() => {
-      var _a;
-      if (props.demoMode) {
-        return 10;
-      }
-      if (!props.tickets) {
-        return 0;
-      }
-      return props.tickets.length - (((_a = props.playedTickets) == null ? void 0 : _a.length) || 0);
-    });
-    const canDrop = computed(() => dropsLeft.value > 0);
-    const isMobile = computed(() => props.previewMode === "mobile");
-    const topPrize = computed(() => {
-      if (!props.instant_win_categories || props.instant_win_categories.length === 0) {
-        return null;
-      }
-      return props.instant_win_categories.reduce((max, cat) => cat.value > ((max == null ? void 0 : max.value) || 0) ? cat : max, props.instant_win_categories[0]);
-    });
-    const showInventory = ref(false);
-    const showPrizesModal = ref(false);
-    const showRevealWinsModal = ref(false);
-    function initPegs() {
-      pegs = [];
-      const isSmallMobile = isMobile.value && canvasWidth <= 365;
-      const startY = isSmallMobile ? 50 : 70;
-      const rows = isSmallMobile ? 8 : isMobile.value ? 10 : 14;
-      const spacing = isSmallMobile ? 24 : isMobile.value ? 28 : 32;
-      const rowSpacing = isSmallMobile ? 32 : isMobile.value ? 40 : 42;
-      for (let row = 0; row < rows; row++) {
-        const pegsInRow = row + 3;
-        const rowWidth = (pegsInRow - 1) * spacing;
-        const startX = (canvasWidth - rowWidth) / 2;
-        for (let col = 0; col < pegsInRow; col++) {
-          pegs.push({
-            x: startX + col * spacing,
-            y: startY + row * rowSpacing,
-            radius: PEG_RADIUS,
-            hit: false,
-            hitTime: 0
-          });
-        }
-      }
-    }
-    function initBuckets() {
-      buckets = [];
-      const numBuckets = 7;
-      const bucketWidth = canvasWidth / numBuckets;
-      const bucketHeight = isMobile.value ? 40 : 45;
-      const bucketY = canvasHeight - bucketHeight - 5;
-      for (let i2 = 0; i2 < numBuckets; i2++) {
-        const isWin = i2 === 0 || i2 === 6;
-        buckets.push({
-          x: i2 * bucketWidth,
-          y: bucketY,
-          width: bucketWidth,
-          height: bucketHeight,
-          isWin,
-          label: isWin ? "WIN" : "",
-          color: isWin ? props.coinDropAssets.winBucketColor || "#00ff88" : props.coinDropAssets.loseBucketColor || "#ff4444",
-          bounceOffset: 0,
-          bounceTime: 0
-        });
-      }
-    }
-    function createParticles(x, y2, color, count = 10) {
-      for (let i2 = 0; i2 < count; i2++) {
-        particles.push({
-          x,
-          y: y2,
-          vx: (Math.random() - 0.5) * 10,
-          vy: (Math.random() - 0.5) * 10 - 3,
-          radius: Math.random() * 4 + 2,
-          color,
-          life: 1
-        });
-      }
-    }
-    let audioCtx = null;
-    function initAudio() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-    }
-    let lastPegSoundTime = 0;
-    function playPegSound() {
-      const now = performance.now();
-      if (now - lastPegSoundTime < PEG_SOUND_COOLDOWN) return;
-      lastPegSoundTime = now;
-      initAudio();
-      if (!audioCtx) return;
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.frequency.value = 800 + Math.random() * 400;
-      osc.type = "sine";
-      gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.03);
-      osc.start();
-      osc.stop(audioCtx.currentTime + 0.03);
-    }
-    function playWinSound() {
-      if (winSound.value && props.coinDropAssets.winSound) {
-        winSound.value.currentTime = 0;
-        winSound.value.play().catch(() => {
-        });
-      } else {
-        initAudio();
-        if (!audioCtx) return;
-        const notes = [523, 659, 784, 1047];
-        notes.forEach((freq, i2) => {
-          setTimeout(() => {
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            osc.frequency.value = freq;
-            osc.type = "sine";
-            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.3);
-          }, i2 * 100);
-        });
-      }
-    }
-    function playLossSound() {
-      if (lossSound.value && props.coinDropAssets.lossSound) {
-        lossSound.value.currentTime = 0;
-        lossSound.value.play().catch(() => {
-        });
-      }
-    }
-    function shadeColor(color, percent) {
-      const num = parseInt(color.replace("#", ""), 16);
-      const amt = Math.round(2.55 * percent);
-      const R2 = Math.max(0, Math.min(255, (num >> 16) + amt));
-      const G = Math.max(0, Math.min(255, (num >> 8 & 255) + amt));
-      const B = Math.max(0, Math.min(255, (num & 255) + amt));
-      return "#" + (16777216 + R2 * 65536 + G * 256 + B).toString(16).slice(1);
-    }
-    function lightenColor(color, percent) {
-      return shadeColor(color, percent);
-    }
-    function update() {
-      var _a;
-      const now = Date.now();
-      for (let i2 = balls.length - 1; i2 >= 0; i2--) {
-        const ball = balls[i2];
-        ball.trail.push({ x: ball.x, y: ball.y });
-        if (ball.trail.length > 30) ball.trail.shift();
-        ball.vy += GRAVITY;
-        ball.vx *= FRICTION;
-        if (ball.vy > TERMINAL_VELOCITY) ball.vy = TERMINAL_VELOCITY;
-        if (ball.lastY === void 0) ball.lastY = ball.y;
-        if (ball.stuckFrames === void 0) ball.stuckFrames = 0;
-        if (ball.maxYReached === void 0) ball.maxYReached = ball.y;
-        const bucketAreaY = canvasHeight - 80;
-        if (ball.y > ball.maxYReached) {
-          ball.maxYReached = ball.y;
-          ball.stuckFrames = 0;
-        } else {
-          ball.stuckFrames++;
-          if (ball.y >= bucketAreaY) {
-            if (ball.stuckFrames >= 20) {
-              const bucketWidth = canvasWidth / 7;
-              const currentBucketIndex = Math.floor(ball.x / bucketWidth);
-              const targetBucketCenter = (currentBucketIndex + 0.5) * bucketWidth;
-              ball.vx = (targetBucketCenter - ball.x) * 0.3;
-              ball.vy = 3;
-              ball.stuckFrames = 0;
-            }
-          } else {
-            if (ball.stuckFrames === 30) {
-              ball.vy = Math.max(ball.vy, 2);
-              ball.vx += (Math.random() - 0.5) * 2;
-            }
-            if (ball.stuckFrames === 60) {
-              ball.vy = 4 + Math.random() * 2;
-              ball.vx = (Math.random() - 0.5) * 4;
-            }
-            if (ball.stuckFrames >= 90) {
-              ball.y = ball.maxYReached + 30;
-              ball.vy = TERMINAL_VELOCITY;
-              ball.vx = (Math.random() - 0.5) * 2;
-              ball.stuckFrames = 0;
-              ball.maxYReached = ball.y;
-            }
-          }
-        }
-        ball.lastY = ball.y;
-        const targetBucket = buckets[ball.targetBucketIndex];
-        if (targetBucket) {
-          const targetX = targetBucket.x + targetBucket.width / 2;
-          const dx = targetX - ball.x;
-          const progressDown = ball.y / canvasHeight;
-          const distanceToTarget = Math.abs(dx);
-          const bucketHalfWidth = targetBucket.width / 2;
-          if (ball.isWinner) {
-            const remainingDrop = 1 - progressDown;
-            const framesRemaining = remainingDrop * canvasHeight / TERMINAL_VELOCITY;
-            const velocityNeeded = framesRemaining > 0 ? distanceToTarget / framesRemaining : 4;
-            ball.vx += Math.sign(dx) * 0.06;
-            if (progressDown > 0.3 && distanceToTarget > 100) {
-              ball.vx += Math.sign(dx) * 0.05;
-            }
-            if (progressDown > 0.45 && distanceToTarget > 80) {
-              ball.vx += Math.sign(dx) * 0.07;
-            }
-            if (progressDown > 0.6 && distanceToTarget > 60) {
-              ball.vx += Math.sign(dx) * 0.1;
-              const targetVx = Math.sign(dx) * Math.min(3.5, velocityNeeded * 0.9);
-              ball.vx = ball.vx * 0.6 + targetVx * 0.4;
-            }
-            if (progressDown > 0.7 && distanceToTarget > bucketHalfWidth) {
-              const targetVx = Math.sign(dx) * Math.min(5, velocityNeeded * 1.1);
-              ball.vx = ball.vx * 0.2 + targetVx * 0.8;
-            }
-            if (progressDown > 0.8 && distanceToTarget > bucketHalfWidth * 0.5) {
-              ball.vx = Math.sign(dx) * Math.min(6, velocityNeeded * 1.2);
-            }
-            if (progressDown > 0.9 && distanceToTarget > bucketHalfWidth * 0.3) {
-              ball.vx = Math.sign(dx) * Math.min(8, distanceToTarget * 0.12);
-            }
-          } else {
-            const bucket0RightEdge = buckets[0].x + buckets[0].width;
-            const bucket6LeftEdge = buckets[6].x;
-            const distToLeftWin = ball.x - bucket0RightEdge;
-            const distToRightWin = bucket6LeftEdge - ball.x;
-            const winBucketSafeZone = 40;
-            ball.vx += Math.sign(dx) * 0.025;
-            if (distToLeftWin < winBucketSafeZone && distToLeftWin > -30) {
-              ball.vx += 0.15;
-            }
-            if (distToRightWin < winBucketSafeZone && distToRightWin > -30) {
-              ball.vx -= 0.15;
-            }
-            if (progressDown > 0.5 && distanceToTarget > bucketHalfWidth * 0.5) {
-              ball.vx += Math.sign(dx) * 0.05;
-            }
-            if (progressDown > 0.65 && distanceToTarget > bucketHalfWidth * 0.4) {
-              ball.vx += Math.sign(dx) * 0.07;
-            }
-            if (progressDown > 0.8 && distanceToTarget > bucketHalfWidth * 0.3) {
-              const nudge = Math.sign(dx) * Math.min(2.5, distanceToTarget * 0.06);
-              ball.vx = ball.vx * 0.5 + nudge * 0.5;
-            }
-            if (progressDown > 0.88) {
-              if (distToLeftWin < winBucketSafeZone * 2) {
-                ball.vx = Math.max(ball.vx, 2.5);
-              }
-              if (distToRightWin < winBucketSafeZone * 2) {
-                ball.vx = Math.min(ball.vx, -2.5);
-              }
-            }
-          }
-        }
-        ball.x += ball.vx;
-        ball.y += ball.vy;
-        ball.rotation += ball.vx * 0.1;
-        if (ball.x - ball.radius < 5) {
-          ball.x = ball.radius + 6;
-          ball.vx = Math.abs(ball.vx) * 0.5 + 1;
-        }
-        if (ball.x + ball.radius > canvasWidth - 5) {
-          ball.x = canvasWidth - ball.radius - 6;
-          ball.vx = -Math.abs(ball.vx) * 0.5 - 1;
-        }
-        for (const peg of pegs) {
-          const dx = ball.x - peg.x;
-          const dy = ball.y - peg.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          const minDist = ball.radius + peg.radius + 1;
-          if (dist < minDist && dist > 0) {
-            const angle = Math.atan2(dy, dx);
-            ball.x = peg.x + Math.cos(angle) * (minDist + 0.5);
-            ball.y = peg.y + Math.sin(angle) * (minDist + 0.5);
-            const nx = dx / dist;
-            const ny = dy / dist;
-            const dot = ball.vx * nx + ball.vy * ny;
-            ball.vx = (ball.vx - 2 * dot * nx) * BOUNCE;
-            ball.vy = (ball.vy - 2 * dot * ny) * BOUNCE;
-            ball.vx += (Math.random() - 0.5) * 0.8;
-            if (ball.vy < MIN_BOUNCE_VELOCITY) {
-              ball.vy = MIN_BOUNCE_VELOCITY;
-            }
-            peg.hit = true;
-            peg.hitTime = now;
-            playPegSound();
-            createParticles(peg.x, peg.y, props.coinDropAssets.pegGlowColor || "#e94560", 2);
-          }
-        }
-        const bucketDetectY = isMobile.value ? canvasHeight - 60 : canvasHeight - 70;
-        if (ball.y > bucketDetectY) {
-          for (let bucketIdx = 0; bucketIdx < buckets.length; bucketIdx++) {
-            const bucket = buckets[bucketIdx];
-            if (ball.x > bucket.x && ball.x < bucket.x + bucket.width) {
-              if (ball.isWinner) {
-                winCounter.value++;
-                lastWin.value = ((_a = ball.prize) == null ? void 0 : _a.value) || 100;
-                currentWinningPrize.value = ball.prize || null;
-                showWinReveal.value = true;
-                setTimeout(() => {
-                  showWinReveal.value = false;
-                }, 2500);
-                if (ball.prize) {
-                  emit("prize-won", ball.prize);
-                }
-                playWinSound();
-                createParticles(ball.x, ball.y, props.coinDropAssets.winBucketColor || "#00ff88", 15);
-              } else {
-                lastWin.value = 0;
-                playLossSound();
-                createParticles(ball.x, ball.y, props.coinDropAssets.loseBucketColor || "#ff4444", 10);
-              }
-              bucket.bounceOffset = -15;
-              bucket.bounceTime = now;
-              balls.splice(i2, 1);
-              break;
-            }
-          }
-        }
-        if (ball.y > canvasHeight + 50) {
-          balls.splice(i2, 1);
-        }
-      }
-      for (let i2 = particles.length - 1; i2 >= 0; i2--) {
-        const p2 = particles[i2];
-        p2.x += p2.vx;
-        p2.y += p2.vy;
-        p2.vy += 0.2;
-        p2.life -= 0.08;
-        if (p2.life <= 0) {
-          particles.splice(i2, 1);
-        }
-      }
-      if (particles.length > 50) {
-        particles.splice(0, particles.length - 50);
-      }
-      for (const peg of pegs) {
-        if (peg.hit && now - peg.hitTime > 150) {
-          peg.hit = false;
-        }
-      }
-      for (const bucket of buckets) {
-        if (bucket.bounceOffset !== 0) {
-          const elapsed = now - bucket.bounceTime;
-          if (elapsed > 400) {
-            bucket.bounceOffset = 0;
-          } else {
-            bucket.bounceOffset = -20 * Math.cos(elapsed / 400 * Math.PI * 2.5) * Math.exp(-elapsed / 200);
-          }
-        }
-      }
-    }
-    function draw() {
-      if (!ctx) return;
-      const pegGlowColor = props.coinDropAssets.pegGlowColor || "#e94560";
-      const ballColor = props.coinDropAssets.ballColor || "#ffd700";
-      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-      const tubeWidth = tubeImageLoaded.value ? 60 : 40;
-      const tubeHeight = tubeImageLoaded.value ? 45 : 30;
-      const tubeX = (canvasWidth - tubeWidth) / 2;
-      const tubeY = 0;
-      if (tubeImageLoaded.value) {
-        ctx.drawImage(tubeImageLoaded.value, tubeX, tubeY, tubeWidth, tubeHeight);
-      } else {
-        ctx.fillStyle = "rgba(80, 80, 100, 0.8)";
-        ctx.beginPath();
-        ctx.roundRect(tubeX, tubeY, tubeWidth, tubeHeight, [0, 0, 8, 8]);
-        ctx.fill();
-        ctx.fillStyle = "rgba(120, 120, 140, 0.6)";
-        ctx.fillRect(tubeX + 4, tubeY, tubeWidth - 8, 4);
-        ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
-        ctx.fillRect(tubeX + 8, tubeHeight - 10, tubeWidth - 16, 10);
-      }
-      for (const bucket of buckets) {
-        const bounceY = bucket.y + bucket.bounceOffset;
-        const bucketImg = bucket.isWin ? winBucketImageLoaded.value : loseBucketImageLoaded.value;
-        if (bucketImg) {
-          ctx.drawImage(
-            bucketImg,
-            bucket.x + 2,
-            bounceY,
-            bucket.width - 4,
-            bucket.height
-          );
-        } else {
-          ctx.fillStyle = bucket.color;
-          ctx.fillRect(bucket.x + 1, bounceY, bucket.width - 2, bucket.height);
-          ctx.fillStyle = lightenColor(bucket.color, 40);
-          ctx.fillRect(bucket.x + 1, bounceY, bucket.width - 2, 4);
-          if (bucket.isWin) {
-            ctx.fillStyle = "#fff";
-            ctx.font = "bold 12px Arial, sans-serif";
-            ctx.textAlign = "center";
-            ctx.fillText("WIN", bucket.x + bucket.width / 2, bounceY + 35);
-          }
-        }
-        ctx.fillStyle = "rgba(0,0,0,0.6)";
-        ctx.fillRect(bucket.x, bounceY, 2, bucket.height);
-      }
-      const pegBorderColor = props.coinDropAssets.pegColor || "#00ffff";
-      const pegCenterColor = "#000000";
-      const pegShape = props.coinDropAssets.pegShape || "hexagon";
-      for (const peg of pegs) {
-        const size = peg.radius * 1.8;
-        const isHit = peg.hit;
-        const borderColor = isHit ? pegGlowColor : pegBorderColor;
-        const lineWidth = isHit ? 3.5 : 3;
-        if (isHit) {
-          ctx.save();
-          ctx.shadowColor = pegGlowColor;
-          ctx.shadowBlur = 12;
-        }
-        ctx.beginPath();
-        if (pegShape === "hexagon") {
-          for (let i2 = 0; i2 < 6; i2++) {
-            const angle = Math.PI / 3 * i2 - Math.PI / 2;
-            const x = peg.x + size * Math.cos(angle);
-            const y2 = peg.y + size * Math.sin(angle);
-            if (i2 === 0) ctx.moveTo(x, y2);
-            else ctx.lineTo(x, y2);
-          }
-          ctx.closePath();
-        } else if (pegShape === "circle") {
-          ctx.arc(peg.x, peg.y, size, 0, Math.PI * 2);
-        } else {
-          const halfSize = size * 0.85;
-          ctx.rect(peg.x - halfSize, peg.y - halfSize, halfSize * 2, halfSize * 2);
-        }
-        ctx.fillStyle = borderColor;
-        ctx.fill();
-        ctx.strokeStyle = borderColor;
-        ctx.lineWidth = lineWidth;
-        ctx.stroke();
-        if (isHit) ctx.restore();
-        const innerSize = size * 0.65;
-        ctx.beginPath();
-        if (pegShape === "hexagon") {
-          for (let i2 = 0; i2 < 6; i2++) {
-            const angle = Math.PI / 3 * i2 - Math.PI / 2;
-            const x = peg.x + innerSize * Math.cos(angle);
-            const y2 = peg.y + innerSize * Math.sin(angle);
-            if (i2 === 0) ctx.moveTo(x, y2);
-            else ctx.lineTo(x, y2);
-          }
-          ctx.closePath();
-        } else if (pegShape === "circle") {
-          ctx.arc(peg.x, peg.y, innerSize, 0, Math.PI * 2);
-        } else {
-          const halfInner = innerSize * 0.85;
-          ctx.rect(peg.x - halfInner, peg.y - halfInner, halfInner * 2, halfInner * 2);
-        }
-        ctx.fillStyle = pegCenterColor;
-        ctx.fill();
-      }
-      const trailColor = props.coinDropAssets.trailColor || props.coinDropAssets.primaryColor || "#e94560";
-      for (const ball of balls) {
-        for (let i2 = 0; i2 < ball.trail.length; i2 += 2) {
-          const t3 = ball.trail[i2];
-          const progress = i2 / ball.trail.length;
-          const alpha = progress * 0.7;
-          const radius = progress * ball.radius * 1.2;
-          ctx.beginPath();
-          ctx.arc(t3.x, t3.y, radius, 0, Math.PI * 2);
-          ctx.fillStyle = `${trailColor}${Math.floor(alpha * 255).toString(16).padStart(2, "0")}`;
-          ctx.fill();
-        }
-      }
-      for (const ball of balls) {
-        ctx.save();
-        if (ballImageLoaded.value) {
-          ctx.translate(ball.x, ball.y);
-          ctx.rotate(ball.rotation);
-          const imgSize = ball.radius * 2.2;
-          ctx.drawImage(
-            ballImageLoaded.value,
-            -imgSize / 2,
-            -imgSize / 2,
-            imgSize,
-            imgSize
-          );
-        } else {
-          ctx.beginPath();
-          ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-          ctx.fillStyle = ballColor;
-          ctx.fill();
-          ctx.strokeStyle = shadeColor(ballColor, -30);
-          ctx.lineWidth = 1.5;
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.arc(ball.x - ball.radius * 0.3, ball.y - ball.radius * 0.3, ball.radius * 0.3, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(255,255,255,0.6)";
-          ctx.fill();
-        }
-        ctx.restore();
-      }
-      for (const p2 of particles) {
-        ctx.globalAlpha = p2.life;
-        ctx.beginPath();
-        ctx.arc(p2.x, p2.y, p2.radius, 0, Math.PI * 2);
-        ctx.fillStyle = p2.color;
-        ctx.fill();
-      }
-      ctx.globalAlpha = 1;
-    }
-    function gameLoop() {
-      update();
-      draw();
-      animationFrameId = requestAnimationFrame(gameLoop);
-    }
-    function initGame() {
-      if (!canvasRef.value) return;
-      ctx = canvasRef.value.getContext("2d");
-      if (!ctx) return;
-      const container = containerRef.value;
-      if (container) {
-        const isSmallMobile = window.innerWidth <= 380;
-        const availableHeight = window.innerHeight * (isSmallMobile ? 0.65 : 0.75);
-        canvasWidth = Math.min(container.clientWidth - 10, isSmallMobile ? 360 : isMobile.value ? 420 : 520);
-        canvasHeight = Math.min(availableHeight, isSmallMobile ? 420 : isMobile.value ? 550 : 700);
-        canvasRef.value.width = canvasWidth;
-        canvasRef.value.height = canvasHeight;
-      }
-      initPegs();
-      initBuckets();
-      gameInitialized.value = true;
-      if (animationFrameId === null) {
-        gameLoop();
-      }
-    }
-    function loadBallImage(src) {
-      if (!src) {
-        ballImageLoaded.value = null;
-        return;
-      }
-      const img = new Image();
-      img.onload = () => {
-        ballImageLoaded.value = img;
-      };
-      img.onerror = () => {
-        ballImageLoaded.value = null;
-      };
-      img.src = src;
-    }
-    watch(() => props.coinDropAssets.ballImage, (newVal) => {
-      loadBallImage(newVal || "");
-    }, { immediate: true });
-    function loadBucketImage(src, isWin) {
-      if (!src) {
-        if (isWin) {
-          winBucketImageLoaded.value = null;
-        } else {
-          loseBucketImageLoaded.value = null;
-        }
-        return;
-      }
-      const img = new Image();
-      img.onload = () => {
-        if (isWin) {
-          winBucketImageLoaded.value = img;
-        } else {
-          loseBucketImageLoaded.value = img;
-        }
-      };
-      img.onerror = () => {
-        if (isWin) {
-          winBucketImageLoaded.value = null;
-        } else {
-          loseBucketImageLoaded.value = null;
-        }
-      };
-      img.src = src;
-    }
-    watch(() => props.coinDropAssets.winBucketImage, (newVal) => {
-      loadBucketImage(newVal || "", true);
-    }, { immediate: true });
-    watch(() => props.coinDropAssets.loseBucketImage, (newVal) => {
-      loadBucketImage(newVal || "", false);
-    }, { immediate: true });
-    function loadTubeImage(src) {
-      if (!src) {
-        tubeImageLoaded.value = null;
-        return;
-      }
-      const img = new Image();
-      img.onload = () => {
-        tubeImageLoaded.value = img;
-      };
-      img.onerror = () => {
-        tubeImageLoaded.value = null;
-      };
-      img.src = src;
-    }
-    watch(() => props.coinDropAssets.tubeImage, (newVal) => {
-      loadTubeImage(newVal || "");
-    }, { immediate: true });
-    watch(() => props.showGameBoard, (newVal) => {
-      if (newVal && !gameInitialized.value) {
-        nextTick(() => {
-          setTimeout(() => {
-            initGame();
-          }, 100);
-        });
-      }
-    }, { immediate: true });
-    onMounted(() => {
-      if (props.showGameBoard) {
-        nextTick(() => {
-          initGame();
-        });
-      }
-    });
-    onUnmounted(() => {
-      if (animationFrameId !== null) {
-        cancelAnimationFrame(animationFrameId);
-        animationFrameId = null;
-      }
-    });
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({
-        ref_key: "containerRef",
-        ref: containerRef,
-        class: ["coin-drop-container", { "coin-drop-container-demo": __props.demoMode, "video-intro-active": __props.animateTitle && !__props.showGameBoard }],
-        style: __props.coinDropAssets.gameBackground ? { backgroundImage: `url(${__props.coinDropAssets.gameBackground})`, backgroundSize: "cover", backgroundPosition: "center" } : {}
-      }, _attrs))} data-v-d0cbb709>`);
-      if (!__props.showGameBoard) {
-        _push(`<div class="title-floating" data-v-d0cbb709>`);
-        if (__props.coinDropAssets.titleImage) {
-          _push(`<img${ssrRenderAttr("src", __props.coinDropAssets.titleImage)} alt="Game Title" class="${ssrRenderClass(["title-image", { "title-zoom-animation": __props.animateTitle }])}" data-v-d0cbb709>`);
-        } else {
-          _push(`<h1 style="${ssrRenderStyle({ color: __props.coinDropAssets.titleColor })}" class="${ssrRenderClass(["title-text", { "title-zoom-animation": __props.animateTitle }])}" data-v-d0cbb709>${ssrInterpolate(__props.coinDropAssets.titleText)}</h1>`);
-        }
-        _push(`<p class="title-subtitle" style="${ssrRenderStyle({ color: __props.coinDropAssets.accentColor })}" data-v-d0cbb709>Drop the coin to win!</p></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (__props.showGameBoard) {
-        _push(`<div class="game-wrapper" style="${ssrRenderStyle({ "--primary-color": __props.coinDropAssets.primaryColor, "--secondary-color": __props.coinDropAssets.secondaryColor, "--accent-color": __props.coinDropAssets.accentColor })}" data-v-d0cbb709>`);
-        if (__props.coinDropAssets.machineImage) {
-          _push(`<div class="machine-frame" data-v-d0cbb709><img${ssrRenderAttr("src", __props.coinDropAssets.machineImage)} alt="" class="machine-bg" data-v-d0cbb709></div>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`<div class="game-content" data-v-d0cbb709><div class="game-header" data-v-d0cbb709>`);
-        if (__props.coinDropAssets.titleImage) {
-          _push(`<img${ssrRenderAttr("src", __props.coinDropAssets.titleImage)} alt="Game Title" class="header-title-image" data-v-d0cbb709>`);
-        } else {
-          _push(`<h2 class="header-title" style="${ssrRenderStyle({ color: __props.coinDropAssets.titleColor })}" data-v-d0cbb709>${ssrInterpolate(__props.coinDropAssets.titleText)}</h2>`);
-        }
-        _push(`</div><div class="stats-bar" data-v-d0cbb709><div class="stat-item" data-v-d0cbb709><span class="stat-label" data-v-d0cbb709>DROPS</span><span class="stat-value" style="${ssrRenderStyle({ color: __props.coinDropAssets.accentColor })}" data-v-d0cbb709>${ssrInterpolate(dropsLeft.value)}</span></div><div class="stat-item" data-v-d0cbb709><span class="stat-label" data-v-d0cbb709>WINS</span><span class="stat-value stat-wins" style="${ssrRenderStyle({ color: __props.coinDropAssets.winBucketColor })}" data-v-d0cbb709>${ssrInterpolate(winCounter.value)}</span></div><div class="stat-item" data-v-d0cbb709><span class="stat-label" data-v-d0cbb709>LAST WIN</span><span class="stat-value" style="${ssrRenderStyle({ color: __props.coinDropAssets.accentColor })}" data-v-d0cbb709>${ssrInterpolate(lastWin.value > 0 ? `£${lastWin.value}` : "---")}</span></div></div><div class="canvas-container" style="${ssrRenderStyle({ "--board-bg": __props.coinDropAssets.boardBgColor || "#1a1a2e" })}" data-v-d0cbb709>`);
-        if (__props.tickets && __props.tickets.length > 0) {
-          _push(`<button class="reveal-wins-corner-btn" style="${ssrRenderStyle({ "--btn-accent": __props.coinDropAssets.winBucketColor || "#00ff88" })}" data-v-d0cbb709><span data-v-d0cbb709>REVEAL</span></button>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`<button class="prizes-inventory-btn" style="${ssrRenderStyle({
-          "--btn-primary": __props.coinDropAssets.primaryColor || "#e94560",
-          "--btn-accent": __props.coinDropAssets.accentColor || "#ffd700",
-          "--btn-win": __props.coinDropAssets.winBucketColor || "#00ff88"
-        })}" data-v-d0cbb709><span class="prizes-icon" data-v-d0cbb709>🏆</span><span class="prizes-text" data-v-d0cbb709>PRIZES</span></button><canvas class="game-canvas" data-v-d0cbb709></canvas></div><div class="button-container" data-v-d0cbb709>`);
-        if (!hasClickedDrop.value && canDrop.value) {
-          _push(`<div class="drop-arrow-hint" data-v-d0cbb709><svg viewBox="0 0 24 24" fill="currentColor" class="arrow-icon" data-v-d0cbb709><path d="M12 16l-6-6h12l-6 6z" data-v-d0cbb709></path></svg><span class="arrow-text" data-v-d0cbb709>TAP HERE!</span></div>`);
-        } else {
-          _push(`<div class="arrow-placeholder" data-v-d0cbb709></div>`);
-        }
-        _push(`<button${ssrIncludeBooleanAttr(!canDrop.value) ? " disabled" : ""} class="${ssrRenderClass([{ "is-dropping": isDropping.value, "has-image": __props.coinDropAssets.dropButtonImage }, "drop-button"])}" style="${ssrRenderStyle({
-          "--btn-color": __props.coinDropAssets.primaryColor,
-          "--btn-glow": __props.coinDropAssets.accentColor
-        })}" data-v-d0cbb709>`);
-        if (__props.coinDropAssets.dropButtonImage) {
-          _push(`<img${ssrRenderAttr("src", __props.coinDropAssets.dropButtonImage)} alt="Drop" class="drop-btn-img" data-v-d0cbb709>`);
-        } else {
-          _push(`<span class="btn-label" data-v-d0cbb709>${ssrInterpolate(isDropping.value ? "DROPPING..." : "DROP COIN")}</span>`);
-        }
-        _push(`</button>`);
-        if (topPrize.value) {
-          _push(`<div class="top-prize-display" data-v-d0cbb709><div class="top-prize-label" data-v-d0cbb709>TOP PRIZE</div><div class="top-prize-content" data-v-d0cbb709>`);
-          if (topPrize.value.image_path) {
-            _push(`<img${ssrRenderAttr("src", topPrize.value.image_path)}${ssrRenderAttr("alt", topPrize.value.name)} class="top-prize-img" data-v-d0cbb709>`);
-          } else {
-            _push(`<!---->`);
-          }
-          _push(`<div class="top-prize-info" data-v-d0cbb709><span class="top-prize-name" data-v-d0cbb709>${ssrInterpolate(topPrize.value.name)}</span><span class="top-prize-value" style="${ssrRenderStyle({ color: __props.coinDropAssets.accentColor })}" data-v-d0cbb709>£${ssrInterpolate(topPrize.value.value)}</span></div></div></div>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`</div></div>`);
-        if (__props.coinDropAssets.footerImage) {
-          _push(`<div class="machine-footer" data-v-d0cbb709><img${ssrRenderAttr("src", __props.coinDropAssets.footerImage)} alt="" class="footer-bg" data-v-d0cbb709></div>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`</div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (showWinReveal.value && currentWinningPrize.value) {
-        _push(`<div class="win-toast" style="${ssrRenderStyle({ "--accent": __props.coinDropAssets.accentColor })}" data-v-d0cbb709><div class="win-toast-content" data-v-d0cbb709><div class="win-toast-title" data-v-d0cbb709>WINNER!</div><div class="win-toast-prize" data-v-d0cbb709>${ssrInterpolate(currentWinningPrize.value.name)}</div><div class="win-toast-value" data-v-d0cbb709>£${ssrInterpolate(currentWinningPrize.value.value)}</div></div>`);
-        if (currentWinningPrize.value.image) {
-          _push(`<img${ssrRenderAttr("src", currentWinningPrize.value.image)}${ssrRenderAttr("alt", currentWinningPrize.value.name)} class="win-toast-img" data-v-d0cbb709>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`</div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (showPrizesModal.value) {
-        _push(`<div class="prizes-modal-overlay" data-v-d0cbb709><div class="prizes-modal" style="${ssrRenderStyle({ "--modal-accent": __props.coinDropAssets.accentColor, "--modal-primary": __props.coinDropAssets.primaryColor })}" data-v-d0cbb709><button class="prizes-modal-close" data-v-d0cbb709>✕</button><h2 class="prizes-modal-title" data-v-d0cbb709>INSTANT WINS</h2><p class="reveal-wins-subtitle" data-v-d0cbb709>These prizes can be won!</p>`);
-        if (__props.instant_win_categories && __props.instant_win_categories.length > 0) {
-          _push(`<div class="prizes-grid" data-v-d0cbb709><!--[-->`);
-          ssrRenderList(__props.instant_win_categories, (prize) => {
-            _push(`<div class="${ssrRenderClass([{ "top-prize-card": topPrize.value && prize.id === topPrize.value.id }, "prize-card"])}" data-v-d0cbb709>`);
-            if (topPrize.value && prize.id === topPrize.value.id) {
-              _push(`<div class="top-badge" data-v-d0cbb709>TOP PRIZE</div>`);
-            } else {
-              _push(`<!---->`);
-            }
-            if (prize.image_path) {
-              _push(`<img${ssrRenderAttr("src", prize.image_path)}${ssrRenderAttr("alt", prize.name)} class="prize-card-img" data-v-d0cbb709>`);
-            } else {
-              _push(`<div class="prize-card-placeholder" data-v-d0cbb709>?</div>`);
-            }
-            _push(`<div class="prize-card-name" data-v-d0cbb709>${ssrInterpolate(prize.name)}</div><div class="prize-card-value" style="${ssrRenderStyle({ color: __props.coinDropAssets.accentColor })}" data-v-d0cbb709>£${ssrInterpolate(prize.value)}</div></div>`);
-          });
-          _push(`<!--]--></div>`);
-        } else {
-          _push(`<div class="no-tickets-message" data-v-d0cbb709><p data-v-d0cbb709>No instant win prizes available</p></div>`);
-        }
-        _push(`</div></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (showRevealWinsModal.value) {
-        _push(`<div class="prizes-modal-overlay" data-v-d0cbb709><div class="prizes-modal reveal-wins-modal" style="${ssrRenderStyle({ "--modal-accent": __props.coinDropAssets.winBucketColor || "#00ff88", "--modal-primary": __props.coinDropAssets.primaryColor })}" data-v-d0cbb709><button class="prizes-modal-close" data-v-d0cbb709>✕</button><h2 class="prizes-modal-title" style="${ssrRenderStyle({ "color": "#00ff88" })}" data-v-d0cbb709>YOUR INSTANT WINS</h2><p class="reveal-wins-subtitle" data-v-d0cbb709>These are the prizes waiting for you!</p>`);
-        if (__props.tickets && __props.tickets.length > 0) {
-          _push(`<div class="prizes-grid" data-v-d0cbb709><!--[-->`);
-          ssrRenderList(__props.tickets, (ticket) => {
-            var _a, _b;
-            _push(`<div class="${ssrRenderClass([{
-              "winner-card": ticket.instant_win !== false && ticket.instant_win && ticket.instant_win.prize !== "NO WIN",
-              "played-card": (_a = __props.playedTickets) == null ? void 0 : _a.includes(ticket.id)
-            }, "prize-card"])}" data-v-d0cbb709>`);
-            if ((_b = __props.playedTickets) == null ? void 0 : _b.includes(ticket.id)) {
-              _push(`<div class="played-badge" data-v-d0cbb709>PLAYED</div>`);
-            } else {
-              _push(`<!---->`);
-            }
-            if (ticket.instant_win !== false && ticket.instant_win && ticket.instant_win.prize !== "NO WIN") {
-              _push(`<!--[--><div class="winner-badge" data-v-d0cbb709>WINNER!</div>`);
-              if (ticket.instant_win.image_path) {
-                _push(`<img${ssrRenderAttr("src", ticket.instant_win.image_path)}${ssrRenderAttr("alt", ticket.instant_win.prize)} class="prize-card-img" data-v-d0cbb709>`);
-              } else {
-                _push(`<div class="prize-card-placeholder winner-placeholder" data-v-d0cbb709>WIN</div>`);
-              }
-              _push(`<div class="prize-card-name" data-v-d0cbb709>${ssrInterpolate(ticket.instant_win.prize)}</div><div class="prize-card-value" style="${ssrRenderStyle({ "color": "#00ff88" })}" data-v-d0cbb709>£${ssrInterpolate(ticket.instant_win.value)}</div><!--]-->`);
-            } else {
-              _push(`<!--[--><div class="prize-card-placeholder" data-v-d0cbb709>X</div><div class="prize-card-name" style="${ssrRenderStyle({ "opacity": "0.5" })}" data-v-d0cbb709>No Win</div><!--]-->`);
-            }
-            _push(`<div class="ticket-number" data-v-d0cbb709>Ticket #${ssrInterpolate(ticket.number)}</div></div>`);
-          });
-          _push(`<!--]--></div>`);
-        } else {
-          _push(`<div class="no-tickets-message" data-v-d0cbb709><p data-v-d0cbb709>No tickets available</p></div>`);
-        }
-        _push(`</div></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(ssrRenderComponent(CoinDropInventoryModal, {
-        modelValue: showInventory.value,
-        "onUpdate:modelValue": ($event) => showInventory.value = $event,
-        coinDropAssets: __props.coinDropAssets
-      }, null, _parent));
-      if (__props.coinDropAssets.dropSound) {
-        _push(`<audio${ssrRenderAttr("src", __props.coinDropAssets.dropSound)} preload="auto" data-v-d0cbb709></audio>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (__props.coinDropAssets.winSound) {
-        _push(`<audio${ssrRenderAttr("src", __props.coinDropAssets.winSound)} preload="auto" data-v-d0cbb709></audio>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (__props.coinDropAssets.lossSound) {
-        _push(`<audio${ssrRenderAttr("src", __props.coinDropAssets.lossSound)} preload="auto" data-v-d0cbb709></audio>`);
+      var _a, _b;
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-white/5 rounded-xl p-4 border border-white/10" }, _attrs))}><label class="block mb-2 font-semibold text-white text-sm">${ssrInterpolate(__props.field.label)}</label><select${ssrRenderAttr("value", __props.modelValue)} class="w-full px-3 py-2 bg-[#2a3154] text-white text-sm border border-white/10 rounded-lg outline-none"><!--[-->`);
+      ssrRenderList(((_a = __props.field.meta) == null ? void 0 : _a.options) || [], (opt) => {
+        _push(`<option${ssrRenderAttr("value", opt.value)}>${ssrInterpolate(opt.label)}</option>`);
+      });
+      _push(`<!--]--></select>`);
+      if ((_b = __props.field.meta) == null ? void 0 : _b.help) {
+        _push(`<p class="text-gray-500 text-xs mt-1">${ssrInterpolate(__props.field.meta.help)}</p>`);
       } else {
         _push(`<!---->`);
       }
@@ -12807,2735 +12418,404 @@ const _sfc_main$q = /* @__PURE__ */ defineComponent({
 const _sfc_setup$q = _sfc_main$q.setup;
 _sfc_main$q.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/CoinDropGame.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Studio/fields/SelectField.vue");
   return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
 };
-const CoinDropGame = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-d0cbb709"]]);
 const _sfc_main$p = /* @__PURE__ */ defineComponent({
-  __name: "PopGame",
+  __name: "ToggleField",
   __ssrInlineRender: true,
   props: {
-    popGameAssets: {},
-    demoMode: { type: Boolean, default: false },
-    previewMode: { default: "mobile" },
-    tickets: {},
-    playedTickets: { default: () => [] },
-    instant_win_categories: {}
+    field: {},
+    modelValue: {}
   },
-  emits: ["ticket-played", "prize-won"],
+  emits: ["update:modelValue"],
   setup(__props, { emit: __emit }) {
-    const props = __props;
-    ref(null);
-    ref(null);
-    ref(null);
-    const popItems = ref([]);
-    const totalWins = ref(0);
-    const totalPopped = ref(0);
-    const confettiParticles = ref([]);
-    const showWinToast = ref(false);
-    const winToastAmount = ref(0);
-    const allPopped = ref(false);
-    const demoTickets = computed(() => {
-      if (!props.demoMode) return [];
-      const tickets = [];
-      for (let i2 = 1; i2 <= 30; i2++) {
-        const isWinner = i2 % 5 === 0;
-        tickets.push({
-          id: i2,
-          number: `DEMO-${String(i2).padStart(4, "0")}`,
-          competition_id: 1,
-          instant_win: isWinner ? {
-            id: i2,
-            name: "Demo Prize",
-            prize: `£${(Math.random() * 50 + 5).toFixed(2)}`,
-            value: Math.random() * 50 + 5,
-            claimed: false,
-            image_path: null,
-            won_date: null,
-            category_id: 1
-          } : false
-        });
-      }
-      return tickets;
-    });
-    const activeTickets = computed(() => {
-      return props.demoMode ? demoTickets.value : props.tickets || [];
-    });
-    const displayedItems = computed(() => popItems.value);
-    const itemColors = computed(() => {
-      return props.popGameAssets.popItemColors || [
-        "#FF4C4C",
-        "#FFEB3B",
-        "#64B5F6",
-        "#81C784",
-        "#9575CD",
-        "#FF8A80",
-        "#FFB74D",
-        "#4DD0E1",
-        "#F06292",
-        "#FFD700"
-      ];
-    });
-    computed(() => {
-      return props.popGameAssets.popConfettiColors || [
-        "#FFD700",
-        "#FF6B6B",
-        "#4ECDC4",
-        "#45B7D1",
-        "#96CEB4",
-        "#FFEAA7"
-      ];
-    });
-    const initializeItems = () => {
-      var _a;
-      const colors = itemColors.value;
-      popItems.value = activeTickets.value.map((ticket, index) => {
-        var _a2;
-        const instantWin = ticket.instant_win;
-        const isWinner = instantWin !== false && instantWin.prize !== "NO WIN";
-        const prizeValue = isWinner && instantWin ? extractAmount(instantWin.prize) : 0;
-        return {
-          id: index,
-          ticketId: ticket.id,
-          ticketNumber: ticket.number,
-          color: colors[index % colors.length],
-          isWinner,
-          prize: isWinner && instantWin ? instantWin.prize : null,
-          prizeValue,
-          popped: ((_a2 = props.playedTickets) == null ? void 0 : _a2.includes(ticket.id)) || false,
-          animating: false,
-          floatDelay: Math.random() * 2,
-          shakeX: Math.random() * 5 - 2.5,
-          shakeY: Math.random() * 5 - 2.5
-        };
-      });
-      popItems.value = shuffleArray([...popItems.value]);
-      totalPopped.value = ((_a = props.playedTickets) == null ? void 0 : _a.length) || 0;
-      allPopped.value = false;
-    };
-    const shuffleArray = (array) => {
-      const shuffled = [...array];
-      for (let i2 = shuffled.length - 1; i2 > 0; i2--) {
-        const j2 = Math.floor(Math.random() * (i2 + 1));
-        [shuffled[i2], shuffled[j2]] = [shuffled[j2], shuffled[i2]];
-      }
-      return shuffled;
-    };
-    const extractAmount = (text) => {
-      if (!text) return 0;
-      const penceMatch = text.match(/([\d.]+)\s*p\b/i);
-      if (penceMatch) {
-        return parseFloat(penceMatch[1]) / 100;
-      }
-      const match = text.match(/[\d.]+/);
-      return match ? parseFloat(match[0]) : 0;
-    };
-    watch(() => activeTickets.value, () => {
-      initializeItems();
-    }, { immediate: true });
-    onMounted(() => {
-      initializeItems();
-    });
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({
-        class: "pop-game-board",
-        style: {
-          "--bg-color": __props.popGameAssets.popBgColor || "#1a1a2e",
-          "--bg-image": __props.popGameAssets.background ? `url(${__props.popGameAssets.background})` : "none",
-          "--primary-color": __props.popGameAssets.primaryColor || "#e94560",
-          "--accent-color": __props.popGameAssets.accentColor || "#ffd700",
-          "--win-color": __props.popGameAssets.popWinColor || "#00ff88",
-          "--lose-color": __props.popGameAssets.popLoseColor || "#ff4444"
-        }
-      }, _attrs))} data-v-1bddc6ee><div class="game-header" data-v-1bddc6ee><div class="stat-card" data-v-1bddc6ee><span class="stat-label" data-v-1bddc6ee>Total Wins</span><span class="stat-value win-value" data-v-1bddc6ee>${ssrInterpolate(totalWins.value.toFixed(2))}</span></div><div class="stat-card" data-v-1bddc6ee><span class="stat-label" data-v-1bddc6ee>Popped</span><span class="stat-value" data-v-1bddc6ee>${ssrInterpolate(totalPopped.value)} / ${ssrInterpolate(popItems.value.length)}</span></div></div><div class="game-grid-container" data-v-1bddc6ee><div class="${ssrRenderClass([{ "mobile-grid": __props.previewMode === "mobile" }, "game-grid"])}" data-v-1bddc6ee><!--[-->`);
-      ssrRenderList(displayedItems.value, (item) => {
-        _push(`<div class="${ssrRenderClass([{
-          "popped": item.popped,
-          "animating": item.animating,
-          "winner": item.popped && item.isWinner,
-          "loser": item.popped && !item.isWinner
-        }, "pop-item-container"])}" data-v-1bddc6ee>`);
-        if (!item.popped) {
-          _push(`<div class="pop-item" style="${ssrRenderStyle({
-            "--item-color": item.color,
-            "--float-delay": item.floatDelay + "s",
-            "--shake-x": item.shakeX + "px",
-            "--shake-y": item.shakeY + "px"
-          })}" data-v-1bddc6ee>`);
-          if (__props.popGameAssets.popItemImage) {
-            _push(`<img${ssrRenderAttr("src", __props.popGameAssets.popItemImage)} class="custom-item-image" alt="Pop item" data-v-1bddc6ee>`);
-          } else if (__props.popGameAssets.popItemType === "balloon" || !__props.popGameAssets.popItemType) {
-            _push(`<svg class="balloon-svg" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg" data-v-1bddc6ee><ellipse cx="50" cy="55" rx="40" ry="50"${ssrRenderAttr("fill", item.color)} class="balloon-body" data-v-1bddc6ee></ellipse><ellipse cx="35" cy="40" rx="12" ry="18" fill="rgba(255,255,255,0.3)" class="balloon-highlight" data-v-1bddc6ee></ellipse><polygon points="45,105 55,105 50,115"${ssrRenderAttr("fill", item.color)} data-v-1bddc6ee></polygon><path d="M50 115 Q45 125 50 135 Q55 145 50 150" stroke="#666" stroke-width="2" fill="none" class="balloon-string" data-v-1bddc6ee></path></svg>`);
-          } else if (__props.popGameAssets.popItemType === "bubble") {
-            _push(`<svg class="bubble-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" data-v-1bddc6ee><circle cx="50" cy="50" r="45"${ssrRenderAttr("fill", item.color)} fill-opacity="0.4" class="bubble-body" data-v-1bddc6ee></circle><circle cx="50" cy="50" r="45" fill="none"${ssrRenderAttr("stroke", item.color)} stroke-width="3" stroke-opacity="0.6" data-v-1bddc6ee></circle><ellipse cx="35" cy="30" rx="15" ry="20" fill="rgba(255,255,255,0.6)" class="bubble-highlight" data-v-1bddc6ee></ellipse><ellipse cx="65" cy="65" rx="8" ry="12" fill="rgba(255,255,255,0.3)" class="bubble-highlight-small" data-v-1bddc6ee></ellipse></svg>`);
-          } else if (__props.popGameAssets.popItemType === "present") {
-            _push(`<div class="present-box" style="${ssrRenderStyle({ "--box-color": item.color })}" data-v-1bddc6ee><div class="present-ribbon" data-v-1bddc6ee></div><div class="present-bow" data-v-1bddc6ee></div></div>`);
-          } else if (__props.popGameAssets.popItemType === "egg") {
-            _push(`<div class="egg" style="${ssrRenderStyle({ background: item.color })}" data-v-1bddc6ee><div class="egg-pattern" data-v-1bddc6ee></div></div>`);
-          } else {
-            _push(`<!---->`);
-          }
-          _push(`</div>`);
-        } else {
-          _push(`<div class="${ssrRenderClass([{ "is-winner": item.isWinner }, "popped-result"])}" data-v-1bddc6ee><div class="ticket-number" data-v-1bddc6ee>${ssrInterpolate(item.ticketNumber)}</div>`);
-          if (item.isWinner && item.prize) {
-            _push(`<div class="prize-amount" data-v-1bddc6ee>${ssrInterpolate(item.prize)}</div>`);
-          } else {
-            _push(`<div class="no-win-text" data-v-1bddc6ee> NO WIN </div>`);
-          }
-          _push(`</div>`);
-        }
-        if (item.animating) {
-          _push(`<div class="pop-explosion" data-v-1bddc6ee><!--[-->`);
-          ssrRenderList(8, (n2) => {
-            _push(`<div class="explosion-particle" style="${ssrRenderStyle({
-              "--rotation": n2 * 45 + "deg",
-              "--color": item.color
-            })}" data-v-1bddc6ee></div>`);
-          });
-          _push(`<!--]--></div>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`</div>`);
-      });
-      _push(`<!--]--></div><div class="confetti-container" data-v-1bddc6ee><!--[-->`);
-      ssrRenderList(confettiParticles.value, (particle) => {
-        _push(`<div class="confetti-particle" style="${ssrRenderStyle({
-          left: particle.x + "%",
-          top: particle.y + "%",
-          backgroundColor: particle.color,
-          transform: `rotate(${particle.rotation}deg) scale(${particle.scale})`
-        })}" data-v-1bddc6ee></div>`);
-      });
-      _push(`<!--]--></div></div><div class="actions" data-v-1bddc6ee>`);
-      if (!allPopped.value && displayedItems.value.some((i2) => !i2.popped)) {
-        _push(`<button class="pop-all-btn" data-v-1bddc6ee> Pop All </button>`);
+      var _a;
+      _push(`<label${ssrRenderAttrs(mergeProps({ class: "flex items-center justify-between gap-4 bg-white/5 rounded-xl p-4 border border-white/10 cursor-pointer hover:bg-white/10 transition-colors" }, _attrs))}><div><span class="text-white font-semibold text-sm block">${ssrInterpolate(__props.field.label)}</span>`);
+      if ((_a = __props.field.meta) == null ? void 0 : _a.help) {
+        _push(`<span class="text-gray-400 text-xs">${ssrInterpolate(__props.field.meta.help)}</span>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div>`);
-      if (allPopped.value) {
-        _push(`<div class="all-popped-message" data-v-1bddc6ee><h3 data-v-1bddc6ee>All Done!</h3><p data-v-1bddc6ee>You won a total of <strong data-v-1bddc6ee>${ssrInterpolate(totalWins.value.toFixed(2))}</strong></p></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (showWinToast.value) {
-        _push(`<div class="win-toast" data-v-1bddc6ee><span class="toast-icon" data-v-1bddc6ee>+</span><span class="toast-amount" data-v-1bddc6ee>${ssrInterpolate(winToastAmount.value.toFixed(2))}</span></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (__props.popGameAssets.popSound) {
-        _push(`<audio${ssrRenderAttr("src", __props.popGameAssets.popSound)} preload="auto" data-v-1bddc6ee></audio>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (__props.popGameAssets.winSound) {
-        _push(`<audio${ssrRenderAttr("src", __props.popGameAssets.winSound)} preload="auto" data-v-1bddc6ee></audio>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (__props.popGameAssets.lossSound) {
-        _push(`<audio${ssrRenderAttr("src", __props.popGameAssets.lossSound)} preload="auto" data-v-1bddc6ee></audio>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`</div>`);
+      _push(`</div><div class="relative flex-shrink-0"><input type="checkbox"${ssrIncludeBooleanAttr(!!__props.modelValue) ? " checked" : ""} class="sr-only peer"><div class="w-11 h-6 bg-gray-600 peer-checked:bg-teal-500 rounded-full transition-colors"></div><div class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-5"></div></div></label>`);
     };
   }
 });
 const _sfc_setup$p = _sfc_main$p.setup;
 _sfc_main$p.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/PopGame.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Studio/fields/ToggleField.vue");
   return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
 };
-const BalloonPopGame = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-1bddc6ee"]]);
-function createFootballSfx() {
-  let ctx = null;
-  let master = null;
-  let crowd = null;
-  function ac() {
-    if (typeof window === "undefined") return null;
-    const AC = window.AudioContext || window.webkitAudioContext;
-    if (!AC) return null;
-    if (!ctx) {
-      ctx = new AC();
-      master = ctx.createGain();
-      master.gain.value = 1;
-      master.connect(ctx.destination);
-    }
-    return ctx;
-  }
-  function resume() {
-    try {
-      const c2 = ac();
-      if (c2 && c2.state === "suspended") void c2.resume();
-    } catch {
-    }
-  }
-  function noise(c2, seconds) {
-    const len = Math.max(1, Math.floor(c2.sampleRate * seconds));
-    const buf = c2.createBuffer(1, len, c2.sampleRate);
-    const d2 = buf.getChannelData(0);
-    for (let i2 = 0; i2 < len; i2++) d2[i2] = Math.random() * 2 - 1;
-    return buf;
-  }
-  function whistle(vol = 0.45) {
-    const c2 = ac();
-    if (!c2 || !master) return;
-    const t3 = c2.currentTime;
-    const o2 = c2.createOscillator();
-    o2.type = "triangle";
-    o2.frequency.setValueAtTime(2300, t3);
-    o2.frequency.linearRampToValueAtTime(2520, t3 + 0.14);
-    const lfo = c2.createOscillator();
-    lfo.frequency.value = 26;
-    const lfoGain = c2.createGain();
-    lfoGain.gain.value = 110;
-    lfo.connect(lfoGain).connect(o2.frequency);
-    const g2 = c2.createGain();
-    g2.gain.setValueAtTime(0, t3);
-    g2.gain.linearRampToValueAtTime(vol, t3 + 0.02);
-    g2.gain.setValueAtTime(vol, t3 + 0.18);
-    g2.gain.linearRampToValueAtTime(0, t3 + 0.27);
-    o2.connect(g2).connect(master);
-    o2.start(t3);
-    lfo.start(t3);
-    o2.stop(t3 + 0.28);
-    lfo.stop(t3 + 0.28);
-  }
-  function kick(vol = 0.7) {
-    const c2 = ac();
-    if (!c2 || !master) return;
-    const t3 = c2.currentTime;
-    const o2 = c2.createOscillator();
-    o2.type = "sine";
-    o2.frequency.setValueAtTime(190, t3);
-    o2.frequency.exponentialRampToValueAtTime(58, t3 + 0.13);
-    const g2 = c2.createGain();
-    g2.gain.setValueAtTime(vol, t3);
-    g2.gain.exponentialRampToValueAtTime(1e-3, t3 + 0.2);
-    o2.connect(g2).connect(master);
-    o2.start(t3);
-    o2.stop(t3 + 0.22);
-    const n2 = c2.createBufferSource();
-    n2.buffer = noise(c2, 0.05);
-    const hp = c2.createBiquadFilter();
-    hp.type = "highpass";
-    hp.frequency.value = 1400;
-    const ng = c2.createGain();
-    ng.gain.setValueAtTime(vol * 0.5, t3);
-    ng.gain.exponentialRampToValueAtTime(1e-3, t3 + 0.05);
-    n2.connect(hp).connect(ng).connect(master);
-    n2.start(t3);
-    n2.stop(t3 + 0.06);
-  }
-  function cheer(vol = 0.9) {
-    const c2 = ac();
-    if (!c2 || !master) return;
-    const t3 = c2.currentTime;
-    const n2 = c2.createBufferSource();
-    n2.buffer = noise(c2, 2.4);
-    const bp = c2.createBiquadFilter();
-    bp.type = "bandpass";
-    bp.Q.value = 0.7;
-    bp.frequency.setValueAtTime(360, t3);
-    bp.frequency.linearRampToValueAtTime(1150, t3 + 0.55);
-    const g2 = c2.createGain();
-    g2.gain.setValueAtTime(0, t3);
-    g2.gain.linearRampToValueAtTime(vol, t3 + 0.28);
-    g2.gain.setValueAtTime(vol, t3 + 1.2);
-    g2.gain.linearRampToValueAtTime(0, t3 + 2.3);
-    n2.connect(bp).connect(g2).connect(master);
-    n2.start(t3);
-    n2.stop(t3 + 2.4);
-    const o2 = c2.createOscillator();
-    o2.type = "sawtooth";
-    o2.frequency.setValueAtTime(170, t3);
-    o2.frequency.linearRampToValueAtTime(300, t3 + 0.45);
-    const lp = c2.createBiquadFilter();
-    lp.type = "lowpass";
-    lp.frequency.value = 900;
-    const og = c2.createGain();
-    og.gain.setValueAtTime(0, t3);
-    og.gain.linearRampToValueAtTime(vol * 0.22, t3 + 0.3);
-    og.gain.linearRampToValueAtTime(0, t3 + 1.7);
-    o2.connect(lp).connect(og).connect(master);
-    o2.start(t3);
-    o2.stop(t3 + 1.8);
-  }
-  function save(vol = 0.8) {
-    const c2 = ac();
-    if (!c2 || !master) return;
-    const t3 = c2.currentTime;
-    const o2 = c2.createOscillator();
-    o2.type = "triangle";
-    o2.frequency.setValueAtTime(190, t3);
-    o2.frequency.exponentialRampToValueAtTime(60, t3 + 0.1);
-    const g2 = c2.createGain();
-    g2.gain.setValueAtTime(vol, t3);
-    g2.gain.exponentialRampToValueAtTime(1e-3, t3 + 0.16);
-    o2.connect(g2).connect(master);
-    o2.start(t3);
-    o2.stop(t3 + 0.18);
-    const ns = c2.createBufferSource();
-    ns.buffer = noise(c2, 0.09);
-    const bp = c2.createBiquadFilter();
-    bp.type = "bandpass";
-    bp.frequency.value = 700;
-    bp.Q.value = 1.2;
-    const ng = c2.createGain();
-    ng.gain.setValueAtTime(vol * 0.6, t3);
-    ng.gain.exponentialRampToValueAtTime(1e-3, t3 + 0.1);
-    ns.connect(bp).connect(ng).connect(master);
-    ns.start(t3);
-    ns.stop(t3 + 0.11);
-    const gr = c2.createBufferSource();
-    gr.buffer = noise(c2, 1);
-    const lp2 = c2.createBiquadFilter();
-    lp2.type = "lowpass";
-    lp2.frequency.value = 650;
-    const gg = c2.createGain();
-    gg.gain.setValueAtTime(0, t3 + 0.05);
-    gg.gain.linearRampToValueAtTime(vol * 0.3, t3 + 0.2);
-    gg.gain.linearRampToValueAtTime(0, t3 + 1);
-    gr.connect(lp2).connect(gg).connect(master);
-    gr.start(t3 + 0.05);
-    gr.stop(t3 + 1.05);
-  }
-  function startCrowd(vol = 0.1) {
-    const c2 = ac();
-    if (!c2 || !master || crowd) return;
-    const src = c2.createBufferSource();
-    src.buffer = noise(c2, 4);
-    src.loop = true;
-    const lp = c2.createBiquadFilter();
-    lp.type = "lowpass";
-    lp.frequency.value = 680;
-    lp.Q.value = 0.3;
-    const g2 = c2.createGain();
-    g2.gain.value = 0;
-    g2.gain.linearRampToValueAtTime(vol, c2.currentTime + 1.2);
-    src.connect(lp).connect(g2).connect(master);
-    src.start();
-    crowd = { src, gain: g2 };
-  }
-  function stopCrowd() {
-    if (!ctx || !crowd) return;
-    try {
-      const t3 = ctx.currentTime;
-      crowd.gain.gain.cancelScheduledValues(t3);
-      crowd.gain.gain.linearRampToValueAtTime(0, t3 + 0.4);
-      crowd.src.stop(t3 + 0.5);
-    } catch {
-    }
-    crowd = null;
-  }
-  function dispose() {
-    stopCrowd();
-    try {
-      void (ctx == null ? void 0 : ctx.close());
-    } catch {
-    }
-    ctx = null;
-    master = null;
-  }
-  return { resume, whistle, kick, cheer, save, startCrowd, stopCrowd, dispose };
-}
 const _sfc_main$o = /* @__PURE__ */ defineComponent({
-  __name: "SpriteCharacter",
+  __name: "NumberField",
   __ssrInlineRender: true,
   props: {
-    sheet: {},
-    frames: { default: 1 },
-    frame: { default: 0 },
-    flipX: { type: Boolean, default: false },
-    chromaKey: { type: Boolean, default: false }
+    field: {},
+    modelValue: {}
   },
-  emits: ["error"],
+  emits: ["update:modelValue"],
   setup(__props, { emit: __emit }) {
-    const props = __props;
-    const bgSize = computed(() => `${Math.max(1, props.frames) * 100}% 100%`);
-    const bgPos = computed(() => {
-      const n2 = Math.max(1, props.frames);
-      if (n2 <= 1) return "0% 0%";
-      const pct = Math.min(props.frame, n2 - 1) / (n2 - 1) * 100;
-      return `${pct}% 0%`;
-    });
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({
-        style: {
-          width: "100%",
-          height: "100%",
-          backgroundImage: `url('${__props.sheet}')`,
-          backgroundSize: bgSize.value,
-          backgroundPosition: bgPos.value,
-          backgroundRepeat: "no-repeat",
-          transform: __props.flipX ? "scaleX(-1)" : void 0,
-          mixBlendMode: __props.chromaKey ? "screen" : void 0,
-          imageRendering: "auto",
-          display: "block"
-        }
-      }, _attrs))}><img${ssrRenderAttr("src", __props.sheet)} style="${ssrRenderStyle({ "display": "none", "width": "0", "height": "0", "position": "absolute" })}" alt=""></div>`);
+      var _a, _b, _c, _d;
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "bg-white/5 rounded-xl p-4 border border-white/10" }, _attrs))}><label class="block mb-2 font-semibold text-white text-sm">${ssrInterpolate(__props.field.label)}</label><input type="number"${ssrRenderAttr("value", __props.modelValue)}${ssrRenderAttr("min", (_a = __props.field.meta) == null ? void 0 : _a.min)}${ssrRenderAttr("max", (_b = __props.field.meta) == null ? void 0 : _b.max)}${ssrRenderAttr("step", ((_c = __props.field.meta) == null ? void 0 : _c.step) || 1)} class="w-full px-3 py-2 bg-white/5 text-white text-sm border border-white/10 rounded-lg outline-none">`);
+      if ((_d = __props.field.meta) == null ? void 0 : _d.help) {
+        _push(`<p class="text-gray-500 text-xs mt-1">${ssrInterpolate(__props.field.meta.help)}</p>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div>`);
     };
   }
 });
 const _sfc_setup$o = _sfc_main$o.setup;
 _sfc_main$o.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/SpriteCharacter.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Studio/fields/NumberField.vue");
   return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
 };
 const _sfc_main$n = /* @__PURE__ */ defineComponent({
-  __name: "FootballModal",
+  __name: "SchemaForm",
   __ssrInlineRender: true,
   props: {
-    modelValue: { type: Boolean, default: false },
-    demoMode: { type: Boolean, default: false },
-    previewMode: { default: "mobile" },
-    assets: { default: () => ({}) },
-    tickets: { default: () => [] },
-    instant_win_categories: { default: () => [] },
-    ads: { default: () => [] }
+    schema: {},
+    modelValue: {}
   },
-  emits: ["update:modelValue", "wins-collected"],
+  emits: ["update:modelValue"],
   setup(__props, { emit: __emit }) {
     const props = __props;
-    const demoPreviewMode = ref("mobile");
-    const actualPreviewMode = computed(() => props.demoMode ? demoPreviewMode.value : props.previewMode || "desktop");
-    const frameClass = computed(() => props.demoMode ? actualPreviewMode.value === "mobile" ? "is-mobile" : "is-desktop" : "");
-    const frameStyle = computed(() => actualPreviewMode.value === "mobile" ? { width: "420px", maxWidth: "100%", height: "650px", border: "1px solid #444", borderRadius: "12px" } : { width: "700px", maxWidth: "100%", height: "650px", border: "1px solid #444", borderRadius: "4px" });
-    const a2 = computed(() => props.assets || {});
-    const titleText = computed(() => a2.value.titleText || "Step up to the spot");
-    const winText = computed(() => a2.value.winText || "GOAL! Back of the net!");
-    const loseText = computed(() => a2.value.loseText || "Saved! So close…");
-    const ballImage = computed(() => a2.value.ballImage || "");
-    const strikerFlag = computed(() => a2.value.strikerFlag || "");
-    const keeperFlag = computed(() => a2.value.keeperFlag || "");
-    const keeperSheet = computed(() => a2.value.keeperSheet || "/games/football/keeper-default.png?v=12");
-    const strikerSheet = computed(() => a2.value.strikerSheet || "/games/football/striker-default.png?v=4");
-    const spriteChroma = computed(() => a2.value.spriteChroma === true);
-    const keeperSheetOk = ref(true);
-    const strikerSheetOk = ref(true);
-    const keeperAutoFrames = ref(1);
-    const strikerAutoFrames = ref(1);
-    function detectFrames(url, target) {
-      if (!url || typeof Image === "undefined") {
-        target.value = 1;
-        return;
-      }
-      const im = new Image();
-      im.onload = () => {
-        const ar = im.naturalWidth / Math.max(1, im.naturalHeight);
-        target.value = ar < 1.4 ? 1 : Math.max(1, Math.round(ar));
-      };
-      im.onerror = () => {
-        target.value = 1;
-      };
-      im.src = url;
-    }
-    watch(() => a2.value.keeperSheet, (u2) => detectFrames(u2 || "", keeperAutoFrames), { immediate: true });
-    watch(strikerSheet, (u2) => detectFrames(u2, strikerAutoFrames), { immediate: true });
-    const keeperFrames = computed(() => {
-      if (!a2.value.keeperSheet) return 5;
-      const set = Number(a2.value.keeperFrames) || 0;
-      return set > 0 ? set : keeperAutoFrames.value;
-    });
-    const strikerFrames = computed(() => {
-      if (!a2.value.strikerSheet) return 3;
-      const set = Number(a2.value.strikerFrames) || 0;
-      return set > 0 ? set : strikerAutoFrames.value;
-    });
-    const keeperImage = computed(() => a2.value.keeperImage || "");
-    const strikerImage = computed(() => a2.value.strikerImage || "");
-    const kitColor = computed(() => a2.value.primaryColor || "#e11d48");
-    const accent = computed(() => a2.value.accentColor || "#22e1b3");
-    const keeperKit = computed(() => a2.value.goalColor && a2.value.goalColor !== "#eeeeee" ? a2.value.goalColor : "#f59e0b");
-    const textColor = computed(() => a2.value.textColor || "#ffffff");
-    const THEMES = {
-      // glowA/glowB = the two neon-glow colours (cyan for ball/goal/lines, magenta for keeper/striker);
-      // only used when the Neon theme is on, but defined on every theme so the bindings never go empty.
-      // Bright sunny afternoon — vivid blue sky, natural green pitch, gentle daytime light.
-      classic: { skyTop: "#3f8fd6", skyMid: "#79bef0", skyBot: "#bfe3fb", backdrop: "#1f4f86", standTop: "#275595", standBot: "#5083bd", grassTop: "#3fb866", grassBot: "#207a42", glow: "#ffffff", glowOp: "0.26", line: "#ffffff", glowA: "#ffffff", glowB: "#ffffff" },
-      // Floodlit night — deep navy stadium, cooler pitch, bright cold floodlight glow.
-      night: { skyTop: "#04061a", skyMid: "#0a1838", skyBot: "#11214a", backdrop: "#080f24", standTop: "#050a1c", standBot: "#131f40", grassTop: "#2aa055", grassBot: "#125a2e", glow: "#cfeaff", glowOp: "0.5", line: "#ffffff", glowA: "#cfeaff", glowB: "#cfeaff" },
-      // Retro sepia dusk — warm amber sky, faded olive turf, golden-hour wash.
-      retro: { skyTop: "#7c3d0e", skyMid: "#e08a24", skyBot: "#f6cf72", backdrop: "#4a3416", standTop: "#3f2a12", standBot: "#785322", grassTop: "#7d9c38", grassBot: "#4a661f", glow: "#ffb13a", glowOp: "0.42", line: "#fff4dc", glowA: "#ffd27a", glowB: "#ffb13a" },
-      // Neon arcade — electric purple stadium, DARK pitch so the glow pops, hot magenta wash. The
-      // ball/goal/lines glow cyan and the keeper/striker glow magenta (see glowA/glowB).
-      neon: { skyTop: "#16052e", skyMid: "#4a0f86", skyBot: "#8c1fc4", backdrop: "#1d063c", standTop: "#120428", standBot: "#430f7a", grassTop: "#0c5a3c", grassBot: "#04301f", glow: "#ff2fe0", glowOp: "0.6", line: "#bafff4", glowA: "#3df5ff", glowB: "#ff3df0" }
+    const emit = __emit;
+    const componentFor = {
+      text: _sfc_main$t,
+      textarea: _sfc_main$t,
+      color: _sfc_main$s,
+      media: _sfc_main$r,
+      select: _sfc_main$q,
+      toggle: _sfc_main$p,
+      number: _sfc_main$o
     };
-    const pal = computed(() => THEMES[String(a2.value.theme || "classic")] || THEMES.classic);
-    const isNeon = computed(() => String(a2.value.theme || "classic") === "neon");
-    const introEnabled = computed(() => a2.value.introEnabled !== false);
-    const introTitleImage = computed(() => a2.value.introTitleImage || "");
-    const introSubtitle = computed(() => a2.value.introSubtitle || "");
-    const introButtonText = computed(() => a2.value.introButtonText || "Kick Off ⚽");
-    const introVoiceEnabled = computed(() => a2.value.introVoiceEnabled !== false);
-    const gameName = computed(() => a2.value.name || "");
-    const welcomeMsg = computed(() => (a2.value.introWelcomeText || "Welcome to {name}").replace("{name}", gameName.value || "the Shootout"));
-    const showIntro = ref(false);
-    const showTopPrize = computed(() => a2.value.showTopPrize !== false);
-    const topPrize = computed(() => {
-      const list = (props.instant_win_categories || []).filter(
-        (c2) => c2 && Number(c2.value) > 0 && (c2.available === void 0 || c2.available > 0)
-      );
-      if (!list.length) return null;
-      const nonBundle = list.filter((c2) => c2.prize_type !== "ticket_bundle");
-      const pool = nonBundle.length ? nonBundle : list;
-      return pool.reduce((best, c2) => Number(c2.value) > Number(best.value) ? c2 : best);
-    });
-    const topPrizeLabel = computed(() => {
-      const p2 = topPrize.value;
-      if (!p2) return "";
-      const name = String(p2.name || "").trim();
-      const v2 = Number(p2.value);
-      if (p2.prize_type === "ticket_bundle") {
-        if (!v2 || /ticket/i.test(name)) return name;
-        return `${name ? name + " · " : ""}${Math.floor(v2)} Free Ticket${v2 == 1 ? "" : "s"}`;
-      }
-      const money = v2 ? `£${v2 % 1 === 0 ? v2 : v2.toFixed(2)}` : "";
-      return !money || /£\s*\d/.test(name) ? name : `${name} · ${money}`;
-    });
-    const sfx = createFootballSfx();
-    const GOAL = { x1: 300, y1: 120, x2: 700, y2: 330 };
-    const SPOT = { x: 545, y: 705 };
-    const KEEP = { x: 500, y: 268 };
-    const sceneViewBox = computed(() => actualPreviewMode.value === "mobile" ? "0 0 1000 880" : "0 0 1000 600");
-    const fans = (() => {
-      const out = [];
-      const pal2 = ["#2f3a57", "#3b4a6b", "#4a5578", "#586079", "#6b7280", "#8a93a8", "#b9c0d0", "#7a3b46", "#a05a64", "#3b5a7a", "#c9b27a", "#d6dae3"];
-      const bright = [accent.value, "#ffd54f", "#ff6fae", "#5b7cff", "#26c6da", "#ffffff"];
-      let i2 = 0;
-      for (let y2 = 16; y2 <= 116; y2 += 8) {
-        const depth = (y2 - 16) / 100;
-        for (let x = 6; x < 994; x += 12) {
-          const jx = i2 * 13 % 6 - 3;
-          const jy = i2 * 7 % 5 - 2;
-          const isBright = i2 * 17 % 19 === 0;
-          const col = isBright ? bright[i2 * 3 % bright.length] : pal2[i2 * 5 % pal2.length];
-          out.push({ x: +(x + jx).toFixed(1), y: +(y2 + jy).toFixed(1), c: col, r: +(1.05 + i2 * 11 % 3 * 0.2 + depth * 0.35).toFixed(2) });
-          i2++;
-        }
-      }
-      return out;
-    })();
-    const flashes = (() => {
-      const out = [];
-      for (let i2 = 0; i2 < 95; i2++) {
-        const mega = i2 % 6 === 0;
-        out.push({
-          x: +(6 + i2 * 137 % 988).toFixed(1),
-          y: +(14 + i2 * 53 % 104).toFixed(1),
-          r: +((mega ? 8 : 3.6) + i2 * 7 % 4 * 1.2).toFixed(2),
-          delay: -(i2 * 0.37 % 5).toFixed(2),
-          dur: (2 + i2 * 0.19 % 2.4).toFixed(2)
-        });
-      }
-      return out;
-    })();
-    const ads = computed(() => props.ads && props.ads.length ? props.ads.slice(0, 3) : []);
-    const adCopies = computed(() => {
-      const w2 = ads.value.length * 224;
-      return w2 > 0 ? Math.max(2, Math.ceil(1200 / w2) + 1) : 0;
-    });
-    const adStrip = computed(() => Array.from({ length: adCopies.value }, () => ads.value).flat());
-    const adSetWidth = computed(() => ads.value.length * 224);
-    const trunc = (s2, n2 = 20) => s2 && s2.length > n2 ? s2.slice(0, n2 - 1) + "…" : s2 || "";
-    const adLed = ["#0b3d91", "#9b1c1c", "#0f766e", "#6d28d9", "#b45309", "#1d4ed8", "#be123c"];
-    const ledColor = (i2) => adLed[i2 % adLed.length];
-    const pens = ref([]);
-    const index = ref(0);
-    const phase = ref("ready");
-    const showPrize = ref(false);
-    const aim = ref({ x: 500, y: 210 });
-    const shotTarget = ref({ x: 500, y: 210 });
-    const shotPower = ref(50);
-    const power = ref(0);
-    const flash = ref(false);
-    const shake = ref(false);
-    const roar = ref(false);
-    const netHit = ref(false);
-    const saved = ref(false);
-    const kicked = ref(false);
-    const particles = ref([]);
-    const wow = ref(false);
-    const goalFlashes = (() => {
-      const out = [];
-      for (let i2 = 0; i2 < 30; i2++) {
-        out.push({ x: i2 * 47 % 100, y: i2 * 71 % 98, size: 60 + i2 * 13 % 5 * 16, delay: +(i2 * 0.11 % 1.5).toFixed(2), dur: +(0.7 + i2 * 0.07 % 0.7).toFixed(2) });
-      }
-      return out;
-    })();
-    let rafId = 0;
-    const isWin = (t3) => !!((t3 == null ? void 0 : t3.instant_win) && t3.instant_win.prize && t3.instant_win.prize !== "NO WIN");
-    function categoryFor(iw) {
-      const cats = props.instant_win_categories || [];
-      if (!iw) return null;
-      return (iw.category_id != null ? cats.find((c2) => c2.id === iw.category_id) : null) || cats.find((c2) => c2.name && (c2.name === iw.prize || c2.name === iw.name)) || null;
-    }
-    function buildPens() {
-      pens.value = (props.tickets || []).map((t3) => {
-        const iw = t3 == null ? void 0 : t3.instant_win;
-        const won = isWin(t3);
-        const cat = won ? categoryFor(iw) : null;
-        return {
-          id: t3.id ?? t3.number,
-          number: String(t3.number ?? t3.id ?? ""),
-          win: won,
-          prize: won ? String(iw.prize) : "",
-          value: Number((iw == null ? void 0 : iw.value) || (cat == null ? void 0 : cat.value) || 0),
-          image: (iw == null ? void 0 : iw.image_path) || (cat == null ? void 0 : cat.image_path) || "",
-          // Ticket bundles carry a ticket count, not a £ value — flagged so the reveal never shows £.
-          isBundle: won && ((iw == null ? void 0 : iw.prize_type) ?? (cat == null ? void 0 : cat.prize_type)) === "ticket_bundle"
-        };
-      });
-      index.value = 0;
-      resetShot();
-    }
-    function resetShot() {
-      phase.value = "ready";
-      showPrize.value = false;
-      aim.value = { x: 500, y: 210 };
-      shotTarget.value = { x: 500, y: 210 };
-      power.value = 0;
-      flash.value = shake.value = roar.value = netHit.value = saved.value = kicked.value = false;
-      particles.value = [];
-    }
-    watch(() => props.tickets, buildPens, { immediate: true, deep: true });
-    watch(() => props.modelValue, (o2) => {
-      if (o2) buildPens();
-      else stopPower();
-    });
-    watch(() => props.modelValue, (o2) => {
-      if (o2) {
-        showIntro.value = introEnabled.value;
-        if (showIntro.value && !props.demoMode) playWelcome();
-      } else {
-        showIntro.value = false;
-        cancelSpeech();
-        sfx.stopCrowd();
-      }
-    }, { immediate: true });
-    watch(introEnabled, (on) => {
-      if (props.demoMode) {
-        showIntro.value = on;
-        if (on) playWelcome();
-      }
-    });
-    watch(introTitleImage, () => {
-      if (props.demoMode && introEnabled.value) showIntro.value = true;
-    });
-    const current = computed(() => pens.value[index.value] ?? null);
-    const total = computed(() => pens.value.length);
-    const scored = computed(() => pens.value.slice(0, phase.value === "done" ? total.value : index.value + (phase.value === "result" ? 1 : 0)).filter((p2) => p2.win).length);
-    const wins = computed(() => pens.value.filter((p2) => p2.win));
-    const totalWon = computed(() => wins.value.filter((w2) => !w2.isBundle).reduce((sum, w2) => sum + (Number(w2.value) || 0), 0));
-    const playedCount = computed(() => phase.value === "done" ? total.value : index.value + (phase.value === "result" ? 1 : 0));
-    const playedPens = computed(() => pens.value.slice(0, playedCount.value));
-    computed(() => playedPens.value.filter((p2) => p2.win && !p2.isBundle).reduce((sum, p2) => sum + (Number(p2.value) || 0), 0));
-    const trackerView = computed(() => playedPens.value.map((p2, gi) => ({ p: p2, gi })).slice(-9));
-    const trackLabel = (p2) => {
-      if (p2.isBundle && p2.value && !/ticket/i.test(p2.prize)) return `${Math.floor(p2.value)} FT`;
-      if (p2.value && !p2.isBundle) return `£${p2.value % 1 === 0 ? p2.value : Number(p2.value).toFixed(2)}`;
-      return "WON";
+    const visible2 = (f2) => {
+      var _a;
+      const cond = (_a = f2.meta) == null ? void 0 : _a.visibleIf;
+      if (!(cond == null ? void 0 : cond.field)) return true;
+      const raw = props.modelValue[cond.field];
+      const ctrl = (Array.isArray(props.schema) ? props.schema : []).find((x) => x.key === cond.field);
+      const val = raw === void 0 || raw === null || raw === "" ? Number((ctrl == null ? void 0 : ctrl.default) ?? 0) : Number(raw);
+      return cond.gte === void 0 || val >= cond.gte;
     };
-    const prompt = computed(() => {
-      var _a;
-      return phase.value === "ready" ? titleText.value : phase.value === "aim" ? "Pick your corner 🎯" : phase.value === "power" ? "Time your power…" : phase.value === "shooting" ? "" : ((_a = current.value) == null ? void 0 : _a.win) ? winText.value : loseText.value;
-    });
-    const currentValueLabel = computed(() => {
-      const p2 = current.value;
-      const v2 = Number((p2 == null ? void 0 : p2.value) || 0);
-      if (!v2) return "";
-      if (p2 == null ? void 0 : p2.isBundle) return /ticket/i.test((p2 == null ? void 0 : p2.prize) || "") ? "" : `${Math.floor(v2)} Free Ticket${v2 == 1 ? "" : "s"}`;
-      if (/£\s*\d/.test((p2 == null ? void 0 : p2.prize) || "")) return "";
-      return `£${v2 % 1 === 0 ? v2 : v2.toFixed(2)}`;
-    });
-    const hostEnabled = computed(() => a2.value.hostEnabled !== false);
-    const hostImage = computed(() => a2.value.hostImage || "/games/football/commentator-default.png?v=1");
-    const hostImageOk = ref(true);
-    watch(() => a2.value.hostImage, () => {
-      hostImageOk.value = true;
-    });
-    const hostLine = computed(() => {
-      var _a;
-      if (showIntro.value) return "";
-      switch (phase.value) {
-        case "ready":
-          return index.value === 0 ? "Big moment — step up!" : "Next one… keep your nerve!";
-        case "aim":
-          return "Pick your corner…";
-        case "power":
-          return "Time the power just right!";
-        case "shooting":
-          return "He strikes it…";
-        case "result":
-          return ((_a = current.value) == null ? void 0 : _a.win) ? "GOAL! Get in there! 🎉" : "Saved! Oh so close!";
-        case "done":
-          return scored.value > 0 ? `Full time — ${scored.value} in the net!` : "Full time! Unlucky that time.";
-        default:
-          return "";
+    const groups = computed(() => {
+      const map = /* @__PURE__ */ new Map();
+      for (const f2 of Array.isArray(props.schema) ? props.schema : []) {
+        if (!visible2(f2)) continue;
+        if (!map.has(f2.group)) map.set(f2.group, []);
+        map.get(f2.group).push(f2);
       }
+      return Array.from(map.entries()).map(([name, fields]) => ({ name, fields }));
     });
-    const keepLand = ref({ x: 500, y: 268 });
-    const moving = computed(() => phase.value === "shooting" || phase.value === "result");
-    const ballTf = computed(() => {
-      if (!kicked.value) return `translate(${SPOT.x}px, ${SPOT.y}px) scale(0.66)`;
-      const t3 = current.value && !current.value.win ? keepLand.value : shotTarget.value;
-      return `translate(${t3.x}px, ${t3.y}px) scale(0.5)`;
-    });
-    const ballDurMs = computed(() => Math.round(920 - shotPower.value / 100 * 460));
-    const ballDur = computed(() => (ballDurMs.value / 1e3).toFixed(2));
-    const keepTf = computed(() => {
-      if (!kicked.value) return "translate(0px, 0px)";
-      const raw = keepLand.value.x - KEEP.x;
-      const glove = raw < -25 ? 46 : raw > 25 ? -46 : 0;
-      const dx = raw + glove, dy = keepLand.value.y - KEEP.y - 20;
-      return `translate(${dx}px, ${dy}px)`;
-    });
-    const keepShadowTf = computed(() => kicked.value ? `translate(${keepLand.value.x - KEEP.x}px, 0px)` : `translate(${(Math.sin(keeperPhase.value) * 65).toFixed(1)}px, 0px)`);
-    const keepArmLTf = computed(() => kicked.value ? "rotate(58deg)" : "");
-    const keepArmRTf = computed(() => kicked.value ? "rotate(-58deg)" : "");
-    const keeperWalk = ref(0);
-    let keeperRaf = 0, keeperT0 = 0;
-    const keeperPhase = ref(2.5);
-    function keeperLoop(t3) {
-      if (!keeperT0) keeperT0 = t3;
-      const elapsed = (t3 - keeperT0) / 1e3;
-      keeperPhase.value = 2.5 + elapsed * 0.9;
-      if (!kicked.value) keeperWalk.value = Math.floor(elapsed * 7);
-      keeperRaf = requestAnimationFrame(keeperLoop);
-    }
-    keeperRaf = requestAnimationFrame(keeperLoop);
-    const keeperMovingRight = computed(() => Math.cos(keeperPhase.value) >= 0);
-    const keeperShuffleTf = computed(() => kicked.value ? "translate3d(0,0,0)" : `translate3d(${(Math.sin(keeperPhase.value) * 65).toFixed(1)}px,0,0)`);
-    const keeperFrame = computed(() => {
-      const n2 = Math.max(2, keeperFrames.value);
-      if (kicked.value) return n2 - 1;
-      return keeperWalk.value % Math.max(1, n2 - 1);
-    });
-    const keeperFlip = computed(() => kicked.value ? keepLand.value.x - KEEP.x > 25 : keeperMovingRight.value);
-    const strikerFrame = computed(() => !moving.value ? 0 : !kicked.value ? Math.min(1, strikerFrames.value - 1) : Math.min(2, strikerFrames.value - 1));
-    computed(() => kicked.value ? `translate(${SPOT.x}px, ${SPOT.y}px)` : "");
-    const strikerSvgTf = computed(() => moving.value ? "translate(395px, 385px) scale(2.25, 3.2)" : "translate(308px, 502px) scale(1.95, 2.85)");
-    const strikerShadowTf = computed(() => moving.value ? "translate(485px, 769px)" : "translate(386px, 844px)");
-    function play(u2) {
-      if (!u2) return;
-      try {
-        const x = new Audio(u2);
-        x.volume = props.demoMode ? 0.35 : 0.75;
-        void x.play().catch(() => {
-        });
-      } catch {
-      }
-    }
-    function speak(text) {
-      try {
-        const synth = window.speechSynthesis;
-        if (!synth || !text) return;
-        synth.cancel();
-        const u2 = new SpeechSynthesisUtterance(text);
-        u2.rate = 0.98;
-        u2.pitch = 1.05;
-        u2.volume = props.demoMode ? 0.6 : 0.95;
-        synth.speak(u2);
-      } catch {
-      }
-    }
-    function cancelSpeech() {
-      var _a;
-      try {
-        (_a = window.speechSynthesis) == null ? void 0 : _a.cancel();
-      } catch {
-      }
-    }
-    function playWelcome() {
-      if (a2.value.welcomeSound) {
-        play(a2.value.welcomeSound);
-        return;
-      }
-      if (introVoiceEnabled.value) speak(welcomeMsg.value);
-    }
-    function stopPower() {
-      if (rafId) cancelAnimationFrame(rafId);
-      rafId = 0;
-    }
-    onBeforeUnmount(() => {
-      stopPower();
-      cancelSpeech();
-      sfx.dispose();
-      cancelAnimationFrame(keeperRaf);
-    });
+    const update = (key, value) => {
+      emit("update:modelValue", { ...props.modelValue, [key]: value });
+    };
     return (_ctx, _push, _parent, _attrs) => {
-      ssrRenderTeleport(_push, (_push2) => {
-        if (__props.modelValue) {
-          _push2(`<div class="${ssrRenderClass([__props.demoMode ? "fbg-demo" : "fbg-fixed", "fbg-root"])}" data-v-dc83cd69><div class="${ssrRenderClass(__props.demoMode ? "fbg-demo-device fbg-modal-zoom" : "contents")}" style="${ssrRenderStyle(__props.demoMode ? frameStyle.value : void 0)}" data-v-dc83cd69>`);
-          if (__props.demoMode && actualPreviewMode.value === "mobile") {
-            _push2(`<div class="fbg-demo-statusbar" data-v-dc83cd69><span data-v-dc83cd69>9:41</span><span class="fbg-demo-sigs" data-v-dc83cd69><span class="fbg-demo-sig-a" data-v-dc83cd69></span><span class="fbg-demo-sig-b" data-v-dc83cd69></span></span></div>`);
-          } else if (__props.demoMode) {
-            _push2(`<div class="fbg-demo-browserbar" data-v-dc83cd69><span class="fbg-demo-dots" data-v-dc83cd69><span data-v-dc83cd69></span><span data-v-dc83cd69></span><span data-v-dc83cd69></span></span><span class="fbg-demo-url" data-v-dc83cd69>⚽ Football — Take Your Shot</span></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`<div class="${ssrRenderClass(__props.demoMode ? "fbg-demo-scroll" : "contents")}" data-v-dc83cd69><div class="${ssrRenderClass([frameClass.value, "fbg"])}" style="${ssrRenderStyle({ "--ac": accent.value })}" data-v-dc83cd69>`);
-          if (!__props.demoMode) {
-            _push2(`<button class="fbg-x" style="${ssrRenderStyle({ color: textColor.value })}" aria-label="Close" data-v-dc83cd69>×</button>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`<div class="fbg-top" data-v-dc83cd69><p class="fbg-eyebrow" style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>Penalty Shootout</p><p class="fbg-prompt" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>${ssrInterpolate(prompt.value)}</p>`);
-          if (showTopPrize.value && topPrize.value) {
-            _push2(`<div class="fbg-topprize" style="${ssrRenderStyle({ borderColor: accent.value, color: textColor.value })}" data-v-dc83cd69>`);
-            if (topPrize.value.image_path) {
-              _push2(`<img${ssrRenderAttr("src", topPrize.value.image_path)} class="fbg-topprize-img" alt="" data-v-dc83cd69>`);
-            } else {
-              _push2(`<span class="fbg-topprize-emoji" data-v-dc83cd69>🏆</span>`);
-            }
-            _push2(`<span style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>TOP PRIZE</span><span class="fbg-topprize-val" data-v-dc83cd69>${ssrInterpolate(topPrizeLabel.value)}</span></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`</div><div class="${ssrRenderClass([{ shake: shake.value, megashake: wow.value }, "fbg-stage"])}" data-v-dc83cd69><svg class="fbg-svg"${ssrRenderAttr("viewBox", sceneViewBox.value)} preserveAspectRatio="xMidYMid slice" data-v-dc83cd69><defs data-v-dc83cd69><linearGradient id="fbg-sky" x1="0" y1="0" x2="0" y2="1" data-v-dc83cd69><stop offset="0"${ssrRenderAttr("stop-color", pal.value.skyTop)} data-v-dc83cd69></stop><stop offset="0.6"${ssrRenderAttr("stop-color", pal.value.skyMid)} data-v-dc83cd69></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.skyBot)} data-v-dc83cd69></stop></linearGradient><linearGradient id="fbg-stand" x1="0" y1="0" x2="0" y2="1" data-v-dc83cd69><stop offset="0"${ssrRenderAttr("stop-color", pal.value.standTop)} data-v-dc83cd69></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.standBot)} data-v-dc83cd69></stop></linearGradient><linearGradient id="fbg-grass" x1="0" y1="0" x2="0" y2="1" data-v-dc83cd69><stop offset="0"${ssrRenderAttr("stop-color", pal.value.grassTop)} data-v-dc83cd69></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.grassBot)} data-v-dc83cd69></stop></linearGradient><radialGradient id="fbg-flood" cx="0.5" cy="0.5" r="0.5" data-v-dc83cd69><stop offset="0"${ssrRenderAttr("stop-color", pal.value.glow)}${ssrRenderAttr("stop-opacity", pal.value.glowOp)} data-v-dc83cd69></stop><stop offset="1" stop-opacity="0" data-v-dc83cd69></stop></radialGradient><radialGradient id="fbg-ball" cx="0.36" cy="0.3" r="0.9" data-v-dc83cd69><stop offset="0" stop-color="#fff" data-v-dc83cd69></stop><stop offset="0.7" stop-color="#eef1f6" data-v-dc83cd69></stop><stop offset="1" stop-color="#c4cad6" data-v-dc83cd69></stop></radialGradient><radialGradient id="fbg-ball-edge" cx="0.4" cy="0.34" r="0.66" data-v-dc83cd69><stop offset="0.5" stop-color="#000" stop-opacity="0" data-v-dc83cd69></stop><stop offset="1" stop-color="#0a0e16" stop-opacity="0.36" data-v-dc83cd69></stop></radialGradient><linearGradient id="fbg-trail" x1="0" y1="0" x2="1" y2="0" data-v-dc83cd69><stop offset="0"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0" data-v-dc83cd69></stop><stop offset="1"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0.8" data-v-dc83cd69></stop></linearGradient><pattern id="fbg-net" width="14" height="14" patternUnits="userSpaceOnUse" data-v-dc83cd69><path d="M0 0H14M0 0V14" stroke="rgba(214,230,255,.55)" stroke-width="1.3" fill="none" data-v-dc83cd69></path></pattern><radialGradient id="fbg-flashglow" cx="0.5" cy="0.5" r="0.5" data-v-dc83cd69><stop offset="0" stop-color="#ffffff" data-v-dc83cd69></stop><stop offset="0.35" stop-color="#fdfeff" stop-opacity="0.82" data-v-dc83cd69></stop><stop offset="1" stop-color="#dfe8ff" stop-opacity="0" data-v-dc83cd69></stop></radialGradient><filter id="fbg-glow" x="-60%" y="-60%" width="220%" height="220%" data-v-dc83cd69><feGaussianBlur stdDeviation="5" result="b" data-v-dc83cd69></feGaussianBlur><feMerge data-v-dc83cd69><feMergeNode in="b" data-v-dc83cd69></feMergeNode><feMergeNode in="SourceGraphic" data-v-dc83cd69></feMergeNode></feMerge></filter><filter id="fbg-soft" x="-60%" y="-60%" width="220%" height="220%" data-v-dc83cd69><feGaussianBlur stdDeviation="3.5" data-v-dc83cd69></feGaussianBlur></filter><filter id="fbg-neonC" x="-70%" y="-70%" width="240%" height="240%" data-v-dc83cd69><feDropShadow dx="0" dy="0" stdDeviation="6"${ssrRenderAttr("flood-color", pal.value.glowA)} flood-opacity="0.95" data-v-dc83cd69></feDropShadow></filter><filter id="fbg-neonM" x="-70%" y="-70%" width="240%" height="240%" data-v-dc83cd69><feDropShadow dx="0" dy="0" stdDeviation="6"${ssrRenderAttr("flood-color", pal.value.glowB)} flood-opacity="0.95" data-v-dc83cd69></feDropShadow></filter></defs><rect x="0" y="0" width="1000" height="200" fill="url(#fbg-sky)" data-v-dc83cd69></rect><ellipse cx="150" cy="14" rx="320" ry="160" fill="url(#fbg-flood)" data-v-dc83cd69></ellipse><ellipse cx="850" cy="14" rx="320" ry="160" fill="url(#fbg-flood)" data-v-dc83cd69></ellipse><rect x="0" y="0" width="1000" height="146" fill="url(#fbg-grass)" opacity="0" data-v-dc83cd69></rect><rect x="0" y="0" width="1000" height="146"${ssrRenderAttr("fill", pal.value.backdrop)} data-v-dc83cd69></rect><rect x="0" y="0" width="1000" height="13" fill="#000" opacity="0.4" data-v-dc83cd69></rect><g stroke="rgba(0,0,0,.28)" stroke-width="2.4" data-v-dc83cd69><line x1="0" y1="34" x2="1000" y2="34" data-v-dc83cd69></line><line x1="0" y1="60" x2="1000" y2="60" data-v-dc83cd69></line><line x1="0" y1="88" x2="1000" y2="88" data-v-dc83cd69></line><line x1="0" y1="118" x2="1000" y2="118" data-v-dc83cd69></line></g><rect x="0" y="14" width="1000" height="104" fill="url(#fbg-stand)" opacity="0.9" data-v-dc83cd69></rect><g class="${ssrRenderClass([{ roar: roar.value }, "fbg-crowd"])}" data-v-dc83cd69><!--[-->`);
-          ssrRenderList(unref(fans), (f2, i2) => {
-            _push2(`<circle${ssrRenderAttr("cx", f2.x)}${ssrRenderAttr("cy", f2.y)}${ssrRenderAttr("r", f2.r)}${ssrRenderAttr("fill", f2.c)} data-v-dc83cd69></circle>`);
-          });
-          _push2(`<!--]--></g><rect x="0" y="13" width="1000" height="34" fill="#000" opacity="0.3" data-v-dc83cd69></rect><rect x="0" y="13" width="1000" height="4" fill="#000" opacity="0.55" data-v-dc83cd69></rect><g class="fbg-camflashes" data-v-dc83cd69><!--[-->`);
-          ssrRenderList(unref(flashes), (cf, i2) => {
-            _push2(`<circle class="fbg-camflash" fill="url(#fbg-flashglow)"${ssrRenderAttr("cx", cf.x)}${ssrRenderAttr("cy", cf.y)}${ssrRenderAttr("r", cf.r)} style="${ssrRenderStyle({ animationDelay: cf.delay + "s", animationDuration: cf.dur + "s" })}" data-v-dc83cd69></circle>`);
-          });
-          _push2(`<!--]--></g>`);
-          if (ads.value.length) {
-            _push2(`<g data-v-dc83cd69><clipPath id="fbg-hoard" data-v-dc83cd69><rect x="0" y="120" width="1000" height="26" data-v-dc83cd69></rect></clipPath><rect x="0" y="118" width="1000" height="3" fill="#000" opacity="0.55" data-v-dc83cd69></rect><rect x="0" y="120" width="1000" height="26" fill="#04060d" data-v-dc83cd69></rect><g clip-path="url(#fbg-hoard)" data-v-dc83cd69><g data-v-dc83cd69><!--[-->`);
-            ssrRenderList(adStrip.value, (ad, i2) => {
-              _push2(`<g${ssrRenderAttr("transform", `translate(${i2 * 224}, 121)`)} data-v-dc83cd69><rect width="216" height="24" rx="2"${ssrRenderAttr("fill", ledColor(i2))} data-v-dc83cd69></rect><rect width="216" height="11" rx="2" fill="#fff" opacity="0.13" data-v-dc83cd69></rect><rect x="0.5" y="0.5" width="215" height="23" rx="2" fill="none" stroke="#fff" stroke-opacity="0.16" data-v-dc83cd69></rect>`);
-              if (ad.image) {
-                _push2(`<rect x="4" y="3" width="20" height="18" rx="2" fill="#000" opacity="0.28" data-v-dc83cd69></rect>`);
-              } else {
-                _push2(`<!---->`);
-              }
-              if (ad.image) {
-                _push2(`<image${ssrRenderAttr("href", ad.image)} x="5" y="4" width="18" height="16" preserveAspectRatio="xMidYMid slice" data-v-dc83cd69></image>`);
-              } else {
-                _push2(`<!---->`);
-              }
-              _push2(`<text${ssrRenderAttr("x", ad.image ? 30 : 11)} y="16" fill="#fff" font-size="11" font-weight="800" letter-spacing="0.4" data-v-dc83cd69>${ssrInterpolate(trunc(ad.name))}</text></g>`);
-            });
-            _push2(`<!--]--><animateTransform attributeName="transform" type="translate" from="0 0"${ssrRenderAttr("to", `-${adSetWidth.value} 0`)}${ssrRenderAttr("dur", `${Math.max(14, ads.value.length * 4)}s`)} repeatCount="indefinite" data-v-dc83cd69></animateTransform></g></g><rect x="0" y="145" width="1000" height="2"${ssrRenderAttr("fill", accent.value)} opacity="0.22" data-v-dc83cd69></rect></g>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`<rect x="0" y="146" width="1000" height="860" fill="url(#fbg-grass)" data-v-dc83cd69></rect><!--[-->`);
-          ssrRenderList(9, (s2) => {
-            _push2(`<rect${ssrRenderAttr("x", (s2 - 1) * 112)} y="146" width="56" height="860" fill="#fff" opacity="0.03" data-v-dc83cd69></rect>`);
-          });
-          _push2(`<!--]--><g fill="none"${ssrRenderAttr("stroke", pal.value.line)} stroke-width="3.5" opacity="0.7"${ssrRenderAttr("filter", isNeon.value ? "url(#fbg-neonC)" : void 0)} data-v-dc83cd69><path d="M110 600 L110 430 L890 430 L890 600" data-v-dc83cd69></path><path d="M360 430 A150 56 0 0 0 640 430" data-v-dc83cd69></path></g><rect${ssrRenderAttr("x", GOAL.x1 + 7)}${ssrRenderAttr("y", GOAL.y1 + 7)}${ssrRenderAttr("width", GOAL.x2 - GOAL.x1 - 14)}${ssrRenderAttr("height", GOAL.y2 - GOAL.y1 - 7)} fill="url(#fbg-net)" class="${ssrRenderClass({ ripple: netHit.value })}" data-v-dc83cd69></rect><g fill="none"${ssrRenderAttr("stroke", textColor.value)} stroke-width="8" stroke-linejoin="round" style="${ssrRenderStyle(netHit.value ? { filter: "url(#fbg-glow)" } : isNeon.value ? { filter: "url(#fbg-neonC)" } : {})}" data-v-dc83cd69><path${ssrRenderAttr("d", `M${GOAL.x1} ${GOAL.y2} L${GOAL.x1} ${GOAL.y1} L${GOAL.x2} ${GOAL.y1} L${GOAL.x2} ${GOAL.y2}`)} data-v-dc83cd69></path></g><ellipse cx="500" cy="350" rx="46" ry="10" fill="#000" opacity="0.34" filter="url(#fbg-soft)" style="${ssrRenderStyle({ transform: keepShadowTf.value, transformBox: "view-box", transformOrigin: "500px 350px", transition: kicked.value ? "transform .5s cubic-bezier(.3,.7,.4,1)" : "none" })}" data-v-dc83cd69></ellipse><g${ssrRenderAttr("filter", isNeon.value ? "url(#fbg-neonM)" : void 0)} style="${ssrRenderStyle({ transform: keepTf.value, transformBox: "view-box", transformOrigin: "500px 268px", transition: kicked.value ? "transform .5s cubic-bezier(.3,.7,.4,1)" : "none" })}" data-v-dc83cd69>`);
-          if (keeperSheet.value && keeperSheetOk.value) {
-            _push2(`<g style="${ssrRenderStyle({ transform: keeperShuffleTf.value, willChange: "transform" })}" data-v-dc83cd69><foreignObject x="425" y="160" width="150" height="190" data-v-dc83cd69>`);
-            _push2(ssrRenderComponent(_sfc_main$o, {
-              sheet: keeperSheet.value,
-              frames: keeperFrames.value,
-              frame: keeperFrame.value,
-              "flip-x": keeperFlip.value,
-              "chroma-key": spriteChroma.value,
-              onError: ($event) => keeperSheetOk.value = false
-            }, null, _parent));
-            _push2(`</foreignObject></g>`);
-          } else if (keeperImage.value) {
-            _push2(`<image${ssrRenderAttr("href", keeperImage.value)} x="448" y="196" width="104" height="140" data-v-dc83cd69></image>`);
-          } else {
-            _push2(`<g class="fbg-keeper-tall" data-v-dc83cd69><g class="${ssrRenderClass({ "fbg-keeper-idle": !kicked.value })}" data-v-dc83cd69><path d="M490 300 q-6 18 -10 30" stroke="#222a3f" stroke-width="13" stroke-linecap="round" fill="none" data-v-dc83cd69></path><path d="M510 300 q6 18 10 30" stroke="#222a3f" stroke-width="13" stroke-linecap="round" fill="none" data-v-dc83cd69></path><g class="${ssrRenderClass([{ "arm-idle-l": !kicked.value }, "fbg-arm"])}" style="${ssrRenderStyle(kicked.value ? { transform: keepArmLTf.value, transformBox: "view-box", transformOrigin: "484px 276px", transition: "transform .35s ease" } : void 0)}" data-v-dc83cd69><path d="M483 274 q-24 2 -40 18"${ssrRenderAttr("stroke", keeperKit.value)} stroke-width="12" stroke-linecap="round" fill="none" data-v-dc83cd69></path><circle cx="441" cy="294" r="11"${ssrRenderAttr("fill", accent.value)} filter="url(#fbg-glow)" data-v-dc83cd69></circle></g><g class="${ssrRenderClass([{ "arm-idle-r": !kicked.value }, "fbg-arm"])}" style="${ssrRenderStyle(kicked.value ? { transform: keepArmRTf.value, transformBox: "view-box", transformOrigin: "516px 276px", transition: "transform .35s ease" } : void 0)}" data-v-dc83cd69><path d="M517 274 q24 2 40 18"${ssrRenderAttr("stroke", keeperKit.value)} stroke-width="12" stroke-linecap="round" fill="none" data-v-dc83cd69></path><circle cx="559" cy="294" r="11"${ssrRenderAttr("fill", accent.value)} filter="url(#fbg-glow)" data-v-dc83cd69></circle></g><path d="M478 262 q22 -12 44 0 l-3 42 q-19 8 -38 0 z"${ssrRenderAttr("fill", keeperKit.value)} data-v-dc83cd69></path><path d="M478 262 q22 -12 44 0 l-2 12 q-20 -8 -40 0 z"${ssrRenderAttr("fill", accent.value)} opacity="0.9" data-v-dc83cd69></path><clipPath id="fbg-keeper-shirt" data-v-dc83cd69><path d="M478 262 q22 -12 44 0 l-3 42 q-19 8 -38 0 z" data-v-dc83cd69></path></clipPath>`);
-            if (keeperFlag.value) {
-              _push2(`<image${ssrRenderAttr("href", keeperFlag.value)} x="477" y="258" width="46" height="48" preserveAspectRatio="xMidYMid slice" clip-path="url(#fbg-keeper-shirt)" data-v-dc83cd69></image>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<circle cx="500" cy="248" r="16" fill="#e9b489" data-v-dc83cd69></circle><path d="M485 244 q15 -16 30 0 q-15 -8 -30 0z" fill="#2b2016" data-v-dc83cd69></path></g></g>`);
-          }
-          _push2(`</g>`);
-          if (phase.value === "aim" || phase.value === "power") {
-            _push2(`<g${ssrRenderAttr("stroke", accent.value)} stroke-width="3" fill="none" filter="url(#fbg-glow)" data-v-dc83cd69><circle${ssrRenderAttr("cx", aim.value.x)}${ssrRenderAttr("cy", aim.value.y)} r="6"${ssrRenderAttr("fill", accent.value)} data-v-dc83cd69></circle><circle${ssrRenderAttr("cx", aim.value.x)}${ssrRenderAttr("cy", aim.value.y)} r="22" opacity="0.8" data-v-dc83cd69></circle><line${ssrRenderAttr("x1", aim.value.x - 34)}${ssrRenderAttr("y1", aim.value.y)}${ssrRenderAttr("x2", aim.value.x - 24)}${ssrRenderAttr("y2", aim.value.y)} data-v-dc83cd69></line><line${ssrRenderAttr("x1", aim.value.x + 24)}${ssrRenderAttr("y1", aim.value.y)}${ssrRenderAttr("x2", aim.value.x + 34)}${ssrRenderAttr("y2", aim.value.y)} data-v-dc83cd69></line><line${ssrRenderAttr("x1", aim.value.x)}${ssrRenderAttr("y1", aim.value.y - 34)}${ssrRenderAttr("x2", aim.value.x)}${ssrRenderAttr("y2", aim.value.y - 24)} data-v-dc83cd69></line><line${ssrRenderAttr("x1", aim.value.x)}${ssrRenderAttr("y1", aim.value.y + 24)}${ssrRenderAttr("x2", aim.value.x)}${ssrRenderAttr("y2", aim.value.y + 34)} data-v-dc83cd69></line></g>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (kicked.value) {
-            _push2(`<line${ssrRenderAttr("x1", SPOT.x)}${ssrRenderAttr("y1", SPOT.y)}${ssrRenderAttr("x2", current.value && !current.value.win ? keepLand.value.x : shotTarget.value.x)}${ssrRenderAttr("y2", current.value && !current.value.win ? keepLand.value.y : shotTarget.value.y)} stroke="url(#fbg-trail)" stroke-width="6" stroke-linecap="round" opacity="0.55" class="fbg-trail" data-v-dc83cd69></line>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`<ellipse cx="0" cy="0" rx="44" ry="11" fill="#000" opacity="0.3" filter="url(#fbg-soft)" style="${ssrRenderStyle({ transform: strikerShadowTf.value, transformBox: "view-box", transformOrigin: "0px 0px", transition: "transform .5s cubic-bezier(.4,.1,.3,1)" })}" data-v-dc83cd69></ellipse><g class="${ssrRenderClass([{ run: moving.value }, "fbg-striker-svg"])}"${ssrRenderAttr("filter", isNeon.value ? "url(#fbg-neonM)" : void 0)} style="${ssrRenderStyle({ transform: strikerSvgTf.value, transformBox: "view-box", transformOrigin: "0px 0px", transition: "transform .5s cubic-bezier(.4,.1,.3,1)" })}" data-v-dc83cd69>`);
-          if (strikerSheet.value && strikerSheetOk.value) {
-            _push2(`<foreignObject x="0" y="0" width="80" height="120" data-v-dc83cd69>`);
-            _push2(ssrRenderComponent(_sfc_main$o, {
-              sheet: strikerSheet.value,
-              frames: strikerFrames.value,
-              frame: strikerFrame.value,
-              "chroma-key": spriteChroma.value,
-              onError: ($event) => strikerSheetOk.value = false
-            }, null, _parent));
-            _push2(`</foreignObject>`);
-          } else if (strikerImage.value) {
-            _push2(`<image${ssrRenderAttr("href", strikerImage.value)} x="0" y="0" width="80" height="120" data-v-dc83cd69></image>`);
-          } else {
-            _push2(`<g data-v-dc83cd69><path d="M40 60 q-4 22 -10 40" stroke="#e9b489" stroke-width="9" stroke-linecap="round" fill="none" data-v-dc83cd69></path><g class="kick" data-v-dc83cd69><path d="M44 60 q14 6 26 2" stroke="#e9b489" stroke-width="9" stroke-linecap="round" fill="none" data-v-dc83cd69></path><rect x="66" y="56" width="14" height="7" rx="3" fill="#111" data-v-dc83cd69></rect></g><rect x="26" y="80" width="14" height="7" rx="3" fill="#111" data-v-dc83cd69></rect><path d="M30 52 l22 0 l-3 12 l-16 0 z" fill="#fff" data-v-dc83cd69></path><path d="M30 26 q11 -7 22 0 l1 28 l-24 0 z"${ssrRenderAttr("fill", kitColor.value)} data-v-dc83cd69></path><path d="M38 22 l7 1 l1 31 l-9 0 z"${ssrRenderAttr("fill", accent.value)} opacity="0.9" data-v-dc83cd69></path><clipPath id="fbg-striker-shirt" data-v-dc83cd69><path d="M30 26 q11 -7 22 0 l1 28 l-24 0 z" data-v-dc83cd69></path></clipPath>`);
-            if (strikerFlag.value) {
-              _push2(`<image${ssrRenderAttr("href", strikerFlag.value)} x="29" y="24" width="24" height="33" preserveAspectRatio="xMidYMid slice" clip-path="url(#fbg-striker-shirt)" data-v-dc83cd69></image>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<path d="M32 30 q-12 6 -16 18" stroke="#e9b489" stroke-width="7" stroke-linecap="round" fill="none" data-v-dc83cd69></path><path d="M50 30 q12 4 16 12" stroke="#e9b489" stroke-width="7" stroke-linecap="round" fill="none" data-v-dc83cd69></path><circle cx="41" cy="15" r="10" fill="#e9b489" data-v-dc83cd69></circle><path d="M31 13 q10 -11 20 0 q-10 -6 -20 0z" fill="#241608" data-v-dc83cd69></path></g>`);
-          }
-          _push2(`</g><g style="${ssrRenderStyle({ transform: ballTf.value, transformBox: "view-box", transition: kicked.value ? `transform ${ballDur.value}s cubic-bezier(.2,.55,.3,1)` : "none" })}" data-v-dc83cd69>`);
-          if (netHit.value) {
-            _push2(`<circle class="fbg-ball-glow" r="42"${ssrRenderAttr("fill", accent.value)} filter="url(#fbg-glow)" data-v-dc83cd69></circle>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`<ellipse cx="0" cy="31" rx="30" ry="7" fill="#000" opacity="0.32" filter="url(#fbg-soft)" data-v-dc83cd69></ellipse><g class="${ssrRenderClass({ "fbg-ball-arc": kicked.value })}" style="${ssrRenderStyle({ animationDuration: ballDur.value + "s" })}" data-v-dc83cd69><g class="${ssrRenderClass({ "fbg-ball-impact": netHit.value || saved.value })}" data-v-dc83cd69><g class="${ssrRenderClass({ spin: kicked.value })}"${ssrRenderAttr("filter", isNeon.value ? "url(#fbg-neonC)" : void 0)} data-v-dc83cd69>`);
-          if (ballImage.value) {
-            _push2(`<image${ssrRenderAttr("href", ballImage.value)} x="-32" y="-32" width="64" height="64" data-v-dc83cd69></image>`);
-          } else {
-            _push2(`<g data-v-dc83cd69><circle r="32" fill="url(#fbg-ball)" stroke="#aab0bd" stroke-width="1.3" data-v-dc83cd69></circle><path d="M0 -13 L12.4 -4 L7.6 10.5 L-7.6 10.5 L-12.4 -4 Z" fill="#1b1e25" data-v-dc83cd69></path><g fill="#1b1e25" data-v-dc83cd69><path d="M0 -31 L8 -24.5 L4 -16 L-4 -16 L-8 -24.5 Z" data-v-dc83cd69></path><path d="M29.5 -9.6 L24.5 -2.5 L16 -4 L19 -12 L27 -15 Z" data-v-dc83cd69></path><path d="M18.2 25.1 L9.5 22.5 L8 13.5 L17.5 14.5 L22 21.5 Z" data-v-dc83cd69></path><path d="M-18.2 25.1 L-9.5 22.5 L-8 13.5 L-17.5 14.5 L-22 21.5 Z" data-v-dc83cd69></path><path d="M-29.5 -9.6 L-24.5 -2.5 L-16 -4 L-19 -12 L-27 -15 Z" data-v-dc83cd69></path></g><path d="M0 -13 L0 -24.5 M12.4 -4 L24 -9.6 M7.6 10.5 L14.5 21 M-7.6 10.5 L-14.5 21 M-12.4 -4 L-24 -9.6" stroke="#1b1e25" stroke-width="1.8" fill="none" opacity="0.85" data-v-dc83cd69></path><circle r="32" fill="url(#fbg-ball-edge)" data-v-dc83cd69></circle><ellipse cx="-11" cy="-13" rx="10" ry="6.5" fill="#fff" opacity="0.6" data-v-dc83cd69></ellipse></g>`);
-          }
-          _push2(`</g></g></g></g>`);
-          if (particles.value.length) {
-            _push2(`<g${ssrRenderAttr("transform", `translate(${aim.value.x}, ${aim.value.y})`)} data-v-dc83cd69><!--[-->`);
-            ssrRenderList(particles.value, (p2, i2) => {
-              _push2(`<rect class="fbg-particle" x="-3" y="-3" width="6" height="9"${ssrRenderAttr("fill", p2.col)} style="${ssrRenderStyle({ "--dx": p2.dx + "px", "--dy": p2.dy + "px", "--rot": p2.rot + "deg", animationDelay: p2.delay + "s" })}" data-v-dc83cd69></rect>`);
-            });
-            _push2(`<!--]--></g>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (phase.value === "aim") {
-            _push2(`<rect x="-3000" y="-3000" width="7000" height="7000" fill="transparent" style="${ssrRenderStyle({ "cursor": "crosshair" })}" data-v-dc83cd69></rect>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`</svg><div class="fbg-hud" data-v-dc83cd69>PENALTY ${ssrInterpolate(Math.min(index.value + 1, total.value))}/${ssrInterpolate(total.value)} <span style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>·</span> ⚽ ${ssrInterpolate(scored.value)}</div><div class="${ssrRenderClass([{ on: flash.value }, "fbg-flash"])}" data-v-dc83cd69></div></div>`);
-          if (trackerView.value.length) {
-            _push2(`<div class="fbg-tracker" data-v-dc83cd69><div${ssrRenderAttrs({
-              name: "fbg-track",
-              class: "fbg-tracker-list"
-            })} data-v-dc83cd69>`);
-            ssrRenderList(trackerView.value, (item) => {
-              _push2(`<div class="fbg-track" data-v-dc83cd69><span class="${ssrRenderClass([item.p.win ? "won" : "miss", "fbg-track-dot"])}" data-v-dc83cd69>`);
-              if (!item.p.win) {
-                _push2(`<!--[-->✗<!--]-->`);
-              } else {
-                _push2(`<!---->`);
-              }
-              _push2(`</span>`);
-              if (item.p.win) {
-                _push2(`<span class="fbg-track-box" style="${ssrRenderStyle({ borderColor: accent.value, color: accent.value })}" data-v-dc83cd69>${ssrInterpolate(trackLabel(item.p))}</span>`);
-              } else {
-                _push2(`<!---->`);
-              }
-              _push2(`</div>`);
-            });
-            _push2(`</div></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (phase.value === "power") {
-            _push2(`<div class="fbg-vmeter" data-v-dc83cd69><span class="fbg-vmeter-label" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>POWER</span><div class="fbg-vmeter-bar" data-v-dc83cd69><div class="fbg-vmeter-grad" data-v-dc83cd69></div><div class="fbg-vmeter-marker" style="${ssrRenderStyle({ bottom: power.value + "%" })}" data-v-dc83cd69></div></div></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`<div class="fbg-lower" data-v-dc83cd69>`);
-          if (phase.value === "ready") {
-            _push2(`<button class="fbg-cta" style="${ssrRenderStyle({ background: kitColor.value, color: textColor.value })}" data-v-dc83cd69>Step up ⚽</button>`);
-          } else if (phase.value === "aim") {
-            _push2(`<p class="fbg-hint" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>Tap where you want to place it 🎯</p>`);
-          } else if (phase.value === "power") {
-            _push2(`<button class="fbg-cta fbg-shoot" style="${ssrRenderStyle({ background: accent.value, color: "#04231b" })}" data-v-dc83cd69>SHOOT! 💥</button>`);
-          } else if (phase.value === "shooting") {
-            _push2(`<button class="fbg-cta" disabled style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>Striking…</button>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (phase.value === "ready" && total.value > 1) {
-            _push2(`<button class="fbg-skip" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>Skip remaining</button>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`</div>`);
-          if (hostEnabled.value && !showIntro.value) {
-            _push2(`<div class="fbg-host" data-v-dc83cd69>`);
-            if (hostLine.value) {
-              _push2(`<div class="fbg-host-bubble" data-v-dc83cd69>${ssrInterpolate(hostLine.value)}</div>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            if (hostImage.value && hostImageOk.value) {
-              _push2(`<img${ssrRenderAttr("src", hostImage.value)} class="fbg-host-avatar fbg-host-img" alt="" data-v-dc83cd69>`);
-            } else {
-              _push2(`<svg class="fbg-host-avatar" viewBox="0 0 64 70" aria-hidden="true" data-v-dc83cd69><path d="M16 32 a16 16 0 0 1 32 0" fill="none" stroke="#1f2937" stroke-width="4" data-v-dc83cd69></path><circle cx="32" cy="36" r="15" fill="#e9b489" data-v-dc83cd69></circle><path d="M18 32 q14 -16 28 0 q-14 -7 -28 0z" fill="#3a2a18" data-v-dc83cd69></path><rect x="13" y="31" width="7" height="12" rx="3" fill="#111827" data-v-dc83cd69></rect><rect x="44" y="31" width="7" height="12" rx="3" fill="#111827" data-v-dc83cd69></rect><circle cx="27" cy="36" r="1.8" fill="#1b1b1b" data-v-dc83cd69></circle><circle cx="37" cy="36" r="1.8" fill="#1b1b1b" data-v-dc83cd69></circle><path d="M27 42 q5 4 10 0" stroke="#1b1b1b" stroke-width="2" fill="none" stroke-linecap="round" data-v-dc83cd69></path><path d="M17 41 q-6 9 2 18" stroke="#111827" stroke-width="3" fill="none" data-v-dc83cd69></path><circle cx="21" cy="59" r="5"${ssrRenderAttr("fill", accent.value)} stroke="#0b1220" stroke-width="2" data-v-dc83cd69></circle></svg>`);
-            }
-            _push2(`</div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (showIntro.value) {
-            _push2(`<div class="fbg-overlay fbg-intro" data-v-dc83cd69><div class="fbg-intro-inner" data-v-dc83cd69>`);
-            if (introTitleImage.value) {
-              _push2(`<img${ssrRenderAttr("src", introTitleImage.value)} class="fbg-intro-logo" alt="" data-v-dc83cd69>`);
-            } else {
-              _push2(`<div class="fbg-intro-ball" data-v-dc83cd69>⚽</div>`);
-            }
-            _push2(`<h2 class="fbg-intro-title" style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>${ssrInterpolate(welcomeMsg.value)}</h2>`);
-            if (introSubtitle.value) {
-              _push2(`<p class="fbg-intro-sub" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>${ssrInterpolate(introSubtitle.value)}</p>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<button class="fbg-cta fbg-intro-cta" style="${ssrRenderStyle({ background: kitColor.value, color: textColor.value })}" data-v-dc83cd69>${ssrInterpolate(introButtonText.value)}</button></div></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (wow.value) {
-            _push2(`<div class="fbg-wow" data-v-dc83cd69></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (wow.value) {
-            _push2(`<div class="fbg-goalflashes" data-v-dc83cd69><!--[-->`);
-            ssrRenderList(unref(goalFlashes), (gf, i2) => {
-              _push2(`<span class="fbg-goalflash" style="${ssrRenderStyle({ left: gf.x + "%", top: gf.y + "%", width: gf.size + "px", height: gf.size + "px", animationDelay: gf.delay + "s", animationDuration: gf.dur + "s" })}" data-v-dc83cd69></span>`);
-            });
-            _push2(`<!--]--></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (wow.value && !showPrize.value) {
-            _push2(`<div class="fbg-goalshout" style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>GOAAL!!</div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (showPrize.value && current.value) {
-            _push2(`<div class="fbg-overlay" data-v-dc83cd69><div class="fbg-card" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-dc83cd69><div class="fbg-goal" style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>GOAL! ⚽��</div><div class="fbg-visual" data-v-dc83cd69>`);
-            if (current.value.image) {
-              _push2(`<img${ssrRenderAttr("src", current.value.image)} alt="prize" data-v-dc83cd69>`);
-            } else if (introTitleImage.value) {
-              _push2(`<img${ssrRenderAttr("src", introTitleImage.value)} alt="logo" data-v-dc83cd69>`);
-            } else {
-              _push2(`<span data-v-dc83cd69>🏆</span>`);
-            }
-            _push2(`</div><div class="fbg-won" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>${ssrInterpolate(winText.value)}</div><div class="fbg-name" style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>${ssrInterpolate(current.value.prize)}</div>`);
-            if (currentValueLabel.value) {
-              _push2(`<div class="fbg-value" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>${ssrInterpolate(currentValueLabel.value)}</div>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<button class="fbg-cta" style="${ssrRenderStyle({ background: kitColor.value, color: textColor.value })}" data-v-dc83cd69>${ssrInterpolate(index.value < total.value - 1 ? "Next penalty →" : "Collect 🎉")}</button></div></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (phase.value === "done") {
-            _push2(`<div class="fbg-overlay" data-v-dc83cd69><div class="fbg-card" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-dc83cd69><div class="fbg-goal" style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>Full time! ⚽</div><div class="fbg-won" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>You scored ${ssrInterpolate(scored.value)} of ${ssrInterpolate(total.value)}</div>`);
-            if (totalWon.value) {
-              _push2(`<div class="fbg-fulltotal" style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>Total won: £${ssrInterpolate(totalWon.value % 1 === 0 ? totalWon.value : totalWon.value.toFixed(2))}</div>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<div class="fbg-scorecard" data-v-dc83cd69><!--[-->`);
-            ssrRenderList(pens.value, (p2, i2) => {
-              _push2(`<span class="${ssrRenderClass([p2.win ? "goal" : "miss", "fbg-scoredot"])}" style="${ssrRenderStyle(p2.win ? { background: accent.value, color: "#04231b", borderColor: accent.value } : {})}" data-v-dc83cd69>${ssrInterpolate(p2.win ? "⚽" : "✗")}</span>`);
-            });
-            _push2(`<!--]--></div><ul class="fbg-history" data-v-dc83cd69><!--[-->`);
-            ssrRenderList(pens.value, (p2, i2) => {
-              _push2(`<li class="${ssrRenderClass(p2.win ? "win" : "miss")}" data-v-dc83cd69><span class="fbg-hist-n" data-v-dc83cd69>${ssrInterpolate(i2 + 1)}</span>`);
-              if (p2.win) {
-                _push2(`<span class="fbg-hist-res" data-v-dc83cd69><b style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>GOAL</b> · ${ssrInterpolate(p2.prize)}`);
-                if (p2.isBundle && p2.value && !/ticket/i.test(p2.prize)) {
-                  _push2(`<span data-v-dc83cd69> (${ssrInterpolate(Math.floor(p2.value))} Free Ticket${ssrInterpolate(p2.value == 1 ? "" : "s")})</span>`);
-                } else if (p2.value && !p2.isBundle) {
-                  _push2(`<span data-v-dc83cd69> · £${ssrInterpolate(p2.value)}</span>`);
-                } else {
-                  _push2(`<!---->`);
-                }
-                _push2(`</span>`);
-              } else {
-                _push2(`<span class="fbg-hist-res fbg-hist-miss" data-v-dc83cd69>Saved — no win</span>`);
-              }
-              _push2(`</li>`);
-            });
-            _push2(`<!--]--></ul><button class="fbg-cta" style="${ssrRenderStyle({ background: kitColor.value, color: textColor.value })}" data-v-dc83cd69>Close</button></div></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`</div></div></div>`);
-          if (__props.demoMode) {
-            _push2(`<div class="fbg-demo-info" data-v-dc83cd69>${ssrInterpolate(actualPreviewMode.value === "mobile" ? "📱 Mobile Preview (420×650)" : "💻 Desktop Preview (700×650)")}</div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`</div>`);
-        } else {
-          _push2(`<!---->`);
-        }
-      }, "body", __props.demoMode, _parent);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "space-y-8" }, _attrs))}><!--[-->`);
+      ssrRenderList(groups.value, (group) => {
+        _push(`<div class="space-y-4"><h3 class="text-white font-bold text-lg border-b border-white/10 pb-2">${ssrInterpolate(group.name)}</h3><div class="${ssrRenderClass([group.fields.every((f2) => f2.type === "color") ? "sm:grid-cols-2" : "", "grid grid-cols-1 gap-4"])}"><!--[-->`);
+        ssrRenderList(group.fields, (f2) => {
+          ssrRenderVNode(_push, createVNode(resolveDynamicComponent(componentFor[f2.type] || _sfc_main$t), {
+            key: f2.key,
+            field: f2,
+            modelValue: __props.modelValue[f2.key],
+            "onUpdate:modelValue": (v2) => update(f2.key, v2)
+          }, null), _parent);
+        });
+        _push(`<!--]--></div></div>`);
+      });
+      _push(`<!--]--></div>`);
     };
   }
 });
 const _sfc_setup$n = _sfc_main$n.setup;
 _sfc_main$n.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/FootballModal.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Studio/SchemaForm.vue");
   return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
 };
-const FootballModal = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-dc83cd69"]]);
-const SURFACE_Y = 580;
-const SEG = 240;
-const _sfc_main$m = /* @__PURE__ */ defineComponent({
-  __name: "FishingModal",
+const CALENDLY$1 = "https://calendly.com/contact-compengine/30min";
+const _sfc_main$m = {
+  __name: "UltraStudioModal",
   __ssrInlineRender: true,
-  props: {
-    modelValue: { type: Boolean, default: false },
-    demoMode: { type: Boolean, default: false },
-    previewMode: { default: "desktop" },
-    assets: { default: () => ({}) },
-    tickets: { default: () => [] },
-    instant_win_categories: { default: () => [] }
-  },
-  emits: ["update:modelValue", "wins-collected"],
-  setup(__props, { emit: __emit }) {
-    const props = __props;
-    const a2 = computed(() => props.assets || {});
-    const demoPreviewMode = ref("mobile");
-    const actualPreviewMode = computed(() => props.demoMode ? demoPreviewMode.value : props.previewMode || "desktop");
-    const frameClass = computed(() => props.demoMode ? actualPreviewMode.value === "mobile" ? "is-mobile" : "is-desktop" : "");
-    const CORE = { x: 32, y: 10, w: 936, h: 1404 };
-    const CORE_CX = CORE.x + CORE.w / 2;
-    const stageEl = ref(null);
-    const stageAspect = ref(CORE.w / CORE.h);
-    let stageRO = null;
-    watch(stageEl, (el) => {
-      stageRO == null ? void 0 : stageRO.disconnect();
-      if (el && typeof ResizeObserver !== "undefined") {
-        stageRO = new ResizeObserver((entries) => {
-          var _a;
-          const r2 = (_a = entries[0]) == null ? void 0 : _a.contentRect;
-          if (r2 && r2.width > 0 && r2.height > 0) stageAspect.value = r2.width / r2.height;
-        });
-        stageRO.observe(el);
-      }
-    }, { flush: "post" });
-    const view = computed(() => {
-      const ar = stageAspect.value;
-      const coreAspect = CORE.w / CORE.h;
-      if (ar >= coreAspect) {
-        const h22 = CORE.h, w22 = h22 * ar;
-        return { x: CORE_CX - w22 / 2, y: CORE.y, w: w22, h: h22 };
-      }
-      const w2 = CORE.w, h2 = w2 / ar;
-      return { x: CORE.x, y: CORE.y, w: w2, h: h2 };
-    });
-    const sceneViewBox = computed(() => `${view.value.x} ${view.value.y} ${view.value.w} ${view.value.h}`);
-    const bg = computed(() => {
-      const v2 = view.value;
-      return { x: v2.x - 200, w: v2.w + 400, top: v2.y - 100, bottom: v2.y + v2.h + 200, floor: v2.y + v2.h };
-    });
-    const titleText = computed(() => a2.value.titleText || "Cast to Win!");
-    const winText = computed(() => a2.value.winText || "Reeled in a winner! 🎣");
-    const loseText = computed(() => a2.value.loseText || "The one that got away…");
-    const accent = computed(() => a2.value.accentColor || "#ffd54f");
-    const primary = computed(() => a2.value.primaryColor || "#0277bd");
-    const textColor = computed(() => a2.value.textColor || "#ffffff");
-    const sunEnabled = computed(() => a2.value.sunEnabled !== false);
-    const sunImage = computed(() => a2.value.sunImage || "/games/fishing/sun-default.png?v=1");
-    const cloudsEnabled = computed(() => a2.value.cloudsEnabled !== false);
-    const showTopPrize = computed(() => a2.value.showTopPrize === true);
-    const boatImage = computed(() => a2.value.boatImage || "/games/fishing/boat-default.png?v=2");
-    const fishImage = computed(() => a2.value.fishImage || "/games/fishing/fish-default.png?v=1");
-    const fishImgs = computed(() => [a2.value.fish1, a2.value.fish2, a2.value.fish3].filter(Boolean));
-    const fishFaceSign = computed(() => a2.value.fishFaceLeft ? -1 : 1);
-    const fishermanSheet = computed(() => a2.value.fishermanSheet || "");
-    const spriteChroma = computed(() => a2.value.spriteChroma === true);
-    const fishermanFrames = computed(() => {
-      const n2 = Number(a2.value.fishermanFrames) || 0;
-      return n2 > 0 ? n2 : 1;
-    });
-    const boatOk = ref(true);
-    const introEnabled = computed(() => a2.value.introEnabled !== false);
-    const introTitleImage = computed(() => a2.value.introTitleImage || "");
-    const introSubtitle = computed(() => a2.value.introSubtitle || "Cast your line to reel in instant prizes");
-    const introButtonText = computed(() => a2.value.introButtonText || "Cast Off 🎣");
-    const introVoiceEnabled = computed(() => a2.value.introVoiceEnabled === true);
-    const gameName = computed(() => a2.value.name || "");
-    const welcomeMsg = computed(() => (a2.value.introWelcomeText || "Welcome to {name}").replace("{name}", gameName.value || "the catch"));
-    const showIntro = ref(false);
-    const THEMES = {
-      chill: { skyTop: "#7ecbff", skyBot: "#cdeeff", surfTop: "#3fb6e0", surfBot: "#1f8fc0", deepTop: "#1f8fc0", deepBot: "#063a63", sand: "#e6cf86", weed: "#1f8f5a", sun: "#fff2a8", glow: "#ffe55c", foam: "#f2fcff" },
-      sunset: { skyTop: "#3a2a66", skyBot: "#ffb27a", surfTop: "#e0795f", surfBot: "#9c4a6e", deepTop: "#7a3a6a", deepBot: "#241036", sand: "#caa05e", weed: "#7a5a2a", sun: "#fff1c2", glow: "#ff9d5c", foam: "#ffe9d6" },
-      night: { skyTop: "#050a1f", skyBot: "#122a4a", surfTop: "#14405e", surfBot: "#0a2a40", deepTop: "#0a2a40", deepBot: "#02101c", sand: "#2a3d4a", weed: "#14564a", sun: "#eaf4ff", glow: "#9fd0ff", foam: "#bcd8ec" },
-      stormy: { skyTop: "#2e3742", skyBot: "#6b7b85", surfTop: "#3c5560", surfBot: "#24383f", deepTop: "#24383f", deepBot: "#0c181c", sand: "#5a5f52", weed: "#3e5a44", sun: "#b9c6cd", glow: "#d2dbe0", foam: "#dbe4e8" }
-    };
-    const pal = computed(() => THEMES[String(a2.value.theme || "stormy")] || THEMES.stormy);
-    const underwaterImage = computed(() => a2.value.underwaterImage || "/games/fishing/underwater-default.png?v=1");
-    const FISH_PALETTE = ["#ffb74d", "#ff8a65", "#4fc3f7", "#ba68c8", "#aed581", "#fff176"];
-    const bubbles = Array.from({ length: 24 }, (_2, i2) => ({
-      id: i2,
-      x: 40 + i2 * 137 % 920,
-      r: 3 + i2 * 7 % 5 * 1.6,
-      dur: 5 + i2 * 3 % 6,
-      delay: -(i2 * 1.7 % 7)
-    }));
-    const weeds = Array.from({ length: 9 }, (_2, i2) => ({ id: i2, x: 70 + i2 * 108 + i2 * 13 % 30, h: 90 + i2 * 29 % 90, delay: -(i2 * 0.6 % 3) }));
-    const casts = ref([]);
-    const index = ref(0);
-    const phase = ref("ready");
-    const showPrize = ref(false);
-    const isWin = (t3) => !!((t3 == null ? void 0 : t3.instant_win) && t3.instant_win.prize && t3.instant_win.prize !== "NO WIN");
-    function categoryFor(iw) {
-      const cats = props.instant_win_categories || [];
-      if (!iw) return null;
-      return (iw.category_id != null ? cats.find((c2) => c2.id === iw.category_id) : null) || cats.find((c2) => c2.name && (c2.name === iw.prize || c2.name === iw.name)) || null;
-    }
-    function buildCasts() {
-      casts.value = (props.tickets || []).map((t3) => {
-        const iw = t3 == null ? void 0 : t3.instant_win;
-        const won = isWin(t3);
-        const cat = won ? categoryFor(iw) : null;
-        return {
-          id: t3.id ?? t3.number,
-          number: String(t3.number ?? t3.id ?? ""),
-          win: won,
-          prize: won ? String(iw.prize) : "",
-          value: Number((iw == null ? void 0 : iw.value) || (cat == null ? void 0 : cat.value) || 0),
-          image: (iw == null ? void 0 : iw.image_path) || (cat == null ? void 0 : cat.image_path) || "",
-          isBundle: won && ((iw == null ? void 0 : iw.prize_type) ?? (cat == null ? void 0 : cat.prize_type)) === "ticket_bundle"
-        };
-      });
-      index.value = 0;
-      caughtIds.value = [];
-      resetCast();
-      rebuildSwimmers();
-    }
-    const mode = ref("all");
-    const speed = ref(1);
-    const playList = computed(() => mode.value === "winners" ? casts.value.filter((c2) => c2.win) : casts.value);
-    const current = computed(() => playList.value[index.value] ?? null);
-    const total = computed(() => playList.value.length);
-    const caught = computed(() => playList.value.slice(0, phase.value === "done" ? total.value : index.value + (phase.value === "result" ? 1 : 0)).filter((c2) => c2.win).length);
-    const wins = computed(() => casts.value.filter((c2) => c2.win));
-    const caughtIds = ref([]);
-    const catKey = (w2) => String(w2.image || w2.prize || w2.id);
-    const decoFish = ref([]);
-    function makeSwimmer(id, image, i2, chance = false, value = 0) {
-      const baseY = 700 + Math.random() * 600;
-      return {
-        id,
-        image,
-        chance,
-        value,
-        color: FISH_PALETTE[i2 % FISH_PALETTE.length],
-        x: 80 + Math.random() * 840,
-        baseY,
-        y: baseY,
-        bobAmp: 30 + Math.random() * 80,
-        bobSpeed: 0.3 + Math.random() * 0.5,
-        phase: Math.random() * Math.PI * 2,
-        size: 0.9 + Math.random() * 0.5,
-        dir: Math.random() < 0.5 ? 1 : -1,
-        speed: 48 + Math.random() * 70,
-        hooked: false,
-        caught: false,
-        haloR: 70,
-        haloDelay: -(i2 * 0.5),
-        wDur: 0.5 + i2 % 4 * 0.13,
-        wDelay: -(i2 * 0.17)
-      };
-    }
-    function rebuildSwimmers() {
-      const seen = /* @__PURE__ */ new Set();
-      const distinct = wins.value.filter((w2) => {
-        const k = catKey(w2);
-        if (seen.has(k)) return false;
-        seen.add(k);
-        return true;
-      }).filter((w2) => wins.value.some((x) => catKey(x) === catKey(w2) && !caughtIds.value.includes(x.id)));
-      const list = distinct.map((w2, i2) => makeSwimmer(catKey(w2), w2.image || introTitleImage.value || fishImage.value, i2, false, Number(w2.value) || 0));
-      const winKeys = new Set(list.map((s2) => s2.id));
-      const chanceSeen = /* @__PURE__ */ new Set();
-      let ci = list.length;
-      for (const c2 of props.instant_win_categories || []) {
-        if (!c2 || c2.available !== void 0 && c2.available <= 0) continue;
-        const key = String(c2.image_path || c2.name || c2.id);
-        if (winKeys.has(key) || chanceSeen.has(key)) continue;
-        chanceSeen.add(key);
-        list.push(makeSwimmer("chance:" + key, c2.image_path || introTitleImage.value || fishImage.value, ci++, true, Number(c2.value) || 0));
-        if (list.length >= distinct.length + 8) break;
-      }
-      if (!list.length) {
-        const imgs = fishImgs.value;
-        for (let i2 = 0; i2 < 5; i2++) list.push(makeSwimmer("amb:" + i2, imgs.length ? imgs[i2 % imgs.length] : "", i2, true));
-      }
-      const topVal = Math.max(1, ...list.map((f2) => Number(f2.value) || 0));
-      list.forEach((f2) => {
-        f2.haloR = 60 + Math.pow(Math.min(1, (Number(f2.value) || 0) / topVal), 0.55) * 95;
-      });
-      decoFish.value = list;
-    }
-    let swimRAF = 0;
-    let swimLast = 0;
-    function stepSwim(t3) {
-      const dt = swimLast ? Math.min(0.05, (t3 - swimLast) / 1e3) : 0;
-      swimLast = t3;
-      const v2 = view.value, left = v2.x - 140, right = v2.x + v2.w + 140;
-      for (const sw of decoFish.value) {
-        if (sw.hooked) continue;
-        sw.x += sw.speed * sw.dir * dt;
-        if (sw.x > right) sw.x = left;
-        else if (sw.x < left) sw.x = right;
-        sw.y = sw.baseY + Math.sin(t3 / 1e3 * sw.bobSpeed + sw.phase) * sw.bobAmp;
-      }
-      swimRAF = requestAnimationFrame(stepSwim);
-    }
-    function startSwim() {
-      stopSwim();
-      swimLast = 0;
-      swimRAF = requestAnimationFrame(stepSwim);
-    }
-    function stopSwim() {
-      if (swimRAF) {
-        cancelAnimationFrame(swimRAF);
-        swimRAF = 0;
-      }
-    }
-    const topPrize = computed(() => {
-      const list = (props.instant_win_categories || []).filter((c2) => c2 && Number(c2.value) > 0 && (c2.available === void 0 || c2.available > 0));
-      if (!list.length) return null;
-      const nonBundle = list.filter((c2) => c2.prize_type !== "ticket_bundle");
-      const pool = nonBundle.length ? nonBundle : list;
-      return pool.reduce((best, c2) => Number(c2.value) > Number(best.value) ? c2 : best);
-    });
-    const topPrizeLabel = computed(() => {
-      const p2 = topPrize.value;
-      if (!p2) return "";
-      const name = String(p2.name || "").trim();
-      const v2 = Number(p2.value);
-      if (p2.prize_type === "ticket_bundle") return !v2 || /ticket/i.test(name) ? name : `${name ? name + " · " : ""}${Math.floor(v2)} Free Ticket${v2 == 1 ? "" : "s"}`;
-      const money = v2 ? `£${v2 % 1 === 0 ? v2 : v2.toFixed(2)}` : "";
-      return !money || /£\s*\d/.test(name) ? name : `${name} · ${money}`;
-    });
-    const currentValueLabel = computed(() => {
-      const p2 = current.value;
-      const v2 = Number((p2 == null ? void 0 : p2.value) || 0);
-      if (!v2) return "";
-      if (p2 == null ? void 0 : p2.isBundle) return /ticket/i.test((p2 == null ? void 0 : p2.prize) || "") ? "" : `${Math.floor(v2)} Free Ticket${v2 == 1 ? "" : "s"}`;
-      if (/£\s*\d/.test((p2 == null ? void 0 : p2.prize) || "")) return "";
-      return `£${v2 % 1 === 0 ? v2 : v2.toFixed(2)}`;
-    });
-    const rodTipLocal = computed(() => ({ x: 745, y: -64 }));
-    const HOOK_REST = { x: 745, y: 400 };
-    const HOOK_DEPTH = { x: 690, y: 1e3 };
-    const boatWaterline = computed(() => Number(a2.value.boatWaterline) || 0);
-    const boatBaseY = computed(() => SURFACE_Y - 185 + boatWaterline.value);
-    const waveSpan = computed(() => {
-      const v2 = view.value;
-      return { x0: Math.floor((v2.x - 480) / 480) * 480, x1: v2.x + v2.w + 480 };
-    });
-    function tiledWave(y2, a1, a22) {
-      const { x0, x1 } = waveSpan.value;
-      let d2 = `M${x0} ${y2}`;
-      for (let x = x0, i2 = 0; x < x1; x += SEG, i2++) {
-        const amp = i2 % 2 ? a22 : a1;
-        d2 += ` c 53 ${amp} 187 ${amp} ${SEG} 0`;
-      }
-      return d2;
-    }
-    const waveBackPath = computed(() => tiledWave(SURFACE_Y - 4, -50, -76) + ` V${SURFACE_Y + 210} H${waveSpan.value.x0} Z`);
-    const waveFrontFill = computed(() => tiledWave(SURFACE_Y + 8, -68, -42) + ` V${SURFACE_Y + 210} H${waveSpan.value.x0} Z`);
-    const waveFrontLine = computed(() => tiledWave(SURFACE_Y + 8, -68, -42));
-    function seabed(top) {
-      const v2 = view.value, x0 = v2.x - 200, x1 = v2.x + v2.w + 200, floor = bg.value.floor;
-      let d2 = `M${x0} ${top} q 250 -64 500 0`;
-      for (let x = x0 + 500; x < x1; x += 500) d2 += ` t 500 0`;
-      return d2 + ` V${floor} H${x0} Z`;
-    }
-    const sandPath = computed(() => seabed(bg.value.floor - 118));
-    const ridgePath = computed(() => seabed(bg.value.floor - 165));
-    const scene = reactive({ rodAngle: 0, hookX: HOOK_REST.x, hookY: HOOK_REST.y, fishO: 0, fishX: HOOK_DEPTH.x, fishY: HOOK_DEPTH.y });
-    const boat = reactive({ rot: 0, y: 0, x: 0, sy: 1 });
-    const sunSpin = reactive({ a: 0 });
-    let ambient = null;
-    let castTl = null;
-    function startAmbient() {
-      stopAmbient();
-      ambient = gsapWithCSS.timeline();
-      gsapWithCSS.to(sunSpin, { a: 360, duration: 70, repeat: -1, ease: "none" });
-      gsapWithCSS.to(boat, { rot: 2.6, duration: 2.9, repeat: -1, yoyo: true, ease: "sine.inOut" });
-      gsapWithCSS.to(boat, { y: 12, duration: 3.5, repeat: -1, yoyo: true, ease: "sine.inOut" });
-      gsapWithCSS.fromTo(boat, { x: -75 }, { x: 75, duration: 8, repeat: -1, yoyo: true, ease: "sine.inOut" });
-      gsapWithCSS.to(boat, { sy: 1.04, duration: 3.4, repeat: -1, yoyo: true, ease: "sine.inOut" });
-    }
-    function stopAmbient() {
-      gsapWithCSS.killTweensOf([sunSpin, boat]);
-      ambient == null ? void 0 : ambient.kill();
-      ambient = null;
-    }
-    function resetCast() {
-      castTl == null ? void 0 : castTl.kill();
-      castTl = null;
-      phase.value = "ready";
-      showPrize.value = false;
-      Object.assign(scene, { rodAngle: 0, hookX: HOOK_REST.x, hookY: HOOK_REST.y, fishO: 0, fishX: HOOK_DEPTH.x, fishY: HOOK_DEPTH.y });
-    }
-    const rodTip = computed(() => {
-      const ra = (scene.rodAngle || 0) * Math.PI / 180, rc = Math.cos(ra), rs = Math.sin(ra);
-      const RT = rodTipLocal.value;
-      let lx = (RT.x - 527) * rc - (RT.y - 24) * rs + 527;
-      let ly = (RT.x - 527) * rs + (RT.y - 24) * rc + 24;
-      lx -= 500;
-      ly = (ly + boat.y) * boat.sy;
-      const r2 = boat.rot * Math.PI / 180, c2 = Math.cos(r2), s2 = Math.sin(r2);
-      return { x: lx * c2 - ly * s2 + 500 + boat.x, y: lx * s2 + ly * c2 + boatBaseY.value };
-    });
-    const linePath = computed(() => {
-      const rt = rodTip.value;
-      return `M ${rt.x} ${rt.y} Q ${(rt.x + scene.hookX) / 2} ${(rt.y + scene.hookY) / 2 + 18}, ${scene.hookX} ${scene.hookY}`;
-    });
-    const prompt = computed(() => {
-      var _a;
-      return phase.value === "ready" ? titleText.value : phase.value === "casting" ? "Casting…" : phase.value === "waiting" ? "Wait for a bite…" : phase.value === "reeling" ? "Reel it in!" : phase.value === "result" ? ((_a = current.value) == null ? void 0 : _a.win) ? winText.value : loseText.value : "";
-    });
-    let audio = null;
-    function play(src) {
-      if (!src || props.demoMode) return;
-      try {
-        audio = new Audio(src);
-        audio.volume = 0.85;
-        void audio.play();
-      } catch {
-      }
-    }
-    function playWelcome() {
-      if (a2.value.welcomeSound) {
-        play(a2.value.welcomeSound);
-        return;
-      }
-      if (!introVoiceEnabled.value || typeof window === "undefined" || !window.speechSynthesis) return;
-      try {
-        const u2 = new SpeechSynthesisUtterance(welcomeMsg.value);
-        u2.rate = 1;
-        u2.pitch = 1.05;
-        window.speechSynthesis.cancel();
-        window.speechSynthesis.speak(u2);
-      } catch {
-      }
-    }
-    function cancelSpeech() {
-      var _a;
-      try {
-        (_a = window.speechSynthesis) == null ? void 0 : _a.cancel();
-      } catch {
-      }
-    }
-    const introCard = ref(null);
-    watch(() => props.tickets, buildCasts, { immediate: true, deep: true });
-    watch(() => props.modelValue, (open) => {
-      if (open) {
-        mode.value = "all";
-        buildCasts();
-        startAmbient();
-        startSwim();
-        showIntro.value = introEnabled.value;
-        if (showIntro.value && !props.demoMode) playWelcome();
-      } else {
-        stopAmbient();
-        stopSwim();
-        castTl == null ? void 0 : castTl.kill();
-        cancelSpeech();
-      }
-    }, { immediate: true });
-    watch(showIntro, (on) => {
-      if (!on) return;
-      nextTick(() => {
-        const el = introCard.value;
-        if (!el) return;
-        gsapWithCSS.killTweensOf(el);
-        const tl = gsapWithCSS.timeline();
-        tl.from(el, { scale: 0.3, opacity: 0, duration: 0.45, ease: "back.out(2.2)" }).to(el, { scale: 1.04, duration: 0.1, yoyo: true, repeat: 1, ease: "sine.inOut" }).from(el.querySelectorAll(".fsh-intro-logo, .fsh-intro-welcome, .fsh-set-label"), { y: 16, opacity: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" }, "-=0.3").from(el.querySelectorAll(".fsh-chip"), { y: 22, scale: 0.7, opacity: 0, duration: 0.32, stagger: 0.05, ease: "back.out(2)" }, "-=0.18").from(el.querySelector(".fsh-intro-start"), { y: 20, opacity: 0, duration: 0.3, ease: "back.out(2)" }, "-=0.06");
-      });
-    });
-    watch(() => a2.value.boatImage, () => {
-      boatOk.value = true;
-    });
-    watch(introEnabled, (on) => {
-      if (props.demoMode) showIntro.value = on;
-    });
-    onBeforeUnmount(() => {
-      stopAmbient();
-      stopSwim();
-      castTl == null ? void 0 : castTl.kill();
-      cancelSpeech();
-      stageRO == null ? void 0 : stageRO.disconnect();
-    });
-    return (_ctx, _push, _parent, _attrs) => {
-      ssrRenderTeleport(_push, (_push2) => {
-        if (__props.modelValue || __props.demoMode) {
-          _push2(`<div class="${ssrRenderClass([frameClass.value, "fsh-root"])}" data-v-fe24a048><div class="fsh-frame" data-v-fe24a048>`);
-          if (!__props.demoMode) {
-            _push2(`<button class="fsh-close" aria-label="Close" data-v-fe24a048>✕</button>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`<div class="fsh-hud" data-v-fe24a048><div class="fsh-hud-left" data-v-fe24a048>CAST ${ssrInterpolate(Math.min(index.value + 1, total.value))}/${ssrInterpolate(total.value)} · 🎣 ${ssrInterpolate(caught.value)}</div><div class="fsh-hud-title" style="${ssrRenderStyle({ color: textColor.value })}" data-v-fe24a048>${ssrInterpolate(gameName.value || "Fishing")}</div></div>`);
-          if (showTopPrize.value && topPrizeLabel.value) {
-            _push2(`<div class="fsh-topprize" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-fe24a048><span class="fsh-topprize-pill" style="${ssrRenderStyle({ background: accent.value })}" data-v-fe24a048>£</span><span class="fsh-topprize-val" data-v-fe24a048><b style="${ssrRenderStyle({ color: accent.value })}" data-v-fe24a048>TOP PRIZE</b> ${ssrInterpolate(topPrizeLabel.value)}</span></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`<div class="fsh-stage" data-v-fe24a048><svg class="fsh-svg"${ssrRenderAttr("viewBox", sceneViewBox.value)} preserveAspectRatio="xMidYMid slice" data-v-fe24a048><defs data-v-fe24a048><linearGradient id="fsh-sky" x1="0" y1="0" x2="0" y2="1" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.skyTop)} data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.skyBot)} data-v-fe24a048></stop></linearGradient><linearGradient id="fsh-deep" x1="0" y1="0" x2="0" y2="1" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.surfTop)} data-v-fe24a048></stop><stop offset="0.25"${ssrRenderAttr("stop-color", pal.value.deepTop)} data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.deepBot)} data-v-fe24a048></stop></linearGradient><radialGradient id="fsh-sun" cx="0.5" cy="0.5" r="0.5" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.sun)} data-v-fe24a048></stop><stop offset="0.55"${ssrRenderAttr("stop-color", pal.value.glow)} data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.glow)} stop-opacity="0" data-v-fe24a048></stop></radialGradient><linearGradient id="fsh-ray" x1="0" y1="0" x2="0" y2="1" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.glow)} stop-opacity="0.28" data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.glow)} stop-opacity="0" data-v-fe24a048></stop></linearGradient><filter id="fsh-glow" x="-60%" y="-60%" width="220%" height="220%" data-v-fe24a048><feDropShadow dx="0" dy="0" stdDeviation="7"${ssrRenderAttr("flood-color", pal.value.glow)} flood-opacity="0.9" data-v-fe24a048></feDropShadow></filter><filter id="fsh-ripple" x="-8%" y="-8%" width="116%" height="116%" data-v-fe24a048><feTurbulence type="fractalNoise" baseFrequency="0.01 0.018" numOctaves="2" seed="5" result="n" data-v-fe24a048><animate attributeName="baseFrequency" dur="13s" values="0.01 0.018;0.017 0.032;0.01 0.018" repeatCount="indefinite" data-v-fe24a048></animate></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="36" xChannelSelector="R" yChannelSelector="G" result="d" data-v-fe24a048></feDisplacementMap><feGaussianBlur in="d" stdDeviation="1.2" data-v-fe24a048></feGaussianBlur></filter><filter id="fsh-ripple-fish" x="-60%" y="-60%" width="220%" height="220%" data-v-fe24a048><feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="2" seed="9" result="n" data-v-fe24a048><animate attributeName="baseFrequency" dur="8s" values="0.02 0.03;0.03 0.044;0.02 0.03" repeatCount="indefinite" data-v-fe24a048></animate></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="15" xChannelSelector="R" yChannelSelector="G" result="d" data-v-fe24a048></feDisplacementMap><feDropShadow in="d" dx="0" dy="0" stdDeviation="7"${ssrRenderAttr("flood-color", pal.value.glow)} flood-opacity="0.8" data-v-fe24a048></feDropShadow></filter><filter id="fsh-fishglow" x="-55%" y="-55%" width="210%" height="210%" data-v-fe24a048><feDropShadow dx="0" dy="0" stdDeviation="8"${ssrRenderAttr("flood-color", pal.value.glow)} flood-opacity="0.75" data-v-fe24a048></feDropShadow></filter><filter id="fsh-catchglow" x="-160%" y="-160%" width="420%" height="420%" data-v-fe24a048><feDropShadow dx="0" dy="0" stdDeviation="18"${ssrRenderAttr("flood-color", accent.value)} flood-opacity="0.98" result="s1" data-v-fe24a048></feDropShadow><feDropShadow in="s1" dx="0" dy="0" stdDeviation="46"${ssrRenderAttr("flood-color", accent.value)} flood-opacity="0.55" data-v-fe24a048></feDropShadow></filter><radialGradient id="fsh-halo" cx="0.5" cy="0.5" r="0.5" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0.6" data-v-fe24a048></stop><stop offset="0.45"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0.3" data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0" data-v-fe24a048></stop></radialGradient><linearGradient id="fsh-blend" x1="0" y1="0" x2="0" y2="1" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.surfBot)} stop-opacity="0.95" data-v-fe24a048></stop><stop offset="0.5"${ssrRenderAttr("stop-color", pal.value.surfBot)} stop-opacity="0.35" data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.surfBot)} stop-opacity="0" data-v-fe24a048></stop></linearGradient><clipPath id="fsh-underclip" data-v-fe24a048><rect${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", SURFACE_Y)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", bg.value.bottom - SURFACE_Y)} data-v-fe24a048></rect></clipPath><linearGradient id="fsh-depth" x1="0" y1="0" x2="0" y2="1" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.deepBot)} stop-opacity="0" data-v-fe24a048></stop><stop offset="0.55"${ssrRenderAttr("stop-color", pal.value.deepBot)} stop-opacity="0" data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.deepBot)} stop-opacity="0.6" data-v-fe24a048></stop></linearGradient><linearGradient id="fsh-surf-a" x1="0" y1="0" x2="0" y2="1" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.surfTop)} stop-opacity="0.92" data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.surfTop)} stop-opacity="0" data-v-fe24a048></stop></linearGradient><linearGradient id="fsh-surf-b" x1="0" y1="0" x2="0" y2="1" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.surfBot)} stop-opacity="0.85" data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.surfBot)} stop-opacity="0" data-v-fe24a048></stop></linearGradient></defs><rect${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", bg.value.top)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", SURFACE_Y - bg.value.top + 20)} fill="url(#fsh-sky)" data-v-fe24a048></rect>`);
-          if (sunEnabled.value) {
-            _push2(`<g transform="translate(815 120)" data-v-fe24a048><g class="fsh-sunglow" data-v-fe24a048><circle r="158" fill="url(#fsh-sun)" opacity="0.38" data-v-fe24a048></circle><circle r="104" fill="url(#fsh-sun)" opacity="0.6" data-v-fe24a048></circle></g>`);
-            if (sunImage.value) {
-              _push2(`<image${ssrRenderAttr("href", sunImage.value)} x="-90" y="-90" width="180" height="180" preserveAspectRatio="xMidYMid meet" filter="url(#fsh-glow)" data-v-fe24a048></image>`);
-            } else {
-              _push2(`<g filter="url(#fsh-glow)" data-v-fe24a048><g${ssrRenderAttr("transform", `rotate(${sunSpin.a})`)} opacity="0.5" data-v-fe24a048><!--[-->`);
-              ssrRenderList(12, (r2) => {
-                _push2(`<rect x="-3" y="-150" width="6" height="56" rx="3"${ssrRenderAttr("fill", pal.value.sun)}${ssrRenderAttr("transform", `rotate(${r2 * 30})`)} data-v-fe24a048></rect>`);
-              });
-              _push2(`<!--]--></g><circle r="54"${ssrRenderAttr("fill", pal.value.sun)} data-v-fe24a048></circle></g>`);
-            }
-            _push2(`</g>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (cloudsEnabled.value) {
-            _push2(`<g${ssrRenderAttr("fill", pal.value.foam)} data-v-fe24a048><g class="fsh-cloud fsh-cloud-a" data-v-fe24a048><ellipse cx="0" cy="0" rx="60" ry="26" data-v-fe24a048></ellipse><ellipse cx="48" cy="9" rx="42" ry="22" data-v-fe24a048></ellipse><ellipse cx="-46" cy="10" rx="38" ry="20" data-v-fe24a048></ellipse></g><g class="fsh-cloud fsh-cloud-b" opacity="0.8" data-v-fe24a048><ellipse cx="0" cy="0" rx="46" ry="20" data-v-fe24a048></ellipse><ellipse cx="38" cy="7" rx="34" ry="17" data-v-fe24a048></ellipse></g></g>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (underwaterImage.value) {
-            _push2(`<image${ssrRenderAttr("href", underwaterImage.value)}${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", SURFACE_Y - 16)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", bg.value.bottom - SURFACE_Y + 16)} preserveAspectRatio="xMidYMid slice" filter="url(#fsh-ripple)" clip-path="url(#fsh-underclip)" data-v-fe24a048></image>`);
-          } else {
-            _push2(`<!--[--><rect${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", SURFACE_Y)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", bg.value.bottom - SURFACE_Y)} fill="url(#fsh-deep)" data-v-fe24a048></rect><g opacity="0.55" data-v-fe24a048><polygon${ssrRenderAttr("points", `700,${SURFACE_Y} 760,${SURFACE_Y} 1020,1180 880,1180`)} fill="url(#fsh-ray)" data-v-fe24a048></polygon><polygon${ssrRenderAttr("points", `320,${SURFACE_Y} 380,${SURFACE_Y} 240,1180 120,1180`)} fill="url(#fsh-ray)" data-v-fe24a048></polygon></g><path${ssrRenderAttr("d", ridgePath.value)}${ssrRenderAttr("fill", pal.value.deepBot)} opacity="0.55" data-v-fe24a048></path><path${ssrRenderAttr("d", sandPath.value)}${ssrRenderAttr("fill", pal.value.sand)} data-v-fe24a048></path><g${ssrRenderAttr("fill", pal.value.deepBot)} opacity="0.8" data-v-fe24a048><ellipse cx="170"${ssrRenderAttr("cy", bg.value.floor - 100)} rx="62" ry="26" data-v-fe24a048></ellipse><ellipse cx="830"${ssrRenderAttr("cy", bg.value.floor - 92)} rx="74" ry="30" data-v-fe24a048></ellipse><ellipse cx="540"${ssrRenderAttr("cy", bg.value.floor - 80)} rx="42" ry="17" data-v-fe24a048></ellipse></g><g${ssrRenderAttr("fill", pal.value.weed)} data-v-fe24a048><!--[-->`);
-            ssrRenderList(unref(weeds), (w2) => {
-              _push2(`<g class="fsh-weed" style="${ssrRenderStyle({ "--delay": w2.delay + "s" })}"${ssrRenderAttr("transform", `translate(${w2.x} ${bg.value.floor - 108})`)} data-v-fe24a048><path${ssrRenderAttr("d", `M0 0 q-14 ${-w2.h * 0.5} 2 ${-w2.h} q14 ${w2.h * 0.4} -2 0 Z`)} data-v-fe24a048></path></g>`);
-            });
-            _push2(`<!--]--></g><!--]-->`);
-          }
-          _push2(`<rect${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", SURFACE_Y)}${ssrRenderAttr("width", bg.value.w)} height="180" fill="url(#fsh-blend)" data-v-fe24a048></rect><rect${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", SURFACE_Y)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", bg.value.bottom - SURFACE_Y)} fill="url(#fsh-depth)" data-v-fe24a048></rect><g class="fsh-caustics"${ssrRenderAttr("fill", pal.value.foam)} data-v-fe24a048><ellipse class="fsh-caustic c1" cx="300"${ssrRenderAttr("cy", SURFACE_Y + 150)} rx="250" ry="22" data-v-fe24a048></ellipse><ellipse class="fsh-caustic c2" cx="720"${ssrRenderAttr("cy", SURFACE_Y + 330)} rx="290" ry="26" data-v-fe24a048></ellipse><ellipse class="fsh-caustic c3" cx="430"${ssrRenderAttr("cy", SURFACE_Y + 540)} rx="230" ry="20" data-v-fe24a048></ellipse></g><!--[-->`);
-          ssrRenderList(decoFish.value, (f2) => {
-            _push2(`<g${ssrRenderAttr("transform", `translate(${f2.x} ${f2.y})`)} data-v-fe24a048><circle class="fsh-prizehalo"${ssrRenderAttr("r", f2.haloR)} style="${ssrRenderStyle({ animationDelay: f2.haloDelay.toFixed(2) + "s" })}" fill="url(#fsh-halo)" data-v-fe24a048></circle>`);
-            if (f2.caught) {
-              _push2(`<g class="fsh-catch-fx"${ssrRenderAttr("fill", accent.value)} data-v-fe24a048><circle class="fsh-catch-ring" r="70" fill="none"${ssrRenderAttr("stroke", accent.value)} stroke-width="4" data-v-fe24a048></circle><!--[-->`);
-              ssrRenderList(8, (s2) => {
-                _push2(`<g${ssrRenderAttr("transform", `rotate(${s2 * 45}) translate(0 -76)`)} data-v-fe24a048><path class="fsh-spark" style="${ssrRenderStyle({ animationDelay: (s2 * 0.09).toFixed(2) + "s" })}" d="M0 -11 L3 -3 L11 0 L3 3 L0 11 L-3 3 L-11 0 L-3 -3 Z" data-v-fe24a048></path></g>`);
-              });
-              _push2(`<!--]--></g>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<g${ssrRenderAttr("transform", `scale(${(f2.image ? 1 : f2.dir * fishFaceSign.value) * f2.size} ${f2.size})`)} data-v-fe24a048><g class="fsh-wiggle" style="${ssrRenderStyle({ animationDuration: f2.wDur.toFixed(2) + "s", animationDelay: f2.wDelay.toFixed(2) + "s" })}" data-v-fe24a048>`);
-            if (f2.image) {
-              _push2(`<g${ssrRenderAttr("filter", f2.caught ? "url(#fsh-catchglow)" : "url(#fsh-fishglow)")} data-v-fe24a048><foreignObject x="-52" y="-38" width="104" height="76" data-v-fe24a048><img${ssrRenderAttr("src", f2.image)} style="${ssrRenderStyle({ "width": "100%", "height": "100%", "object-fit": "contain" })}" alt="" data-v-fe24a048></foreignObject></g>`);
-            } else {
-              _push2(`<g${ssrRenderAttr("filter", f2.caught ? "url(#fsh-catchglow)" : "url(#fsh-ripple-fish)")} data-v-fe24a048><ellipse cx="0" cy="0" rx="26" ry="14"${ssrRenderAttr("fill", f2.color)} data-v-fe24a048></ellipse><path d="M-22 0 l-20 -13 v26 z"${ssrRenderAttr("fill", f2.color)} data-v-fe24a048></path><circle cx="14" cy="-3" r="3" fill="#10202e" data-v-fe24a048></circle></g>`);
-            }
-            _push2(`</g></g></g>`);
-          });
-          _push2(`<!--]--><!--[-->`);
-          ssrRenderList(unref(bubbles), (b2) => {
-            _push2(`<circle class="fsh-bubble"${ssrRenderAttr("cx", b2.x)}${ssrRenderAttr("cy", bg.value.floor - 120)}${ssrRenderAttr("r", b2.r)}${ssrRenderAttr("fill", pal.value.foam)} style="${ssrRenderStyle({ "--dur": b2.dur + "s", "--delay": b2.delay + "s" })}" data-v-fe24a048></circle>`);
-          });
-          _push2(`<!--]--><path${ssrRenderAttr("d", linePath.value)} fill="none"${ssrRenderAttr("stroke", textColor.value)} stroke-width="2" opacity="0.85" data-v-fe24a048></path><g${ssrRenderAttr("transform", `translate(${scene.hookX} ${scene.hookY})`)} data-v-fe24a048><path d="M0 0 v16 a9 9 0 1 0 9 -9" fill="none"${ssrRenderAttr("stroke", textColor.value)} stroke-width="3" stroke-linecap="round" data-v-fe24a048></path></g><g class="fsh-wave fsh-wave-back" data-v-fe24a048><path${ssrRenderAttr("d", waveBackPath.value)} fill="url(#fsh-surf-a)" data-v-fe24a048></path></g><g${ssrRenderAttr("transform", `translate(${500 + boat.x} ${boatBaseY.value}) rotate(${boat.rot}) scale(1 ${boat.sy}) translate(-500 ${boat.y})`)} data-v-fe24a048>`);
-          if (boatImage.value && boatOk.value) {
-            _push2(`<foreignObject x="90" y="-150" width="820" height="385" data-v-fe24a048><img${ssrRenderAttr("src", boatImage.value)} style="${ssrRenderStyle({ "width": "100%", "height": "100%", "object-fit": "contain", "object-position": "center bottom" })}" alt="" data-v-fe24a048></foreignObject>`);
-          } else {
-            _push2(`<g data-v-fe24a048><path d="M250 150 q250 96 500 0 l-58 104 q-190 70 -384 0 z"${ssrRenderAttr("fill", primary.value)} data-v-fe24a048></path><path d="M250 150 q250 96 500 0 l-12 22 q-238 86 -476 0 z" fill="#fff" opacity="0.22" data-v-fe24a048></path></g>`);
-          }
-          if (fishermanSheet.value) {
-            _push2(`<foreignObject x="452" y="-118" width="150" height="180" data-v-fe24a048>`);
-            _push2(ssrRenderComponent(_sfc_main$o, {
-              sheet: fishermanSheet.value,
-              frames: fishermanFrames.value,
-              frame: 0,
-              "chroma-key": spriteChroma.value
-            }, null, _parent));
-            _push2(`</foreignObject>`);
-          } else {
-            _push2(`<g transform="translate(540 30)" data-v-fe24a048><rect x="-16" y="-4" width="34" height="20" rx="7" fill="#34495e" data-v-fe24a048></rect><path d="M-16 -4 q16 -14 32 0 l-5 -46 q-11 -8 -22 0 z"${ssrRenderAttr("fill", primary.value)} data-v-fe24a048></path><circle cx="0" cy="-58" r="15" fill="#e9b489" data-v-fe24a048></circle><path d="M-15 -62 a15 10 0 0 1 30 0 z" fill="#caa15e" data-v-fe24a048></path><rect x="-19" y="-63" width="38" height="5" rx="2" fill="#caa15e" data-v-fe24a048></rect></g>`);
-          }
-          _push2(`<g${ssrRenderAttr("transform", `rotate(${scene.rodAngle} 527 24)`)} data-v-fe24a048><line x1="527" y1="24"${ssrRenderAttr("x2", rodTipLocal.value.x)}${ssrRenderAttr("y2", rodTipLocal.value.y)} stroke="#6d4c33" stroke-width="7" stroke-linecap="round" data-v-fe24a048></line><circle${ssrRenderAttr("cx", rodTipLocal.value.x)}${ssrRenderAttr("cy", rodTipLocal.value.y)} r="4"${ssrRenderAttr("fill", accent.value)} data-v-fe24a048></circle></g></g><g class="fsh-wave fsh-wave-front" data-v-fe24a048><path${ssrRenderAttr("d", waveFrontFill.value)} fill="url(#fsh-surf-b)" data-v-fe24a048></path></g><g class="fsh-wave fsh-wave-front" data-v-fe24a048><path${ssrRenderAttr("d", waveFrontLine.value)} fill="none"${ssrRenderAttr("stroke", pal.value.foam)} stroke-width="6" stroke-linecap="round" opacity="0.6" data-v-fe24a048></path></g></svg><div class="fsh-prompt" style="${ssrRenderStyle({ color: textColor.value })}" data-v-fe24a048>${ssrInterpolate(prompt.value)}</div><div class="fsh-controls" data-v-fe24a048>`);
-          if (phase.value === "ready" && mode.value !== "auto") {
-            _push2(`<button class="fsh-cta fsh-cast-pulse" style="${ssrRenderStyle({ background: accent.value })}" data-v-fe24a048>CAST 🎣</button>`);
-          } else if (phase.value === "result" && current.value && !current.value.win && mode.value !== "auto") {
-            _push2(`<button class="fsh-cta" style="${ssrRenderStyle({ background: primary.value, color: textColor.value })}" data-v-fe24a048>${ssrInterpolate(index.value < total.value - 1 ? "Cast again →" : "Finish")}</button>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (!__props.demoMode && phase.value !== "done") {
-            _push2(`<button class="fsh-skip" data-v-fe24a048>Skip remaining</button>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`</div></div>`);
-          if (showIntro.value) {
-            _push2(`<div class="fsh-overlay fsh-intro" data-v-fe24a048><div class="fsh-dive-bubbles" data-v-fe24a048><!--[-->`);
-            ssrRenderList(16, (n2) => {
-              _push2(`<span class="fsh-dive-bub" style="${ssrRenderStyle({ left: n2 * 61 % 100 + "%", width: 7 + n2 * 5 % 5 * 3 + "px", animationDelay: (-(n2 * 0.37 % 4)).toFixed(2) + "s", animationDuration: (2.3 + n2 * 7 % 10 * 0.16).toFixed(2) + "s" })}" data-v-fe24a048></span>`);
-            });
-            _push2(`<!--]--></div><div class="fsh-intro-card" style="${ssrRenderStyle({ "--glow": accent.value, borderColor: accent.value })}" data-v-fe24a048>`);
-            if (introTitleImage.value) {
-              _push2(`<img${ssrRenderAttr("src", introTitleImage.value)} class="fsh-intro-logo" alt="" data-v-fe24a048>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<div class="fsh-intro-welcome" style="${ssrRenderStyle({ color: textColor.value })}" data-v-fe24a048>${ssrInterpolate(welcomeMsg.value)}</div><div class="fsh-intro-sub" data-v-fe24a048>${ssrInterpolate(introSubtitle.value)}</div><div class="fsh-set-label" data-v-fe24a048>Choose your settings</div><div class="fsh-chip-row" data-v-fe24a048><button class="fsh-chip" style="${ssrRenderStyle(mode.value !== "auto" ? { borderColor: accent.value, background: accent.value, color: "#06223a" } : {})}" data-v-fe24a048>🎣 Manual</button><button class="fsh-chip" style="${ssrRenderStyle(mode.value === "auto" ? { borderColor: accent.value, background: accent.value, color: "#06223a" } : {})}" data-v-fe24a048>⚡ Auto</button></div><div class="fsh-set-label" data-v-fe24a048>Speed</div><div class="fsh-chip-row" data-v-fe24a048><button class="fsh-chip" style="${ssrRenderStyle(speed.value === 1 ? { borderColor: accent.value, background: accent.value, color: "#06223a" } : {})}" data-v-fe24a048>1×</button><button class="fsh-chip" style="${ssrRenderStyle(speed.value === 1.5 ? { borderColor: accent.value, background: accent.value, color: "#06223a" } : {})}" data-v-fe24a048>1.5×</button><button class="fsh-chip" style="${ssrRenderStyle(speed.value === 2 ? { borderColor: accent.value, background: accent.value, color: "#06223a" } : {})}" data-v-fe24a048>2×</button></div><button class="fsh-cta fsh-intro-start fsh-cast-pulse" style="${ssrRenderStyle({ background: accent.value })}" data-v-fe24a048>${ssrInterpolate(introButtonText.value)}</button></div></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (showPrize.value && current.value) {
-            _push2(`<div class="fsh-overlay" data-v-fe24a048><div class="fsh-card" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-fe24a048><div class="fsh-card-top" style="${ssrRenderStyle({ color: accent.value })}" data-v-fe24a048>${ssrInterpolate(winText.value)}</div><div class="fsh-card-visual" data-v-fe24a048>`);
-            if (current.value.image) {
-              _push2(`<img${ssrRenderAttr("src", current.value.image)} alt="prize" data-v-fe24a048>`);
-            } else {
-              _push2(`<span data-v-fe24a048>🏆</span>`);
-            }
-            _push2(`</div><div class="fsh-card-name" style="${ssrRenderStyle({ color: accent.value })}" data-v-fe24a048>${ssrInterpolate(current.value.prize)}</div>`);
-            if (currentValueLabel.value) {
-              _push2(`<div class="fsh-card-val" style="${ssrRenderStyle({ color: textColor.value })}" data-v-fe24a048>${ssrInterpolate(currentValueLabel.value)}</div>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<button class="fsh-cta" style="${ssrRenderStyle({ background: primary.value, color: textColor.value })}" data-v-fe24a048>${ssrInterpolate(index.value < total.value - 1 ? "Next cast →" : "Collect 🎉")}</button></div></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (phase.value === "done") {
-            _push2(`<div class="fsh-overlay" data-v-fe24a048><div class="fsh-card" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-fe24a048><div class="fsh-card-top" style="${ssrRenderStyle({ color: accent.value })}" data-v-fe24a048>${ssrInterpolate(wins.value.length ? "All cast!" : "All cast")}</div>`);
-            if (wins.value.length) {
-              _push2(`<!--[--><div class="fsh-card-name" style="${ssrRenderStyle({ color: textColor.value })}" data-v-fe24a048>You landed ${ssrInterpolate(caught.value)} ${ssrInterpolate(caught.value === 1 ? "catch" : "catches")}! 🎣</div><ul class="fsh-winlist" data-v-fe24a048><!--[-->`);
-              ssrRenderList(wins.value, (w2, i2) => {
-                _push2(`<li style="${ssrRenderStyle({ color: textColor.value })}" data-v-fe24a048><span style="${ssrRenderStyle({ color: accent.value })}" data-v-fe24a048>🐟</span> ${ssrInterpolate(w2.prize)}`);
-                if (w2.isBundle && w2.value && !/ticket/i.test(w2.prize)) {
-                  _push2(`<span data-v-fe24a048> — ${ssrInterpolate(Math.floor(w2.value))} Free Ticket${ssrInterpolate(w2.value == 1 ? "" : "s")}</span>`);
-                } else if (w2.value && !w2.isBundle) {
-                  _push2(`<span data-v-fe24a048> — £${ssrInterpolate(w2.value)}</span>`);
-                } else {
-                  _push2(`<!---->`);
-                }
-                _push2(`</li>`);
-              });
-              _push2(`<!--]--></ul><!--]-->`);
-            } else {
-              _push2(`<div class="fsh-card-name" style="${ssrRenderStyle({ color: textColor.value })}" data-v-fe24a048>No catch this time — tight lines next round! 🎣</div>`);
-            }
-            _push2(`<button class="fsh-cta" style="${ssrRenderStyle({ background: primary.value, color: textColor.value })}" data-v-fe24a048>Close</button></div></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`</div></div>`);
-        } else {
-          _push2(`<!---->`);
-        }
-      }, "body", __props.demoMode, _parent);
-    };
-  }
-});
-const _sfc_setup$m = _sfc_main$m.setup;
-_sfc_main$m.setup = (props, ctx) => {
-  const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/FishingModal.vue");
-  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
-};
-const FishingModal = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-fe24a048"]]);
-const BAND_START = 1380;
-const RISER_DUR = 1.8, RISER_COUNT = 3;
-const _sfc_main$l = /* @__PURE__ */ defineComponent({
-  __name: "TicketEaterModal",
-  __ssrInlineRender: true,
-  props: {
-    modelValue: { type: Boolean, default: false },
-    demoMode: { type: Boolean, default: false },
-    previewMode: { default: "desktop" },
-    assets: { default: () => ({}) },
-    tickets: { default: () => [] },
-    instant_win_categories: { default: () => [] }
-  },
-  emits: ["update:modelValue", "wins-collected"],
+  props: { modelValue: { type: Boolean, default: false }, game: { type: String, default: "slots" } },
+  emits: ["update:modelValue", "change"],
   setup(__props, { emit: __emit }) {
     const props = __props;
     const emit = __emit;
-    const a2 = computed(() => props.assets || {});
-    const demoPreviewMode = ref("mobile");
-    const actualPreviewMode = computed(() => props.demoMode ? demoPreviewMode.value : props.previewMode || "desktop");
-    const frameClass = computed(() => props.demoMode ? actualPreviewMode.value === "mobile" ? "is-mobile" : "is-desktop" : "");
-    const CORE = { x: 0, y: 0, w: 1e3, h: 1400 };
-    const CORE_CX = CORE.x + CORE.w / 2;
-    const stageEl = ref(null);
-    const stageAspect = ref(CORE.w / CORE.h);
-    let stageRO = null;
-    watch(stageEl, (el) => {
-      stageRO == null ? void 0 : stageRO.disconnect();
-      if (el && typeof ResizeObserver !== "undefined") {
-        stageRO = new ResizeObserver((entries) => {
-          var _a;
-          const r2 = (_a = entries[0]) == null ? void 0 : _a.contentRect;
-          if (r2 && r2.width > 0 && r2.height > 0) stageAspect.value = r2.width / r2.height;
-        });
-        stageRO.observe(el);
-      }
-    }, { flush: "post" });
-    const view = computed(() => {
-      const ar = stageAspect.value;
-      const coreAspect = CORE.w / CORE.h;
-      if (ar >= coreAspect) {
-        const h22 = CORE.h, w22 = h22 * ar;
-        return { x: CORE_CX - w22 / 2, y: CORE.y, w: w22, h: h22 };
-      }
-      const w2 = CORE.w, h2 = w2 / ar;
-      return { x: CORE.x, y: CORE.y, w: w2, h: h2 };
+    const games = Object.values(STUDIO_SCHEMAS).map((g2) => ({ key: g2.key, label: g2.label }));
+    const current = ref(props.game);
+    const configs = reactive({});
+    const config3 = computed(() => {
+      if (!configs[current.value]) configs[current.value] = defaultsFor(current.value);
+      return configs[current.value];
     });
-    const sceneViewBox = computed(() => `${view.value.x} ${view.value.y} ${view.value.w} ${view.value.h}`);
-    const bg = computed(() => {
-      const v2 = view.value;
-      return { x: v2.x - 200, w: v2.w + 400, top: v2.y - 100, bottom: v2.y + v2.h + 200, floor: v2.y + v2.h };
-    });
-    const titleText = computed(() => a2.value.titleText || "Feed the Eater!");
-    const accent = computed(() => a2.value.accentColor || "#ffd54f");
-    const primary = computed(() => a2.value.primaryColor || "#6c5ce7");
-    const textColor = computed(() => a2.value.textColor || "#ffffff");
-    const showTopPrize = computed(() => a2.value.showTopPrize === true);
-    const gameName = computed(() => a2.value.name || "");
-    const ticketImage = computed(() => a2.value.ticketImage || "");
-    const risingTicketImage = computed(() => a2.value.risingTicketImage || "");
-    const backgroundImage = computed(() => a2.value.backgroundImage || "");
-    const prizeImage = computed(() => a2.value.prizeImage || "");
-    const titleImage = computed(() => a2.value.introTitleImage || "");
-    computed(() => a2.value.mascotImage || "");
-    const introEnabled = computed(() => a2.value.introEnabled !== false);
-    const introSubtitle = computed(() => a2.value.introSubtitle || "Roll through your tickets to reveal instant prizes");
-    const introButtonText = computed(() => a2.value.introButtonText || "Start 👹");
-    const welcomeMsg = computed(() => (a2.value.introWelcomeText || "Welcome to {name}").replace("{name}", gameName.value || "the game"));
-    const showIntro = ref(false);
-    const introPhase = ref("splash");
-    ref(null);
-    ref(null);
-    const THEMES = {
-      arcade: { bgTop: "#1b1040", bgBot: "#2a1a52", ticket: "#fff8e6", edge: "#c79a1f", num: "#241026", glow: "#ffd54f" },
-      cave: { bgTop: "#1c2a2e", bgBot: "#0c1719", ticket: "#eafff5", edge: "#3f9c78", num: "#0c2a1c", glow: "#8effc8" },
-      candy: { bgTop: "#ff9ec4", bgBot: "#ffcfe3", ticket: "#ffffff", edge: "#cf4d83", num: "#5e1638", glow: "#fff36b" },
-      spooky: { bgTop: "#14121f", bgBot: "#241f38", ticket: "#f0ffe6", edge: "#5a9c33", num: "#14121f", glow: "#9dff5c" }
-    };
-    const pal = computed(() => THEMES[String(a2.value.theme || "arcade")] || THEMES.arcade);
-    const numberColor = computed(() => a2.value.numberColor || pal.value.num);
-    const casts = ref([]);
-    function isWin(t3) {
-      const iw = t3 == null ? void 0 : t3.instant_win;
-      return !!(iw && (iw.prize || Number(iw.value) > 0 || iw.image_path || iw.category_id != null));
-    }
-    function categoryFor(iw) {
-      const cats = props.instant_win_categories || [];
-      if (!iw) return null;
-      return (iw.category_id != null ? cats.find((c2) => c2.id === iw.category_id) : null) || cats.find((c2) => c2.name && (c2.name === iw.prize || c2.name === iw.name)) || null;
-    }
-    function buildCasts() {
-      if (props.demoMode) {
-        const cats = props.instant_win_categories || [];
-        const n2 = 200;
-        const winPos = /* @__PURE__ */ new Set([9, 19, 29]);
-        casts.value = Array.from({ length: n2 }, (_2, i2) => {
-          const won = winPos.has(i2) && cats.length > 0;
-          const cat = won ? cats[i2 % cats.length] : null;
-          return {
-            id: i2 + 1,
-            number: String(1 + Math.floor(Math.random() * 15e4)),
-            win: !!won,
-            // random, shuffled — like real tickets
-            prize: won ? String(cat.name) : "",
-            value: won ? Number(cat.value || 0) : 0,
-            image: won ? cat.image_path || "" : "",
-            isBundle: false
-          };
-        });
-        resetRun();
-        return;
-      }
-      casts.value = (props.tickets || []).map((t3) => {
-        const iw = t3 == null ? void 0 : t3.instant_win;
-        const won = isWin(t3);
-        const cat = won ? categoryFor(iw) : null;
-        return {
-          id: t3.id ?? t3.number,
-          number: String(t3.number ?? t3.id ?? ""),
-          win: won,
-          prize: won ? String(iw.prize) : "",
-          value: Number((iw == null ? void 0 : iw.value) || (cat == null ? void 0 : cat.value) || 0),
-          image: (iw == null ? void 0 : iw.image_path) || (cat == null ? void 0 : cat.image_path) || "",
-          isBundle: won && ((iw == null ? void 0 : iw.prize_type) ?? (cat == null ? void 0 : cat.prize_type)) === "ticket_bundle"
-        };
-      });
-      resetRun();
-    }
-    const total = computed(() => casts.value.length);
-    const wins = computed(() => casts.value.filter((c2) => c2.win));
-    const mode = ref("auto");
-    const speed = ref(1);
-    const topPrize = computed(() => {
-      const list = (props.instant_win_categories || []).filter((c2) => c2 && Number(c2.value) > 0 && (c2.available === void 0 || c2.available > 0));
-      if (!list.length) return null;
-      const nonBundle = list.filter((c2) => c2.prize_type !== "ticket_bundle");
-      const pool = nonBundle.length ? nonBundle : list;
-      return pool.reduce((best, c2) => Number(c2.value) > Number(best.value) ? c2 : best);
-    });
-    const topPrizeLabel = computed(() => {
-      const p2 = topPrize.value;
-      if (!p2) return "";
-      const name = String(p2.name || "").trim();
-      const v2 = Number(p2.value);
-      if (p2.prize_type === "ticket_bundle") return !v2 || /ticket/i.test(name) ? name : `${name ? name + " · " : ""}${Math.floor(v2)} Free Ticket${v2 == 1 ? "" : "s"}`;
-      const money = v2 ? `£${v2 % 1 === 0 ? v2 : v2.toFixed(2)}` : "";
-      return !money || /£\s*\d/.test(name) ? name : `${name} · ${money}`;
-    });
-    const TICKET = { x: 500, y: 470 };
-    const scene = reactive({ winFlash: 0, heat: 0, readerY: 0, releaseY: 0, releaseO: 0, prizeX: TICKET.x, prizeY: 540, prizeO: 0, prizeScale: 0, prizeRot: 0 });
-    const releaseIdx = ref(0);
-    const showReaderNum = ref(true);
-    const readerFlash = ref(false);
-    const band = ref([]);
-    let bandSeq = 0;
-    const bandTweens = /* @__PURE__ */ new Map();
-    let pendingBandTicket = null;
-    function pauseBand() {
-      bandTweens.forEach((tw) => tw.pause());
-    }
-    function resumeBand() {
-      bandTweens.forEach((tw) => tw.resume());
-    }
-    function killBand() {
-      bandTweens.forEach((tw) => tw.kill());
-      bandTweens.clear();
-      pendingBandTicket = null;
-      band.value.forEach((t3) => gsapWithCSS.killTweensOf(t3));
-      band.value = [];
-    }
-    let autoTimer = null;
-    let autoRiseDur = 0.8;
-    function stopAuto() {
-      if (autoTimer) {
-        clearInterval(autoTimer);
-        autoTimer = null;
-      }
-    }
-    function spawnRise(i2, startY, dur) {
-      const c2 = casts.value[i2];
-      const t3 = reactive({ key: bandSeq++, idx: i2, y: startY, o: 1 });
-      band.value.push(t3);
-      const tw = gsapWithCSS.to(t3, { y: TICKET.y, duration: dur, ease: "none", onComplete: () => bandArrive(t3, c2, i2) });
-      bandTweens.set(t3.key, tw);
-    }
-    function autoTick() {
-      if (reveal.on) return;
-      if (releaseIdx.value >= total.value) {
-        stopAuto();
-        maybeFinish();
-        return;
-      }
-      spawnRise(releaseIdx.value++, BAND_START, autoRiseDur);
-    }
-    const phase = ref("ready");
-    const hud = reactive({ eaten: 0 });
-    const collected = ref([]);
-    const dropPrize = ref(null);
-    const eatenDisplay = computed(() => Math.min(total.value, Math.round(hud.eaten)));
-    const titleGlow = computed(() => Math.min(70, 8 + collected.value.length * 9));
-    const titleWiggleDur = computed(() => Math.max(1.3, 3 - collected.value.length * 0.28));
-    const mascotSrc = computed(() => {
-      const n2 = collected.value.length;
-      const f1 = a2.value.mascotImage || "";
-      const f2 = a2.value.mascotImage2 || f1;
-      const f3 = a2.value.mascotImage3 || f2;
-      return n2 >= 3 ? f3 : n2 >= 1 ? f2 : f1;
-    });
-    const streamBase = ref(0);
-    const rollIdx = computed(() => {
-      const n2 = casts.value.length;
-      return n2 ? Math.min(n2 - 1, streamBase.value) : 0;
-    });
-    const rollNumber = computed(() => {
+    const schema = computed(() => schemaFor(current.value));
+    const label = computed(() => {
       var _a;
-      return casts.value.length ? ((_a = casts.value[rollIdx.value]) == null ? void 0 : _a.number) ?? "—" : "—";
+      return ((_a = STUDIO_SCHEMAS[current.value]) == null ? void 0 : _a.label) || "";
     });
-    const rollIsWin = computed(() => {
-      var _a;
-      return casts.value.length ? !!((_a = casts.value[rollIdx.value]) == null ? void 0 : _a.win) : false;
+    function onUpdate(next) {
+      Object.assign(config3.value, next);
+      emit("change", { game: current.value, config: { ...config3.value } });
+    }
+    function close() {
+      emit("update:modelValue", false);
+    }
+    watch(() => props.game, (g2) => {
+      if (g2) current.value = g2;
     });
-    computed(() => Array.from({ length: RISER_COUNT }, (_2, i2) => ({ id: i2, delay: (-(i2 * RISER_DUR / RISER_COUNT / speed.value)).toFixed(2) + "s", dur: (RISER_DUR / speed.value).toFixed(2) + "s" })));
-    const POUCH = { x: 838, y: 1118 };
-    const pouchImage = computed(() => a2.value.pouchImage || "");
-    const pouchPulse = ref(0);
-    const showPouch = ref(false);
-    function valueLabel(c2) {
-      if (!c2 || !c2.value) return "";
-      const v2 = Number(c2.value);
-      if (c2.isBundle) return /ticket/i.test(String(c2.prize || "")) ? "" : `${Math.floor(v2)} Free Ticket${v2 == 1 ? "" : "s"}`;
-      return `£${v2 % 1 === 0 ? v2 : v2.toFixed(2)}`;
-    }
-    const reveal = reactive({ on: false, flipped: false, collectable: false, collecting: false });
-    let pendingWin = -1;
-    let revealTimers = [];
-    function clearReveal() {
-      revealTimers.forEach((t3) => clearTimeout(t3));
-      revealTimers = [];
-    }
-    function openReveal(wi) {
-      pendingWin = wi;
-      dropPrize.value = casts.value[wi] ?? null;
-      reveal.on = true;
-      reveal.flipped = false;
-      reveal.collectable = false;
-      reveal.collecting = false;
-      play(a2.value.winSound);
-      revealTimers.push(setTimeout(() => {
-        reveal.flipped = true;
-      }, 650));
-      revealTimers.push(setTimeout(() => {
-        reveal.collectable = true;
-      }, 1850));
-      if (props.demoMode) revealTimers.push(setTimeout(() => {
-        if (reveal.collectable) collect();
-      }, 6e3));
-    }
-    function collect() {
-      if (!reveal.collectable) return;
-      clearReveal();
-      reveal.collectable = false;
-      reveal.collecting = true;
-      play(a2.value.collectSound || a2.value.winSound);
-      revealTimers.push(setTimeout(() => {
-        if (dropPrize.value) collected.value.push(dropPrize.value);
-        pouchPulse.value++;
-        reveal.on = false;
-        reveal.collecting = false;
-        scene.heat = 0;
-        hud.eaten = pendingWin + 1;
-        resumeBand();
-        const bt = pendingBandTicket;
-        pendingBandTicket = null;
-        if (bt) gsapWithCSS.to(bt, { y: TICKET.y - 70, o: 0, duration: 0.5, ease: "power1.in", onComplete: () => {
-          bandTweens.delete(bt.key);
-          band.value = band.value.filter((x) => x.key !== bt.key);
-          maybeFinish();
-        } });
-        else maybeFinish();
-      }, 520));
-    }
-    function resetRun() {
-      clearReveal();
-      reveal.on = false;
-      reveal.flipped = false;
-      reveal.collectable = false;
-      reveal.collecting = false;
-      stopAuto();
-      gsapWithCSS.killTweensOf(scene);
-      gsapWithCSS.killTweensOf(hud);
-      killBand();
-      hud.eaten = 0;
-      streamBase.value = 0;
-      collected.value = [];
-      dropPrize.value = null;
-      releaseIdx.value = 0;
-      readerFlash.value = false;
-      showReaderNum.value = true;
-      Object.assign(scene, { winFlash: 0, heat: 0, readerY: 0, prizeX: TICKET.x, prizeY: 540, prizeO: 0, prizeScale: 0, prizeRot: 0 });
-      confetti.value = [];
-      phase.value = "ready";
-    }
-    const confetti = ref([]);
-    function startRun() {
-      if (phase.value === "feasting") return;
-      if (!casts.value.length) {
-        finishRun();
-        return;
-      }
-      resetRun();
-      phase.value = "feasting";
-      play(a2.value.feedSound);
-      const n2 = total.value;
-      const runMs = 2e4 / speed.value;
-      const interval = Math.min(420, Math.max(16, runMs / n2));
-      autoRiseDur = Math.min(1.2, Math.max(0.4, interval * 9 / 1e3));
-      stopAuto();
-      autoTimer = setInterval(autoTick, interval);
-    }
-    function finishRun() {
-      stopAuto();
-      clearReveal();
-      reveal.on = false;
-      gsapWithCSS.killTweensOf(scene);
-      killBand();
-      hud.eaten = total.value;
-      scene.winFlash = 0;
-      phase.value = "done";
-      emit("wins-collected", wins.value.map((w2) => ({ prize: w2.prize, value: w2.value })));
-    }
-    function bandArrive(t3, c2, i2) {
-      streamBase.value = i2;
-      showReaderNum.value = true;
-      hud.eaten = Math.max(hud.eaten, i2 + 1);
-      if (c2.win) {
-        pauseBand();
-        pendingBandTicket = t3;
-        openReveal(i2);
-        return;
-      }
-      readerFlash.value = false;
-      play(a2.value.gulpSound);
-      gsapWithCSS.to(t3, { y: TICKET.y - 70, o: 0, duration: 0.5, delay: 0.55, ease: "power1.in", onComplete: () => {
-        bandTweens.delete(t3.key);
-        band.value = band.value.filter((x) => x.key !== t3.key);
-        maybeFinish();
-      } });
-    }
-    function maybeFinish() {
-      if (releaseIdx.value >= total.value && band.value.length === 0) {
-        stopAuto();
-        finishRun();
-      }
-    }
-    const canTap = computed(() => phase.value === "done" ? false : mode.value === "manual" ? releaseIdx.value < total.value && !reveal.on : phase.value === "ready");
-    const prompt = computed(() => phase.value === "ready" ? titleText.value : phase.value === "feasting" ? rollIsWin.value ? "WINNER!" : "Rolling…" : "");
-    let audio = null;
-    function play(src) {
-      if (!src) return;
-      try {
-        audio = new Audio(src);
-        audio.volume = 0.85;
-        void audio.play();
-      } catch {
-      }
-    }
-    function playWelcome() {
-      if (a2.value.welcomeSound) play(a2.value.welcomeSound);
-    }
-    function cancelSpeech() {
-      var _a;
-      try {
-        (_a = window.speechSynthesis) == null ? void 0 : _a.cancel();
-      } catch {
-      }
-    }
-    let demoTimer = null;
-    function clearDemo() {
-      if (demoTimer) {
-        clearTimeout(demoTimer);
-        demoTimer = null;
-      }
-    }
-    let introSeq = null;
-    function clearIntroSeq() {
-      if (introSeq) {
-        clearTimeout(introSeq);
-        introSeq = null;
-      }
-    }
-    function startGame() {
-      clearDemo();
-      showIntro.value = false;
-      if (mode.value === "auto") startRun();
-      else {
-        resetRun();
-        showReaderNum.value = false;
-      }
-    }
-    watch(() => props.tickets, buildCasts, { immediate: true, deep: true });
     watch(() => props.modelValue, (open) => {
-      if (open) {
-        clearDemo();
-        buildCasts();
-        showIntro.value = introEnabled.value;
-        if (showIntro.value) playWelcome();
-        if (props.demoMode && !introEnabled.value) demoTimer = setTimeout(() => startGame(), 600);
-      } else {
-        gsapWithCSS.killTweensOf(scene);
-        gsapWithCSS.killTweensOf(hud);
-        clearDemo();
-        cancelSpeech();
-      }
-    }, { immediate: true });
-    watch(phase, (p2) => {
-      if (props.demoMode && p2 === "done") {
-        clearDemo();
-        demoTimer = setTimeout(() => {
-          buildCasts();
-          if (introEnabled.value) showIntro.value = true;
-          else startGame();
-        }, 1800);
-      }
+      document.body.style.overflow = open ? "hidden" : "";
+      if (open && typeof window.ceTrack === "function") window.ceTrack("studio_open", { game: current.value });
     });
-    watch(showIntro, (on) => {
-      clearIntroSeq();
-      if (!on) return;
-      introPhase.value = "splash";
-      introSeq = setTimeout(() => {
-        introPhase.value = "settings";
-      }, 2600);
-    }, { immediate: true });
-    watch(introEnabled, (on) => {
-      if (props.demoMode) showIntro.value = on;
-    });
+    const onKey = (e2) => {
+      if (e2.key === "Escape" && props.modelValue) close();
+    };
+    if (typeof window !== "undefined") window.addEventListener("keydown", onKey);
     onBeforeUnmount(() => {
-      clearReveal();
-      clearIntroSeq();
-      gsapWithCSS.killTweensOf(scene);
-      gsapWithCSS.killTweensOf(hud);
-      clearDemo();
-      cancelSpeech();
-      stageRO == null ? void 0 : stageRO.disconnect();
+      if (typeof window !== "undefined") window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
     });
     return (_ctx, _push, _parent, _attrs) => {
       ssrRenderTeleport(_push, (_push2) => {
-        var _a;
-        if (__props.modelValue || __props.demoMode) {
-          _push2(`<div class="${ssrRenderClass([frameClass.value, "te-root"])}" data-v-3643a4e2><div class="te-frame" style="${ssrRenderStyle({ background: pal.value.bgBot })}" data-v-3643a4e2>`);
-          if (__props.demoMode) {
-            _push2(`<div class="te-preview-toggle" data-v-3643a4e2><span data-v-3643a4e2>Preview:</span><button class="${ssrRenderClass({ on: actualPreviewMode.value === "mobile" })}" data-v-3643a4e2>Mobile</button><button class="${ssrRenderClass({ on: actualPreviewMode.value === "desktop" })}" data-v-3643a4e2>Desktop</button></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (!__props.demoMode) {
-            _push2(`<button class="te-close" aria-label="Close" data-v-3643a4e2>✕</button>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`<div class="te-hud" data-v-3643a4e2><div class="te-hud-left" data-v-3643a4e2>🎟️ ${ssrInterpolate(eatenDisplay.value)}/${ssrInterpolate(total.value)} · 🏆 ${ssrInterpolate(collected.value.length)}</div><div class="te-hud-title" style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>${ssrInterpolate(gameName.value || "Ticket Eater")}</div></div>`);
-          if (showTopPrize.value && topPrizeLabel.value) {
-            _push2(`<div class="te-topprize" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-3643a4e2><span class="te-topprize-pill" style="${ssrRenderStyle({ background: accent.value })}" data-v-3643a4e2>£</span><span class="te-topprize-val" data-v-3643a4e2><b style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>TOP PRIZE</b> ${ssrInterpolate(topPrizeLabel.value)}</span></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`<div class="te-stage" data-v-3643a4e2><svg class="te-svg"${ssrRenderAttr("viewBox", sceneViewBox.value)} preserveAspectRatio="xMidYMid slice" data-v-3643a4e2><defs data-v-3643a4e2><linearGradient id="te-bg" x1="0" y1="0" x2="0" y2="1" data-v-3643a4e2><stop offset="0%"${ssrRenderAttr("stop-color", pal.value.bgTop)} data-v-3643a4e2></stop><stop offset="100%"${ssrRenderAttr("stop-color", pal.value.bgBot)} data-v-3643a4e2></stop></linearGradient><radialGradient id="te-glow" cx="50%" cy="50%" r="50%" data-v-3643a4e2><stop offset="0%"${ssrRenderAttr("stop-color", pal.value.glow)} stop-opacity="0.9" data-v-3643a4e2></stop><stop offset="100%"${ssrRenderAttr("stop-color", pal.value.glow)} stop-opacity="0" data-v-3643a4e2></stop></radialGradient><radialGradient id="te-vig" cx="50%" cy="42%" r="80%" data-v-3643a4e2><stop offset="62%" stop-color="#000" stop-opacity="0" data-v-3643a4e2></stop><stop offset="100%" stop-color="#000" stop-opacity="0.42" data-v-3643a4e2></stop></radialGradient><radialGradient id="te-treasure" cx="50%" cy="50%" r="50%" data-v-3643a4e2><stop offset="0%"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0.85" data-v-3643a4e2></stop><stop offset="100%"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0" data-v-3643a4e2></stop></radialGradient></defs><rect${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", bg.value.top)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", bg.value.bottom - bg.value.top)} fill="url(#te-bg)" data-v-3643a4e2></rect>`);
-          if (backgroundImage.value) {
-            _push2(`<image${ssrRenderAttr("href", backgroundImage.value)}${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", bg.value.top)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", bg.value.bottom - bg.value.top)} preserveAspectRatio="xMidYMid slice" opacity="0.9" data-v-3643a4e2></image>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (titleImage.value) {
-            _push2(`<foreignObject x="290" y="62" width="420" height="150" data-v-3643a4e2><img${ssrRenderAttr("src", titleImage.value)} style="${ssrRenderStyle({ "width": "100%", "height": "100%", "object-fit": "contain" })}" alt="" data-v-3643a4e2></foreignObject>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (mascotSrc.value) {
-            _push2(`<foreignObject x="210" y="214" width="580" height="260" style="${ssrRenderStyle({ "overflow": "visible" })}" data-v-3643a4e2><img${ssrRenderAttr("src", mascotSrc.value)} class="${ssrRenderClass([{ "te-glowing": collected.value.length > 0 }, "te-gametitle"])}" style="${ssrRenderStyle({ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center bottom", "--gw": titleGlow.value + "px", "--tglow": accent.value, "--wdur": titleWiggleDur.value + "s" })}" alt="" data-v-3643a4e2></foreignObject>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`<circle${ssrRenderAttr("cx", TICKET.x)}${ssrRenderAttr("cy", TICKET.y)} r="320" fill="url(#te-glow)" opacity="0.12" data-v-3643a4e2></circle><!--[-->`);
-          ssrRenderList(band.value, (t3) => {
-            _push2(`<g${ssrRenderAttr("transform", `translate(${TICKET.x} ${t3.y})`)}${ssrRenderAttr("opacity", t3.o)} data-v-3643a4e2>`);
-            if (risingTicketImage.value) {
-              _push2(`<image${ssrRenderAttr("href", risingTicketImage.value)} x="-88" y="-44" width="176" height="88" preserveAspectRatio="xMidYMid meet" transform="rotate(90)" data-v-3643a4e2></image>`);
-            } else {
-              _push2(`<!--[--><rect x="-44" y="-88" width="88" height="176" rx="11"${ssrRenderAttr("fill", pal.value.ticket)}${ssrRenderAttr("stroke", pal.value.edge)} stroke-width="3.5" data-v-3643a4e2></rect><rect x="-34" y="-78" width="68" height="156" rx="7" fill="none"${ssrRenderAttr("stroke", pal.value.edge)} stroke-width="2" stroke-dasharray="2 9" opacity="0.4" data-v-3643a4e2></rect><circle cx="-44" cy="0" r="9"${ssrRenderAttr("fill", pal.value.bgBot)} data-v-3643a4e2></circle><circle cx="44" cy="0" r="9"${ssrRenderAttr("fill", pal.value.bgBot)} data-v-3643a4e2></circle><!--]-->`);
-            }
-            _push2(`</g>`);
+        if (__props.modelValue) {
+          _push2(`<div class="studio" role="dialog" aria-modal="true" aria-label="Build your own game"><div class="studio-backdrop"></div><div class="studio-dialog"><header class="studio-head"><div><small>Game Studio · try it yourself</small><b>Build your own ${ssrInterpolate(label.value)}</b></div><div class="studio-games"><!--[-->`);
+          ssrRenderList(unref(games), (g2) => {
+            _push2(`<button type="button" class="${ssrRenderClass({ on: g2.key === current.value })}">${ssrInterpolate(g2.label)}</button>`);
           });
-          _push2(`<!--]--><g${ssrRenderAttr("transform", `translate(${TICKET.x} ${TICKET.y}) scale(0.84)`)} data-v-3643a4e2>`);
-          if (ticketImage.value) {
-            _push2(`<foreignObject x="-240" y="-150" width="480" height="300" data-v-3643a4e2><img${ssrRenderAttr("src", ticketImage.value)} style="${ssrRenderStyle({ "width": "100%", "height": "100%", "object-fit": "contain" })}" alt="" data-v-3643a4e2></foreignObject>`);
-          } else {
-            _push2(`<!--[--><rect x="-240" y="-150" width="480" height="300" rx="30"${ssrRenderAttr("fill", pal.value.ticket)}${ssrRenderAttr("stroke", rollIsWin.value ? accent.value : pal.value.edge)}${ssrRenderAttr("stroke-width", rollIsWin.value ? 11 : 6)} data-v-3643a4e2></rect><rect x="-208" y="-118" width="416" height="236" rx="20" fill="none"${ssrRenderAttr("stroke", pal.value.edge)} stroke-width="2.5" stroke-dasharray="2 13" opacity="0.4" data-v-3643a4e2></rect><circle cx="-240" cy="0" r="28"${ssrRenderAttr("fill", pal.value.bgBot)} data-v-3643a4e2></circle><circle cx="240" cy="0" r="28"${ssrRenderAttr("fill", pal.value.bgBot)} data-v-3643a4e2></circle><!--]-->`);
-          }
-          if (!ticketImage.value) {
-            _push2(`<text x="0" y="-78" text-anchor="middle" font-size="26" font-weight="900"${ssrRenderAttr("fill", pal.value.edge)} font-family="system-ui, sans-serif" style="${ssrRenderStyle({ "letter-spacing": "9px" })}" data-v-3643a4e2>★ TICKET ★</text>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (showReaderNum.value) {
-            _push2(`<text x="0" y="24" text-anchor="middle" font-size="46" font-weight="900"${ssrRenderAttr("fill", rollIsWin.value ? accent.value : numberColor.value)} font-family="ui-monospace, monospace" style="${ssrRenderStyle({ "letter-spacing": "-1px" })}" data-v-3643a4e2>${ssrInterpolate(rollNumber.value)}</text>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (showReaderNum.value && rollIsWin.value && (phase.value === "feasting" || readerFlash.value)) {
-            _push2(`<text x="0" y="118" text-anchor="middle" font-size="30" font-weight="900"${ssrRenderAttr("fill", accent.value)} font-family="system-ui, sans-serif" style="${ssrRenderStyle({ "letter-spacing": "3px" })}" data-v-3643a4e2>WINNER!</text>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (showReaderNum.value && !rollIsWin.value && (phase.value === "feasting" || mode.value === "manual" && hud.eaten > 0)) {
-            _push2(`<text x="0" y="116" text-anchor="middle" font-size="25" font-weight="800" fill="#9aa0ad" font-family="system-ui, sans-serif" style="${ssrRenderStyle({ "letter-spacing": "3px" })}" data-v-3643a4e2>No win</text>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`</g><!--[-->`);
-          ssrRenderList(confetti.value, (p2) => {
-            _push2(`<rect${ssrRenderAttr("x", p2.x)}${ssrRenderAttr("y", p2.y)}${ssrRenderAttr("width", p2.w)}${ssrRenderAttr("height", p2.h)} rx="2"${ssrRenderAttr("fill", p2.color)}${ssrRenderAttr("opacity", p2.o)}${ssrRenderAttr("transform", `rotate(${p2.rot} ${p2.x + p2.w / 2} ${p2.y + p2.h / 2})`)} data-v-3643a4e2></rect>`);
-          });
-          _push2(`<!--]-->`);
-          if (collected.value.length) {
-            _push2(`<g${ssrRenderAttr("transform", `translate(${POUCH.x} ${POUCH.y})`)} style="${ssrRenderStyle({ "cursor": "pointer" })}" data-v-3643a4e2>`);
-            if (collected.value.length) {
-              _push2(`<circle cx="0" cy="6" r="210" fill="url(#te-glow)" class="te-pouch-glow" data-v-3643a4e2></circle>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            if (collected.value.length) {
-              _push2(`<g class="te-pouch-spark"${ssrRenderAttr("fill", accent.value)} data-v-3643a4e2><circle cx="-104" cy="-72" r="6" style="${ssrRenderStyle({ animationDelay: "0s" })}" data-v-3643a4e2></circle><circle cx="110" cy="-48" r="7" style="${ssrRenderStyle({ animationDelay: "-0.4s" })}" data-v-3643a4e2></circle><circle cx="84" cy="-112" r="5" style="${ssrRenderStyle({ animationDelay: "-0.8s" })}" data-v-3643a4e2></circle><circle cx="-84" cy="-118" r="6" style="${ssrRenderStyle({ animationDelay: "-0.6s" })}" data-v-3643a4e2></circle></g>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<g class="te-pouch-shake" data-v-3643a4e2><circle cx="0" cy="8" r="138" fill="url(#te-treasure)" class="te-crate-shine" data-v-3643a4e2></circle><ellipse cx="0" cy="120" rx="88" ry="15" fill="#000" opacity="0.3" data-v-3643a4e2></ellipse>`);
-            if (pouchImage.value) {
-              _push2(`<foreignObject x="-124" y="-124" width="248" height="248" style="${ssrRenderStyle({ "overflow": "visible" })}" data-v-3643a4e2><img${ssrRenderAttr("src", pouchImage.value)} class="te-pouch-img3d" style="${ssrRenderStyle({ width: "100%", height: "100%", objectFit: "contain", "--pg": accent.value })}" alt="" data-v-3643a4e2></foreignObject>`);
-            } else {
-              _push2(`<g transform="scale(1.36)" data-v-3643a4e2><g transform="translate(0 -30) rotate(-13)" data-v-3643a4e2><rect x="-76" y="-34" width="152" height="42" rx="11" fill="#6f4626" stroke="#3c2410" stroke-width="4" data-v-3643a4e2></rect><rect x="-76" y="-34" width="152" height="15" rx="7" fill="#8c5c30" data-v-3643a4e2></rect><rect x="-7" y="-34" width="14" height="42" fill="#caa23f" opacity="0.9" data-v-3643a4e2></rect></g><g class="te-crate-gold" data-v-3643a4e2><ellipse cx="0" cy="-10" rx="64" ry="22"${ssrRenderAttr("fill", accent.value)} data-v-3643a4e2></ellipse><circle cx="-38" cy="-14" r="12"${ssrRenderAttr("fill", accent.value)} data-v-3643a4e2></circle><circle cx="-12" cy="-20" r="13"${ssrRenderAttr("fill", accent.value)} data-v-3643a4e2></circle><circle cx="18" cy="-16" r="12"${ssrRenderAttr("fill", accent.value)} data-v-3643a4e2></circle><circle cx="44" cy="-10" r="10"${ssrRenderAttr("fill", accent.value)} data-v-3643a4e2></circle><circle cx="-12" cy="-22" r="4" fill="#fff" opacity="0.75" data-v-3643a4e2></circle><circle cx="18" cy="-18" r="3.5" fill="#fff" opacity="0.7" data-v-3643a4e2></circle></g><rect x="-78" y="-6" width="156" height="74" rx="13" fill="#6f4626" stroke="#3c2410" stroke-width="4" data-v-3643a4e2></rect><rect x="-70" y="2" width="140" height="9" rx="4" fill="#8c5c30" opacity="0.85" data-v-3643a4e2></rect><rect x="-78" y="40" width="156" height="9" fill="#caa23f" data-v-3643a4e2></rect><rect x="-7" y="-6" width="14" height="74" fill="#caa23f" data-v-3643a4e2></rect><rect x="-13" y="20" width="26" height="24" rx="5" fill="#e6ad42" stroke="#3c2410" stroke-width="2.5" data-v-3643a4e2></rect><circle cx="0" cy="31" r="4.5" fill="#3c2410" data-v-3643a4e2></circle></g>`);
-            }
-            _push2(`</g>`);
-            if (collected.value.length) {
-              _push2(`<g data-v-3643a4e2><circle cx="98" cy="-98" r="34" fill="#e11d2a" stroke="#fff" stroke-width="3" class="te-pouch-tag" data-v-3643a4e2></circle><text x="98" y="-86" text-anchor="middle" font-size="32" font-weight="900" fill="#fff" font-family="system-ui, sans-serif" data-v-3643a4e2>${ssrInterpolate(collected.value.length)}</text></g>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<text x="0" y="150" text-anchor="middle" font-size="22" font-weight="900"${ssrRenderAttr("fill", accent.value)} font-family="system-ui, sans-serif" data-v-3643a4e2>POUCH</text></g>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`<rect${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", bg.value.top)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", bg.value.bottom - bg.value.top)} fill="url(#te-vig)" pointer-events="none" data-v-3643a4e2></rect></svg><div class="te-prompt" style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>${ssrInterpolate(prompt.value)}</div><div class="te-controls" data-v-3643a4e2>`);
-          if (canTap.value) {
-            _push2(`<button class="te-cta te-release" style="${ssrRenderStyle({ background: accent.value })}" data-v-3643a4e2>${ssrInterpolate(mode.value === "manual" ? "Release 🎟️" : "START 👹")}</button>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if ((phase.value === "feasting" || mode.value === "manual" && releaseIdx.value > 0 && releaseIdx.value < total.value) && !__props.demoMode) {
-            _push2(`<button class="te-skip" data-v-3643a4e2>Skip to results</button>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`</div></div>`);
-          if (reveal.on) {
-            _push2(`<div class="te-reveal" data-v-3643a4e2><div class="${ssrRenderClass([{ flipped: reveal.flipped, collecting: reveal.collecting }, "te-flip"])}" data-v-3643a4e2><div class="te-flip-in" data-v-3643a4e2><div class="te-flip-face te-flip-back" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-3643a4e2><span class="te-flip-q" style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>?</span></div><div class="te-flip-face te-flip-front" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-3643a4e2><div class="te-flip-glow" style="${ssrRenderStyle({ background: "radial-gradient(circle at 50% 42%, " + accent.value + "55, transparent 68%)" })}" data-v-3643a4e2></div><div class="te-flip-won" style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>WINNER!</div><div class="te-flip-img" style="${ssrRenderStyle({ "--pacc": accent.value })}" data-v-3643a4e2>`);
-            if (dropPrize.value && dropPrize.value.image) {
-              _push2(`<img${ssrRenderAttr("src", dropPrize.value.image)} alt="" data-v-3643a4e2>`);
-            } else if (prizeImage.value) {
-              _push2(`<img${ssrRenderAttr("src", prizeImage.value)} alt="" data-v-3643a4e2>`);
-            } else {
-              _push2(`<span data-v-3643a4e2>🏆</span>`);
-            }
-            _push2(`</div><div class="te-flip-name" style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>${ssrInterpolate((_a = dropPrize.value) == null ? void 0 : _a.prize)}</div>`);
-            if (reveal.collectable && !reveal.collecting) {
-              _push2(`<button class="te-cta te-flip-collect" style="${ssrRenderStyle({ background: accent.value })}" data-v-3643a4e2>Collect 🏆</button>`);
-            } else {
-              _push2(`<div class="te-flip-hint" style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>✦</div>`);
-            }
-            _push2(`</div></div></div></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (showPouch.value) {
-            _push2(`<div class="te-overlay" data-v-3643a4e2><div class="te-pouch-panel" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-3643a4e2><div class="te-pouch-title" style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>🏆 Your Pouch · ${ssrInterpolate(collected.value.length)}</div>`);
-            if (collected.value.length) {
-              _push2(`<div class="te-pouch-grid" data-v-3643a4e2><!--[-->`);
-              ssrRenderList(collected.value, (c2, i2) => {
-                _push2(`<div class="te-pouch-item" data-v-3643a4e2><div class="te-pouch-img" data-v-3643a4e2>`);
-                if (c2.image) {
-                  _push2(`<img${ssrRenderAttr("src", c2.image)} alt="" data-v-3643a4e2>`);
-                } else if (prizeImage.value) {
-                  _push2(`<img${ssrRenderAttr("src", prizeImage.value)} alt="" data-v-3643a4e2>`);
-                } else {
-                  _push2(`<span data-v-3643a4e2>🏆</span>`);
-                }
-                _push2(`</div><div class="te-pouch-name" style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>#${ssrInterpolate(c2.number)} · ${ssrInterpolate(c2.prize)}</div>`);
-                if (valueLabel(c2)) {
-                  _push2(`<div class="te-pouch-val" style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>${ssrInterpolate(valueLabel(c2))}</div>`);
-                } else {
-                  _push2(`<!---->`);
-                }
-                _push2(`</div>`);
-              });
-              _push2(`<!--]--></div>`);
-            } else {
-              _push2(`<div class="te-pouch-empty" data-v-3643a4e2>Nothing in here yet — win some prizes!</div>`);
-            }
-            _push2(`<button class="te-cta" style="${ssrRenderStyle({ background: primary.value, color: textColor.value })}" data-v-3643a4e2>Close</button></div></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (showIntro.value) {
-            _push2(`<div class="te-overlay te-intro" data-v-3643a4e2>`);
-            if (introPhase.value === "splash") {
-              _push2(`<div class="te-splash" data-v-3643a4e2><div class="te-splash-title" style="${ssrRenderStyle({ "--tglow": accent.value })}" data-v-3643a4e2>`);
-              if (titleImage.value) {
-                _push2(`<img${ssrRenderAttr("src", titleImage.value)} alt="" data-v-3643a4e2>`);
-              } else {
-                _push2(`<span style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>${ssrInterpolate(gameName.value || "Ticket Eater")}</span>`);
-              }
-              _push2(`</div></div>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            if (introPhase.value === "settings") {
-              _push2(`<div class="te-intro-card" style="${ssrRenderStyle({ "--acc": accent.value, "--tglow": accent.value })}" data-v-3643a4e2><div class="te-intro-welcome" style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>${ssrInterpolate(welcomeMsg.value)}</div><div class="te-intro-sub" data-v-3643a4e2>${ssrInterpolate(introSubtitle.value)}</div><div class="te-howto" data-v-3643a4e2><span data-v-3643a4e2><b data-v-3643a4e2>1</b> We roll through every one of your tickets</span><span data-v-3643a4e2><b data-v-3643a4e2>2</b> Each ticket number flashes up in turn</span><span data-v-3643a4e2><b data-v-3643a4e2>3</b> Winners reveal their prize 🏆</span></div><div class="te-set-label" data-v-3643a4e2>Choose your settings</div><div class="te-chip-row" data-v-3643a4e2><button class="${ssrRenderClass([{ on: mode.value === "manual" }, "te-chip"])}" data-v-3643a4e2>👆 Manual</button><button class="${ssrRenderClass([{ on: mode.value === "auto" }, "te-chip"])}" data-v-3643a4e2>⚡ Auto</button></div>`);
-              if (mode.value === "auto") {
-                _push2(`<!--[--><div class="te-set-label" data-v-3643a4e2>Speed</div><div class="te-chip-row" data-v-3643a4e2><button class="${ssrRenderClass([{ on: speed.value === 1 }, "te-chip"])}" data-v-3643a4e2>1×</button><button class="${ssrRenderClass([{ on: speed.value === 1.5 }, "te-chip"])}" data-v-3643a4e2>1.5×</button><button class="${ssrRenderClass([{ on: speed.value === 2 }, "te-chip"])}" data-v-3643a4e2>2×</button><button class="${ssrRenderClass([{ on: speed.value === 5 }, "te-chip"])}" data-v-3643a4e2>5×</button></div><!--]-->`);
-              } else {
-                _push2(`<!---->`);
-              }
-              _push2(`<button class="te-cta te-intro-start" style="${ssrRenderStyle({ background: accent.value })}" data-v-3643a4e2>${ssrInterpolate(introButtonText.value)}</button></div>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`</div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          if (phase.value === "done") {
-            _push2(`<div class="te-overlay" data-v-3643a4e2><div class="te-card" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-3643a4e2><div class="te-card-top" style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>${ssrInterpolate(wins.value.length ? "All done 🎉" : "All done")}</div>`);
-            if (wins.value.length) {
-              _push2(`<!--[--><div class="te-card-name" style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>Rolled through ${ssrInterpolate(total.value)} ${ssrInterpolate(total.value === 1 ? "ticket" : "tickets")} — ${ssrInterpolate(wins.value.length)} ${ssrInterpolate(wins.value.length === 1 ? "winner" : "winners")}!</div><ul class="te-winlist" data-v-3643a4e2><!--[-->`);
-              ssrRenderList(wins.value, (w2, i2) => {
-                _push2(`<li style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2><span style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>★</span> #${ssrInterpolate(w2.number)} · ${ssrInterpolate(w2.prize)}`);
-                if (w2.isBundle && w2.value && !/ticket/i.test(w2.prize)) {
-                  _push2(`<span data-v-3643a4e2> — ${ssrInterpolate(Math.floor(w2.value))} Free Ticket${ssrInterpolate(w2.value == 1 ? "" : "s")}</span>`);
-                } else if (w2.value && !w2.isBundle) {
-                  _push2(`<span data-v-3643a4e2> — £${ssrInterpolate(w2.value)}</span>`);
-                } else {
-                  _push2(`<!---->`);
-                }
-                _push2(`</li>`);
-              });
-              _push2(`<!--]--></ul><!--]-->`);
-            } else {
-              _push2(`<div class="te-card-name" style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>Rolled through all ${ssrInterpolate(total.value)} — no winners this time. Good luck next round!</div>`);
-            }
-            _push2(`<button class="te-cta" style="${ssrRenderStyle({ background: primary.value, color: textColor.value })}" data-v-3643a4e2>Close</button></div></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`</div></div>`);
+          _push2(`<!--]--></div><button type="button" class="studio-x" aria-label="Close">×</button></header><div class="studio-body"><aside class="studio-form"><p class="studio-hint">These are the same settings operators get. Change a colour, type a title, upload your own logo, background or sound — the game on the right updates instantly. Nothing is saved.</p>`);
+          _push2(ssrRenderComponent(_sfc_main$n, {
+            schema: schema.value,
+            modelValue: config3.value,
+            "onUpdate:modelValue": onUpdate
+          }, null, _parent));
+          _push2(`</aside><section class="studio-preview"><div class="studio-stage">`);
+          _push2(ssrRenderComponent(_sfc_main$u, {
+            key: current.value,
+            game: current.value,
+            config: config3.value,
+            mode: "preview",
+            autoplay: false
+          }, null, _parent));
+          _push2(`</div><div class="studio-cta"><a${ssrRenderAttr("href", CALENDLY$1)} target="_blank" rel="noopener" class="studio-btn" data-calendly data-track="studio_book_demo">Ship this on my site →</a><span>Live in 1–2 weeks. No developers. Every game included.</span></div></section></div></div></div>`);
         } else {
           _push2(`<!---->`);
         }
-      }, "body", __props.demoMode, _parent);
+      }, "body", false, _parent);
     };
   }
-});
-const _sfc_setup$l = _sfc_main$l.setup;
-_sfc_main$l.setup = (props, ctx) => {
-  const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/TicketEaterModal.vue");
-  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
 };
-const TicketEaterModal = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-3643a4e2"]]);
+const _sfc_setup$m = _sfc_main$m.setup;
+_sfc_main$m.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraStudioModal.vue");
+  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
+};
 const CALENDLY = "https://calendly.com/contact-compengine/30min";
-const TILE_BOX = 420;
-const PANEL_BOX = 600;
-const CYCLE_MS = 3200;
-const _sfc_main$k = {
+const CYCLE_MS = 4200;
+const _sfc_main$l = {
   __name: "UltraGameStudio",
   __ssrInlineRender: true,
   setup(__props) {
-    const THEMES = [
-      { name: "Ocean", primary: "#00CED1", secondary: "#1a5a7a", accent: "#00FFFF", machine: "#1a5a7a" },
-      { name: "Royal", primary: "#9333EA", secondary: "#581C87", accent: "#A855F7", machine: "#581C87" },
-      { name: "Fire", primary: "#EF4444", secondary: "#7F1D1D", accent: "#F97316", machine: "#7F1D1D" },
-      { name: "Forest", primary: "#22C55E", secondary: "#14532D", accent: "#4ADE80", machine: "#14532D" },
-      { name: "Gold", primary: "#F59E0B", secondary: "#78350F", accent: "#FCD34D", machine: "#78350F" }
-    ];
-    const EMOJI = ["🎣", "🎁", "🏆", "💎", "⭐", "🎯", "🎪", "🎲"];
     const GAMES = [
-      { id: "slots", name: "Slots", tag: "Match 3", icon: "spark", comp: SlotsGame, titleKey: "titleText", emoji: true },
-      { id: "scratch", name: "Scratch", tag: "Reveal", icon: "gift", comp: ScratchGame },
-      { id: "spin", name: "Spinny", tag: "Spin", icon: "target", comp: SpinGame, titleKey: "titleText" },
-      { id: "bingo", name: "Bingo", tag: "Line", icon: "dice", comp: BingoGame },
-      { id: "coindrop", name: "Coin Drop", tag: "Drop", icon: "cash", comp: CoinDropGame, titleKey: "titleText" },
-      { id: "balloonpop", name: "Balloon Pop", tag: "Pop", icon: "star", comp: BalloonPopGame, titleKey: "titleText", subKey: "popSubtitleText" },
-      { id: "football", name: "Football", tag: "Shoot", icon: "target", comp: FootballModal, titleKey: "titleText", winKey: "winText" },
-      { id: "fishing", name: "Fishing", tag: "Hook", icon: "fish", comp: FishingModal, titleKey: "titleText", winKey: "winText" },
-      { id: "ticketeater", name: "Ticket Eater", tag: "Feed", icon: "doc", comp: TicketEaterModal, titleKey: "titleText" }
+      { key: "slots", name: "Slots", tag: "Match 3 to win", icon: "spark" },
+      { key: "scratchy", name: "Scratch", tag: "Scratch to reveal", icon: "gift" },
+      { key: "spinny", name: "Spinny", tag: "Spin the wheel", icon: "target" },
+      { key: "bingo", name: "Bingo", tag: "Complete the line", icon: "dice" },
+      { key: "coindrop", name: "Coin Drop", tag: "Drop and bounce", icon: "cash" },
+      { key: "popgame", name: "Balloon Pop", tag: "Pop to win", icon: "star" },
+      { key: "football", name: "Football", tag: "Take the shot", icon: "target" },
+      { key: "fishing", name: "Fishing", tag: "Cast and reel", icon: "fish" },
+      { key: "ticketeater", name: "Ticket Eater", tag: "Feed the machine", icon: "doc" }
     ];
-    const cfg = reactive({
-      slots: { titleText: "LUCKY SLOTS", titleColor: "#00FFFF", primaryColor: "#00CED1", secondaryColor: "#1a5a7a", accentColor: "#00FFFF", textColor: "#FFFFFF", machineBgColor: "#1a5a7a", matchTextColor: "#7FDBFF", inventoryEmoji: "🎣", inventoryButtonColor: "#FFD700", prizesModalBgColor: "#1F2937", prizesTitleColor: "#FFD700", prizesCardBorderColor: "#FFD700", prizesCardBgColor: "#374151", prizesValueColor: "#10B981" },
-      scratch: { textColour: "#FFFFFF", wonTextColour: "#00FF00", loseTextColour: "#FF4444", accentColour: "#FFD700" },
-      spin: { titleText: "SPIN TO WIN", titleColor: "#FFD700", wheelEdgeColor: "#00aeff", walletText: "", walletColor: "#8b5cf6" },
-      bingo: { bgStart: "#1e3a8a", bgEnd: "#1e40af", frameColor: "#3b82f6", frameGlow: "#60a5fa", squareBg: "#374151", squareText: "#e5e7eb", diamond1: "#06b6d4", diamond2: "#67e8f9", winnerGlow: "#10b981", winnerBg: "#059669", popupStart: "#10b981", popupEnd: "#059669", diamondEmoji: "💎" },
-      coindrop: { titleText: "COIN DROP!", titleColor: "#FFD700", primaryColor: "#e94560", secondaryColor: "#1a1a2e", accentColor: "#ffd700", boardBgColor: "#1a1a2e", pegColor: "#ffffff", pegGlowColor: "#e94560", ballColor: "#ffd700", ballGlowColor: "#ffaa00", winBucketColor: "#00ff88", loseBucketColor: "#ff4444", trailColor: "#e94560", pegShape: "hexagon" },
-      balloonpop: { titleText: "POP TO WIN!", titleColor: "#FFD700", primaryColor: "#e94560", secondaryColor: "#1a1a2e", accentColor: "#ffd700", popBgColor: "#1a1a2e", popItemType: "balloon", popWinColor: "#00ff88", popLoseColor: "#ff4444", popSubtitleText: "Pop balloons to reveal your prize!" },
-      football: { theme: "classic", titleText: "Take Your Shot!", winText: "GOAL! You scored!", loseText: "Saved! Unlucky…", primaryColor: "#1b5e20", accentColor: "#ffeb3b", goalColor: "#f59e0b", showTopPrize: true, hostEnabled: true },
-      fishing: { theme: "stormy", titleText: "Cast to Win!", winText: "Reeled in a winner! 🎣", loseText: "The one that got away…", accentColor: "#ffd54f", primaryColor: "#0277bd", sunEnabled: true, cloudsEnabled: true, showTopPrize: false, introEnabled: true },
-      ticketeater: { theme: "arcade", titleText: "Feed the Eater!", accentColor: "#ffd54f", primaryColor: "#6c5ce7", showTopPrize: false, introEnabled: true, introWelcomeText: "Welcome to {name}", introSubtitle: "Roll through your tickets to reveal instant prizes", introButtonText: "Start 👹" }
-    });
-    const themeIdx = reactive({ slots: 0, scratch: 4, spin: 0, bingo: 0, coindrop: 2, balloonpop: 2, football: 3, fishing: 0, ticketeater: 1 });
-    const demo = {
-      footballTickets: [
-        { id: 1, number: "001", instant_win: { id: 1, prize: "£50 Cash", value: 50, claimed: false, image_path: null } },
-        { id: 2, number: "002", instant_win: false }
-      ],
-      fishingTickets: [
-        { id: 1, number: "001", instant_win: { id: 1, prize: "£25 Cash", value: 25, claimed: false, image_path: null } },
-        { id: 2, number: "002", instant_win: false },
-        { id: 3, number: "003", instant_win: false },
-        { id: 4, number: "004", instant_win: { id: 2, prize: "£10 Cash", value: 10, claimed: false, image_path: null } },
-        { id: 5, number: "005", instant_win: false }
-      ],
-      fishingCategories: [
-        { id: 1, name: "£25 Cash", value: 25, prize_type: "cash", image_path: null, available: 1 },
-        { id: 2, name: "£10 Cash", value: 10, prize_type: "cash", image_path: null, available: 1 }
-      ],
-      eaterCategories: [
-        { id: 1, name: "£50 Cash", value: 50, prize_type: "cash", image_path: null, available: 1 },
-        { id: 2, name: "Free Tickets", value: 5, prize_type: "ticket_bundle", image_path: null, available: 1 },
-        { id: 3, name: "£20 Voucher", value: 20, prize_type: "voucher", image_path: null, available: 1 }
-      ]
-    };
-    const noImages = { titleImage: "", background: "", spinButtonImage: "", machineImage: "", footerImage: "", header: "" };
-    const assets = {
-      slots: computed(() => ({ ...cfg.slots, ...noImages })),
-      scratch: computed(() => ({ background: "", overlay: "", header: "", ...cfg.scratch })),
-      spin: computed(() => ({ ...cfg.spin, background: "" })),
-      bingo: computed(() => ({ background: "", header: "", cardCover: "", ...cfg.bingo })),
-      coindrop: computed(() => ({ name: "Coin Drop", textColor: "#FFFFFF", ...cfg.coindrop, background: "", header: "", titleImage: "", dropButtonImage: "", ballImage: "", winBucketImage: "", loseBucketImage: "", tubeImage: "", machineImage: "", footerImage: "", gameBackground: "", welcomeSound: "", dropSound: "", winSound: "", lossSound: "" })),
-      balloonpop: computed(() => ({ name: "Balloon Pop", textColor: "#FFFFFF", ...cfg.balloonpop, background: "", header: "", titleImage: "", popItemImage: "", popItemColors: ["#FF4C4C", "#FFEB3B", "#64B5F6", "#81C784", "#9575CD", "#FF8A80", "#FFB74D", "#4DD0E1", "#F06292", "#FFD700"], popConfettiColors: ["#FFD700", "#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4", "#FFEAA7"], popSound: "", welcomeSound: "", winSound: "", lossSound: "", popItemLabel: "" })),
-      football: computed(() => ({ ...cfg.football, hostImage: "", kickSound: "", whistleSound: "", crowdSound: "", winSound: "", lossSound: "" })),
-      fishing: computed(() => ({ ...cfg.fishing, boatImage: "", underwaterImage: "", introTitleImage: "", fish1: "", fish2: "", fish3: "", castSound: "", splashSound: "", reelSound: "", winSound: "", lossSound: "" })),
-      ticketeater: computed(() => ({ ...cfg.ticketeater, introTitleImage: "", mascotImage: "", mascotImage2: "", mascotImage3: "", ticketImage: "", risingTicketImage: "", backgroundImage: "", pouchImage: "", prizeImage: "", feedSound: "", gulpSound: "", winSound: "", collectSound: "", welcomeSound: "" }))
-    };
-    function gameProps(id, mode) {
-      const base = { demoMode: true, previewMode: mode };
-      switch (id) {
-        case "slots":
-          return { ...base, slotsAssets: assets.slots.value, showMachine: true };
-        case "scratch":
-          return { ...base, scratchAssets: assets.scratch.value };
-        case "spin":
-          return { ...base, spinAssets: assets.spin.value };
-        case "bingo":
-          return { ...base, assets: assets.bingo.value, prizes: [], tickets: [] };
-        case "coindrop":
-          return { ...base, coinDropAssets: assets.coindrop.value, tickets: [], showGameBoard: true };
-        case "balloonpop":
-          return { ...base, popGameAssets: assets.balloonpop.value, tickets: [], showGameBoard: true };
-        case "football":
-          return { ...base, modelValue: true, assets: assets.football.value, tickets: demo.footballTickets };
-        case "fishing":
-          return { ...base, modelValue: true, assets: assets.fishing.value, tickets: demo.fishingTickets, instant_win_categories: demo.fishingCategories };
-        case "ticketeater":
-          return { ...base, modelValue: true, assets: assets.ticketeater.value, instant_win_categories: demo.eaterCategories };
-      }
-      return base;
-    }
+    const configs = reactive(Object.fromEntries(GAMES.map((g2) => [g2.key, defaultsFor(g2.key)])));
     const wallEl = ref(null);
-    const gridEl = ref(null);
-    const previewEl = ref(null);
     ref(null);
     const tileEls = ref([]);
-    const mounted = ref(GAMES.map(() => false));
+    const active = ref(GAMES.map(() => false));
     const cur = ref(-1);
-    const sel = ref(-1);
-    const tileZoom = ref(1);
-    const previewZoom = ref(1);
-    let cycleTimer = null, visible = false, ro = null, tileIo = null, wallIo = null;
+    const studioOpen = ref(false);
+    const studioGame = ref("slots");
+    let cycleTimer = null, visible2 = false, tileIo = null, wallIo = null;
     const reduced = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const tileTitle = (g2) => (g2.titleKey ? cfg[g2.id][g2.titleKey] : g2.name).toString().toUpperCase();
-    const themeOf = (id) => THEMES[themeIdx[id]];
-    const selected = computed(() => sel.value > -1 ? GAMES[sel.value] : null);
-    const selCfg = computed(() => selected.value ? cfg[selected.value.id] : null);
-    function fit() {
-      const t3 = tileEls.value[0];
-      if (t3) {
-        const w2 = t3.getBoundingClientRect().width;
-        if (w2) tileZoom.value = Math.max(0.3, Math.min(1.2, w2 / TILE_BOX));
-      }
-      const p2 = previewEl.value;
-      if (p2) {
-        const w2 = p2.getBoundingClientRect().width;
-        if (w2) previewZoom.value = Math.max(0.3, Math.min(1.2, w2 / PANEL_BOX));
-      }
-    }
+    const isPhone = () => window.matchMedia("(max-width: 639px)").matches;
     function focus(i2) {
+      var _a;
       cur.value = i2;
       clearTimeout(cycleTimer);
-      if (visible && !reduced()) cycleTimer = setTimeout(() => focus((cur.value + 1) % GAMES.length), CYCLE_MS);
+      if (isPhone() && !studioOpen.value) (_a = tileEls.value[i2]) == null ? void 0 : _a.scrollIntoView({ behavior: reduced() ? "auto" : "smooth", block: "nearest", inline: "center" });
+      if (visible2 && !reduced()) cycleTimer = setTimeout(() => focus((cur.value + 1) % GAMES.length), CYCLE_MS);
+    }
+    function onStudioChange({ game, config: config3 }) {
+      Object.assign(configs[game], config3);
     }
     onMounted(() => {
-      fit();
-      ro = new ResizeObserver(fit);
-      if (gridEl.value) ro.observe(gridEl.value);
-      if (previewEl.value) ro.observe(previewEl.value);
       tileIo = new IntersectionObserver((entries) => {
         entries.forEach((e2) => {
           if (e2.isIntersecting) {
-            const i2 = +e2.target.dataset.i;
-            mounted.value[i2] = true;
+            active.value[+e2.target.dataset.i] = true;
             tileIo.unobserve(e2.target);
           }
         });
-      }, { rootMargin: "320px 0px" });
+      }, { rootMargin: "360px 0px" });
       tileEls.value.forEach((el) => el && tileIo.observe(el));
       wallIo = new IntersectionObserver((entries) => {
         entries.forEach((e2) => {
-          visible = e2.isIntersecting;
-          if (visible) focus(cur.value > -1 ? cur.value : 0);
+          visible2 = e2.isIntersecting;
+          if (visible2) focus(cur.value > -1 ? cur.value : 0);
           else clearTimeout(cycleTimer);
         });
-      }, { threshold: 0.2 });
+      }, { threshold: 0.15 });
       if (wallEl.value) wallIo.observe(wallEl.value);
     });
     onBeforeUnmount(() => {
       clearTimeout(cycleTimer);
-      ro == null ? void 0 : ro.disconnect();
       tileIo == null ? void 0 : tileIo.disconnect();
       wallIo == null ? void 0 : wallIo.disconnect();
     });
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({ id: "game-studio" }, _attrs))}><div class="wrap"><div class="sec-head center"><span class="eyebrow"><i class="dot"></i>✦ Only on CompEngine ✦</span><h2>Game Studio. <span class="grad">Built by you.</span></h2><p class="lead">Other UK competition platforms give operators a handful of fixed game presets. We give a studio. Pick a game, theme it, brand it, preview every change live.</p></div></div><div class="${ssrRenderClass([{ open: sel.value > -1 }, "wrap gamewall"])}" id="gamewall" style="${ssrRenderStyle({ "--sc-dur": CYCLE_MS + "ms", "--z": tileZoom.value })}"><div class="gw-head"><span class="tag" id="gw-live"><i class="dot"></i>All nine games, live</span><span class="hand">tap any square to play it</span></div><div class="gw-body"><div class="gw-grid" id="gw-grid"><!--[-->`);
+      _push(`<section${ssrRenderAttrs(mergeProps({ id: "game-studio" }, _attrs))}><div class="wrap"><div class="sec-head center"><span class="eyebrow"><i class="dot"></i>✦ Only on CompEngine ✦</span><h2>Game Studio. <span class="grad">Built by you.</span></h2><p class="lead">Other UK competition platforms give operators a handful of fixed game presets. We give a studio. Pick a game, theme it, brand it, preview every change live.</p></div></div><div class="wrap gamewall" id="gamewall" style="${ssrRenderStyle({ "--sc-dur": CYCLE_MS + "ms" })}"><div class="gw-head"><span class="tag" id="gw-live"><i class="dot green"></i>All nine games, playing live</span><div class="gw-build"><span class="pb-clickme"><span class="cm-txt">Click me!</span><svg class="cm-arrow" viewBox="0 0 56 58" aria-hidden="true"><path d="M6 8 C34 10, 46 24, 40 46" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"></path><path d="M32 37 L40 49 L48 36" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><button type="button" class="pb-open" id="gw-build" data-track="game_studio_build_own">Build your own game <span class="arw">→</span></button></div></div><div class="gw-grid" id="gw-grid"><!--[-->`);
       ssrRenderList(GAMES, (g2, i2) => {
-        _push(`<div role="button" tabindex="0"${ssrRenderAttr("data-i", i2)} class="${ssrRenderClass([{ on: cur.value === i2, sel: sel.value === i2 }, "g-tile"])}" style="${ssrRenderStyle({ "--gp": themeOf(g2.id).primary, "--ga": themeOf(g2.id).accent })}"${ssrRenderAttr("aria-label", "Customise " + g2.name)}${ssrRenderAttr("data-track", "gamewall_" + g2.id)}><div class="gv"><div class="gbox" style="${ssrRenderStyle({ "--gw": TILE_BOX + "px" })}"><div class="gplay">`);
-        if (mounted.value[i2]) {
-          ssrRenderVNode(_push, createVNode(resolveDynamicComponent(g2.comp), mergeProps({ ref_for: true }, gameProps(g2.id, "mobile")), null), _parent);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`</div></div></div><span class="lbl"><span><i class="ic"${ssrRenderAttr("data-i", g2.icon)}></i> <span class="tt">${ssrInterpolate(tileTitle(g2))}</span></span><small>${ssrInterpolate(g2.tag)}</small></span><span class="play"><i class="ic" data-i="pen"></i></span><i class="bar"></i></div>`);
+        _push(`<div role="button" tabindex="0"${ssrRenderAttr("data-i", i2)} class="${ssrRenderClass([{ on: cur.value === i2 }, "g-tile"])}"${ssrRenderAttr("aria-label", "Customise " + g2.name)}${ssrRenderAttr("data-track", "gamewall_" + g2.key)}><span class="lbl"><span class="lbl-name"><i class="ic"${ssrRenderAttr("data-i", g2.icon)}></i>${ssrInterpolate(g2.name)}</span><small>${ssrInterpolate(g2.tag)}</small></span><div class="gv">`);
+        _push(ssrRenderComponent(_sfc_main$u, {
+          game: g2.key,
+          config: configs[g2.key],
+          mode: "tile",
+          active: active.value[i2]
+        }, null, _parent));
+        _push(`</div><span class="play"><i class="ic" data-i="pen"></i><b>Customise</b></span><i class="bar"></i></div>`);
       });
-      _push(`<!--]--></div><div class="gw-panel card" id="gw-panel" style="${ssrRenderStyle(sel.value > -1 ? null : { display: "none" })}"><div class="gw-ph"><div><small class="muted">Customise</small><b id="gw-pname">${ssrInterpolate(selected.value ? selected.value.name : "")}</b></div><button type="button" class="gw-x" id="gw-close" aria-label="Close customiser"><i class="ic" data-i="x"></i></button></div><div class="gw-preview" id="gw-preview" style="${ssrRenderStyle({ "--gp": selected.value ? themeOf(selected.value.id).primary : null, "--z": previewZoom.value })}"><div class="gv"><div class="gbox" style="${ssrRenderStyle({ "--gw": PANEL_BOX + "px" })}"><div class="gplay">`);
-      if (selected.value) {
-        ssrRenderVNode(_push, createVNode(resolveDynamicComponent(selected.value.comp), mergeProps({
-          key: selected.value.id
-        }, gameProps(selected.value.id, "desktop")), null), _parent);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`</div></div></div></div><p class="gw-hint">This is the real game — play it. Every change below updates it live.</p><div class="gs-row"><label>Theme</label><div class="chips" id="gw-themes"><!--[-->`);
-      ssrRenderList(THEMES, (t3, k) => {
-        _push(`<button type="button" class="${ssrRenderClass([{ on: selected.value && themeIdx[selected.value.id] === k }, "chip"])}"><i class="sw" style="${ssrRenderStyle({ "--c": t3.primary })}"></i>${ssrInterpolate(t3.name)}</button>`);
-      });
-      _push(`<!--]--></div></div>`);
-      if (selected.value && selected.value.titleKey) {
-        _push(`<div class="gs-row"><label for="gw-title">Title</label><input class="gw-input" id="gw-title" maxlength="24" autocomplete="off" spellcheck="false"${ssrRenderAttr("value", selCfg.value[selected.value.titleKey])}></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (selected.value && selected.value.winKey) {
-        _push(`<div class="gs-row"><label for="gw-win">Win message</label><input class="gw-input" id="gw-win" maxlength="32" autocomplete="off" spellcheck="false"${ssrRenderAttr("value", selCfg.value[selected.value.winKey])}></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (selected.value && selected.value.subKey) {
-        _push(`<div class="gs-row"><label for="gw-sub">Subtitle</label><input class="gw-input" id="gw-sub" maxlength="40" autocomplete="off" spellcheck="false"${ssrRenderAttr("value", selCfg.value[selected.value.subKey])}></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (selected.value && selected.value.emoji) {
-        _push(`<div class="gs-row"><label>Inventory icon</label><div class="chips" id="gw-icons"><!--[-->`);
-        ssrRenderList(EMOJI, (e2) => {
-          _push(`<button type="button" class="${ssrRenderClass([{ on: selCfg.value.inventoryEmoji === e2 }, "chip gw-emoji"])}">${ssrInterpolate(e2)}</button>`);
-        });
-        _push(`<!--]--></div></div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`<div class="gw-foot"><a${ssrRenderAttr("href", CALENDLY)} target="_blank" rel="noopener" class="btn btn-primary" data-track="game_studio_panel_book_demo" data-calendly>Ship this on my site</a><span class="muted small">Live in 1–2 weeks. No developers.</span></div></div></div></div><div class="wrap gs-cta"><a${ssrRenderAttr("href", CALENDLY)} target="_blank" rel="noopener" class="btn btn-ghost" data-track="game_studio_book_demo" data-calendly>Book a Demo</a><span class="hand">every one of these, yours to theme</span></div></section>`);
+      _push(`<!--]--></div><p class="gw-note hand">every one of these is yours to theme — tap a square to make it your own</p></div><div class="wrap gs-cta"><a${ssrRenderAttr("href", CALENDLY)} target="_blank" rel="noopener" class="btn btn-ghost" data-track="game_studio_book_demo" data-calendly>Book a Demo</a><button type="button" class="btn btn-primary" data-track="game_studio_build_cta">Build your own game</button></div>`);
+      _push(ssrRenderComponent(_sfc_main$m, {
+        modelValue: studioOpen.value,
+        "onUpdate:modelValue": ($event) => studioOpen.value = $event,
+        game: studioGame.value,
+        onChange: onStudioChange
+      }, null, _parent));
+      _push(`</section>`);
+    };
+  }
+};
+const _sfc_setup$l = _sfc_main$l.setup;
+_sfc_main$l.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraGameStudio.vue");
+  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
+};
+const _sfc_main$k = {
+  __name: "UltraEcosystem",
+  __ssrInlineRender: true,
+  setup(__props) {
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<section${ssrRenderAttrs(mergeProps({
+        id: "ecosystem",
+        class: "cv"
+      }, _attrs))}><div class="wrap"><div class="sec-head"><span class="eyebrow"><i class="dot"></i>Your complete raffle ecosystem</span><h2>Everything you need. <span class="grad">Nine modules. Zero plugins.</span></h2></div><div class="bento" id="bento"><div class="card b-gs"><span class="only">Only on CompEngine</span><h3>Game Studio</h3><div class="viz viz-game">`);
+      _push(ssrRenderComponent(_sfc_main$u, {
+        game: "slots",
+        mode: "tile"
+      }, null, _parent));
+      _push(`</div><p>Theme it, brand it, preview it live. No developers, no presets.</p><a href="#game-studio" class="link" data-track="ecosystem_try_it">Try it live ↑</a></div><div class="card"><span class="only">Only on CompEngine</span><h3>Separate Cash &amp; Site-Credit Wallets</h3><div class="viz"><div class="wal-bar"><i class="cash"></i><i class="cred"></i></div><div class="wal-lbl"><span><b>Cash 68%</b>Withdrawable · Cash wallet</span><span style="${ssrRenderStyle({ "text-align": "right" })}"><b>Credit 32%</b>Non-withdrawable · Site credit</span></div></div><p>Cash players can withdraw. Site credit they can&#39;t. Both tracked, both usable for instant wins.</p></div><div class="card"><span class="only">Only on CompEngine</span><h3>Free Entry Compliance &amp; Management</h3><div class="viz"><div class="vcoc"><span class="ring"><i class="ic" data-i="check"></i></span><span><b style="${ssrRenderStyle({ "color": "var(--text-0)" })}">UK Voluntary Code</b><br>Mapped end-to-end · since May 2026</span></div></div><p>UK free-entry route, tracked and audited end-to-end. No manual handling.</p><a href="#comparison" class="link" data-track="ecosystem_vcoc">See VCOC alignment →</a></div><div class="card"><h3>Smart Upsell — built into every checkout</h3><div class="viz" style="${ssrRenderStyle({ "padding": "0", "min-height": "130px" })}"><div class="ups"><img src="/images/upsell/upsell.png" alt="" loading="lazy"><div class="modal"><b>Add 10 more tickets for £8?</b><span class="muted">Boost your odds before checkout</span><span class="mbtn">Yes, add them</span></div></div></div><p>Fires at the right point in checkout. +£23 average per order. 87% take it.</p></div><div class="card"><h3>Best-in-class reporting</h3><div class="viz"><svg class="spark" viewBox="0 0 200 64" preserveAspectRatio="none" aria-hidden="true"><path class="area" d="M0 52 L25 46 L50 48 L75 38 L100 34 L125 26 L150 22 L175 14 L200 6 L200 64 L0 64 Z"></path><path d="M0 52 L25 46 L50 48 L75 38 L100 34 L125 26 L150 22 L175 14 L200 6"></path></svg><span class="tag green" style="${ssrRenderStyle({ "justify-self": "start" })}"><i class="ic" data-i="trend"></i>+34% MoM growth</span></div><p>Order patterns, customer LTV, prize cost, P&amp;L per competition.</p><a href="#convert" class="link" data-track="ecosystem_dashboard">See the dashboard →</a></div><div class="card"><h3>Competition Builder</h3><div class="viz"><div class="brows"><div class="brow"><i><span class="ic" data-i="check"></span></i>Prize, price, ticket cap</div><div class="brow"><i><span class="ic" data-i="check"></span></i>Instant wins — no CSV upload</div><div class="brow"><i><span class="ic" data-i="check"></span></i>Promotions, discounts, addons</div><div class="brow"><i><span class="ic" data-i="check"></span></i>Publish</div></div></div><p>Instant wins without CSVs. Promotions, discounts and addons other sites can&#39;t do.</p></div><div class="card"><h3>Automated Payouts &amp; Prize Management</h3><div class="viz"><div class="flow"><span>Winner picks</span><i class="ic" data-i="chev-r"></i><span>Cash · Credit · Prize</span><i class="ic" data-i="chev-r"></i><span>Paid &amp; tracked</span></div></div><p>Winner picks cash, credit or prize. Paid and tracked automatically.</p><a href="#certified-draws" class="link" data-track="ecosystem_prize_flow">See the prize flow →</a></div><div class="card b-scratch"><h3>Scratch to Win</h3><div class="viz"><div class="scratch" id="scratch"><div class="bar"><span>Scratch off <b>50%</b> to reveal your prize</span><button class="btn btn-ghost btn-sm" type="button" id="scratch-reveal">Reveal All</button><button class="btn btn-ghost btn-sm" type="button" id="scratch-reset" style="${ssrRenderStyle({ "margin-left": "0" })}">Reset</button></div><div class="grid" id="scratch-grid"></div></div></div></div><div class="card"><h3>GLI RNG Certified</h3><div class="viz"><a class="gli" href="#certified-draws" data-track="ecosystem_gli"><img src="/images/gli-rng-certified.png" alt="GLI RNG Certified" loading="lazy"><span class="seal">GLI<br>RNG<br>CERTIFIED</span><span>Draws and ticket distribution certified by an independent third party.</span></a></div><p>Draws and ticket distribution certified by an independent third party.</p></div><div class="card"><h3>Built-in Notifications</h3><div class="viz"><div class="toasts"><div class="toast"><i class="ic" data-i="bell"></i>You won! £250 site credit added</div><div class="toast"><i class="ic" data-i="bell"></i>Draw closes in 2 hours — 84% sold</div><div class="toast"><i class="ic" data-i="bell"></i>New: Rolex Submariner, £1.49 a ticket</div></div></div><p>Winner alerts, updates and marketing, built in — no app required.</p></div></div></div></section>`);
     };
   }
 };
 const _sfc_setup$k = _sfc_main$k.setup;
 _sfc_main$k.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraGameStudio.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraEcosystem.vue");
   return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
 };
 const _sfc_main$j = {};
-function _sfc_ssrRender$b(_ctx, _push, _parent, _attrs) {
-  _push(`<section${ssrRenderAttrs(mergeProps({
-    id: "ecosystem",
-    class: "cv"
-  }, _attrs))}><div class="wrap"><div class="sec-head"><span class="eyebrow"><i class="dot"></i>Your complete raffle ecosystem</span><h2>Everything you need. <span class="grad">Nine modules. Zero plugins.</span></h2></div><div class="bento" id="bento"><div class="card b-gs"><span class="only">Only on CompEngine</span><h3>Game Studio</h3><div class="viz"><div class="slot lg" data-slot="bento" style="${ssrRenderStyle({ "--slot-primary": "#f4a558", "--slot-accent": "#d97aa8", "width": "min(100%,520px)", "margin": "0 auto" })}"></div></div><p>Theme it, brand it, preview it live. No developers, no presets.</p><a href="#game-studio" class="link" data-track="ecosystem_try_it">Try it live ↑</a></div><div class="card"><span class="only">Only on CompEngine</span><h3>Separate Cash &amp; Site-Credit Wallets</h3><div class="viz"><div class="wal-bar"><i class="cash"></i><i class="cred"></i></div><div class="wal-lbl"><span><b>Cash 68%</b>Withdrawable · Cash wallet</span><span style="${ssrRenderStyle({ "text-align": "right" })}"><b>Credit 32%</b>Non-withdrawable · Site credit</span></div></div><p>Cash players can withdraw. Site credit they can&#39;t. Both tracked, both usable for instant wins.</p></div><div class="card"><span class="only">Only on CompEngine</span><h3>Free Entry Compliance &amp; Management</h3><div class="viz"><div class="vcoc"><span class="ring"><i class="ic" data-i="check"></i></span><span><b style="${ssrRenderStyle({ "color": "var(--text-0)" })}">UK Voluntary Code</b><br>Mapped end-to-end · since May 2026</span></div></div><p>UK free-entry route, tracked and audited end-to-end. No manual handling.</p><a href="#comparison" class="link" data-track="ecosystem_vcoc">See VCOC alignment →</a></div><div class="card"><h3>Smart Upsell — built into every checkout</h3><div class="viz" style="${ssrRenderStyle({ "padding": "0", "min-height": "130px" })}"><div class="ups"><img src="/images/upsell/upsell.png" alt="" loading="lazy"><div class="modal"><b>Add 10 more tickets for £8?</b><span class="muted">Boost your odds before checkout</span><span class="mbtn">Yes, add them</span></div></div></div><p>Fires at the right point in checkout. +£23 average per order. 87% take it.</p></div><div class="card"><h3>Best-in-class reporting</h3><div class="viz"><svg class="spark" viewBox="0 0 200 64" preserveAspectRatio="none" aria-hidden="true"><path class="area" d="M0 52 L25 46 L50 48 L75 38 L100 34 L125 26 L150 22 L175 14 L200 6 L200 64 L0 64 Z"></path><path d="M0 52 L25 46 L50 48 L75 38 L100 34 L125 26 L150 22 L175 14 L200 6"></path></svg><span class="tag green" style="${ssrRenderStyle({ "justify-self": "start" })}"><i class="ic" data-i="trend"></i>+34% MoM growth</span></div><p>Order patterns, customer LTV, prize cost, P&amp;L per competition.</p><a href="#convert" class="link" data-track="ecosystem_dashboard">See the dashboard →</a></div><div class="card"><h3>Competition Builder</h3><div class="viz"><div class="brows"><div class="brow"><i><span class="ic" data-i="check"></span></i>Prize, price, ticket cap</div><div class="brow"><i><span class="ic" data-i="check"></span></i>Instant wins — no CSV upload</div><div class="brow"><i><span class="ic" data-i="check"></span></i>Promotions, discounts, addons</div><div class="brow"><i><span class="ic" data-i="check"></span></i>Publish</div></div></div><p>Instant wins without CSVs. Promotions, discounts and addons other sites can&#39;t do.</p></div><div class="card"><h3>Automated Payouts &amp; Prize Management</h3><div class="viz"><div class="flow"><span>Winner picks</span><i class="ic" data-i="chev-r"></i><span>Cash · Credit · Prize</span><i class="ic" data-i="chev-r"></i><span>Paid &amp; tracked</span></div></div><p>Winner picks cash, credit or prize. Paid and tracked automatically.</p><a href="#certified-draws" class="link" data-track="ecosystem_prize_flow">See the prize flow →</a></div><div class="card b-scratch"><h3>Scratch to Win</h3><div class="viz"><div class="scratch" id="scratch"><div class="bar"><span>Scratch off <b>50%</b> to reveal your prize</span><button class="btn btn-ghost btn-sm" type="button" id="scratch-reveal">Reveal All</button><button class="btn btn-ghost btn-sm" type="button" id="scratch-reset" style="${ssrRenderStyle({ "margin-left": "0" })}">Reset</button></div><div class="grid" id="scratch-grid"></div></div></div></div><div class="card"><h3>GLI RNG Certified</h3><div class="viz"><a class="gli" href="#certified-draws" data-track="ecosystem_gli"><img src="/images/gli-rng-certified.png" alt="GLI RNG Certified" loading="lazy"><span class="seal">GLI<br>RNG<br>CERTIFIED</span><span>Draws and ticket distribution certified by an independent third party.</span></a></div><p>Draws and ticket distribution certified by an independent third party.</p></div><div class="card"><h3>Built-in Notifications</h3><div class="viz"><div class="toasts"><div class="toast"><i class="ic" data-i="bell"></i>You won! £250 site credit added</div><div class="toast"><i class="ic" data-i="bell"></i>Draw closes in 2 hours — 84% sold</div><div class="toast"><i class="ic" data-i="bell"></i>New: Rolex Submariner, £1.49 a ticket</div></div></div><p>Winner alerts, updates and marketing, built in — no app required.</p></div></div></div></section>`);
-}
-const _sfc_setup$j = _sfc_main$j.setup;
-_sfc_main$j.setup = (props, ctx) => {
-  const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraEcosystem.vue");
-  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
-};
-const UltraEcosystem = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["ssrRender", _sfc_ssrRender$b]]);
-const _sfc_main$i = {};
 function _sfc_ssrRender$a(_ctx, _push, _parent, _attrs) {
   _push(`<section${ssrRenderAttrs(mergeProps({
     id: "easy",
     class: "cv"
   }, _attrs))}><div class="wrap"><div class="sec-head"><span class="eyebrow"><i class="dot"></i>Easy to learn. Easier to run.</span><h2>Launch a competition in <span class="grad">three steps.</span></h2><p class="lead">If you can post on Facebook, you can run CompEngine. One onboarding call, then it&#39;s yours.</p></div><div class="easy-grid"><div class="card admin" id="admin" aria-label="Admin walkthrough demo"><div class="ad-bar"><i></i><i></i><i></i><span>admin.yourbrand.co.uk</span></div><div class="ad-body"><div class="ad-side"><b class="grad">COMPENGINE</b><span class="on">Competitions</span><span>Games</span><span>Wallets</span><span>Reports</span><span>Customers</span></div><div class="ad-main"><div class="ad-steps"><span class="on" data-s="0">1 · Create</span><span data-s="1">2 · Prize</span><span data-s="2">3 · Publish</span></div><div class="ad-form"><div class="ad-field"><label>Competition title</label><div class="ad-input" id="ad-title"></div></div><div class="ad-row"><div class="ad-field"><label>Ticket price</label><div class="ad-input" id="ad-price"></div></div><div class="ad-field"><label>Tickets</label><div class="ad-input" id="ad-qty"></div></div></div><div class="ad-field"><label>Instant wins</label><div class="ad-toggle" id="ad-toggle"><i></i><span>Add 250 instant wins — no CSV</span></div></div><div class="ad-field"><label>Prize</label><div class="ad-prize" id="ad-prize"><span class="ic" data-i="car"></span><span>BMW M3 Competition Pack · £75,000</span><b>Cash alt: £60,000</b></div></div><button type="button" class="btn btn-primary ad-publish" id="ad-publish" tabindex="-1">Publish competition</button></div><div class="ad-live" id="ad-live"><span class="ic" data-i="check-c"></span><div><b>Live on yourbrand.co.uk</b><span>/bmw-m3-competition-pack · tickets on sale</span></div></div></div></div><div class="cursor" id="ad-cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 2-3 6z" fill="#fff" stroke="#14082e" stroke-width="1.5" stroke-linejoin="round"></path></svg></div><div class="confetti" id="ad-confetti" aria-hidden="true"></div><button type="button" class="ad-replay" id="ad-replay" data-track="easy_replay">Replay</button></div><div class="timeline"><div class="tl-step"><span class="tl-dot"></span><small>Day 0</small><b>Book a 30-min demo</b><span>Tell us your prize and game type. That&#39;s the brief.</span></div><div class="tl-step"><span class="tl-dot"></span><small>Week 1</small><b>We set it up</b><span>Domain, payment gateway, game configuration — and a free migration of users, wallets and competitions.</span></div><div class="tl-step"><span class="tl-dot"></span><small>Week 2</small><b>You&#39;re live</b><span>Draws, payouts, reporting and notifications from one dashboard. We&#39;ve done it in 4 days when it mattered.</span></div><div class="tl-pills"><span class="tag green"><i class="ic" data-i="check"></i>Live in 1–2 weeks</span><span class="tag green"><i class="ic" data-i="check"></i>One onboarding call</span><span class="tag green"><i class="ic" data-i="check"></i>Free site migration</span></div></div></div></div></section>`);
 }
-const _sfc_setup$i = _sfc_main$i.setup;
-_sfc_main$i.setup = (props, ctx) => {
+const _sfc_setup$j = _sfc_main$j.setup;
+_sfc_main$j.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraEasy.vue");
-  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
+  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
 };
-const UltraEasy = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["ssrRender", _sfc_ssrRender$a]]);
-const _sfc_main$h = {};
+const UltraEasy = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["ssrRender", _sfc_ssrRender$a]]);
+const _sfc_main$i = {};
 function _sfc_ssrRender$9(_ctx, _push, _parent, _attrs) {
   _push(`<section${ssrRenderAttrs(mergeProps({
     id: "convert",
     class: "cv"
   }, _attrs))}><div class="wrap"><div class="sec-head"><span class="eyebrow"><i class="dot"></i>Built by marketers, not just developers</span><h2>Pretty doesn&#39;t pay your prize fund. <span class="grad">Conversion does.</span></h2><p class="lead">Every flow — checkout, upsell, free entry, cart-abandonment — is tested for sell-through, not just speed.</p></div><div class="stack" id="stack"><div class="card cvf" data-reveal style="${ssrRenderStyle({ "--i": "0" })}"><div class="txt"><span class="num">01</span><h3>A/B-tested Checkout Flows</h3><p class="stat"><b class="grad">+23%</b>conversion — &quot;Buy 10 tickets&quot; vs &quot;Add to cart&quot;, across our last 4M orders</p></div><div class="viz"><div class="bars"><div class="bar-row"><span>&quot;Add to cart&quot;</span><span class="bar"><i style="${ssrRenderStyle({ "width": "83%" })}"></i></span><b>1.9%</b></div><div class="bar-row win"><span>&quot;Buy 10 tickets&quot;</span><span class="bar"><i style="${ssrRenderStyle({ "width": "100%" })}"></i></span><b>2.3%</b></div></div></div></div><div class="card cvf" data-reveal style="${ssrRenderStyle({ "--i": "1" })}"><div class="txt"><span class="num">02</span><h3>Smart Upsell Modals</h3><p class="stat"><b class="grad">+£23</b>average per order · ~38% of buyers accept at least one upsell</p></div><div class="viz"><div class="uplift"><span class="tnum" data-count="42" data-prefix="£">£0</span><i class="ic" data-i="arrow-r"></i><span class="tnum" data-count="65" data-prefix="£">£0</span></div><div class="cvchips"><span class="chip on">Add 10 more tickets for £8</span><span class="chip">Try our instant win</span><span class="chip">Upgrade to bundle</span></div></div></div><div class="card cvf" data-reveal style="${ssrRenderStyle({ "--i": "2" })}"><div class="txt"><span class="num">03</span><h3>Cart-Abandonment Automation</h3><p class="stat"><b class="grad">~14%</b>of abandoned carts complete within 24h · ~£18k/month recovered for an average operator</p></div><div class="viz"><div class="ring-wrap"><svg class="ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="bg"></circle><circle cx="60" cy="60" r="50" class="fg" style="${ssrRenderStyle({ "--v": "0.14" })}"></circle></svg><div class="ring-lbl"><b><span class="tnum" data-count="14" data-suffix="%">0%</span></b><span>recovered</span></div><div class="flow"><span>Cart left</span><i class="ic" data-i="chev-r"></i><span>Email + push</span><i class="ic" data-i="chev-r"></i><span>Paid</span></div></div></div></div><div class="card cvf" data-reveal style="${ssrRenderStyle({ "--i": "3" })}"><div class="txt"><span class="num">04</span><h3>Facebook-Ad-Compliant Landing Pages</h3><p class="stat"><b class="grad">14/14</b>compliance flags passed by default — the largest paid channel, without the account bans</p></div><div class="viz"><div class="checks" id="fb-checks"></div><div class="checks-lbl"><span>Compliance flags</span><b><span class="tnum" data-count="14">0</span>/14 passing</b></div></div></div><div class="card cvf" data-reveal style="${ssrRenderStyle({ "--i": "4" })}"><div class="txt"><span class="num">05</span><h3>Referral &amp; Affiliate Engine</h3><p class="stat"><b class="grad">+41%</b>first-90-day spend from referred customers · 2.1× faster first order</p></div><div class="viz"><svg class="tree" viewBox="0 0 300 170" aria-hidden="true"><g class="ln"><line x1="150" y1="38" x2="54" y2="105"></line><line x1="150" y1="38" x2="102" y2="136"></line><line x1="150" y1="38" x2="150" y2="112"></line><line x1="150" y1="38" x2="198" y2="140"></line><line x1="150" y1="38" x2="246" y2="102"></line></g><g class="nd"><circle cx="54" cy="105" r="15"></circle><circle cx="102" cy="136" r="15"></circle><circle cx="150" cy="112" r="15"></circle><circle cx="198" cy="140" r="15"></circle><circle cx="246" cy="102" r="15"></circle></g><circle class="rt" cx="150" cy="38" r="22"></circle><text x="150" y="43" text-anchor="middle" font-size="13" font-weight="800" fill="#14082e" font-family="Inter, sans-serif">YOU</text><g class="tags"><text x="54" y="109" text-anchor="middle">+£</text><text x="102" y="140" text-anchor="middle">+£</text><text x="150" y="116" text-anchor="middle">+£</text><text x="198" y="144" text-anchor="middle">+£</text><text x="246" y="106" text-anchor="middle">+£</text></g></svg></div></div><div class="card cvf" data-reveal style="${ssrRenderStyle({ "--i": "5" })}"><div class="txt"><span class="num">06</span><h3>Conversion-Rate Dashboard</h3><p class="stat"><b class="grad">Every step</b>which competitions convert, where users drop off, which source pays back</p></div><div class="viz"><div class="mini-dash"><div class="tiles"><div class="tile">Revenue<b>+34%</b></div><div class="tile">Conversion<b>2.3%</b></div><div class="tile">Avg order<b>£65</b></div></div><div class="funnel"><i style="${ssrRenderStyle({ "width": "100%" })}"></i><i></i><i></i><i></i></div><div class="funnel-lbl"><span>Visit</span><span>Comp page</span><span>Checkout</span><span>Paid</span></div></div></div></div></div><div class="card chart" id="rev-chart"><div class="chart-head"><h3>Avg operator revenue, month-on-month</h3><div class="legend"><span><i style="${ssrRenderStyle({ "background": "var(--orange)" })}"></i>CompEngine operators</span><span><i style="${ssrRenderStyle({ "background": "var(--text-3)" })}"></i>Typical WordPress operator</span></div></div><svg viewBox="0 0 640 260" role="img" aria-label="Line chart: CompEngine operators reach +247% by month 12 versus a typical WordPress operator"><g class="grid-l"><line x1="40" y1="30" x2="600" y2="30"></line><line x1="40" y1="90" x2="600" y2="90"></line><line x1="40" y1="150" x2="600" y2="150"></line><line x1="40" y1="210" x2="600" y2="210"></line></g><text class="axis" x="52" y="238">Month 1</text><text class="axis" x="300" y="238" text-anchor="middle">Month 6</text><text class="axis" x="580" y="238" text-anchor="end">Month 12</text><path class="area-ce" d="M60 210 C 160 205, 250 190, 330 150 S 500 70, 580 34 L580 210 Z"></path><path class="l-wp" d="M60 210 C 160 206, 250 200, 330 192 S 500 178, 580 172"></path><path class="l-ce" d="M60 210 C 160 205, 250 190, 330 150 S 500 70, 580 34"></path><circle class="dot-ce" cx="580" cy="34" r="5"></circle><g class="end-tag"><rect x="506" y="8" width="66" height="22" rx="11" fill="#f4a558"></rect><text x="539" y="23" text-anchor="middle" font-size="12" font-weight="800" fill="#14082e" font-family="Inter, sans-serif">+247%</text></g></svg><p class="chart-note">Indexed to month 1. Illustrative curve shape; the +247% end point is the figure we publish.</p></div><div class="closing"><p class="quote">&quot;Most &#39;raffle website builders&#39; are designers. We&#39;re operators with our own conversion data — and we ship the winning patterns to every site we power.&quot;</p><div class="tiles2"><div class="card"><b class="grad">+23%</b><span>avg checkout conversion vs a typical WordPress raffle stack</span></div><div class="card"><b class="grad">+£23</b><span>avg ticket value uplift via smart upsell modals</span></div></div></div></div></section>`);
 }
-const _sfc_setup$h = _sfc_main$h.setup;
-_sfc_main$h.setup = (props, ctx) => {
+const _sfc_setup$i = _sfc_main$i.setup;
+_sfc_main$i.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraConvert.vue");
-  return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
+  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
 };
-const UltraConvert = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["ssrRender", _sfc_ssrRender$9]]);
-const _sfc_main$g = {};
+const UltraConvert = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["ssrRender", _sfc_ssrRender$9]]);
+const _sfc_main$h = {};
 function _sfc_ssrRender$8(_ctx, _push, _parent, _attrs) {
   _push(`<section${ssrRenderAttrs(mergeProps({
     id: "certified-draws",
     class: "cv"
   }, _attrs))}><div class="wrap"><div class="sec-head"><span class="eyebrow"><i class="dot"></i>Independently verifiable · GLI-certified RNG · UK VCOC compliant</span><h2>Every winner, <span class="grad">provably fair.</span></h2><p class="lead">Drawn by a GLI-certified RNG. Logged to a SHA-256 hash chain you can verify yourself.</p></div><div class="card theatre" id="theatre"><div class="th-head"><div><small class="muted">Live draw · demo</small><b id="th-prize">BMW M3 Competition Pack</b><span class="muted small">75,000 tickets · STAR DRAWS · 18 May 2026</span></div><span class="tag green" id="th-status"><i class="dot green"></i>GLI RNG ready</span></div><div class="th-stage"><div class="ticket-big" id="ticket-big"><span class="tk-l">TICKET</span><div class="tumblers" id="tumblers"></div><span class="tk-r">STAR DRAWS</span></div><div class="confetti" id="th-confetti" aria-hidden="true"></div><div class="th-winner" id="th-winner"><i class="ic" data-i="check-c"></i><b>Winner: J. T***</b><span>Ticket #4,182 · Drawn 18 May 2026 14:02</span></div></div><div class="chain" id="chain" aria-label="Hash chain"><div class="blk"><small>Block 1</small><code>9c1e…a04b</code></div><i></i><div class="blk"><small>Block 2</small><code>4f77…2be1</code></div><i></i><div class="blk"><small>Block 3</small><code>b30d…7c9f</code></div><i></i><div class="blk"><small>Block 4</small><code>e2a8…51d3</code></div><i></i><div class="blk now"><small>This draw</small><code id="th-hash">sha256: …</code></div></div><div class="th-foot"><button type="button" class="btn btn-primary" id="th-draw" data-track="draws_run_demo">Run the draw</button><button type="button" class="btn btn-ghost" id="th-verify-toggle" aria-expanded="false" aria-controls="verify-wrap" data-track="draws_open_verify">Verify a real draw yourself</button></div></div><div class="verify-wrap" id="verify-wrap" hidden><p class="lead" style="${ssrRenderStyle({ "margin": "28px 0 18px" })}">Each card lists the hashes recorded against a real draw. Click Copy on any hash, paste it into that card&#39;s Verify box, and we&#39;ll reveal the exact winner, ticket number, prize, and draw timestamp it was recorded against. Or click any hash row to auto-fill the verifier.</p><div class="draws" id="draws"></div></div></div></section>`);
 }
-const _sfc_setup$g = _sfc_main$g.setup;
-_sfc_main$g.setup = (props, ctx) => {
+const _sfc_setup$h = _sfc_main$h.setup;
+_sfc_main$h.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraCertifiedDraws.vue");
-  return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
+  return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
 };
-const UltraCertifiedDraws = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["ssrRender", _sfc_ssrRender$8]]);
-const _sfc_main$f = {};
+const UltraCertifiedDraws = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["ssrRender", _sfc_ssrRender$8]]);
+const _sfc_main$g = {};
 function _sfc_ssrRender$7(_ctx, _push, _parent, _attrs) {
   _push(`<section${ssrRenderAttrs(mergeProps({
     id: "why-fee",
     class: "cv"
   }, _attrs))}><div class="wrap"><div class="sec-head center"><h2>Why our pricing is what it is.</h2><p class="sub">The cheapest platform isn&#39;t the best deal. The most expensive isn&#39;t either.</p></div><div class="gauge-wrap" id="gauge"><svg class="gauge" viewBox="0 0 400 230" role="img" aria-label="Per-order fee gauge: suspiciously cheap at £0, CompEngine at 5 to 10p, overpaying at 17p and above"><defs><linearGradient id="ce-gauge" x1="0" x2="1"><stop offset="0" stop-color="#8978b1"></stop><stop offset=".35" stop-color="#f4a558"></stop><stop offset=".65" stop-color="#ec8a82"></stop><stop offset="1" stop-color="#8978b1"></stop></linearGradient></defs><path class="track" d="M40 200 A160 160 0 0 1 360 200"></path><path class="fill" d="M40 200 A160 160 0 0 1 360 200"></path><path class="sweet" d="M126 87 A160 160 0 0 1 274 87"></path><text class="gl" x="40" y="226" text-anchor="start">£0 / order</text><text class="gl" x="200" y="34" text-anchor="middle">5–10p</text><text class="gl" x="360" y="226" text-anchor="end">17p+</text><g class="needle" id="needle"><line x1="200" y1="200" x2="200" y2="70"></line><circle cx="200" cy="200" r="9"></circle></g><text class="gv" x="200" y="178" text-anchor="middle">per order</text></svg><div class="gauge-legend"><span><i style="${ssrRenderStyle({ "background": "#8978b1" })}"></i>Suspiciously cheap</span><span><i style="${ssrRenderStyle({ "background": "var(--orange)" })}"></i>CompEngine</span><span><i style="${ssrRenderStyle({ "background": "#8978b1" })}"></i>Overpaying</span></div></div><div class="fee-cols"><div class="card fee warn"><h3><i class="ic" data-i="warn"></i>Suspiciously cheap</h3><p class="intro">When £0-per-order is the headline… ask where the engineering budget comes from.</p><ul><li><i class="ic" data-i="minus"></i>Venture-funded burn — fine until the runway ends</li><li><i class="ic" data-i="minus"></i>RNG certification renewals skipped</li><li><i class="ic" data-i="minus"></i>Changelog stalls 12 months after launch</li></ul><p class="close">Cheap is expensive when the platform stops shipping.</p></div><div class="card fee mid"><h3><i class="ic" data-i="spark"></i>CompEngine — priced to keep shipping</h3><p class="intro">Your fee funds the next feature. And the one after that.</p><ul><li><i class="ic" data-i="check"></i><span><b>24 features shipped</b> in the last 12 months, included for everyone</span></li><li><i class="ic" data-i="check"></i>Never an upcharge, never a &quot;Pro tier&quot;</li><li><i class="ic" data-i="check"></i>GLI recertification and pen tests funded</li><li><i class="ic" data-i="check"></i>Fixed-fee options when you scale</li></ul><p class="close">Your fee pays for the platform getting better while you sleep.</p></div><div class="card fee over"><h3><i class="ic" data-i="arrow-up"></i>Overpaying</h3><p class="intro">When the headline is a high per-order fee… you&#39;re funding agency overhead.</p><ul><li><i class="ic" data-i="minus"></i>Per-order rates that scale painfully with success</li><li><i class="ic" data-i="minus"></i>Game library locked to fixed presets</li><li><i class="ic" data-i="minus"></i>Per-customer onboarding overhead baked into your bill</li></ul><p class="close">You&#39;re paying for their growth, not yours.</p></div></div></div></section>`);
 }
-const _sfc_setup$f = _sfc_main$f.setup;
-_sfc_main$f.setup = (props, ctx) => {
+const _sfc_setup$g = _sfc_main$g.setup;
+_sfc_main$g.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraWhyFee.vue");
-  return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
+  return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
 };
-const UltraWhyFee = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["ssrRender", _sfc_ssrRender$7]]);
-const _sfc_main$e = {};
+const UltraWhyFee = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["ssrRender", _sfc_ssrRender$7]]);
+const _sfc_main$f = {};
 function _sfc_ssrRender$6(_ctx, _push, _parent, _attrs) {
   _push(`<section${ssrRenderAttrs(mergeProps({
     id: "comparison",
     class: "cv"
-  }, _attrs))}><div class="wrap"><div class="sec-head"><h2>Side by side.</h2><p class="sub">How we stack up.</p></div><div class="seg" role="group" aria-label="Compare against"><button type="button" data-cmp="saas" aria-pressed="true" data-track="comparison_vs_saas">vs Other SaaS</button><button type="button" data-cmp="wp" aria-pressed="false" data-track="comparison_vs_wordpress">vs WordPress + plugins</button></div><div class="cmp" id="cmp"><table><thead><tr><th>What matters</th><th class="ce">CompEngine</th><th id="cmp-other-head">Other SaaS</th></tr></thead><tbody id="cmp-body"></tbody></table></div><p class="assume" id="cmp-assume"></p></div></section>`);
+  }, _attrs))}><div class="wrap"><div class="sec-head"><h2>Side by side.</h2><p class="sub">What actually moves the needle when you pick a platform — and where we win it.</p></div><div class="seg" role="group" aria-label="Compare against"><button type="button" data-cmp="saas" aria-pressed="true" data-track="comparison_vs_saas">vs Other SaaS</button><button type="button" data-cmp="wp" aria-pressed="false" data-track="comparison_vs_wordpress">vs WordPress + plugins</button></div><div class="cmp" id="cmp"><table><thead><tr><th>What matters</th><th class="ce">CompEngine</th><th id="cmp-other-head">Other SaaS</th></tr></thead><tbody id="cmp-body"></tbody></table></div><p class="assume" id="cmp-assume"></p><div class="card verdict"><div class="verdict-copy"><span class="eyebrow"><i class="dot"></i>Why operators switch</span><h3>Lower fee. Your own games. Draws you can prove. Everything included.</h3><p>You pay 5–10p an order instead of 17p, run nine games nobody else has, show customers a hash they can verify, and never get upsold to a &quot;Pro tier&quot; — every feature ships to every operator the day it goes live.</p></div><div class="verdict-cta"><a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" class="btn btn-primary" data-calendly data-track="comparison_book_demo">Book a 30-min demo</a><button type="button" class="btn btn-ghost" id="cmp-pkg" data-track="comparison_open_builder">See the packages</button></div></div></div></section>`);
 }
-const _sfc_setup$e = _sfc_main$e.setup;
-_sfc_main$e.setup = (props, ctx) => {
+const _sfc_setup$f = _sfc_main$f.setup;
+_sfc_main$f.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraComparison.vue");
-  return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
+  return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
 };
-const UltraComparison = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["ssrRender", _sfc_ssrRender$6]]);
-const _sfc_main$d = {};
+const UltraComparison = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["ssrRender", _sfc_ssrRender$6]]);
+const _sfc_main$e = {};
 function _sfc_ssrRender$5(_ctx, _push, _parent, _attrs) {
   _push(`<section${ssrRenderAttrs(mergeProps({
     class: "ce-roadmap cv",
     "aria-labelledby": "roadmap-h"
   }, _attrs))}><div class="wrap"><div class="sec-head"><span class="eyebrow"><i class="dot"></i>What&#39;s coming next</span><h2 id="roadmap-h">The AI roadmap is <span class="grad">already being built.</span></h2><p class="lead">We&#39;re integrating machine learning into the parts of your business that move money: demand forecasting, customer segmentation, revenue attribution. Public release in phases — existing operators get every feature automatically.</p></div><div class="road"><div class="card"><i class="ic" data-i="forecast"></i><h3>Demand Forecasting</h3><p>Predict ticket demand per draw type, adjusting prize structures before you publish.</p><span class="tag">Coming soon — included for all operators</span></div><div class="card"><i class="ic" data-i="target"></i><h3>Smart Targeting</h3><p>Segment customers by lifetime value and re-engage with dynamically generated offers.</p><span class="tag">Coming soon — included for all operators</span></div><div class="card"><i class="ic" data-i="insight"></i><h3>Revenue Insights</h3><p>ML-attributed revenue per game type, acquisition channel, and promotional mechanic.</p><span class="tag">Coming soon — included for all operators</span></div><div class="card"><i class="ic" data-i="pen"></i><h3>AI Content Assist</h3><p>Competition titles, rules copy, and email subject lines — generated and A/B tested automatically.</p><span class="tag">Coming soon — included for all operators</span></div></div></div></section>`);
 }
-const _sfc_setup$d = _sfc_main$d.setup;
-_sfc_main$d.setup = (props, ctx) => {
+const _sfc_setup$e = _sfc_main$e.setup;
+_sfc_main$e.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraRoadmap.vue");
-  return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
+  return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
 };
-const UltraRoadmap = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["ssrRender", _sfc_ssrRender$5]]);
+const UltraRoadmap = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["ssrRender", _sfc_ssrRender$5]]);
 function initPackageBuilder() {
   const root = document.getElementById("pb");
   const modal = document.getElementById("pb-modal");
@@ -15724,7 +13004,7 @@ function initPackageBuilder() {
     document.body.style.overflow = "";
     if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
   }
-  ["pb-open", "sticky-pkg", "exit-open"].forEach((id) => {
+  ["pb-open", "sticky-pkg", "exit-open", "float-pkg-btn", "cmp-pkg"].forEach((id) => {
     const b2 = document.getElementById(id);
     if (b2) on(b2, "click", openModal);
   });
@@ -15770,7 +13050,7 @@ function initPackageBuilder() {
     }
   };
 }
-const _sfc_main$c = {
+const _sfc_main$d = {
   __name: "UltraPricing",
   __ssrInlineRender: true,
   setup(__props) {
@@ -15797,62 +13077,62 @@ const _sfc_main$c = {
     };
   }
 };
-const _sfc_setup$c = _sfc_main$c.setup;
-_sfc_main$c.setup = (props, ctx) => {
+const _sfc_setup$d = _sfc_main$d.setup;
+_sfc_main$d.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraPricing.vue");
-  return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
+  return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
 };
-const _sfc_main$b = {};
+const _sfc_main$c = {};
 function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs) {
   _push(`<section${ssrRenderAttrs(mergeProps({
     id: "faq",
     class: "cv"
   }, _attrs))}><div class="wrap"><div class="sec-head"><h2>Questions we get before every call.</h2><p class="lead">If yours isn&#39;t here, it&#39;ll be answered in the first five minutes of the demo.</p></div><div class="faq" id="faq-list"></div></div></section>`);
 }
-const _sfc_setup$b = _sfc_main$b.setup;
-_sfc_main$b.setup = (props, ctx) => {
+const _sfc_setup$c = _sfc_main$c.setup;
+_sfc_main$c.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraFaq.vue");
-  return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
+  return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
 };
-const UltraFaq = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["ssrRender", _sfc_ssrRender$4]]);
-const _sfc_main$a = {};
+const UltraFaq = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["ssrRender", _sfc_ssrRender$4]]);
+const _sfc_main$b = {};
 function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs) {
   _push(`<section${ssrRenderAttrs(mergeProps({
     id: "booking",
     class: "cv"
   }, _attrs))}><div class="wrap"><div class="book"><div class="copy"><h2>Get started today.</h2><p class="sub">Ready to launch your competition on the UK&#39;s most intelligent platform?</p><p>30 minutes. A live demo on your brief. No sales deck, no NDAs, no obligation. Just the platform running with your prize, your game type, your brand — so you can see exactly what you&#39;d be launching.</p><div class="ticks"><span><i class="ic" data-i="check-c"></i>Live in 1–2 weeks</span><span><i class="ic" data-i="check-c"></i>Free site migration</span><span><i class="ic" data-i="check-c"></i>Every feature included</span></div><p id="pb-cta-tag" aria-live="polite"></p></div><form class="card form" id="lead-form" novalidate><div class="fields" style="${ssrRenderStyle({ "display": "grid", "gap": "12px" })}"><div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required><span class="msg"></span></div><div class="field"><label for="f-biz">Business / site name</label><input id="f-biz" name="business" type="text" autocomplete="organization" required><span class="msg"></span></div><div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required><span class="msg"></span></div><div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="07xxx xxxxxx" required><span class="msg"></span></div><div class="field"><label for="f-platform">Current platform</label><select id="f-platform" name="current_platform" required><option value="">Choose one</option><option>WordPress + plugins</option><option>Another SaaS platform</option><option>Agency-built site</option><option>Nothing yet</option></select><span class="msg"></span></div><div class="field"><label for="f-orders">Monthly orders</label><select id="f-orders" name="monthly_orders" required><option value="">Choose one</option><option>Not live yet</option><option>Under 1,000</option><option>1,000–5,000</option><option>5,000–20,000</option><option>20,000+</option></select><span class="msg"></span></div><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="utm_term"><input type="hidden" name="gclid"><input type="hidden" name="fbclid"><input type="hidden" name="landing_variant"><input type="hidden" name="package" id="f-package"><button type="submit" class="btn btn-primary btn-lg" data-track="booking_form_submit">Book my 30-min demo →</button><p class="alt">Prefer to pick a time now? <a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" data-calendly data-track="booking_open_calendar">Open the calendar</a></p><div class="mini-trust"><span><i class="ic" data-i="shield"></i>GLI certified</span><span><i class="ic" data-i="shield"></i>Pen tested</span><span><i class="ic" data-i="shield"></i>VCOC signatory</span></div></div><div class="thanks"><i class="ic" data-i="check-c"></i><h3>Got it. Pick your slot.</h3><p class="muted">We&#39;ve saved your details — choose a 30-minute time that suits you.</p><a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-calendly data-track="booking_thanks_calendly">Choose a time on Calendly</a></div></form></div><p class="trust-note">Entering a competition powered by CompEngine? Every draw is GLI-certified. Every winner is verifiable. Every order runs through a UK-licensed payment gateway. If something goes wrong, the operator has a real platform behind them — not a stack of plugins.</p></div></section>`);
 }
+const _sfc_setup$b = _sfc_main$b.setup;
+_sfc_main$b.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraBooking.vue");
+  return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
+};
+const UltraBooking = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["ssrRender", _sfc_ssrRender$3]]);
+const _sfc_main$a = {};
+function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs) {
+  _push(`<footer${ssrRenderAttrs(mergeProps({ class: "ce-footer" }, _attrs))}><div class="wrap"><a href="#hero" class="logo"><span class="gear"><img src="/images/logo.svg" alt=""><span class="gear-svg" data-gear></span></span><span>© 2026 CompEngine. Built quietly in the UK.</span></a><div class="links"><a href="#game-studio">Games</a><a href="#ecosystem">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="/about">About</a><a href="/blog">Blog</a><a href="#booking">Contact</a></div><div class="links"><a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" data-calendly data-track="footer_book_demo">Book a demo</a><a href="#booking" data-track="footer_launch">Launch your platform</a></div></div></footer>`);
+}
 const _sfc_setup$a = _sfc_main$a.setup;
 _sfc_main$a.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraBooking.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraFooter.vue");
   return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
 };
-const UltraBooking = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["ssrRender", _sfc_ssrRender$3]]);
+const UltraFooter = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["ssrRender", _sfc_ssrRender$2]]);
 const _sfc_main$9 = {};
-function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs) {
-  _push(`<footer${ssrRenderAttrs(mergeProps({ class: "ce-footer" }, _attrs))}><div class="wrap"><a href="#hero" class="logo"><span class="gear"><img src="/images/logo.svg" alt=""><span class="gear-svg" data-gear></span></span><span>© 2026 CompEngine. Built quietly in the UK.</span></a><div class="links"><a href="#game-studio">Games</a><a href="#ecosystem">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="/about">About</a><a href="/blog">Blog</a><a href="#booking">Contact</a></div><div class="links"><a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" data-calendly data-track="footer_book_demo">Book a demo</a><a href="#booking" data-track="footer_launch">Launch your platform</a></div></div></footer>`);
+function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs) {
+  _push(`<!--[--><div class="ce-sticky" id="sticky" aria-hidden="true"><div class="row"><a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" class="btn btn-primary" data-calendly data-track="sticky_book_demo">Book a Demo</a><button type="button" class="btn btn-ghost" id="sticky-pkg" data-track="sticky_open_builder">Packages</button></div><div class="mini-trust"><span><i class="ic" data-i="shield"></i>GLI</span><span><i class="ic" data-i="shield"></i>Pen tested</span><span><i class="ic" data-i="shield"></i>VCOC</span></div></div><div class="ce-float" id="float-pkg" aria-hidden="true"><span class="pb-clickme"><span class="cm-txt">Click me!</span><svg class="cm-arrow" viewBox="0 0 56 58" aria-hidden="true"><path d="M6 8 C34 10, 46 24, 40 46" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"></path><path d="M32 37 L40 49 L48 36" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><button type="button" class="pb-open" id="float-pkg-btn" data-track="float_open_builder">Click here to view packages <span class="arw">→</span></button></div><div class="ce-exit" id="exit" role="dialog" aria-label="Before you go" aria-hidden="true"><button type="button" class="x" id="exit-x" aria-label="Dismiss"><i class="ic" data-i="x"></i></button><b>Before you go — see the full package price in 60 seconds</b><span class="muted small">Three questions. No email required.</span><button type="button" class="btn btn-primary" id="exit-open" data-track="exit_open_builder">Open the package builder</button></div><!--]-->`);
 }
 const _sfc_setup$9 = _sfc_main$9.setup;
 _sfc_main$9.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraFooter.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraSticky.vue");
   return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
 };
-const UltraFooter = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["ssrRender", _sfc_ssrRender$2]]);
-const _sfc_main$8 = {};
-function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs) {
-  _push(`<!--[--><div class="ce-sticky" id="sticky" aria-hidden="true"><div class="row"><a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" class="btn btn-primary" data-calendly data-track="sticky_book_demo">Book a Demo</a><button type="button" class="btn btn-ghost" id="sticky-pkg" data-track="sticky_open_builder">Packages</button></div><div class="mini-trust"><span><i class="ic" data-i="shield"></i>GLI</span><span><i class="ic" data-i="shield"></i>Pen tested</span><span><i class="ic" data-i="shield"></i>VCOC</span></div></div><div class="ce-exit" id="exit" role="dialog" aria-label="Before you go" aria-hidden="true"><button type="button" class="x" id="exit-x" aria-label="Dismiss"><i class="ic" data-i="x"></i></button><b>Before you go — see the full package price in 60 seconds</b><span class="muted small">Three questions. No email required.</span><button type="button" class="btn btn-primary" id="exit-open" data-track="exit_open_builder">Open the package builder</button></div><!--]-->`);
-}
-const _sfc_setup$8 = _sfc_main$8.setup;
-_sfc_main$8.setup = (props, ctx) => {
-  const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraSticky.vue");
-  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
-};
-const UltraSticky = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["ssrRender", _sfc_ssrRender$1]]);
+const UltraSticky = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["ssrRender", _sfc_ssrRender$1]]);
 function initUltraHome(opts) {
   opts = opts || {};
   opts.orders = +opts.orders || 15e5;
@@ -16179,8 +13459,60 @@ function initUltraHome(opts) {
       }
     };
   }
-  makeSlot($2('[data-slot="hero"]'), { track: "hero_slot" });
-  makeSlot($2('[data-slot="bento"]'), { track: "ecosystem_slot" });
+  $$("[data-slot]").forEach(function(el) {
+    makeSlot(el, { track: el.getAttribute("data-slot") + "_slot" });
+  });
+  (function demoSite() {
+    var site = $2("#site"), car = $2("#site-carousel");
+    if (!site) return;
+    if (car) {
+      var slides = $$(".slide", car), dots = $$(".dots i", car), k = 0;
+      var iv = setInterval(function() {
+        if (document.hidden) return;
+        k = (k + 1) % slides.length;
+        slides.forEach(function(s2, i2) {
+          s2.classList.toggle("on", i2 === k);
+        });
+        dots.forEach(function(d2, i2) {
+          d2.classList.toggle("on", i2 === k);
+        });
+      }, 3200);
+      cleanups.push(function() {
+        clearInterval(iv);
+      });
+    }
+    if (RM) return;
+    var dir = 1, pause = 120, raf, on2 = false;
+    function step() {
+      if (!alive || !on2) return;
+      var max = site.scrollHeight - site.clientHeight;
+      if (max > 0) {
+        if (pause > 0) pause--;
+        else {
+          site.scrollTop += dir * 0.5;
+          if (dir > 0 && site.scrollTop >= max - 0.5) {
+            dir = -1;
+            pause = 100;
+          } else if (dir < 0 && site.scrollTop <= 0.5) {
+            dir = 1;
+            pause = 150;
+          }
+        }
+      }
+      raf = requestAnimationFrame(step);
+    }
+    if ("IntersectionObserver" in window) new IntersectionObserver(function(es) {
+      es.forEach(function(e2) {
+        on2 = e2.isIntersecting;
+        cancelAnimationFrame(raf);
+        if (on2) raf = requestAnimationFrame(step);
+      });
+    }).observe(site);
+    else {
+      on2 = true;
+      raf = requestAnimationFrame(step);
+    }
+  })();
   (function tilt() {
     var vis = $2("#hero-visual"), phone = $2("#phone");
     if (!hasHover || RM) return;
@@ -16195,16 +13527,28 @@ function initUltraHome(opts) {
     });
   })();
   (function scrollFx() {
-    var prog = $2("#progress"), gear = $2("#big-gear"), sticky = $2("#sticky"), hero = $2("#hero"), ticking = false;
+    var prog = $2("#progress");
+    $2("#big-gear");
+    var sticky = $2("#sticky"), hero = $2("#hero"), ticking = false;
     function update() {
       ticking = false;
       var y2 = window.scrollY, h2 = document.documentElement.scrollHeight - window.innerHeight;
       prog.style.transform = "scaleX(" + (h2 > 0 ? Math.min(1, y2 / h2) : 0) + ")";
-      if (!RM) gear.style.transform = "rotate(" + y2 * 0.06 + "deg)";
       var past = y2 > hero.offsetTop + hero.offsetHeight - 80;
       root.classList.toggle("scrolled", past);
       sticky.classList.toggle("on", past);
       sticky.setAttribute("aria-hidden", past ? "false" : "true");
+      var fl = $2("#float-pkg");
+      if (fl) {
+        var pr = $2("#pricing"), prIn = false;
+        if (pr) {
+          var pb = pr.getBoundingClientRect();
+          prIn = pb.top < window.innerHeight * 0.85 && pb.bottom > 0;
+        }
+        var showFl = past && !prIn;
+        fl.classList.toggle("on", showFl);
+        fl.setAttribute("aria-hidden", showFl ? "false" : "true");
+      }
       scrollDepth();
     }
     window.addEventListener("scroll", function() {
@@ -16214,6 +13558,33 @@ function initUltraHome(opts) {
       }
     }, { passive: true });
     update();
+  })();
+  (function engine() {
+    var gear = $2("#big-gear"), hero = $2("#hero");
+    if (!gear || RM) return;
+    var angle = 0, vel = 0.9, lastY = window.scrollY, last = performance.now(), on2 = true, raf;
+    function frame(now) {
+      var dt = Math.min(64, now - last);
+      last = now;
+      var dy = window.scrollY - lastY;
+      lastY = window.scrollY;
+      vel += Math.abs(dy) * 0.015;
+      vel += (0.9 - vel) * 0.03;
+      angle = (angle + vel * dt * 0.06) % 360;
+      gear.style.transform = "rotate(" + angle.toFixed(2) + "deg)";
+      if (on2 && alive) raf = requestAnimationFrame(frame);
+    }
+    if ("IntersectionObserver" in window) new IntersectionObserver(function(es) {
+      es.forEach(function(e2) {
+        on2 = e2.isIntersecting;
+        if (on2) {
+          cancelAnimationFrame(raf);
+          last = performance.now();
+          raf = requestAnimationFrame(frame);
+        }
+      });
+    }).observe(hero);
+    else raf = requestAnimationFrame(frame);
   })();
   function countUp(el, target, format, dur) {
     var start = performance.now();
@@ -16477,31 +13848,35 @@ function initUltraHome(opts) {
   })();
   (function comparison() {
     var ROWS = [
-      ["Years operating in this category", "5+ years", "4+ years", "n/a — depends on the agency"],
-      ["Per-order fee", "5–10p", "17p", "plugin licences + hosting + dev time"],
-      ["Game customisation", "Game Studio, build your own", "7+ fixed presets", "theme-dependent"],
-      ["Independent penetration test", "Yes, published", "Not published", "your responsibility"],
-      ["Separate Cash + Site Credit wallets", "Yes", "Not advertised", "plugin-dependent"],
-      ["RNG / draw certification", "GLI", "GLI Verified", "none"],
-      ["VCOC alignment in product", "Built in from launch", "Added recently", "manual"],
-      ["Public order / ticket numbers (30d)", "<span data-cmp-live></span>", "Not published", "n/a"]
+      { l: "Per-order fee", why: "The number that compounds every month", ce: ["5–10p", 1], saas: ["17p", 0], wp: ["Plugin licences + hosting + a developer on call", 0] },
+      { l: "Your own games", why: "Nine games you theme, brand and preview live", ce: ["Game Studio — build your own", 1], saas: ["7+ fixed presets, same as every other site", 0], wp: ["Whatever the theme ships with", 0] },
+      { l: "Years operating in this category", why: "Draw nights are where platforms break", ce: ["5+ years", 1], saas: ["4+ years", 2], wp: ["Depends on the agency", 0] },
+      { l: "Independent penetration test", why: "Your customers' card data rides on this", ce: ["Yes — published", 1], saas: ["Not published", 0], wp: ["Your responsibility", 0] },
+      { l: "Separate cash and site-credit wallets", why: "Clean accounting and compliance by design", ce: ["Built in", 1], saas: ["Not advertised", 0], wp: ["Plugin-dependent", 0] },
+      { l: "RNG / draw certification", why: "Provably fair draws your customers can verify", ce: ["GLI certified + SHA-256 hash chain", 1], saas: ["GLI verified", 2], wp: ["None", 0] },
+      { l: "UK Voluntary Code alignment", why: "Free entry, age checks and wallet rules, automatically", ce: ["Built in from launch", 1], saas: ["Added recently", 2], wp: ["Manual", 0] },
+      { l: "Every feature included", why: 'No "Pro tier" appearing once you are locked in', ce: ["Always — 24 features shipped this year", 1], saas: ["Depends on plan", 2], wp: ["Every plugin is another licence", 0] },
+      { l: "Public order / ticket numbers (30d)", why: "Proof it runs at scale", ce: ["LIVE", 1], saas: ["Not published", 0], wp: ["n/a", 0] }
     ];
     var body = $2("#cmp-body"), head = $2("#cmp-other-head"), wrap3 = $2("#cmp"), note = $2("#cmp-assume");
+    if (!body) return;
     var live = function() {
       return fmt(opts.orders) + " orders · " + fmt(opts.tickets) + " tickets";
     };
+    var mark = function(st) {
+      return st === 1 ? '<span class="ic ok">' + ICONS.check + "</span>" : st === 2 ? '<span class="ic mid">' + ICONS.minus + "</span>" : '<span class="ic no">' + ICONS.x + "</span>";
+    };
     function render3(mode) {
       body.innerHTML = ROWS.map(function(r2) {
-        var ce = r2[1].indexOf("data-cmp-live") > -1 ? live() : r2[1];
-        var other = mode === "saas" ? r2[2] : r2[3];
-        var ok = /^(Yes|GLI$|Built in|5\+|Game Studio)/.test(ce);
-        return "<tr><td>" + r2[0] + '</td><td class="ce">' + (ok ? '<span class="ic ok">' + ICONS.check + "</span>" : "") + ce + '</td><td class="other">' + other + "</td></tr>";
+        var ce = r2.ce[0] === "LIVE" ? live() : r2.ce[0];
+        var other = mode === "saas" ? r2.saas : r2.wp;
+        return "<tr><td><b>" + r2.l + "</b><small>" + r2.why + '</small></td><td class="ce">' + mark(r2.ce[1]) + ce + '</td><td class="other st' + other[1] + '">' + mark(other[1]) + other[0] + "</td></tr>";
       }).join("");
       head.textContent = mode === "saas" ? "Other SaaS" : "WordPress + plugins";
       note.textContent = mode === "saas" ? "CompEngine figures are rolling 30-day numbers; Other SaaS values are taken from public pricing and marketing pages." : "WordPress + plugins varies by theme, plugin stack and developer, so no figures are stated.";
     }
     $$(".seg button").forEach(function(b2) {
-      b2.addEventListener("click", function() {
+      on(b2, "click", function() {
         $$(".seg button").forEach(function(x) {
           x.setAttribute("aria-pressed", x === b2 ? "true" : "false");
         });
@@ -16770,7 +14145,7 @@ function initUltraHome(opts) {
     var QTY = [5, 10, 10, 15, 20, 25, 30, 50, 100];
     var list = $2("#feed-list"), push = $2("#push"), pushTxt = $2("#push-txt"), ordersEl = $2('[data-live="orders_30d"]'), ticketsEl = $2('[data-live="tickets_30d"]');
     $2("#push .ic").innerHTML = ICONS.bell;
-    var rows = [], pushTimer, orders = null, tickets = null, heroVisible = true, LIVE = [];
+    var rows = [], pushTimer, heroVisible = true, LIVE = [];
     axios.get("/api/activity/recent").then(function(r2) {
       var ev = r2 && r2.data && r2.data.events;
       if (ev && ev.length) LIVE = ev.filter(function(e2) {
@@ -16806,22 +14181,6 @@ function initUltraHome(opts) {
         })(old.el);
       }
     }
-    function bump(el, n2, cur) {
-      if (cur === null) return cur;
-      cur += n2;
-      el.textContent = fmt(cur);
-      el.classList.remove("tick");
-      void el.offsetWidth;
-      el.classList.add("tick");
-      var b2 = document.createElement("span");
-      b2.className = "bump";
-      b2.textContent = "+" + fmt(n2);
-      el.parentNode.appendChild(b2);
-      setTimeout(function() {
-        b2.remove();
-      }, 1300);
-      return cur;
-    }
     function showPush(o2) {
       pushTxt.textContent = o2.tickets + " tickets · " + o2.comp;
       push.classList.add("on");
@@ -16847,10 +14206,6 @@ function initUltraHome(opts) {
       o2.ts = Date.now();
       addRow(o2);
       if (heroVisible && !RM) showPush(o2);
-      if (orders !== null && !RM) {
-        orders = bump(ordersEl, 1, orders);
-        tickets = bump(ticketsEl, o2.tickets, tickets);
-      }
       window.ceTrack("live_order_shown", { demo: DEMO_DRIFT });
     };
     var seed = [{ tickets: 25, comp: "BMW M3 Competition Pack", where: "Leeds", ts: Date.now() - 9e3 }, { tickets: 10, comp: "Rolex Submariner Date", where: "Glasgow", ts: Date.now() - 27e3 }, { tickets: 50, comp: "£25,000 Tax-Free Cash", where: "Manchester", ts: Date.now() - 51e3 }];
@@ -16861,8 +14216,8 @@ function initUltraHome(opts) {
       clearInterval(feedIv);
     });
     setTimeout(function() {
-      orders = +ordersEl.dataset.target;
-      tickets = +ticketsEl.dataset.target;
+      +ordersEl.dataset.target;
+      +ticketsEl.dataset.target;
     }, 2600);
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(function(es) {
@@ -16890,7 +14245,7 @@ function initUltraHome(opts) {
     if (!cv || RM) return;
     var ctx = cv.getContext("2d"), W = 0, H = 0, DPR = Math.min(2, window.devicePixelRatio || 1), on2 = false, raf, mx = 0, my = 0;
     var COLS = [[244, 165, 88], [236, 138, 130], [217, 122, 168], [178, 151, 219], [91, 127, 196]];
-    var N = isDesktop() ? 34 : 14, T2 = [], F = 700;
+    var N = isDesktop() ? 12 : 5, T2 = [], F = 700;
     function reset(t3, far) {
       t3.x = (Math.random() - 0.5) * 1.6;
       t3.y = (Math.random() - 0.5) * 1.4;
@@ -17120,7 +14475,7 @@ function initUltraHome(opts) {
     var box = $2("#admin");
     if (!box) return;
     var cur = $2("#ad-cursor"), steps = $$(".ad-steps span", box), title = $2("#ad-title"), price = $2("#ad-price"), qty = $2("#ad-qty"), tog = $2("#ad-toggle"), prize = $2("#ad-prize"), pub = $2("#ad-publish"), live = $2("#ad-live"), conf = $2("#ad-confetti");
-    var timers = [], running = false, visible = false, loopT;
+    var timers = [], running = false, visible2 = false, loopT;
     function later(fn, ms) {
       timers.push(setTimeout(fn, RM ? 0 : ms));
     }
@@ -17128,7 +14483,7 @@ function initUltraHome(opts) {
       var b2 = box.getBoundingClientRect(), r2 = el.getBoundingClientRect();
       cur.style.transform = "translate(" + (r2.left - b2.left + (dx || r2.width / 2)) + "px," + (r2.top - b2.top + (dy || r2.height / 2)) + "px)";
     }
-    function click() {
+    function click2() {
       cur.classList.remove("click");
       void cur.offsetWidth;
       cur.classList.add("click");
@@ -17197,21 +14552,21 @@ function initUltraHome(opts) {
         moveTo(title, 24, 20);
       }, 100);
       later(function() {
-        click();
+        click2();
       }, 800);
       type(title, "BMW M3 Competition Pack", 950);
       later(function() {
         moveTo(price, 24, 20);
       }, 2300);
       later(function() {
-        click();
+        click2();
       }, 2900);
       type(price, "£2.99", 3e3);
       later(function() {
         moveTo(qty, 24, 20);
       }, 3500);
       later(function() {
-        click();
+        click2();
       }, 4100);
       type(qty, "75,000", 4200);
       later(function() {
@@ -17219,14 +14574,14 @@ function initUltraHome(opts) {
         moveTo(tog, 19, 11);
       }, 4800);
       later(function() {
-        click();
+        click2();
         tog.classList.add("on");
       }, 5400);
       later(function() {
         moveTo(prize);
       }, 5800);
       later(function() {
-        click();
+        click2();
         prize.classList.add("on");
       }, 6400);
       later(function() {
@@ -17234,7 +14589,7 @@ function initUltraHome(opts) {
         moveTo(pub);
       }, 6900);
       later(function() {
-        click();
+        click2();
         pub.classList.add("pressed");
       }, 7600);
       later(function() {
@@ -17245,7 +14600,7 @@ function initUltraHome(opts) {
       }, 7900);
       later(function() {
         running = false;
-        if (visible) loopT = setTimeout(run, 4e3);
+        if (visible2) loopT = setTimeout(run, 4e3);
       }, 8400);
     }
     $2("#ad-replay").addEventListener("click", function() {
@@ -17255,12 +14610,12 @@ function initUltraHome(opts) {
     });
     if ("IntersectionObserver" in window) new IntersectionObserver(function(es) {
       es.forEach(function(e2) {
-        visible = e2.isIntersecting;
-        if (visible && !running) {
+        visible2 = e2.isIntersecting;
+        if (visible2 && !running) {
           clearTimeout(loopT);
           loopT = setTimeout(run, 400);
         }
-        if (!visible) clearTimeout(loopT);
+        if (!visible2) clearTimeout(loopT);
       });
     }, { threshold: 0.4 }).observe(box);
     else run();
@@ -17276,7 +14631,7 @@ function initUltraHome(opts) {
     document.body.style.overflow = "";
   };
 }
-const _sfc_main$7 = {
+const _sfc_main$8 = {
   __name: "Home",
   __ssrInlineRender: true,
   setup(__props) {
@@ -17317,21 +14672,21 @@ const _sfc_main$7 = {
         _: 1
       }, _parent));
       _push(`<div class="ce-home" id="ce-home"><div class="haze" aria-hidden="true"></div><div class="progress" id="progress" aria-hidden="true"></div><svg width="0" height="0" style="${ssrRenderStyle({ "position": "absolute" })}" aria-hidden="true"><defs><linearGradient id="ce-gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b7fc4"></stop><stop offset=".25" stop-color="#8a5fb8"></stop><stop offset=".5" stop-color="#b297db"></stop><stop offset=".72" stop-color="#d97aa8"></stop><stop offset=".88" stop-color="#ec8a82"></stop><stop offset="1" stop-color="#f4a558"></stop></linearGradient><linearGradient id="ce-spark-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4a558" stop-opacity=".35"></stop><stop offset="1" stop-color="#f4a558" stop-opacity="0"></stop></linearGradient><linearGradient id="ce-chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4a558" stop-opacity=".28"></stop><stop offset="1" stop-color="#f4a558" stop-opacity="0"></stop></linearGradient></defs></svg><div class="page">`);
-      _push(ssrRenderComponent(_sfc_main$A, null, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$z, {
+      _push(ssrRenderComponent(_sfc_main$x, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$w, {
         orders: unref(orders),
         tickets: unref(tickets)
       }, null, _parent));
       _push(ssrRenderComponent(UltraLogoWall, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$l, null, null, _parent));
       _push(ssrRenderComponent(_sfc_main$k, null, null, _parent));
-      _push(ssrRenderComponent(UltraEcosystem, null, null, _parent));
       _push(ssrRenderComponent(UltraEasy, null, null, _parent));
       _push(ssrRenderComponent(UltraConvert, null, null, _parent));
       _push(ssrRenderComponent(UltraCertifiedDraws, null, null, _parent));
       _push(ssrRenderComponent(UltraWhyFee, null, null, _parent));
       _push(ssrRenderComponent(UltraComparison, null, null, _parent));
       _push(ssrRenderComponent(UltraRoadmap, null, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$c, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$d, null, null, _parent));
       _push(ssrRenderComponent(UltraFaq, null, null, _parent));
       _push(ssrRenderComponent(UltraBooking, null, null, _parent));
       _push(ssrRenderComponent(UltraFooter, null, null, _parent));
@@ -17341,30 +14696,30 @@ const _sfc_main$7 = {
     };
   }
 };
-const _sfc_setup$7 = _sfc_main$7.setup;
-_sfc_main$7.setup = (props, ctx) => {
+const _sfc_setup$8 = _sfc_main$8.setup;
+_sfc_main$8.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Home.vue");
-  return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
+  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
 };
 const __vite_glob_0_17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$7
+  default: _sfc_main$8
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$6 = {};
+const _sfc_main$7 = {};
 function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
   _push(`<button${ssrRenderAttrs(mergeProps({ class: "inline-flex items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition duration-150 ease-in-out hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 active:bg-red-700" }, _attrs))}>`);
   ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</button>`);
 }
-const _sfc_setup$6 = _sfc_main$6.setup;
-_sfc_main$6.setup = (props, ctx) => {
+const _sfc_setup$7 = _sfc_main$7.setup;
+_sfc_main$7.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/DangerButton.vue");
-  return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
+  return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
 };
-const DangerButton = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["ssrRender", _sfc_ssrRender]]);
-const _sfc_main$5 = {
+const DangerButton = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["ssrRender", _sfc_ssrRender]]);
+const _sfc_main$6 = {
   __name: "Modal",
   __ssrInlineRender: true,
   props: {
@@ -17447,13 +14802,13 @@ const _sfc_main$5 = {
     };
   }
 };
-const _sfc_setup$5 = _sfc_main$5.setup;
-_sfc_main$5.setup = (props, ctx) => {
+const _sfc_setup$6 = _sfc_main$6.setup;
+_sfc_main$6.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Modal.vue");
-  return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
+  return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
 };
-const _sfc_main$4 = {
+const _sfc_main$5 = {
   __name: "SecondaryButton",
   __ssrInlineRender: true,
   props: {
@@ -17473,13 +14828,13 @@ const _sfc_main$4 = {
     };
   }
 };
-const _sfc_setup$4 = _sfc_main$4.setup;
-_sfc_main$4.setup = (props, ctx) => {
+const _sfc_setup$5 = _sfc_main$5.setup;
+_sfc_main$5.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/SecondaryButton.vue");
-  return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
+  return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
 };
-const _sfc_main$3 = {
+const _sfc_main$4 = {
   __name: "DeleteUserForm",
   __ssrInlineRender: true,
   setup(__props) {
@@ -17519,19 +14874,19 @@ const _sfc_main$3 = {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$5, {
+      _push(ssrRenderComponent(_sfc_main$6, {
         show: confirmingUserDeletion.value,
         onClose: closeModal
       }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="p-6"${_scopeId}><h2 class="text-lg font-medium text-gray-900"${_scopeId}> Are you sure you want to delete your account? </h2><p class="mt-1 text-sm text-gray-600"${_scopeId}> Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account. </p><div class="mt-6"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$Z, {
+            _push2(ssrRenderComponent(_sfc_main$W, {
               for: "password",
               value: "Password",
               class: "sr-only"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$X, {
+            _push2(ssrRenderComponent(_sfc_main$U, {
               id: "password",
               ref_key: "passwordInput",
               ref: passwordInput,
@@ -17542,12 +14897,12 @@ const _sfc_main$3 = {
               placeholder: "Password",
               onKeyup: deleteUser
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$_, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               message: unref(form).errors.password,
               class: "mt-2"
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="mt-6 flex justify-end"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$4, { onClick: closeModal }, {
+            _push2(ssrRenderComponent(_sfc_main$5, { onClick: closeModal }, {
               default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(` Cancel `);
@@ -17582,12 +14937,12 @@ const _sfc_main$3 = {
                 createVNode("h2", { class: "text-lg font-medium text-gray-900" }, " Are you sure you want to delete your account? "),
                 createVNode("p", { class: "mt-1 text-sm text-gray-600" }, " Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account. "),
                 createVNode("div", { class: "mt-6" }, [
-                  createVNode(_sfc_main$Z, {
+                  createVNode(_sfc_main$W, {
                     for: "password",
                     value: "Password",
                     class: "sr-only"
                   }),
-                  createVNode(_sfc_main$X, {
+                  createVNode(_sfc_main$U, {
                     id: "password",
                     ref_key: "passwordInput",
                     ref: passwordInput,
@@ -17598,13 +14953,13 @@ const _sfc_main$3 = {
                     placeholder: "Password",
                     onKeyup: withKeys(deleteUser, ["enter"])
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$_, {
+                  createVNode(_sfc_main$X, {
                     message: unref(form).errors.password,
                     class: "mt-2"
                   }, null, 8, ["message"])
                 ]),
                 createVNode("div", { class: "mt-6 flex justify-end" }, [
-                  createVNode(_sfc_main$4, { onClick: closeModal }, {
+                  createVNode(_sfc_main$5, { onClick: closeModal }, {
                     default: withCtx(() => [
                       createTextVNode(" Cancel ")
                     ]),
@@ -17631,17 +14986,17 @@ const _sfc_main$3 = {
     };
   }
 };
-const _sfc_setup$3 = _sfc_main$3.setup;
-_sfc_main$3.setup = (props, ctx) => {
+const _sfc_setup$4 = _sfc_main$4.setup;
+_sfc_main$4.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Profile/Partials/DeleteUserForm.vue");
-  return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
+  return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
 };
 const __vite_glob_0_19 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$3
+  default: _sfc_main$4
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2 = {
+const _sfc_main$3 = {
   __name: "UpdatePasswordForm",
   __ssrInlineRender: true,
   setup(__props) {
@@ -17654,11 +15009,11 @@ const _sfc_main$2 = {
     });
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<section${ssrRenderAttrs(_attrs)}><header><h2 class="text-lg font-medium text-gray-900"> Update Password </h2><p class="mt-1 text-sm text-gray-600"> Ensure your account is using a long, random password to stay secure. </p></header><form class="mt-6 space-y-6"><div>`);
-      _push(ssrRenderComponent(_sfc_main$Z, {
+      _push(ssrRenderComponent(_sfc_main$W, {
         for: "current_password",
         value: "Current Password"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$X, {
+      _push(ssrRenderComponent(_sfc_main$U, {
         id: "current_password",
         ref_key: "currentPasswordInput",
         ref: currentPasswordInput,
@@ -17668,16 +15023,16 @@ const _sfc_main$2 = {
         class: "mt-1 block w-full",
         autocomplete: "current-password"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$_, {
+      _push(ssrRenderComponent(_sfc_main$X, {
         message: unref(form).errors.current_password,
         class: "mt-2"
       }, null, _parent));
       _push(`</div><div>`);
-      _push(ssrRenderComponent(_sfc_main$Z, {
+      _push(ssrRenderComponent(_sfc_main$W, {
         for: "password",
         value: "New Password"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$X, {
+      _push(ssrRenderComponent(_sfc_main$U, {
         id: "password",
         ref_key: "passwordInput",
         ref: passwordInput,
@@ -17687,16 +15042,16 @@ const _sfc_main$2 = {
         class: "mt-1 block w-full",
         autocomplete: "new-password"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$_, {
+      _push(ssrRenderComponent(_sfc_main$X, {
         message: unref(form).errors.password,
         class: "mt-2"
       }, null, _parent));
       _push(`</div><div>`);
-      _push(ssrRenderComponent(_sfc_main$Z, {
+      _push(ssrRenderComponent(_sfc_main$W, {
         for: "password_confirmation",
         value: "Confirm Password"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$X, {
+      _push(ssrRenderComponent(_sfc_main$U, {
         id: "password_confirmation",
         modelValue: unref(form).password_confirmation,
         "onUpdate:modelValue": ($event) => unref(form).password_confirmation = $event,
@@ -17704,7 +15059,7 @@ const _sfc_main$2 = {
         class: "mt-1 block w-full",
         autocomplete: "new-password"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$_, {
+      _push(ssrRenderComponent(_sfc_main$X, {
         message: unref(form).errors.password_confirmation,
         class: "mt-2"
       }, null, _parent));
@@ -17732,17 +15087,17 @@ const _sfc_main$2 = {
     };
   }
 };
-const _sfc_setup$2 = _sfc_main$2.setup;
-_sfc_main$2.setup = (props, ctx) => {
+const _sfc_setup$3 = _sfc_main$3.setup;
+_sfc_main$3.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue");
-  return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
+  return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
 };
 const __vite_glob_0_20 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$2
+  default: _sfc_main$3
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$1 = {
+const _sfc_main$2 = {
   __name: "UpdateProfileInformationForm",
   __ssrInlineRender: true,
   props: {
@@ -17761,11 +15116,11 @@ const _sfc_main$1 = {
     });
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<section${ssrRenderAttrs(_attrs)}><header><h2 class="text-lg font-medium text-gray-900"> Profile Information </h2><p class="mt-1 text-sm text-gray-600"> Update your account&#39;s profile information and email address. </p></header><form class="mt-6 space-y-6"><div>`);
-      _push(ssrRenderComponent(_sfc_main$Z, {
+      _push(ssrRenderComponent(_sfc_main$W, {
         for: "name",
         value: "Name"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$X, {
+      _push(ssrRenderComponent(_sfc_main$U, {
         id: "name",
         type: "text",
         class: "mt-1 block w-full",
@@ -17775,16 +15130,16 @@ const _sfc_main$1 = {
         autofocus: "",
         autocomplete: "name"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$_, {
+      _push(ssrRenderComponent(_sfc_main$X, {
         class: "mt-2",
         message: unref(form).errors.name
       }, null, _parent));
       _push(`</div><div>`);
-      _push(ssrRenderComponent(_sfc_main$Z, {
+      _push(ssrRenderComponent(_sfc_main$W, {
         for: "email",
         value: "Email"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$X, {
+      _push(ssrRenderComponent(_sfc_main$U, {
         id: "email",
         type: "email",
         class: "mt-1 block w-full",
@@ -17793,7 +15148,7 @@ const _sfc_main$1 = {
         required: "",
         autocomplete: "username"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$_, {
+      _push(ssrRenderComponent(_sfc_main$X, {
         class: "mt-2",
         message: unref(form).errors.email
       }, null, _parent));
@@ -17845,17 +15200,17 @@ const _sfc_main$1 = {
     };
   }
 };
-const _sfc_setup$1 = _sfc_main$1.setup;
-_sfc_main$1.setup = (props, ctx) => {
+const _sfc_setup$2 = _sfc_main$2.setup;
+_sfc_main$2.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue");
-  return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
+  return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
 };
 const __vite_glob_0_21 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$1
+  default: _sfc_main$2
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main = {
+const _sfc_main$1 = {
   __name: "Edit",
   __ssrInlineRender: true,
   props: {
@@ -17870,7 +15225,7 @@ const _sfc_main = {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), { title: "Profile" }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$G, null, {
+      _push(ssrRenderComponent(_sfc_main$D, null, {
         header: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<h2 class="text-xl font-semibold leading-tight text-gray-800"${_scopeId}> Profile </h2>`);
@@ -17883,32 +15238,32 @@ const _sfc_main = {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="py-12"${_scopeId}><div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8"${_scopeId}><div class="bg-white p-4 shadow sm:rounded-lg sm:p-8"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$1, {
+            _push2(ssrRenderComponent(_sfc_main$2, {
               "must-verify-email": __props.mustVerifyEmail,
               status: __props.status,
               class: "max-w-xl"
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="bg-white p-4 shadow sm:rounded-lg sm:p-8"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$2, { class: "max-w-xl" }, null, _parent2, _scopeId));
-            _push2(`</div><div class="bg-white p-4 shadow sm:rounded-lg sm:p-8"${_scopeId}>`);
             _push2(ssrRenderComponent(_sfc_main$3, { class: "max-w-xl" }, null, _parent2, _scopeId));
+            _push2(`</div><div class="bg-white p-4 shadow sm:rounded-lg sm:p-8"${_scopeId}>`);
+            _push2(ssrRenderComponent(_sfc_main$4, { class: "max-w-xl" }, null, _parent2, _scopeId));
             _push2(`</div></div></div>`);
           } else {
             return [
               createVNode("div", { class: "py-12" }, [
                 createVNode("div", { class: "mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8" }, [
                   createVNode("div", { class: "bg-white p-4 shadow sm:rounded-lg sm:p-8" }, [
-                    createVNode(_sfc_main$1, {
+                    createVNode(_sfc_main$2, {
                       "must-verify-email": __props.mustVerifyEmail,
                       status: __props.status,
                       class: "max-w-xl"
                     }, null, 8, ["must-verify-email", "status"])
                   ]),
                   createVNode("div", { class: "bg-white p-4 shadow sm:rounded-lg sm:p-8" }, [
-                    createVNode(_sfc_main$2, { class: "max-w-xl" })
+                    createVNode(_sfc_main$3, { class: "max-w-xl" })
                   ]),
                   createVNode("div", { class: "bg-white p-4 shadow sm:rounded-lg sm:p-8" }, [
-                    createVNode(_sfc_main$3, { class: "max-w-xl" })
+                    createVNode(_sfc_main$4, { class: "max-w-xl" })
                   ])
                 ])
               ])
@@ -17921,15 +15276,15 @@ const _sfc_main = {
     };
   }
 };
-const _sfc_setup = _sfc_main.setup;
-_sfc_main.setup = (props, ctx) => {
+const _sfc_setup$1 = _sfc_main$1.setup;
+_sfc_main$1.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Profile/Edit.vue");
-  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+  return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
 const __vite_glob_0_18 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main
+  default: _sfc_main$1
 }, Symbol.toStringTag, { value: "Module" }));
 function t() {
   return t = Object.assign ? Object.assign.bind() : function(t3) {
@@ -18295,6 +15650,49 @@ const _ = { install(t3, e2) {
   const o2 = (t4, o3, n2, r2 = e2) => D(t4, o3, n2, r2);
   parseInt(t3.version) > 2 ? (t3.config.globalProperties.route = o2, t3.provide("route", o2)) : t3.mixin({ methods: { route: o2 } });
 } };
+const _sfc_main = {
+  __name: "Button",
+  __ssrInlineRender: true,
+  props: {
+    variant: { type: String, default: "default" },
+    size: { type: String, default: "default" },
+    type: { type: String, default: "button" },
+    disabled: { type: Boolean, default: false }
+  },
+  setup(__props) {
+    const props = __props;
+    const VARIANTS = {
+      default: "bg-pink-600 text-white hover:bg-pink-500",
+      secondary: "bg-white/10 text-white border border-white/15 hover:bg-white/20",
+      outline: "border border-white/25 text-white hover:bg-white/10",
+      ghost: "text-white hover:bg-white/10",
+      destructive: "bg-red-600 text-white hover:bg-red-500",
+      colourless: ""
+    };
+    const SIZES = { default: "h-10 px-4 py-2", sm: "h-9 px-3", lg: "h-11 px-8", icon: "h-10 w-10" };
+    const classes = computed(() => [
+      "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-semibold transition-colors",
+      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 disabled:pointer-events-none disabled:opacity-50",
+      VARIANTS[props.variant] ?? VARIANTS.default,
+      SIZES[props.size] ?? SIZES.default
+    ]);
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<button${ssrRenderAttrs(mergeProps({
+        type: __props.type,
+        disabled: __props.disabled,
+        class: classes.value
+      }, _attrs))}>`);
+      ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
+      _push(`</button>`);
+    };
+  }
+};
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ui/Button.vue");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
 createServer(
   (page) => createInertiaApp({
     page,
@@ -18323,7 +15721,11 @@ createServer(
       };
       return createSSRApp({
         render: () => h$1(App, props)
-      }).use(plugin).use(_).use(SiteTextPluginSSR);
+      }).use(plugin).use(_).component("UiButton", _sfc_main).use(SiteTextPluginSSR);
     }
   })
 );
+export {
+  _export_sfc as _,
+  gsapWithCSS as g
+};

@@ -3,6 +3,7 @@ import createServer from '@inertiajs/vue3/server'
 import { renderToString } from 'vue/server-renderer'
 import { createSSRApp, h } from 'vue'
 import { ZiggyVue } from '../../vendor/tightenco/ziggy'
+import UiButton from './Components/Ui/Button.vue'
 
 createServer(page =>
     createInertiaApp({
@@ -31,7 +32,8 @@ createServer(page =>
             }
             return createSSRApp({
                 render: () => h(App, props),
-            }).use(plugin).use(ZiggyVue).use(SiteTextPluginSSR)
+            }).use(plugin).use(ZiggyVue)
+            .component('UiButton', UiButton).use(SiteTextPluginSSR)
         },
     }),
 )

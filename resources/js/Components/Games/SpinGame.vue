@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import gsap from 'gsap';
 import { ref, computed, onMounted } from 'vue';
+import { siteCreditLabel } from '@/utils/prizeLabel';
 
 interface SpinAssets {
     titleText: string;
     titleColor: string;
     wheelEdgeColor?: string;
-    background?: string;
     logo?: string;
-    walletText?: string;
-    walletColor?: string;
 }
 
 interface InstantWin {
@@ -60,12 +58,6 @@ const showResult = ref<boolean>(false);
 const currentTicketNumber = ref<string>('');
 const resultComplete = ref<boolean>(false);
 
-// Floating Wallet State
-const showWinnerCard = ref<boolean>(false);
-const hideFloatingCard = ref<boolean>(false);
-const isCardAnimatingToCorner = ref<boolean>(false);
-const currentPrizeAmount = ref<string>('');
-
 let currentWheelRotation: number = 0;
 
 const segments: Readonly<Segment[]> = [
@@ -95,8 +87,8 @@ const spinsLeft = computed((): number => {
 
 const canSpin = computed((): boolean => spinsLeft.value > 0 && !isSpinning.value && !isAnimating.value && !showResult.value && resultComplete.value);
 
-const maskSize = computed((): string => (props.previewMode === 'mobile' ? '70%' : '70%'));
-const maskEdge = computed((): string => (props.previewMode === 'mobile' ? '75%' : '75%'));
+const maskSize = computed((): string => (props.previewMode === 'mobile' ? '70%' : '35%'));
+const maskEdge = computed((): string => (props.previewMode === 'mobile' ? '75%' : '40%'));
 const isDesktop = computed((): boolean => props.previewMode === 'desktop');
 const isMobile = computed((): boolean => props.previewMode === 'mobile');
 
@@ -119,11 +111,6 @@ const titleStyle = computed(() => ({
 const titleClasses = computed((): string => {
     const baseClasses = isMobile.value ? '' : 'animate-pulse';
     return isDesktop.value ? `${baseClasses} desktop-title` : `${baseClasses} mobile-title`;
-});
-
-const walletGradient = computed((): string => {
-    const color = props.spinAssets.walletColor || '#8b5cf6';
-    return `linear-gradient(135deg, ${color} 0%, ${color}dd 50%, ${color}bb 100%)`;
 });
 
 onMounted(() => {
@@ -421,7 +408,14 @@ const spinWheel = (): void => {
         currentTicketNumber.value = `#${Math.floor(Math.random() * 9999) + 1000}`;
     } else if (currentTicket) {
         isWinner = currentTicket.instant_win !== false;
-        prizeName = isWinner ? currentTicket.instant_win.prize : '';
+        if (isWinner && currentTicket.instant_win) {
+            const iw = currentTicket.instant_win as InstantWin;
+            const isBundle = (iw as any).prize_type === 'ticket_bundle';
+            const rawValue = parseFloat(String(iw.value)) || 0;
+            prizeName = isBundle
+                ? `${Math.floor(rawValue)} Free Ticket${rawValue !== 1 ? 's' : ''}`
+                : (siteCreditLabel((iw as any).prize_type, rawValue) ?? iw.prize);
+        }
         currentTicketNumber.value = `#${currentTicket.number}`;
         emit('ticket-played', currentTicket.id);
     } else {
@@ -453,20 +447,6 @@ const spinWheel = (): void => {
 
             if (isWinner) {
                 emit('prize-won', prizeName);
-                // Show floating wallet winner card
-                currentPrizeAmount.value = prizeName;
-                hideFloatingCard.value = true;
-                showWinnerCard.value = true;
-
-                // Animate card to corner after display
-                setTimeout(() => {
-                    isCardAnimatingToCorner.value = true;
-                    setTimeout(() => {
-                        showWinnerCard.value = false;
-                        isCardAnimatingToCorner.value = false;
-                        hideFloatingCard.value = false;
-                    }, 500);
-                }, 2500);
             }
 
             const displayTime = isWinner ? 3000 : 1000;
@@ -480,7 +460,6 @@ const spinWheel = (): void => {
                         showResult.value = false;
                         staticSegmentText.value = '';
                         currentTicketNumber.value = '';
-                        currentPrizeAmount.value = '';
 
                         setTimeout(() => {
                             isAnimating.value = false;
@@ -560,27 +539,21 @@ const createStaticSegmentPath = (cx: number, cy: number, r: number, anglePerSegm
 </script>
 
 <template>
-    <div class="spin-game-wrapper"
-        :style="{
-            backgroundImage: spinAssets.background ? `url(${spinAssets.background})` : 'none',
-            backgroundColor: spinAssets.background ? 'transparent' : '#0a0a1a',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-        }">
-        <div class="flex-1 flex flex-col relative overflow-hidden">
-            <div class="flex-1 flex flex-col justify-center items-center relative z-20"
-                :style="{ marginTop: isDesktop ? '40px' : '30px' }">
-                <div class="wheel-title mb-4">
-                    <span :class="titleClasses" :style="titleStyle">{{ spinAssets.titleText }}</span>
-                </div>
+    <div class="flex-1 flex flex-col relative overflow-hidden">
+        <div class="flex-1 flex flex-col justify-center items-center relative z-20"
+            :style="{ marginTop: isDesktop ? '40px' : '30px' }">
+            <div class="wheel-title mb-4">
+                <span :class="titleClasses" :style="titleStyle">{{ spinAssets.titleText }}</span>
             </div>
+        </div>
 
-            <div class="relative w-full h-3/5 overflow-hidden" :style="{ marginTop: isMobile ? '80px' : '0' }">
-                <div class="absolute left-1/2 transform -translate-x-1/2 overflow-hidden rounded-full"
-                    :style="`bottom: -70%; width: 180%; height: 160%; mask: radial-gradient(circle at center, white ${maskSize}, transparent ${maskEdge}); -webkit-mask: radial-gradient(circle at center, white ${maskSize}, transparent ${maskEdge});`">
-                <!-- Glow effect only on mobile, removed for desktop to eliminate shade -->
-                <div v-if="isMobile" class="absolute inset-0 rounded-full"
-                    :style="`background: radial-gradient(circle, transparent 35%, ${spinAssets.wheelEdgeColor || '#00aeffff'} 65%, transparent 80%); opacity: 0.5;`">
+        <div class="relative w-full h-3/5 overflow-hidden" :style="{ marginTop: isMobile ? '80px' : '0' }">
+            <div class="absolute left-1/2 transform -translate-x-1/2 overflow-hidden rounded-full"
+                :style="`bottom: -70%; width: 180%; height: 160%; mask: radial-gradient(circle at center, white ${maskSize}, transparent ${maskEdge}); -webkit-mask: radial-gradient(circle at center, white ${maskSize}, transparent ${maskEdge});`">
+                <div class="absolute inset-0 rounded-full"
+                    :style="isMobile
+                        ? `background: radial-gradient(circle, transparent 35%, ${spinAssets.wheelEdgeColor || '#00aeffff'} 65%, transparent 80%); opacity: 0.5;`
+                        : `background: radial-gradient(circle, ${spinAssets.wheelEdgeColor || '#00aeffff'} 0%, transparent 70%); opacity: 0.2; filter: blur(30px);`">
                 </div>
 
                 <div class="relative w-full h-full overflow-hidden rounded-full">
@@ -874,82 +847,10 @@ const createStaticSegmentPath = (cx: number, cy: number, r: number, anglePerSegm
                 </div>
             </div>
         </div>
-
-        <!-- Floating Wallet Card -->
-        <div v-if="spinAssets.walletText && !hideFloatingCard"
-            class="floating-wallet-container"
-            :class="{ 'floating-wallet-demo': demoMode }">
-            <div class="floating-credit-card">
-                <div class="credit-card-3d">
-                    <div class="credit-card-front">
-                        <div class="card-gradient" :style="{ background: walletGradient }">
-                            <div class="card-header-section">
-                                <div class="brand-title">
-                                    <p class="brand-text">{{ spinAssets.walletText }}</p>
-                                </div>
-                                <div class="card-chip"></div>
-                            </div>
-                            <div class="card-body">
-                                <p class="prize-message">SPIN TO WIN</p>
-                            </div>
-                            <div class="card-footer">
-                                <span class="card-number">**** **** **** ****</span>
-                            </div>
-                            <div class="card-shine-effect"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Winner Card Overlay -->
-        <Transition name="winner-card">
-            <div v-if="showWinnerCard"
-                class="winner-card-overlay"
-                :class="{ 'winner-card-demo': demoMode }">
-                <div class="winner-card-container"
-                    :class="{
-                        'slide-to-corner': isCardAnimatingToCorner && !isMobile,
-                        'slide-to-corner-mobile': isCardAnimatingToCorner && isMobile
-                    }">
-                    <div class="winner-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="card-content" :style="{ background: walletGradient }">
-                                    <div class="card-header">
-                                        <div class="brand-section">
-                                            <p class="brand-text">{{ spinAssets.walletText || 'WINNER' }}</p>
-                                        </div>
-                                        <div class="card-chip"></div>
-                                    </div>
-                                    <div class="prize-section">
-                                        <p class="prize-amount">{{ currentPrizeAmount }}</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <span class="card-number">**** **** **** ****</span>
-                                    </div>
-                                    <div class="card-shine-effect"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Transition>
-        </div>
     </div>
 </template>
 
 <style scoped>
-.spin-game-wrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: visible;
-}
-
 .clickable-segment {
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1211,440 +1112,5 @@ const createStaticSegmentPath = (cx: number, cy: number, r: number, anglePerSegm
     font-weight: 900;
     letter-spacing: 3px;
     text-transform: uppercase;
-}
-
-/* =========================================
-   FLOATING WALLET CARD STYLES
-   ========================================= */
-
-.floating-wallet-container {
-    position: absolute;
-    top: 80px;
-    right: 20px;
-    z-index: 50;
-    pointer-events: none;
-}
-
-.floating-wallet-demo {
-    top: 10px;
-    right: 10px;
-    transform: scale(0.7);
-}
-
-.floating-credit-card {
-    perspective: 1000px;
-    animation: cardFloat 3s ease-in-out infinite;
-}
-
-.credit-card-3d {
-    width: 140px;
-    height: 90px;
-    transform-style: preserve-3d;
-    animation: cardRotate 6s ease-in-out infinite;
-    transition: transform 0.3s ease;
-}
-
-.credit-card-front {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow:
-        0 15px 30px rgba(0, 0, 0, 0.4),
-        0 0 20px rgba(139, 92, 246, 0.3);
-}
-
-.card-gradient {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 6px;
-    color: white;
-    transition: background 0.5s ease-in-out;
-}
-
-.card-header-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.brand-title {
-    flex: 1;
-}
-
-.brand-text {
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 0.5px;
-    margin: 0;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-    color: white;
-    line-height: 1;
-}
-
-.card-chip {
-    width: 18px;
-    height: 13px;
-    background: linear-gradient(135deg, #f3f4f6, #d1d5db);
-    border-radius: 2px;
-    border: 1px solid #9ca3af;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.card-body {
-    text-align: center;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 4px 0;
-}
-
-.prize-message {
-    font-size: 13px;
-    font-weight: 700;
-    color: white;
-    text-shadow:
-        1px 1px 2px rgba(0, 0, 0, 0.8),
-        0 0 8px rgba(255, 255, 255, 0.6);
-    letter-spacing: 0.3px;
-    text-align: center;
-    line-height: 1.1;
-}
-
-.card-footer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-}
-
-.card-number {
-    font-size: 9px;
-    font-family: 'Courier New', monospace;
-    letter-spacing: 1px;
-    opacity: 0.9;
-    color: white;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-}
-
-.card-shine-effect {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
-    animation: cardShineMove 4s ease-in-out infinite;
-    pointer-events: none;
-}
-
-/* Winner Card Overlay */
-.winner-card-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: 120px;
-    z-index: 60;
-    background: rgba(0, 0, 0, 0.3);
-    pointer-events: none;
-}
-
-.winner-card-demo {
-    position: absolute;
-    padding-top: 80px;
-}
-
-.winner-card-container {
-    perspective: 1000px;
-    animation: slideInFromRight 0.5s ease-out forwards;
-    width: 300px;
-    height: 190px;
-}
-
-.winner-card-container.slide-to-corner {
-    animation: slideToCorner 0.4s ease-out forwards;
-}
-
-.winner-card-container.slide-to-corner-mobile {
-    animation: slideToCornerMobile 0.4s ease-out forwards;
-}
-
-.winner-card {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-}
-
-.card-inner {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    animation: flipReveal3D 0.6s ease-out forwards;
-}
-
-.winner-card .card-front {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow:
-        0 25px 50px rgba(0, 0, 0, 0.6),
-        0 0 40px rgba(139, 92, 246, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    transform: perspective(800px) rotateX(-5deg) rotateY(8deg);
-}
-
-.card-content {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 16px;
-    color: white;
-}
-
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 8px;
-}
-
-.brand-section {
-    flex: 1;
-}
-
-.brand-section .brand-text {
-    font-size: 20px;
-    font-weight: 900;
-    letter-spacing: 1.5px;
-    margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    color: white;
-}
-
-.card-header .card-chip {
-    width: 32px;
-    height: 22px;
-    background: linear-gradient(135deg, #f3f4f6, #d1d5db);
-    border-radius: 6px;
-    border: 1px solid #9ca3af;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.prize-section {
-    text-align: center;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.prize-amount {
-    font-size: 42px;
-    font-weight: 900;
-    color: #ffffff;
-    text-shadow:
-        3px 3px 6px rgba(0, 0, 0, 0.8),
-        0 0 20px rgba(255, 255, 255, 0.8);
-    letter-spacing: -1px;
-    animation: prizeGlow 1.5s ease-in-out infinite;
-}
-
-.card-footer .card-number {
-    font-size: 12px;
-    font-family: 'Courier New', monospace;
-    letter-spacing: 1.5px;
-    opacity: 0.9;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-    color: white;
-}
-
-/* Floating Card Animations */
-@keyframes cardFloat {
-    0%, 100% {
-        transform: translateY(0px) scale(1);
-    }
-    25% {
-        transform: translateY(-8px) scale(1.02);
-    }
-    50% {
-        transform: translateY(-4px) scale(1.01);
-    }
-    75% {
-        transform: translateY(-12px) scale(1.03);
-    }
-}
-
-@keyframes cardRotate {
-    0%, 100% {
-        transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg);
-    }
-    25% {
-        transform: rotateY(5deg) rotateX(2deg) rotateZ(1deg);
-    }
-    50% {
-        transform: rotateY(0deg) rotateX(4deg) rotateZ(-1deg);
-    }
-    75% {
-        transform: rotateY(-5deg) rotateX(2deg) rotateZ(1deg);
-    }
-}
-
-@keyframes cardShineMove {
-    0% {
-        transform: translateX(-100%) translateY(-100%) rotate(45deg);
-    }
-    25% {
-        transform: translateX(-50%) translateY(-50%) rotate(45deg);
-    }
-    50% {
-        transform: translateX(0%) translateY(0%) rotate(45deg);
-    }
-    75% {
-        transform: translateX(50%) translateY(50%) rotate(45deg);
-    }
-    100% {
-        transform: translateX(100%) translateY(100%) rotate(45deg);
-    }
-}
-
-/* Winner Card Animations */
-@keyframes slideInFromRight {
-    0% {
-        transform: translateX(100px) rotateY(-15deg);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0) rotateY(0deg);
-        opacity: 1;
-    }
-}
-
-@keyframes flipReveal3D {
-    0% {
-        transform: perspective(800px) rotateY(-90deg) rotateX(-10deg) translateZ(-50px);
-        opacity: 0;
-    }
-    50% {
-        transform: perspective(800px) rotateY(-20deg) rotateX(-5deg) translateZ(20px);
-        opacity: 0.8;
-    }
-    100% {
-        transform: perspective(800px) rotateY(0deg) rotateX(0deg) translateZ(0px);
-        opacity: 1;
-    }
-}
-
-@keyframes slideToCorner {
-    0% {
-        transform: translateX(0) translateY(0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(-400px) translateY(-300px) scale(0.2);
-        opacity: 0;
-    }
-}
-
-@keyframes slideToCornerMobile {
-    0% {
-        transform: translateX(0) translateY(0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(-150px) translateY(-150px) scale(0.2);
-        opacity: 0;
-    }
-}
-
-@keyframes prizeGlow {
-    0%, 100% {
-        text-shadow:
-            3px 3px 6px rgba(0, 0, 0, 0.8),
-            0 0 20px rgba(255, 255, 255, 0.8);
-    }
-    50% {
-        text-shadow:
-            3px 3px 6px rgba(0, 0, 0, 0.8),
-            0 0 30px rgba(255, 255, 255, 1),
-            0 0 50px rgba(251, 191, 36, 0.7);
-    }
-}
-
-/* Winner Card Transition */
-.winner-card-enter-active {
-    transition: opacity 0.3s;
-}
-
-.winner-card-leave-active {
-    transition: opacity 0.3s;
-}
-
-.winner-card-enter-from,
-.winner-card-leave-to {
-    opacity: 0;
-}
-
-/* Demo mode adjustments for floating wallet */
-.floating-wallet-demo .credit-card-3d {
-    width: 110px;
-    height: 70px;
-}
-
-.floating-wallet-demo .brand-text {
-    font-size: 8px;
-}
-
-.floating-wallet-demo .prize-message {
-    font-size: 9px;
-}
-
-.floating-wallet-demo .card-number {
-    font-size: 6px;
-}
-
-.floating-wallet-demo .card-chip {
-    width: 14px;
-    height: 10px;
-}
-
-.winner-card-demo .winner-card-container {
-    width: 200px;
-    height: 130px;
-}
-
-.winner-card-demo .brand-section .brand-text {
-    font-size: 14px;
-}
-
-.winner-card-demo .prize-amount {
-    font-size: 28px;
-}
-
-.winner-card-demo .card-header .card-chip {
-    width: 22px;
-    height: 16px;
-}
-
-.winner-card-demo .card-footer .card-number {
-    font-size: 9px;
 }
 </style>

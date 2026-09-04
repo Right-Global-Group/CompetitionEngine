@@ -5,50 +5,236 @@
   "node_modules/gsap/ScrollTrigger.js": [],
   "node_modules/gsap/gsap-core.js": [],
   "node_modules/gsap/index.js": [],
+  "node_modules/swiper/modules/pagination.css": [
+    "/build/assets/ScratchyModal-D1CkCzpl.js",
+    "/build/assets/ScratchyModal-BRsoqRMA.css"
+  ],
+  "node_modules/swiper/swiper.css": [
+    "/build/assets/ScratchyModal-D1CkCzpl.js",
+    "/build/assets/ScratchyModal-BRsoqRMA.css"
+  ],
   "resources/css/home-ultra.css": [],
   "resources/js/Components/ApplicationLogo.vue": [],
   "resources/js/Components/Checkbox.vue": [],
   "resources/js/Components/DangerButton.vue": [],
   "resources/js/Components/Dropdown.vue": [],
   "resources/js/Components/DropdownLink.vue": [],
-  "resources/js/Components/Games/BingoGame.vue": [],
-  "resources/js/Components/Games/BingoGame.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/Components/Games/BingoGame.vue?vue&type=style&index=0&scoped=1f5cbe26&lang.css": [],
-  "resources/js/Components/Games/CoinDropGame.vue": [],
-  "resources/js/Components/Games/CoinDropGame.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/Components/Games/CoinDropGame.vue?vue&type=style&index=0&scoped=d0cbb709&lang.css": [],
-  "resources/js/Components/Games/CoinDropInventoryModal.vue": [],
-  "resources/js/Components/Games/CoinDropInventoryModal.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/Components/Games/CoinDropInventoryModal.vue?vue&type=style&index=0&scoped=e9709567&lang.css": [],
-  "resources/js/Components/Games/FishingModal.vue": [],
-  "resources/js/Components/Games/FishingModal.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/Components/Games/FishingModal.vue?vue&type=style&index=0&scoped=fe24a048&lang.css": [],
-  "resources/js/Components/Games/FootballModal.vue": [],
-  "resources/js/Components/Games/FootballModal.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/Components/Games/FootballModal.vue?vue&type=style&index=0&scoped=dc83cd69&lang.css": [],
-  "resources/js/Components/Games/PopGame.vue": [],
-  "resources/js/Components/Games/PopGame.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/Components/Games/PopGame.vue?vue&type=style&index=0&scoped=1bddc6ee&lang.css": [],
-  "resources/js/Components/Games/ScratchGame.vue": [],
-  "resources/js/Components/Games/ScratchGame.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/Components/Games/ScratchGame.vue?vue&type=style&index=0&scoped=b780eac5&lang.css": [],
-  "resources/js/Components/Games/SlotsGame.vue": [],
-  "resources/js/Components/Games/SlotsGame.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/Components/Games/SlotsGame.vue?vue&type=style&index=0&scoped=721e497f&lang.css": [],
-  "resources/js/Components/Games/SlotsInventoryModal.vue": [],
-  "resources/js/Components/Games/SlotsInventoryModal.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/Components/Games/SlotsInventoryModal.vue?vue&type=style&index=0&scoped=d0f61d96&lang.css": [],
-  "resources/js/Components/Games/SlotsReels.vue": [],
-  "resources/js/Components/Games/SlotsReels.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/Components/Games/SlotsReels.vue?vue&type=style&index=0&scoped=8e1c7f96&lang.css": [],
-  "resources/js/Components/Games/SpinGame.vue": [],
-  "resources/js/Components/Games/SpinGame.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/Components/Games/SpinGame.vue?vue&type=style&index=0&scoped=9d548857&lang.css": [],
-  "resources/js/Components/Games/SpriteCharacter.vue": [],
-  "resources/js/Components/Games/SpriteCharacter.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/Components/Games/TicketEaterModal.vue": [],
-  "resources/js/Components/Games/TicketEaterModal.vue?vue&type=script&setup=true&lang.ts": [],
-  "resources/js/Components/Games/TicketEaterModal.vue?vue&type=style&index=0&scoped=3643a4e2&lang.css": [],
+  "resources/js/Components/Games/BingoGame.vue": [
+    "/build/assets/BingoModal-BvrWLnZJ.js",
+    "/build/assets/BingoModal-DdfhFkrL.css"
+  ],
+  "resources/js/Components/Games/BingoGame.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/BingoModal-BvrWLnZJ.js",
+    "/build/assets/BingoModal-DdfhFkrL.css"
+  ],
+  "resources/js/Components/Games/BingoGame.vue?vue&type=style&index=0&scoped=f0bbb734&lang.css": [
+    "/build/assets/BingoModal-BvrWLnZJ.js",
+    "/build/assets/BingoModal-DdfhFkrL.css"
+  ],
+  "resources/js/Components/Games/BingoModal.vue": [
+    "/build/assets/BingoModal-BvrWLnZJ.js",
+    "/build/assets/BingoModal-DdfhFkrL.css"
+  ],
+  "resources/js/Components/Games/BingoModal.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/BingoModal-BvrWLnZJ.js",
+    "/build/assets/BingoModal-DdfhFkrL.css"
+  ],
+  "resources/js/Components/Games/BingoModal.vue?vue&type=style&index=0&scoped=a24bbc6f&lang.css": [
+    "/build/assets/BingoModal-BvrWLnZJ.js",
+    "/build/assets/BingoModal-DdfhFkrL.css"
+  ],
+  "resources/js/Components/Games/CoinDropGame.vue": [
+    "/build/assets/CoinDropModal-3H0gaBbU.js",
+    "/build/assets/CoinDropModal-BWNzq279.css"
+  ],
+  "resources/js/Components/Games/CoinDropGame.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/CoinDropModal-3H0gaBbU.js",
+    "/build/assets/CoinDropModal-BWNzq279.css"
+  ],
+  "resources/js/Components/Games/CoinDropGame.vue?vue&type=style&index=0&scoped=8f3e02dd&lang.css": [
+    "/build/assets/CoinDropModal-3H0gaBbU.js",
+    "/build/assets/CoinDropModal-BWNzq279.css"
+  ],
+  "resources/js/Components/Games/CoinDropModal.vue": [
+    "/build/assets/CoinDropModal-3H0gaBbU.js",
+    "/build/assets/CoinDropModal-BWNzq279.css"
+  ],
+  "resources/js/Components/Games/CoinDropModal.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/CoinDropModal-3H0gaBbU.js",
+    "/build/assets/CoinDropModal-BWNzq279.css"
+  ],
+  "resources/js/Components/Games/CoinDropModal.vue?vue&type=style&index=0&scoped=ee50c360&lang.css": [
+    "/build/assets/CoinDropModal-3H0gaBbU.js",
+    "/build/assets/CoinDropModal-BWNzq279.css"
+  ],
+  "resources/js/Components/Games/FishingModal.vue": [
+    "/build/assets/FishingModal-CBI7qq-o.js",
+    "/build/assets/FishingModal-B27_cxm8.css"
+  ],
+  "resources/js/Components/Games/FishingModal.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/FishingModal-CBI7qq-o.js",
+    "/build/assets/FishingModal-B27_cxm8.css"
+  ],
+  "resources/js/Components/Games/FishingModal.vue?vue&type=style&index=0&scoped=a898ffab&lang.css": [
+    "/build/assets/FishingModal-CBI7qq-o.js",
+    "/build/assets/FishingModal-B27_cxm8.css"
+  ],
+  "resources/js/Components/Games/FootballModal.vue": [
+    "/build/assets/FootballModal-Bl6Ev3Y6.js",
+    "/build/assets/FootballModal-CQyc8Vz9.css"
+  ],
+  "resources/js/Components/Games/FootballModal.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/FootballModal-Bl6Ev3Y6.js",
+    "/build/assets/FootballModal-CQyc8Vz9.css"
+  ],
+  "resources/js/Components/Games/FootballModal.vue?vue&type=style&index=0&scoped=0bc4eb40&lang.css": [
+    "/build/assets/FootballModal-Bl6Ev3Y6.js",
+    "/build/assets/FootballModal-CQyc8Vz9.css"
+  ],
+  "resources/js/Components/Games/PopGameBoard.vue": [
+    "/build/assets/PopGameModal-BuT_tcuE.js",
+    "/build/assets/PopGameModal-CjRmNxK_.css"
+  ],
+  "resources/js/Components/Games/PopGameBoard.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/PopGameModal-BuT_tcuE.js",
+    "/build/assets/PopGameModal-CjRmNxK_.css"
+  ],
+  "resources/js/Components/Games/PopGameBoard.vue?vue&type=style&index=0&scoped=3f2e00ec&lang.css": [
+    "/build/assets/PopGameModal-BuT_tcuE.js",
+    "/build/assets/PopGameModal-CjRmNxK_.css"
+  ],
+  "resources/js/Components/Games/PopGameModal.vue": [
+    "/build/assets/PopGameModal-BuT_tcuE.js",
+    "/build/assets/PopGameModal-CjRmNxK_.css"
+  ],
+  "resources/js/Components/Games/PopGameModal.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/PopGameModal-BuT_tcuE.js",
+    "/build/assets/PopGameModal-CjRmNxK_.css"
+  ],
+  "resources/js/Components/Games/PopGameModal.vue?vue&type=style&index=0&scoped=e22d3019&lang.css": [
+    "/build/assets/PopGameModal-BuT_tcuE.js",
+    "/build/assets/PopGameModal-CjRmNxK_.css"
+  ],
+  "resources/js/Components/Games/ScratchyGame.vue": [
+    "/build/assets/ScratchyModal-D1CkCzpl.js",
+    "/build/assets/ScratchyModal-BRsoqRMA.css"
+  ],
+  "resources/js/Components/Games/ScratchyGame.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/ScratchyModal-D1CkCzpl.js",
+    "/build/assets/ScratchyModal-BRsoqRMA.css"
+  ],
+  "resources/js/Components/Games/ScratchyGame.vue?vue&type=style&index=0&scoped=1299a941&lang.css": [
+    "/build/assets/ScratchyModal-D1CkCzpl.js",
+    "/build/assets/ScratchyModal-BRsoqRMA.css"
+  ],
+  "resources/js/Components/Games/ScratchyModal.vue": [
+    "/build/assets/ScratchyModal-D1CkCzpl.js",
+    "/build/assets/ScratchyModal-BRsoqRMA.css"
+  ],
+  "resources/js/Components/Games/ScratchyModal.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/ScratchyModal-D1CkCzpl.js",
+    "/build/assets/ScratchyModal-BRsoqRMA.css"
+  ],
+  "resources/js/Components/Games/ScratchyModal.vue?vue&type=style&index=0&scoped=508775cf&lang.css": [
+    "/build/assets/ScratchyModal-D1CkCzpl.js",
+    "/build/assets/ScratchyModal-BRsoqRMA.css"
+  ],
+  "resources/js/Components/Games/SlotsGame.vue": [
+    "/build/assets/SlotsModal-wswDreW4.js",
+    "/build/assets/SlotsModal-D4y36vlD.css"
+  ],
+  "resources/js/Components/Games/SlotsGame.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/SlotsModal-wswDreW4.js",
+    "/build/assets/SlotsModal-D4y36vlD.css"
+  ],
+  "resources/js/Components/Games/SlotsGame.vue?vue&type=style&index=0&scoped=0885d6fc&lang.css": [
+    "/build/assets/SlotsModal-wswDreW4.js",
+    "/build/assets/SlotsModal-D4y36vlD.css"
+  ],
+  "resources/js/Components/Games/SlotsInventoryModal.vue": [
+    "/build/assets/SlotsModal-wswDreW4.js",
+    "/build/assets/SlotsModal-D4y36vlD.css"
+  ],
+  "resources/js/Components/Games/SlotsInventoryModal.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/SlotsModal-wswDreW4.js",
+    "/build/assets/SlotsModal-D4y36vlD.css"
+  ],
+  "resources/js/Components/Games/SlotsInventoryModal.vue?vue&type=style&index=0&scoped=ece98b8b&lang.css": [
+    "/build/assets/SlotsModal-wswDreW4.js",
+    "/build/assets/SlotsModal-D4y36vlD.css"
+  ],
+  "resources/js/Components/Games/SlotsModal.vue": [
+    "/build/assets/SlotsModal-wswDreW4.js",
+    "/build/assets/SlotsModal-D4y36vlD.css"
+  ],
+  "resources/js/Components/Games/SlotsModal.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/SlotsModal-wswDreW4.js",
+    "/build/assets/SlotsModal-D4y36vlD.css"
+  ],
+  "resources/js/Components/Games/SlotsModal.vue?vue&type=style&index=0&scoped=1e24670f&lang.css": [
+    "/build/assets/SlotsModal-wswDreW4.js",
+    "/build/assets/SlotsModal-D4y36vlD.css"
+  ],
+  "resources/js/Components/Games/SlotsReels.vue": [
+    "/build/assets/SlotsModal-wswDreW4.js",
+    "/build/assets/SlotsModal-D4y36vlD.css"
+  ],
+  "resources/js/Components/Games/SlotsReels.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/SlotsModal-wswDreW4.js",
+    "/build/assets/SlotsModal-D4y36vlD.css"
+  ],
+  "resources/js/Components/Games/SlotsReels.vue?vue&type=style&index=0&scoped=dcbeafff&lang.css": [
+    "/build/assets/SlotsModal-wswDreW4.js",
+    "/build/assets/SlotsModal-D4y36vlD.css"
+  ],
+  "resources/js/Components/Games/SpinGame.vue": [
+    "/build/assets/SpinnyModal-COVDxCXm.js",
+    "/build/assets/SpinnyModal-BD6IF27j.css"
+  ],
+  "resources/js/Components/Games/SpinGame.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/SpinnyModal-COVDxCXm.js",
+    "/build/assets/SpinnyModal-BD6IF27j.css"
+  ],
+  "resources/js/Components/Games/SpinGame.vue?vue&type=style&index=0&scoped=4c9c7034&lang.css": [
+    "/build/assets/SpinnyModal-COVDxCXm.js",
+    "/build/assets/SpinnyModal-BD6IF27j.css"
+  ],
+  "resources/js/Components/Games/SpinnyModal.vue": [
+    "/build/assets/SpinnyModal-COVDxCXm.js",
+    "/build/assets/SpinnyModal-BD6IF27j.css"
+  ],
+  "resources/js/Components/Games/SpinnyModal.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/SpinnyModal-COVDxCXm.js",
+    "/build/assets/SpinnyModal-BD6IF27j.css"
+  ],
+  "resources/js/Components/Games/SpinnyModal.vue?vue&type=style&index=0&scoped=cf729e6b&lang.css": [
+    "/build/assets/SpinnyModal-COVDxCXm.js",
+    "/build/assets/SpinnyModal-BD6IF27j.css"
+  ],
+  "resources/js/Components/Games/TicketEaterModal.vue": [
+    "/build/assets/TicketEaterModal-BvuwjVCL.js",
+    "/build/assets/TicketEaterModal-lLfID6WS.css"
+  ],
+  "resources/js/Components/Games/TicketEaterModal.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/TicketEaterModal-BvuwjVCL.js",
+    "/build/assets/TicketEaterModal-lLfID6WS.css"
+  ],
+  "resources/js/Components/Games/TicketEaterModal.vue?vue&type=style&index=0&scoped=3643a4e2&lang.css": [
+    "/build/assets/TicketEaterModal-BvuwjVCL.js",
+    "/build/assets/TicketEaterModal-lLfID6WS.css"
+  ],
+  "resources/js/Components/Games/TicketRevealModal.vue": [
+    "/build/assets/SpinnyModal-COVDxCXm.js",
+    "/build/assets/SpinnyModal-BD6IF27j.css"
+  ],
+  "resources/js/Components/Games/TicketRevealModal.vue?vue&type=script&setup=true&lang.ts": [
+    "/build/assets/SpinnyModal-COVDxCXm.js",
+    "/build/assets/SpinnyModal-BD6IF27j.css"
+  ],
+  "resources/js/Components/Games/TicketRevealModal.vue?vue&type=style&index=0&scoped=459f2b5a&lang.css": [
+    "/build/assets/SpinnyModal-COVDxCXm.js",
+    "/build/assets/SpinnyModal-BD6IF27j.css"
+  ],
   "resources/js/Components/InputError.vue": [],
   "resources/js/Components/InputLabel.vue": [],
   "resources/js/Components/Layout/Footer.vue": [],
@@ -59,7 +245,23 @@
   "resources/js/Components/PrimaryButton.vue": [],
   "resources/js/Components/ResponsiveNavLink.vue": [],
   "resources/js/Components/SecondaryButton.vue": [],
+  "resources/js/Components/Studio/SchemaForm.vue": [],
+  "resources/js/Components/Studio/SchemaForm.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/Components/Studio/fields/ColorField.vue": [],
+  "resources/js/Components/Studio/fields/ColorField.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/Components/Studio/fields/MediaField.vue": [],
+  "resources/js/Components/Studio/fields/MediaField.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/Components/Studio/fields/NumberField.vue": [],
+  "resources/js/Components/Studio/fields/NumberField.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/Components/Studio/fields/SelectField.vue": [],
+  "resources/js/Components/Studio/fields/SelectField.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/Components/Studio/fields/TextField.vue": [],
+  "resources/js/Components/Studio/fields/TextField.vue?vue&type=script&setup=true&lang.ts": [],
+  "resources/js/Components/Studio/fields/ToggleField.vue": [],
+  "resources/js/Components/Studio/fields/ToggleField.vue?vue&type=script&setup=true&lang.ts": [],
   "resources/js/Components/TextInput.vue": [],
+  "resources/js/Components/Ui/Button.vue": [],
+  "resources/js/Components/Ultra/GameEmbed.vue": [],
   "resources/js/Components/Ultra/UltraBooking.vue": [],
   "resources/js/Components/Ultra/UltraCertifiedDraws.vue": [],
   "resources/js/Components/Ultra/UltraComparison.vue": [],
@@ -75,6 +277,7 @@
   "resources/js/Components/Ultra/UltraPricing.vue": [],
   "resources/js/Components/Ultra/UltraRoadmap.vue": [],
   "resources/js/Components/Ultra/UltraSticky.vue": [],
+  "resources/js/Components/Ultra/UltraStudioModal.vue": [],
   "resources/js/Components/Ultra/UltraWhyFee.vue": [],
   "resources/js/Layouts/AppLayout.vue": [],
   "resources/js/Layouts/AppLayout.vue?vue&type=style&index=0&scoped=6218a5cc&lang.css": [],
@@ -109,9 +312,21 @@
   "resources/js/Pages/Profile/Partials/DeleteUserForm.vue": [],
   "resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue": [],
   "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue": [],
-  "resources/js/games/footballSfx.ts": [],
+  "resources/js/games/footballSfx.ts": [
+    "/build/assets/FootballModal-Bl6Ev3Y6.js",
+    "/build/assets/FootballModal-CQyc8Vz9.css"
+  ],
+  "resources/js/games/registry.js": [],
+  "resources/js/games/spriteFrames.ts": [
+    "/build/assets/spriteFrames-D9HXy9dn.js"
+  ],
+  "resources/js/games/studioSchemas.js": [],
   "resources/js/ssr.js": [],
+  "resources/js/ultra/autopilot.js": [],
   "resources/js/ultra/homeFx.js": [],
   "resources/js/ultra/packageBuilder.js": [],
+  "resources/js/utils/prizeLabel.ts": [
+    "/build/assets/prizeLabel-Z9qw9N7H.js"
+  ],
   "vendor/tightenco/ziggy/dist/index.js": []
 }

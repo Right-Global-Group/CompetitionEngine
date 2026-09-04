@@ -218,7 +218,7 @@ export function initPackageBuilder() {
         if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
     }
 
-    ['pb-open', 'sticky-pkg', 'exit-open'].forEach((id) => {
+    ['pb-open', 'sticky-pkg', 'exit-open', 'float-pkg-btn', 'cmp-pkg'].forEach((id) => {
         const b = document.getElementById(id);
         if (b) on(b, 'click', openModal);
     });
