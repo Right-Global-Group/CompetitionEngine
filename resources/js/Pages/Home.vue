@@ -1,118 +1,100 @@
 <script setup>
 import { Head } from '@inertiajs/vue3';
-import AppLayout from '@/Layouts/AppLayout.vue';
-import HeroSection from '@/Components/Hero/HeroSection.vue';
-import StatsSection from '@/Components/Stats/StatsSection.vue';
+import { inject, onMounted, onBeforeUnmount } from 'vue';
+
+import UltraNav from '@/Components/Ultra/UltraNav.vue';
+import UltraHero from '@/Components/Ultra/UltraHero.vue';
+import UltraLogoWall from '@/Components/Ultra/UltraLogoWall.vue';
 import GameConfigurator from '@/Components/Configurator/GameConfigurator.vue';
-import EcosystemFeatures from '@/Components/Ecosystem/EcosystemFeatures.vue';
-import NextGenPlatform from '@/Components/Platform/NextGenPlatform.vue';
-import CertifiedDraws from '@/Components/Draws/CertifiedDraws.vue';
-import WhyOurFee from '@/Components/Fee/WhyOurFee.vue';
-import ComparisonTable from '@/Components/Comparison/ComparisonTable.vue';
-import AIFeatures from '@/Components/Platform/AIFeatures.vue';
-import PricingCards from '@/Components/Pricing/PricingCards.vue';
-import FAQSection from '@/Components/FAQ/FAQSection.vue';
-import BookingSection from '@/Components/Booking/BookingSection.vue';
-import MobileStickyBar from '@/Components/CTA/MobileStickyBar.vue';
+import UltraEcosystem from '@/Components/Ultra/UltraEcosystem.vue';
+import UltraEasy from '@/Components/Ultra/UltraEasy.vue';
+import UltraConvert from '@/Components/Ultra/UltraConvert.vue';
+import UltraCertifiedDraws from '@/Components/Ultra/UltraCertifiedDraws.vue';
+import UltraWhyFee from '@/Components/Ultra/UltraWhyFee.vue';
+import UltraComparison from '@/Components/Ultra/UltraComparison.vue';
+import UltraRoadmap from '@/Components/Ultra/UltraRoadmap.vue';
+import UltraPricing from '@/Components/Ultra/UltraPricing.vue';
+import UltraFaq from '@/Components/Ultra/UltraFaq.vue';
+import UltraBooking from '@/Components/Ultra/UltraBooking.vue';
+import UltraFooter from '@/Components/Ultra/UltraFooter.vue';
+import UltraSticky from '@/Components/Ultra/UltraSticky.vue';
 
+import { initUltraHome } from '@/ultra/homeFx';
+
+// Legacy styles only scope the real Game Studio block (.ce-legacy); everything else is home-ultra.css
 import '../../css/home-redesign.css';
+import '../../css/home-ultra.css';
 
-import { onMounted } from 'vue';
+const getText = inject('getText', (key, fallback = '') => fallback);
+
+// Rolling 30-day figures — editable in the admin under Site Texts (stats.value_orders / stats.value_tickets)
+const orders = parseInt(getText('stats.value_orders', '1500000'), 10) || 1500000;
+const tickets = parseInt(getText('stats.value_tickets', '120000000'), 10) || 120000000;
+
+let destroyFx = null;
 
 onMounted(() => {
-    // Check if there's a hash in the URL
+    destroyFx = initUltraHome({ orders, tickets });
+
     const hash = window.location.hash;
     if (hash) {
-        // Wait a bit for the page to fully render
         setTimeout(() => {
-            const element = document.getElementById(hash.substring(1));
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }, 100);
+            const el = document.getElementById(hash.substring(1));
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
     }
+});
+
+onBeforeUnmount(() => {
+    if (destroyFx) destroyFx();
 });
 </script>
 
 <template>
     <Head>
         <title>Competition Engine - Ultimate Competition Platform</title>
-        <meta name="description" content="Build, manage, and scale engaging competitions with Competition Engine — the ultimate competition platform built for operators. No code needed." head-key="description" />
+        <meta name="description" content="CompEngine — the UK competition platform. Game Studio, GLI-certified draws, separate wallets, compliant free entry. Book a 30-min demo." head-key="description" />
     </Head>
 
-    <AppLayout>
-        <div class="ce-home">
-            <div class="bg-fx"></div>
+    <div class="ce-home" id="ce-home">
+        <div class="haze" aria-hidden="true"></div>
+        <div class="progress" id="progress" aria-hidden="true"></div>
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+            <defs>
+                <linearGradient id="ce-gg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#5b7fc4"/><stop offset=".25" stop-color="#8a5fb8"/><stop offset=".5" stop-color="#b297db"/><stop offset=".72" stop-color="#d97aa8"/><stop offset=".88" stop-color="#ec8a82"/><stop offset="1" stop-color="#f4a558"/>
+                </linearGradient>
+                <linearGradient id="ce-spark-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4a558" stop-opacity=".35"/><stop offset="1" stop-color="#f4a558" stop-opacity="0"/></linearGradient>
+                <linearGradient id="ce-chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4a558" stop-opacity=".28"/><stop offset="1" stop-color="#f4a558" stop-opacity="0"/></linearGradient>
+            </defs>
+        </svg>
 
-            <!-- Shared gear-logo SVG symbol, referenced via <use href="#gear-logo"/> in several sections below -->
-            <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-                <defs>
-                    <linearGradient id="gearGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%"  stop-color="#5b7fc4"/>
-                        <stop offset="22%" stop-color="#8a5fb8"/>
-                        <stop offset="45%" stop-color="#b297db"/>
-                        <stop offset="68%" stop-color="#d97aa8"/>
-                        <stop offset="85%" stop-color="#ec8a82"/>
-                        <stop offset="100%" stop-color="#f4a558"/>
-                    </linearGradient>
-                    <symbol id="gear-logo" viewBox="0 0 100 100">
-                        <path fill="none" stroke="url(#gearGrad)" stroke-width="3.5" stroke-linejoin="round" d="
-                            M 50 4
-                            L 56 4 L 58 14
-                            A 36 36 0 0 1 65 16
-                            L 71 8 L 76 12
-                            L 73 21
-                            A 36 36 0 0 1 79 25
-                            L 88 22 L 92 27
-                            L 86 35
-                            A 36 36 0 0 1 88 42
-                            L 96 44 L 96 50 L 96 56
-                            L 88 58
-                            A 36 36 0 0 1 86 65
-                            L 92 73 L 88 78
-                            L 79 75
-                            A 36 36 0 0 1 73 79
-                            L 76 88 L 71 92
-                            L 65 84
-                            A 36 36 0 0 1 58 86
-                            L 56 96 L 50 96 L 44 96
-                            L 42 86
-                            A 36 36 0 0 1 35 84
-                            L 29 92 L 24 88
-                            L 27 79
-                            A 36 36 0 0 1 21 75
-                            L 12 78 L 8 73
-                            L 14 65
-                            A 36 36 0 0 1 12 58
-                            L 4 56 L 4 50 L 4 44
-                            L 12 42
-                            A 36 36 0 0 1 14 35
-                            L 8 27 L 12 22
-                            L 21 25
-                            A 36 36 0 0 1 27 21
-                            L 24 12 L 29 8
-                            L 35 16
-                            A 36 36 0 0 1 42 14
-                            L 44 4 Z
-                        "/>
-                        <circle cx="50" cy="50" r="32" fill="none" stroke="url(#gearGrad)" stroke-width="1.5" opacity="0.9"/>
-                        <circle cx="50" cy="50" r="28" fill="none" stroke="url(#gearGrad)" stroke-width="1" opacity="0.55"/>
-                    </symbol>
-                </defs>
-            </svg>
-
-            <HeroSection />
-            <GameConfigurator />
-            <EcosystemFeatures />
-            <NextGenPlatform />
-            <CertifiedDraws />
-            <WhyOurFee />
-            <ComparisonTable />
-            <AIFeatures />
-            <PricingCards />
-            <FAQSection />
-            <BookingSection />
-            <MobileStickyBar />
+        <div class="page">
+            <UltraNav />
+            <UltraHero :orders="orders" :tickets="tickets" />
+            <UltraLogoWall />
         </div>
-    </AppLayout>
+    </div>
+
+    <!-- The real Game Studio (nine playable games) keeps its own styles -->
+    <div class="ce-legacy">
+        <GameConfigurator />
+    </div>
+
+    <div class="ce-home">
+        <div class="page">
+            <UltraEcosystem />
+            <UltraEasy />
+            <UltraConvert />
+            <UltraCertifiedDraws />
+            <UltraWhyFee />
+            <UltraComparison />
+            <UltraRoadmap />
+            <UltraPricing />
+            <UltraFaq />
+            <UltraBooking />
+            <UltraFooter />
+        </div>
+        <UltraSticky />
+    </div>
 </template>

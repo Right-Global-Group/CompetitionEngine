@@ -31,7 +31,7 @@
     --danger: #ff5a6b;
   }
 
-@scope (.ce-home) {
+@scope (.ce-legacy) {
   :scope {
     font-family: 'Inter', -apple-system, sans-serif;
     background: var(--bg-0);

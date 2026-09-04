@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\TenantMessagesController;
 use App\Http\Controllers\Api\TenantSmsCreditController;
 use App\Http\Controllers\Api\TenantUpsellStatsController;
 use App\Http\Controllers\ContactSubmissionController;
+use App\Http\Controllers\DemoLeadController;
 use App\Http\Controllers\DevDocsController;
 use App\Http\Controllers\DocumentationController;
 use App\Http\Controllers\ProfileController;
@@ -66,6 +67,9 @@ Route::prefix('api')->group(function () {
     
     // Contact Form Submission (public)
     Route::post('/contact', [ContactSubmissionController::class, 'store']);
+
+    // Homepage demo request form (public)
+    Route::post('/leads', [DemoLeadController::class, 'store'])->middleware('throttle:10,1');
 
     // Hub API — tenant servers fetch messages/warnings using X-Hub-Api-Key header
     Route::get('/messages', [TenantMessagesController::class, 'index']);

@@ -3,7 +3,6 @@ import { ssrRenderAttrs, ssrInterpolate, ssrRenderStyle, ssrRenderClass, ssrRend
 import { usePage, Head, Link, useForm, router, createInertiaApp } from "@inertiajs/vue3";
 import * as THREE from "three";
 import axios from "axios";
-import { Chart } from "chart.js/auto";
 import "canvas-confetti";
 import createServer from "@inertiajs/vue3/server";
 function _assertThisInitialized(self) {
@@ -4025,7 +4024,7 @@ _forEachName("x,y,z,top,right,bottom,left,width,height,fontSize,padding,margin,p
 gsap$2.registerPlugin(CSSPlugin);
 var gsapWithCSS = gsap$2.registerPlugin(CSSPlugin) || gsap$2;
 gsapWithCSS.core.Tween;
-const _sfc_main$_ = {
+const _sfc_main$14 = {
   __name: "Header",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4045,7 +4044,7 @@ const _sfc_main$_ = {
       return ((_b = (_a = page.props.auth) == null ? void 0 : _a.user) == null ? void 0 : _b.name) || "";
     });
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<header${ssrRenderAttrs(mergeProps({ class: "fixed top-0 left-0 right-0 z-50 glass-effect" }, _attrs))}><div class="w-full px-4 sm:px-6 py-4"><div class="flex items-center justify-between"><div class="flex items-center cursor-pointer group"><img src="/images/logo.png" alt="Competition Engine" class="h-[4.5rem] md:h-12"></div><nav class="hidden md:flex items-center justify-center space-x-8 absolute left-1/2 -translate-x-1/2"><a href="/" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Home</a><button class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Features</button><button class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Comparison</button><button class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Pricing</button><button class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">FAQ</button><a href="/about" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">About</a><a href="/blog" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Blog</a><a href="/contact" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Contact</a></nav><div class="flex justify-end items-center gap-3">`);
+      _push(`<header${ssrRenderAttrs(mergeProps({ class: "fixed top-0 left-0 right-0 z-50 glass-effect" }, _attrs))}><div class="w-full px-4 sm:px-6 py-4"><div class="flex items-center justify-between"><div class="flex items-center cursor-pointer group"><img src="/images/logo.png" alt="Competition Engine" class="h-[4.5rem] md:h-15"></div><nav class="hidden md:flex items-center justify-center space-x-8 absolute left-1/2 -translate-x-1/2"><a href="/" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Home</a><button class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Games</button><button class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Features</button><button class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Pricing</button><button class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">FAQ</button><a href="/about" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">About</a><a href="/blog" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Blog</a><a href="/contact" class="text-gray-300 hover:text-accent-purple transition whitespace-nowrap">Contact</a></nav><div class="flex justify-end items-center gap-3">`);
       if (isLoggedIn.value) {
         _push(`<div class="hidden md:block relative"><button class="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-300 border border-gray-700/50 hover:border-gray-600/50"><svg class="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg><span class="text-sm text-gray-300">${ssrInterpolate(userName.value)}</span><svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div class="absolute right-0 mt-2 w-48 rounded-lg bg-gray-900 border border-gray-700 shadow-xl z-50" style="${ssrRenderStyle(userMenuOpen.value ? null : { display: "none" })}"><div class="py-2"><button class="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-gray-800 hover:text-red-300 transition"> Logout </button></div></div></div>`);
       } else {
@@ -4056,7 +4055,7 @@ const _sfc_main$_ = {
       } else {
         _push(`<!---->`);
       }
-      _push(`<button class="hidden md:inline-block bg-accent-purple text-white font-semibold px-5 py-2 rounded-lg hover:bg-accent-orange transition glow-button whitespace-nowrap"> Book a Demo </button><button class="md:hidden relative w-10 h-10 flex items-center justify-center text-white focus:outline-none" aria-label="Toggle menu"><div class="w-6 flex flex-col items-center justify-center"><span class="${ssrRenderClass([mobileMenuOpen.value ? "rotate-45 translate-y-1" : "-translate-y-0.5", "bg-white block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm"])}"></span><span class="${ssrRenderClass([mobileMenuOpen.value ? "opacity-0" : "opacity-100", "bg-white block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5"])}"></span><span class="${ssrRenderClass([mobileMenuOpen.value ? "-rotate-45 -translate-y-1" : "translate-y-0.5", "bg-white block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm"])}"></span></div></button></div></div></div><div class="md:hidden glass-effect border-t border-gray-700" style="${ssrRenderStyle(mobileMenuOpen.value ? null : { display: "none" })}"><nav class="w-full px-4 py-4 space-y-1"><a href="/" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Home</a><button class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Features</button><button class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Comparison</button><button class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Pricing</button><button class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">FAQ</button><a href="/about" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">About</a><a href="/blog" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Blog</a><a href="/contact" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Contact</a>`);
+      _push(`<button class="hidden md:inline-block bg-accent-purple text-white font-semibold px-5 py-2 rounded-lg hover:bg-accent-orange transition glow-button whitespace-nowrap"> Book a Demo </button><button class="md:hidden relative w-10 h-10 flex items-center justify-center text-white focus:outline-none" aria-label="Toggle menu"><div class="w-6 flex flex-col items-center justify-center"><span class="${ssrRenderClass([mobileMenuOpen.value ? "rotate-45 translate-y-1" : "-translate-y-0.5", "bg-white block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm"])}"></span><span class="${ssrRenderClass([mobileMenuOpen.value ? "opacity-0" : "opacity-100", "bg-white block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5"])}"></span><span class="${ssrRenderClass([mobileMenuOpen.value ? "-rotate-45 -translate-y-1" : "translate-y-0.5", "bg-white block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm"])}"></span></div></button></div></div></div><div class="md:hidden glass-effect border-t border-gray-700" style="${ssrRenderStyle(mobileMenuOpen.value ? null : { display: "none" })}"><nav class="w-full px-4 py-4 space-y-1"><a href="/" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Home</a><button class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Games</button><button class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Features</button><button class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Pricing</button><button class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">FAQ</button><a href="/about" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">About</a><a href="/blog" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Blog</a><a href="/contact" class="block w-full text-left text-gray-300 hover:text-accent-purple transition py-2">Contact</a>`);
       if (isLoggedIn.value) {
         _push(`<div class="border-t border-gray-700 pt-3 space-y-2"><div class="flex items-center gap-2 px-3 py-2 text-gray-300"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg><span class="text-sm font-semibold">${ssrInterpolate(userName.value)}</span></div>`);
         if (isAdmin.value) {
@@ -4072,11 +4071,11 @@ const _sfc_main$_ = {
     };
   }
 };
-const _sfc_setup$_ = _sfc_main$_.setup;
-_sfc_main$_.setup = (props, ctx) => {
+const _sfc_setup$14 = _sfc_main$14.setup;
+_sfc_main$14.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Layout/Header.vue");
-  return _sfc_setup$_ ? _sfc_setup$_(props, ctx) : void 0;
+  return _sfc_setup$14 ? _sfc_setup$14(props, ctx) : void 0;
 };
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -4085,24 +4084,24 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$Z = {
+const _sfc_main$13 = {
   __name: "Footer",
   __ssrInlineRender: true,
   setup(__props) {
     const year = (/* @__PURE__ */ new Date()).getFullYear();
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<footer${ssrRenderAttrs(_attrs)} data-v-5c10ff80><div class="for-entrants" data-v-5c10ff80><strong data-v-5c10ff80>Entering a competition powered by CompEngine?</strong> Every draw is GLI-certified. Every winner is verifiable. Every order runs through a UK-licensed payment gateway. Every site we power is signed up to the UK Voluntary Code of Good Practice for Prize Draw Operators. If something goes wrong, the operator has a real platform behind them — not a stack of plugins. </div><div data-v-5c10ff80>© ${ssrInterpolate(unref(year))} CompEngine. Built quietly in the UK.</div></footer>`);
+      _push(`<footer${ssrRenderAttrs(_attrs)} data-v-114c6461><div class="for-entrants" data-v-114c6461><strong data-v-114c6461>Entering a competition powered by CompEngine?</strong> Every draw is GLI-certified. Every winner is verifiable. Every order runs through a UK-licensed payment gateway. If something goes wrong, the operator has a real platform behind them — not a stack of plugins. </div><div data-v-114c6461>© ${ssrInterpolate(unref(year))} CompEngine. Built quietly in the UK.</div></footer>`);
     };
   }
 };
-const _sfc_setup$Z = _sfc_main$Z.setup;
-_sfc_main$Z.setup = (props, ctx) => {
+const _sfc_setup$13 = _sfc_main$13.setup;
+_sfc_main$13.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Layout/Footer.vue");
-  return _sfc_setup$Z ? _sfc_setup$Z(props, ctx) : void 0;
+  return _sfc_setup$13 ? _sfc_setup$13(props, ctx) : void 0;
 };
-const Footer = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["__scopeId", "data-v-5c10ff80"]]);
-const _sfc_main$Y = {
+const Footer = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["__scopeId", "data-v-114c6461"]]);
+const _sfc_main$12 = {
   __name: "AppLayout",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4121,7 +4120,7 @@ const _sfc_main$Y = {
     });
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<div${ssrRenderAttrs(mergeProps({ class: "min-h-screen" }, _attrs))} data-v-6218a5cc><div id="mouse-follower" data-v-6218a5cc></div>`);
-      _push(ssrRenderComponent(_sfc_main$_, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$14, null, null, _parent));
       _push(`<main data-v-6218a5cc>`);
       ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
       _push(`</main>`);
@@ -4130,13 +4129,13 @@ const _sfc_main$Y = {
     };
   }
 };
-const _sfc_setup$Y = _sfc_main$Y.setup;
-_sfc_main$Y.setup = (props, ctx) => {
+const _sfc_setup$12 = _sfc_main$12.setup;
+_sfc_main$12.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Layouts/AppLayout.vue");
-  return _sfc_setup$Y ? _sfc_setup$Y(props, ctx) : void 0;
+  return _sfc_setup$12 ? _sfc_setup$12(props, ctx) : void 0;
 };
-const AppLayout = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["__scopeId", "data-v-6218a5cc"]]);
+const AppLayout = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["__scopeId", "data-v-6218a5cc"]]);
 function _defineProperties(target, props) {
   for (var i2 = 0; i2 < props.length; i2++) {
     var descriptor = props[i2];
@@ -6347,7 +6346,7 @@ ScrollTrigger.core = {
   }
 };
 _getGSAP2() && gsap.registerPlugin(ScrollTrigger);
-const _sfc_main$X = {
+const _sfc_main$11 = {
   __name: "About",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6600,32 +6599,32 @@ const _sfc_main$X = {
     };
   }
 };
-const _sfc_setup$X = _sfc_main$X.setup;
-_sfc_main$X.setup = (props, ctx) => {
+const _sfc_setup$11 = _sfc_main$11.setup;
+_sfc_main$11.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/About.vue");
-  return _sfc_setup$X ? _sfc_setup$X(props, ctx) : void 0;
+  return _sfc_setup$11 ? _sfc_setup$11(props, ctx) : void 0;
 };
-const About = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__scopeId", "data-v-65ee555d"]]);
+const About = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["__scopeId", "data-v-65ee555d"]]);
 const __vite_glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: About
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$W = {};
-function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs) {
+const _sfc_main$10 = {};
+function _sfc_ssrRender$e(_ctx, _push, _parent, _attrs) {
   _push(`<svg${ssrRenderAttrs(mergeProps({
     viewBox: "0 0 316 316",
     xmlns: "http://www.w3.org/2000/svg"
   }, _attrs))}><path d="M305.8 81.125C305.77 80.995 305.69 80.885 305.65 80.755C305.56 80.525 305.49 80.285 305.37 80.075C305.29 79.935 305.17 79.815 305.07 79.685C304.94 79.515 304.83 79.325 304.68 79.175C304.55 79.045 304.39 78.955 304.25 78.845C304.09 78.715 303.95 78.575 303.77 78.475L251.32 48.275C249.97 47.495 248.31 47.495 246.96 48.275L194.51 78.475C194.33 78.575 194.19 78.725 194.03 78.845C193.89 78.955 193.73 79.045 193.6 79.175C193.45 79.325 193.34 79.515 193.21 79.685C193.11 79.815 192.99 79.935 192.91 80.075C192.79 80.285 192.71 80.525 192.63 80.755C192.58 80.875 192.51 80.995 192.48 81.125C192.38 81.495 192.33 81.875 192.33 82.265V139.625L148.62 164.795V52.575C148.62 52.185 148.57 51.805 148.47 51.435C148.44 51.305 148.36 51.195 148.32 51.065C148.23 50.835 148.16 50.595 148.04 50.385C147.96 50.245 147.84 50.125 147.74 49.995C147.61 49.825 147.5 49.635 147.35 49.485C147.22 49.355 147.06 49.265 146.92 49.155C146.76 49.025 146.62 48.885 146.44 48.785L93.99 18.585C92.64 17.805 90.98 17.805 89.63 18.585L37.18 48.785C37 48.885 36.86 49.035 36.7 49.155C36.56 49.265 36.4 49.355 36.27 49.485C36.12 49.635 36.01 49.825 35.88 49.995C35.78 50.125 35.66 50.245 35.58 50.385C35.46 50.595 35.38 50.835 35.3 51.065C35.25 51.185 35.18 51.305 35.15 51.435C35.05 51.805 35 52.185 35 52.575V232.235C35 233.795 35.84 235.245 37.19 236.025L142.1 296.425C142.33 296.555 142.58 296.635 142.82 296.725C142.93 296.765 143.04 296.835 143.16 296.865C143.53 296.965 143.9 297.015 144.28 297.015C144.66 297.015 145.03 296.965 145.4 296.865C145.5 296.835 145.59 296.775 145.69 296.745C145.95 296.655 146.21 296.565 146.45 296.435L251.36 236.035C252.72 235.255 253.55 233.815 253.55 232.245V174.885L303.81 145.945C305.17 145.165 306 143.725 306 142.155V82.265C305.95 81.875 305.89 81.495 305.8 81.125ZM144.2 227.205L100.57 202.515L146.39 176.135L196.66 147.195L240.33 172.335L208.29 190.625L144.2 227.205ZM244.75 114.995V164.795L226.39 154.225L201.03 139.625V89.825L219.39 100.395L244.75 114.995ZM249.12 57.105L292.81 82.265L249.12 107.425L205.43 82.265L249.12 57.105ZM114.49 184.425L96.13 194.995V85.305L121.49 70.705L139.85 60.135V169.815L114.49 184.425ZM91.76 27.425L135.45 52.585L91.76 77.745L48.07 52.585L91.76 27.425ZM43.67 60.135L62.03 70.705L87.39 85.305V202.545V202.555V202.565C87.39 202.735 87.44 202.895 87.46 203.055C87.49 203.265 87.49 203.485 87.55 203.695V203.705C87.6 203.875 87.69 204.035 87.76 204.195C87.84 204.375 87.89 204.575 87.99 204.745C87.99 204.745 87.99 204.755 88 204.755C88.09 204.905 88.22 205.035 88.33 205.175C88.45 205.335 88.55 205.495 88.69 205.635L88.7 205.645C88.82 205.765 88.98 205.855 89.12 205.965C89.28 206.085 89.42 206.225 89.59 206.325C89.6 206.325 89.6 206.325 89.61 206.335C89.62 206.335 89.62 206.345 89.63 206.345L139.87 234.775V285.065L43.67 229.705V60.135ZM244.75 229.705L148.58 285.075V234.775L219.8 194.115L244.75 179.875V229.705ZM297.2 139.625L253.49 164.795V114.995L278.85 100.395L297.21 89.825V139.625H297.2Z"></path></svg>`);
 }
-const _sfc_setup$W = _sfc_main$W.setup;
-_sfc_main$W.setup = (props, ctx) => {
+const _sfc_setup$10 = _sfc_main$10.setup;
+_sfc_main$10.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ApplicationLogo.vue");
-  return _sfc_setup$W ? _sfc_setup$W(props, ctx) : void 0;
+  return _sfc_setup$10 ? _sfc_setup$10(props, ctx) : void 0;
 };
-const ApplicationLogo = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["ssrRender", _sfc_ssrRender$2]]);
-const _sfc_main$V = {
+const ApplicationLogo = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["ssrRender", _sfc_ssrRender$e]]);
+const _sfc_main$$ = {
   __name: "GuestLayout",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6649,13 +6648,13 @@ const _sfc_main$V = {
     };
   }
 };
-const _sfc_setup$V = _sfc_main$V.setup;
-_sfc_main$V.setup = (props, ctx) => {
+const _sfc_setup$$ = _sfc_main$$.setup;
+_sfc_main$$.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Layouts/GuestLayout.vue");
-  return _sfc_setup$V ? _sfc_setup$V(props, ctx) : void 0;
+  return _sfc_setup$$ ? _sfc_setup$$(props, ctx) : void 0;
 };
-const _sfc_main$U = {
+const _sfc_main$_ = {
   __name: "InputError",
   __ssrInlineRender: true,
   props: {
@@ -6671,13 +6670,13 @@ const _sfc_main$U = {
     };
   }
 };
-const _sfc_setup$U = _sfc_main$U.setup;
-_sfc_main$U.setup = (props, ctx) => {
+const _sfc_setup$_ = _sfc_main$_.setup;
+_sfc_main$_.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/InputError.vue");
-  return _sfc_setup$U ? _sfc_setup$U(props, ctx) : void 0;
+  return _sfc_setup$_ ? _sfc_setup$_(props, ctx) : void 0;
 };
-const _sfc_main$T = {
+const _sfc_main$Z = {
   __name: "InputLabel",
   __ssrInlineRender: true,
   props: {
@@ -6699,26 +6698,26 @@ const _sfc_main$T = {
     };
   }
 };
-const _sfc_setup$T = _sfc_main$T.setup;
-_sfc_main$T.setup = (props, ctx) => {
+const _sfc_setup$Z = _sfc_main$Z.setup;
+_sfc_main$Z.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/InputLabel.vue");
-  return _sfc_setup$T ? _sfc_setup$T(props, ctx) : void 0;
+  return _sfc_setup$Z ? _sfc_setup$Z(props, ctx) : void 0;
 };
-const _sfc_main$S = {};
-function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs) {
+const _sfc_main$Y = {};
+function _sfc_ssrRender$d(_ctx, _push, _parent, _attrs) {
   _push(`<button${ssrRenderAttrs(mergeProps({ class: "inline-flex items-center rounded-md border border-transparent bg-gray-800 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition duration-150 ease-in-out hover:bg-gray-700 focus:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-gray-900" }, _attrs))}>`);
   ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</button>`);
 }
-const _sfc_setup$S = _sfc_main$S.setup;
-_sfc_main$S.setup = (props, ctx) => {
+const _sfc_setup$Y = _sfc_main$Y.setup;
+_sfc_main$Y.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/PrimaryButton.vue");
-  return _sfc_setup$S ? _sfc_setup$S(props, ctx) : void 0;
+  return _sfc_setup$Y ? _sfc_setup$Y(props, ctx) : void 0;
 };
-const PrimaryButton = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["ssrRender", _sfc_ssrRender$1]]);
-const _sfc_main$R = {
+const PrimaryButton = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["ssrRender", _sfc_ssrRender$d]]);
+const _sfc_main$X = {
   __name: "TextInput",
   __ssrInlineRender: true,
   props: {
@@ -6748,13 +6747,13 @@ const _sfc_main$R = {
     };
   }
 };
-const _sfc_setup$R = _sfc_main$R.setup;
-_sfc_main$R.setup = (props, ctx) => {
+const _sfc_setup$X = _sfc_main$X.setup;
+_sfc_main$X.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/TextInput.vue");
-  return _sfc_setup$R ? _sfc_setup$R(props, ctx) : void 0;
+  return _sfc_setup$X ? _sfc_setup$X(props, ctx) : void 0;
 };
-const _sfc_main$Q = {
+const _sfc_main$W = {
   __name: "ConfirmPassword",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6767,16 +6766,16 @@ const _sfc_main$Q = {
       });
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$V, _attrs, {
+      _push(ssrRenderComponent(_sfc_main$$, _attrs, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(ssrRenderComponent(unref(Head), { title: "Confirm Password" }, null, _parent2, _scopeId));
             _push2(`<div class="mb-4 text-sm text-gray-600"${_scopeId}> This is a secure area of the application. Please confirm your password before continuing. </div><form${_scopeId}><div${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$T, {
+            _push2(ssrRenderComponent(_sfc_main$Z, {
               for: "password",
               value: "Password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$R, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               id: "password",
               type: "password",
               class: "mt-1 block w-full",
@@ -6786,7 +6785,7 @@ const _sfc_main$Q = {
               autocomplete: "current-password",
               autofocus: ""
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$U, {
+            _push2(ssrRenderComponent(_sfc_main$_, {
               class: "mt-2",
               message: unref(form).errors.password
             }, null, _parent2, _scopeId));
@@ -6815,11 +6814,11 @@ const _sfc_main$Q = {
                 onSubmit: withModifiers(submit, ["prevent"])
               }, [
                 createVNode("div", null, [
-                  createVNode(_sfc_main$T, {
+                  createVNode(_sfc_main$Z, {
                     for: "password",
                     value: "Password"
                   }),
-                  createVNode(_sfc_main$R, {
+                  createVNode(_sfc_main$X, {
                     id: "password",
                     type: "password",
                     class: "mt-1 block w-full",
@@ -6829,7 +6828,7 @@ const _sfc_main$Q = {
                     autocomplete: "current-password",
                     autofocus: ""
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$U, {
+                  createVNode(_sfc_main$_, {
                     class: "mt-2",
                     message: unref(form).errors.password
                   }, null, 8, ["message"])
@@ -6854,17 +6853,17 @@ const _sfc_main$Q = {
     };
   }
 };
-const _sfc_setup$Q = _sfc_main$Q.setup;
-_sfc_main$Q.setup = (props, ctx) => {
+const _sfc_setup$W = _sfc_main$W.setup;
+_sfc_main$W.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/ConfirmPassword.vue");
-  return _sfc_setup$Q ? _sfc_setup$Q(props, ctx) : void 0;
+  return _sfc_setup$W ? _sfc_setup$W(props, ctx) : void 0;
 };
 const __vite_glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$Q
+  default: _sfc_main$W
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$P = {
+const _sfc_main$V = {
   __name: "ForgotPassword",
   __ssrInlineRender: true,
   props: {
@@ -6880,7 +6879,7 @@ const _sfc_main$P = {
       form.post(route("password.email"));
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$V, _attrs, {
+      _push(ssrRenderComponent(_sfc_main$$, _attrs, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(ssrRenderComponent(unref(Head), { title: "Forgot Password" }, null, _parent2, _scopeId));
@@ -6891,11 +6890,11 @@ const _sfc_main$P = {
               _push2(`<!---->`);
             }
             _push2(`<form${_scopeId}><div${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$T, {
+            _push2(ssrRenderComponent(_sfc_main$Z, {
               for: "email",
               value: "Email"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$R, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               id: "email",
               type: "email",
               class: "mt-1 block w-full",
@@ -6905,7 +6904,7 @@ const _sfc_main$P = {
               autofocus: "",
               autocomplete: "username"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$U, {
+            _push2(ssrRenderComponent(_sfc_main$_, {
               class: "mt-2",
               message: unref(form).errors.email
             }, null, _parent2, _scopeId));
@@ -6938,11 +6937,11 @@ const _sfc_main$P = {
                 onSubmit: withModifiers(submit, ["prevent"])
               }, [
                 createVNode("div", null, [
-                  createVNode(_sfc_main$T, {
+                  createVNode(_sfc_main$Z, {
                     for: "email",
                     value: "Email"
                   }),
-                  createVNode(_sfc_main$R, {
+                  createVNode(_sfc_main$X, {
                     id: "email",
                     type: "email",
                     class: "mt-1 block w-full",
@@ -6952,7 +6951,7 @@ const _sfc_main$P = {
                     autofocus: "",
                     autocomplete: "username"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$U, {
+                  createVNode(_sfc_main$_, {
                     class: "mt-2",
                     message: unref(form).errors.email
                   }, null, 8, ["message"])
@@ -6977,17 +6976,17 @@ const _sfc_main$P = {
     };
   }
 };
-const _sfc_setup$P = _sfc_main$P.setup;
-_sfc_main$P.setup = (props, ctx) => {
+const _sfc_setup$V = _sfc_main$V.setup;
+_sfc_main$V.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/ForgotPassword.vue");
-  return _sfc_setup$P ? _sfc_setup$P(props, ctx) : void 0;
+  return _sfc_setup$V ? _sfc_setup$V(props, ctx) : void 0;
 };
 const __vite_glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$P
+  default: _sfc_main$V
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$O = {
+const _sfc_main$U = {
   __name: "Checkbox",
   __ssrInlineRender: true,
   props: {
@@ -7022,13 +7021,13 @@ const _sfc_main$O = {
     };
   }
 };
-const _sfc_setup$O = _sfc_main$O.setup;
-_sfc_main$O.setup = (props, ctx) => {
+const _sfc_setup$U = _sfc_main$U.setup;
+_sfc_main$U.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Checkbox.vue");
-  return _sfc_setup$O ? _sfc_setup$O(props, ctx) : void 0;
+  return _sfc_setup$U ? _sfc_setup$U(props, ctx) : void 0;
 };
-const _sfc_main$N = {
+const _sfc_main$T = {
   __name: "Login",
   __ssrInlineRender: true,
   props: {
@@ -7051,7 +7050,7 @@ const _sfc_main$N = {
       });
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$V, _attrs, {
+      _push(ssrRenderComponent(_sfc_main$$, _attrs, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d;
           if (_push2) {
@@ -7091,11 +7090,11 @@ const _sfc_main$N = {
               _: 1
             }, _parent2, _scopeId));
             _push2(`</div><form${_scopeId}><div${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$T, {
+            _push2(ssrRenderComponent(_sfc_main$Z, {
               for: "email",
               value: "Email"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$R, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               id: "email",
               type: "email",
               class: "mt-1 block w-full text-gray-900",
@@ -7105,16 +7104,16 @@ const _sfc_main$N = {
               autofocus: "",
               autocomplete: "username"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$U, {
+            _push2(ssrRenderComponent(_sfc_main$_, {
               class: "mt-2",
               message: (_a = unref(form).errors) == null ? void 0 : _a.email
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="mt-4"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$T, {
+            _push2(ssrRenderComponent(_sfc_main$Z, {
               for: "password",
               value: "Password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$R, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               id: "password",
               type: "password",
               class: "mt-1 block w-full text-gray-900",
@@ -7123,12 +7122,12 @@ const _sfc_main$N = {
               required: "",
               autocomplete: "current-password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$U, {
+            _push2(ssrRenderComponent(_sfc_main$_, {
               class: "mt-2",
               message: (_b = unref(form).errors) == null ? void 0 : _b.password
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="mt-4 block"${_scopeId}><label class="flex items-center"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$O, {
+            _push2(ssrRenderComponent(_sfc_main$U, {
               name: "remember",
               checked: unref(form).remember,
               "onUpdate:checked": ($event) => unref(form).remember = $event
@@ -7204,11 +7203,11 @@ const _sfc_main$N = {
                 onSubmit: withModifiers(submit, ["prevent"])
               }, [
                 createVNode("div", null, [
-                  createVNode(_sfc_main$T, {
+                  createVNode(_sfc_main$Z, {
                     for: "email",
                     value: "Email"
                   }),
-                  createVNode(_sfc_main$R, {
+                  createVNode(_sfc_main$X, {
                     id: "email",
                     type: "email",
                     class: "mt-1 block w-full text-gray-900",
@@ -7218,17 +7217,17 @@ const _sfc_main$N = {
                     autofocus: "",
                     autocomplete: "username"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$U, {
+                  createVNode(_sfc_main$_, {
                     class: "mt-2",
                     message: (_c = unref(form).errors) == null ? void 0 : _c.email
                   }, null, 8, ["message"])
                 ]),
                 createVNode("div", { class: "mt-4" }, [
-                  createVNode(_sfc_main$T, {
+                  createVNode(_sfc_main$Z, {
                     for: "password",
                     value: "Password"
                   }),
-                  createVNode(_sfc_main$R, {
+                  createVNode(_sfc_main$X, {
                     id: "password",
                     type: "password",
                     class: "mt-1 block w-full text-gray-900",
@@ -7237,14 +7236,14 @@ const _sfc_main$N = {
                     required: "",
                     autocomplete: "current-password"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$U, {
+                  createVNode(_sfc_main$_, {
                     class: "mt-2",
                     message: (_d = unref(form).errors) == null ? void 0 : _d.password
                   }, null, 8, ["message"])
                 ]),
                 createVNode("div", { class: "mt-4 block" }, [
                   createVNode("label", { class: "flex items-center" }, [
-                    createVNode(_sfc_main$O, {
+                    createVNode(_sfc_main$U, {
                       name: "remember",
                       checked: unref(form).remember,
                       "onUpdate:checked": ($event) => unref(form).remember = $event
@@ -7282,17 +7281,17 @@ const _sfc_main$N = {
     };
   }
 };
-const _sfc_setup$N = _sfc_main$N.setup;
-_sfc_main$N.setup = (props, ctx) => {
+const _sfc_setup$T = _sfc_main$T.setup;
+_sfc_main$T.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/Login.vue");
-  return _sfc_setup$N ? _sfc_setup$N(props, ctx) : void 0;
+  return _sfc_setup$T ? _sfc_setup$T(props, ctx) : void 0;
 };
 const __vite_glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$N
+  default: _sfc_main$T
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$M = {
+const _sfc_main$S = {
   __name: "Register",
   __ssrInlineRender: true,
   setup(__props) {
@@ -7308,16 +7307,16 @@ const _sfc_main$M = {
       });
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$V, _attrs, {
+      _push(ssrRenderComponent(_sfc_main$$, _attrs, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(ssrRenderComponent(unref(Head), { title: "Register" }, null, _parent2, _scopeId));
             _push2(`<form${_scopeId}><div${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$T, {
+            _push2(ssrRenderComponent(_sfc_main$Z, {
               for: "name",
               value: "Name"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$R, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               id: "name",
               type: "text",
               class: "mt-1 block w-full",
@@ -7327,16 +7326,16 @@ const _sfc_main$M = {
               autofocus: "",
               autocomplete: "name"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$U, {
+            _push2(ssrRenderComponent(_sfc_main$_, {
               class: "mt-2",
               message: unref(form).errors.name
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="mt-4"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$T, {
+            _push2(ssrRenderComponent(_sfc_main$Z, {
               for: "email",
               value: "Email"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$R, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               id: "email",
               type: "email",
               class: "mt-1 block w-full",
@@ -7345,16 +7344,16 @@ const _sfc_main$M = {
               required: "",
               autocomplete: "username"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$U, {
+            _push2(ssrRenderComponent(_sfc_main$_, {
               class: "mt-2",
               message: unref(form).errors.email
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="mt-4"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$T, {
+            _push2(ssrRenderComponent(_sfc_main$Z, {
               for: "password",
               value: "Password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$R, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               id: "password",
               type: "password",
               class: "mt-1 block w-full",
@@ -7363,16 +7362,16 @@ const _sfc_main$M = {
               required: "",
               autocomplete: "new-password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$U, {
+            _push2(ssrRenderComponent(_sfc_main$_, {
               class: "mt-2",
               message: unref(form).errors.password
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="mt-4"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$T, {
+            _push2(ssrRenderComponent(_sfc_main$Z, {
               for: "password_confirmation",
               value: "Confirm Password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$R, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               id: "password_confirmation",
               type: "password",
               class: "mt-1 block w-full",
@@ -7381,7 +7380,7 @@ const _sfc_main$M = {
               required: "",
               autocomplete: "new-password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$U, {
+            _push2(ssrRenderComponent(_sfc_main$_, {
               class: "mt-2",
               message: unref(form).errors.password_confirmation
             }, null, _parent2, _scopeId));
@@ -7424,11 +7423,11 @@ const _sfc_main$M = {
                 onSubmit: withModifiers(submit, ["prevent"])
               }, [
                 createVNode("div", null, [
-                  createVNode(_sfc_main$T, {
+                  createVNode(_sfc_main$Z, {
                     for: "name",
                     value: "Name"
                   }),
-                  createVNode(_sfc_main$R, {
+                  createVNode(_sfc_main$X, {
                     id: "name",
                     type: "text",
                     class: "mt-1 block w-full",
@@ -7438,17 +7437,17 @@ const _sfc_main$M = {
                     autofocus: "",
                     autocomplete: "name"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$U, {
+                  createVNode(_sfc_main$_, {
                     class: "mt-2",
                     message: unref(form).errors.name
                   }, null, 8, ["message"])
                 ]),
                 createVNode("div", { class: "mt-4" }, [
-                  createVNode(_sfc_main$T, {
+                  createVNode(_sfc_main$Z, {
                     for: "email",
                     value: "Email"
                   }),
-                  createVNode(_sfc_main$R, {
+                  createVNode(_sfc_main$X, {
                     id: "email",
                     type: "email",
                     class: "mt-1 block w-full",
@@ -7457,17 +7456,17 @@ const _sfc_main$M = {
                     required: "",
                     autocomplete: "username"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$U, {
+                  createVNode(_sfc_main$_, {
                     class: "mt-2",
                     message: unref(form).errors.email
                   }, null, 8, ["message"])
                 ]),
                 createVNode("div", { class: "mt-4" }, [
-                  createVNode(_sfc_main$T, {
+                  createVNode(_sfc_main$Z, {
                     for: "password",
                     value: "Password"
                   }),
-                  createVNode(_sfc_main$R, {
+                  createVNode(_sfc_main$X, {
                     id: "password",
                     type: "password",
                     class: "mt-1 block w-full",
@@ -7476,17 +7475,17 @@ const _sfc_main$M = {
                     required: "",
                     autocomplete: "new-password"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$U, {
+                  createVNode(_sfc_main$_, {
                     class: "mt-2",
                     message: unref(form).errors.password
                   }, null, 8, ["message"])
                 ]),
                 createVNode("div", { class: "mt-4" }, [
-                  createVNode(_sfc_main$T, {
+                  createVNode(_sfc_main$Z, {
                     for: "password_confirmation",
                     value: "Confirm Password"
                   }),
-                  createVNode(_sfc_main$R, {
+                  createVNode(_sfc_main$X, {
                     id: "password_confirmation",
                     type: "password",
                     class: "mt-1 block w-full",
@@ -7495,7 +7494,7 @@ const _sfc_main$M = {
                     required: "",
                     autocomplete: "new-password"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$U, {
+                  createVNode(_sfc_main$_, {
                     class: "mt-2",
                     message: unref(form).errors.password_confirmation
                   }, null, 8, ["message"])
@@ -7529,17 +7528,17 @@ const _sfc_main$M = {
     };
   }
 };
-const _sfc_setup$M = _sfc_main$M.setup;
-_sfc_main$M.setup = (props, ctx) => {
+const _sfc_setup$S = _sfc_main$S.setup;
+_sfc_main$S.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/Register.vue");
-  return _sfc_setup$M ? _sfc_setup$M(props, ctx) : void 0;
+  return _sfc_setup$S ? _sfc_setup$S(props, ctx) : void 0;
 };
 const __vite_glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$M
+  default: _sfc_main$S
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$L = {
+const _sfc_main$R = {
   __name: "ResetPassword",
   __ssrInlineRender: true,
   props: {
@@ -7566,16 +7565,16 @@ const _sfc_main$L = {
       });
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$V, _attrs, {
+      _push(ssrRenderComponent(_sfc_main$$, _attrs, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(ssrRenderComponent(unref(Head), { title: "Reset Password" }, null, _parent2, _scopeId));
             _push2(`<form${_scopeId}><div${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$T, {
+            _push2(ssrRenderComponent(_sfc_main$Z, {
               for: "email",
               value: "Email"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$R, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               id: "email",
               type: "email",
               class: "mt-1 block w-full",
@@ -7585,16 +7584,16 @@ const _sfc_main$L = {
               autofocus: "",
               autocomplete: "username"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$U, {
+            _push2(ssrRenderComponent(_sfc_main$_, {
               class: "mt-2",
               message: unref(form).errors.email
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="mt-4"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$T, {
+            _push2(ssrRenderComponent(_sfc_main$Z, {
               for: "password",
               value: "Password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$R, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               id: "password",
               type: "password",
               class: "mt-1 block w-full",
@@ -7603,16 +7602,16 @@ const _sfc_main$L = {
               required: "",
               autocomplete: "new-password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$U, {
+            _push2(ssrRenderComponent(_sfc_main$_, {
               class: "mt-2",
               message: unref(form).errors.password
             }, null, _parent2, _scopeId));
             _push2(`</div><div class="mt-4"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$T, {
+            _push2(ssrRenderComponent(_sfc_main$Z, {
               for: "password_confirmation",
               value: "Confirm Password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$R, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               id: "password_confirmation",
               type: "password",
               class: "mt-1 block w-full",
@@ -7621,7 +7620,7 @@ const _sfc_main$L = {
               required: "",
               autocomplete: "new-password"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$U, {
+            _push2(ssrRenderComponent(_sfc_main$_, {
               class: "mt-2",
               message: unref(form).errors.password_confirmation
             }, null, _parent2, _scopeId));
@@ -7649,11 +7648,11 @@ const _sfc_main$L = {
                 onSubmit: withModifiers(submit, ["prevent"])
               }, [
                 createVNode("div", null, [
-                  createVNode(_sfc_main$T, {
+                  createVNode(_sfc_main$Z, {
                     for: "email",
                     value: "Email"
                   }),
-                  createVNode(_sfc_main$R, {
+                  createVNode(_sfc_main$X, {
                     id: "email",
                     type: "email",
                     class: "mt-1 block w-full",
@@ -7663,17 +7662,17 @@ const _sfc_main$L = {
                     autofocus: "",
                     autocomplete: "username"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$U, {
+                  createVNode(_sfc_main$_, {
                     class: "mt-2",
                     message: unref(form).errors.email
                   }, null, 8, ["message"])
                 ]),
                 createVNode("div", { class: "mt-4" }, [
-                  createVNode(_sfc_main$T, {
+                  createVNode(_sfc_main$Z, {
                     for: "password",
                     value: "Password"
                   }),
-                  createVNode(_sfc_main$R, {
+                  createVNode(_sfc_main$X, {
                     id: "password",
                     type: "password",
                     class: "mt-1 block w-full",
@@ -7682,17 +7681,17 @@ const _sfc_main$L = {
                     required: "",
                     autocomplete: "new-password"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$U, {
+                  createVNode(_sfc_main$_, {
                     class: "mt-2",
                     message: unref(form).errors.password
                   }, null, 8, ["message"])
                 ]),
                 createVNode("div", { class: "mt-4" }, [
-                  createVNode(_sfc_main$T, {
+                  createVNode(_sfc_main$Z, {
                     for: "password_confirmation",
                     value: "Confirm Password"
                   }),
-                  createVNode(_sfc_main$R, {
+                  createVNode(_sfc_main$X, {
                     id: "password_confirmation",
                     type: "password",
                     class: "mt-1 block w-full",
@@ -7701,7 +7700,7 @@ const _sfc_main$L = {
                     required: "",
                     autocomplete: "new-password"
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$U, {
+                  createVNode(_sfc_main$_, {
                     class: "mt-2",
                     message: unref(form).errors.password_confirmation
                   }, null, 8, ["message"])
@@ -7726,17 +7725,17 @@ const _sfc_main$L = {
     };
   }
 };
-const _sfc_setup$L = _sfc_main$L.setup;
-_sfc_main$L.setup = (props, ctx) => {
+const _sfc_setup$R = _sfc_main$R.setup;
+_sfc_main$R.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/ResetPassword.vue");
-  return _sfc_setup$L ? _sfc_setup$L(props, ctx) : void 0;
+  return _sfc_setup$R ? _sfc_setup$R(props, ctx) : void 0;
 };
 const __vite_glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$L
+  default: _sfc_main$R
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$K = {
+const _sfc_main$Q = {
   __name: "VerifyEmail",
   __ssrInlineRender: true,
   props: {
@@ -7754,7 +7753,7 @@ const _sfc_main$K = {
       () => props.status === "verification-link-sent"
     );
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$V, _attrs, {
+      _push(ssrRenderComponent(_sfc_main$$, _attrs, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(ssrRenderComponent(unref(Head), { title: "Email Verification" }, null, _parent2, _scopeId));
@@ -7840,17 +7839,17 @@ const _sfc_main$K = {
     };
   }
 };
-const _sfc_setup$K = _sfc_main$K.setup;
-_sfc_main$K.setup = (props, ctx) => {
+const _sfc_setup$Q = _sfc_main$Q.setup;
+_sfc_main$Q.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Auth/VerifyEmail.vue");
-  return _sfc_setup$K ? _sfc_setup$K(props, ctx) : void 0;
+  return _sfc_setup$Q ? _sfc_setup$Q(props, ctx) : void 0;
 };
 const __vite_glob_0_6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$K
+  default: _sfc_main$Q
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$J = {
+const _sfc_main$P = {
   __name: "Blog",
   __ssrInlineRender: true,
   props: {
@@ -7966,17 +7965,17 @@ const _sfc_main$J = {
     };
   }
 };
-const _sfc_setup$J = _sfc_main$J.setup;
-_sfc_main$J.setup = (props, ctx) => {
+const _sfc_setup$P = _sfc_main$P.setup;
+_sfc_main$P.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Blog.vue");
-  return _sfc_setup$J ? _sfc_setup$J(props, ctx) : void 0;
+  return _sfc_setup$P ? _sfc_setup$P(props, ctx) : void 0;
 };
 const __vite_glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$J
+  default: _sfc_main$P
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$I = {
+const _sfc_main$O = {
   __name: "BlogShow",
   __ssrInlineRender: true,
   props: {
@@ -8068,17 +8067,17 @@ const _sfc_main$I = {
     };
   }
 };
-const _sfc_setup$I = _sfc_main$I.setup;
-_sfc_main$I.setup = (props, ctx) => {
+const _sfc_setup$O = _sfc_main$O.setup;
+_sfc_main$O.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/BlogShow.vue");
-  return _sfc_setup$I ? _sfc_setup$I(props, ctx) : void 0;
+  return _sfc_setup$O ? _sfc_setup$O(props, ctx) : void 0;
 };
 const __vite_glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$I
+  default: _sfc_main$O
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$H = /* @__PURE__ */ defineComponent({
+const _sfc_main$N = /* @__PURE__ */ defineComponent({
   __name: "Changelog",
   __ssrInlineRender: true,
   props: {
@@ -8368,18 +8367,18 @@ const _sfc_main$H = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _sfc_setup$H = _sfc_main$H.setup;
-_sfc_main$H.setup = (props, ctx) => {
+const _sfc_setup$N = _sfc_main$N.setup;
+_sfc_main$N.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Changelog.vue");
-  return _sfc_setup$H ? _sfc_setup$H(props, ctx) : void 0;
+  return _sfc_setup$N ? _sfc_setup$N(props, ctx) : void 0;
 };
-const Changelog = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["__scopeId", "data-v-caebb0c0"]]);
+const Changelog = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__scopeId", "data-v-caebb0c0"]]);
 const __vite_glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Changelog
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$G = {
+const _sfc_main$M = {
   __name: "Password",
   __ssrInlineRender: true,
   setup(__props) {
@@ -8397,17 +8396,17 @@ const _sfc_main$G = {
     };
   }
 };
-const _sfc_setup$G = _sfc_main$G.setup;
-_sfc_main$G.setup = (props, ctx) => {
+const _sfc_setup$M = _sfc_main$M.setup;
+_sfc_main$M.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Changelog/Password.vue");
-  return _sfc_setup$G ? _sfc_setup$G(props, ctx) : void 0;
+  return _sfc_setup$M ? _sfc_setup$M(props, ctx) : void 0;
 };
 const __vite_glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$G
+  default: _sfc_main$M
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$F = {
+const _sfc_main$L = {
   __name: "Contact",
   __ssrInlineRender: true,
   setup(__props) {
@@ -8798,18 +8797,18 @@ const _sfc_main$F = {
     };
   }
 };
-const _sfc_setup$F = _sfc_main$F.setup;
-_sfc_main$F.setup = (props, ctx) => {
+const _sfc_setup$L = _sfc_main$L.setup;
+_sfc_main$L.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Contact.vue");
-  return _sfc_setup$F ? _sfc_setup$F(props, ctx) : void 0;
+  return _sfc_setup$L ? _sfc_setup$L(props, ctx) : void 0;
 };
-const Contact = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["__scopeId", "data-v-7e550bc2"]]);
+const Contact = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__scopeId", "data-v-7e550bc2"]]);
 const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Contact
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$E = {
+const _sfc_main$K = {
   __name: "Dropdown",
   __ssrInlineRender: true,
   props: {
@@ -8862,13 +8861,13 @@ const _sfc_main$E = {
     };
   }
 };
-const _sfc_setup$E = _sfc_main$E.setup;
-_sfc_main$E.setup = (props, ctx) => {
+const _sfc_setup$K = _sfc_main$K.setup;
+_sfc_main$K.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Dropdown.vue");
-  return _sfc_setup$E ? _sfc_setup$E(props, ctx) : void 0;
+  return _sfc_setup$K ? _sfc_setup$K(props, ctx) : void 0;
 };
-const _sfc_main$D = {
+const _sfc_main$J = {
   __name: "DropdownLink",
   __ssrInlineRender: true,
   props: {
@@ -8897,13 +8896,13 @@ const _sfc_main$D = {
     };
   }
 };
-const _sfc_setup$D = _sfc_main$D.setup;
-_sfc_main$D.setup = (props, ctx) => {
+const _sfc_setup$J = _sfc_main$J.setup;
+_sfc_main$J.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/DropdownLink.vue");
-  return _sfc_setup$D ? _sfc_setup$D(props, ctx) : void 0;
+  return _sfc_setup$J ? _sfc_setup$J(props, ctx) : void 0;
 };
-const _sfc_main$C = {
+const _sfc_main$I = {
   __name: "NavLink",
   __ssrInlineRender: true,
   props: {
@@ -8939,13 +8938,13 @@ const _sfc_main$C = {
     };
   }
 };
-const _sfc_setup$C = _sfc_main$C.setup;
-_sfc_main$C.setup = (props, ctx) => {
+const _sfc_setup$I = _sfc_main$I.setup;
+_sfc_main$I.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/NavLink.vue");
-  return _sfc_setup$C ? _sfc_setup$C(props, ctx) : void 0;
+  return _sfc_setup$I ? _sfc_setup$I(props, ctx) : void 0;
 };
-const _sfc_main$B = {
+const _sfc_main$H = {
   __name: "ResponsiveNavLink",
   __ssrInlineRender: true,
   props: {
@@ -8981,13 +8980,13 @@ const _sfc_main$B = {
     };
   }
 };
-const _sfc_setup$B = _sfc_main$B.setup;
-_sfc_main$B.setup = (props, ctx) => {
+const _sfc_setup$H = _sfc_main$H.setup;
+_sfc_main$H.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ResponsiveNavLink.vue");
-  return _sfc_setup$B ? _sfc_setup$B(props, ctx) : void 0;
+  return _sfc_setup$H ? _sfc_setup$H(props, ctx) : void 0;
 };
-const _sfc_main$A = {
+const _sfc_main$G = {
   __name: "AuthenticatedLayout",
   __ssrInlineRender: true,
   setup(__props) {
@@ -9014,7 +9013,7 @@ const _sfc_main$A = {
         _: 1
       }, _parent));
       _push(`</div><div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">`);
-      _push(ssrRenderComponent(_sfc_main$C, {
+      _push(ssrRenderComponent(_sfc_main$I, {
         href: _ctx.route("dashboard"),
         active: _ctx.route().current("dashboard")
       }, {
@@ -9036,7 +9035,7 @@ const _sfc_main$A = {
         _push(`<!---->`);
       }
       _push(`<div class="relative ms-3">`);
-      _push(ssrRenderComponent(_sfc_main$E, {
+      _push(ssrRenderComponent(_sfc_main$K, {
         align: "right",
         width: "48"
       }, {
@@ -9070,7 +9069,7 @@ const _sfc_main$A = {
         }),
         content: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(ssrRenderComponent(_sfc_main$D, {
+            _push2(ssrRenderComponent(_sfc_main$J, {
               href: _ctx.route("profile.edit")
             }, {
               default: withCtx((_3, _push3, _parent3, _scopeId2) => {
@@ -9084,7 +9083,7 @@ const _sfc_main$A = {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$D, {
+            _push2(ssrRenderComponent(_sfc_main$J, {
               href: _ctx.route("logout"),
               method: "post",
               as: "button"
@@ -9102,7 +9101,7 @@ const _sfc_main$A = {
             }, _parent2, _scopeId));
           } else {
             return [
-              createVNode(_sfc_main$D, {
+              createVNode(_sfc_main$J, {
                 href: _ctx.route("profile.edit")
               }, {
                 default: withCtx(() => [
@@ -9110,7 +9109,7 @@ const _sfc_main$A = {
                 ]),
                 _: 1
               }, 8, ["href"]),
-              createVNode(_sfc_main$D, {
+              createVNode(_sfc_main$J, {
                 href: _ctx.route("logout"),
                 method: "post",
                 as: "button"
@@ -9135,7 +9134,7 @@ const _sfc_main$A = {
         block: showingNavigationDropdown.value,
         hidden: !showingNavigationDropdown.value
       }, "sm:hidden"])}"><div class="space-y-1 pb-3 pt-2">`);
-      _push(ssrRenderComponent(_sfc_main$B, {
+      _push(ssrRenderComponent(_sfc_main$H, {
         href: _ctx.route("dashboard"),
         active: _ctx.route().current("dashboard")
       }, {
@@ -9151,7 +9150,7 @@ const _sfc_main$A = {
         _: 1
       }, _parent));
       if (isAdmin.value) {
-        _push(ssrRenderComponent(_sfc_main$B, { href: "/admin" }, {
+        _push(ssrRenderComponent(_sfc_main$H, { href: "/admin" }, {
           default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(` ⚙️ Admin Panel `);
@@ -9167,7 +9166,7 @@ const _sfc_main$A = {
         _push(`<!---->`);
       }
       _push(`</div><div class="border-t border-gray-200 pb-1 pt-4"><div class="px-4"><div class="text-base font-medium text-gray-800">${ssrInterpolate(_ctx.$page.props.auth.user.name)}</div><div class="text-sm font-medium text-gray-500">${ssrInterpolate(_ctx.$page.props.auth.user.email)}</div></div><div class="mt-3 space-y-1">`);
-      _push(ssrRenderComponent(_sfc_main$B, {
+      _push(ssrRenderComponent(_sfc_main$H, {
         href: _ctx.route("profile.edit")
       }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
@@ -9181,7 +9180,7 @@ const _sfc_main$A = {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$B, {
+      _push(ssrRenderComponent(_sfc_main$H, {
         href: _ctx.route("logout"),
         method: "post",
         as: "button"
@@ -9211,20 +9210,20 @@ const _sfc_main$A = {
     };
   }
 };
-const _sfc_setup$A = _sfc_main$A.setup;
-_sfc_main$A.setup = (props, ctx) => {
+const _sfc_setup$G = _sfc_main$G.setup;
+_sfc_main$G.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Layouts/AuthenticatedLayout.vue");
-  return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
+  return _sfc_setup$G ? _sfc_setup$G(props, ctx) : void 0;
 };
-const _sfc_main$z = {
+const _sfc_main$F = {
   __name: "Dashboard",
   __ssrInlineRender: true,
   setup(__props) {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), { title: "Dashboard" }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$A, null, {
+      _push(ssrRenderComponent(_sfc_main$G, null, {
         header: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<h2 class="text-xl font-semibold leading-tight text-gray-800"${_scopeId}> Dashboard </h2>`);
@@ -9255,17 +9254,137 @@ const _sfc_main$z = {
     };
   }
 };
-const _sfc_setup$z = _sfc_main$z.setup;
-_sfc_main$z.setup = (props, ctx) => {
+const _sfc_setup$F = _sfc_main$F.setup;
+_sfc_main$F.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Dashboard.vue");
-  return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
+  return _sfc_setup$F ? _sfc_setup$F(props, ctx) : void 0;
 };
 const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$z
+  default: _sfc_main$F
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$y = {
+const _sfc_main$E = {
+  __name: "Password",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const form = useForm({ password: "" });
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[-->`);
+      _push(ssrRenderComponent(unref(Head), { title: "Developer Docs" }, null, _parent));
+      _push(`<div class="min-h-screen flex items-center justify-center" style="${ssrRenderStyle({ "background-color": "#f6f8fb" })}"><div class="w-full max-w-sm px-6"><div class="text-center mb-8"><div style="${ssrRenderStyle({ "font-size": "2rem", "margin-bottom": "12px" })}">🔒</div><h1 class="text-2xl font-bold" style="${ssrRenderStyle({ "color": "#1c2530" })}">Developer Docs</h1><p style="${ssrRenderStyle({ "color": "#5b6776", "margin-top": "8px", "font-size": "0.9rem" })}"> This area is restricted to super-super-admins.<br>Enter the developer docs password to continue. </p></div><form class="space-y-4"><div><input${ssrRenderAttr("value", unref(form).password)} type="password" placeholder="Password" autofocus style="${ssrRenderStyle([{ "width": "100%", "padding": "12px 16px", "border-radius": "8px", "border": "1px solid #e3e8ef", "background": "#fff", "color": "#1c2530", "font-size": "1rem", "outline": "none", "transition": "border 0.2s" }, unref(form).errors.password ? "border-color:#ef4444;" : ""])}">`);
+      if (unref(form).errors.password) {
+        _push(`<p style="${ssrRenderStyle({ "color": "#ef4444", "font-size": "0.85rem", "margin-top": "6px" })}">${ssrInterpolate(unref(form).errors.password)}</p>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div><button type="submit"${ssrIncludeBooleanAttr(unref(form).processing) ? " disabled" : ""} style="${ssrRenderStyle([{ "width": "100%", "padding": "12px 16px", "border-radius": "8px", "background": "#2f6df6", "color": "#fff", "font-size": "1rem", "font-weight": "600", "border": "none", "cursor": "pointer", "transition": "opacity 0.2s" }, unref(form).processing ? "opacity:0.5; cursor:not-allowed;" : ""])}">${ssrInterpolate(unref(form).processing ? "Checking…" : "Continue")}</button></form></div></div><!--]-->`);
+    };
+  }
+};
+const _sfc_setup$E = _sfc_main$E.setup;
+_sfc_main$E.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/DevDocs/Password.vue");
+  return _sfc_setup$E ? _sfc_setup$E(props, ctx) : void 0;
+};
+const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: _sfc_main$E
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$D = {
+  __name: "Show",
+  __ssrInlineRender: true,
+  props: {
+    html: String,
+    nav: Array,
+    currentSlug: String,
+    title: String
+  },
+  setup(__props) {
+    const props = __props;
+    const tocItems = ref([]);
+    const activeHeading = ref("");
+    const handleScroll = (e2) => {
+      const headings = tocItems.value.map((item) => document.getElementById(item.id)).filter(Boolean);
+      let current = "";
+      for (const h2 of headings) {
+        if (h2.getBoundingClientRect().top <= 120) current = h2.id;
+      }
+      if (current) activeHeading.value = current;
+    };
+    const buildToc = () => {
+      const container = document.querySelector(".dev-docs-content");
+      if (!container) return;
+      const headings = container.querySelectorAll("h2, h3");
+      if (headings.length === 0) {
+        setTimeout(buildToc, 100);
+        return;
+      }
+      tocItems.value = Array.from(headings).map((h2, i2) => {
+        if (!h2.id) h2.id = `h-${i2}`;
+        return { id: h2.id, text: h2.textContent, level: h2.tagName === "H2" ? 2 : 3 };
+      });
+    };
+    onMounted(() => {
+      setTimeout(buildToc, 200);
+      const main = document.querySelector(".dev-docs-main");
+      if (main) main.addEventListener("scroll", handleScroll);
+    });
+    watch(() => props.html, () => {
+      tocItems.value = [];
+      setTimeout(buildToc, 200);
+    });
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[-->`);
+      _push(ssrRenderComponent(unref(Head), {
+        title: `${__props.title} — Developer Docs`
+      }, null, _parent));
+      _push(`<div class="dev-docs-shell"><header class="dev-docs-header"><div class="dev-docs-header-left"><span class="dev-docs-logo">🔒 Developer Docs</span><span style="${ssrRenderStyle({ "padding-top": "0.3rem", "font-size": "0.75rem", "color": "#6b7280", "line-height": "1" })}">Last updated: 17th July 2026</span></div><div class="dev-docs-header-right"><a href="/admin" class="dev-docs-nav-link">← Admin panel</a><a href="/" class="dev-docs-nav-link">Back to site</a></div></header><div class="dev-docs-body"><aside class="dev-docs-sidebar"><p class="dev-docs-sidebar-title">Developer Docs</p><ul><!--[-->`);
+      ssrRenderList(__props.nav, (item) => {
+        _push(`<li>`);
+        _push(ssrRenderComponent(unref(Link), {
+          href: _ctx.route("dev-docs.show", { slug: item.slug }),
+          class: ["dev-docs-sidebar-link", { active: __props.currentSlug === item.slug }]
+        }, {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
+            if (_push2) {
+              _push2(`${ssrInterpolate(item.title)}`);
+            } else {
+              return [
+                createTextVNode(toDisplayString(item.title), 1)
+              ];
+            }
+          }),
+          _: 2
+        }, _parent));
+        _push(`</li>`);
+      });
+      _push(`<!--]--></ul></aside><main class="dev-docs-main"><div class="dev-docs-content">${__props.html ?? ""}</div></main>`);
+      if (tocItems.value.length > 0) {
+        _push(`<aside class="dev-docs-toc"><p class="dev-docs-toc-title">On this page</p><ul><!--[-->`);
+        ssrRenderList(tocItems.value, (item) => {
+          _push(`<li><button class="${ssrRenderClass([[item.level === 3 ? "pl-3" : "", activeHeading.value === item.id ? "active" : ""], "dev-docs-toc-link"])}">${ssrInterpolate(item.text)}</button></li>`);
+        });
+        _push(`<!--]--></ul></aside>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div></div><!--]-->`);
+    };
+  }
+};
+const _sfc_setup$D = _sfc_main$D.setup;
+_sfc_main$D.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/DevDocs/Show.vue");
+  return _sfc_setup$D ? _sfc_setup$D(props, ctx) : void 0;
+};
+const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: _sfc_main$D
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$C = {
   __name: "Password",
   __ssrInlineRender: true,
   setup(__props) {
@@ -9283,17 +9402,17 @@ const _sfc_main$y = {
     };
   }
 };
-const _sfc_setup$y = _sfc_main$y.setup;
-_sfc_main$y.setup = (props, ctx) => {
+const _sfc_setup$C = _sfc_main$C.setup;
+_sfc_main$C.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Documentation/Password.vue");
-  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
+  return _sfc_setup$C ? _sfc_setup$C(props, ctx) : void 0;
 };
-const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$y
+  default: _sfc_main$C
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$x = {
+const _sfc_main$B = {
   __name: "Show",
   __ssrInlineRender: true,
   props: {
@@ -9301,7 +9420,8 @@ const _sfc_main$x = {
     nav: Array,
     currentSlug: String,
     title: String,
-    isAdmin: Boolean
+    isAdmin: Boolean,
+    isSuperSuperAdmin: Boolean
   },
   setup(__props) {
     const props = __props;
@@ -9427,7 +9547,7 @@ const _sfc_main$x = {
         }),
         _: 1
       }, _parent));
-      _push(`<p class="max-w-3xl" style="${ssrRenderStyle({ "padding-top": "0.3rem", "font-size": "0.75rem", "color": "#6b7280!important", "line-height": "1!important", "margin-bottom": "0!important" })}">Last updated: 11th June 2026</p></div><div class="relative flex-1 max-w-md mx-auto"><div class="relative"><svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"></path></svg><input${ssrRenderAttr("value", searchQuery.value)} type="text" placeholder="Search docs…" autocomplete="off" spellcheck="false" class="w-full pl-9 pr-14 py-1.5 rounded-md text-sm border border-white/10 bg-white/5 text-gray-200 placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition"><kbd class="absolute right-2.5 top-1/2 -translate-y-1/2 hidden sm:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] text-gray-500 border border-white/10 font-mono pointer-events-none"> ⌘K </kbd></div>`);
+      _push(`<p class="max-w-3xl" style="${ssrRenderStyle({ "padding-top": "0.3rem", "font-size": "0.75rem", "color": "#6b7280!important", "line-height": "1!important", "margin-bottom": "0!important" })}">Last updated: 17th July 2026</p></div><div class="relative flex-1 max-w-md mx-auto"><div class="relative"><svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"></path></svg><input${ssrRenderAttr("value", searchQuery.value)} type="text" placeholder="Search docs…" autocomplete="off" spellcheck="false" class="w-full pl-9 pr-14 py-1.5 rounded-md text-sm border border-white/10 bg-white/5 text-gray-200 placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition"><kbd class="absolute right-2.5 top-1/2 -translate-y-1/2 hidden sm:inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] text-gray-500 border border-white/10 font-mono pointer-events-none"> ⌘K </kbd></div>`);
       if (searchOpen.value && searchResults.value.length) {
         _push(`<div class="absolute left-0 right-0 top-full mt-2 z-50 rounded-lg border border-white/10 shadow-2xl overflow-hidden" style="${ssrRenderStyle({ "background-color": "#1a1030" })}"><ul><!--[-->`);
         ssrRenderList(searchResults.value, (result, i2) => {
@@ -9438,6 +9558,11 @@ const _sfc_main$x = {
         _push(`<!---->`);
       }
       _push(`</div><div class="flex items-center gap-3 flex-shrink-0">`);
+      if (__props.isSuperSuperAdmin) {
+        _push(`<a href="/dev-docs/unlock" class="hidden sm:inline-flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition px-2.5 py-1.5 rounded border border-white/10 hover:border-white/20 whitespace-nowrap"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg> Dev Docs </a>`);
+      } else {
+        _push(`<!---->`);
+      }
       if (__props.isAdmin) {
         _push(`<a href="/admin" class="hidden sm:inline-flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition px-2.5 py-1.5 rounded border border-white/10 hover:border-white/20 whitespace-nowrap"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> Admin </a>`);
       } else {
@@ -9521,336 +9646,84 @@ const _sfc_main$x = {
     };
   }
 };
-const _sfc_setup$x = _sfc_main$x.setup;
-_sfc_main$x.setup = (props, ctx) => {
+const _sfc_setup$B = _sfc_main$B.setup;
+_sfc_main$B.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Documentation/Show.vue");
-  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
+  return _sfc_setup$B ? _sfc_setup$B(props, ctx) : void 0;
 };
-const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$x
+  default: _sfc_main$B
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$w = {
-  __name: "HeroSection",
+const calendly = "https://calendly.com/contact-compengine/30min";
+const _sfc_main$A = {
+  __name: "UltraNav",
   __ssrInlineRender: true,
   setup(__props) {
-    const getText = inject("getText", (key, fallback = "") => fallback);
-    const siteTexts = inject("siteTexts");
-    const eyebrow = computed(() => getText("hero.eyebrow", "Proven. Certified. UK Voluntary Code Signatory."));
-    const titleBefore = computed(() => getText("hero.title_before", "Don't Blend In."));
-    const titleKeyword = computed(() => getText("hero.title_keyword", "Stand Out."));
-    const subtitle = computed(() => getText("hero.subtitle", `The UK competition platform that's already survived <strong style="color:var(--text-0)">five years</strong> of draw nights. Powered by the only <strong style="color:var(--text-0)">Game Studio</strong> in the category. Built for operators who want to look nothing like the last raffle site you saw.`));
-    const buttonPrimary = computed(() => getText("hero.button_primary", "Book a draw-night demo"));
-    const buttonSecondary = computed(() => getText("hero.button_secondary", "Try Game Studio →"));
-    const growthPromise = computed(() => getText("hero.growth_promise", "Operators on CompEngine grow revenue <strong>+47%</strong>&nbsp;on average in their first 90 days"));
-    const ordersTarget = computed(() => parseInt(getText("stats.value_orders", "245000"), 10) || 0);
-    const ticketsTarget = computed(() => parseInt(getText("stats.value_tickets", "13250000"), 10) || 0);
-    const ordersDisplay = ref("0");
-    const ticketsDisplay = ref("0");
-    let countersStarted = false;
-    function animateCount(displayRef, target, dur = 1600) {
-      const start = performance.now();
-      function tick(now) {
-        const t3 = Math.min((now - start) / dur, 1);
-        const eased = 1 - Math.pow(1 - t3, 3);
-        displayRef.value = Math.round(target * eased).toLocaleString();
-        if (t3 < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-    function startCounters() {
-      if (countersStarted) return;
-      countersStarted = true;
-      animateCount(ordersDisplay, ordersTarget.value);
-      animateCount(ticketsDisplay, ticketsTarget.value);
-    }
-    onMounted(() => {
-      if (!siteTexts.loading) {
-        startCounters();
-      }
+    const page = usePage();
+    const user = computed(() => {
+      var _a;
+      return ((_a = page.props.auth) == null ? void 0 : _a.user) || null;
     });
-    watch(() => siteTexts.loading, (loading) => {
-      if (!loading) {
-        startCounters();
-      }
+    const accountHref = computed(() => {
+      var _a;
+      return ((_a = user.value) == null ? void 0 : _a.is_admin) ? "/admin" : "/dashboard";
     });
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({
-        id: "hero",
-        class: "hero"
-      }, _attrs))}><svg class="hero-logo-big spin-slow" aria-hidden="true"><use href="#gear-logo"></use></svg><div class="eyebrow"><span class="dot"></span>${ssrInterpolate(eyebrow.value)}</div><h1 class="h1">${ssrInterpolate(titleBefore.value)} <span class="grad-text">${ssrInterpolate(titleKeyword.value)}</span></h1><p class="lead" style="${ssrRenderStyle({ "margin": "28px auto 0" })}">${subtitle.value ?? ""}</p><div class="hero-cta"><button class="btn btn-primary btn-large">${ssrInterpolate(buttonPrimary.value)}</button><a href="#game-studio" class="btn btn-ghost btn-large">${ssrInterpolate(buttonSecondary.value)}</a></div><div class="growth-promise"><span class="arr">↗</span><span>${growthPromise.value ?? ""}</span></div><div class="hero-mini-stats"><div class="mini-stat"><strong>${ssrInterpolate(ordersDisplay.value)}</strong> orders <span class="pill">last 30d</span></div><div class="mini-stat"><strong>${ssrInterpolate(ticketsDisplay.value)}</strong> tickets <span class="pill">last 30d</span></div><div class="mini-stat"><strong>5+ yrs</strong> operating</div></div><div class="trust-bar"><div class="trust-item" title="Gaming Laboratories International — certifies regulated casino systems in 480+ jurisdictions."><svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="#f4a558" stroke-width="1.5"><path d="M12 2L3 7v5c0 5.5 3.8 10.6 9 12 5.2-1.4 9-6.5 9-12V7l-9-5z"></path><path d="M9 12l2 2 4-4" stroke="#ec8a82"></path></svg><div class="trust-title">GLI Certified</div><div class="trust-sub">RNG independently verified</div></div><div class="trust-item" title="Penetration tested by an independent UK firm. Findings closed, re-tested on cycle."><svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="#f4a558" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg><div class="trust-title">Pen Tested</div><div class="trust-sub">By an independent firm</div></div><div class="trust-item" title="Signed up from day one to the UK Voluntary Code of Good Practice for Prize Draw Operators (20 May 2026)."><svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="#f4a558" stroke-width="1.5"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><div class="trust-title">VCOC Signatory</div><div class="trust-sub">UK Voluntary Code, May 2026</div></div><div class="trust-item" title="5+ years operating in the UK competition category — the most experienced independent platform."><svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="#f4a558" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><div class="trust-title">5+ Years Live</div><div class="trust-sub">Longest-running indie platform</div></div></div><div class="scroll-hint"> The fun bit&#39;s below <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></section>`);
+      _push(`<nav${ssrRenderAttrs(mergeProps({
+        class: "ce-nav",
+        "aria-label": "Main"
+      }, _attrs))}><div class="wrap"><a href="#hero" class="logo" aria-label="CompEngine home"><span class="gear"><img src="/images/logo.svg" alt=""><span class="gear-svg" data-gear></span></span><span class="grad">COMPENGINE</span></a><div class="nav-links"><a href="#hero">Home</a><a href="#game-studio">Games</a><a href="#ecosystem">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="/about">About</a><a href="/blog">Blog</a><a href="#booking">Contact</a></div><div class="nav-cta">`);
+      if (user.value) {
+        _push(`<a${ssrRenderAttr("href", accountHref.value)} class="btn btn-ghost btn-sm nav-login" data-track="nav_account">${ssrInterpolate(user.value.name)}</a>`);
+      } else {
+        _push(`<a href="/login" class="btn btn-ghost btn-sm nav-login" data-track="nav_login">Login</a>`);
+      }
+      _push(`<a${ssrRenderAttr("href", calendly)} target="_blank" rel="noopener" class="btn btn-sm btn-book" data-track="nav_book_demo" data-calendly>Book a Demo</a><button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><i class="ic" data-i="menu"></i></button></div></div><div class="mobile-menu" id="mobile-menu"><a href="#hero">Home</a><a href="#game-studio">Games</a><a href="#ecosystem">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="/about">About</a><a href="/blog">Blog</a><a href="#booking">Contact</a>`);
+      if (user.value) {
+        _push(`<a${ssrRenderAttr("href", accountHref.value)}>${ssrInterpolate(user.value.name)}</a>`);
+      } else {
+        _push(`<a href="/login">Login</a>`);
+      }
+      _push(`</div></nav>`);
     };
   }
 };
-const _sfc_setup$w = _sfc_main$w.setup;
-_sfc_main$w.setup = (props, ctx) => {
+const _sfc_setup$A = _sfc_main$A.setup;
+_sfc_main$A.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Hero/HeroSection.vue");
-  return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraNav.vue");
+  return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
 };
-const _sfc_main$v = {
-  __name: "LogoWall",
+const _sfc_main$z = {
+  __name: "UltraHero",
   __ssrInlineRender: true,
+  props: { orders: { type: Number, default: 15e5 }, tickets: { type: Number, default: 12e7 } },
   setup(__props) {
-    const getText = inject("getText");
-    const eyebrowBefore = computed(() => getText("logowall.eyebrow_before", "Powering some of the UK's"));
-    const eyebrowAccent = computed(() => getText("logowall.eyebrow_accent", "leading competition operators"));
-    const footerText = computed(() => getText("logowall.footer_text", "more UK operators trust CompEngine with their draws"));
-    const tenants = [
-      { label: "S2A · Competitions" },
-      { label: "Lust Raffles", emoji: "💋 ", cls: "bl-condensed" },
-      { label: "AutoComps", cls: "bl-stack", color: "#FFD700" },
-      { label: "Auwins", cls: "bl-mono", color: "#ff0000" },
-      { label: "WestCoast", emoji: "🌊", color: "#eab308" },
-      { label: "LuckyDucky", emoji: "🦆", color: "#FFDD00" },
-      { label: "Lightning ⚡", cls: "bl-condensed", color: "#c8920a" },
-      { label: "MsMoneyPenny", emoji: "💰", color: "#7c3aed" },
-      { label: "Vortex", img: "/images/tenant-icons/vortexfavicon.png", color: "#793181", large: true, imgSize: 52, fontSize: "2.5em", height: "58px" },
-      { label: "Jolly", img: "/images/tenant-icons/jolly.png", color: "#D4AF37" },
-      { label: "MadMac", img: "/images/tenant-icons/madmac.png", color: "#FF00FF", alt: "UK" },
-      { label: "Ritas", img: "/images/tenant-icons/ritas.png", color: "#D4AF37", cls: "bl-condensed", large: true },
-      { label: "Winner Winner", emoji: "🏆 ", color: "#FF1F1F" },
-      { label: "Prize Party", emoji: "🎊", cls: "bl-spaced", color: "#FF6B00" },
-      { label: "Karma", emoji: "✨", color: "#D4AF37" },
-      { label: "Deluxe Comps", emoji: "⭐", color: "#c9a227" },
-      { label: "Luxsy Wins", emoji: "✨", cls: "bl-mono", color: "#ec4899" },
-      { label: "WinThisNow", img: "/images/tenant-icons/winthisnow.png", color: "#0ea5e9" },
-      { label: "Top Banana", emoji: "🍌", cls: "bl-serif" },
-      { label: "Oche Prizes" },
-      { label: "SmashDrop", cls: "bl-condensed" },
-      { label: "Wrights", cls: "bl-serif" },
-      { label: "SunnyGiveaways", emoji: "☀️", color: "#f59e0b" },
-      { label: "House of Hope Comps", emoji: "🏠", cls: "bl-mono" },
-      { label: "Vincere", emoji: "🏅", cls: "bl-spaced" },
-      { label: "MPComps", color: "#0ea5e9" },
-      { label: "Podium", emoji: "🏆", cls: "bl-rounded" },
-      { label: "CrazyCat", cls: "bl-script" },
-      { label: "Padel Comps" },
-      { label: "Belter Competition", color: "#ffffff" },
-      { label: "Prize Hunter Competitions", color: "#ffffff" }
-    ];
-    const shuffle3 = (arr) => {
-      const a2 = [...arr];
-      for (let i2 = a2.length - 1; i2 > 0; i2--) {
-        const j2 = Math.floor(Math.random() * (i2 + 1));
-        [a2[i2], a2[j2]] = [a2[j2], a2[i2]];
-      }
-      return a2;
-    };
-    const tenantsRow1 = shuffle3(tenants);
-    const tenantsRow2 = shuffle3(tenants);
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({
-        class: "logo-wall",
-        id: "logo-wall"
-      }, _attrs))}><div class="logo-wall-eyebrow">${ssrInterpolate(eyebrowBefore.value)} <span class="accent">${ssrInterpolate(eyebrowAccent.value)}</span><span class="live-pill">Live</span></div><div class="logo-rail"><div class="logo-track"><!--[-->`);
-      ssrRenderList(2, (n2) => {
-        _push(`<!--[--><!--[-->`);
-        ssrRenderList(unref(tenantsRow1), (tenant, i2) => {
-          _push(`<div class="${ssrRenderClass([tenant.cls, "brand-logo"])}" style="${ssrRenderStyle({ color: tenant.color, fontSize: tenant.fontSize || (tenant.large ? "2em" : void 0), gap: tenant.img ? "7px" : void 0, height: tenant.height || void 0 })}">`);
-          if (tenant.img) {
-            _push(`<img${ssrRenderAttr("src", tenant.img)}${ssrRenderAttr("width", tenant.imgSize || 40)}${ssrRenderAttr("height", tenant.imgSize || 40)}${ssrRenderAttr("alt", tenant.label)}>`);
-          } else if (tenant.emoji) {
-            _push(`<!--[-->${ssrInterpolate(tenant.emoji)}<!--]-->`);
-          } else {
-            _push(`<!---->`);
-          }
-          _push(`${ssrInterpolate(tenant.label)}`);
-          if (tenant.alt) {
-            _push(`<span class="alt">${ssrInterpolate(tenant.alt)}</span>`);
-          } else {
-            _push(`<!---->`);
-          }
-          _push(`</div>`);
-        });
-        _push(`<!--]--><!--]-->`);
-      });
-      _push(`<!--]--></div></div><div class="logo-rail reverse"><div class="logo-track"><!--[-->`);
-      ssrRenderList(2, (n2) => {
-        _push(`<!--[--><!--[-->`);
-        ssrRenderList(unref(tenantsRow2), (tenant, i2) => {
-          _push(`<div class="${ssrRenderClass([tenant.cls, "brand-logo"])}" style="${ssrRenderStyle({ color: tenant.color, fontSize: tenant.fontSize || (tenant.large ? "2em" : void 0), gap: tenant.img ? "7px" : void 0, height: tenant.height || void 0 })}">`);
-          if (tenant.img) {
-            _push(`<img${ssrRenderAttr("src", tenant.img)}${ssrRenderAttr("width", tenant.imgSize || 40)}${ssrRenderAttr("height", tenant.imgSize || 40)}${ssrRenderAttr("alt", tenant.label)}>`);
-          } else if (tenant.emoji) {
-            _push(`<!--[-->${ssrInterpolate(tenant.emoji)}<!--]-->`);
-          } else {
-            _push(`<!---->`);
-          }
-          _push(`${ssrInterpolate(tenant.label)}`);
-          if (tenant.alt) {
-            _push(`<span class="alt">${ssrInterpolate(tenant.alt)}</span>`);
-          } else {
-            _push(`<!---->`);
-          }
-          _push(`</div>`);
-        });
-        _push(`<!--]--><!--]-->`);
-      });
-      _push(`<!--]--></div></div><div style="${ssrRenderStyle({ "text-align": "center", "margin-top": "22px", "font-size": "12px", "color": "var(--text-3)", "letter-spacing": "0.08em" })}"><span style="${ssrRenderStyle({ "color": "var(--orange)", "font-weight": "700" })}">+ 200</span>  ${ssrInterpolate(footerText.value)}</div></section>`);
+      _push(`<section${ssrRenderAttrs(mergeProps({ id: "hero" }, _attrs))}><canvas class="tickets" id="tickets" aria-hidden="true"></canvas><div class="wrap"><div class="hero-grid"><div class="hero-copy"><span class="eyebrow"><i class="dot"></i>Proven. Certified. UK Voluntary Code Signatory.</span><h1 id="hero-h1">The <span class="grad">Ultimate Competition</span> Platform</h1><p class="sub" id="hero-sub">Build Competitions beyond presets. Create unique competition experiences for your customers.</p><div class="cta-row"><a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" class="btn btn-primary btn-lg" id="hero-cta" data-track="hero_book_demo" data-calendly>Book a Demo</a><a href="#game-studio" class="btn btn-ghost btn-lg" data-track="hero_game_studio">Game Studio</a></div><div class="cta-note hand"><svg viewBox="0 0 30 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 2c2 10 6 18 20 22"></path><path d="M18 20l6 4-1 6"></path></svg>30 mins. No sales deck.</div><div class="proof"><i class="ic" data-i="trend"></i><span>Operators on CompEngine grow revenue <b>+47%</b> on average in their first 90 days</span></div><div class="mini-trust"><span><i class="ic" data-i="shield"></i>GLI certified</span><span><i class="ic" data-i="shield"></i>Pen tested</span><span><i class="ic" data-i="shield"></i>VCOC signatory</span></div></div><div class="hero-visual" id="hero-visual"><div class="mesh" aria-hidden="true"></div><canvas class="aurora" id="aurora" width="160" height="160" aria-hidden="true"></canvas><div class="big-gear" id="big-gear" aria-hidden="true"><span class="gear-svg" data-gear></span></div><div class="phone-wrap"><div class="phone" id="phone"><span class="glare"></span><div class="push" id="push" aria-hidden="true"><span class="ic"></span><div><b>New order</b><span id="push-txt"></span></div></div><span class="btn-side"></span><span class="btn-side l"></span><span class="btn-side l2"></span><div class="phone-bar"><span>9:41</span><span>yourbrand.co.uk</span><span>●●●</span></div><div class="slot" data-slot="hero"></div><div class="phone-list" aria-hidden="true"><div><img src="/images/draws/bmw.jpg" alt="" loading="lazy"><span>BMW M3 Competition Pack</span><small>84% sold</small><i style="${ssrRenderStyle({ "--p": "84%" })}"></i></div><div><img src="/images/draws/cash.jpg" alt="" loading="lazy"><span>£25,000 Tax-Free Cash</span><small>61% sold</small><i style="${ssrRenderStyle({ "--p": "61%" })}"></i></div><div><img src="/images/draws/rolex.jpg" alt="" loading="lazy"><span>Rolex Submariner Date</span><small>37% sold</small><i style="${ssrRenderStyle({ "--p": "37%" })}"></i></div></div></div><div class="phone-shadow" aria-hidden="true"></div></div></div></div><div class="counters" id="counters"><div class="counter"><b class="tnum" data-live="orders_30d"${ssrRenderAttr("data-target", __props.orders)} data-format="num">0</b><span>orders · last 30d</span></div><div class="counter"><b class="tnum" data-live="tickets_30d"${ssrRenderAttr("data-target", __props.tickets)} data-format="num">0</b><span>tickets · last 30d</span></div><div class="counter"><b class="tnum" data-live="years" data-target="5" data-format="plus">0</b><span>yrs operating</span></div></div><div class="feed card" id="feed" aria-live="polite" aria-label="Live orders"><div class="feed-head"><span class="tag green"><i class="dot green"></i>Live orders</span><span class="muted small" id="feed-rate">across CompEngine sites</span></div><div class="feed-list" id="feed-list"></div></div></div></section>`);
     };
   }
 };
-const _sfc_setup$v = _sfc_main$v.setup;
-_sfc_main$v.setup = (props, ctx) => {
+const _sfc_setup$z = _sfc_main$z.setup;
+_sfc_main$z.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/LogoWall/LogoWall.vue");
-  return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraHero.vue");
+  return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
 };
-function useReveal() {
-  const sectionRef = ref(null);
-  const revealed = ref(false);
-  let observer = null;
-  onMounted(() => {
-    if (!sectionRef.value) return;
-    observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          revealed.value = true;
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    observer.observe(sectionRef.value);
-  });
-  onUnmounted(() => {
-    if (observer) observer.disconnect();
-  });
-  return { sectionRef, revealed };
+const _sfc_main$y = {};
+function _sfc_ssrRender$c(_ctx, _push, _parent, _attrs) {
+  _push(`<!--[--><section class="ce-logowall" aria-label="Operators on CompEngine"><div class="wrap" style="${ssrRenderStyle({ "text-align": "center" })}"><span class="eyebrow"><i class="dot green"></i>Powering some of the UK&#39;s leading competition operators<span style="${ssrRenderStyle({ "margin-left": "6px", "color": "var(--green)" })}">LIVE</span></span></div><div class="marquee" style="${ssrRenderStyle({ "margin-top": "24px" })}"><div class="track" id="marquee-a"></div></div><div class="marquee rev"><div class="track" id="marquee-b"></div></div><div class="wrap"><p class="plus"><b>+ 200</b> more UK operators trust CompEngine with their draws</p><div class="trust"><div class="card"><i class="ic" data-i="cert"></i><div><b>GLI Certified</b><span>RNG independently verified</span></div></div><div class="card"><i class="ic" data-i="lock"></i><div><b>Pen Tested</b><span>By an independent firm</span></div></div><div class="card"><i class="ic" data-i="doc"></i><div><b>VCOC Signatory</b><span>UK Voluntary Code, May 2026</span></div></div><div class="card"><i class="ic" data-i="award"></i><div><b>Industry Recognised</b><span>Industry proven</span></div></div></div><p class="hand" style="${ssrRenderStyle({ "text-align": "center", "margin-top": "28px" })}">the fun bit&#39;s below ↓</p></div></section><div class="kinetic" aria-hidden="true"><div class="k-track" id="k-track"></div></div><!--]-->`);
 }
-const _sfc_main$u = {
-  __name: "StatsSection",
-  __ssrInlineRender: true,
-  setup(__props) {
-    const getText = inject("getText", (key, fallback = "") => fallback);
-    const { sectionRef, revealed } = useReveal();
-    const eyebrow = computed(() => getText("stats.eyebrow", "Trusted by the operators who chose proven over promised"));
-    const titleBefore = computed(() => getText("stats.title_before", "The numbers that other platforms"));
-    const titleKeyword = computed(() => getText("stats.title_keyword", "don't publish."));
-    const lead = computed(() => getText("stats.lead", "Every stat below is real, rolling-30-day data from operators running on CompEngine right now. Click any segment of the chart to drill into where your revenue actually flows."));
-    const blockTitle = computed(() => getText("stats.block_title", "A real Tuesday on CompEngine"));
-    const blockSubtitle = computed(() => getText("stats.block_subtitle", "Not a load test. Not a sales deck. Just a 30-day rolling snapshot."));
-    const ordersTarget = computed(() => parseInt(getText("stats.value_orders", "245000"), 10) || 0);
-    const ticketsTarget = computed(() => parseInt(getText("stats.value_tickets", "13250000"), 10) || 0);
-    const ordersDisplay = ref("0");
-    const ticketsDisplay = ref("0");
-    let countersStarted = false;
-    function animateCount(displayRef, target, dur = 1600) {
-      const start = performance.now();
-      function tick(now) {
-        const t3 = Math.min((now - start) / dur, 1);
-        const eased = 1 - Math.pow(1 - t3, 3);
-        displayRef.value = Math.round(target * eased).toLocaleString();
-        if (t3 < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-    function startCounters() {
-      if (countersStarted) return;
-      countersStarted = true;
-      animateCount(ordersDisplay, ordersTarget.value);
-      animateCount(ticketsDisplay, ticketsTarget.value);
-    }
-    watch(revealed, (isRevealed) => {
-      if (isRevealed) startCounters();
-    });
-    const pieCanvas = ref(null);
-    let pieChart = null;
-    const activeKey = ref(null);
-    const lureOn = ref(true);
-    const REVENUE = computed(() => [
-      { key: "card", label: getText("stats.pie_card_label", "Card payments"), value: parseInt(getText("stats.pie_card_value", "980000"), 10), color: "#f4a558", detail: getText("stats.pie_card_detail", "69% of GMV — 3DS-authenticated, full chargeback evidence pack on every order.") },
-      { key: "wallet", label: getText("stats.pie_wallet_label", "Cash Wallet"), value: parseInt(getText("stats.pie_wallet_value", "285000"), 10), color: "#d97aa8", detail: getText("stats.pie_wallet_detail", "20% of GMV — withdrawable funds, kept separate from credit by design.") },
-      { key: "credit", label: getText("stats.pie_credit_label", "Site Credit"), value: parseInt(getText("stats.pie_credit_value", "110000"), 10), color: "#b297db", detail: getText("stats.pie_credit_detail", "8% of GMV — promo, referral and prize credit. Non-withdrawable, never lumped with cash.") },
-      { key: "free", label: getText("stats.pie_free_label", "Free Entry"), value: parseInt(getText("stats.pie_free_value", "45000"), 10), color: "#5b7fc4", detail: getText("stats.pie_free_detail", "3% of entries — fully compliant, automated tracking, no manual handling.") }
-    ]);
-    const total = computed(() => REVENUE.value.reduce((s2, r2) => s2 + r2.value, 0));
-    function fmtMoney(v2) {
-      if (v2 >= 1e6) return "£" + (v2 / 1e6).toFixed(2) + "M";
-      if (v2 >= 1e3) return "£" + Math.round(v2 / 1e3) + "k";
-      return "£" + v2.toLocaleString();
-    }
-    const pieCenterValue = computed(() => {
-      const r2 = REVENUE.value.find((x) => x.key === activeKey.value);
-      return r2 ? fmtMoney(r2.value) : fmtMoney(total.value);
-    });
-    const pieCenterLabel = computed(() => {
-      const r2 = REVENUE.value.find((x) => x.key === activeKey.value);
-      return r2 ? r2.label.toUpperCase() : "Total Processed";
-    });
-    const pieDesc = computed(() => {
-      const r2 = REVENUE.value.find((x) => x.key === activeKey.value);
-      return r2 ? r2.detail : getText("stats.pie_desc_default", "Where the money actually goes. Click a segment to see the operator-side breakdown.");
-    });
-    function setActiveLegend(key) {
-      activeKey.value = key;
-      lureOn.value = false;
-    }
-    function buildChart() {
-      if (!pieCanvas.value) return;
-      if (pieChart) pieChart.destroy();
-      pieChart = new Chart(pieCanvas.value, {
-        type: "doughnut",
-        data: {
-          labels: REVENUE.value.map((r2) => r2.label),
-          datasets: [{
-            data: REVENUE.value.map((r2) => r2.value),
-            backgroundColor: REVENUE.value.map((r2) => r2.color),
-            borderColor: "#1d1042",
-            borderWidth: 3,
-            hoverOffset: 14,
-            hoverBorderColor: "#1d1042"
-          }]
-        },
-        options: {
-          cutout: "64%",
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: "#1d1042",
-              borderColor: "#f4a558",
-              borderWidth: 1,
-              callbacks: { label: (ctx) => `${ctx.label}: £${ctx.parsed.toLocaleString()} (${Math.round(ctx.parsed / total.value * 100)}%)` }
-            }
-          },
-          onClick: (evt, els) => {
-            setActiveLegend(els.length ? REVENUE.value[els[0].index].key : activeKey.value);
-          },
-          onHover: (evt, els) => {
-            evt.native.target.style.cursor = els.length ? "pointer" : "default";
-          }
-        }
-      });
-    }
-    onMounted(async () => {
-      await nextTick();
-      buildChart();
-    });
-    onUnmounted(() => {
-      if (pieChart) pieChart.destroy();
-    });
-    return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({
-        ref_key: "sectionRef",
-        ref: sectionRef,
-        class: ["section reveal", { visible: unref(revealed) }],
-        id: "stats"
-      }, _attrs))}><div class="center" style="${ssrRenderStyle({ "margin-bottom": "36px" })}"><div class="eyebrow"><span class="dot"></span>${ssrInterpolate(eyebrow.value)}</div><h2 class="h2">${ssrInterpolate(titleBefore.value)} <span class="grad-text">${ssrInterpolate(titleKeyword.value)}</span></h2><p class="lead center" style="${ssrRenderStyle({ "margin": "18px auto 0" })}">${ssrInterpolate(lead.value)}</p></div><div class="stats-block"><div><h3 class="h3">${ssrInterpolate(blockTitle.value)}</h3><p style="${ssrRenderStyle({ "color": "var(--text-2)", "margin-top": "8px", "font-size": "15px" })}">${ssrInterpolate(blockSubtitle.value)}</p><div class="big-stats"><div class="big-stat highlight"><div class="num">${ssrInterpolate(ordersDisplay.value)}</div><div class="label">Orders processed</div></div><div class="big-stat highlight"><div class="num">${ssrInterpolate(ticketsDisplay.value)}</div><div class="label">Tickets sold</div></div><div class="big-stat"><div class="num">5<small style="${ssrRenderStyle({ "font-size": "24px" })}">+ yrs</small></div><div class="label">In this exact category</div></div></div></div><div class="pie-card"><div style="${ssrRenderStyle({ "display": "flex", "align-items": "center", "justify-content": "space-between", "flex-wrap": "wrap", "gap": "8px", "margin-bottom": "6px" })}"><h4 style="${ssrRenderStyle({ "margin": "0" })}">Revenue Flow — last 30 days</h4><span class="live-pill">Live data</span></div><div class="desc">${ssrInterpolate(pieDesc.value)}</div><div class="${ssrRenderClass([{ "lure-on": lureOn.value }, "pie-wrap"])}" style="${ssrRenderStyle({ "position": "relative" })}"><canvas></canvas><div class="pie-center"><div class="v">${ssrInterpolate(pieCenterValue.value)}</div><div class="k">${ssrInterpolate(pieCenterLabel.value)}</div></div><div class="${ssrRenderClass([{ "lure-dismissed": !lureOn.value }, "lure"])}" style="${ssrRenderStyle({ "top": "-10px", "right": "-8px" })}"><span class="arr">👆</span> Click a slice</div></div><div class="pie-legend"><!--[-->`);
-      ssrRenderList(REVENUE.value, (r2) => {
-        _push(`<div class="${ssrRenderClass([{ active: activeKey.value === r2.key }, "legend-item"])}"><div class="legend-dot" style="${ssrRenderStyle({ background: r2.color })}"></div><div class="legend-label">${ssrInterpolate(r2.label)}</div><div class="legend-val">${ssrInterpolate(Math.round(r2.value / total.value * 100))}%</div></div>`);
-      });
-      _push(`<!--]--></div></div></div></section>`);
-    };
-  }
-};
-const _sfc_setup$u = _sfc_main$u.setup;
-_sfc_main$u.setup = (props, ctx) => {
+const _sfc_setup$y = _sfc_main$y.setup;
+_sfc_main$y.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Stats/StatsSection.vue");
-  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraLogoWall.vue");
+  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
 };
-const _sfc_main$t = /* @__PURE__ */ defineComponent({
+const UltraLogoWall = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["ssrRender", _sfc_ssrRender$c]]);
+const _sfc_main$x = /* @__PURE__ */ defineComponent({
   __name: "SlotsReels",
   __ssrInlineRender: true,
   props: {
@@ -10311,14 +10184,14 @@ const _sfc_main$t = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _sfc_setup$t = _sfc_main$t.setup;
-_sfc_main$t.setup = (props, ctx) => {
+const _sfc_setup$x = _sfc_main$x.setup;
+_sfc_main$x.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/SlotsReels.vue");
-  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
+  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
 };
-const SlotsReels = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-8e1c7f96"]]);
-const _sfc_main$s = /* @__PURE__ */ defineComponent({
+const SlotsReels = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-8e1c7f96"]]);
+const _sfc_main$w = /* @__PURE__ */ defineComponent({
   __name: "SlotsInventoryModal",
   __ssrInlineRender: true,
   props: {
@@ -10507,14 +10380,14 @@ const _sfc_main$s = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _sfc_setup$s = _sfc_main$s.setup;
-_sfc_main$s.setup = (props, ctx) => {
+const _sfc_setup$w = _sfc_main$w.setup;
+_sfc_main$w.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/SlotsInventoryModal.vue");
-  return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
+  return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
 };
-const SlotsInventoryModal = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-d0f61d96"]]);
-const _sfc_main$r = /* @__PURE__ */ defineComponent({
+const SlotsInventoryModal = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-d0f61d96"]]);
+const _sfc_main$v = /* @__PURE__ */ defineComponent({
   __name: "SlotsGame",
   __ssrInlineRender: true,
   props: {
@@ -10895,14 +10768,14 @@ const _sfc_main$r = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _sfc_setup$r = _sfc_main$r.setup;
-_sfc_main$r.setup = (props, ctx) => {
+const _sfc_setup$v = _sfc_main$v.setup;
+_sfc_main$v.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/SlotsGame.vue");
-  return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
+  return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
 };
-const SlotsGame = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-721e497f"]]);
-const _sfc_main$q = /* @__PURE__ */ defineComponent({
+const SlotsGame = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__scopeId", "data-v-721e497f"]]);
+const _sfc_main$u = /* @__PURE__ */ defineComponent({
   __name: "SpinGame",
   __ssrInlineRender: true,
   props: {
@@ -11237,14 +11110,14 @@ const _sfc_main$q = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _sfc_setup$q = _sfc_main$q.setup;
-_sfc_main$q.setup = (props, ctx) => {
+const _sfc_setup$u = _sfc_main$u.setup;
+_sfc_main$u.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/SpinGame.vue");
-  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
+  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
 };
-const SpinGame = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-9d548857"]]);
-const _sfc_main$p = /* @__PURE__ */ defineComponent({
+const SpinGame = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-9d548857"]]);
+const _sfc_main$t = /* @__PURE__ */ defineComponent({
   __name: "ScratchGame",
   __ssrInlineRender: true,
   props: {
@@ -11569,14 +11442,14 @@ const _sfc_main$p = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _sfc_setup$p = _sfc_main$p.setup;
-_sfc_main$p.setup = (props, ctx) => {
+const _sfc_setup$t = _sfc_main$t.setup;
+_sfc_main$t.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/ScratchGame.vue");
-  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
+  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
 };
-const ScratchGame = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-b780eac5"]]);
-const _sfc_main$o = /* @__PURE__ */ defineComponent({
+const ScratchGame = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-b780eac5"]]);
+const _sfc_main$s = /* @__PURE__ */ defineComponent({
   __name: "BingoGame",
   __ssrInlineRender: true,
   props: {
@@ -11878,14 +11751,14 @@ const _sfc_main$o = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _sfc_setup$o = _sfc_main$o.setup;
-_sfc_main$o.setup = (props, ctx) => {
+const _sfc_setup$s = _sfc_main$s.setup;
+_sfc_main$s.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/BingoGame.vue");
-  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
+  return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
 };
-const BingoGame = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-1f5cbe26"]]);
-const _sfc_main$n = /* @__PURE__ */ defineComponent({
+const BingoGame = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-1f5cbe26"]]);
+const _sfc_main$r = /* @__PURE__ */ defineComponent({
   __name: "CoinDropInventoryModal",
   __ssrInlineRender: true,
   props: {
@@ -12081,13 +11954,13 @@ const _sfc_main$n = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _sfc_setup$n = _sfc_main$n.setup;
-_sfc_main$n.setup = (props, ctx) => {
+const _sfc_setup$r = _sfc_main$r.setup;
+_sfc_main$r.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/CoinDropInventoryModal.vue");
-  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
+  return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
 };
-const CoinDropInventoryModal = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-e9709567"]]);
+const CoinDropInventoryModal = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-e9709567"]]);
 const GRAVITY = 0.15;
 const FRICTION = 0.995;
 const BOUNCE = 0.45;
@@ -12095,7 +11968,7 @@ const PEG_RADIUS = 4.5;
 const MIN_BOUNCE_VELOCITY = 0.8;
 const TERMINAL_VELOCITY = 5;
 const PEG_SOUND_COOLDOWN = 100;
-const _sfc_main$m = /* @__PURE__ */ defineComponent({
+const _sfc_main$q = /* @__PURE__ */ defineComponent({
   __name: "CoinDropGame",
   __ssrInlineRender: true,
   props: {
@@ -12931,14 +12804,14 @@ const _sfc_main$m = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _sfc_setup$m = _sfc_main$m.setup;
-_sfc_main$m.setup = (props, ctx) => {
+const _sfc_setup$q = _sfc_main$q.setup;
+_sfc_main$q.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/CoinDropGame.vue");
-  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
+  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
 };
-const CoinDropGame = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-d0cbb709"]]);
-const _sfc_main$l = /* @__PURE__ */ defineComponent({
+const CoinDropGame = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-d0cbb709"]]);
+const _sfc_main$p = /* @__PURE__ */ defineComponent({
   __name: "PopGame",
   __ssrInlineRender: true,
   props: {
@@ -13171,13 +13044,13 @@ const _sfc_main$l = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _sfc_setup$l = _sfc_main$l.setup;
-_sfc_main$l.setup = (props, ctx) => {
+const _sfc_setup$p = _sfc_main$p.setup;
+_sfc_main$p.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/PopGame.vue");
-  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
+  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
 };
-const BalloonPopGame = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-1bddc6ee"]]);
+const BalloonPopGame = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-1bddc6ee"]]);
 function createFootballSfx() {
   let ctx = null;
   let master = null;
@@ -13370,7 +13243,7 @@ function createFootballSfx() {
   }
   return { resume, whistle, kick, cheer, save, startCrowd, stopCrowd, dispose };
 }
-const _sfc_main$k = /* @__PURE__ */ defineComponent({
+const _sfc_main$o = /* @__PURE__ */ defineComponent({
   __name: "SpriteCharacter",
   __ssrInlineRender: true,
   props: {
@@ -13408,13 +13281,13 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _sfc_setup$k = _sfc_main$k.setup;
-_sfc_main$k.setup = (props, ctx) => {
+const _sfc_setup$o = _sfc_main$o.setup;
+_sfc_main$o.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/SpriteCharacter.vue");
-  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
+  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
 };
-const _sfc_main$j = /* @__PURE__ */ defineComponent({
+const _sfc_main$n = /* @__PURE__ */ defineComponent({
   __name: "FootballModal",
   __ssrInlineRender: true,
   props: {
@@ -13798,75 +13671,69 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
     return (_ctx, _push, _parent, _attrs) => {
       ssrRenderTeleport(_push, (_push2) => {
         if (__props.modelValue) {
-          _push2(`<div class="${ssrRenderClass([__props.demoMode ? "fbg-demo" : "fbg-fixed", "fbg-root"])}" data-v-0118d44e>`);
-          if (__props.demoMode) {
-            _push2(`<div class="fbg-demo-bar" data-v-0118d44e><span class="fbg-demo-bar-label" data-v-0118d44e>Preview Mode:</span><button class="${ssrRenderClass([actualPreviewMode.value === "mobile" ? "is-on" : "is-off", "fbg-demo-btn"])}" data-v-0118d44e>📱 Mobile</button><button class="${ssrRenderClass([actualPreviewMode.value === "desktop" ? "is-on" : "is-off", "fbg-demo-btn"])}" data-v-0118d44e>💻 Desktop</button></div>`);
-          } else {
-            _push2(`<!---->`);
-          }
-          _push2(`<div class="${ssrRenderClass(__props.demoMode ? "fbg-demo-device fbg-modal-zoom" : "contents")}" style="${ssrRenderStyle(__props.demoMode ? frameStyle.value : void 0)}" data-v-0118d44e>`);
+          _push2(`<div class="${ssrRenderClass([__props.demoMode ? "fbg-demo" : "fbg-fixed", "fbg-root"])}" data-v-dc83cd69><div class="${ssrRenderClass(__props.demoMode ? "fbg-demo-device fbg-modal-zoom" : "contents")}" style="${ssrRenderStyle(__props.demoMode ? frameStyle.value : void 0)}" data-v-dc83cd69>`);
           if (__props.demoMode && actualPreviewMode.value === "mobile") {
-            _push2(`<div class="fbg-demo-statusbar" data-v-0118d44e><span data-v-0118d44e>9:41</span><span class="fbg-demo-sigs" data-v-0118d44e><span class="fbg-demo-sig-a" data-v-0118d44e></span><span class="fbg-demo-sig-b" data-v-0118d44e></span></span></div>`);
+            _push2(`<div class="fbg-demo-statusbar" data-v-dc83cd69><span data-v-dc83cd69>9:41</span><span class="fbg-demo-sigs" data-v-dc83cd69><span class="fbg-demo-sig-a" data-v-dc83cd69></span><span class="fbg-demo-sig-b" data-v-dc83cd69></span></span></div>`);
           } else if (__props.demoMode) {
-            _push2(`<div class="fbg-demo-browserbar" data-v-0118d44e><span class="fbg-demo-dots" data-v-0118d44e><span data-v-0118d44e></span><span data-v-0118d44e></span><span data-v-0118d44e></span></span><span class="fbg-demo-url" data-v-0118d44e>⚽ Football — Take Your Shot</span></div>`);
+            _push2(`<div class="fbg-demo-browserbar" data-v-dc83cd69><span class="fbg-demo-dots" data-v-dc83cd69><span data-v-dc83cd69></span><span data-v-dc83cd69></span><span data-v-dc83cd69></span></span><span class="fbg-demo-url" data-v-dc83cd69>⚽ Football — Take Your Shot</span></div>`);
           } else {
             _push2(`<!---->`);
           }
-          _push2(`<div class="${ssrRenderClass(__props.demoMode ? "fbg-demo-scroll" : "contents")}" data-v-0118d44e><div class="${ssrRenderClass([frameClass.value, "fbg"])}" style="${ssrRenderStyle({ "--ac": accent.value })}" data-v-0118d44e>`);
+          _push2(`<div class="${ssrRenderClass(__props.demoMode ? "fbg-demo-scroll" : "contents")}" data-v-dc83cd69><div class="${ssrRenderClass([frameClass.value, "fbg"])}" style="${ssrRenderStyle({ "--ac": accent.value })}" data-v-dc83cd69>`);
           if (!__props.demoMode) {
-            _push2(`<button class="fbg-x" style="${ssrRenderStyle({ color: textColor.value })}" aria-label="Close" data-v-0118d44e>×</button>`);
+            _push2(`<button class="fbg-x" style="${ssrRenderStyle({ color: textColor.value })}" aria-label="Close" data-v-dc83cd69>×</button>`);
           } else {
             _push2(`<!---->`);
           }
-          _push2(`<div class="fbg-top" data-v-0118d44e><p class="fbg-eyebrow" style="${ssrRenderStyle({ color: accent.value })}" data-v-0118d44e>Penalty Shootout</p><p class="fbg-prompt" style="${ssrRenderStyle({ color: textColor.value })}" data-v-0118d44e>${ssrInterpolate(prompt.value)}</p>`);
+          _push2(`<div class="fbg-top" data-v-dc83cd69><p class="fbg-eyebrow" style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>Penalty Shootout</p><p class="fbg-prompt" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>${ssrInterpolate(prompt.value)}</p>`);
           if (showTopPrize.value && topPrize.value) {
-            _push2(`<div class="fbg-topprize" style="${ssrRenderStyle({ borderColor: accent.value, color: textColor.value })}" data-v-0118d44e>`);
+            _push2(`<div class="fbg-topprize" style="${ssrRenderStyle({ borderColor: accent.value, color: textColor.value })}" data-v-dc83cd69>`);
             if (topPrize.value.image_path) {
-              _push2(`<img${ssrRenderAttr("src", topPrize.value.image_path)} class="fbg-topprize-img" alt="" data-v-0118d44e>`);
+              _push2(`<img${ssrRenderAttr("src", topPrize.value.image_path)} class="fbg-topprize-img" alt="" data-v-dc83cd69>`);
             } else {
-              _push2(`<span class="fbg-topprize-emoji" data-v-0118d44e>🏆</span>`);
+              _push2(`<span class="fbg-topprize-emoji" data-v-dc83cd69>🏆</span>`);
             }
-            _push2(`<span style="${ssrRenderStyle({ color: accent.value })}" data-v-0118d44e>TOP PRIZE</span><span class="fbg-topprize-val" data-v-0118d44e>${ssrInterpolate(topPrizeLabel.value)}</span></div>`);
+            _push2(`<span style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>TOP PRIZE</span><span class="fbg-topprize-val" data-v-dc83cd69>${ssrInterpolate(topPrizeLabel.value)}</span></div>`);
           } else {
             _push2(`<!---->`);
           }
-          _push2(`</div><div class="${ssrRenderClass([{ shake: shake.value, megashake: wow.value }, "fbg-stage"])}" data-v-0118d44e><svg class="fbg-svg"${ssrRenderAttr("viewBox", sceneViewBox.value)} preserveAspectRatio="xMidYMid slice" data-v-0118d44e><defs data-v-0118d44e><linearGradient id="fbg-sky" x1="0" y1="0" x2="0" y2="1" data-v-0118d44e><stop offset="0"${ssrRenderAttr("stop-color", pal.value.skyTop)} data-v-0118d44e></stop><stop offset="0.6"${ssrRenderAttr("stop-color", pal.value.skyMid)} data-v-0118d44e></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.skyBot)} data-v-0118d44e></stop></linearGradient><linearGradient id="fbg-stand" x1="0" y1="0" x2="0" y2="1" data-v-0118d44e><stop offset="0"${ssrRenderAttr("stop-color", pal.value.standTop)} data-v-0118d44e></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.standBot)} data-v-0118d44e></stop></linearGradient><linearGradient id="fbg-grass" x1="0" y1="0" x2="0" y2="1" data-v-0118d44e><stop offset="0"${ssrRenderAttr("stop-color", pal.value.grassTop)} data-v-0118d44e></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.grassBot)} data-v-0118d44e></stop></linearGradient><radialGradient id="fbg-flood" cx="0.5" cy="0.5" r="0.5" data-v-0118d44e><stop offset="0"${ssrRenderAttr("stop-color", pal.value.glow)}${ssrRenderAttr("stop-opacity", pal.value.glowOp)} data-v-0118d44e></stop><stop offset="1" stop-opacity="0" data-v-0118d44e></stop></radialGradient><radialGradient id="fbg-ball" cx="0.36" cy="0.3" r="0.9" data-v-0118d44e><stop offset="0" stop-color="#fff" data-v-0118d44e></stop><stop offset="0.7" stop-color="#eef1f6" data-v-0118d44e></stop><stop offset="1" stop-color="#c4cad6" data-v-0118d44e></stop></radialGradient><radialGradient id="fbg-ball-edge" cx="0.4" cy="0.34" r="0.66" data-v-0118d44e><stop offset="0.5" stop-color="#000" stop-opacity="0" data-v-0118d44e></stop><stop offset="1" stop-color="#0a0e16" stop-opacity="0.36" data-v-0118d44e></stop></radialGradient><linearGradient id="fbg-trail" x1="0" y1="0" x2="1" y2="0" data-v-0118d44e><stop offset="0"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0" data-v-0118d44e></stop><stop offset="1"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0.8" data-v-0118d44e></stop></linearGradient><pattern id="fbg-net" width="14" height="14" patternUnits="userSpaceOnUse" data-v-0118d44e><path d="M0 0H14M0 0V14" stroke="rgba(214,230,255,.55)" stroke-width="1.3" fill="none" data-v-0118d44e></path></pattern><radialGradient id="fbg-flashglow" cx="0.5" cy="0.5" r="0.5" data-v-0118d44e><stop offset="0" stop-color="#ffffff" data-v-0118d44e></stop><stop offset="0.35" stop-color="#fdfeff" stop-opacity="0.82" data-v-0118d44e></stop><stop offset="1" stop-color="#dfe8ff" stop-opacity="0" data-v-0118d44e></stop></radialGradient><filter id="fbg-glow" x="-60%" y="-60%" width="220%" height="220%" data-v-0118d44e><feGaussianBlur stdDeviation="5" result="b" data-v-0118d44e></feGaussianBlur><feMerge data-v-0118d44e><feMergeNode in="b" data-v-0118d44e></feMergeNode><feMergeNode in="SourceGraphic" data-v-0118d44e></feMergeNode></feMerge></filter><filter id="fbg-soft" x="-60%" y="-60%" width="220%" height="220%" data-v-0118d44e><feGaussianBlur stdDeviation="3.5" data-v-0118d44e></feGaussianBlur></filter><filter id="fbg-neonC" x="-70%" y="-70%" width="240%" height="240%" data-v-0118d44e><feDropShadow dx="0" dy="0" stdDeviation="6"${ssrRenderAttr("flood-color", pal.value.glowA)} flood-opacity="0.95" data-v-0118d44e></feDropShadow></filter><filter id="fbg-neonM" x="-70%" y="-70%" width="240%" height="240%" data-v-0118d44e><feDropShadow dx="0" dy="0" stdDeviation="6"${ssrRenderAttr("flood-color", pal.value.glowB)} flood-opacity="0.95" data-v-0118d44e></feDropShadow></filter></defs><rect x="0" y="0" width="1000" height="200" fill="url(#fbg-sky)" data-v-0118d44e></rect><ellipse cx="150" cy="14" rx="320" ry="160" fill="url(#fbg-flood)" data-v-0118d44e></ellipse><ellipse cx="850" cy="14" rx="320" ry="160" fill="url(#fbg-flood)" data-v-0118d44e></ellipse><rect x="0" y="0" width="1000" height="146" fill="url(#fbg-grass)" opacity="0" data-v-0118d44e></rect><rect x="0" y="0" width="1000" height="146"${ssrRenderAttr("fill", pal.value.backdrop)} data-v-0118d44e></rect><rect x="0" y="0" width="1000" height="13" fill="#000" opacity="0.4" data-v-0118d44e></rect><g stroke="rgba(0,0,0,.28)" stroke-width="2.4" data-v-0118d44e><line x1="0" y1="34" x2="1000" y2="34" data-v-0118d44e></line><line x1="0" y1="60" x2="1000" y2="60" data-v-0118d44e></line><line x1="0" y1="88" x2="1000" y2="88" data-v-0118d44e></line><line x1="0" y1="118" x2="1000" y2="118" data-v-0118d44e></line></g><rect x="0" y="14" width="1000" height="104" fill="url(#fbg-stand)" opacity="0.9" data-v-0118d44e></rect><g class="${ssrRenderClass([{ roar: roar.value }, "fbg-crowd"])}" data-v-0118d44e><!--[-->`);
+          _push2(`</div><div class="${ssrRenderClass([{ shake: shake.value, megashake: wow.value }, "fbg-stage"])}" data-v-dc83cd69><svg class="fbg-svg"${ssrRenderAttr("viewBox", sceneViewBox.value)} preserveAspectRatio="xMidYMid slice" data-v-dc83cd69><defs data-v-dc83cd69><linearGradient id="fbg-sky" x1="0" y1="0" x2="0" y2="1" data-v-dc83cd69><stop offset="0"${ssrRenderAttr("stop-color", pal.value.skyTop)} data-v-dc83cd69></stop><stop offset="0.6"${ssrRenderAttr("stop-color", pal.value.skyMid)} data-v-dc83cd69></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.skyBot)} data-v-dc83cd69></stop></linearGradient><linearGradient id="fbg-stand" x1="0" y1="0" x2="0" y2="1" data-v-dc83cd69><stop offset="0"${ssrRenderAttr("stop-color", pal.value.standTop)} data-v-dc83cd69></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.standBot)} data-v-dc83cd69></stop></linearGradient><linearGradient id="fbg-grass" x1="0" y1="0" x2="0" y2="1" data-v-dc83cd69><stop offset="0"${ssrRenderAttr("stop-color", pal.value.grassTop)} data-v-dc83cd69></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.grassBot)} data-v-dc83cd69></stop></linearGradient><radialGradient id="fbg-flood" cx="0.5" cy="0.5" r="0.5" data-v-dc83cd69><stop offset="0"${ssrRenderAttr("stop-color", pal.value.glow)}${ssrRenderAttr("stop-opacity", pal.value.glowOp)} data-v-dc83cd69></stop><stop offset="1" stop-opacity="0" data-v-dc83cd69></stop></radialGradient><radialGradient id="fbg-ball" cx="0.36" cy="0.3" r="0.9" data-v-dc83cd69><stop offset="0" stop-color="#fff" data-v-dc83cd69></stop><stop offset="0.7" stop-color="#eef1f6" data-v-dc83cd69></stop><stop offset="1" stop-color="#c4cad6" data-v-dc83cd69></stop></radialGradient><radialGradient id="fbg-ball-edge" cx="0.4" cy="0.34" r="0.66" data-v-dc83cd69><stop offset="0.5" stop-color="#000" stop-opacity="0" data-v-dc83cd69></stop><stop offset="1" stop-color="#0a0e16" stop-opacity="0.36" data-v-dc83cd69></stop></radialGradient><linearGradient id="fbg-trail" x1="0" y1="0" x2="1" y2="0" data-v-dc83cd69><stop offset="0"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0" data-v-dc83cd69></stop><stop offset="1"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0.8" data-v-dc83cd69></stop></linearGradient><pattern id="fbg-net" width="14" height="14" patternUnits="userSpaceOnUse" data-v-dc83cd69><path d="M0 0H14M0 0V14" stroke="rgba(214,230,255,.55)" stroke-width="1.3" fill="none" data-v-dc83cd69></path></pattern><radialGradient id="fbg-flashglow" cx="0.5" cy="0.5" r="0.5" data-v-dc83cd69><stop offset="0" stop-color="#ffffff" data-v-dc83cd69></stop><stop offset="0.35" stop-color="#fdfeff" stop-opacity="0.82" data-v-dc83cd69></stop><stop offset="1" stop-color="#dfe8ff" stop-opacity="0" data-v-dc83cd69></stop></radialGradient><filter id="fbg-glow" x="-60%" y="-60%" width="220%" height="220%" data-v-dc83cd69><feGaussianBlur stdDeviation="5" result="b" data-v-dc83cd69></feGaussianBlur><feMerge data-v-dc83cd69><feMergeNode in="b" data-v-dc83cd69></feMergeNode><feMergeNode in="SourceGraphic" data-v-dc83cd69></feMergeNode></feMerge></filter><filter id="fbg-soft" x="-60%" y="-60%" width="220%" height="220%" data-v-dc83cd69><feGaussianBlur stdDeviation="3.5" data-v-dc83cd69></feGaussianBlur></filter><filter id="fbg-neonC" x="-70%" y="-70%" width="240%" height="240%" data-v-dc83cd69><feDropShadow dx="0" dy="0" stdDeviation="6"${ssrRenderAttr("flood-color", pal.value.glowA)} flood-opacity="0.95" data-v-dc83cd69></feDropShadow></filter><filter id="fbg-neonM" x="-70%" y="-70%" width="240%" height="240%" data-v-dc83cd69><feDropShadow dx="0" dy="0" stdDeviation="6"${ssrRenderAttr("flood-color", pal.value.glowB)} flood-opacity="0.95" data-v-dc83cd69></feDropShadow></filter></defs><rect x="0" y="0" width="1000" height="200" fill="url(#fbg-sky)" data-v-dc83cd69></rect><ellipse cx="150" cy="14" rx="320" ry="160" fill="url(#fbg-flood)" data-v-dc83cd69></ellipse><ellipse cx="850" cy="14" rx="320" ry="160" fill="url(#fbg-flood)" data-v-dc83cd69></ellipse><rect x="0" y="0" width="1000" height="146" fill="url(#fbg-grass)" opacity="0" data-v-dc83cd69></rect><rect x="0" y="0" width="1000" height="146"${ssrRenderAttr("fill", pal.value.backdrop)} data-v-dc83cd69></rect><rect x="0" y="0" width="1000" height="13" fill="#000" opacity="0.4" data-v-dc83cd69></rect><g stroke="rgba(0,0,0,.28)" stroke-width="2.4" data-v-dc83cd69><line x1="0" y1="34" x2="1000" y2="34" data-v-dc83cd69></line><line x1="0" y1="60" x2="1000" y2="60" data-v-dc83cd69></line><line x1="0" y1="88" x2="1000" y2="88" data-v-dc83cd69></line><line x1="0" y1="118" x2="1000" y2="118" data-v-dc83cd69></line></g><rect x="0" y="14" width="1000" height="104" fill="url(#fbg-stand)" opacity="0.9" data-v-dc83cd69></rect><g class="${ssrRenderClass([{ roar: roar.value }, "fbg-crowd"])}" data-v-dc83cd69><!--[-->`);
           ssrRenderList(unref(fans), (f2, i2) => {
-            _push2(`<circle${ssrRenderAttr("cx", f2.x)}${ssrRenderAttr("cy", f2.y)}${ssrRenderAttr("r", f2.r)}${ssrRenderAttr("fill", f2.c)} data-v-0118d44e></circle>`);
+            _push2(`<circle${ssrRenderAttr("cx", f2.x)}${ssrRenderAttr("cy", f2.y)}${ssrRenderAttr("r", f2.r)}${ssrRenderAttr("fill", f2.c)} data-v-dc83cd69></circle>`);
           });
-          _push2(`<!--]--></g><rect x="0" y="13" width="1000" height="34" fill="#000" opacity="0.3" data-v-0118d44e></rect><rect x="0" y="13" width="1000" height="4" fill="#000" opacity="0.55" data-v-0118d44e></rect><g class="fbg-camflashes" data-v-0118d44e><!--[-->`);
+          _push2(`<!--]--></g><rect x="0" y="13" width="1000" height="34" fill="#000" opacity="0.3" data-v-dc83cd69></rect><rect x="0" y="13" width="1000" height="4" fill="#000" opacity="0.55" data-v-dc83cd69></rect><g class="fbg-camflashes" data-v-dc83cd69><!--[-->`);
           ssrRenderList(unref(flashes), (cf, i2) => {
-            _push2(`<circle class="fbg-camflash" fill="url(#fbg-flashglow)"${ssrRenderAttr("cx", cf.x)}${ssrRenderAttr("cy", cf.y)}${ssrRenderAttr("r", cf.r)} style="${ssrRenderStyle({ animationDelay: cf.delay + "s", animationDuration: cf.dur + "s" })}" data-v-0118d44e></circle>`);
+            _push2(`<circle class="fbg-camflash" fill="url(#fbg-flashglow)"${ssrRenderAttr("cx", cf.x)}${ssrRenderAttr("cy", cf.y)}${ssrRenderAttr("r", cf.r)} style="${ssrRenderStyle({ animationDelay: cf.delay + "s", animationDuration: cf.dur + "s" })}" data-v-dc83cd69></circle>`);
           });
           _push2(`<!--]--></g>`);
           if (ads.value.length) {
-            _push2(`<g data-v-0118d44e><clipPath id="fbg-hoard" data-v-0118d44e><rect x="0" y="120" width="1000" height="26" data-v-0118d44e></rect></clipPath><rect x="0" y="118" width="1000" height="3" fill="#000" opacity="0.55" data-v-0118d44e></rect><rect x="0" y="120" width="1000" height="26" fill="#04060d" data-v-0118d44e></rect><g clip-path="url(#fbg-hoard)" data-v-0118d44e><g data-v-0118d44e><!--[-->`);
+            _push2(`<g data-v-dc83cd69><clipPath id="fbg-hoard" data-v-dc83cd69><rect x="0" y="120" width="1000" height="26" data-v-dc83cd69></rect></clipPath><rect x="0" y="118" width="1000" height="3" fill="#000" opacity="0.55" data-v-dc83cd69></rect><rect x="0" y="120" width="1000" height="26" fill="#04060d" data-v-dc83cd69></rect><g clip-path="url(#fbg-hoard)" data-v-dc83cd69><g data-v-dc83cd69><!--[-->`);
             ssrRenderList(adStrip.value, (ad, i2) => {
-              _push2(`<g${ssrRenderAttr("transform", `translate(${i2 * 224}, 121)`)} data-v-0118d44e><rect width="216" height="24" rx="2"${ssrRenderAttr("fill", ledColor(i2))} data-v-0118d44e></rect><rect width="216" height="11" rx="2" fill="#fff" opacity="0.13" data-v-0118d44e></rect><rect x="0.5" y="0.5" width="215" height="23" rx="2" fill="none" stroke="#fff" stroke-opacity="0.16" data-v-0118d44e></rect>`);
+              _push2(`<g${ssrRenderAttr("transform", `translate(${i2 * 224}, 121)`)} data-v-dc83cd69><rect width="216" height="24" rx="2"${ssrRenderAttr("fill", ledColor(i2))} data-v-dc83cd69></rect><rect width="216" height="11" rx="2" fill="#fff" opacity="0.13" data-v-dc83cd69></rect><rect x="0.5" y="0.5" width="215" height="23" rx="2" fill="none" stroke="#fff" stroke-opacity="0.16" data-v-dc83cd69></rect>`);
               if (ad.image) {
-                _push2(`<rect x="4" y="3" width="20" height="18" rx="2" fill="#000" opacity="0.28" data-v-0118d44e></rect>`);
+                _push2(`<rect x="4" y="3" width="20" height="18" rx="2" fill="#000" opacity="0.28" data-v-dc83cd69></rect>`);
               } else {
                 _push2(`<!---->`);
               }
               if (ad.image) {
-                _push2(`<image${ssrRenderAttr("href", ad.image)} x="5" y="4" width="18" height="16" preserveAspectRatio="xMidYMid slice" data-v-0118d44e></image>`);
+                _push2(`<image${ssrRenderAttr("href", ad.image)} x="5" y="4" width="18" height="16" preserveAspectRatio="xMidYMid slice" data-v-dc83cd69></image>`);
               } else {
                 _push2(`<!---->`);
               }
-              _push2(`<text${ssrRenderAttr("x", ad.image ? 30 : 11)} y="16" fill="#fff" font-size="11" font-weight="800" letter-spacing="0.4" data-v-0118d44e>${ssrInterpolate(trunc(ad.name))}</text></g>`);
+              _push2(`<text${ssrRenderAttr("x", ad.image ? 30 : 11)} y="16" fill="#fff" font-size="11" font-weight="800" letter-spacing="0.4" data-v-dc83cd69>${ssrInterpolate(trunc(ad.name))}</text></g>`);
             });
-            _push2(`<!--]--><animateTransform attributeName="transform" type="translate" from="0 0"${ssrRenderAttr("to", `-${adSetWidth.value} 0`)}${ssrRenderAttr("dur", `${Math.max(14, ads.value.length * 4)}s`)} repeatCount="indefinite" data-v-0118d44e></animateTransform></g></g><rect x="0" y="145" width="1000" height="2"${ssrRenderAttr("fill", accent.value)} opacity="0.22" data-v-0118d44e></rect></g>`);
+            _push2(`<!--]--><animateTransform attributeName="transform" type="translate" from="0 0"${ssrRenderAttr("to", `-${adSetWidth.value} 0`)}${ssrRenderAttr("dur", `${Math.max(14, ads.value.length * 4)}s`)} repeatCount="indefinite" data-v-dc83cd69></animateTransform></g></g><rect x="0" y="145" width="1000" height="2"${ssrRenderAttr("fill", accent.value)} opacity="0.22" data-v-dc83cd69></rect></g>`);
           } else {
             _push2(`<!---->`);
           }
-          _push2(`<rect x="0" y="146" width="1000" height="860" fill="url(#fbg-grass)" data-v-0118d44e></rect><!--[-->`);
+          _push2(`<rect x="0" y="146" width="1000" height="860" fill="url(#fbg-grass)" data-v-dc83cd69></rect><!--[-->`);
           ssrRenderList(9, (s2) => {
-            _push2(`<rect${ssrRenderAttr("x", (s2 - 1) * 112)} y="146" width="56" height="860" fill="#fff" opacity="0.03" data-v-0118d44e></rect>`);
+            _push2(`<rect${ssrRenderAttr("x", (s2 - 1) * 112)} y="146" width="56" height="860" fill="#fff" opacity="0.03" data-v-dc83cd69></rect>`);
           });
-          _push2(`<!--]--><g fill="none"${ssrRenderAttr("stroke", pal.value.line)} stroke-width="3.5" opacity="0.7"${ssrRenderAttr("filter", isNeon.value ? "url(#fbg-neonC)" : void 0)} data-v-0118d44e><path d="M110 600 L110 430 L890 430 L890 600" data-v-0118d44e></path><path d="M360 430 A150 56 0 0 0 640 430" data-v-0118d44e></path></g><rect${ssrRenderAttr("x", GOAL.x1 + 7)}${ssrRenderAttr("y", GOAL.y1 + 7)}${ssrRenderAttr("width", GOAL.x2 - GOAL.x1 - 14)}${ssrRenderAttr("height", GOAL.y2 - GOAL.y1 - 7)} fill="url(#fbg-net)" class="${ssrRenderClass({ ripple: netHit.value })}" data-v-0118d44e></rect><g fill="none"${ssrRenderAttr("stroke", textColor.value)} stroke-width="8" stroke-linejoin="round" style="${ssrRenderStyle(netHit.value ? { filter: "url(#fbg-glow)" } : isNeon.value ? { filter: "url(#fbg-neonC)" } : {})}" data-v-0118d44e><path${ssrRenderAttr("d", `M${GOAL.x1} ${GOAL.y2} L${GOAL.x1} ${GOAL.y1} L${GOAL.x2} ${GOAL.y1} L${GOAL.x2} ${GOAL.y2}`)} data-v-0118d44e></path></g><ellipse cx="500" cy="350" rx="46" ry="10" fill="#000" opacity="0.34" filter="url(#fbg-soft)" style="${ssrRenderStyle({ transform: keepShadowTf.value, transformBox: "view-box", transformOrigin: "500px 350px", transition: kicked.value ? "transform .5s cubic-bezier(.3,.7,.4,1)" : "none" })}" data-v-0118d44e></ellipse><g${ssrRenderAttr("filter", isNeon.value ? "url(#fbg-neonM)" : void 0)} style="${ssrRenderStyle({ transform: keepTf.value, transformBox: "view-box", transformOrigin: "500px 268px", transition: kicked.value ? "transform .5s cubic-bezier(.3,.7,.4,1)" : "none" })}" data-v-0118d44e>`);
+          _push2(`<!--]--><g fill="none"${ssrRenderAttr("stroke", pal.value.line)} stroke-width="3.5" opacity="0.7"${ssrRenderAttr("filter", isNeon.value ? "url(#fbg-neonC)" : void 0)} data-v-dc83cd69><path d="M110 600 L110 430 L890 430 L890 600" data-v-dc83cd69></path><path d="M360 430 A150 56 0 0 0 640 430" data-v-dc83cd69></path></g><rect${ssrRenderAttr("x", GOAL.x1 + 7)}${ssrRenderAttr("y", GOAL.y1 + 7)}${ssrRenderAttr("width", GOAL.x2 - GOAL.x1 - 14)}${ssrRenderAttr("height", GOAL.y2 - GOAL.y1 - 7)} fill="url(#fbg-net)" class="${ssrRenderClass({ ripple: netHit.value })}" data-v-dc83cd69></rect><g fill="none"${ssrRenderAttr("stroke", textColor.value)} stroke-width="8" stroke-linejoin="round" style="${ssrRenderStyle(netHit.value ? { filter: "url(#fbg-glow)" } : isNeon.value ? { filter: "url(#fbg-neonC)" } : {})}" data-v-dc83cd69><path${ssrRenderAttr("d", `M${GOAL.x1} ${GOAL.y2} L${GOAL.x1} ${GOAL.y1} L${GOAL.x2} ${GOAL.y1} L${GOAL.x2} ${GOAL.y2}`)} data-v-dc83cd69></path></g><ellipse cx="500" cy="350" rx="46" ry="10" fill="#000" opacity="0.34" filter="url(#fbg-soft)" style="${ssrRenderStyle({ transform: keepShadowTf.value, transformBox: "view-box", transformOrigin: "500px 350px", transition: kicked.value ? "transform .5s cubic-bezier(.3,.7,.4,1)" : "none" })}" data-v-dc83cd69></ellipse><g${ssrRenderAttr("filter", isNeon.value ? "url(#fbg-neonM)" : void 0)} style="${ssrRenderStyle({ transform: keepTf.value, transformBox: "view-box", transformOrigin: "500px 268px", transition: kicked.value ? "transform .5s cubic-bezier(.3,.7,.4,1)" : "none" })}" data-v-dc83cd69>`);
           if (keeperSheet.value && keeperSheetOk.value) {
-            _push2(`<g style="${ssrRenderStyle({ transform: keeperShuffleTf.value, willChange: "transform" })}" data-v-0118d44e><foreignObject x="425" y="160" width="150" height="190" data-v-0118d44e>`);
-            _push2(ssrRenderComponent(_sfc_main$k, {
+            _push2(`<g style="${ssrRenderStyle({ transform: keeperShuffleTf.value, willChange: "transform" })}" data-v-dc83cd69><foreignObject x="425" y="160" width="150" height="190" data-v-dc83cd69>`);
+            _push2(ssrRenderComponent(_sfc_main$o, {
               sheet: keeperSheet.value,
               frames: keeperFrames.value,
               frame: keeperFrame.value,
@@ -13876,31 +13743,31 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
             }, null, _parent));
             _push2(`</foreignObject></g>`);
           } else if (keeperImage.value) {
-            _push2(`<image${ssrRenderAttr("href", keeperImage.value)} x="448" y="196" width="104" height="140" data-v-0118d44e></image>`);
+            _push2(`<image${ssrRenderAttr("href", keeperImage.value)} x="448" y="196" width="104" height="140" data-v-dc83cd69></image>`);
           } else {
-            _push2(`<g class="fbg-keeper-tall" data-v-0118d44e><g class="${ssrRenderClass({ "fbg-keeper-idle": !kicked.value })}" data-v-0118d44e><path d="M490 300 q-6 18 -10 30" stroke="#222a3f" stroke-width="13" stroke-linecap="round" fill="none" data-v-0118d44e></path><path d="M510 300 q6 18 10 30" stroke="#222a3f" stroke-width="13" stroke-linecap="round" fill="none" data-v-0118d44e></path><g class="${ssrRenderClass([{ "arm-idle-l": !kicked.value }, "fbg-arm"])}" style="${ssrRenderStyle(kicked.value ? { transform: keepArmLTf.value, transformBox: "view-box", transformOrigin: "484px 276px", transition: "transform .35s ease" } : void 0)}" data-v-0118d44e><path d="M483 274 q-24 2 -40 18"${ssrRenderAttr("stroke", keeperKit.value)} stroke-width="12" stroke-linecap="round" fill="none" data-v-0118d44e></path><circle cx="441" cy="294" r="11"${ssrRenderAttr("fill", accent.value)} filter="url(#fbg-glow)" data-v-0118d44e></circle></g><g class="${ssrRenderClass([{ "arm-idle-r": !kicked.value }, "fbg-arm"])}" style="${ssrRenderStyle(kicked.value ? { transform: keepArmRTf.value, transformBox: "view-box", transformOrigin: "516px 276px", transition: "transform .35s ease" } : void 0)}" data-v-0118d44e><path d="M517 274 q24 2 40 18"${ssrRenderAttr("stroke", keeperKit.value)} stroke-width="12" stroke-linecap="round" fill="none" data-v-0118d44e></path><circle cx="559" cy="294" r="11"${ssrRenderAttr("fill", accent.value)} filter="url(#fbg-glow)" data-v-0118d44e></circle></g><path d="M478 262 q22 -12 44 0 l-3 42 q-19 8 -38 0 z"${ssrRenderAttr("fill", keeperKit.value)} data-v-0118d44e></path><path d="M478 262 q22 -12 44 0 l-2 12 q-20 -8 -40 0 z"${ssrRenderAttr("fill", accent.value)} opacity="0.9" data-v-0118d44e></path><clipPath id="fbg-keeper-shirt" data-v-0118d44e><path d="M478 262 q22 -12 44 0 l-3 42 q-19 8 -38 0 z" data-v-0118d44e></path></clipPath>`);
+            _push2(`<g class="fbg-keeper-tall" data-v-dc83cd69><g class="${ssrRenderClass({ "fbg-keeper-idle": !kicked.value })}" data-v-dc83cd69><path d="M490 300 q-6 18 -10 30" stroke="#222a3f" stroke-width="13" stroke-linecap="round" fill="none" data-v-dc83cd69></path><path d="M510 300 q6 18 10 30" stroke="#222a3f" stroke-width="13" stroke-linecap="round" fill="none" data-v-dc83cd69></path><g class="${ssrRenderClass([{ "arm-idle-l": !kicked.value }, "fbg-arm"])}" style="${ssrRenderStyle(kicked.value ? { transform: keepArmLTf.value, transformBox: "view-box", transformOrigin: "484px 276px", transition: "transform .35s ease" } : void 0)}" data-v-dc83cd69><path d="M483 274 q-24 2 -40 18"${ssrRenderAttr("stroke", keeperKit.value)} stroke-width="12" stroke-linecap="round" fill="none" data-v-dc83cd69></path><circle cx="441" cy="294" r="11"${ssrRenderAttr("fill", accent.value)} filter="url(#fbg-glow)" data-v-dc83cd69></circle></g><g class="${ssrRenderClass([{ "arm-idle-r": !kicked.value }, "fbg-arm"])}" style="${ssrRenderStyle(kicked.value ? { transform: keepArmRTf.value, transformBox: "view-box", transformOrigin: "516px 276px", transition: "transform .35s ease" } : void 0)}" data-v-dc83cd69><path d="M517 274 q24 2 40 18"${ssrRenderAttr("stroke", keeperKit.value)} stroke-width="12" stroke-linecap="round" fill="none" data-v-dc83cd69></path><circle cx="559" cy="294" r="11"${ssrRenderAttr("fill", accent.value)} filter="url(#fbg-glow)" data-v-dc83cd69></circle></g><path d="M478 262 q22 -12 44 0 l-3 42 q-19 8 -38 0 z"${ssrRenderAttr("fill", keeperKit.value)} data-v-dc83cd69></path><path d="M478 262 q22 -12 44 0 l-2 12 q-20 -8 -40 0 z"${ssrRenderAttr("fill", accent.value)} opacity="0.9" data-v-dc83cd69></path><clipPath id="fbg-keeper-shirt" data-v-dc83cd69><path d="M478 262 q22 -12 44 0 l-3 42 q-19 8 -38 0 z" data-v-dc83cd69></path></clipPath>`);
             if (keeperFlag.value) {
-              _push2(`<image${ssrRenderAttr("href", keeperFlag.value)} x="477" y="258" width="46" height="48" preserveAspectRatio="xMidYMid slice" clip-path="url(#fbg-keeper-shirt)" data-v-0118d44e></image>`);
+              _push2(`<image${ssrRenderAttr("href", keeperFlag.value)} x="477" y="258" width="46" height="48" preserveAspectRatio="xMidYMid slice" clip-path="url(#fbg-keeper-shirt)" data-v-dc83cd69></image>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<circle cx="500" cy="248" r="16" fill="#e9b489" data-v-0118d44e></circle><path d="M485 244 q15 -16 30 0 q-15 -8 -30 0z" fill="#2b2016" data-v-0118d44e></path></g></g>`);
+            _push2(`<circle cx="500" cy="248" r="16" fill="#e9b489" data-v-dc83cd69></circle><path d="M485 244 q15 -16 30 0 q-15 -8 -30 0z" fill="#2b2016" data-v-dc83cd69></path></g></g>`);
           }
           _push2(`</g>`);
           if (phase.value === "aim" || phase.value === "power") {
-            _push2(`<g${ssrRenderAttr("stroke", accent.value)} stroke-width="3" fill="none" filter="url(#fbg-glow)" data-v-0118d44e><circle${ssrRenderAttr("cx", aim.value.x)}${ssrRenderAttr("cy", aim.value.y)} r="6"${ssrRenderAttr("fill", accent.value)} data-v-0118d44e></circle><circle${ssrRenderAttr("cx", aim.value.x)}${ssrRenderAttr("cy", aim.value.y)} r="22" opacity="0.8" data-v-0118d44e></circle><line${ssrRenderAttr("x1", aim.value.x - 34)}${ssrRenderAttr("y1", aim.value.y)}${ssrRenderAttr("x2", aim.value.x - 24)}${ssrRenderAttr("y2", aim.value.y)} data-v-0118d44e></line><line${ssrRenderAttr("x1", aim.value.x + 24)}${ssrRenderAttr("y1", aim.value.y)}${ssrRenderAttr("x2", aim.value.x + 34)}${ssrRenderAttr("y2", aim.value.y)} data-v-0118d44e></line><line${ssrRenderAttr("x1", aim.value.x)}${ssrRenderAttr("y1", aim.value.y - 34)}${ssrRenderAttr("x2", aim.value.x)}${ssrRenderAttr("y2", aim.value.y - 24)} data-v-0118d44e></line><line${ssrRenderAttr("x1", aim.value.x)}${ssrRenderAttr("y1", aim.value.y + 24)}${ssrRenderAttr("x2", aim.value.x)}${ssrRenderAttr("y2", aim.value.y + 34)} data-v-0118d44e></line></g>`);
+            _push2(`<g${ssrRenderAttr("stroke", accent.value)} stroke-width="3" fill="none" filter="url(#fbg-glow)" data-v-dc83cd69><circle${ssrRenderAttr("cx", aim.value.x)}${ssrRenderAttr("cy", aim.value.y)} r="6"${ssrRenderAttr("fill", accent.value)} data-v-dc83cd69></circle><circle${ssrRenderAttr("cx", aim.value.x)}${ssrRenderAttr("cy", aim.value.y)} r="22" opacity="0.8" data-v-dc83cd69></circle><line${ssrRenderAttr("x1", aim.value.x - 34)}${ssrRenderAttr("y1", aim.value.y)}${ssrRenderAttr("x2", aim.value.x - 24)}${ssrRenderAttr("y2", aim.value.y)} data-v-dc83cd69></line><line${ssrRenderAttr("x1", aim.value.x + 24)}${ssrRenderAttr("y1", aim.value.y)}${ssrRenderAttr("x2", aim.value.x + 34)}${ssrRenderAttr("y2", aim.value.y)} data-v-dc83cd69></line><line${ssrRenderAttr("x1", aim.value.x)}${ssrRenderAttr("y1", aim.value.y - 34)}${ssrRenderAttr("x2", aim.value.x)}${ssrRenderAttr("y2", aim.value.y - 24)} data-v-dc83cd69></line><line${ssrRenderAttr("x1", aim.value.x)}${ssrRenderAttr("y1", aim.value.y + 24)}${ssrRenderAttr("x2", aim.value.x)}${ssrRenderAttr("y2", aim.value.y + 34)} data-v-dc83cd69></line></g>`);
           } else {
             _push2(`<!---->`);
           }
           if (kicked.value) {
-            _push2(`<line${ssrRenderAttr("x1", SPOT.x)}${ssrRenderAttr("y1", SPOT.y)}${ssrRenderAttr("x2", current.value && !current.value.win ? keepLand.value.x : shotTarget.value.x)}${ssrRenderAttr("y2", current.value && !current.value.win ? keepLand.value.y : shotTarget.value.y)} stroke="url(#fbg-trail)" stroke-width="6" stroke-linecap="round" opacity="0.55" class="fbg-trail" data-v-0118d44e></line>`);
+            _push2(`<line${ssrRenderAttr("x1", SPOT.x)}${ssrRenderAttr("y1", SPOT.y)}${ssrRenderAttr("x2", current.value && !current.value.win ? keepLand.value.x : shotTarget.value.x)}${ssrRenderAttr("y2", current.value && !current.value.win ? keepLand.value.y : shotTarget.value.y)} stroke="url(#fbg-trail)" stroke-width="6" stroke-linecap="round" opacity="0.55" class="fbg-trail" data-v-dc83cd69></line>`);
           } else {
             _push2(`<!---->`);
           }
-          _push2(`<ellipse cx="0" cy="0" rx="44" ry="11" fill="#000" opacity="0.3" filter="url(#fbg-soft)" style="${ssrRenderStyle({ transform: strikerShadowTf.value, transformBox: "view-box", transformOrigin: "0px 0px", transition: "transform .5s cubic-bezier(.4,.1,.3,1)" })}" data-v-0118d44e></ellipse><g class="${ssrRenderClass([{ run: moving.value }, "fbg-striker-svg"])}"${ssrRenderAttr("filter", isNeon.value ? "url(#fbg-neonM)" : void 0)} style="${ssrRenderStyle({ transform: strikerSvgTf.value, transformBox: "view-box", transformOrigin: "0px 0px", transition: "transform .5s cubic-bezier(.4,.1,.3,1)" })}" data-v-0118d44e>`);
+          _push2(`<ellipse cx="0" cy="0" rx="44" ry="11" fill="#000" opacity="0.3" filter="url(#fbg-soft)" style="${ssrRenderStyle({ transform: strikerShadowTf.value, transformBox: "view-box", transformOrigin: "0px 0px", transition: "transform .5s cubic-bezier(.4,.1,.3,1)" })}" data-v-dc83cd69></ellipse><g class="${ssrRenderClass([{ run: moving.value }, "fbg-striker-svg"])}"${ssrRenderAttr("filter", isNeon.value ? "url(#fbg-neonM)" : void 0)} style="${ssrRenderStyle({ transform: strikerSvgTf.value, transformBox: "view-box", transformOrigin: "0px 0px", transition: "transform .5s cubic-bezier(.4,.1,.3,1)" })}" data-v-dc83cd69>`);
           if (strikerSheet.value && strikerSheetOk.value) {
-            _push2(`<foreignObject x="0" y="0" width="80" height="120" data-v-0118d44e>`);
-            _push2(ssrRenderComponent(_sfc_main$k, {
+            _push2(`<foreignObject x="0" y="0" width="80" height="120" data-v-dc83cd69>`);
+            _push2(ssrRenderComponent(_sfc_main$o, {
               sheet: strikerSheet.value,
               frames: strikerFrames.value,
               frame: strikerFrame.value,
@@ -13909,51 +13776,51 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
             }, null, _parent));
             _push2(`</foreignObject>`);
           } else if (strikerImage.value) {
-            _push2(`<image${ssrRenderAttr("href", strikerImage.value)} x="0" y="0" width="80" height="120" data-v-0118d44e></image>`);
+            _push2(`<image${ssrRenderAttr("href", strikerImage.value)} x="0" y="0" width="80" height="120" data-v-dc83cd69></image>`);
           } else {
-            _push2(`<g data-v-0118d44e><path d="M40 60 q-4 22 -10 40" stroke="#e9b489" stroke-width="9" stroke-linecap="round" fill="none" data-v-0118d44e></path><g class="kick" data-v-0118d44e><path d="M44 60 q14 6 26 2" stroke="#e9b489" stroke-width="9" stroke-linecap="round" fill="none" data-v-0118d44e></path><rect x="66" y="56" width="14" height="7" rx="3" fill="#111" data-v-0118d44e></rect></g><rect x="26" y="80" width="14" height="7" rx="3" fill="#111" data-v-0118d44e></rect><path d="M30 52 l22 0 l-3 12 l-16 0 z" fill="#fff" data-v-0118d44e></path><path d="M30 26 q11 -7 22 0 l1 28 l-24 0 z"${ssrRenderAttr("fill", kitColor.value)} data-v-0118d44e></path><path d="M38 22 l7 1 l1 31 l-9 0 z"${ssrRenderAttr("fill", accent.value)} opacity="0.9" data-v-0118d44e></path><clipPath id="fbg-striker-shirt" data-v-0118d44e><path d="M30 26 q11 -7 22 0 l1 28 l-24 0 z" data-v-0118d44e></path></clipPath>`);
+            _push2(`<g data-v-dc83cd69><path d="M40 60 q-4 22 -10 40" stroke="#e9b489" stroke-width="9" stroke-linecap="round" fill="none" data-v-dc83cd69></path><g class="kick" data-v-dc83cd69><path d="M44 60 q14 6 26 2" stroke="#e9b489" stroke-width="9" stroke-linecap="round" fill="none" data-v-dc83cd69></path><rect x="66" y="56" width="14" height="7" rx="3" fill="#111" data-v-dc83cd69></rect></g><rect x="26" y="80" width="14" height="7" rx="3" fill="#111" data-v-dc83cd69></rect><path d="M30 52 l22 0 l-3 12 l-16 0 z" fill="#fff" data-v-dc83cd69></path><path d="M30 26 q11 -7 22 0 l1 28 l-24 0 z"${ssrRenderAttr("fill", kitColor.value)} data-v-dc83cd69></path><path d="M38 22 l7 1 l1 31 l-9 0 z"${ssrRenderAttr("fill", accent.value)} opacity="0.9" data-v-dc83cd69></path><clipPath id="fbg-striker-shirt" data-v-dc83cd69><path d="M30 26 q11 -7 22 0 l1 28 l-24 0 z" data-v-dc83cd69></path></clipPath>`);
             if (strikerFlag.value) {
-              _push2(`<image${ssrRenderAttr("href", strikerFlag.value)} x="29" y="24" width="24" height="33" preserveAspectRatio="xMidYMid slice" clip-path="url(#fbg-striker-shirt)" data-v-0118d44e></image>`);
+              _push2(`<image${ssrRenderAttr("href", strikerFlag.value)} x="29" y="24" width="24" height="33" preserveAspectRatio="xMidYMid slice" clip-path="url(#fbg-striker-shirt)" data-v-dc83cd69></image>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<path d="M32 30 q-12 6 -16 18" stroke="#e9b489" stroke-width="7" stroke-linecap="round" fill="none" data-v-0118d44e></path><path d="M50 30 q12 4 16 12" stroke="#e9b489" stroke-width="7" stroke-linecap="round" fill="none" data-v-0118d44e></path><circle cx="41" cy="15" r="10" fill="#e9b489" data-v-0118d44e></circle><path d="M31 13 q10 -11 20 0 q-10 -6 -20 0z" fill="#241608" data-v-0118d44e></path></g>`);
+            _push2(`<path d="M32 30 q-12 6 -16 18" stroke="#e9b489" stroke-width="7" stroke-linecap="round" fill="none" data-v-dc83cd69></path><path d="M50 30 q12 4 16 12" stroke="#e9b489" stroke-width="7" stroke-linecap="round" fill="none" data-v-dc83cd69></path><circle cx="41" cy="15" r="10" fill="#e9b489" data-v-dc83cd69></circle><path d="M31 13 q10 -11 20 0 q-10 -6 -20 0z" fill="#241608" data-v-dc83cd69></path></g>`);
           }
-          _push2(`</g><g style="${ssrRenderStyle({ transform: ballTf.value, transformBox: "view-box", transition: kicked.value ? `transform ${ballDur.value}s cubic-bezier(.2,.55,.3,1)` : "none" })}" data-v-0118d44e>`);
+          _push2(`</g><g style="${ssrRenderStyle({ transform: ballTf.value, transformBox: "view-box", transition: kicked.value ? `transform ${ballDur.value}s cubic-bezier(.2,.55,.3,1)` : "none" })}" data-v-dc83cd69>`);
           if (netHit.value) {
-            _push2(`<circle class="fbg-ball-glow" r="42"${ssrRenderAttr("fill", accent.value)} filter="url(#fbg-glow)" data-v-0118d44e></circle>`);
+            _push2(`<circle class="fbg-ball-glow" r="42"${ssrRenderAttr("fill", accent.value)} filter="url(#fbg-glow)" data-v-dc83cd69></circle>`);
           } else {
             _push2(`<!---->`);
           }
-          _push2(`<ellipse cx="0" cy="31" rx="30" ry="7" fill="#000" opacity="0.32" filter="url(#fbg-soft)" data-v-0118d44e></ellipse><g class="${ssrRenderClass({ "fbg-ball-arc": kicked.value })}" style="${ssrRenderStyle({ animationDuration: ballDur.value + "s" })}" data-v-0118d44e><g class="${ssrRenderClass({ "fbg-ball-impact": netHit.value || saved.value })}" data-v-0118d44e><g class="${ssrRenderClass({ spin: kicked.value })}"${ssrRenderAttr("filter", isNeon.value ? "url(#fbg-neonC)" : void 0)} data-v-0118d44e>`);
+          _push2(`<ellipse cx="0" cy="31" rx="30" ry="7" fill="#000" opacity="0.32" filter="url(#fbg-soft)" data-v-dc83cd69></ellipse><g class="${ssrRenderClass({ "fbg-ball-arc": kicked.value })}" style="${ssrRenderStyle({ animationDuration: ballDur.value + "s" })}" data-v-dc83cd69><g class="${ssrRenderClass({ "fbg-ball-impact": netHit.value || saved.value })}" data-v-dc83cd69><g class="${ssrRenderClass({ spin: kicked.value })}"${ssrRenderAttr("filter", isNeon.value ? "url(#fbg-neonC)" : void 0)} data-v-dc83cd69>`);
           if (ballImage.value) {
-            _push2(`<image${ssrRenderAttr("href", ballImage.value)} x="-32" y="-32" width="64" height="64" data-v-0118d44e></image>`);
+            _push2(`<image${ssrRenderAttr("href", ballImage.value)} x="-32" y="-32" width="64" height="64" data-v-dc83cd69></image>`);
           } else {
-            _push2(`<g data-v-0118d44e><circle r="32" fill="url(#fbg-ball)" stroke="#aab0bd" stroke-width="1.3" data-v-0118d44e></circle><path d="M0 -13 L12.4 -4 L7.6 10.5 L-7.6 10.5 L-12.4 -4 Z" fill="#1b1e25" data-v-0118d44e></path><g fill="#1b1e25" data-v-0118d44e><path d="M0 -31 L8 -24.5 L4 -16 L-4 -16 L-8 -24.5 Z" data-v-0118d44e></path><path d="M29.5 -9.6 L24.5 -2.5 L16 -4 L19 -12 L27 -15 Z" data-v-0118d44e></path><path d="M18.2 25.1 L9.5 22.5 L8 13.5 L17.5 14.5 L22 21.5 Z" data-v-0118d44e></path><path d="M-18.2 25.1 L-9.5 22.5 L-8 13.5 L-17.5 14.5 L-22 21.5 Z" data-v-0118d44e></path><path d="M-29.5 -9.6 L-24.5 -2.5 L-16 -4 L-19 -12 L-27 -15 Z" data-v-0118d44e></path></g><path d="M0 -13 L0 -24.5 M12.4 -4 L24 -9.6 M7.6 10.5 L14.5 21 M-7.6 10.5 L-14.5 21 M-12.4 -4 L-24 -9.6" stroke="#1b1e25" stroke-width="1.8" fill="none" opacity="0.85" data-v-0118d44e></path><circle r="32" fill="url(#fbg-ball-edge)" data-v-0118d44e></circle><ellipse cx="-11" cy="-13" rx="10" ry="6.5" fill="#fff" opacity="0.6" data-v-0118d44e></ellipse></g>`);
+            _push2(`<g data-v-dc83cd69><circle r="32" fill="url(#fbg-ball)" stroke="#aab0bd" stroke-width="1.3" data-v-dc83cd69></circle><path d="M0 -13 L12.4 -4 L7.6 10.5 L-7.6 10.5 L-12.4 -4 Z" fill="#1b1e25" data-v-dc83cd69></path><g fill="#1b1e25" data-v-dc83cd69><path d="M0 -31 L8 -24.5 L4 -16 L-4 -16 L-8 -24.5 Z" data-v-dc83cd69></path><path d="M29.5 -9.6 L24.5 -2.5 L16 -4 L19 -12 L27 -15 Z" data-v-dc83cd69></path><path d="M18.2 25.1 L9.5 22.5 L8 13.5 L17.5 14.5 L22 21.5 Z" data-v-dc83cd69></path><path d="M-18.2 25.1 L-9.5 22.5 L-8 13.5 L-17.5 14.5 L-22 21.5 Z" data-v-dc83cd69></path><path d="M-29.5 -9.6 L-24.5 -2.5 L-16 -4 L-19 -12 L-27 -15 Z" data-v-dc83cd69></path></g><path d="M0 -13 L0 -24.5 M12.4 -4 L24 -9.6 M7.6 10.5 L14.5 21 M-7.6 10.5 L-14.5 21 M-12.4 -4 L-24 -9.6" stroke="#1b1e25" stroke-width="1.8" fill="none" opacity="0.85" data-v-dc83cd69></path><circle r="32" fill="url(#fbg-ball-edge)" data-v-dc83cd69></circle><ellipse cx="-11" cy="-13" rx="10" ry="6.5" fill="#fff" opacity="0.6" data-v-dc83cd69></ellipse></g>`);
           }
           _push2(`</g></g></g></g>`);
           if (particles.value.length) {
-            _push2(`<g${ssrRenderAttr("transform", `translate(${aim.value.x}, ${aim.value.y})`)} data-v-0118d44e><!--[-->`);
+            _push2(`<g${ssrRenderAttr("transform", `translate(${aim.value.x}, ${aim.value.y})`)} data-v-dc83cd69><!--[-->`);
             ssrRenderList(particles.value, (p2, i2) => {
-              _push2(`<rect class="fbg-particle" x="-3" y="-3" width="6" height="9"${ssrRenderAttr("fill", p2.col)} style="${ssrRenderStyle({ "--dx": p2.dx + "px", "--dy": p2.dy + "px", "--rot": p2.rot + "deg", animationDelay: p2.delay + "s" })}" data-v-0118d44e></rect>`);
+              _push2(`<rect class="fbg-particle" x="-3" y="-3" width="6" height="9"${ssrRenderAttr("fill", p2.col)} style="${ssrRenderStyle({ "--dx": p2.dx + "px", "--dy": p2.dy + "px", "--rot": p2.rot + "deg", animationDelay: p2.delay + "s" })}" data-v-dc83cd69></rect>`);
             });
             _push2(`<!--]--></g>`);
           } else {
             _push2(`<!---->`);
           }
           if (phase.value === "aim") {
-            _push2(`<rect x="-3000" y="-3000" width="7000" height="7000" fill="transparent" style="${ssrRenderStyle({ "cursor": "crosshair" })}" data-v-0118d44e></rect>`);
+            _push2(`<rect x="-3000" y="-3000" width="7000" height="7000" fill="transparent" style="${ssrRenderStyle({ "cursor": "crosshair" })}" data-v-dc83cd69></rect>`);
           } else {
             _push2(`<!---->`);
           }
-          _push2(`</svg><div class="fbg-hud" data-v-0118d44e>PENALTY ${ssrInterpolate(Math.min(index.value + 1, total.value))}/${ssrInterpolate(total.value)} <span style="${ssrRenderStyle({ color: accent.value })}" data-v-0118d44e>·</span> ⚽ ${ssrInterpolate(scored.value)}</div><div class="${ssrRenderClass([{ on: flash.value }, "fbg-flash"])}" data-v-0118d44e></div></div>`);
+          _push2(`</svg><div class="fbg-hud" data-v-dc83cd69>PENALTY ${ssrInterpolate(Math.min(index.value + 1, total.value))}/${ssrInterpolate(total.value)} <span style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>·</span> ⚽ ${ssrInterpolate(scored.value)}</div><div class="${ssrRenderClass([{ on: flash.value }, "fbg-flash"])}" data-v-dc83cd69></div></div>`);
           if (trackerView.value.length) {
-            _push2(`<div class="fbg-tracker" data-v-0118d44e><div${ssrRenderAttrs({
+            _push2(`<div class="fbg-tracker" data-v-dc83cd69><div${ssrRenderAttrs({
               name: "fbg-track",
               class: "fbg-tracker-list"
-            })} data-v-0118d44e>`);
+            })} data-v-dc83cd69>`);
             ssrRenderList(trackerView.value, (item) => {
-              _push2(`<div class="fbg-track" data-v-0118d44e><span class="${ssrRenderClass([item.p.win ? "won" : "miss", "fbg-track-dot"])}" data-v-0118d44e>`);
+              _push2(`<div class="fbg-track" data-v-dc83cd69><span class="${ssrRenderClass([item.p.win ? "won" : "miss", "fbg-track-dot"])}" data-v-dc83cd69>`);
               if (!item.p.win) {
                 _push2(`<!--[-->✗<!--]-->`);
               } else {
@@ -13961,7 +13828,7 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
               }
               _push2(`</span>`);
               if (item.p.win) {
-                _push2(`<span class="fbg-track-box" style="${ssrRenderStyle({ borderColor: accent.value, color: accent.value })}" data-v-0118d44e>${ssrInterpolate(trackLabel(item.p))}</span>`);
+                _push2(`<span class="fbg-track-box" style="${ssrRenderStyle({ borderColor: accent.value, color: accent.value })}" data-v-dc83cd69>${ssrInterpolate(trackLabel(item.p))}</span>`);
               } else {
                 _push2(`<!---->`);
               }
@@ -13972,135 +13839,135 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
             _push2(`<!---->`);
           }
           if (phase.value === "power") {
-            _push2(`<div class="fbg-vmeter" data-v-0118d44e><span class="fbg-vmeter-label" style="${ssrRenderStyle({ color: textColor.value })}" data-v-0118d44e>POWER</span><div class="fbg-vmeter-bar" data-v-0118d44e><div class="fbg-vmeter-grad" data-v-0118d44e></div><div class="fbg-vmeter-marker" style="${ssrRenderStyle({ bottom: power.value + "%" })}" data-v-0118d44e></div></div></div>`);
+            _push2(`<div class="fbg-vmeter" data-v-dc83cd69><span class="fbg-vmeter-label" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>POWER</span><div class="fbg-vmeter-bar" data-v-dc83cd69><div class="fbg-vmeter-grad" data-v-dc83cd69></div><div class="fbg-vmeter-marker" style="${ssrRenderStyle({ bottom: power.value + "%" })}" data-v-dc83cd69></div></div></div>`);
           } else {
             _push2(`<!---->`);
           }
-          _push2(`<div class="fbg-lower" data-v-0118d44e>`);
+          _push2(`<div class="fbg-lower" data-v-dc83cd69>`);
           if (phase.value === "ready") {
-            _push2(`<button class="fbg-cta" style="${ssrRenderStyle({ background: kitColor.value, color: textColor.value })}" data-v-0118d44e>Step up ⚽</button>`);
+            _push2(`<button class="fbg-cta" style="${ssrRenderStyle({ background: kitColor.value, color: textColor.value })}" data-v-dc83cd69>Step up ⚽</button>`);
           } else if (phase.value === "aim") {
-            _push2(`<p class="fbg-hint" style="${ssrRenderStyle({ color: textColor.value })}" data-v-0118d44e>Tap where you want to place it 🎯</p>`);
+            _push2(`<p class="fbg-hint" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>Tap where you want to place it 🎯</p>`);
           } else if (phase.value === "power") {
-            _push2(`<button class="fbg-cta fbg-shoot" style="${ssrRenderStyle({ background: accent.value, color: "#04231b" })}" data-v-0118d44e>SHOOT! 💥</button>`);
+            _push2(`<button class="fbg-cta fbg-shoot" style="${ssrRenderStyle({ background: accent.value, color: "#04231b" })}" data-v-dc83cd69>SHOOT! 💥</button>`);
           } else if (phase.value === "shooting") {
-            _push2(`<button class="fbg-cta" disabled style="${ssrRenderStyle({ color: textColor.value })}" data-v-0118d44e>Striking…</button>`);
+            _push2(`<button class="fbg-cta" disabled style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>Striking…</button>`);
           } else {
             _push2(`<!---->`);
           }
           if (phase.value === "ready" && total.value > 1) {
-            _push2(`<button class="fbg-skip" style="${ssrRenderStyle({ color: textColor.value })}" data-v-0118d44e>Skip remaining</button>`);
+            _push2(`<button class="fbg-skip" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>Skip remaining</button>`);
           } else {
             _push2(`<!---->`);
           }
           _push2(`</div>`);
           if (hostEnabled.value && !showIntro.value) {
-            _push2(`<div class="fbg-host" data-v-0118d44e>`);
+            _push2(`<div class="fbg-host" data-v-dc83cd69>`);
             if (hostLine.value) {
-              _push2(`<div class="fbg-host-bubble" data-v-0118d44e>${ssrInterpolate(hostLine.value)}</div>`);
+              _push2(`<div class="fbg-host-bubble" data-v-dc83cd69>${ssrInterpolate(hostLine.value)}</div>`);
             } else {
               _push2(`<!---->`);
             }
             if (hostImage.value && hostImageOk.value) {
-              _push2(`<img${ssrRenderAttr("src", hostImage.value)} class="fbg-host-avatar fbg-host-img" alt="" data-v-0118d44e>`);
+              _push2(`<img${ssrRenderAttr("src", hostImage.value)} class="fbg-host-avatar fbg-host-img" alt="" data-v-dc83cd69>`);
             } else {
-              _push2(`<svg class="fbg-host-avatar" viewBox="0 0 64 70" aria-hidden="true" data-v-0118d44e><path d="M16 32 a16 16 0 0 1 32 0" fill="none" stroke="#1f2937" stroke-width="4" data-v-0118d44e></path><circle cx="32" cy="36" r="15" fill="#e9b489" data-v-0118d44e></circle><path d="M18 32 q14 -16 28 0 q-14 -7 -28 0z" fill="#3a2a18" data-v-0118d44e></path><rect x="13" y="31" width="7" height="12" rx="3" fill="#111827" data-v-0118d44e></rect><rect x="44" y="31" width="7" height="12" rx="3" fill="#111827" data-v-0118d44e></rect><circle cx="27" cy="36" r="1.8" fill="#1b1b1b" data-v-0118d44e></circle><circle cx="37" cy="36" r="1.8" fill="#1b1b1b" data-v-0118d44e></circle><path d="M27 42 q5 4 10 0" stroke="#1b1b1b" stroke-width="2" fill="none" stroke-linecap="round" data-v-0118d44e></path><path d="M17 41 q-6 9 2 18" stroke="#111827" stroke-width="3" fill="none" data-v-0118d44e></path><circle cx="21" cy="59" r="5"${ssrRenderAttr("fill", accent.value)} stroke="#0b1220" stroke-width="2" data-v-0118d44e></circle></svg>`);
+              _push2(`<svg class="fbg-host-avatar" viewBox="0 0 64 70" aria-hidden="true" data-v-dc83cd69><path d="M16 32 a16 16 0 0 1 32 0" fill="none" stroke="#1f2937" stroke-width="4" data-v-dc83cd69></path><circle cx="32" cy="36" r="15" fill="#e9b489" data-v-dc83cd69></circle><path d="M18 32 q14 -16 28 0 q-14 -7 -28 0z" fill="#3a2a18" data-v-dc83cd69></path><rect x="13" y="31" width="7" height="12" rx="3" fill="#111827" data-v-dc83cd69></rect><rect x="44" y="31" width="7" height="12" rx="3" fill="#111827" data-v-dc83cd69></rect><circle cx="27" cy="36" r="1.8" fill="#1b1b1b" data-v-dc83cd69></circle><circle cx="37" cy="36" r="1.8" fill="#1b1b1b" data-v-dc83cd69></circle><path d="M27 42 q5 4 10 0" stroke="#1b1b1b" stroke-width="2" fill="none" stroke-linecap="round" data-v-dc83cd69></path><path d="M17 41 q-6 9 2 18" stroke="#111827" stroke-width="3" fill="none" data-v-dc83cd69></path><circle cx="21" cy="59" r="5"${ssrRenderAttr("fill", accent.value)} stroke="#0b1220" stroke-width="2" data-v-dc83cd69></circle></svg>`);
             }
             _push2(`</div>`);
           } else {
             _push2(`<!---->`);
           }
           if (showIntro.value) {
-            _push2(`<div class="fbg-overlay fbg-intro" data-v-0118d44e><div class="fbg-intro-inner" data-v-0118d44e>`);
+            _push2(`<div class="fbg-overlay fbg-intro" data-v-dc83cd69><div class="fbg-intro-inner" data-v-dc83cd69>`);
             if (introTitleImage.value) {
-              _push2(`<img${ssrRenderAttr("src", introTitleImage.value)} class="fbg-intro-logo" alt="" data-v-0118d44e>`);
+              _push2(`<img${ssrRenderAttr("src", introTitleImage.value)} class="fbg-intro-logo" alt="" data-v-dc83cd69>`);
             } else {
-              _push2(`<div class="fbg-intro-ball" data-v-0118d44e>⚽</div>`);
+              _push2(`<div class="fbg-intro-ball" data-v-dc83cd69>⚽</div>`);
             }
-            _push2(`<h2 class="fbg-intro-title" style="${ssrRenderStyle({ color: accent.value })}" data-v-0118d44e>${ssrInterpolate(welcomeMsg.value)}</h2>`);
+            _push2(`<h2 class="fbg-intro-title" style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>${ssrInterpolate(welcomeMsg.value)}</h2>`);
             if (introSubtitle.value) {
-              _push2(`<p class="fbg-intro-sub" style="${ssrRenderStyle({ color: textColor.value })}" data-v-0118d44e>${ssrInterpolate(introSubtitle.value)}</p>`);
+              _push2(`<p class="fbg-intro-sub" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>${ssrInterpolate(introSubtitle.value)}</p>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<button class="fbg-cta fbg-intro-cta" style="${ssrRenderStyle({ background: kitColor.value, color: textColor.value })}" data-v-0118d44e>${ssrInterpolate(introButtonText.value)}</button></div></div>`);
+            _push2(`<button class="fbg-cta fbg-intro-cta" style="${ssrRenderStyle({ background: kitColor.value, color: textColor.value })}" data-v-dc83cd69>${ssrInterpolate(introButtonText.value)}</button></div></div>`);
           } else {
             _push2(`<!---->`);
           }
           if (wow.value) {
-            _push2(`<div class="fbg-wow" data-v-0118d44e></div>`);
+            _push2(`<div class="fbg-wow" data-v-dc83cd69></div>`);
           } else {
             _push2(`<!---->`);
           }
           if (wow.value) {
-            _push2(`<div class="fbg-goalflashes" data-v-0118d44e><!--[-->`);
+            _push2(`<div class="fbg-goalflashes" data-v-dc83cd69><!--[-->`);
             ssrRenderList(unref(goalFlashes), (gf, i2) => {
-              _push2(`<span class="fbg-goalflash" style="${ssrRenderStyle({ left: gf.x + "%", top: gf.y + "%", width: gf.size + "px", height: gf.size + "px", animationDelay: gf.delay + "s", animationDuration: gf.dur + "s" })}" data-v-0118d44e></span>`);
+              _push2(`<span class="fbg-goalflash" style="${ssrRenderStyle({ left: gf.x + "%", top: gf.y + "%", width: gf.size + "px", height: gf.size + "px", animationDelay: gf.delay + "s", animationDuration: gf.dur + "s" })}" data-v-dc83cd69></span>`);
             });
             _push2(`<!--]--></div>`);
           } else {
             _push2(`<!---->`);
           }
           if (wow.value && !showPrize.value) {
-            _push2(`<div class="fbg-goalshout" style="${ssrRenderStyle({ color: accent.value })}" data-v-0118d44e>GOAAL!!</div>`);
+            _push2(`<div class="fbg-goalshout" style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>GOAAL!!</div>`);
           } else {
             _push2(`<!---->`);
           }
           if (showPrize.value && current.value) {
-            _push2(`<div class="fbg-overlay" data-v-0118d44e><div class="fbg-card" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-0118d44e><div class="fbg-goal" style="${ssrRenderStyle({ color: accent.value })}" data-v-0118d44e>GOAL! ⚽��</div><div class="fbg-visual" data-v-0118d44e>`);
+            _push2(`<div class="fbg-overlay" data-v-dc83cd69><div class="fbg-card" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-dc83cd69><div class="fbg-goal" style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>GOAL! ⚽��</div><div class="fbg-visual" data-v-dc83cd69>`);
             if (current.value.image) {
-              _push2(`<img${ssrRenderAttr("src", current.value.image)} alt="prize" data-v-0118d44e>`);
+              _push2(`<img${ssrRenderAttr("src", current.value.image)} alt="prize" data-v-dc83cd69>`);
             } else if (introTitleImage.value) {
-              _push2(`<img${ssrRenderAttr("src", introTitleImage.value)} alt="logo" data-v-0118d44e>`);
+              _push2(`<img${ssrRenderAttr("src", introTitleImage.value)} alt="logo" data-v-dc83cd69>`);
             } else {
-              _push2(`<span data-v-0118d44e>🏆</span>`);
+              _push2(`<span data-v-dc83cd69>🏆</span>`);
             }
-            _push2(`</div><div class="fbg-won" style="${ssrRenderStyle({ color: textColor.value })}" data-v-0118d44e>${ssrInterpolate(winText.value)}</div><div class="fbg-name" style="${ssrRenderStyle({ color: accent.value })}" data-v-0118d44e>${ssrInterpolate(current.value.prize)}</div>`);
+            _push2(`</div><div class="fbg-won" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>${ssrInterpolate(winText.value)}</div><div class="fbg-name" style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>${ssrInterpolate(current.value.prize)}</div>`);
             if (currentValueLabel.value) {
-              _push2(`<div class="fbg-value" style="${ssrRenderStyle({ color: textColor.value })}" data-v-0118d44e>${ssrInterpolate(currentValueLabel.value)}</div>`);
+              _push2(`<div class="fbg-value" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>${ssrInterpolate(currentValueLabel.value)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<button class="fbg-cta" style="${ssrRenderStyle({ background: kitColor.value, color: textColor.value })}" data-v-0118d44e>${ssrInterpolate(index.value < total.value - 1 ? "Next penalty →" : "Collect 🎉")}</button></div></div>`);
+            _push2(`<button class="fbg-cta" style="${ssrRenderStyle({ background: kitColor.value, color: textColor.value })}" data-v-dc83cd69>${ssrInterpolate(index.value < total.value - 1 ? "Next penalty →" : "Collect 🎉")}</button></div></div>`);
           } else {
             _push2(`<!---->`);
           }
           if (phase.value === "done") {
-            _push2(`<div class="fbg-overlay" data-v-0118d44e><div class="fbg-card" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-0118d44e><div class="fbg-goal" style="${ssrRenderStyle({ color: accent.value })}" data-v-0118d44e>Full time! ⚽</div><div class="fbg-won" style="${ssrRenderStyle({ color: textColor.value })}" data-v-0118d44e>You scored ${ssrInterpolate(scored.value)} of ${ssrInterpolate(total.value)}</div>`);
+            _push2(`<div class="fbg-overlay" data-v-dc83cd69><div class="fbg-card" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-dc83cd69><div class="fbg-goal" style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>Full time! ⚽</div><div class="fbg-won" style="${ssrRenderStyle({ color: textColor.value })}" data-v-dc83cd69>You scored ${ssrInterpolate(scored.value)} of ${ssrInterpolate(total.value)}</div>`);
             if (totalWon.value) {
-              _push2(`<div class="fbg-fulltotal" style="${ssrRenderStyle({ color: accent.value })}" data-v-0118d44e>Total won: £${ssrInterpolate(totalWon.value % 1 === 0 ? totalWon.value : totalWon.value.toFixed(2))}</div>`);
+              _push2(`<div class="fbg-fulltotal" style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>Total won: £${ssrInterpolate(totalWon.value % 1 === 0 ? totalWon.value : totalWon.value.toFixed(2))}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<div class="fbg-scorecard" data-v-0118d44e><!--[-->`);
+            _push2(`<div class="fbg-scorecard" data-v-dc83cd69><!--[-->`);
             ssrRenderList(pens.value, (p2, i2) => {
-              _push2(`<span class="${ssrRenderClass([p2.win ? "goal" : "miss", "fbg-scoredot"])}" style="${ssrRenderStyle(p2.win ? { background: accent.value, color: "#04231b", borderColor: accent.value } : {})}" data-v-0118d44e>${ssrInterpolate(p2.win ? "⚽" : "✗")}</span>`);
+              _push2(`<span class="${ssrRenderClass([p2.win ? "goal" : "miss", "fbg-scoredot"])}" style="${ssrRenderStyle(p2.win ? { background: accent.value, color: "#04231b", borderColor: accent.value } : {})}" data-v-dc83cd69>${ssrInterpolate(p2.win ? "⚽" : "✗")}</span>`);
             });
-            _push2(`<!--]--></div><ul class="fbg-history" data-v-0118d44e><!--[-->`);
+            _push2(`<!--]--></div><ul class="fbg-history" data-v-dc83cd69><!--[-->`);
             ssrRenderList(pens.value, (p2, i2) => {
-              _push2(`<li class="${ssrRenderClass(p2.win ? "win" : "miss")}" data-v-0118d44e><span class="fbg-hist-n" data-v-0118d44e>${ssrInterpolate(i2 + 1)}</span>`);
+              _push2(`<li class="${ssrRenderClass(p2.win ? "win" : "miss")}" data-v-dc83cd69><span class="fbg-hist-n" data-v-dc83cd69>${ssrInterpolate(i2 + 1)}</span>`);
               if (p2.win) {
-                _push2(`<span class="fbg-hist-res" data-v-0118d44e><b style="${ssrRenderStyle({ color: accent.value })}" data-v-0118d44e>GOAL</b> · ${ssrInterpolate(p2.prize)}`);
+                _push2(`<span class="fbg-hist-res" data-v-dc83cd69><b style="${ssrRenderStyle({ color: accent.value })}" data-v-dc83cd69>GOAL</b> · ${ssrInterpolate(p2.prize)}`);
                 if (p2.isBundle && p2.value && !/ticket/i.test(p2.prize)) {
-                  _push2(`<span data-v-0118d44e> (${ssrInterpolate(Math.floor(p2.value))} Free Ticket${ssrInterpolate(p2.value == 1 ? "" : "s")})</span>`);
+                  _push2(`<span data-v-dc83cd69> (${ssrInterpolate(Math.floor(p2.value))} Free Ticket${ssrInterpolate(p2.value == 1 ? "" : "s")})</span>`);
                 } else if (p2.value && !p2.isBundle) {
-                  _push2(`<span data-v-0118d44e> · £${ssrInterpolate(p2.value)}</span>`);
+                  _push2(`<span data-v-dc83cd69> · £${ssrInterpolate(p2.value)}</span>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 _push2(`</span>`);
               } else {
-                _push2(`<span class="fbg-hist-res fbg-hist-miss" data-v-0118d44e>Saved — no win</span>`);
+                _push2(`<span class="fbg-hist-res fbg-hist-miss" data-v-dc83cd69>Saved — no win</span>`);
               }
               _push2(`</li>`);
             });
-            _push2(`<!--]--></ul><button class="fbg-cta" style="${ssrRenderStyle({ background: kitColor.value, color: textColor.value })}" data-v-0118d44e>Close</button></div></div>`);
+            _push2(`<!--]--></ul><button class="fbg-cta" style="${ssrRenderStyle({ background: kitColor.value, color: textColor.value })}" data-v-dc83cd69>Close</button></div></div>`);
           } else {
             _push2(`<!---->`);
           }
           _push2(`</div></div></div>`);
           if (__props.demoMode) {
-            _push2(`<div class="fbg-demo-info" data-v-0118d44e>${ssrInterpolate(actualPreviewMode.value === "mobile" ? "📱 Mobile Preview (420×650)" : "💻 Desktop Preview (700×650)")}</div>`);
+            _push2(`<div class="fbg-demo-info" data-v-dc83cd69>${ssrInterpolate(actualPreviewMode.value === "mobile" ? "📱 Mobile Preview (420×650)" : "💻 Desktop Preview (700×650)")}</div>`);
           } else {
             _push2(`<!---->`);
           }
@@ -14112,14 +13979,1269 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _sfc_setup$j = _sfc_main$j.setup;
-_sfc_main$j.setup = (props, ctx) => {
+const _sfc_setup$n = _sfc_main$n.setup;
+_sfc_main$n.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/FootballModal.vue");
-  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
+  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
 };
-const FootballModal = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-0118d44e"]]);
-const _sfc_main$i = {
+const FootballModal = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-dc83cd69"]]);
+const SURFACE_Y = 580;
+const SEG = 240;
+const _sfc_main$m = /* @__PURE__ */ defineComponent({
+  __name: "FishingModal",
+  __ssrInlineRender: true,
+  props: {
+    modelValue: { type: Boolean, default: false },
+    demoMode: { type: Boolean, default: false },
+    previewMode: { default: "desktop" },
+    assets: { default: () => ({}) },
+    tickets: { default: () => [] },
+    instant_win_categories: { default: () => [] }
+  },
+  emits: ["update:modelValue", "wins-collected"],
+  setup(__props, { emit: __emit }) {
+    const props = __props;
+    const a2 = computed(() => props.assets || {});
+    const demoPreviewMode = ref("mobile");
+    const actualPreviewMode = computed(() => props.demoMode ? demoPreviewMode.value : props.previewMode || "desktop");
+    const frameClass = computed(() => props.demoMode ? actualPreviewMode.value === "mobile" ? "is-mobile" : "is-desktop" : "");
+    const CORE = { x: 32, y: 10, w: 936, h: 1404 };
+    const CORE_CX = CORE.x + CORE.w / 2;
+    const stageEl = ref(null);
+    const stageAspect = ref(CORE.w / CORE.h);
+    let stageRO = null;
+    watch(stageEl, (el) => {
+      stageRO == null ? void 0 : stageRO.disconnect();
+      if (el && typeof ResizeObserver !== "undefined") {
+        stageRO = new ResizeObserver((entries) => {
+          var _a;
+          const r2 = (_a = entries[0]) == null ? void 0 : _a.contentRect;
+          if (r2 && r2.width > 0 && r2.height > 0) stageAspect.value = r2.width / r2.height;
+        });
+        stageRO.observe(el);
+      }
+    }, { flush: "post" });
+    const view = computed(() => {
+      const ar = stageAspect.value;
+      const coreAspect = CORE.w / CORE.h;
+      if (ar >= coreAspect) {
+        const h22 = CORE.h, w22 = h22 * ar;
+        return { x: CORE_CX - w22 / 2, y: CORE.y, w: w22, h: h22 };
+      }
+      const w2 = CORE.w, h2 = w2 / ar;
+      return { x: CORE.x, y: CORE.y, w: w2, h: h2 };
+    });
+    const sceneViewBox = computed(() => `${view.value.x} ${view.value.y} ${view.value.w} ${view.value.h}`);
+    const bg = computed(() => {
+      const v2 = view.value;
+      return { x: v2.x - 200, w: v2.w + 400, top: v2.y - 100, bottom: v2.y + v2.h + 200, floor: v2.y + v2.h };
+    });
+    const titleText = computed(() => a2.value.titleText || "Cast to Win!");
+    const winText = computed(() => a2.value.winText || "Reeled in a winner! 🎣");
+    const loseText = computed(() => a2.value.loseText || "The one that got away…");
+    const accent = computed(() => a2.value.accentColor || "#ffd54f");
+    const primary = computed(() => a2.value.primaryColor || "#0277bd");
+    const textColor = computed(() => a2.value.textColor || "#ffffff");
+    const sunEnabled = computed(() => a2.value.sunEnabled !== false);
+    const sunImage = computed(() => a2.value.sunImage || "/games/fishing/sun-default.png?v=1");
+    const cloudsEnabled = computed(() => a2.value.cloudsEnabled !== false);
+    const showTopPrize = computed(() => a2.value.showTopPrize === true);
+    const boatImage = computed(() => a2.value.boatImage || "/games/fishing/boat-default.png?v=2");
+    const fishImage = computed(() => a2.value.fishImage || "/games/fishing/fish-default.png?v=1");
+    const fishImgs = computed(() => [a2.value.fish1, a2.value.fish2, a2.value.fish3].filter(Boolean));
+    const fishFaceSign = computed(() => a2.value.fishFaceLeft ? -1 : 1);
+    const fishermanSheet = computed(() => a2.value.fishermanSheet || "");
+    const spriteChroma = computed(() => a2.value.spriteChroma === true);
+    const fishermanFrames = computed(() => {
+      const n2 = Number(a2.value.fishermanFrames) || 0;
+      return n2 > 0 ? n2 : 1;
+    });
+    const boatOk = ref(true);
+    const introEnabled = computed(() => a2.value.introEnabled !== false);
+    const introTitleImage = computed(() => a2.value.introTitleImage || "");
+    const introSubtitle = computed(() => a2.value.introSubtitle || "Cast your line to reel in instant prizes");
+    const introButtonText = computed(() => a2.value.introButtonText || "Cast Off 🎣");
+    const introVoiceEnabled = computed(() => a2.value.introVoiceEnabled === true);
+    const gameName = computed(() => a2.value.name || "");
+    const welcomeMsg = computed(() => (a2.value.introWelcomeText || "Welcome to {name}").replace("{name}", gameName.value || "the catch"));
+    const showIntro = ref(false);
+    const THEMES = {
+      chill: { skyTop: "#7ecbff", skyBot: "#cdeeff", surfTop: "#3fb6e0", surfBot: "#1f8fc0", deepTop: "#1f8fc0", deepBot: "#063a63", sand: "#e6cf86", weed: "#1f8f5a", sun: "#fff2a8", glow: "#ffe55c", foam: "#f2fcff" },
+      sunset: { skyTop: "#3a2a66", skyBot: "#ffb27a", surfTop: "#e0795f", surfBot: "#9c4a6e", deepTop: "#7a3a6a", deepBot: "#241036", sand: "#caa05e", weed: "#7a5a2a", sun: "#fff1c2", glow: "#ff9d5c", foam: "#ffe9d6" },
+      night: { skyTop: "#050a1f", skyBot: "#122a4a", surfTop: "#14405e", surfBot: "#0a2a40", deepTop: "#0a2a40", deepBot: "#02101c", sand: "#2a3d4a", weed: "#14564a", sun: "#eaf4ff", glow: "#9fd0ff", foam: "#bcd8ec" },
+      stormy: { skyTop: "#2e3742", skyBot: "#6b7b85", surfTop: "#3c5560", surfBot: "#24383f", deepTop: "#24383f", deepBot: "#0c181c", sand: "#5a5f52", weed: "#3e5a44", sun: "#b9c6cd", glow: "#d2dbe0", foam: "#dbe4e8" }
+    };
+    const pal = computed(() => THEMES[String(a2.value.theme || "stormy")] || THEMES.stormy);
+    const underwaterImage = computed(() => a2.value.underwaterImage || "/games/fishing/underwater-default.png?v=1");
+    const FISH_PALETTE = ["#ffb74d", "#ff8a65", "#4fc3f7", "#ba68c8", "#aed581", "#fff176"];
+    const bubbles = Array.from({ length: 24 }, (_2, i2) => ({
+      id: i2,
+      x: 40 + i2 * 137 % 920,
+      r: 3 + i2 * 7 % 5 * 1.6,
+      dur: 5 + i2 * 3 % 6,
+      delay: -(i2 * 1.7 % 7)
+    }));
+    const weeds = Array.from({ length: 9 }, (_2, i2) => ({ id: i2, x: 70 + i2 * 108 + i2 * 13 % 30, h: 90 + i2 * 29 % 90, delay: -(i2 * 0.6 % 3) }));
+    const casts = ref([]);
+    const index = ref(0);
+    const phase = ref("ready");
+    const showPrize = ref(false);
+    const isWin = (t3) => !!((t3 == null ? void 0 : t3.instant_win) && t3.instant_win.prize && t3.instant_win.prize !== "NO WIN");
+    function categoryFor(iw) {
+      const cats = props.instant_win_categories || [];
+      if (!iw) return null;
+      return (iw.category_id != null ? cats.find((c2) => c2.id === iw.category_id) : null) || cats.find((c2) => c2.name && (c2.name === iw.prize || c2.name === iw.name)) || null;
+    }
+    function buildCasts() {
+      casts.value = (props.tickets || []).map((t3) => {
+        const iw = t3 == null ? void 0 : t3.instant_win;
+        const won = isWin(t3);
+        const cat = won ? categoryFor(iw) : null;
+        return {
+          id: t3.id ?? t3.number,
+          number: String(t3.number ?? t3.id ?? ""),
+          win: won,
+          prize: won ? String(iw.prize) : "",
+          value: Number((iw == null ? void 0 : iw.value) || (cat == null ? void 0 : cat.value) || 0),
+          image: (iw == null ? void 0 : iw.image_path) || (cat == null ? void 0 : cat.image_path) || "",
+          isBundle: won && ((iw == null ? void 0 : iw.prize_type) ?? (cat == null ? void 0 : cat.prize_type)) === "ticket_bundle"
+        };
+      });
+      index.value = 0;
+      caughtIds.value = [];
+      resetCast();
+      rebuildSwimmers();
+    }
+    const mode = ref("all");
+    const speed = ref(1);
+    const playList = computed(() => mode.value === "winners" ? casts.value.filter((c2) => c2.win) : casts.value);
+    const current = computed(() => playList.value[index.value] ?? null);
+    const total = computed(() => playList.value.length);
+    const caught = computed(() => playList.value.slice(0, phase.value === "done" ? total.value : index.value + (phase.value === "result" ? 1 : 0)).filter((c2) => c2.win).length);
+    const wins = computed(() => casts.value.filter((c2) => c2.win));
+    const caughtIds = ref([]);
+    const catKey = (w2) => String(w2.image || w2.prize || w2.id);
+    const decoFish = ref([]);
+    function makeSwimmer(id, image, i2, chance = false, value = 0) {
+      const baseY = 700 + Math.random() * 600;
+      return {
+        id,
+        image,
+        chance,
+        value,
+        color: FISH_PALETTE[i2 % FISH_PALETTE.length],
+        x: 80 + Math.random() * 840,
+        baseY,
+        y: baseY,
+        bobAmp: 30 + Math.random() * 80,
+        bobSpeed: 0.3 + Math.random() * 0.5,
+        phase: Math.random() * Math.PI * 2,
+        size: 0.9 + Math.random() * 0.5,
+        dir: Math.random() < 0.5 ? 1 : -1,
+        speed: 48 + Math.random() * 70,
+        hooked: false,
+        caught: false,
+        haloR: 70,
+        haloDelay: -(i2 * 0.5),
+        wDur: 0.5 + i2 % 4 * 0.13,
+        wDelay: -(i2 * 0.17)
+      };
+    }
+    function rebuildSwimmers() {
+      const seen = /* @__PURE__ */ new Set();
+      const distinct = wins.value.filter((w2) => {
+        const k = catKey(w2);
+        if (seen.has(k)) return false;
+        seen.add(k);
+        return true;
+      }).filter((w2) => wins.value.some((x) => catKey(x) === catKey(w2) && !caughtIds.value.includes(x.id)));
+      const list = distinct.map((w2, i2) => makeSwimmer(catKey(w2), w2.image || introTitleImage.value || fishImage.value, i2, false, Number(w2.value) || 0));
+      const winKeys = new Set(list.map((s2) => s2.id));
+      const chanceSeen = /* @__PURE__ */ new Set();
+      let ci = list.length;
+      for (const c2 of props.instant_win_categories || []) {
+        if (!c2 || c2.available !== void 0 && c2.available <= 0) continue;
+        const key = String(c2.image_path || c2.name || c2.id);
+        if (winKeys.has(key) || chanceSeen.has(key)) continue;
+        chanceSeen.add(key);
+        list.push(makeSwimmer("chance:" + key, c2.image_path || introTitleImage.value || fishImage.value, ci++, true, Number(c2.value) || 0));
+        if (list.length >= distinct.length + 8) break;
+      }
+      if (!list.length) {
+        const imgs = fishImgs.value;
+        for (let i2 = 0; i2 < 5; i2++) list.push(makeSwimmer("amb:" + i2, imgs.length ? imgs[i2 % imgs.length] : "", i2, true));
+      }
+      const topVal = Math.max(1, ...list.map((f2) => Number(f2.value) || 0));
+      list.forEach((f2) => {
+        f2.haloR = 60 + Math.pow(Math.min(1, (Number(f2.value) || 0) / topVal), 0.55) * 95;
+      });
+      decoFish.value = list;
+    }
+    let swimRAF = 0;
+    let swimLast = 0;
+    function stepSwim(t3) {
+      const dt = swimLast ? Math.min(0.05, (t3 - swimLast) / 1e3) : 0;
+      swimLast = t3;
+      const v2 = view.value, left = v2.x - 140, right = v2.x + v2.w + 140;
+      for (const sw of decoFish.value) {
+        if (sw.hooked) continue;
+        sw.x += sw.speed * sw.dir * dt;
+        if (sw.x > right) sw.x = left;
+        else if (sw.x < left) sw.x = right;
+        sw.y = sw.baseY + Math.sin(t3 / 1e3 * sw.bobSpeed + sw.phase) * sw.bobAmp;
+      }
+      swimRAF = requestAnimationFrame(stepSwim);
+    }
+    function startSwim() {
+      stopSwim();
+      swimLast = 0;
+      swimRAF = requestAnimationFrame(stepSwim);
+    }
+    function stopSwim() {
+      if (swimRAF) {
+        cancelAnimationFrame(swimRAF);
+        swimRAF = 0;
+      }
+    }
+    const topPrize = computed(() => {
+      const list = (props.instant_win_categories || []).filter((c2) => c2 && Number(c2.value) > 0 && (c2.available === void 0 || c2.available > 0));
+      if (!list.length) return null;
+      const nonBundle = list.filter((c2) => c2.prize_type !== "ticket_bundle");
+      const pool = nonBundle.length ? nonBundle : list;
+      return pool.reduce((best, c2) => Number(c2.value) > Number(best.value) ? c2 : best);
+    });
+    const topPrizeLabel = computed(() => {
+      const p2 = topPrize.value;
+      if (!p2) return "";
+      const name = String(p2.name || "").trim();
+      const v2 = Number(p2.value);
+      if (p2.prize_type === "ticket_bundle") return !v2 || /ticket/i.test(name) ? name : `${name ? name + " · " : ""}${Math.floor(v2)} Free Ticket${v2 == 1 ? "" : "s"}`;
+      const money = v2 ? `£${v2 % 1 === 0 ? v2 : v2.toFixed(2)}` : "";
+      return !money || /£\s*\d/.test(name) ? name : `${name} · ${money}`;
+    });
+    const currentValueLabel = computed(() => {
+      const p2 = current.value;
+      const v2 = Number((p2 == null ? void 0 : p2.value) || 0);
+      if (!v2) return "";
+      if (p2 == null ? void 0 : p2.isBundle) return /ticket/i.test((p2 == null ? void 0 : p2.prize) || "") ? "" : `${Math.floor(v2)} Free Ticket${v2 == 1 ? "" : "s"}`;
+      if (/£\s*\d/.test((p2 == null ? void 0 : p2.prize) || "")) return "";
+      return `£${v2 % 1 === 0 ? v2 : v2.toFixed(2)}`;
+    });
+    const rodTipLocal = computed(() => ({ x: 745, y: -64 }));
+    const HOOK_REST = { x: 745, y: 400 };
+    const HOOK_DEPTH = { x: 690, y: 1e3 };
+    const boatWaterline = computed(() => Number(a2.value.boatWaterline) || 0);
+    const boatBaseY = computed(() => SURFACE_Y - 185 + boatWaterline.value);
+    const waveSpan = computed(() => {
+      const v2 = view.value;
+      return { x0: Math.floor((v2.x - 480) / 480) * 480, x1: v2.x + v2.w + 480 };
+    });
+    function tiledWave(y2, a1, a22) {
+      const { x0, x1 } = waveSpan.value;
+      let d2 = `M${x0} ${y2}`;
+      for (let x = x0, i2 = 0; x < x1; x += SEG, i2++) {
+        const amp = i2 % 2 ? a22 : a1;
+        d2 += ` c 53 ${amp} 187 ${amp} ${SEG} 0`;
+      }
+      return d2;
+    }
+    const waveBackPath = computed(() => tiledWave(SURFACE_Y - 4, -50, -76) + ` V${SURFACE_Y + 210} H${waveSpan.value.x0} Z`);
+    const waveFrontFill = computed(() => tiledWave(SURFACE_Y + 8, -68, -42) + ` V${SURFACE_Y + 210} H${waveSpan.value.x0} Z`);
+    const waveFrontLine = computed(() => tiledWave(SURFACE_Y + 8, -68, -42));
+    function seabed(top) {
+      const v2 = view.value, x0 = v2.x - 200, x1 = v2.x + v2.w + 200, floor = bg.value.floor;
+      let d2 = `M${x0} ${top} q 250 -64 500 0`;
+      for (let x = x0 + 500; x < x1; x += 500) d2 += ` t 500 0`;
+      return d2 + ` V${floor} H${x0} Z`;
+    }
+    const sandPath = computed(() => seabed(bg.value.floor - 118));
+    const ridgePath = computed(() => seabed(bg.value.floor - 165));
+    const scene = reactive({ rodAngle: 0, hookX: HOOK_REST.x, hookY: HOOK_REST.y, fishO: 0, fishX: HOOK_DEPTH.x, fishY: HOOK_DEPTH.y });
+    const boat = reactive({ rot: 0, y: 0, x: 0, sy: 1 });
+    const sunSpin = reactive({ a: 0 });
+    let ambient = null;
+    let castTl = null;
+    function startAmbient() {
+      stopAmbient();
+      ambient = gsapWithCSS.timeline();
+      gsapWithCSS.to(sunSpin, { a: 360, duration: 70, repeat: -1, ease: "none" });
+      gsapWithCSS.to(boat, { rot: 2.6, duration: 2.9, repeat: -1, yoyo: true, ease: "sine.inOut" });
+      gsapWithCSS.to(boat, { y: 12, duration: 3.5, repeat: -1, yoyo: true, ease: "sine.inOut" });
+      gsapWithCSS.fromTo(boat, { x: -75 }, { x: 75, duration: 8, repeat: -1, yoyo: true, ease: "sine.inOut" });
+      gsapWithCSS.to(boat, { sy: 1.04, duration: 3.4, repeat: -1, yoyo: true, ease: "sine.inOut" });
+    }
+    function stopAmbient() {
+      gsapWithCSS.killTweensOf([sunSpin, boat]);
+      ambient == null ? void 0 : ambient.kill();
+      ambient = null;
+    }
+    function resetCast() {
+      castTl == null ? void 0 : castTl.kill();
+      castTl = null;
+      phase.value = "ready";
+      showPrize.value = false;
+      Object.assign(scene, { rodAngle: 0, hookX: HOOK_REST.x, hookY: HOOK_REST.y, fishO: 0, fishX: HOOK_DEPTH.x, fishY: HOOK_DEPTH.y });
+    }
+    const rodTip = computed(() => {
+      const ra = (scene.rodAngle || 0) * Math.PI / 180, rc = Math.cos(ra), rs = Math.sin(ra);
+      const RT = rodTipLocal.value;
+      let lx = (RT.x - 527) * rc - (RT.y - 24) * rs + 527;
+      let ly = (RT.x - 527) * rs + (RT.y - 24) * rc + 24;
+      lx -= 500;
+      ly = (ly + boat.y) * boat.sy;
+      const r2 = boat.rot * Math.PI / 180, c2 = Math.cos(r2), s2 = Math.sin(r2);
+      return { x: lx * c2 - ly * s2 + 500 + boat.x, y: lx * s2 + ly * c2 + boatBaseY.value };
+    });
+    const linePath = computed(() => {
+      const rt = rodTip.value;
+      return `M ${rt.x} ${rt.y} Q ${(rt.x + scene.hookX) / 2} ${(rt.y + scene.hookY) / 2 + 18}, ${scene.hookX} ${scene.hookY}`;
+    });
+    const prompt = computed(() => {
+      var _a;
+      return phase.value === "ready" ? titleText.value : phase.value === "casting" ? "Casting…" : phase.value === "waiting" ? "Wait for a bite…" : phase.value === "reeling" ? "Reel it in!" : phase.value === "result" ? ((_a = current.value) == null ? void 0 : _a.win) ? winText.value : loseText.value : "";
+    });
+    let audio = null;
+    function play(src) {
+      if (!src || props.demoMode) return;
+      try {
+        audio = new Audio(src);
+        audio.volume = 0.85;
+        void audio.play();
+      } catch {
+      }
+    }
+    function playWelcome() {
+      if (a2.value.welcomeSound) {
+        play(a2.value.welcomeSound);
+        return;
+      }
+      if (!introVoiceEnabled.value || typeof window === "undefined" || !window.speechSynthesis) return;
+      try {
+        const u2 = new SpeechSynthesisUtterance(welcomeMsg.value);
+        u2.rate = 1;
+        u2.pitch = 1.05;
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(u2);
+      } catch {
+      }
+    }
+    function cancelSpeech() {
+      var _a;
+      try {
+        (_a = window.speechSynthesis) == null ? void 0 : _a.cancel();
+      } catch {
+      }
+    }
+    const introCard = ref(null);
+    watch(() => props.tickets, buildCasts, { immediate: true, deep: true });
+    watch(() => props.modelValue, (open) => {
+      if (open) {
+        mode.value = "all";
+        buildCasts();
+        startAmbient();
+        startSwim();
+        showIntro.value = introEnabled.value;
+        if (showIntro.value && !props.demoMode) playWelcome();
+      } else {
+        stopAmbient();
+        stopSwim();
+        castTl == null ? void 0 : castTl.kill();
+        cancelSpeech();
+      }
+    }, { immediate: true });
+    watch(showIntro, (on) => {
+      if (!on) return;
+      nextTick(() => {
+        const el = introCard.value;
+        if (!el) return;
+        gsapWithCSS.killTweensOf(el);
+        const tl = gsapWithCSS.timeline();
+        tl.from(el, { scale: 0.3, opacity: 0, duration: 0.45, ease: "back.out(2.2)" }).to(el, { scale: 1.04, duration: 0.1, yoyo: true, repeat: 1, ease: "sine.inOut" }).from(el.querySelectorAll(".fsh-intro-logo, .fsh-intro-welcome, .fsh-set-label"), { y: 16, opacity: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" }, "-=0.3").from(el.querySelectorAll(".fsh-chip"), { y: 22, scale: 0.7, opacity: 0, duration: 0.32, stagger: 0.05, ease: "back.out(2)" }, "-=0.18").from(el.querySelector(".fsh-intro-start"), { y: 20, opacity: 0, duration: 0.3, ease: "back.out(2)" }, "-=0.06");
+      });
+    });
+    watch(() => a2.value.boatImage, () => {
+      boatOk.value = true;
+    });
+    watch(introEnabled, (on) => {
+      if (props.demoMode) showIntro.value = on;
+    });
+    onBeforeUnmount(() => {
+      stopAmbient();
+      stopSwim();
+      castTl == null ? void 0 : castTl.kill();
+      cancelSpeech();
+      stageRO == null ? void 0 : stageRO.disconnect();
+    });
+    return (_ctx, _push, _parent, _attrs) => {
+      ssrRenderTeleport(_push, (_push2) => {
+        if (__props.modelValue || __props.demoMode) {
+          _push2(`<div class="${ssrRenderClass([frameClass.value, "fsh-root"])}" data-v-fe24a048><div class="fsh-frame" data-v-fe24a048>`);
+          if (!__props.demoMode) {
+            _push2(`<button class="fsh-close" aria-label="Close" data-v-fe24a048>✕</button>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          _push2(`<div class="fsh-hud" data-v-fe24a048><div class="fsh-hud-left" data-v-fe24a048>CAST ${ssrInterpolate(Math.min(index.value + 1, total.value))}/${ssrInterpolate(total.value)} · 🎣 ${ssrInterpolate(caught.value)}</div><div class="fsh-hud-title" style="${ssrRenderStyle({ color: textColor.value })}" data-v-fe24a048>${ssrInterpolate(gameName.value || "Fishing")}</div></div>`);
+          if (showTopPrize.value && topPrizeLabel.value) {
+            _push2(`<div class="fsh-topprize" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-fe24a048><span class="fsh-topprize-pill" style="${ssrRenderStyle({ background: accent.value })}" data-v-fe24a048>£</span><span class="fsh-topprize-val" data-v-fe24a048><b style="${ssrRenderStyle({ color: accent.value })}" data-v-fe24a048>TOP PRIZE</b> ${ssrInterpolate(topPrizeLabel.value)}</span></div>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          _push2(`<div class="fsh-stage" data-v-fe24a048><svg class="fsh-svg"${ssrRenderAttr("viewBox", sceneViewBox.value)} preserveAspectRatio="xMidYMid slice" data-v-fe24a048><defs data-v-fe24a048><linearGradient id="fsh-sky" x1="0" y1="0" x2="0" y2="1" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.skyTop)} data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.skyBot)} data-v-fe24a048></stop></linearGradient><linearGradient id="fsh-deep" x1="0" y1="0" x2="0" y2="1" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.surfTop)} data-v-fe24a048></stop><stop offset="0.25"${ssrRenderAttr("stop-color", pal.value.deepTop)} data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.deepBot)} data-v-fe24a048></stop></linearGradient><radialGradient id="fsh-sun" cx="0.5" cy="0.5" r="0.5" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.sun)} data-v-fe24a048></stop><stop offset="0.55"${ssrRenderAttr("stop-color", pal.value.glow)} data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.glow)} stop-opacity="0" data-v-fe24a048></stop></radialGradient><linearGradient id="fsh-ray" x1="0" y1="0" x2="0" y2="1" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.glow)} stop-opacity="0.28" data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.glow)} stop-opacity="0" data-v-fe24a048></stop></linearGradient><filter id="fsh-glow" x="-60%" y="-60%" width="220%" height="220%" data-v-fe24a048><feDropShadow dx="0" dy="0" stdDeviation="7"${ssrRenderAttr("flood-color", pal.value.glow)} flood-opacity="0.9" data-v-fe24a048></feDropShadow></filter><filter id="fsh-ripple" x="-8%" y="-8%" width="116%" height="116%" data-v-fe24a048><feTurbulence type="fractalNoise" baseFrequency="0.01 0.018" numOctaves="2" seed="5" result="n" data-v-fe24a048><animate attributeName="baseFrequency" dur="13s" values="0.01 0.018;0.017 0.032;0.01 0.018" repeatCount="indefinite" data-v-fe24a048></animate></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="36" xChannelSelector="R" yChannelSelector="G" result="d" data-v-fe24a048></feDisplacementMap><feGaussianBlur in="d" stdDeviation="1.2" data-v-fe24a048></feGaussianBlur></filter><filter id="fsh-ripple-fish" x="-60%" y="-60%" width="220%" height="220%" data-v-fe24a048><feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="2" seed="9" result="n" data-v-fe24a048><animate attributeName="baseFrequency" dur="8s" values="0.02 0.03;0.03 0.044;0.02 0.03" repeatCount="indefinite" data-v-fe24a048></animate></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="15" xChannelSelector="R" yChannelSelector="G" result="d" data-v-fe24a048></feDisplacementMap><feDropShadow in="d" dx="0" dy="0" stdDeviation="7"${ssrRenderAttr("flood-color", pal.value.glow)} flood-opacity="0.8" data-v-fe24a048></feDropShadow></filter><filter id="fsh-fishglow" x="-55%" y="-55%" width="210%" height="210%" data-v-fe24a048><feDropShadow dx="0" dy="0" stdDeviation="8"${ssrRenderAttr("flood-color", pal.value.glow)} flood-opacity="0.75" data-v-fe24a048></feDropShadow></filter><filter id="fsh-catchglow" x="-160%" y="-160%" width="420%" height="420%" data-v-fe24a048><feDropShadow dx="0" dy="0" stdDeviation="18"${ssrRenderAttr("flood-color", accent.value)} flood-opacity="0.98" result="s1" data-v-fe24a048></feDropShadow><feDropShadow in="s1" dx="0" dy="0" stdDeviation="46"${ssrRenderAttr("flood-color", accent.value)} flood-opacity="0.55" data-v-fe24a048></feDropShadow></filter><radialGradient id="fsh-halo" cx="0.5" cy="0.5" r="0.5" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0.6" data-v-fe24a048></stop><stop offset="0.45"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0.3" data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0" data-v-fe24a048></stop></radialGradient><linearGradient id="fsh-blend" x1="0" y1="0" x2="0" y2="1" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.surfBot)} stop-opacity="0.95" data-v-fe24a048></stop><stop offset="0.5"${ssrRenderAttr("stop-color", pal.value.surfBot)} stop-opacity="0.35" data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.surfBot)} stop-opacity="0" data-v-fe24a048></stop></linearGradient><clipPath id="fsh-underclip" data-v-fe24a048><rect${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", SURFACE_Y)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", bg.value.bottom - SURFACE_Y)} data-v-fe24a048></rect></clipPath><linearGradient id="fsh-depth" x1="0" y1="0" x2="0" y2="1" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.deepBot)} stop-opacity="0" data-v-fe24a048></stop><stop offset="0.55"${ssrRenderAttr("stop-color", pal.value.deepBot)} stop-opacity="0" data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.deepBot)} stop-opacity="0.6" data-v-fe24a048></stop></linearGradient><linearGradient id="fsh-surf-a" x1="0" y1="0" x2="0" y2="1" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.surfTop)} stop-opacity="0.92" data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.surfTop)} stop-opacity="0" data-v-fe24a048></stop></linearGradient><linearGradient id="fsh-surf-b" x1="0" y1="0" x2="0" y2="1" data-v-fe24a048><stop offset="0"${ssrRenderAttr("stop-color", pal.value.surfBot)} stop-opacity="0.85" data-v-fe24a048></stop><stop offset="1"${ssrRenderAttr("stop-color", pal.value.surfBot)} stop-opacity="0" data-v-fe24a048></stop></linearGradient></defs><rect${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", bg.value.top)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", SURFACE_Y - bg.value.top + 20)} fill="url(#fsh-sky)" data-v-fe24a048></rect>`);
+          if (sunEnabled.value) {
+            _push2(`<g transform="translate(815 120)" data-v-fe24a048><g class="fsh-sunglow" data-v-fe24a048><circle r="158" fill="url(#fsh-sun)" opacity="0.38" data-v-fe24a048></circle><circle r="104" fill="url(#fsh-sun)" opacity="0.6" data-v-fe24a048></circle></g>`);
+            if (sunImage.value) {
+              _push2(`<image${ssrRenderAttr("href", sunImage.value)} x="-90" y="-90" width="180" height="180" preserveAspectRatio="xMidYMid meet" filter="url(#fsh-glow)" data-v-fe24a048></image>`);
+            } else {
+              _push2(`<g filter="url(#fsh-glow)" data-v-fe24a048><g${ssrRenderAttr("transform", `rotate(${sunSpin.a})`)} opacity="0.5" data-v-fe24a048><!--[-->`);
+              ssrRenderList(12, (r2) => {
+                _push2(`<rect x="-3" y="-150" width="6" height="56" rx="3"${ssrRenderAttr("fill", pal.value.sun)}${ssrRenderAttr("transform", `rotate(${r2 * 30})`)} data-v-fe24a048></rect>`);
+              });
+              _push2(`<!--]--></g><circle r="54"${ssrRenderAttr("fill", pal.value.sun)} data-v-fe24a048></circle></g>`);
+            }
+            _push2(`</g>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          if (cloudsEnabled.value) {
+            _push2(`<g${ssrRenderAttr("fill", pal.value.foam)} data-v-fe24a048><g class="fsh-cloud fsh-cloud-a" data-v-fe24a048><ellipse cx="0" cy="0" rx="60" ry="26" data-v-fe24a048></ellipse><ellipse cx="48" cy="9" rx="42" ry="22" data-v-fe24a048></ellipse><ellipse cx="-46" cy="10" rx="38" ry="20" data-v-fe24a048></ellipse></g><g class="fsh-cloud fsh-cloud-b" opacity="0.8" data-v-fe24a048><ellipse cx="0" cy="0" rx="46" ry="20" data-v-fe24a048></ellipse><ellipse cx="38" cy="7" rx="34" ry="17" data-v-fe24a048></ellipse></g></g>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          if (underwaterImage.value) {
+            _push2(`<image${ssrRenderAttr("href", underwaterImage.value)}${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", SURFACE_Y - 16)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", bg.value.bottom - SURFACE_Y + 16)} preserveAspectRatio="xMidYMid slice" filter="url(#fsh-ripple)" clip-path="url(#fsh-underclip)" data-v-fe24a048></image>`);
+          } else {
+            _push2(`<!--[--><rect${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", SURFACE_Y)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", bg.value.bottom - SURFACE_Y)} fill="url(#fsh-deep)" data-v-fe24a048></rect><g opacity="0.55" data-v-fe24a048><polygon${ssrRenderAttr("points", `700,${SURFACE_Y} 760,${SURFACE_Y} 1020,1180 880,1180`)} fill="url(#fsh-ray)" data-v-fe24a048></polygon><polygon${ssrRenderAttr("points", `320,${SURFACE_Y} 380,${SURFACE_Y} 240,1180 120,1180`)} fill="url(#fsh-ray)" data-v-fe24a048></polygon></g><path${ssrRenderAttr("d", ridgePath.value)}${ssrRenderAttr("fill", pal.value.deepBot)} opacity="0.55" data-v-fe24a048></path><path${ssrRenderAttr("d", sandPath.value)}${ssrRenderAttr("fill", pal.value.sand)} data-v-fe24a048></path><g${ssrRenderAttr("fill", pal.value.deepBot)} opacity="0.8" data-v-fe24a048><ellipse cx="170"${ssrRenderAttr("cy", bg.value.floor - 100)} rx="62" ry="26" data-v-fe24a048></ellipse><ellipse cx="830"${ssrRenderAttr("cy", bg.value.floor - 92)} rx="74" ry="30" data-v-fe24a048></ellipse><ellipse cx="540"${ssrRenderAttr("cy", bg.value.floor - 80)} rx="42" ry="17" data-v-fe24a048></ellipse></g><g${ssrRenderAttr("fill", pal.value.weed)} data-v-fe24a048><!--[-->`);
+            ssrRenderList(unref(weeds), (w2) => {
+              _push2(`<g class="fsh-weed" style="${ssrRenderStyle({ "--delay": w2.delay + "s" })}"${ssrRenderAttr("transform", `translate(${w2.x} ${bg.value.floor - 108})`)} data-v-fe24a048><path${ssrRenderAttr("d", `M0 0 q-14 ${-w2.h * 0.5} 2 ${-w2.h} q14 ${w2.h * 0.4} -2 0 Z`)} data-v-fe24a048></path></g>`);
+            });
+            _push2(`<!--]--></g><!--]-->`);
+          }
+          _push2(`<rect${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", SURFACE_Y)}${ssrRenderAttr("width", bg.value.w)} height="180" fill="url(#fsh-blend)" data-v-fe24a048></rect><rect${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", SURFACE_Y)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", bg.value.bottom - SURFACE_Y)} fill="url(#fsh-depth)" data-v-fe24a048></rect><g class="fsh-caustics"${ssrRenderAttr("fill", pal.value.foam)} data-v-fe24a048><ellipse class="fsh-caustic c1" cx="300"${ssrRenderAttr("cy", SURFACE_Y + 150)} rx="250" ry="22" data-v-fe24a048></ellipse><ellipse class="fsh-caustic c2" cx="720"${ssrRenderAttr("cy", SURFACE_Y + 330)} rx="290" ry="26" data-v-fe24a048></ellipse><ellipse class="fsh-caustic c3" cx="430"${ssrRenderAttr("cy", SURFACE_Y + 540)} rx="230" ry="20" data-v-fe24a048></ellipse></g><!--[-->`);
+          ssrRenderList(decoFish.value, (f2) => {
+            _push2(`<g${ssrRenderAttr("transform", `translate(${f2.x} ${f2.y})`)} data-v-fe24a048><circle class="fsh-prizehalo"${ssrRenderAttr("r", f2.haloR)} style="${ssrRenderStyle({ animationDelay: f2.haloDelay.toFixed(2) + "s" })}" fill="url(#fsh-halo)" data-v-fe24a048></circle>`);
+            if (f2.caught) {
+              _push2(`<g class="fsh-catch-fx"${ssrRenderAttr("fill", accent.value)} data-v-fe24a048><circle class="fsh-catch-ring" r="70" fill="none"${ssrRenderAttr("stroke", accent.value)} stroke-width="4" data-v-fe24a048></circle><!--[-->`);
+              ssrRenderList(8, (s2) => {
+                _push2(`<g${ssrRenderAttr("transform", `rotate(${s2 * 45}) translate(0 -76)`)} data-v-fe24a048><path class="fsh-spark" style="${ssrRenderStyle({ animationDelay: (s2 * 0.09).toFixed(2) + "s" })}" d="M0 -11 L3 -3 L11 0 L3 3 L0 11 L-3 3 L-11 0 L-3 -3 Z" data-v-fe24a048></path></g>`);
+              });
+              _push2(`<!--]--></g>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<g${ssrRenderAttr("transform", `scale(${(f2.image ? 1 : f2.dir * fishFaceSign.value) * f2.size} ${f2.size})`)} data-v-fe24a048><g class="fsh-wiggle" style="${ssrRenderStyle({ animationDuration: f2.wDur.toFixed(2) + "s", animationDelay: f2.wDelay.toFixed(2) + "s" })}" data-v-fe24a048>`);
+            if (f2.image) {
+              _push2(`<g${ssrRenderAttr("filter", f2.caught ? "url(#fsh-catchglow)" : "url(#fsh-fishglow)")} data-v-fe24a048><foreignObject x="-52" y="-38" width="104" height="76" data-v-fe24a048><img${ssrRenderAttr("src", f2.image)} style="${ssrRenderStyle({ "width": "100%", "height": "100%", "object-fit": "contain" })}" alt="" data-v-fe24a048></foreignObject></g>`);
+            } else {
+              _push2(`<g${ssrRenderAttr("filter", f2.caught ? "url(#fsh-catchglow)" : "url(#fsh-ripple-fish)")} data-v-fe24a048><ellipse cx="0" cy="0" rx="26" ry="14"${ssrRenderAttr("fill", f2.color)} data-v-fe24a048></ellipse><path d="M-22 0 l-20 -13 v26 z"${ssrRenderAttr("fill", f2.color)} data-v-fe24a048></path><circle cx="14" cy="-3" r="3" fill="#10202e" data-v-fe24a048></circle></g>`);
+            }
+            _push2(`</g></g></g>`);
+          });
+          _push2(`<!--]--><!--[-->`);
+          ssrRenderList(unref(bubbles), (b2) => {
+            _push2(`<circle class="fsh-bubble"${ssrRenderAttr("cx", b2.x)}${ssrRenderAttr("cy", bg.value.floor - 120)}${ssrRenderAttr("r", b2.r)}${ssrRenderAttr("fill", pal.value.foam)} style="${ssrRenderStyle({ "--dur": b2.dur + "s", "--delay": b2.delay + "s" })}" data-v-fe24a048></circle>`);
+          });
+          _push2(`<!--]--><path${ssrRenderAttr("d", linePath.value)} fill="none"${ssrRenderAttr("stroke", textColor.value)} stroke-width="2" opacity="0.85" data-v-fe24a048></path><g${ssrRenderAttr("transform", `translate(${scene.hookX} ${scene.hookY})`)} data-v-fe24a048><path d="M0 0 v16 a9 9 0 1 0 9 -9" fill="none"${ssrRenderAttr("stroke", textColor.value)} stroke-width="3" stroke-linecap="round" data-v-fe24a048></path></g><g class="fsh-wave fsh-wave-back" data-v-fe24a048><path${ssrRenderAttr("d", waveBackPath.value)} fill="url(#fsh-surf-a)" data-v-fe24a048></path></g><g${ssrRenderAttr("transform", `translate(${500 + boat.x} ${boatBaseY.value}) rotate(${boat.rot}) scale(1 ${boat.sy}) translate(-500 ${boat.y})`)} data-v-fe24a048>`);
+          if (boatImage.value && boatOk.value) {
+            _push2(`<foreignObject x="90" y="-150" width="820" height="385" data-v-fe24a048><img${ssrRenderAttr("src", boatImage.value)} style="${ssrRenderStyle({ "width": "100%", "height": "100%", "object-fit": "contain", "object-position": "center bottom" })}" alt="" data-v-fe24a048></foreignObject>`);
+          } else {
+            _push2(`<g data-v-fe24a048><path d="M250 150 q250 96 500 0 l-58 104 q-190 70 -384 0 z"${ssrRenderAttr("fill", primary.value)} data-v-fe24a048></path><path d="M250 150 q250 96 500 0 l-12 22 q-238 86 -476 0 z" fill="#fff" opacity="0.22" data-v-fe24a048></path></g>`);
+          }
+          if (fishermanSheet.value) {
+            _push2(`<foreignObject x="452" y="-118" width="150" height="180" data-v-fe24a048>`);
+            _push2(ssrRenderComponent(_sfc_main$o, {
+              sheet: fishermanSheet.value,
+              frames: fishermanFrames.value,
+              frame: 0,
+              "chroma-key": spriteChroma.value
+            }, null, _parent));
+            _push2(`</foreignObject>`);
+          } else {
+            _push2(`<g transform="translate(540 30)" data-v-fe24a048><rect x="-16" y="-4" width="34" height="20" rx="7" fill="#34495e" data-v-fe24a048></rect><path d="M-16 -4 q16 -14 32 0 l-5 -46 q-11 -8 -22 0 z"${ssrRenderAttr("fill", primary.value)} data-v-fe24a048></path><circle cx="0" cy="-58" r="15" fill="#e9b489" data-v-fe24a048></circle><path d="M-15 -62 a15 10 0 0 1 30 0 z" fill="#caa15e" data-v-fe24a048></path><rect x="-19" y="-63" width="38" height="5" rx="2" fill="#caa15e" data-v-fe24a048></rect></g>`);
+          }
+          _push2(`<g${ssrRenderAttr("transform", `rotate(${scene.rodAngle} 527 24)`)} data-v-fe24a048><line x1="527" y1="24"${ssrRenderAttr("x2", rodTipLocal.value.x)}${ssrRenderAttr("y2", rodTipLocal.value.y)} stroke="#6d4c33" stroke-width="7" stroke-linecap="round" data-v-fe24a048></line><circle${ssrRenderAttr("cx", rodTipLocal.value.x)}${ssrRenderAttr("cy", rodTipLocal.value.y)} r="4"${ssrRenderAttr("fill", accent.value)} data-v-fe24a048></circle></g></g><g class="fsh-wave fsh-wave-front" data-v-fe24a048><path${ssrRenderAttr("d", waveFrontFill.value)} fill="url(#fsh-surf-b)" data-v-fe24a048></path></g><g class="fsh-wave fsh-wave-front" data-v-fe24a048><path${ssrRenderAttr("d", waveFrontLine.value)} fill="none"${ssrRenderAttr("stroke", pal.value.foam)} stroke-width="6" stroke-linecap="round" opacity="0.6" data-v-fe24a048></path></g></svg><div class="fsh-prompt" style="${ssrRenderStyle({ color: textColor.value })}" data-v-fe24a048>${ssrInterpolate(prompt.value)}</div><div class="fsh-controls" data-v-fe24a048>`);
+          if (phase.value === "ready" && mode.value !== "auto") {
+            _push2(`<button class="fsh-cta fsh-cast-pulse" style="${ssrRenderStyle({ background: accent.value })}" data-v-fe24a048>CAST 🎣</button>`);
+          } else if (phase.value === "result" && current.value && !current.value.win && mode.value !== "auto") {
+            _push2(`<button class="fsh-cta" style="${ssrRenderStyle({ background: primary.value, color: textColor.value })}" data-v-fe24a048>${ssrInterpolate(index.value < total.value - 1 ? "Cast again →" : "Finish")}</button>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          if (!__props.demoMode && phase.value !== "done") {
+            _push2(`<button class="fsh-skip" data-v-fe24a048>Skip remaining</button>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          _push2(`</div></div>`);
+          if (showIntro.value) {
+            _push2(`<div class="fsh-overlay fsh-intro" data-v-fe24a048><div class="fsh-dive-bubbles" data-v-fe24a048><!--[-->`);
+            ssrRenderList(16, (n2) => {
+              _push2(`<span class="fsh-dive-bub" style="${ssrRenderStyle({ left: n2 * 61 % 100 + "%", width: 7 + n2 * 5 % 5 * 3 + "px", animationDelay: (-(n2 * 0.37 % 4)).toFixed(2) + "s", animationDuration: (2.3 + n2 * 7 % 10 * 0.16).toFixed(2) + "s" })}" data-v-fe24a048></span>`);
+            });
+            _push2(`<!--]--></div><div class="fsh-intro-card" style="${ssrRenderStyle({ "--glow": accent.value, borderColor: accent.value })}" data-v-fe24a048>`);
+            if (introTitleImage.value) {
+              _push2(`<img${ssrRenderAttr("src", introTitleImage.value)} class="fsh-intro-logo" alt="" data-v-fe24a048>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<div class="fsh-intro-welcome" style="${ssrRenderStyle({ color: textColor.value })}" data-v-fe24a048>${ssrInterpolate(welcomeMsg.value)}</div><div class="fsh-intro-sub" data-v-fe24a048>${ssrInterpolate(introSubtitle.value)}</div><div class="fsh-set-label" data-v-fe24a048>Choose your settings</div><div class="fsh-chip-row" data-v-fe24a048><button class="fsh-chip" style="${ssrRenderStyle(mode.value !== "auto" ? { borderColor: accent.value, background: accent.value, color: "#06223a" } : {})}" data-v-fe24a048>🎣 Manual</button><button class="fsh-chip" style="${ssrRenderStyle(mode.value === "auto" ? { borderColor: accent.value, background: accent.value, color: "#06223a" } : {})}" data-v-fe24a048>⚡ Auto</button></div><div class="fsh-set-label" data-v-fe24a048>Speed</div><div class="fsh-chip-row" data-v-fe24a048><button class="fsh-chip" style="${ssrRenderStyle(speed.value === 1 ? { borderColor: accent.value, background: accent.value, color: "#06223a" } : {})}" data-v-fe24a048>1×</button><button class="fsh-chip" style="${ssrRenderStyle(speed.value === 1.5 ? { borderColor: accent.value, background: accent.value, color: "#06223a" } : {})}" data-v-fe24a048>1.5×</button><button class="fsh-chip" style="${ssrRenderStyle(speed.value === 2 ? { borderColor: accent.value, background: accent.value, color: "#06223a" } : {})}" data-v-fe24a048>2×</button></div><button class="fsh-cta fsh-intro-start fsh-cast-pulse" style="${ssrRenderStyle({ background: accent.value })}" data-v-fe24a048>${ssrInterpolate(introButtonText.value)}</button></div></div>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          if (showPrize.value && current.value) {
+            _push2(`<div class="fsh-overlay" data-v-fe24a048><div class="fsh-card" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-fe24a048><div class="fsh-card-top" style="${ssrRenderStyle({ color: accent.value })}" data-v-fe24a048>${ssrInterpolate(winText.value)}</div><div class="fsh-card-visual" data-v-fe24a048>`);
+            if (current.value.image) {
+              _push2(`<img${ssrRenderAttr("src", current.value.image)} alt="prize" data-v-fe24a048>`);
+            } else {
+              _push2(`<span data-v-fe24a048>🏆</span>`);
+            }
+            _push2(`</div><div class="fsh-card-name" style="${ssrRenderStyle({ color: accent.value })}" data-v-fe24a048>${ssrInterpolate(current.value.prize)}</div>`);
+            if (currentValueLabel.value) {
+              _push2(`<div class="fsh-card-val" style="${ssrRenderStyle({ color: textColor.value })}" data-v-fe24a048>${ssrInterpolate(currentValueLabel.value)}</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<button class="fsh-cta" style="${ssrRenderStyle({ background: primary.value, color: textColor.value })}" data-v-fe24a048>${ssrInterpolate(index.value < total.value - 1 ? "Next cast →" : "Collect 🎉")}</button></div></div>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          if (phase.value === "done") {
+            _push2(`<div class="fsh-overlay" data-v-fe24a048><div class="fsh-card" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-fe24a048><div class="fsh-card-top" style="${ssrRenderStyle({ color: accent.value })}" data-v-fe24a048>${ssrInterpolate(wins.value.length ? "All cast!" : "All cast")}</div>`);
+            if (wins.value.length) {
+              _push2(`<!--[--><div class="fsh-card-name" style="${ssrRenderStyle({ color: textColor.value })}" data-v-fe24a048>You landed ${ssrInterpolate(caught.value)} ${ssrInterpolate(caught.value === 1 ? "catch" : "catches")}! 🎣</div><ul class="fsh-winlist" data-v-fe24a048><!--[-->`);
+              ssrRenderList(wins.value, (w2, i2) => {
+                _push2(`<li style="${ssrRenderStyle({ color: textColor.value })}" data-v-fe24a048><span style="${ssrRenderStyle({ color: accent.value })}" data-v-fe24a048>🐟</span> ${ssrInterpolate(w2.prize)}`);
+                if (w2.isBundle && w2.value && !/ticket/i.test(w2.prize)) {
+                  _push2(`<span data-v-fe24a048> — ${ssrInterpolate(Math.floor(w2.value))} Free Ticket${ssrInterpolate(w2.value == 1 ? "" : "s")}</span>`);
+                } else if (w2.value && !w2.isBundle) {
+                  _push2(`<span data-v-fe24a048> — £${ssrInterpolate(w2.value)}</span>`);
+                } else {
+                  _push2(`<!---->`);
+                }
+                _push2(`</li>`);
+              });
+              _push2(`<!--]--></ul><!--]-->`);
+            } else {
+              _push2(`<div class="fsh-card-name" style="${ssrRenderStyle({ color: textColor.value })}" data-v-fe24a048>No catch this time — tight lines next round! 🎣</div>`);
+            }
+            _push2(`<button class="fsh-cta" style="${ssrRenderStyle({ background: primary.value, color: textColor.value })}" data-v-fe24a048>Close</button></div></div>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          _push2(`</div></div>`);
+        } else {
+          _push2(`<!---->`);
+        }
+      }, "body", __props.demoMode, _parent);
+    };
+  }
+});
+const _sfc_setup$m = _sfc_main$m.setup;
+_sfc_main$m.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/FishingModal.vue");
+  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
+};
+const FishingModal = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-fe24a048"]]);
+const BAND_START = 1380;
+const RISER_DUR = 1.8, RISER_COUNT = 3;
+const _sfc_main$l = /* @__PURE__ */ defineComponent({
+  __name: "TicketEaterModal",
+  __ssrInlineRender: true,
+  props: {
+    modelValue: { type: Boolean, default: false },
+    demoMode: { type: Boolean, default: false },
+    previewMode: { default: "desktop" },
+    assets: { default: () => ({}) },
+    tickets: { default: () => [] },
+    instant_win_categories: { default: () => [] }
+  },
+  emits: ["update:modelValue", "wins-collected"],
+  setup(__props, { emit: __emit }) {
+    const props = __props;
+    const emit = __emit;
+    const a2 = computed(() => props.assets || {});
+    const demoPreviewMode = ref("mobile");
+    const actualPreviewMode = computed(() => props.demoMode ? demoPreviewMode.value : props.previewMode || "desktop");
+    const frameClass = computed(() => props.demoMode ? actualPreviewMode.value === "mobile" ? "is-mobile" : "is-desktop" : "");
+    const CORE = { x: 0, y: 0, w: 1e3, h: 1400 };
+    const CORE_CX = CORE.x + CORE.w / 2;
+    const stageEl = ref(null);
+    const stageAspect = ref(CORE.w / CORE.h);
+    let stageRO = null;
+    watch(stageEl, (el) => {
+      stageRO == null ? void 0 : stageRO.disconnect();
+      if (el && typeof ResizeObserver !== "undefined") {
+        stageRO = new ResizeObserver((entries) => {
+          var _a;
+          const r2 = (_a = entries[0]) == null ? void 0 : _a.contentRect;
+          if (r2 && r2.width > 0 && r2.height > 0) stageAspect.value = r2.width / r2.height;
+        });
+        stageRO.observe(el);
+      }
+    }, { flush: "post" });
+    const view = computed(() => {
+      const ar = stageAspect.value;
+      const coreAspect = CORE.w / CORE.h;
+      if (ar >= coreAspect) {
+        const h22 = CORE.h, w22 = h22 * ar;
+        return { x: CORE_CX - w22 / 2, y: CORE.y, w: w22, h: h22 };
+      }
+      const w2 = CORE.w, h2 = w2 / ar;
+      return { x: CORE.x, y: CORE.y, w: w2, h: h2 };
+    });
+    const sceneViewBox = computed(() => `${view.value.x} ${view.value.y} ${view.value.w} ${view.value.h}`);
+    const bg = computed(() => {
+      const v2 = view.value;
+      return { x: v2.x - 200, w: v2.w + 400, top: v2.y - 100, bottom: v2.y + v2.h + 200, floor: v2.y + v2.h };
+    });
+    const titleText = computed(() => a2.value.titleText || "Feed the Eater!");
+    const accent = computed(() => a2.value.accentColor || "#ffd54f");
+    const primary = computed(() => a2.value.primaryColor || "#6c5ce7");
+    const textColor = computed(() => a2.value.textColor || "#ffffff");
+    const showTopPrize = computed(() => a2.value.showTopPrize === true);
+    const gameName = computed(() => a2.value.name || "");
+    const ticketImage = computed(() => a2.value.ticketImage || "");
+    const risingTicketImage = computed(() => a2.value.risingTicketImage || "");
+    const backgroundImage = computed(() => a2.value.backgroundImage || "");
+    const prizeImage = computed(() => a2.value.prizeImage || "");
+    const titleImage = computed(() => a2.value.introTitleImage || "");
+    computed(() => a2.value.mascotImage || "");
+    const introEnabled = computed(() => a2.value.introEnabled !== false);
+    const introSubtitle = computed(() => a2.value.introSubtitle || "Roll through your tickets to reveal instant prizes");
+    const introButtonText = computed(() => a2.value.introButtonText || "Start 👹");
+    const welcomeMsg = computed(() => (a2.value.introWelcomeText || "Welcome to {name}").replace("{name}", gameName.value || "the game"));
+    const showIntro = ref(false);
+    const introPhase = ref("splash");
+    ref(null);
+    ref(null);
+    const THEMES = {
+      arcade: { bgTop: "#1b1040", bgBot: "#2a1a52", ticket: "#fff8e6", edge: "#c79a1f", num: "#241026", glow: "#ffd54f" },
+      cave: { bgTop: "#1c2a2e", bgBot: "#0c1719", ticket: "#eafff5", edge: "#3f9c78", num: "#0c2a1c", glow: "#8effc8" },
+      candy: { bgTop: "#ff9ec4", bgBot: "#ffcfe3", ticket: "#ffffff", edge: "#cf4d83", num: "#5e1638", glow: "#fff36b" },
+      spooky: { bgTop: "#14121f", bgBot: "#241f38", ticket: "#f0ffe6", edge: "#5a9c33", num: "#14121f", glow: "#9dff5c" }
+    };
+    const pal = computed(() => THEMES[String(a2.value.theme || "arcade")] || THEMES.arcade);
+    const numberColor = computed(() => a2.value.numberColor || pal.value.num);
+    const casts = ref([]);
+    function isWin(t3) {
+      const iw = t3 == null ? void 0 : t3.instant_win;
+      return !!(iw && (iw.prize || Number(iw.value) > 0 || iw.image_path || iw.category_id != null));
+    }
+    function categoryFor(iw) {
+      const cats = props.instant_win_categories || [];
+      if (!iw) return null;
+      return (iw.category_id != null ? cats.find((c2) => c2.id === iw.category_id) : null) || cats.find((c2) => c2.name && (c2.name === iw.prize || c2.name === iw.name)) || null;
+    }
+    function buildCasts() {
+      if (props.demoMode) {
+        const cats = props.instant_win_categories || [];
+        const n2 = 200;
+        const winPos = /* @__PURE__ */ new Set([9, 19, 29]);
+        casts.value = Array.from({ length: n2 }, (_2, i2) => {
+          const won = winPos.has(i2) && cats.length > 0;
+          const cat = won ? cats[i2 % cats.length] : null;
+          return {
+            id: i2 + 1,
+            number: String(1 + Math.floor(Math.random() * 15e4)),
+            win: !!won,
+            // random, shuffled — like real tickets
+            prize: won ? String(cat.name) : "",
+            value: won ? Number(cat.value || 0) : 0,
+            image: won ? cat.image_path || "" : "",
+            isBundle: false
+          };
+        });
+        resetRun();
+        return;
+      }
+      casts.value = (props.tickets || []).map((t3) => {
+        const iw = t3 == null ? void 0 : t3.instant_win;
+        const won = isWin(t3);
+        const cat = won ? categoryFor(iw) : null;
+        return {
+          id: t3.id ?? t3.number,
+          number: String(t3.number ?? t3.id ?? ""),
+          win: won,
+          prize: won ? String(iw.prize) : "",
+          value: Number((iw == null ? void 0 : iw.value) || (cat == null ? void 0 : cat.value) || 0),
+          image: (iw == null ? void 0 : iw.image_path) || (cat == null ? void 0 : cat.image_path) || "",
+          isBundle: won && ((iw == null ? void 0 : iw.prize_type) ?? (cat == null ? void 0 : cat.prize_type)) === "ticket_bundle"
+        };
+      });
+      resetRun();
+    }
+    const total = computed(() => casts.value.length);
+    const wins = computed(() => casts.value.filter((c2) => c2.win));
+    const mode = ref("auto");
+    const speed = ref(1);
+    const topPrize = computed(() => {
+      const list = (props.instant_win_categories || []).filter((c2) => c2 && Number(c2.value) > 0 && (c2.available === void 0 || c2.available > 0));
+      if (!list.length) return null;
+      const nonBundle = list.filter((c2) => c2.prize_type !== "ticket_bundle");
+      const pool = nonBundle.length ? nonBundle : list;
+      return pool.reduce((best, c2) => Number(c2.value) > Number(best.value) ? c2 : best);
+    });
+    const topPrizeLabel = computed(() => {
+      const p2 = topPrize.value;
+      if (!p2) return "";
+      const name = String(p2.name || "").trim();
+      const v2 = Number(p2.value);
+      if (p2.prize_type === "ticket_bundle") return !v2 || /ticket/i.test(name) ? name : `${name ? name + " · " : ""}${Math.floor(v2)} Free Ticket${v2 == 1 ? "" : "s"}`;
+      const money = v2 ? `£${v2 % 1 === 0 ? v2 : v2.toFixed(2)}` : "";
+      return !money || /£\s*\d/.test(name) ? name : `${name} · ${money}`;
+    });
+    const TICKET = { x: 500, y: 470 };
+    const scene = reactive({ winFlash: 0, heat: 0, readerY: 0, releaseY: 0, releaseO: 0, prizeX: TICKET.x, prizeY: 540, prizeO: 0, prizeScale: 0, prizeRot: 0 });
+    const releaseIdx = ref(0);
+    const showReaderNum = ref(true);
+    const readerFlash = ref(false);
+    const band = ref([]);
+    let bandSeq = 0;
+    const bandTweens = /* @__PURE__ */ new Map();
+    let pendingBandTicket = null;
+    function pauseBand() {
+      bandTweens.forEach((tw) => tw.pause());
+    }
+    function resumeBand() {
+      bandTweens.forEach((tw) => tw.resume());
+    }
+    function killBand() {
+      bandTweens.forEach((tw) => tw.kill());
+      bandTweens.clear();
+      pendingBandTicket = null;
+      band.value.forEach((t3) => gsapWithCSS.killTweensOf(t3));
+      band.value = [];
+    }
+    let autoTimer = null;
+    let autoRiseDur = 0.8;
+    function stopAuto() {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+    function spawnRise(i2, startY, dur) {
+      const c2 = casts.value[i2];
+      const t3 = reactive({ key: bandSeq++, idx: i2, y: startY, o: 1 });
+      band.value.push(t3);
+      const tw = gsapWithCSS.to(t3, { y: TICKET.y, duration: dur, ease: "none", onComplete: () => bandArrive(t3, c2, i2) });
+      bandTweens.set(t3.key, tw);
+    }
+    function autoTick() {
+      if (reveal.on) return;
+      if (releaseIdx.value >= total.value) {
+        stopAuto();
+        maybeFinish();
+        return;
+      }
+      spawnRise(releaseIdx.value++, BAND_START, autoRiseDur);
+    }
+    const phase = ref("ready");
+    const hud = reactive({ eaten: 0 });
+    const collected = ref([]);
+    const dropPrize = ref(null);
+    const eatenDisplay = computed(() => Math.min(total.value, Math.round(hud.eaten)));
+    const titleGlow = computed(() => Math.min(70, 8 + collected.value.length * 9));
+    const titleWiggleDur = computed(() => Math.max(1.3, 3 - collected.value.length * 0.28));
+    const mascotSrc = computed(() => {
+      const n2 = collected.value.length;
+      const f1 = a2.value.mascotImage || "";
+      const f2 = a2.value.mascotImage2 || f1;
+      const f3 = a2.value.mascotImage3 || f2;
+      return n2 >= 3 ? f3 : n2 >= 1 ? f2 : f1;
+    });
+    const streamBase = ref(0);
+    const rollIdx = computed(() => {
+      const n2 = casts.value.length;
+      return n2 ? Math.min(n2 - 1, streamBase.value) : 0;
+    });
+    const rollNumber = computed(() => {
+      var _a;
+      return casts.value.length ? ((_a = casts.value[rollIdx.value]) == null ? void 0 : _a.number) ?? "—" : "—";
+    });
+    const rollIsWin = computed(() => {
+      var _a;
+      return casts.value.length ? !!((_a = casts.value[rollIdx.value]) == null ? void 0 : _a.win) : false;
+    });
+    computed(() => Array.from({ length: RISER_COUNT }, (_2, i2) => ({ id: i2, delay: (-(i2 * RISER_DUR / RISER_COUNT / speed.value)).toFixed(2) + "s", dur: (RISER_DUR / speed.value).toFixed(2) + "s" })));
+    const POUCH = { x: 838, y: 1118 };
+    const pouchImage = computed(() => a2.value.pouchImage || "");
+    const pouchPulse = ref(0);
+    const showPouch = ref(false);
+    function valueLabel(c2) {
+      if (!c2 || !c2.value) return "";
+      const v2 = Number(c2.value);
+      if (c2.isBundle) return /ticket/i.test(String(c2.prize || "")) ? "" : `${Math.floor(v2)} Free Ticket${v2 == 1 ? "" : "s"}`;
+      return `£${v2 % 1 === 0 ? v2 : v2.toFixed(2)}`;
+    }
+    const reveal = reactive({ on: false, flipped: false, collectable: false, collecting: false });
+    let pendingWin = -1;
+    let revealTimers = [];
+    function clearReveal() {
+      revealTimers.forEach((t3) => clearTimeout(t3));
+      revealTimers = [];
+    }
+    function openReveal(wi) {
+      pendingWin = wi;
+      dropPrize.value = casts.value[wi] ?? null;
+      reveal.on = true;
+      reveal.flipped = false;
+      reveal.collectable = false;
+      reveal.collecting = false;
+      play(a2.value.winSound);
+      revealTimers.push(setTimeout(() => {
+        reveal.flipped = true;
+      }, 650));
+      revealTimers.push(setTimeout(() => {
+        reveal.collectable = true;
+      }, 1850));
+      if (props.demoMode) revealTimers.push(setTimeout(() => {
+        if (reveal.collectable) collect();
+      }, 6e3));
+    }
+    function collect() {
+      if (!reveal.collectable) return;
+      clearReveal();
+      reveal.collectable = false;
+      reveal.collecting = true;
+      play(a2.value.collectSound || a2.value.winSound);
+      revealTimers.push(setTimeout(() => {
+        if (dropPrize.value) collected.value.push(dropPrize.value);
+        pouchPulse.value++;
+        reveal.on = false;
+        reveal.collecting = false;
+        scene.heat = 0;
+        hud.eaten = pendingWin + 1;
+        resumeBand();
+        const bt = pendingBandTicket;
+        pendingBandTicket = null;
+        if (bt) gsapWithCSS.to(bt, { y: TICKET.y - 70, o: 0, duration: 0.5, ease: "power1.in", onComplete: () => {
+          bandTweens.delete(bt.key);
+          band.value = band.value.filter((x) => x.key !== bt.key);
+          maybeFinish();
+        } });
+        else maybeFinish();
+      }, 520));
+    }
+    function resetRun() {
+      clearReveal();
+      reveal.on = false;
+      reveal.flipped = false;
+      reveal.collectable = false;
+      reveal.collecting = false;
+      stopAuto();
+      gsapWithCSS.killTweensOf(scene);
+      gsapWithCSS.killTweensOf(hud);
+      killBand();
+      hud.eaten = 0;
+      streamBase.value = 0;
+      collected.value = [];
+      dropPrize.value = null;
+      releaseIdx.value = 0;
+      readerFlash.value = false;
+      showReaderNum.value = true;
+      Object.assign(scene, { winFlash: 0, heat: 0, readerY: 0, prizeX: TICKET.x, prizeY: 540, prizeO: 0, prizeScale: 0, prizeRot: 0 });
+      confetti.value = [];
+      phase.value = "ready";
+    }
+    const confetti = ref([]);
+    function startRun() {
+      if (phase.value === "feasting") return;
+      if (!casts.value.length) {
+        finishRun();
+        return;
+      }
+      resetRun();
+      phase.value = "feasting";
+      play(a2.value.feedSound);
+      const n2 = total.value;
+      const runMs = 2e4 / speed.value;
+      const interval = Math.min(420, Math.max(16, runMs / n2));
+      autoRiseDur = Math.min(1.2, Math.max(0.4, interval * 9 / 1e3));
+      stopAuto();
+      autoTimer = setInterval(autoTick, interval);
+    }
+    function finishRun() {
+      stopAuto();
+      clearReveal();
+      reveal.on = false;
+      gsapWithCSS.killTweensOf(scene);
+      killBand();
+      hud.eaten = total.value;
+      scene.winFlash = 0;
+      phase.value = "done";
+      emit("wins-collected", wins.value.map((w2) => ({ prize: w2.prize, value: w2.value })));
+    }
+    function bandArrive(t3, c2, i2) {
+      streamBase.value = i2;
+      showReaderNum.value = true;
+      hud.eaten = Math.max(hud.eaten, i2 + 1);
+      if (c2.win) {
+        pauseBand();
+        pendingBandTicket = t3;
+        openReveal(i2);
+        return;
+      }
+      readerFlash.value = false;
+      play(a2.value.gulpSound);
+      gsapWithCSS.to(t3, { y: TICKET.y - 70, o: 0, duration: 0.5, delay: 0.55, ease: "power1.in", onComplete: () => {
+        bandTweens.delete(t3.key);
+        band.value = band.value.filter((x) => x.key !== t3.key);
+        maybeFinish();
+      } });
+    }
+    function maybeFinish() {
+      if (releaseIdx.value >= total.value && band.value.length === 0) {
+        stopAuto();
+        finishRun();
+      }
+    }
+    const canTap = computed(() => phase.value === "done" ? false : mode.value === "manual" ? releaseIdx.value < total.value && !reveal.on : phase.value === "ready");
+    const prompt = computed(() => phase.value === "ready" ? titleText.value : phase.value === "feasting" ? rollIsWin.value ? "WINNER!" : "Rolling…" : "");
+    let audio = null;
+    function play(src) {
+      if (!src) return;
+      try {
+        audio = new Audio(src);
+        audio.volume = 0.85;
+        void audio.play();
+      } catch {
+      }
+    }
+    function playWelcome() {
+      if (a2.value.welcomeSound) play(a2.value.welcomeSound);
+    }
+    function cancelSpeech() {
+      var _a;
+      try {
+        (_a = window.speechSynthesis) == null ? void 0 : _a.cancel();
+      } catch {
+      }
+    }
+    let demoTimer = null;
+    function clearDemo() {
+      if (demoTimer) {
+        clearTimeout(demoTimer);
+        demoTimer = null;
+      }
+    }
+    let introSeq = null;
+    function clearIntroSeq() {
+      if (introSeq) {
+        clearTimeout(introSeq);
+        introSeq = null;
+      }
+    }
+    function startGame() {
+      clearDemo();
+      showIntro.value = false;
+      if (mode.value === "auto") startRun();
+      else {
+        resetRun();
+        showReaderNum.value = false;
+      }
+    }
+    watch(() => props.tickets, buildCasts, { immediate: true, deep: true });
+    watch(() => props.modelValue, (open) => {
+      if (open) {
+        clearDemo();
+        buildCasts();
+        showIntro.value = introEnabled.value;
+        if (showIntro.value) playWelcome();
+        if (props.demoMode && !introEnabled.value) demoTimer = setTimeout(() => startGame(), 600);
+      } else {
+        gsapWithCSS.killTweensOf(scene);
+        gsapWithCSS.killTweensOf(hud);
+        clearDemo();
+        cancelSpeech();
+      }
+    }, { immediate: true });
+    watch(phase, (p2) => {
+      if (props.demoMode && p2 === "done") {
+        clearDemo();
+        demoTimer = setTimeout(() => {
+          buildCasts();
+          if (introEnabled.value) showIntro.value = true;
+          else startGame();
+        }, 1800);
+      }
+    });
+    watch(showIntro, (on) => {
+      clearIntroSeq();
+      if (!on) return;
+      introPhase.value = "splash";
+      introSeq = setTimeout(() => {
+        introPhase.value = "settings";
+      }, 2600);
+    }, { immediate: true });
+    watch(introEnabled, (on) => {
+      if (props.demoMode) showIntro.value = on;
+    });
+    onBeforeUnmount(() => {
+      clearReveal();
+      clearIntroSeq();
+      gsapWithCSS.killTweensOf(scene);
+      gsapWithCSS.killTweensOf(hud);
+      clearDemo();
+      cancelSpeech();
+      stageRO == null ? void 0 : stageRO.disconnect();
+    });
+    return (_ctx, _push, _parent, _attrs) => {
+      ssrRenderTeleport(_push, (_push2) => {
+        var _a;
+        if (__props.modelValue || __props.demoMode) {
+          _push2(`<div class="${ssrRenderClass([frameClass.value, "te-root"])}" data-v-3643a4e2><div class="te-frame" style="${ssrRenderStyle({ background: pal.value.bgBot })}" data-v-3643a4e2>`);
+          if (__props.demoMode) {
+            _push2(`<div class="te-preview-toggle" data-v-3643a4e2><span data-v-3643a4e2>Preview:</span><button class="${ssrRenderClass({ on: actualPreviewMode.value === "mobile" })}" data-v-3643a4e2>Mobile</button><button class="${ssrRenderClass({ on: actualPreviewMode.value === "desktop" })}" data-v-3643a4e2>Desktop</button></div>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          if (!__props.demoMode) {
+            _push2(`<button class="te-close" aria-label="Close" data-v-3643a4e2>✕</button>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          _push2(`<div class="te-hud" data-v-3643a4e2><div class="te-hud-left" data-v-3643a4e2>🎟️ ${ssrInterpolate(eatenDisplay.value)}/${ssrInterpolate(total.value)} · 🏆 ${ssrInterpolate(collected.value.length)}</div><div class="te-hud-title" style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>${ssrInterpolate(gameName.value || "Ticket Eater")}</div></div>`);
+          if (showTopPrize.value && topPrizeLabel.value) {
+            _push2(`<div class="te-topprize" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-3643a4e2><span class="te-topprize-pill" style="${ssrRenderStyle({ background: accent.value })}" data-v-3643a4e2>£</span><span class="te-topprize-val" data-v-3643a4e2><b style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>TOP PRIZE</b> ${ssrInterpolate(topPrizeLabel.value)}</span></div>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          _push2(`<div class="te-stage" data-v-3643a4e2><svg class="te-svg"${ssrRenderAttr("viewBox", sceneViewBox.value)} preserveAspectRatio="xMidYMid slice" data-v-3643a4e2><defs data-v-3643a4e2><linearGradient id="te-bg" x1="0" y1="0" x2="0" y2="1" data-v-3643a4e2><stop offset="0%"${ssrRenderAttr("stop-color", pal.value.bgTop)} data-v-3643a4e2></stop><stop offset="100%"${ssrRenderAttr("stop-color", pal.value.bgBot)} data-v-3643a4e2></stop></linearGradient><radialGradient id="te-glow" cx="50%" cy="50%" r="50%" data-v-3643a4e2><stop offset="0%"${ssrRenderAttr("stop-color", pal.value.glow)} stop-opacity="0.9" data-v-3643a4e2></stop><stop offset="100%"${ssrRenderAttr("stop-color", pal.value.glow)} stop-opacity="0" data-v-3643a4e2></stop></radialGradient><radialGradient id="te-vig" cx="50%" cy="42%" r="80%" data-v-3643a4e2><stop offset="62%" stop-color="#000" stop-opacity="0" data-v-3643a4e2></stop><stop offset="100%" stop-color="#000" stop-opacity="0.42" data-v-3643a4e2></stop></radialGradient><radialGradient id="te-treasure" cx="50%" cy="50%" r="50%" data-v-3643a4e2><stop offset="0%"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0.85" data-v-3643a4e2></stop><stop offset="100%"${ssrRenderAttr("stop-color", accent.value)} stop-opacity="0" data-v-3643a4e2></stop></radialGradient></defs><rect${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", bg.value.top)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", bg.value.bottom - bg.value.top)} fill="url(#te-bg)" data-v-3643a4e2></rect>`);
+          if (backgroundImage.value) {
+            _push2(`<image${ssrRenderAttr("href", backgroundImage.value)}${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", bg.value.top)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", bg.value.bottom - bg.value.top)} preserveAspectRatio="xMidYMid slice" opacity="0.9" data-v-3643a4e2></image>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          if (titleImage.value) {
+            _push2(`<foreignObject x="290" y="62" width="420" height="150" data-v-3643a4e2><img${ssrRenderAttr("src", titleImage.value)} style="${ssrRenderStyle({ "width": "100%", "height": "100%", "object-fit": "contain" })}" alt="" data-v-3643a4e2></foreignObject>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          if (mascotSrc.value) {
+            _push2(`<foreignObject x="210" y="214" width="580" height="260" style="${ssrRenderStyle({ "overflow": "visible" })}" data-v-3643a4e2><img${ssrRenderAttr("src", mascotSrc.value)} class="${ssrRenderClass([{ "te-glowing": collected.value.length > 0 }, "te-gametitle"])}" style="${ssrRenderStyle({ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center bottom", "--gw": titleGlow.value + "px", "--tglow": accent.value, "--wdur": titleWiggleDur.value + "s" })}" alt="" data-v-3643a4e2></foreignObject>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          _push2(`<circle${ssrRenderAttr("cx", TICKET.x)}${ssrRenderAttr("cy", TICKET.y)} r="320" fill="url(#te-glow)" opacity="0.12" data-v-3643a4e2></circle><!--[-->`);
+          ssrRenderList(band.value, (t3) => {
+            _push2(`<g${ssrRenderAttr("transform", `translate(${TICKET.x} ${t3.y})`)}${ssrRenderAttr("opacity", t3.o)} data-v-3643a4e2>`);
+            if (risingTicketImage.value) {
+              _push2(`<image${ssrRenderAttr("href", risingTicketImage.value)} x="-88" y="-44" width="176" height="88" preserveAspectRatio="xMidYMid meet" transform="rotate(90)" data-v-3643a4e2></image>`);
+            } else {
+              _push2(`<!--[--><rect x="-44" y="-88" width="88" height="176" rx="11"${ssrRenderAttr("fill", pal.value.ticket)}${ssrRenderAttr("stroke", pal.value.edge)} stroke-width="3.5" data-v-3643a4e2></rect><rect x="-34" y="-78" width="68" height="156" rx="7" fill="none"${ssrRenderAttr("stroke", pal.value.edge)} stroke-width="2" stroke-dasharray="2 9" opacity="0.4" data-v-3643a4e2></rect><circle cx="-44" cy="0" r="9"${ssrRenderAttr("fill", pal.value.bgBot)} data-v-3643a4e2></circle><circle cx="44" cy="0" r="9"${ssrRenderAttr("fill", pal.value.bgBot)} data-v-3643a4e2></circle><!--]-->`);
+            }
+            _push2(`</g>`);
+          });
+          _push2(`<!--]--><g${ssrRenderAttr("transform", `translate(${TICKET.x} ${TICKET.y}) scale(0.84)`)} data-v-3643a4e2>`);
+          if (ticketImage.value) {
+            _push2(`<foreignObject x="-240" y="-150" width="480" height="300" data-v-3643a4e2><img${ssrRenderAttr("src", ticketImage.value)} style="${ssrRenderStyle({ "width": "100%", "height": "100%", "object-fit": "contain" })}" alt="" data-v-3643a4e2></foreignObject>`);
+          } else {
+            _push2(`<!--[--><rect x="-240" y="-150" width="480" height="300" rx="30"${ssrRenderAttr("fill", pal.value.ticket)}${ssrRenderAttr("stroke", rollIsWin.value ? accent.value : pal.value.edge)}${ssrRenderAttr("stroke-width", rollIsWin.value ? 11 : 6)} data-v-3643a4e2></rect><rect x="-208" y="-118" width="416" height="236" rx="20" fill="none"${ssrRenderAttr("stroke", pal.value.edge)} stroke-width="2.5" stroke-dasharray="2 13" opacity="0.4" data-v-3643a4e2></rect><circle cx="-240" cy="0" r="28"${ssrRenderAttr("fill", pal.value.bgBot)} data-v-3643a4e2></circle><circle cx="240" cy="0" r="28"${ssrRenderAttr("fill", pal.value.bgBot)} data-v-3643a4e2></circle><!--]-->`);
+          }
+          if (!ticketImage.value) {
+            _push2(`<text x="0" y="-78" text-anchor="middle" font-size="26" font-weight="900"${ssrRenderAttr("fill", pal.value.edge)} font-family="system-ui, sans-serif" style="${ssrRenderStyle({ "letter-spacing": "9px" })}" data-v-3643a4e2>★ TICKET ★</text>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          if (showReaderNum.value) {
+            _push2(`<text x="0" y="24" text-anchor="middle" font-size="46" font-weight="900"${ssrRenderAttr("fill", rollIsWin.value ? accent.value : numberColor.value)} font-family="ui-monospace, monospace" style="${ssrRenderStyle({ "letter-spacing": "-1px" })}" data-v-3643a4e2>${ssrInterpolate(rollNumber.value)}</text>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          if (showReaderNum.value && rollIsWin.value && (phase.value === "feasting" || readerFlash.value)) {
+            _push2(`<text x="0" y="118" text-anchor="middle" font-size="30" font-weight="900"${ssrRenderAttr("fill", accent.value)} font-family="system-ui, sans-serif" style="${ssrRenderStyle({ "letter-spacing": "3px" })}" data-v-3643a4e2>WINNER!</text>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          if (showReaderNum.value && !rollIsWin.value && (phase.value === "feasting" || mode.value === "manual" && hud.eaten > 0)) {
+            _push2(`<text x="0" y="116" text-anchor="middle" font-size="25" font-weight="800" fill="#9aa0ad" font-family="system-ui, sans-serif" style="${ssrRenderStyle({ "letter-spacing": "3px" })}" data-v-3643a4e2>No win</text>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          _push2(`</g><!--[-->`);
+          ssrRenderList(confetti.value, (p2) => {
+            _push2(`<rect${ssrRenderAttr("x", p2.x)}${ssrRenderAttr("y", p2.y)}${ssrRenderAttr("width", p2.w)}${ssrRenderAttr("height", p2.h)} rx="2"${ssrRenderAttr("fill", p2.color)}${ssrRenderAttr("opacity", p2.o)}${ssrRenderAttr("transform", `rotate(${p2.rot} ${p2.x + p2.w / 2} ${p2.y + p2.h / 2})`)} data-v-3643a4e2></rect>`);
+          });
+          _push2(`<!--]-->`);
+          if (collected.value.length) {
+            _push2(`<g${ssrRenderAttr("transform", `translate(${POUCH.x} ${POUCH.y})`)} style="${ssrRenderStyle({ "cursor": "pointer" })}" data-v-3643a4e2>`);
+            if (collected.value.length) {
+              _push2(`<circle cx="0" cy="6" r="210" fill="url(#te-glow)" class="te-pouch-glow" data-v-3643a4e2></circle>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (collected.value.length) {
+              _push2(`<g class="te-pouch-spark"${ssrRenderAttr("fill", accent.value)} data-v-3643a4e2><circle cx="-104" cy="-72" r="6" style="${ssrRenderStyle({ animationDelay: "0s" })}" data-v-3643a4e2></circle><circle cx="110" cy="-48" r="7" style="${ssrRenderStyle({ animationDelay: "-0.4s" })}" data-v-3643a4e2></circle><circle cx="84" cy="-112" r="5" style="${ssrRenderStyle({ animationDelay: "-0.8s" })}" data-v-3643a4e2></circle><circle cx="-84" cy="-118" r="6" style="${ssrRenderStyle({ animationDelay: "-0.6s" })}" data-v-3643a4e2></circle></g>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<g class="te-pouch-shake" data-v-3643a4e2><circle cx="0" cy="8" r="138" fill="url(#te-treasure)" class="te-crate-shine" data-v-3643a4e2></circle><ellipse cx="0" cy="120" rx="88" ry="15" fill="#000" opacity="0.3" data-v-3643a4e2></ellipse>`);
+            if (pouchImage.value) {
+              _push2(`<foreignObject x="-124" y="-124" width="248" height="248" style="${ssrRenderStyle({ "overflow": "visible" })}" data-v-3643a4e2><img${ssrRenderAttr("src", pouchImage.value)} class="te-pouch-img3d" style="${ssrRenderStyle({ width: "100%", height: "100%", objectFit: "contain", "--pg": accent.value })}" alt="" data-v-3643a4e2></foreignObject>`);
+            } else {
+              _push2(`<g transform="scale(1.36)" data-v-3643a4e2><g transform="translate(0 -30) rotate(-13)" data-v-3643a4e2><rect x="-76" y="-34" width="152" height="42" rx="11" fill="#6f4626" stroke="#3c2410" stroke-width="4" data-v-3643a4e2></rect><rect x="-76" y="-34" width="152" height="15" rx="7" fill="#8c5c30" data-v-3643a4e2></rect><rect x="-7" y="-34" width="14" height="42" fill="#caa23f" opacity="0.9" data-v-3643a4e2></rect></g><g class="te-crate-gold" data-v-3643a4e2><ellipse cx="0" cy="-10" rx="64" ry="22"${ssrRenderAttr("fill", accent.value)} data-v-3643a4e2></ellipse><circle cx="-38" cy="-14" r="12"${ssrRenderAttr("fill", accent.value)} data-v-3643a4e2></circle><circle cx="-12" cy="-20" r="13"${ssrRenderAttr("fill", accent.value)} data-v-3643a4e2></circle><circle cx="18" cy="-16" r="12"${ssrRenderAttr("fill", accent.value)} data-v-3643a4e2></circle><circle cx="44" cy="-10" r="10"${ssrRenderAttr("fill", accent.value)} data-v-3643a4e2></circle><circle cx="-12" cy="-22" r="4" fill="#fff" opacity="0.75" data-v-3643a4e2></circle><circle cx="18" cy="-18" r="3.5" fill="#fff" opacity="0.7" data-v-3643a4e2></circle></g><rect x="-78" y="-6" width="156" height="74" rx="13" fill="#6f4626" stroke="#3c2410" stroke-width="4" data-v-3643a4e2></rect><rect x="-70" y="2" width="140" height="9" rx="4" fill="#8c5c30" opacity="0.85" data-v-3643a4e2></rect><rect x="-78" y="40" width="156" height="9" fill="#caa23f" data-v-3643a4e2></rect><rect x="-7" y="-6" width="14" height="74" fill="#caa23f" data-v-3643a4e2></rect><rect x="-13" y="20" width="26" height="24" rx="5" fill="#e6ad42" stroke="#3c2410" stroke-width="2.5" data-v-3643a4e2></rect><circle cx="0" cy="31" r="4.5" fill="#3c2410" data-v-3643a4e2></circle></g>`);
+            }
+            _push2(`</g>`);
+            if (collected.value.length) {
+              _push2(`<g data-v-3643a4e2><circle cx="98" cy="-98" r="34" fill="#e11d2a" stroke="#fff" stroke-width="3" class="te-pouch-tag" data-v-3643a4e2></circle><text x="98" y="-86" text-anchor="middle" font-size="32" font-weight="900" fill="#fff" font-family="system-ui, sans-serif" data-v-3643a4e2>${ssrInterpolate(collected.value.length)}</text></g>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<text x="0" y="150" text-anchor="middle" font-size="22" font-weight="900"${ssrRenderAttr("fill", accent.value)} font-family="system-ui, sans-serif" data-v-3643a4e2>POUCH</text></g>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          _push2(`<rect${ssrRenderAttr("x", bg.value.x)}${ssrRenderAttr("y", bg.value.top)}${ssrRenderAttr("width", bg.value.w)}${ssrRenderAttr("height", bg.value.bottom - bg.value.top)} fill="url(#te-vig)" pointer-events="none" data-v-3643a4e2></rect></svg><div class="te-prompt" style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>${ssrInterpolate(prompt.value)}</div><div class="te-controls" data-v-3643a4e2>`);
+          if (canTap.value) {
+            _push2(`<button class="te-cta te-release" style="${ssrRenderStyle({ background: accent.value })}" data-v-3643a4e2>${ssrInterpolate(mode.value === "manual" ? "Release 🎟️" : "START 👹")}</button>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          if ((phase.value === "feasting" || mode.value === "manual" && releaseIdx.value > 0 && releaseIdx.value < total.value) && !__props.demoMode) {
+            _push2(`<button class="te-skip" data-v-3643a4e2>Skip to results</button>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          _push2(`</div></div>`);
+          if (reveal.on) {
+            _push2(`<div class="te-reveal" data-v-3643a4e2><div class="${ssrRenderClass([{ flipped: reveal.flipped, collecting: reveal.collecting }, "te-flip"])}" data-v-3643a4e2><div class="te-flip-in" data-v-3643a4e2><div class="te-flip-face te-flip-back" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-3643a4e2><span class="te-flip-q" style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>?</span></div><div class="te-flip-face te-flip-front" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-3643a4e2><div class="te-flip-glow" style="${ssrRenderStyle({ background: "radial-gradient(circle at 50% 42%, " + accent.value + "55, transparent 68%)" })}" data-v-3643a4e2></div><div class="te-flip-won" style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>WINNER!</div><div class="te-flip-img" style="${ssrRenderStyle({ "--pacc": accent.value })}" data-v-3643a4e2>`);
+            if (dropPrize.value && dropPrize.value.image) {
+              _push2(`<img${ssrRenderAttr("src", dropPrize.value.image)} alt="" data-v-3643a4e2>`);
+            } else if (prizeImage.value) {
+              _push2(`<img${ssrRenderAttr("src", prizeImage.value)} alt="" data-v-3643a4e2>`);
+            } else {
+              _push2(`<span data-v-3643a4e2>🏆</span>`);
+            }
+            _push2(`</div><div class="te-flip-name" style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>${ssrInterpolate((_a = dropPrize.value) == null ? void 0 : _a.prize)}</div>`);
+            if (reveal.collectable && !reveal.collecting) {
+              _push2(`<button class="te-cta te-flip-collect" style="${ssrRenderStyle({ background: accent.value })}" data-v-3643a4e2>Collect 🏆</button>`);
+            } else {
+              _push2(`<div class="te-flip-hint" style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>✦</div>`);
+            }
+            _push2(`</div></div></div></div>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          if (showPouch.value) {
+            _push2(`<div class="te-overlay" data-v-3643a4e2><div class="te-pouch-panel" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-3643a4e2><div class="te-pouch-title" style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>🏆 Your Pouch · ${ssrInterpolate(collected.value.length)}</div>`);
+            if (collected.value.length) {
+              _push2(`<div class="te-pouch-grid" data-v-3643a4e2><!--[-->`);
+              ssrRenderList(collected.value, (c2, i2) => {
+                _push2(`<div class="te-pouch-item" data-v-3643a4e2><div class="te-pouch-img" data-v-3643a4e2>`);
+                if (c2.image) {
+                  _push2(`<img${ssrRenderAttr("src", c2.image)} alt="" data-v-3643a4e2>`);
+                } else if (prizeImage.value) {
+                  _push2(`<img${ssrRenderAttr("src", prizeImage.value)} alt="" data-v-3643a4e2>`);
+                } else {
+                  _push2(`<span data-v-3643a4e2>🏆</span>`);
+                }
+                _push2(`</div><div class="te-pouch-name" style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>#${ssrInterpolate(c2.number)} · ${ssrInterpolate(c2.prize)}</div>`);
+                if (valueLabel(c2)) {
+                  _push2(`<div class="te-pouch-val" style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>${ssrInterpolate(valueLabel(c2))}</div>`);
+                } else {
+                  _push2(`<!---->`);
+                }
+                _push2(`</div>`);
+              });
+              _push2(`<!--]--></div>`);
+            } else {
+              _push2(`<div class="te-pouch-empty" data-v-3643a4e2>Nothing in here yet — win some prizes!</div>`);
+            }
+            _push2(`<button class="te-cta" style="${ssrRenderStyle({ background: primary.value, color: textColor.value })}" data-v-3643a4e2>Close</button></div></div>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          if (showIntro.value) {
+            _push2(`<div class="te-overlay te-intro" data-v-3643a4e2>`);
+            if (introPhase.value === "splash") {
+              _push2(`<div class="te-splash" data-v-3643a4e2><div class="te-splash-title" style="${ssrRenderStyle({ "--tglow": accent.value })}" data-v-3643a4e2>`);
+              if (titleImage.value) {
+                _push2(`<img${ssrRenderAttr("src", titleImage.value)} alt="" data-v-3643a4e2>`);
+              } else {
+                _push2(`<span style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>${ssrInterpolate(gameName.value || "Ticket Eater")}</span>`);
+              }
+              _push2(`</div></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (introPhase.value === "settings") {
+              _push2(`<div class="te-intro-card" style="${ssrRenderStyle({ "--acc": accent.value, "--tglow": accent.value })}" data-v-3643a4e2><div class="te-intro-welcome" style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>${ssrInterpolate(welcomeMsg.value)}</div><div class="te-intro-sub" data-v-3643a4e2>${ssrInterpolate(introSubtitle.value)}</div><div class="te-howto" data-v-3643a4e2><span data-v-3643a4e2><b data-v-3643a4e2>1</b> We roll through every one of your tickets</span><span data-v-3643a4e2><b data-v-3643a4e2>2</b> Each ticket number flashes up in turn</span><span data-v-3643a4e2><b data-v-3643a4e2>3</b> Winners reveal their prize 🏆</span></div><div class="te-set-label" data-v-3643a4e2>Choose your settings</div><div class="te-chip-row" data-v-3643a4e2><button class="${ssrRenderClass([{ on: mode.value === "manual" }, "te-chip"])}" data-v-3643a4e2>👆 Manual</button><button class="${ssrRenderClass([{ on: mode.value === "auto" }, "te-chip"])}" data-v-3643a4e2>⚡ Auto</button></div>`);
+              if (mode.value === "auto") {
+                _push2(`<!--[--><div class="te-set-label" data-v-3643a4e2>Speed</div><div class="te-chip-row" data-v-3643a4e2><button class="${ssrRenderClass([{ on: speed.value === 1 }, "te-chip"])}" data-v-3643a4e2>1×</button><button class="${ssrRenderClass([{ on: speed.value === 1.5 }, "te-chip"])}" data-v-3643a4e2>1.5×</button><button class="${ssrRenderClass([{ on: speed.value === 2 }, "te-chip"])}" data-v-3643a4e2>2×</button><button class="${ssrRenderClass([{ on: speed.value === 5 }, "te-chip"])}" data-v-3643a4e2>5×</button></div><!--]-->`);
+              } else {
+                _push2(`<!---->`);
+              }
+              _push2(`<button class="te-cta te-intro-start" style="${ssrRenderStyle({ background: accent.value })}" data-v-3643a4e2>${ssrInterpolate(introButtonText.value)}</button></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          if (phase.value === "done") {
+            _push2(`<div class="te-overlay" data-v-3643a4e2><div class="te-card" style="${ssrRenderStyle({ borderColor: accent.value })}" data-v-3643a4e2><div class="te-card-top" style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>${ssrInterpolate(wins.value.length ? "All done 🎉" : "All done")}</div>`);
+            if (wins.value.length) {
+              _push2(`<!--[--><div class="te-card-name" style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>Rolled through ${ssrInterpolate(total.value)} ${ssrInterpolate(total.value === 1 ? "ticket" : "tickets")} — ${ssrInterpolate(wins.value.length)} ${ssrInterpolate(wins.value.length === 1 ? "winner" : "winners")}!</div><ul class="te-winlist" data-v-3643a4e2><!--[-->`);
+              ssrRenderList(wins.value, (w2, i2) => {
+                _push2(`<li style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2><span style="${ssrRenderStyle({ color: accent.value })}" data-v-3643a4e2>★</span> #${ssrInterpolate(w2.number)} · ${ssrInterpolate(w2.prize)}`);
+                if (w2.isBundle && w2.value && !/ticket/i.test(w2.prize)) {
+                  _push2(`<span data-v-3643a4e2> — ${ssrInterpolate(Math.floor(w2.value))} Free Ticket${ssrInterpolate(w2.value == 1 ? "" : "s")}</span>`);
+                } else if (w2.value && !w2.isBundle) {
+                  _push2(`<span data-v-3643a4e2> — £${ssrInterpolate(w2.value)}</span>`);
+                } else {
+                  _push2(`<!---->`);
+                }
+                _push2(`</li>`);
+              });
+              _push2(`<!--]--></ul><!--]-->`);
+            } else {
+              _push2(`<div class="te-card-name" style="${ssrRenderStyle({ color: textColor.value })}" data-v-3643a4e2>Rolled through all ${ssrInterpolate(total.value)} — no winners this time. Good luck next round!</div>`);
+            }
+            _push2(`<button class="te-cta" style="${ssrRenderStyle({ background: primary.value, color: textColor.value })}" data-v-3643a4e2>Close</button></div></div>`);
+          } else {
+            _push2(`<!---->`);
+          }
+          _push2(`</div></div>`);
+        } else {
+          _push2(`<!---->`);
+        }
+      }, "body", __props.demoMode, _parent);
+    };
+  }
+});
+const _sfc_setup$l = _sfc_main$l.setup;
+_sfc_main$l.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/TicketEaterModal.vue");
+  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
+};
+const TicketEaterModal = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-3643a4e2"]]);
+function useReveal() {
+  const sectionRef = ref(null);
+  const revealed = ref(false);
+  let observer = null;
+  onMounted(() => {
+    if (!sectionRef.value) return;
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          revealed.value = true;
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    observer.observe(sectionRef.value);
+  });
+  onUnmounted(() => {
+    if (observer) observer.disconnect();
+  });
+  return { sectionRef, revealed };
+}
+const _sfc_main$k = {
   __name: "GameConfigurator",
   __ssrInlineRender: true,
   setup(__props) {
@@ -14139,7 +15261,9 @@ const _sfc_main$i = {
       { id: "bingo", name: "Bingo", icon: "🎱" },
       { id: "coindrop", name: "Coin Drop", icon: "🪙" },
       { id: "balloonpop", name: "Balloon Pop", icon: "🎈" },
-      { id: "football", name: "Football", icon: "⚽" }
+      { id: "football", name: "Football", icon: "⚽" },
+      { id: "fishing", name: "Fishing", icon: "🎣" },
+      { id: "ticketeater", name: "Ticket Eater", icon: "👹" }
     ];
     const slotsImages = ref({
       titleImage: "",
@@ -14253,13 +15377,97 @@ const _sfc_main$i = {
     const footballConfig = ref({
       theme: "classic",
       titleText: "Take Your Shot!",
+      winText: "GOAL! You scored!",
+      loseText: "Saved! Unlucky…",
       primaryColor: "#1b5e20",
       accentColor: "#ffeb3b",
-      goalColor: "#f59e0b"
+      goalColor: "#f59e0b",
+      showTopPrize: true,
+      hostEnabled: true
+    });
+    const footballMedia = ref({
+      hostImage: "",
+      kickSound: "",
+      whistleSound: "",
+      crowdSound: "",
+      winSound: "",
+      lossSound: ""
     });
     const footballDemoTickets = [
       { id: 1, number: "001", instant_win: { id: 1, prize: "£50 Cash", value: 50, claimed: false, image_path: null } },
       { id: 2, number: "002", instant_win: false }
+    ];
+    const fishingConfig = ref({
+      theme: "stormy",
+      titleText: "Cast to Win!",
+      winText: "Reeled in a winner! 🎣",
+      loseText: "The one that got away…",
+      accentColor: "#ffd54f",
+      primaryColor: "#0277bd",
+      sunEnabled: true,
+      cloudsEnabled: true,
+      showTopPrize: false,
+      introEnabled: true
+    });
+    const fishingImages = ref({
+      boatImage: "",
+      underwaterImage: "",
+      introTitleImage: "",
+      fish1: "",
+      fish2: "",
+      fish3: ""
+    });
+    const fishingMedia = ref({
+      castSound: "",
+      splashSound: "",
+      reelSound: "",
+      winSound: "",
+      lossSound: ""
+    });
+    const fishingDemoTickets = [
+      { id: 1, number: "001", instant_win: { id: 1, prize: "£25 Cash", value: 25, claimed: false, image_path: null } },
+      { id: 2, number: "002", instant_win: false },
+      { id: 3, number: "003", instant_win: false },
+      { id: 4, number: "004", instant_win: { id: 2, prize: "£10 Cash", value: 10, claimed: false, image_path: null } },
+      { id: 5, number: "005", instant_win: false }
+    ];
+    const fishingDemoCategories = [
+      { id: 1, name: "£25 Cash", value: 25, prize_type: "cash", image_path: null, available: 1 },
+      { id: 2, name: "£10 Cash", value: 10, prize_type: "cash", image_path: null, available: 1 }
+    ];
+    const eaterConfig = ref({
+      theme: "arcade",
+      titleText: "Feed the Eater!",
+      accentColor: "#ffd54f",
+      primaryColor: "#6c5ce7",
+      showTopPrize: false,
+      introEnabled: true,
+      introWelcomeText: "Welcome to {name}",
+      introSubtitle: "Roll through your tickets to reveal instant prizes",
+      introButtonText: "Start 👹"
+    });
+    const eaterImages = ref({
+      introTitleImage: "",
+      mascotImage: "",
+      mascotImage2: "",
+      mascotImage3: "",
+      ticketImage: "",
+      risingTicketImage: "",
+      backgroundImage: "",
+      pouchImage: "",
+      prizeImage: ""
+    });
+    const eaterMedia = ref({
+      feedSound: "",
+      gulpSound: "",
+      winSound: "",
+      collectSound: "",
+      welcomeSound: ""
+    });
+    const eaterDemoCategories = [
+      { id: 1, name: "£50 Cash", value: 50, prize_type: "cash", image_path: null, available: 1 },
+      { id: 2, name: "Free Tickets", value: 5, prize_type: "ticket_bundle", image_path: null, available: 1 },
+      { id: 3, name: "£20 Voucher", value: 20, prize_type: "voucher", image_path: null, available: 1 }
     ];
     const slotsAssets = computed(() => ({
       titleText: slotsConfig.value.titleText,
@@ -14411,14 +15619,84 @@ const _sfc_main$i = {
         { name: "Night", theme: "night", primary: "#1b5e20", accent: "#cfeaff" },
         { name: "Retro", theme: "retro", primary: "#4a3416", accent: "#ffd27a" },
         { name: "Neon", theme: "neon", primary: "#0c5a3c", accent: "#3df5ff" }
+      ],
+      fishing: [
+        { name: "Stormy", theme: "stormy", primary: "#0277bd", accent: "#ffd54f" },
+        { name: "Chill", theme: "chill", primary: "#1f8fc0", accent: "#ffe55c" },
+        { name: "Sunset", theme: "sunset", primary: "#9c4a6e", accent: "#ff9d5c" },
+        { name: "Night", theme: "night", primary: "#0a2a40", accent: "#9fd0ff" }
+      ],
+      ticketeater: [
+        { name: "Arcade", theme: "arcade", primary: "#6c5ce7", accent: "#ffd54f" },
+        { name: "Cave", theme: "cave", primary: "#3f9c78", accent: "#8effc8" },
+        { name: "Candy", theme: "candy", primary: "#cf4d83", accent: "#fff36b" },
+        { name: "Spooky", theme: "spooky", primary: "#5a9c33", accent: "#9dff5c" }
       ]
     };
     const footballAssets = computed(() => ({
       theme: footballConfig.value.theme,
       titleText: footballConfig.value.titleText,
+      winText: footballConfig.value.winText,
+      loseText: footballConfig.value.loseText,
       primaryColor: footballConfig.value.primaryColor,
       accentColor: footballConfig.value.accentColor,
-      goalColor: footballConfig.value.goalColor
+      goalColor: footballConfig.value.goalColor,
+      showTopPrize: footballConfig.value.showTopPrize,
+      hostEnabled: footballConfig.value.hostEnabled,
+      hostImage: footballMedia.value.hostImage,
+      kickSound: footballMedia.value.kickSound,
+      whistleSound: footballMedia.value.whistleSound,
+      crowdSound: footballMedia.value.crowdSound,
+      winSound: footballMedia.value.winSound,
+      lossSound: footballMedia.value.lossSound
+    }));
+    const fishingAssets = computed(() => ({
+      theme: fishingConfig.value.theme,
+      titleText: fishingConfig.value.titleText,
+      winText: fishingConfig.value.winText,
+      loseText: fishingConfig.value.loseText,
+      accentColor: fishingConfig.value.accentColor,
+      primaryColor: fishingConfig.value.primaryColor,
+      sunEnabled: fishingConfig.value.sunEnabled,
+      cloudsEnabled: fishingConfig.value.cloudsEnabled,
+      showTopPrize: fishingConfig.value.showTopPrize,
+      introEnabled: fishingConfig.value.introEnabled,
+      boatImage: fishingImages.value.boatImage || "",
+      underwaterImage: fishingImages.value.underwaterImage || "",
+      introTitleImage: fishingImages.value.introTitleImage || "",
+      fish1: fishingImages.value.fish1 || "",
+      fish2: fishingImages.value.fish2 || "",
+      fish3: fishingImages.value.fish3 || "",
+      castSound: fishingMedia.value.castSound || "",
+      splashSound: fishingMedia.value.splashSound || "",
+      reelSound: fishingMedia.value.reelSound || "",
+      winSound: fishingMedia.value.winSound || "",
+      lossSound: fishingMedia.value.lossSound || ""
+    }));
+    const eaterAssets = computed(() => ({
+      theme: eaterConfig.value.theme,
+      titleText: eaterConfig.value.titleText,
+      accentColor: eaterConfig.value.accentColor,
+      primaryColor: eaterConfig.value.primaryColor,
+      showTopPrize: eaterConfig.value.showTopPrize,
+      introEnabled: eaterConfig.value.introEnabled,
+      introWelcomeText: eaterConfig.value.introWelcomeText,
+      introSubtitle: eaterConfig.value.introSubtitle,
+      introButtonText: eaterConfig.value.introButtonText,
+      introTitleImage: eaterImages.value.introTitleImage || "",
+      mascotImage: eaterImages.value.mascotImage || "",
+      mascotImage2: eaterImages.value.mascotImage2 || "",
+      mascotImage3: eaterImages.value.mascotImage3 || "",
+      ticketImage: eaterImages.value.ticketImage || "",
+      risingTicketImage: eaterImages.value.risingTicketImage || "",
+      backgroundImage: eaterImages.value.backgroundImage || "",
+      pouchImage: eaterImages.value.pouchImage || "",
+      prizeImage: eaterImages.value.prizeImage || "",
+      feedSound: eaterMedia.value.feedSound || "",
+      gulpSound: eaterMedia.value.gulpSound || "",
+      winSound: eaterMedia.value.winSound || "",
+      collectSound: eaterMedia.value.collectSound || "",
+      welcomeSound: eaterMedia.value.welcomeSound || ""
     }));
     return (_ctx, _push, _parent, _attrs) => {
       var _a, _b;
@@ -14428,169 +15706,313 @@ const _sfc_main$i = {
         id: "game-studio",
         class: ["section reveal", { visible: unref(revealed) }],
         style: { "position": "relative" }
-      }, _attrs))} data-v-5760dace><div class="center" style="${ssrRenderStyle({ "margin-bottom": "24px", "position": "relative" })}" data-v-5760dace><div class="mega-badge" data-v-5760dace><span class="spark" data-v-5760dace>✦</span> ${ssrInterpolate(badgeText.value)} <span class="spark" data-v-5760dace>✦</span></div><h2 class="h2" data-v-5760dace>${ssrInterpolate(titleBefore.value)} <span class="grad-text" data-v-5760dace>${ssrInterpolate(titleKeyword.value)}</span></h2><p class="lead center" style="${ssrRenderStyle({ "margin": "18px auto 0" })}" data-v-5760dace>${ssrInterpolate(lead.value)}</p><div style="${ssrRenderStyle({ "margin-top": "22px" })}" data-v-5760dace><a href="#game-studio" class="try-me" data-v-5760dace>${ssrInterpolate(tryMeText.value)}</a></div></div><div class="gs-block" data-v-5760dace><div class="grid lg:grid-cols-12 gap-5 max-w-[1400px] mx-auto" data-v-5760dace><div class="lg:col-span-5 xl:col-span-4" data-v-5760dace><div class="config-card" data-v-5760dace><div class="tab-container" data-v-5760dace><!--[-->`);
+      }, _attrs))} data-v-dd8ae836><div class="center" style="${ssrRenderStyle({ "margin-bottom": "24px", "position": "relative" })}" data-v-dd8ae836><div class="mega-badge" data-v-dd8ae836><span class="spark" data-v-dd8ae836>✦</span> ${ssrInterpolate(badgeText.value)} <span class="spark" data-v-dd8ae836>✦</span></div><h2 class="h2" data-v-dd8ae836>${ssrInterpolate(titleBefore.value)} <span class="grad-text" data-v-dd8ae836>${ssrInterpolate(titleKeyword.value)}</span></h2><p class="lead center" style="${ssrRenderStyle({ "margin": "18px auto 0" })}" data-v-dd8ae836>${ssrInterpolate(lead.value)}</p><div style="${ssrRenderStyle({ "margin-top": "22px" })}" data-v-dd8ae836><a href="#game-studio" class="try-me" data-v-dd8ae836>${ssrInterpolate(tryMeText.value)}</a></div></div><div class="gs-block" data-v-dd8ae836><div class="grid lg:grid-cols-12 gap-5 max-w-[1400px] mx-auto" data-v-dd8ae836><div class="lg:col-span-5 xl:col-span-4" data-v-dd8ae836><div class="config-card" data-v-dd8ae836><div class="tab-container" data-v-dd8ae836><!--[-->`);
       ssrRenderList(tabs, (tab) => {
-        _push(`<button class="${ssrRenderClass(["tab-pill", activeTab.value === tab.id ? "active" : ""])}" data-v-5760dace><span class="tab-icon" data-v-5760dace>${ssrInterpolate(tab.icon)}</span><span class="tab-label" data-v-5760dace>${ssrInterpolate(tab.name)}</span></button>`);
+        _push(`<button class="${ssrRenderClass(["tab-pill", activeTab.value === tab.id ? "active" : ""])}" data-v-dd8ae836><span class="tab-icon" data-v-dd8ae836>${ssrInterpolate(tab.icon)}</span><span class="tab-label" data-v-dd8ae836>${ssrInterpolate(tab.name)}</span></button>`);
       });
-      _push(`<!--]--></div><div class="config-content custom-scrollbar" data-v-5760dace>`);
+      _push(`<!--]--></div><div class="config-content custom-scrollbar" data-v-dd8ae836>`);
       if (activeTab.value === "slots") {
-        _push(`<div class="config-sections" data-v-5760dace><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Theme</span></div><div class="preset-grid" data-v-5760dace><!--[-->`);
+        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Theme</span></div><div class="preset-grid" data-v-dd8ae836><!--[-->`);
         ssrRenderList(colorPresets.slots, (preset) => {
-          _push(`<button class="preset-btn" style="${ssrRenderStyle({ "--preset-color": preset.primary })}" data-v-5760dace><span class="preset-dot" style="${ssrRenderStyle({ background: preset.primary })}" data-v-5760dace></span> ${ssrInterpolate(preset.name)}</button>`);
+          _push(`<button class="preset-btn" style="${ssrRenderStyle({ "--preset-color": preset.primary })}" data-v-dd8ae836><span class="preset-dot" style="${ssrRenderStyle({ background: preset.primary })}" data-v-dd8ae836></span> ${ssrInterpolate(preset.name)}</button>`);
         });
-        _push(`<!--]--></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Branding</span></div><div class="input-group" data-v-5760dace><label data-v-5760dace>Title</label><input type="text"${ssrRenderAttr("value", slotsConfig.value.titleText)} class="text-input" data-v-5760dace></div><div class="upload-row" data-v-5760dace><label class="${ssrRenderClass([{ "has-image": slotsImages.value.titleImage }, "upload-box"])}" data-v-5760dace>`);
+        _push(`<!--]--></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Branding</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Title</label><input type="text"${ssrRenderAttr("value", slotsConfig.value.titleText)} class="text-input" data-v-dd8ae836></div><div class="upload-row" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": slotsImages.value.titleImage }, "upload-box"])}" data-v-dd8ae836>`);
         if (slotsImages.value.titleImage) {
-          _push(`<img${ssrRenderAttr("src", slotsImages.value.titleImage)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", slotsImages.value.titleImage)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ Logo</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Logo</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label><label class="${ssrRenderClass([{ "has-image": slotsImages.value.background }, "upload-box"])}" data-v-5760dace>`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": slotsImages.value.background }, "upload-box"])}" data-v-dd8ae836>`);
         if (slotsImages.value.background) {
-          _push(`<img${ssrRenderAttr("src", slotsImages.value.background)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", slotsImages.value.background)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ BG</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ BG</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label><label class="${ssrRenderClass([{ "has-image": slotsImages.value.spinButtonImage }, "upload-box"])}" data-v-5760dace>`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": slotsImages.value.spinButtonImage }, "upload-box"])}" data-v-dd8ae836>`);
         if (slotsImages.value.spinButtonImage) {
-          _push(`<img${ssrRenderAttr("src", slotsImages.value.spinButtonImage)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", slotsImages.value.spinButtonImage)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ Btn</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Btn</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Colors</span></div><div class="color-grid" data-v-5760dace><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", slotsConfig.value.primaryColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Primary</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", slotsConfig.value.accentColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Accent</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", slotsConfig.value.titleColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Title</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", slotsConfig.value.machineBgColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Machine</span></div></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Inventory Button</span></div><div class="emoji-row" data-v-5760dace><!--[-->`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", slotsConfig.value.primaryColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Primary</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", slotsConfig.value.accentColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Accent</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", slotsConfig.value.titleColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Title</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", slotsConfig.value.machineBgColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Machine</span></div></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Inventory Button</span></div><div class="emoji-row" data-v-dd8ae836><!--[-->`);
         ssrRenderList(emojiOptions, (emoji) => {
-          _push(`<button class="${ssrRenderClass(["emoji-btn", slotsConfig.value.inventoryEmoji === emoji ? "active" : ""])}" data-v-5760dace>${ssrInterpolate(emoji)}</button>`);
+          _push(`<button class="${ssrRenderClass(["emoji-btn", slotsConfig.value.inventoryEmoji === emoji ? "active" : ""])}" data-v-dd8ae836>${ssrInterpolate(emoji)}</button>`);
         });
-        _push(`<!--]--></div><div class="color-item inline-color" data-v-5760dace><input type="color"${ssrRenderAttr("value", slotsConfig.value.inventoryButtonColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Button Color</span></div></div></div>`);
+        _push(`<!--]--></div><div class="color-item inline-color" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", slotsConfig.value.inventoryButtonColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Button Color</span></div></div></div>`);
       } else {
         _push(`<!---->`);
       }
       if (activeTab.value === "scratch") {
-        _push(`<div class="config-sections" data-v-5760dace><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Images</span></div><div class="upload-row" data-v-5760dace><label class="${ssrRenderClass([{ "has-image": scratchImages.value.header }, "upload-box"])}" data-v-5760dace>`);
+        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Images</span></div><div class="upload-row" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": scratchImages.value.header }, "upload-box"])}" data-v-dd8ae836>`);
         if (scratchImages.value.header) {
-          _push(`<img${ssrRenderAttr("src", scratchImages.value.header)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", scratchImages.value.header)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ Header</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Header</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label><label class="${ssrRenderClass([{ "has-image": scratchImages.value.background }, "upload-box"])}" data-v-5760dace>`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": scratchImages.value.background }, "upload-box"])}" data-v-dd8ae836>`);
         if (scratchImages.value.background) {
-          _push(`<img${ssrRenderAttr("src", scratchImages.value.background)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", scratchImages.value.background)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ BG</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ BG</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label><label class="${ssrRenderClass([{ "has-image": scratchImages.value.overlay }, "upload-box"])}" data-v-5760dace>`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": scratchImages.value.overlay }, "upload-box"])}" data-v-dd8ae836>`);
         if (scratchImages.value.overlay) {
-          _push(`<img${ssrRenderAttr("src", scratchImages.value.overlay)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", scratchImages.value.overlay)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ Overlay</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Overlay</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Colors</span></div><div class="color-grid" data-v-5760dace><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", scratchConfig.value.wonTextColour)} class="color-picker" data-v-5760dace><span data-v-5760dace>Win</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", scratchConfig.value.loseTextColour)} class="color-picker" data-v-5760dace><span data-v-5760dace>Lose</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", scratchConfig.value.accentColour)} class="color-picker" data-v-5760dace><span data-v-5760dace>Accent</span></div></div></div></div>`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", scratchConfig.value.wonTextColour)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Win</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", scratchConfig.value.loseTextColour)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Lose</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", scratchConfig.value.accentColour)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Accent</span></div></div></div></div>`);
       } else {
         _push(`<!---->`);
       }
       if (activeTab.value === "spin") {
-        _push(`<div class="config-sections" data-v-5760dace><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Theme</span></div><div class="preset-grid" data-v-5760dace><!--[-->`);
+        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Theme</span></div><div class="preset-grid" data-v-dd8ae836><!--[-->`);
         ssrRenderList(colorPresets.spin, (preset) => {
-          _push(`<button class="preset-btn" style="${ssrRenderStyle({ "--preset-color": preset.edge })}" data-v-5760dace><span class="preset-dot" style="${ssrRenderStyle({ background: preset.edge })}" data-v-5760dace></span> ${ssrInterpolate(preset.name)}</button>`);
+          _push(`<button class="preset-btn" style="${ssrRenderStyle({ "--preset-color": preset.edge })}" data-v-dd8ae836><span class="preset-dot" style="${ssrRenderStyle({ background: preset.edge })}" data-v-dd8ae836></span> ${ssrInterpolate(preset.name)}</button>`);
         });
-        _push(`<!--]--></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Branding</span></div><div class="input-group" data-v-5760dace><label data-v-5760dace>Title</label><input type="text"${ssrRenderAttr("value", spinConfig.value.titleText)} class="text-input" data-v-5760dace></div><div class="upload-row single" data-v-5760dace><label class="${ssrRenderClass([{ "has-image": spinImages.value.background }, "upload-box wide"])}" data-v-5760dace>`);
+        _push(`<!--]--></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Branding</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Title</label><input type="text"${ssrRenderAttr("value", spinConfig.value.titleText)} class="text-input" data-v-dd8ae836></div><div class="upload-row single" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": spinImages.value.background }, "upload-box wide"])}" data-v-dd8ae836>`);
         if (spinImages.value.background) {
-          _push(`<img${ssrRenderAttr("src", spinImages.value.background)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", spinImages.value.background)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ Background Image</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Background Image</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Colors</span></div><div class="color-grid" data-v-5760dace><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", spinConfig.value.titleColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Title</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", spinConfig.value.wheelEdgeColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Wheel</span></div></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Wallet Card</span><span class="section-hint" data-v-5760dace>Leave empty to hide</span></div><div class="input-group" data-v-5760dace><label data-v-5760dace>Brand Text</label><input type="text"${ssrRenderAttr("value", spinConfig.value.walletText)} placeholder="YOUR BRAND" class="text-input" data-v-5760dace></div><div class="color-item inline-color" data-v-5760dace><input type="color"${ssrRenderAttr("value", spinConfig.value.walletColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Card Color</span></div></div></div>`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", spinConfig.value.titleColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Title</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", spinConfig.value.wheelEdgeColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Wheel</span></div></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Wallet Card</span><span class="section-hint" data-v-dd8ae836>Leave empty to hide</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Brand Text</label><input type="text"${ssrRenderAttr("value", spinConfig.value.walletText)} placeholder="YOUR BRAND" class="text-input" data-v-dd8ae836></div><div class="color-item inline-color" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", spinConfig.value.walletColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Card Color</span></div></div></div>`);
       } else {
         _push(`<!---->`);
       }
       if (activeTab.value === "bingo") {
-        _push(`<div class="config-sections" data-v-5760dace><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Images</span></div><div class="upload-row" data-v-5760dace><label class="${ssrRenderClass([{ "has-image": bingoImages.value.header }, "upload-box"])}" data-v-5760dace>`);
+        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Images</span></div><div class="upload-row" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": bingoImages.value.header }, "upload-box"])}" data-v-dd8ae836>`);
         if (bingoImages.value.header) {
-          _push(`<img${ssrRenderAttr("src", bingoImages.value.header)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", bingoImages.value.header)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ Header</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Header</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label><label class="${ssrRenderClass([{ "has-image": bingoImages.value.cardCover }, "upload-box"])}" data-v-5760dace>`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": bingoImages.value.cardCover }, "upload-box"])}" data-v-dd8ae836>`);
         if (bingoImages.value.cardCover) {
-          _push(`<img${ssrRenderAttr("src", bingoImages.value.cardCover)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", bingoImages.value.cardCover)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ Card</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Card</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label><label class="${ssrRenderClass([{ "has-image": bingoImages.value.background }, "upload-box"])}" data-v-5760dace>`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": bingoImages.value.background }, "upload-box"])}" data-v-dd8ae836>`);
         if (bingoImages.value.background) {
-          _push(`<img${ssrRenderAttr("src", bingoImages.value.background)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", bingoImages.value.background)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ BG</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ BG</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Icon</span></div><div class="input-group" data-v-5760dace><label data-v-5760dace>Diamond Emoji</label><input type="text"${ssrRenderAttr("value", bingoConfig.value.diamondEmoji)} class="text-input text-center text-2xl" data-v-5760dace></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Colors</span></div><div class="color-grid" data-v-5760dace><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", bingoConfig.value.bgStart)} class="color-picker" data-v-5760dace><span data-v-5760dace>BG Start</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", bingoConfig.value.bgEnd)} class="color-picker" data-v-5760dace><span data-v-5760dace>BG End</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", bingoConfig.value.frameColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Frame</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", bingoConfig.value.diamond1)} class="color-picker" data-v-5760dace><span data-v-5760dace>Diamond 1</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", bingoConfig.value.diamond2)} class="color-picker" data-v-5760dace><span data-v-5760dace>Diamond 2</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", bingoConfig.value.winnerGlow)} class="color-picker" data-v-5760dace><span data-v-5760dace>Winner</span></div></div></div></div>`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Icon</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Diamond Emoji</label><input type="text"${ssrRenderAttr("value", bingoConfig.value.diamondEmoji)} class="text-input text-center text-2xl" data-v-dd8ae836></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", bingoConfig.value.bgStart)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>BG Start</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", bingoConfig.value.bgEnd)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>BG End</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", bingoConfig.value.frameColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Frame</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", bingoConfig.value.diamond1)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Diamond 1</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", bingoConfig.value.diamond2)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Diamond 2</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", bingoConfig.value.winnerGlow)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Winner</span></div></div></div></div>`);
       } else {
         _push(`<!---->`);
       }
       if (activeTab.value === "coindrop") {
-        _push(`<div class="config-sections" data-v-5760dace><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Theme</span></div><div class="preset-grid" data-v-5760dace><!--[-->`);
+        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Theme</span></div><div class="preset-grid" data-v-dd8ae836><!--[-->`);
         ssrRenderList(colorPresets.coindrop, (preset) => {
-          _push(`<button class="preset-btn" style="${ssrRenderStyle({ "--preset-color": preset.primary })}" data-v-5760dace><span class="preset-dot" style="${ssrRenderStyle({ background: preset.primary })}" data-v-5760dace></span> ${ssrInterpolate(preset.name)}</button>`);
+          _push(`<button class="preset-btn" style="${ssrRenderStyle({ "--preset-color": preset.primary })}" data-v-dd8ae836><span class="preset-dot" style="${ssrRenderStyle({ background: preset.primary })}" data-v-dd8ae836></span> ${ssrInterpolate(preset.name)}</button>`);
         });
-        _push(`<!--]--></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Branding</span></div><div class="input-group" data-v-5760dace><label data-v-5760dace>Title</label><input type="text"${ssrRenderAttr("value", coinDropConfig.value.titleText)} class="text-input" data-v-5760dace></div><div class="upload-row" data-v-5760dace><label class="${ssrRenderClass([{ "has-image": coinDropImages.value.header }, "upload-box"])}" data-v-5760dace>`);
+        _push(`<!--]--></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Branding</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Title</label><input type="text"${ssrRenderAttr("value", coinDropConfig.value.titleText)} class="text-input" data-v-dd8ae836></div><div class="upload-row" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": coinDropImages.value.header }, "upload-box"])}" data-v-dd8ae836>`);
         if (coinDropImages.value.header) {
-          _push(`<img${ssrRenderAttr("src", coinDropImages.value.header)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", coinDropImages.value.header)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ Header</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Header</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label><label class="${ssrRenderClass([{ "has-image": coinDropImages.value.background }, "upload-box"])}" data-v-5760dace>`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": coinDropImages.value.background }, "upload-box"])}" data-v-dd8ae836>`);
         if (coinDropImages.value.background) {
-          _push(`<img${ssrRenderAttr("src", coinDropImages.value.background)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", coinDropImages.value.background)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ BG</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ BG</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label><label class="${ssrRenderClass([{ "has-image": coinDropImages.value.titleImage }, "upload-box"])}" data-v-5760dace>`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": coinDropImages.value.titleImage }, "upload-box"])}" data-v-dd8ae836>`);
         if (coinDropImages.value.titleImage) {
-          _push(`<img${ssrRenderAttr("src", coinDropImages.value.titleImage)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", coinDropImages.value.titleImage)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ Logo</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Logo</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Colors</span></div><div class="color-grid" data-v-5760dace><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", coinDropConfig.value.titleColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Title</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", coinDropConfig.value.ballColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Ball</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", coinDropConfig.value.pegColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Pegs</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", coinDropConfig.value.winBucketColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Win Bucket</span></div></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Peg Shape</span></div><div class="preset-grid" data-v-5760dace><button class="${ssrRenderClass([{ "active": coinDropConfig.value.pegShape === "circle" }, "preset-btn"])}" data-v-5760dace> Circle </button><button class="${ssrRenderClass([{ "active": coinDropConfig.value.pegShape === "hexagon" }, "preset-btn"])}" data-v-5760dace> Hexagon </button></div></div></div>`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", coinDropConfig.value.titleColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Title</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", coinDropConfig.value.ballColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Ball</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", coinDropConfig.value.pegColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Pegs</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", coinDropConfig.value.winBucketColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Win Bucket</span></div></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Peg Shape</span></div><div class="preset-grid" data-v-dd8ae836><button class="${ssrRenderClass([{ "active": coinDropConfig.value.pegShape === "circle" }, "preset-btn"])}" data-v-dd8ae836> Circle </button><button class="${ssrRenderClass([{ "active": coinDropConfig.value.pegShape === "hexagon" }, "preset-btn"])}" data-v-dd8ae836> Hexagon </button></div></div></div>`);
       } else {
         _push(`<!---->`);
       }
       if (activeTab.value === "football") {
-        _push(`<div class="config-sections" data-v-5760dace><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Theme</span></div><div class="preset-grid" data-v-5760dace><!--[-->`);
+        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Theme</span></div><div class="preset-grid" data-v-dd8ae836><!--[-->`);
         ssrRenderList(colorPresets.football, (preset) => {
-          _push(`<button class="${ssrRenderClass([{ "active": footballConfig.value.theme === preset.theme }, "preset-btn"])}" data-v-5760dace>${ssrInterpolate(preset.name)}</button>`);
+          _push(`<button class="${ssrRenderClass([{ "active": footballConfig.value.theme === preset.theme }, "preset-btn"])}" data-v-dd8ae836>${ssrInterpolate(preset.name)}</button>`);
         });
-        _push(`<!--]--></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Branding</span></div><div class="input-group" data-v-5760dace><label data-v-5760dace>Title</label><input type="text"${ssrRenderAttr("value", footballConfig.value.titleText)} class="text-input" data-v-5760dace></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Colors</span></div><div class="color-grid" data-v-5760dace><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", footballConfig.value.primaryColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Kit</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", footballConfig.value.accentColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Accent</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", footballConfig.value.goalColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Keeper Kit</span></div></div></div></div>`);
+        _push(`<!--]--></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Branding</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Title</label><input type="text"${ssrRenderAttr("value", footballConfig.value.titleText)} class="text-input" data-v-dd8ae836></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Text</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Win Message</label><input type="text"${ssrRenderAttr("value", footballConfig.value.winText)} class="text-input" data-v-dd8ae836></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Lose Message</label><input type="text"${ssrRenderAttr("value", footballConfig.value.loseText)} class="text-input" data-v-dd8ae836></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Display Options</span></div><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(footballConfig.value.showTopPrize) ? ssrLooseContain(footballConfig.value.showTopPrize, null) : footballConfig.value.showTopPrize) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Top Prize Banner</span></label><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(footballConfig.value.hostEnabled) ? ssrLooseContain(footballConfig.value.hostEnabled, null) : footballConfig.value.hostEnabled) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Commentator (host + mic)</span></label><div class="input-group" style="${ssrRenderStyle({ "margin-top": "4px" })}" data-v-dd8ae836><label data-v-dd8ae836>Commentator Image</label><label class="${ssrRenderClass([{ "has-image": footballMedia.value.hostImage }, "upload-box wide"])}" data-v-dd8ae836>`);
+        if (footballMedia.value.hostImage) {
+          _push(`<img${ssrRenderAttr("src", footballMedia.value.hostImage)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>Select image</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><span class="section-hint" data-v-dd8ae836>Optional — upload your own host / mascot (PNG, transparent). Defaults to a drawn pundit.</span></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Sound Effects</span></div><div class="audio-upload-grid" data-v-dd8ae836><!--[-->`);
+        ssrRenderList([
+          { key: "kickSound", label: "Kick" },
+          { key: "whistleSound", label: "Whistle" },
+          { key: "crowdSound", label: "Crowd" },
+          { key: "winSound", label: "Win (cheer)" },
+          { key: "lossSound", label: "Loss" }
+        ], (cue) => {
+          _push(`<label class="${ssrRenderClass([{ "has-audio": footballMedia.value[cue.key] }, "audio-box"])}" data-v-dd8ae836><span class="audio-label" data-v-dd8ae836>${ssrInterpolate(footballMedia.value[cue.key] ? "✓" : "🔊")} ${ssrInterpolate(cue.label)}</span><input type="file" accept="audio/*" data-v-dd8ae836></label>`);
+        });
+        _push(`<!--]--></div></div></div>`);
       } else {
         _push(`<!---->`);
       }
       if (activeTab.value === "balloonpop") {
-        _push(`<div class="config-sections" data-v-5760dace><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Theme</span></div><div class="preset-grid" data-v-5760dace><!--[-->`);
+        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Theme</span></div><div class="preset-grid" data-v-dd8ae836><!--[-->`);
         ssrRenderList(colorPresets.balloonpop, (preset) => {
-          _push(`<button class="preset-btn" style="${ssrRenderStyle({ "--preset-color": preset.primary })}" data-v-5760dace><span class="preset-dot" style="${ssrRenderStyle({ background: preset.primary })}" data-v-5760dace></span> ${ssrInterpolate(preset.name)}</button>`);
+          _push(`<button class="preset-btn" style="${ssrRenderStyle({ "--preset-color": preset.primary })}" data-v-dd8ae836><span class="preset-dot" style="${ssrRenderStyle({ background: preset.primary })}" data-v-dd8ae836></span> ${ssrInterpolate(preset.name)}</button>`);
         });
-        _push(`<!--]--></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Branding</span></div><div class="input-group" data-v-5760dace><label data-v-5760dace>Title</label><input type="text"${ssrRenderAttr("value", balloonPopConfig.value.titleText)} class="text-input" data-v-5760dace></div><div class="input-group" data-v-5760dace><label data-v-5760dace>Subtitle</label><input type="text"${ssrRenderAttr("value", balloonPopConfig.value.popSubtitleText)} class="text-input" placeholder="Pop balloons to reveal your prize!" data-v-5760dace></div><div class="upload-row" data-v-5760dace><label class="${ssrRenderClass([{ "has-image": balloonPopImages.value.header }, "upload-box"])}" data-v-5760dace>`);
+        _push(`<!--]--></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Branding</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Title</label><input type="text"${ssrRenderAttr("value", balloonPopConfig.value.titleText)} class="text-input" data-v-dd8ae836></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Subtitle</label><input type="text"${ssrRenderAttr("value", balloonPopConfig.value.popSubtitleText)} class="text-input" placeholder="Pop balloons to reveal your prize!" data-v-dd8ae836></div><div class="upload-row" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": balloonPopImages.value.header }, "upload-box"])}" data-v-dd8ae836>`);
         if (balloonPopImages.value.header) {
-          _push(`<img${ssrRenderAttr("src", balloonPopImages.value.header)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", balloonPopImages.value.header)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ Header</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Header</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label><label class="${ssrRenderClass([{ "has-image": balloonPopImages.value.background }, "upload-box"])}" data-v-5760dace>`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": balloonPopImages.value.background }, "upload-box"])}" data-v-dd8ae836>`);
         if (balloonPopImages.value.background) {
-          _push(`<img${ssrRenderAttr("src", balloonPopImages.value.background)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", balloonPopImages.value.background)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ BG</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ BG</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label><label class="${ssrRenderClass([{ "has-image": balloonPopImages.value.titleImage }, "upload-box"])}" data-v-5760dace>`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": balloonPopImages.value.titleImage }, "upload-box"])}" data-v-dd8ae836>`);
         if (balloonPopImages.value.titleImage) {
-          _push(`<img${ssrRenderAttr("src", balloonPopImages.value.titleImage)} data-v-5760dace>`);
+          _push(`<img${ssrRenderAttr("src", balloonPopImages.value.titleImage)} data-v-dd8ae836>`);
         } else {
-          _push(`<span class="upload-placeholder" data-v-5760dace>+ Logo</span>`);
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Logo</span>`);
         }
-        _push(`<input type="file" accept="image/*" data-v-5760dace></label></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Colors</span></div><div class="color-grid" data-v-5760dace><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", balloonPopConfig.value.titleColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Title</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", balloonPopConfig.value.primaryColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Primary</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", balloonPopConfig.value.popWinColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Win</span></div><div class="color-item" data-v-5760dace><input type="color"${ssrRenderAttr("value", balloonPopConfig.value.popLoseColor)} class="color-picker" data-v-5760dace><span data-v-5760dace>Lose</span></div></div></div><div class="config-section" data-v-5760dace><div class="section-header" data-v-5760dace><span class="section-title" data-v-5760dace>Item Type</span></div><div class="preset-grid" data-v-5760dace><button class="${ssrRenderClass([{ "active": balloonPopConfig.value.popItemType === "balloon" }, "preset-btn"])}" data-v-5760dace> 🎈 Balloon </button><button class="${ssrRenderClass([{ "active": balloonPopConfig.value.popItemType === "bubble" }, "preset-btn"])}" data-v-5760dace> 🫧 Bubble </button></div></div></div>`);
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", balloonPopConfig.value.titleColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Title</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", balloonPopConfig.value.primaryColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Primary</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", balloonPopConfig.value.popWinColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Win</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", balloonPopConfig.value.popLoseColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Lose</span></div></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Item Type</span></div><div class="preset-grid" data-v-dd8ae836><button class="${ssrRenderClass([{ "active": balloonPopConfig.value.popItemType === "balloon" }, "preset-btn"])}" data-v-dd8ae836> 🎈 Balloon </button><button class="${ssrRenderClass([{ "active": balloonPopConfig.value.popItemType === "bubble" }, "preset-btn"])}" data-v-dd8ae836> 🫧 Bubble </button></div></div></div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div></div></div><div class="lg:col-span-7 xl:col-span-8" data-v-5760dace><div class="preview-card" data-v-5760dace><div class="preview-header" data-v-5760dace><span class="preview-title" data-v-5760dace>Preview</span><span class="preview-badge" data-v-5760dace>${ssrInterpolate((_a = tabs.find((t3) => t3.id === activeTab.value)) == null ? void 0 : _a.icon)} ${ssrInterpolate((_b = tabs.find((t3) => t3.id === activeTab.value)) == null ? void 0 : _b.name)}</span></div><div class="preview-container" data-v-5760dace>`);
+      if (activeTab.value === "fishing") {
+        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Theme</span></div><div class="preset-grid" data-v-dd8ae836><!--[-->`);
+        ssrRenderList(colorPresets.fishing, (preset) => {
+          _push(`<button class="${ssrRenderClass([{ active: fishingConfig.value.theme === preset.theme }, "preset-btn"])}" style="${ssrRenderStyle({ "--preset-color": preset.accent })}" data-v-dd8ae836><span class="preset-dot" style="${ssrRenderStyle({ background: preset.accent })}" data-v-dd8ae836></span> ${ssrInterpolate(preset.name)}</button>`);
+        });
+        _push(`<!--]--></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Text</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Title</label><input type="text"${ssrRenderAttr("value", fishingConfig.value.titleText)} class="text-input" data-v-dd8ae836></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Win Message</label><input type="text"${ssrRenderAttr("value", fishingConfig.value.winText)} class="text-input" data-v-dd8ae836></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Lose Message</label><input type="text"${ssrRenderAttr("value", fishingConfig.value.loseText)} class="text-input" data-v-dd8ae836></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", fishingConfig.value.accentColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Accent</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", fishingConfig.value.primaryColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Primary</span></div></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Display Options</span></div><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(fishingConfig.value.sunEnabled) ? ssrLooseContain(fishingConfig.value.sunEnabled, null) : fishingConfig.value.sunEnabled) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Sun</span></label><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(fishingConfig.value.cloudsEnabled) ? ssrLooseContain(fishingConfig.value.cloudsEnabled, null) : fishingConfig.value.cloudsEnabled) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Clouds</span></label><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(fishingConfig.value.showTopPrize) ? ssrLooseContain(fishingConfig.value.showTopPrize, null) : fishingConfig.value.showTopPrize) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Top Prize Banner</span></label><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(fishingConfig.value.introEnabled) ? ssrLooseContain(fishingConfig.value.introEnabled, null) : fishingConfig.value.introEnabled) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Intro Screen</span></label></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Images</span></div><div class="upload-row" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": fishingImages.value.boatImage }, "upload-box"])}" data-v-dd8ae836>`);
+        if (fishingImages.value.boatImage) {
+          _push(`<img${ssrRenderAttr("src", fishingImages.value.boatImage)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Boat</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": fishingImages.value.underwaterImage }, "upload-box"])}" data-v-dd8ae836>`);
+        if (fishingImages.value.underwaterImage) {
+          _push(`<img${ssrRenderAttr("src", fishingImages.value.underwaterImage)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Underwater</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": fishingImages.value.introTitleImage }, "upload-box"])}" data-v-dd8ae836>`);
+        if (fishingImages.value.introTitleImage) {
+          _push(`<img${ssrRenderAttr("src", fishingImages.value.introTitleImage)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Intro Logo</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div><div class="upload-row" style="${ssrRenderStyle({ "margin-top": "6px" })}" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": fishingImages.value.fish1 }, "upload-box"])}" data-v-dd8ae836>`);
+        if (fishingImages.value.fish1) {
+          _push(`<img${ssrRenderAttr("src", fishingImages.value.fish1)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Fish 1</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": fishingImages.value.fish2 }, "upload-box"])}" data-v-dd8ae836>`);
+        if (fishingImages.value.fish2) {
+          _push(`<img${ssrRenderAttr("src", fishingImages.value.fish2)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Fish 2</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": fishingImages.value.fish3 }, "upload-box"])}" data-v-dd8ae836>`);
+        if (fishingImages.value.fish3) {
+          _push(`<img${ssrRenderAttr("src", fishingImages.value.fish3)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Fish 3</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Sound Effects</span></div><div class="audio-upload-grid" data-v-dd8ae836><!--[-->`);
+        ssrRenderList([
+          { key: "castSound", label: "Cast" },
+          { key: "splashSound", label: "Splash" },
+          { key: "reelSound", label: "Reel" },
+          { key: "winSound", label: "Win" },
+          { key: "lossSound", label: "Loss" }
+        ], (cue) => {
+          _push(`<label class="${ssrRenderClass([{ "has-audio": fishingMedia.value[cue.key] }, "audio-box"])}" data-v-dd8ae836><span class="audio-label" data-v-dd8ae836>${ssrInterpolate(fishingMedia.value[cue.key] ? "✓" : "🔊")} ${ssrInterpolate(cue.label)}</span><input type="file" accept="audio/*" data-v-dd8ae836></label>`);
+        });
+        _push(`<!--]--></div></div></div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      if (activeTab.value === "ticketeater") {
+        _push(`<div class="config-sections" data-v-dd8ae836><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Theme</span></div><div class="preset-grid" data-v-dd8ae836><!--[-->`);
+        ssrRenderList(colorPresets.ticketeater, (preset) => {
+          _push(`<button class="${ssrRenderClass([{ active: eaterConfig.value.theme === preset.theme }, "preset-btn"])}" style="${ssrRenderStyle({ "--preset-color": preset.accent })}" data-v-dd8ae836><span class="preset-dot" style="${ssrRenderStyle({ background: preset.accent })}" data-v-dd8ae836></span> ${ssrInterpolate(preset.name)}</button>`);
+        });
+        _push(`<!--]--></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Text</span></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Title</label><input type="text"${ssrRenderAttr("value", eaterConfig.value.titleText)} class="text-input" data-v-dd8ae836></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Colors</span></div><div class="color-grid" data-v-dd8ae836><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", eaterConfig.value.accentColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Accent</span></div><div class="color-item" data-v-dd8ae836><input type="color"${ssrRenderAttr("value", eaterConfig.value.primaryColor)} class="color-picker" data-v-dd8ae836><span data-v-dd8ae836>Primary</span></div></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Display Options</span></div><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(eaterConfig.value.showTopPrize) ? ssrLooseContain(eaterConfig.value.showTopPrize, null) : eaterConfig.value.showTopPrize) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Top Prize Banner</span></label></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Intro Screen</span></div><label class="toggle-row" data-v-dd8ae836><input type="checkbox"${ssrIncludeBooleanAttr(Array.isArray(eaterConfig.value.introEnabled) ? ssrLooseContain(eaterConfig.value.introEnabled, null) : eaterConfig.value.introEnabled) ? " checked" : ""} class="toggle-check" data-v-dd8ae836><span class="toggle-label" data-v-dd8ae836>Show Intro Screen</span></label><div class="input-group" style="${ssrRenderStyle({ "margin-top": "8px" })}" data-v-dd8ae836><label data-v-dd8ae836>Intro Logo</label><label class="${ssrRenderClass([{ "has-image": eaterImages.value.introTitleImage }, "upload-box wide"])}" data-v-dd8ae836>`);
+        if (eaterImages.value.introTitleImage) {
+          _push(`<img${ssrRenderAttr("src", eaterImages.value.introTitleImage)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>Select image</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Welcome Message</label><input type="text"${ssrRenderAttr("value", eaterConfig.value.introWelcomeText)} class="text-input" data-v-dd8ae836></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Subtitle</label><input type="text"${ssrRenderAttr("value", eaterConfig.value.introSubtitle)} class="text-input" data-v-dd8ae836></div><div class="input-group" data-v-dd8ae836><label data-v-dd8ae836>Button Text</label><input type="text"${ssrRenderAttr("value", eaterConfig.value.introButtonText)} class="text-input" data-v-dd8ae836></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Scene Art</span></div><div class="upload-row" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": eaterImages.value.mascotImage }, "upload-box"])}" data-v-dd8ae836>`);
+        if (eaterImages.value.mascotImage) {
+          _push(`<img${ssrRenderAttr("src", eaterImages.value.mascotImage)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Mascot 1</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": eaterImages.value.mascotImage2 }, "upload-box"])}" data-v-dd8ae836>`);
+        if (eaterImages.value.mascotImage2) {
+          _push(`<img${ssrRenderAttr("src", eaterImages.value.mascotImage2)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Mascot 2</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": eaterImages.value.mascotImage3 }, "upload-box"])}" data-v-dd8ae836>`);
+        if (eaterImages.value.mascotImage3) {
+          _push(`<img${ssrRenderAttr("src", eaterImages.value.mascotImage3)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Mascot 3</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div><div class="upload-row" style="${ssrRenderStyle({ "margin-top": "6px" })}" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": eaterImages.value.ticketImage }, "upload-box"])}" data-v-dd8ae836>`);
+        if (eaterImages.value.ticketImage) {
+          _push(`<img${ssrRenderAttr("src", eaterImages.value.ticketImage)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Main Ticket</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": eaterImages.value.risingTicketImage }, "upload-box"])}" data-v-dd8ae836>`);
+        if (eaterImages.value.risingTicketImage) {
+          _push(`<img${ssrRenderAttr("src", eaterImages.value.risingTicketImage)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Rising Ticket</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": eaterImages.value.backgroundImage }, "upload-box"])}" data-v-dd8ae836>`);
+        if (eaterImages.value.backgroundImage) {
+          _push(`<img${ssrRenderAttr("src", eaterImages.value.backgroundImage)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Background</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div><div class="upload-row" style="${ssrRenderStyle({ "margin-top": "6px" })}" data-v-dd8ae836><label class="${ssrRenderClass([{ "has-image": eaterImages.value.pouchImage }, "upload-box"])}" data-v-dd8ae836>`);
+        if (eaterImages.value.pouchImage) {
+          _push(`<img${ssrRenderAttr("src", eaterImages.value.pouchImage)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Pouch</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label><label class="${ssrRenderClass([{ "has-image": eaterImages.value.prizeImage }, "upload-box"])}" data-v-dd8ae836>`);
+        if (eaterImages.value.prizeImage) {
+          _push(`<img${ssrRenderAttr("src", eaterImages.value.prizeImage)} data-v-dd8ae836>`);
+        } else {
+          _push(`<span class="upload-placeholder" data-v-dd8ae836>+ Fallback Prize</span>`);
+        }
+        _push(`<input type="file" accept="image/*" data-v-dd8ae836></label></div></div><div class="config-section" data-v-dd8ae836><div class="section-header" data-v-dd8ae836><span class="section-title" data-v-dd8ae836>Sound Effects</span></div><div class="audio-upload-grid" data-v-dd8ae836><!--[-->`);
+        ssrRenderList([
+          { key: "feedSound", label: "Feed" },
+          { key: "gulpSound", label: "Gulp" },
+          { key: "winSound", label: "Win" },
+          { key: "collectSound", label: "Collect" },
+          { key: "welcomeSound", label: "Welcome" }
+        ], (cue) => {
+          _push(`<label class="${ssrRenderClass([{ "has-audio": eaterMedia.value[cue.key] }, "audio-box"])}" data-v-dd8ae836><span class="audio-label" data-v-dd8ae836>${ssrInterpolate(eaterMedia.value[cue.key] ? "✓" : "🔊")} ${ssrInterpolate(cue.label)}</span><input type="file" accept="audio/*" data-v-dd8ae836></label>`);
+        });
+        _push(`<!--]--></div></div></div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div></div></div><div class="lg:col-span-7 xl:col-span-8" data-v-dd8ae836><div class="preview-card" data-v-dd8ae836><div class="preview-header" data-v-dd8ae836><span class="preview-title" data-v-dd8ae836>Preview</span><span class="preview-badge" data-v-dd8ae836>${ssrInterpolate((_a = tabs.find((t3) => t3.id === activeTab.value)) == null ? void 0 : _a.icon)} ${ssrInterpolate((_b = tabs.find((t3) => t3.id === activeTab.value)) == null ? void 0 : _b.name)}</span></div><div class="preview-container" data-v-dd8ae836>`);
       if (activeTab.value === "slots") {
-        _push(`<div class="preview-game" data-v-5760dace>`);
+        _push(`<div class="preview-game" data-v-dd8ae836>`);
         _push(ssrRenderComponent(SlotsGame, {
           demoMode: true,
           previewMode: "desktop",
@@ -14602,7 +16024,7 @@ const _sfc_main$i = {
         _push(`<!---->`);
       }
       if (activeTab.value === "scratch") {
-        _push(`<div class="preview-game" data-v-5760dace>`);
+        _push(`<div class="preview-game" data-v-dd8ae836>`);
         _push(ssrRenderComponent(ScratchGame, {
           demoMode: true,
           previewMode: "desktop",
@@ -14613,7 +16035,7 @@ const _sfc_main$i = {
         _push(`<!---->`);
       }
       if (activeTab.value === "spin") {
-        _push(`<div class="preview-game" data-v-5760dace>`);
+        _push(`<div class="preview-game" data-v-dd8ae836>`);
         _push(ssrRenderComponent(SpinGame, {
           demoMode: true,
           previewMode: "desktop",
@@ -14624,7 +16046,7 @@ const _sfc_main$i = {
         _push(`<!---->`);
       }
       if (activeTab.value === "bingo") {
-        _push(`<div class="preview-game" data-v-5760dace>`);
+        _push(`<div class="preview-game" data-v-dd8ae836>`);
         _push(ssrRenderComponent(BingoGame, {
           demoMode: true,
           previewMode: "desktop",
@@ -14637,7 +16059,7 @@ const _sfc_main$i = {
         _push(`<!---->`);
       }
       if (activeTab.value === "coindrop") {
-        _push(`<div class="preview-game" data-v-5760dace>`);
+        _push(`<div class="preview-game" data-v-dd8ae836>`);
         _push(ssrRenderComponent(CoinDropGame, {
           demoMode: true,
           previewMode: "desktop",
@@ -14650,7 +16072,7 @@ const _sfc_main$i = {
         _push(`<!---->`);
       }
       if (activeTab.value === "balloonpop") {
-        _push(`<div class="preview-game" data-v-5760dace>`);
+        _push(`<div class="preview-game" data-v-dd8ae836>`);
         _push(ssrRenderComponent(BalloonPopGame, {
           demoMode: true,
           previewMode: "desktop",
@@ -14663,7 +16085,7 @@ const _sfc_main$i = {
         _push(`<!---->`);
       }
       if (activeTab.value === "football") {
-        _push(`<div class="preview-game-football" data-v-5760dace>`);
+        _push(`<div class="preview-game-football" data-v-dd8ae836>`);
         _push(ssrRenderComponent(FootballModal, {
           "model-value": true,
           demoMode: true,
@@ -14675,1200 +16097,1915 @@ const _sfc_main$i = {
       } else {
         _push(`<!---->`);
       }
+      if (activeTab.value === "fishing") {
+        _push(`<div class="preview-game-football" data-v-dd8ae836>`);
+        _push(ssrRenderComponent(FishingModal, {
+          "model-value": true,
+          demoMode: true,
+          previewMode: "desktop",
+          assets: fishingAssets.value,
+          tickets: fishingDemoTickets,
+          instant_win_categories: fishingDemoCategories
+        }, null, _parent));
+        _push(`</div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      if (activeTab.value === "ticketeater") {
+        _push(`<div class="preview-game-football" data-v-dd8ae836>`);
+        _push(ssrRenderComponent(TicketEaterModal, {
+          "model-value": true,
+          demoMode: true,
+          previewMode: "desktop",
+          assets: eaterAssets.value,
+          instant_win_categories: eaterDemoCategories
+        }, null, _parent));
+        _push(`</div>`);
+      } else {
+        _push(`<!---->`);
+      }
       _push(`</div></div></div></div></div></section>`);
     };
   }
 };
+const _sfc_setup$k = _sfc_main$k.setup;
+_sfc_main$k.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Configurator/GameConfigurator.vue");
+  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
+};
+const GameConfigurator = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-dd8ae836"]]);
+const _sfc_main$j = {};
+function _sfc_ssrRender$b(_ctx, _push, _parent, _attrs) {
+  _push(`<section${ssrRenderAttrs(mergeProps({
+    id: "ecosystem",
+    class: "cv"
+  }, _attrs))}><div class="wrap"><div class="sec-head"><span class="eyebrow"><i class="dot"></i>Your complete raffle ecosystem</span><h2>Everything you need. <span class="grad">Nine modules. Zero plugins.</span></h2></div><div class="bento" id="bento"><div class="card b-gs"><span class="only">Only on CompEngine</span><h3>Game Studio</h3><div class="viz"><div class="slot lg" data-slot="bento" style="${ssrRenderStyle({ "--slot-primary": "#f4a558", "--slot-accent": "#d97aa8", "width": "min(100%,520px)", "margin": "0 auto" })}"></div></div><p>Theme it, brand it, preview it live. No developers, no presets.</p><a href="#game-studio" class="link" data-track="ecosystem_try_it">Try it live ↑</a></div><div class="card"><span class="only">Only on CompEngine</span><h3>Separate Cash &amp; Site-Credit Wallets</h3><div class="viz"><div class="wal-bar"><i class="cash"></i><i class="cred"></i></div><div class="wal-lbl"><span><b>Cash 68%</b>Withdrawable · Cash wallet</span><span style="${ssrRenderStyle({ "text-align": "right" })}"><b>Credit 32%</b>Non-withdrawable · Site credit</span></div></div><p>Cash players can withdraw. Site credit they can&#39;t. Both tracked, both usable for instant wins.</p></div><div class="card"><span class="only">Only on CompEngine</span><h3>Free Entry Compliance &amp; Management</h3><div class="viz"><div class="vcoc"><span class="ring"><i class="ic" data-i="check"></i></span><span><b style="${ssrRenderStyle({ "color": "var(--text-0)" })}">UK Voluntary Code</b><br>Mapped end-to-end · since May 2026</span></div></div><p>UK free-entry route, tracked and audited end-to-end. No manual handling.</p><a href="#comparison" class="link" data-track="ecosystem_vcoc">See VCOC alignment →</a></div><div class="card"><h3>Smart Upsell — built into every checkout</h3><div class="viz" style="${ssrRenderStyle({ "padding": "0", "min-height": "130px" })}"><div class="ups"><img src="/images/upsell/upsell.png" alt="" loading="lazy"><div class="modal"><b>Add 10 more tickets for £8?</b><span class="muted">Boost your odds before checkout</span><span class="mbtn">Yes, add them</span></div></div></div><p>Fires at the right point in checkout. +£23 average per order. 87% take it.</p></div><div class="card"><h3>Best-in-class reporting</h3><div class="viz"><svg class="spark" viewBox="0 0 200 64" preserveAspectRatio="none" aria-hidden="true"><path class="area" d="M0 52 L25 46 L50 48 L75 38 L100 34 L125 26 L150 22 L175 14 L200 6 L200 64 L0 64 Z"></path><path d="M0 52 L25 46 L50 48 L75 38 L100 34 L125 26 L150 22 L175 14 L200 6"></path></svg><span class="tag green" style="${ssrRenderStyle({ "justify-self": "start" })}"><i class="ic" data-i="trend"></i>+34% MoM growth</span></div><p>Order patterns, customer LTV, prize cost, P&amp;L per competition.</p><a href="#convert" class="link" data-track="ecosystem_dashboard">See the dashboard →</a></div><div class="card"><h3>Competition Builder</h3><div class="viz"><div class="brows"><div class="brow"><i><span class="ic" data-i="check"></span></i>Prize, price, ticket cap</div><div class="brow"><i><span class="ic" data-i="check"></span></i>Instant wins — no CSV upload</div><div class="brow"><i><span class="ic" data-i="check"></span></i>Promotions, discounts, addons</div><div class="brow"><i><span class="ic" data-i="check"></span></i>Publish</div></div></div><p>Instant wins without CSVs. Promotions, discounts and addons other sites can&#39;t do.</p></div><div class="card"><h3>Automated Payouts &amp; Prize Management</h3><div class="viz"><div class="flow"><span>Winner picks</span><i class="ic" data-i="chev-r"></i><span>Cash · Credit · Prize</span><i class="ic" data-i="chev-r"></i><span>Paid &amp; tracked</span></div></div><p>Winner picks cash, credit or prize. Paid and tracked automatically.</p><a href="#certified-draws" class="link" data-track="ecosystem_prize_flow">See the prize flow →</a></div><div class="card b-scratch"><h3>Scratch to Win</h3><div class="viz"><div class="scratch" id="scratch"><div class="bar"><span>Scratch off <b>50%</b> to reveal your prize</span><button class="btn btn-ghost btn-sm" type="button" id="scratch-reveal">Reveal All</button><button class="btn btn-ghost btn-sm" type="button" id="scratch-reset" style="${ssrRenderStyle({ "margin-left": "0" })}">Reset</button></div><div class="grid" id="scratch-grid"></div></div></div></div><div class="card"><h3>GLI RNG Certified</h3><div class="viz"><a class="gli" href="#certified-draws" data-track="ecosystem_gli"><img src="/images/gli-rng-certified.png" alt="GLI RNG Certified" loading="lazy"><span class="seal">GLI<br>RNG<br>CERTIFIED</span><span>Draws and ticket distribution certified by an independent third party.</span></a></div><p>Draws and ticket distribution certified by an independent third party.</p></div><div class="card"><h3>Built-in Notifications</h3><div class="viz"><div class="toasts"><div class="toast"><i class="ic" data-i="bell"></i>You won! £250 site credit added</div><div class="toast"><i class="ic" data-i="bell"></i>Draw closes in 2 hours — 84% sold</div><div class="toast"><i class="ic" data-i="bell"></i>New: Rolex Submariner, £1.49 a ticket</div></div></div><p>Winner alerts, updates and marketing, built in — no app required.</p></div></div></div></section>`);
+}
+const _sfc_setup$j = _sfc_main$j.setup;
+_sfc_main$j.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraEcosystem.vue");
+  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
+};
+const UltraEcosystem = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["ssrRender", _sfc_ssrRender$b]]);
+const _sfc_main$i = {};
+function _sfc_ssrRender$a(_ctx, _push, _parent, _attrs) {
+  _push(`<section${ssrRenderAttrs(mergeProps({
+    id: "easy",
+    class: "cv"
+  }, _attrs))}><div class="wrap"><div class="sec-head"><span class="eyebrow"><i class="dot"></i>Easy to learn. Easier to run.</span><h2>Launch a competition in <span class="grad">three steps.</span></h2><p class="lead">If you can post on Facebook, you can run CompEngine. One onboarding call, then it&#39;s yours.</p></div><div class="easy-grid"><div class="card admin" id="admin" aria-label="Admin walkthrough demo"><div class="ad-bar"><i></i><i></i><i></i><span>admin.yourbrand.co.uk</span></div><div class="ad-body"><div class="ad-side"><b class="grad">COMPENGINE</b><span class="on">Competitions</span><span>Games</span><span>Wallets</span><span>Reports</span><span>Customers</span></div><div class="ad-main"><div class="ad-steps"><span class="on" data-s="0">1 · Create</span><span data-s="1">2 · Prize</span><span data-s="2">3 · Publish</span></div><div class="ad-form"><div class="ad-field"><label>Competition title</label><div class="ad-input" id="ad-title"></div></div><div class="ad-row"><div class="ad-field"><label>Ticket price</label><div class="ad-input" id="ad-price"></div></div><div class="ad-field"><label>Tickets</label><div class="ad-input" id="ad-qty"></div></div></div><div class="ad-field"><label>Instant wins</label><div class="ad-toggle" id="ad-toggle"><i></i><span>Add 250 instant wins — no CSV</span></div></div><div class="ad-field"><label>Prize</label><div class="ad-prize" id="ad-prize"><span class="ic" data-i="car"></span><span>BMW M3 Competition Pack · £75,000</span><b>Cash alt: £60,000</b></div></div><button type="button" class="btn btn-primary ad-publish" id="ad-publish" tabindex="-1">Publish competition</button></div><div class="ad-live" id="ad-live"><span class="ic" data-i="check-c"></span><div><b>Live on yourbrand.co.uk</b><span>/bmw-m3-competition-pack · tickets on sale</span></div></div></div></div><div class="cursor" id="ad-cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 2-3 6z" fill="#fff" stroke="#14082e" stroke-width="1.5" stroke-linejoin="round"></path></svg></div><div class="confetti" id="ad-confetti" aria-hidden="true"></div><button type="button" class="ad-replay" id="ad-replay" data-track="easy_replay">Replay</button></div><div class="timeline"><div class="tl-step"><span class="tl-dot"></span><small>Day 0</small><b>Book a 30-min demo</b><span>Tell us your prize and game type. That&#39;s the brief.</span></div><div class="tl-step"><span class="tl-dot"></span><small>Week 1</small><b>We set it up</b><span>Domain, payment gateway, game configuration — and a free migration of users, wallets and competitions.</span></div><div class="tl-step"><span class="tl-dot"></span><small>Week 2</small><b>You&#39;re live</b><span>Draws, payouts, reporting and notifications from one dashboard. We&#39;ve done it in 4 days when it mattered.</span></div><div class="tl-pills"><span class="tag green"><i class="ic" data-i="check"></i>Live in 1–2 weeks</span><span class="tag green"><i class="ic" data-i="check"></i>One onboarding call</span><span class="tag green"><i class="ic" data-i="check"></i>Free site migration</span></div></div></div></div></section>`);
+}
 const _sfc_setup$i = _sfc_main$i.setup;
 _sfc_main$i.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Configurator/GameConfigurator.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraEasy.vue");
   return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
 };
-const GameConfigurator = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-5760dace"]]);
-const _sfc_main$h = {
-  __name: "EcosystemFeatures",
-  __ssrInlineRender: true,
-  setup(__props) {
-    const getText = inject("getText", (key, fallback = "") => fallback);
-    const { sectionRef, revealed } = useReveal();
-    const eyebrow = computed(() => getText("ecosystem.eyebrow", "Your complete raffle ecosystem"));
-    const titleBefore = computed(() => getText("ecosystem.title_before", "Everything you need."));
-    const titleKeyword = computed(() => getText("ecosystem.title_keyword", "Nine modules. Zero plugins."));
-    const lead = computed(() => getText("ecosystem.lead", "Built ground-up over five years of operating — not duct-taped from generic e-commerce plugins. Click any module for the operator-side detail."));
-    const gridLureText = computed(() => getText("ecosystem.grid_lure_text", "Tap any card for more detail"));
-    const badgeHero = computed(() => getText("ecosystem.badge_hero", "✦ Only on CompEngine ✦"));
-    const badgeInteractive = computed(() => getText("ecosystem.badge_interactive", "✦ Hands-on demo ✦"));
-    const badgeStandard = computed(() => getText("ecosystem.badge_standard", "Only on CompEngine"));
-    const features = computed(() => [
-      {
-        size: "hero",
-        mini: "slot",
-        featured: true,
-        badge: badgeHero.value,
-        icon: getText("ecosystem.feat_gamestudio_icon", "🎮"),
-        title: getText("ecosystem.feat_gamestudio_title", "Game Studio — design your own instant-win games"),
-        text: getText("ecosystem.feat_gamestudio_text", "Build and preview competition games in real time. Theme, brand, inventory, button text — every detail, live. No developers, no delays, no limits. The only studio of its kind in the UK competition category."),
-        more: getText("ecosystem.feat_gamestudio_more", "🎮 Try it live below")
-      },
-      {
-        size: "wide",
-        mini: "wallet",
-        featured: true,
-        badge: badgeStandard.value,
-        icon: getText("ecosystem.feat_wallets_icon", "💵"),
-        title: getText("ecosystem.feat_wallets_title", "Separate Cash & Site-Credit Wallets"),
-        text: getText("ecosystem.feat_wallets_text", "Two wallets, not one. Cash on one side. Site credit on the other. Clearer for operators, cleaner for compliance, simpler for chargebacks. Single-wallet platforms quietly mix everything together."),
-        more: getText("ecosystem.feat_wallets_more", "Why we built it this way →")
-      },
-      {
-        size: "wide",
-        mini: "compliance",
-        featured: true,
-        badge: badgeStandard.value,
-        icon: getText("ecosystem.feat_compliance_icon", "📝"),
-        title: getText("ecosystem.feat_compliance_title", "Free Entry Compliance & Management"),
-        text: getText("ecosystem.feat_compliance_text", "Built-in free-entry system designed to meet UK compliance requirements end-to-end. Full tracking, full management, full audit trail. No manual handling. No workarounds."),
-        more: getText("ecosystem.feat_compliance_more", "See VCOC alignment →")
-      },
-      {
-        size: "interactive",
-        mini: "upsell",
-        featured: true,
-        badge: badgeInteractive.value,
-        icon: getText("ecosystem.feat_upsell_icon", "📱🚀"),
-        title: getText("ecosystem.feat_upsell_title", "Smart Upsell — built into every checkout"),
-        text: getText("ecosystem.feat_upsell_text", 'Triggers automatically at the exact right point in the buy flow. Adds an average +£23 to every ticket order. 87% of buyers take the offer. Click "Pay" on the right to see it fire — exactly as your customers will.'),
-        more: getText("ecosystem.feat_upsell_more", "Click Pay below to test it →")
-      },
-      {
-        size: "std",
-        mini: "bars",
-        featured: false,
-        icon: getText("ecosystem.feat_reporting_icon", "👍📈"),
-        title: getText("ecosystem.feat_reporting_title", "Best-in-class reporting"),
-        text: getText("ecosystem.feat_reporting_text", "Detailed insights on order patterns, customer LTV, prize cost, P&L per competition."),
-        more: getText("ecosystem.feat_reporting_more", "See the dashboard →")
-      },
-      {
-        size: "std",
-        mini: null,
-        featured: false,
-        icon: getText("ecosystem.feat_builder_icon", "🏗️"),
-        title: getText("ecosystem.feat_builder_title", "Competition Builder"),
-        text: getText("ecosystem.feat_builder_text", "Create once, save templates, launch faster every time."),
-        more: getText("ecosystem.feat_builder_more", "See template library →")
-      },
-      {
-        size: "std",
-        mini: null,
-        featured: false,
-        icon: getText("ecosystem.feat_payouts_icon", "⚡"),
-        title: getText("ecosystem.feat_payouts_title", "Automated Payouts & Prize Management"),
-        text: getText("ecosystem.feat_payouts_text", "Winner choice → instant cash, site credit, or tracked prize fulfilment. End-to-end automated."),
-        more: getText("ecosystem.feat_payouts_more", "See the prize flow →")
-      },
-      {
-        size: "std",
-        mini: null,
-        featured: false,
-        icon: getText("ecosystem.feat_rng_icon", "✅"),
-        title: getText("ecosystem.feat_rng_title", "RNG-Certified Draws"),
-        text: getText("ecosystem.feat_rng_text", "GLI-certified RNG. Every result independently verifiable, full audit trail, live-stream mode."),
-        more: getText("ecosystem.feat_rng_more", "See the certification →")
-      },
-      {
-        size: "std",
-        mini: null,
-        featured: false,
-        icon: getText("ecosystem.feat_notify_icon", "📱🔔"),
-        title: getText("ecosystem.feat_notify_title", "Built-in Notifications"),
-        text: getText("ecosystem.feat_notify_text", "Winner alerts, customer updates, direct marketing — no third-party email tool to wire up."),
-        more: getText("ecosystem.feat_notify_more", "See the message flow →")
-      }
-    ]);
-    const pressedIdx = ref(null);
-    const MINI_SYMBOLS = ["🍒", "🍋", "🍊", "🍇", "🔔", "⭐", "💎", "💰", "7️⃣", "🍉"];
-    const miniSlotTitle = computed(() => getText("ecosystem.mini_slot_title", "LUCKY SLOTS"));
-    const miniSlotSub = computed(() => getText("ecosystem.mini_slot_sub", "Match 3 to win"));
-    const miniSlotSymbols = ref(rollMiniSlot());
-    function rollMiniSlot() {
-      return Array.from({ length: 9 }, () => MINI_SYMBOLS[Math.floor(Math.random() * MINI_SYMBOLS.length)]);
-    }
-    const miniSlotInterval = setInterval(() => {
-      miniSlotSymbols.value = rollMiniSlot();
-    }, 4e3);
-    onUnmounted(() => clearInterval(miniSlotInterval));
-    const walletCashLabel = computed(() => getText("ecosystem.wallet_cash_label", "Cash 68%"));
-    const walletCreditLabel = computed(() => getText("ecosystem.wallet_credit_label", "Credit 32%"));
-    const walletWithdrawLabel = computed(() => getText("ecosystem.wallet_withdraw_label", "Withdrawable"));
-    const walletCashSub = computed(() => getText("ecosystem.wallet_cash_sub", "Cash wallet"));
-    const walletPromoLabel = computed(() => getText("ecosystem.wallet_promo_label", "Promo / prize"));
-    const walletCreditSub = computed(() => getText("ecosystem.wallet_credit_sub", "Site credit"));
-    const vcocLabel = computed(() => getText("ecosystem.vcoc_label", "UK Voluntary Code"));
-    const vcocValue = computed(() => getText("ecosystem.vcoc_value", "Mapped end-to-end · since May 2026"));
-    const barHeights = [30, 42, 38, 55, 50, 72, 88, 100];
-    const barsTrend = computed(() => getText("ecosystem.bars_trend", "↗ +34% MoM growth"));
-    const checkoutLabel = computed(() => getText("ecosystem.checkout_label", "Your basket · STAR DRAWS"));
-    const checkoutRow1Label = computed(() => getText("ecosystem.checkout_row1_label", "Friday Cash Draw × 5"));
-    const checkoutRow1Price = computed(() => getText("ecosystem.checkout_row1_price", "£10.00"));
-    const checkoutRow2Label = computed(() => getText("ecosystem.checkout_row2_label", "Instant Win — Scratch"));
-    const checkoutRow2Price = computed(() => getText("ecosystem.checkout_row2_price", "£2.50"));
-    const checkoutTotal = computed(() => getText("ecosystem.checkout_total", "£12.50"));
-    const checkoutPayLabel = computed(() => getText("ecosystem.checkout_pay_label", "Pay £12.50 →"));
-    const upsellTitle = computed(() => getText("ecosystem.upsell_title", "Wait — quick offer."));
-    const upsellDesc = computed(() => getText("ecosystem.upsell_desc", "Add <strong>10 more tickets for just £8 extra</strong>. <strong>87%</strong> of buyers take this offer."));
-    const upsellYesLabel = computed(() => getText("ecosystem.upsell_yes_label", "Add 10 · £20.50"));
-    const upsellNoLabel = computed(() => getText("ecosystem.upsell_no_label", "No thanks"));
-    const upsellMeta = computed(() => getText("ecosystem.upsell_meta", "A/B test winner · <strong>+38% AOV</strong> at checkout"));
-    const upsellResultDefault = computed(() => getText("ecosystem.upsell_result_default", "Click Pay above to see the upsell trigger →"));
-    computed(() => getText("ecosystem.upsell_result_triggered", "Smart upsell modal triggered…"));
-    computed(() => getText("ecosystem.upsell_result_win", "🎉 Smart upsell live. Operator just banked an extra <strong>£8.00</strong>."));
-    computed(() => getText("ecosystem.upsell_result_no", "No worries — that's exactly the kind of choice we <strong>A/B test</strong> for our operators."));
-    computed(() => getText("ecosystem.upsell_result_rearm", "Click Pay to see the upsell trigger"));
-    const upsellShown = ref(false);
-    const upsellResultWinState = ref(false);
-    const upsellResultText = ref(upsellResultDefault.value);
-    let upsellRearmTimer = null;
-    onUnmounted(() => clearTimeout(upsellRearmTimer));
-    return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({
-        ref_key: "sectionRef",
-        ref: sectionRef,
-        class: ["section reveal", { visible: unref(revealed) }],
-        id: "ecosystem"
-      }, _attrs))} data-v-5e9810c3><div class="center" data-v-5e9810c3><div class="eyebrow" data-v-5e9810c3><span class="dot" data-v-5e9810c3></span>${ssrInterpolate(eyebrow.value)}</div><h2 class="h2" data-v-5e9810c3>${ssrInterpolate(titleBefore.value)}<br data-v-5e9810c3><span class="grad-text" data-v-5e9810c3>${ssrInterpolate(titleKeyword.value)}</span></h2><p class="lead center" style="${ssrRenderStyle({ "margin": "18px auto 0" })}" data-v-5e9810c3>${ssrInterpolate(lead.value)}</p></div><div class="feature-grid" data-v-5e9810c3><!--[-->`);
-      ssrRenderList(features.value, (f2, idx) => {
-        _push(`<div class="${ssrRenderClass(["feature-card", f2.size, { featured: f2.featured, pressed: pressedIdx.value === idx }])}" data-v-5e9810c3>`);
-        if (f2.size === "hero") {
-          _push(`<!--[--><div data-v-5e9810c3>`);
-          if (f2.featured) {
-            _push(`<span class="badge" style="${ssrRenderStyle({ "position": "relative", "top": "0", "right": "0", "display": "inline-block", "margin-bottom": "14px" })}" data-v-5e9810c3>${ssrInterpolate(f2.badge)}</span>`);
-          } else {
-            _push(`<!---->`);
-          }
-          _push(`<span class="icon" data-v-5e9810c3>${ssrInterpolate(f2.icon)}</span><h4 data-v-5e9810c3>${ssrInterpolate(f2.title)}</h4><p data-v-5e9810c3>${ssrInterpolate(f2.text)}</p><a href="#game-studio" class="more" data-v-5e9810c3>${ssrInterpolate(f2.more)}</a></div><div data-v-5e9810c3><div class="mini-slot-preview" data-v-5e9810c3><div class="mini-slot-title" data-v-5e9810c3>${ssrInterpolate(miniSlotTitle.value)}</div><div class="mini-slot-sub" data-v-5e9810c3>${ssrInterpolate(miniSlotSub.value)}</div><div class="mini-slot-grid" data-v-5e9810c3><!--[-->`);
-          ssrRenderList(miniSlotSymbols.value, (sym, i2) => {
-            _push(`<div class="mini-slot-cell" data-v-5e9810c3>${ssrInterpolate(sym)}</div>`);
-          });
-          _push(`<!--]--></div><button class="mini-spin" data-v-5e9810c3>SPIN</button></div></div><!--]-->`);
-        } else if (f2.size === "interactive") {
-          _push(`<!--[--><div data-v-5e9810c3>`);
-          if (f2.featured) {
-            _push(`<span class="badge" style="${ssrRenderStyle({ "position": "relative", "top": "0", "right": "0", "display": "inline-block", "margin-bottom": "14px" })}" data-v-5e9810c3>${ssrInterpolate(f2.badge)}</span>`);
-          } else {
-            _push(`<!---->`);
-          }
-          _push(`<span class="icon" data-v-5e9810c3>${ssrInterpolate(f2.icon)}</span><h4 data-v-5e9810c3>${ssrInterpolate(f2.title)}</h4><p data-v-5e9810c3>${ssrInterpolate(f2.text)}</p><span class="more" data-v-5e9810c3>${ssrInterpolate(f2.more)}</span></div><div data-v-5e9810c3><div class="checkout-mock" data-v-5e9810c3><div class="checkout-mock-label" data-v-5e9810c3>${ssrInterpolate(checkoutLabel.value)}</div><div class="checkout-row" data-v-5e9810c3><span data-v-5e9810c3>${ssrInterpolate(checkoutRow1Label.value)}</span><span class="v" data-v-5e9810c3>${ssrInterpolate(checkoutRow1Price.value)}</span></div><div class="checkout-row" data-v-5e9810c3><span data-v-5e9810c3>${ssrInterpolate(checkoutRow2Label.value)}</span><span class="v" data-v-5e9810c3>${ssrInterpolate(checkoutRow2Price.value)}</span></div><div class="checkout-row total" data-v-5e9810c3><span data-v-5e9810c3>Total</span><span class="v" data-v-5e9810c3>${ssrInterpolate(checkoutTotal.value)}</span></div><button class="checkout-btn" data-v-5e9810c3>${ssrInterpolate(checkoutPayLabel.value)}</button><div class="${ssrRenderClass([{ shown: upsellShown.value }, "upsell-modal"])}" data-v-5e9810c3><div class="upsell-modal-icon" data-v-5e9810c3>🎁</div><div class="upsell-modal-title" data-v-5e9810c3>${ssrInterpolate(upsellTitle.value)}</div><div class="upsell-modal-desc" data-v-5e9810c3>${upsellDesc.value ?? ""}</div><div class="upsell-modal-buttons" data-v-5e9810c3><button class="upsell-btn primary" data-v-5e9810c3>${ssrInterpolate(upsellYesLabel.value)}</button><button class="upsell-btn secondary" data-v-5e9810c3>${ssrInterpolate(upsellNoLabel.value)}</button></div><div class="upsell-meta" data-v-5e9810c3>${upsellMeta.value ?? ""}</div></div></div><div class="${ssrRenderClass([{ win: upsellResultWinState.value }, "upsell-result-inline"])}" data-v-5e9810c3>${upsellResultText.value ?? ""}</div></div><!--]-->`);
-        } else {
-          _push(`<!--[-->`);
-          if (f2.featured) {
-            _push(`<span class="badge" data-v-5e9810c3>${ssrInterpolate(f2.badge)}</span>`);
-          } else {
-            _push(`<!---->`);
-          }
-          _push(`<span class="icon" data-v-5e9810c3>${ssrInterpolate(f2.icon)}</span><h4 data-v-5e9810c3>${ssrInterpolate(f2.title)}</h4><p data-v-5e9810c3>${ssrInterpolate(f2.text)}</p>`);
-          if (f2.mini === "wallet") {
-            _push(`<!--[--><div class="${ssrRenderClass([{ animate: unref(revealed) }, "wallet-split"])}" data-v-5e9810c3><div class="wallet-seg cash" data-v-5e9810c3>${ssrInterpolate(walletCashLabel.value)}</div><div class="wallet-seg credit" data-v-5e9810c3>${ssrInterpolate(walletCreditLabel.value)}</div></div><div class="wallet-labels" data-v-5e9810c3><span data-v-5e9810c3><strong data-v-5e9810c3>${ssrInterpolate(walletWithdrawLabel.value)}</strong> · ${ssrInterpolate(walletCashSub.value)}</span><span data-v-5e9810c3><strong data-v-5e9810c3>${ssrInterpolate(walletPromoLabel.value)}</strong> · ${ssrInterpolate(walletCreditSub.value)}</span></div><!--]-->`);
-          } else if (f2.mini === "compliance") {
-            _push(`<div class="vcoc-stamp" data-v-5e9810c3><div class="tick" data-v-5e9810c3>✓</div><div data-v-5e9810c3><div class="vcoc-stamp-label" data-v-5e9810c3>${ssrInterpolate(vcocLabel.value)}</div><div class="vcoc-stamp-value" data-v-5e9810c3>${ssrInterpolate(vcocValue.value)}</div></div></div>`);
-          } else if (f2.mini === "bars") {
-            _push(`<!--[--><div class="${ssrRenderClass([{ animate: unref(revealed) }, "mini-bars"])}" data-v-5e9810c3><!--[-->`);
-            ssrRenderList(barHeights, (h2, i2) => {
-              _push(`<div style="${ssrRenderStyle({ height: h2 + "%" })}" data-v-5e9810c3></div>`);
-            });
-            _push(`<!--]--></div><div class="chart-trend" style="${ssrRenderStyle({ "margin-top": "8px", "display": "inline-flex", "align-items": "center", "gap": "4px", "font-size": "12px", "font-weight": "700", "color": "var(--orange)" })}" data-v-5e9810c3>${ssrInterpolate(barsTrend.value)}</div><!--]-->`);
-          } else {
-            _push(`<!---->`);
-          }
-          _push(`<div class="more" data-v-5e9810c3>${ssrInterpolate(f2.more)}</div><!--]-->`);
-        }
-        _push(`</div>`);
-      });
-      _push(`<!--]--></div><div class="grid-lure" data-v-5e9810c3><span class="arr" data-v-5e9810c3>👆</span>  ${ssrInterpolate(gridLureText.value)}  <span class="arr" data-v-5e9810c3>👆</span></div></section>`);
-    };
-  }
-};
+const UltraEasy = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["ssrRender", _sfc_ssrRender$a]]);
+const _sfc_main$h = {};
+function _sfc_ssrRender$9(_ctx, _push, _parent, _attrs) {
+  _push(`<section${ssrRenderAttrs(mergeProps({
+    id: "convert",
+    class: "cv"
+  }, _attrs))}><div class="wrap"><div class="sec-head"><span class="eyebrow"><i class="dot"></i>Built by marketers, not just developers</span><h2>Pretty doesn&#39;t pay your prize fund. <span class="grad">Conversion does.</span></h2><p class="lead">Every flow — checkout, upsell, free entry, cart-abandonment — is tested for sell-through, not just speed.</p></div><div class="stack" id="stack"><div class="card cvf" data-reveal style="${ssrRenderStyle({ "--i": "0" })}"><div class="txt"><span class="num">01</span><h3>A/B-tested Checkout Flows</h3><p class="stat"><b class="grad">+23%</b>conversion — &quot;Buy 10 tickets&quot; vs &quot;Add to cart&quot;, across our last 4M orders</p></div><div class="viz"><div class="bars"><div class="bar-row"><span>&quot;Add to cart&quot;</span><span class="bar"><i style="${ssrRenderStyle({ "width": "83%" })}"></i></span><b>1.9%</b></div><div class="bar-row win"><span>&quot;Buy 10 tickets&quot;</span><span class="bar"><i style="${ssrRenderStyle({ "width": "100%" })}"></i></span><b>2.3%</b></div></div></div></div><div class="card cvf" data-reveal style="${ssrRenderStyle({ "--i": "1" })}"><div class="txt"><span class="num">02</span><h3>Smart Upsell Modals</h3><p class="stat"><b class="grad">+£23</b>average per order · ~38% of buyers accept at least one upsell</p></div><div class="viz"><div class="uplift"><span class="tnum" data-count="42" data-prefix="£">£0</span><i class="ic" data-i="arrow-r"></i><span class="tnum" data-count="65" data-prefix="£">£0</span></div><div class="cvchips"><span class="chip on">Add 10 more tickets for £8</span><span class="chip">Try our instant win</span><span class="chip">Upgrade to bundle</span></div></div></div><div class="card cvf" data-reveal style="${ssrRenderStyle({ "--i": "2" })}"><div class="txt"><span class="num">03</span><h3>Cart-Abandonment Automation</h3><p class="stat"><b class="grad">~14%</b>of abandoned carts complete within 24h · ~£18k/month recovered for an average operator</p></div><div class="viz"><div class="ring-wrap"><svg class="ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="bg"></circle><circle cx="60" cy="60" r="50" class="fg" style="${ssrRenderStyle({ "--v": "0.14" })}"></circle></svg><div class="ring-lbl"><b><span class="tnum" data-count="14" data-suffix="%">0%</span></b><span>recovered</span></div><div class="flow"><span>Cart left</span><i class="ic" data-i="chev-r"></i><span>Email + push</span><i class="ic" data-i="chev-r"></i><span>Paid</span></div></div></div></div><div class="card cvf" data-reveal style="${ssrRenderStyle({ "--i": "3" })}"><div class="txt"><span class="num">04</span><h3>Facebook-Ad-Compliant Landing Pages</h3><p class="stat"><b class="grad">14/14</b>compliance flags passed by default — the largest paid channel, without the account bans</p></div><div class="viz"><div class="checks" id="fb-checks"></div><div class="checks-lbl"><span>Compliance flags</span><b><span class="tnum" data-count="14">0</span>/14 passing</b></div></div></div><div class="card cvf" data-reveal style="${ssrRenderStyle({ "--i": "4" })}"><div class="txt"><span class="num">05</span><h3>Referral &amp; Affiliate Engine</h3><p class="stat"><b class="grad">+41%</b>first-90-day spend from referred customers · 2.1× faster first order</p></div><div class="viz"><svg class="tree" viewBox="0 0 300 170" aria-hidden="true"><g class="ln"><line x1="150" y1="38" x2="54" y2="105"></line><line x1="150" y1="38" x2="102" y2="136"></line><line x1="150" y1="38" x2="150" y2="112"></line><line x1="150" y1="38" x2="198" y2="140"></line><line x1="150" y1="38" x2="246" y2="102"></line></g><g class="nd"><circle cx="54" cy="105" r="15"></circle><circle cx="102" cy="136" r="15"></circle><circle cx="150" cy="112" r="15"></circle><circle cx="198" cy="140" r="15"></circle><circle cx="246" cy="102" r="15"></circle></g><circle class="rt" cx="150" cy="38" r="22"></circle><text x="150" y="43" text-anchor="middle" font-size="13" font-weight="800" fill="#14082e" font-family="Inter, sans-serif">YOU</text><g class="tags"><text x="54" y="109" text-anchor="middle">+£</text><text x="102" y="140" text-anchor="middle">+£</text><text x="150" y="116" text-anchor="middle">+£</text><text x="198" y="144" text-anchor="middle">+£</text><text x="246" y="106" text-anchor="middle">+£</text></g></svg></div></div><div class="card cvf" data-reveal style="${ssrRenderStyle({ "--i": "5" })}"><div class="txt"><span class="num">06</span><h3>Conversion-Rate Dashboard</h3><p class="stat"><b class="grad">Every step</b>which competitions convert, where users drop off, which source pays back</p></div><div class="viz"><div class="mini-dash"><div class="tiles"><div class="tile">Revenue<b>+34%</b></div><div class="tile">Conversion<b>2.3%</b></div><div class="tile">Avg order<b>£65</b></div></div><div class="funnel"><i style="${ssrRenderStyle({ "width": "100%" })}"></i><i></i><i></i><i></i></div><div class="funnel-lbl"><span>Visit</span><span>Comp page</span><span>Checkout</span><span>Paid</span></div></div></div></div></div><div class="card chart" id="rev-chart"><div class="chart-head"><h3>Avg operator revenue, month-on-month</h3><div class="legend"><span><i style="${ssrRenderStyle({ "background": "var(--orange)" })}"></i>CompEngine operators</span><span><i style="${ssrRenderStyle({ "background": "var(--text-3)" })}"></i>Typical WordPress operator</span></div></div><svg viewBox="0 0 640 260" role="img" aria-label="Line chart: CompEngine operators reach +247% by month 12 versus a typical WordPress operator"><g class="grid-l"><line x1="40" y1="30" x2="600" y2="30"></line><line x1="40" y1="90" x2="600" y2="90"></line><line x1="40" y1="150" x2="600" y2="150"></line><line x1="40" y1="210" x2="600" y2="210"></line></g><text class="axis" x="52" y="238">Month 1</text><text class="axis" x="300" y="238" text-anchor="middle">Month 6</text><text class="axis" x="580" y="238" text-anchor="end">Month 12</text><path class="area-ce" d="M60 210 C 160 205, 250 190, 330 150 S 500 70, 580 34 L580 210 Z"></path><path class="l-wp" d="M60 210 C 160 206, 250 200, 330 192 S 500 178, 580 172"></path><path class="l-ce" d="M60 210 C 160 205, 250 190, 330 150 S 500 70, 580 34"></path><circle class="dot-ce" cx="580" cy="34" r="5"></circle><g class="end-tag"><rect x="506" y="8" width="66" height="22" rx="11" fill="#f4a558"></rect><text x="539" y="23" text-anchor="middle" font-size="12" font-weight="800" fill="#14082e" font-family="Inter, sans-serif">+247%</text></g></svg><p class="chart-note">Indexed to month 1. Illustrative curve shape; the +247% end point is the figure we publish.</p></div><div class="closing"><p class="quote">&quot;Most &#39;raffle website builders&#39; are designers. We&#39;re operators with our own conversion data — and we ship the winning patterns to every site we power.&quot;</p><div class="tiles2"><div class="card"><b class="grad">+23%</b><span>avg checkout conversion vs a typical WordPress raffle stack</span></div><div class="card"><b class="grad">+£23</b><span>avg ticket value uplift via smart upsell modals</span></div></div></div></div></section>`);
+}
 const _sfc_setup$h = _sfc_main$h.setup;
 _sfc_main$h.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ecosystem/EcosystemFeatures.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraConvert.vue");
   return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
 };
-const EcosystemFeatures = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-5e9810c3"]]);
-const _sfc_main$g = {
-  __name: "NextGenPlatform",
-  __ssrInlineRender: true,
-  setup(__props) {
-    const getText = inject("getText", (key, fallback = "") => fallback);
-    const { sectionRef, revealed } = useReveal();
-    function ft(key, fallback) {
-      return getText(`convert.${key}`, fallback);
-    }
-    const eyebrow = computed(() => ft("eyebrow", "Built by marketers, not just developers"));
-    const titleBefore = computed(() => ft("title_before", "Pretty doesn't pay your prize fund."));
-    const titleKeyword = computed(() => ft("title_keyword", "Conversion does."));
-    const lead = computed(() => ft("lead", "Most competition-site builders are agencies who ship a pretty design and walk away. CompEngine is built alongside conversion specialists who actually know how to turn visitors into entrants. Every flow — checkout, upsell, free entry, cart-abandonment — is tested for sell-through, not just speed."));
-    const teamCalloutBold = computed(() => ft("team_callout_bold", "Built by a team blending marketing, conversion-rate optimisation, UX and engineering."));
-    const teamCalloutText = computed(() => ft("team_callout_text", `Most "raffle website builders" are designers. We're operators with our own conversion data — and we ship the winning patterns to every site we power.`));
-    const convertFeatures = computed(() => [
-      {
-        icon: ft("feat1_icon", "🎯"),
-        title: ft("feat1_title", "A/B-tested checkout flows"),
-        desc: ft("feat1_desc", "Every checkout button, label, and step has been tested across millions of real orders. Operators inherit the winning variants — not a blank template."),
-        detail: ft("feat1_detail", '<strong>Winning variant example:</strong> a "Buy 10 tickets" primary button outperforms a generic "Add to cart" by 23% on conversion rate across our last 4M orders.'),
-        compare: {
-          leftValue: ft("feat1_compare_left_value", "1.9%"),
-          leftLabel: ft("feat1_compare_left_label", '"Add to cart"'),
-          leftMeta: ft("feat1_compare_left_meta", "Generic"),
-          rightValue: ft("feat1_compare_right_value", "2.3%"),
-          rightLabel: ft("feat1_compare_right_label", '"Buy 10 tickets"'),
-          rightMeta: ft("feat1_compare_right_meta", "+23% lift")
-        },
-        expandHint: ft("feat1_expand_hint", "See the data")
-      },
-      {
-        icon: ft("feat2_icon", "💡"),
-        title: ft("feat2_title", "Smart upsell modals"),
-        desc: ft("feat2_desc", '"Add 10 more tickets for £8", "Try our instant win", "Upgrade to bundle" — context-aware suggestions at exactly the right point in the buy flow.'),
-        detail: ft("feat2_detail", "<strong>Average uplift per checkout:</strong> +£23 to ticket value when the bundle-suggestion modal fires post-cart. ~38% of buyers accept at least one upsell."),
-        compare: {
-          leftValue: ft("feat2_compare_left_value", "£42"),
-          leftLabel: ft("feat2_compare_left_label", "Baseline order"),
-          leftMeta: ft("feat2_compare_left_meta", "No upsell"),
-          rightValue: ft("feat2_compare_right_value", "£65"),
-          rightLabel: ft("feat2_compare_right_label", "With upsell"),
-          rightMeta: ft("feat2_compare_right_meta", "+£23 avg")
-        },
-        expandHint: ft("feat2_expand_hint", "See the data")
-      },
-      {
-        icon: ft("feat3_icon", "🔄"),
-        title: ft("feat3_title", "Cart-abandonment automation"),
-        desc: ft("feat3_desc", "Visitors who walk away with tickets in their basket get a nudge automatically — built in, not a £49/month add-on."),
-        detail: ft("feat3_detail", "<strong>Recovery rate:</strong> ~14% of abandoned carts complete purchase within 24h when the automated email + push fires. That's ~£18k/month recovered for an average operator."),
-        compare: null,
-        expandHint: ft("feat3_expand_hint", "See the data")
-      },
-      {
-        icon: ft("feat4_icon", "📲"),
-        title: ft("feat4_title", "Facebook-ad-compliant landing pages"),
-        desc: ft("feat4_desc", "Every operator site meets Facebook's strict prize-draw advertising rules out of the box. Unlock the largest paid-acquisition channel without getting your account suspended."),
-        detail: ft("feat4_detail", "<strong>Why this matters:</strong> Facebook auto-suspends prize-draw sites that miss any of 14 specific compliance flags. CompEngine sites pass all 14 by default — operators run paid acquisition from day one."),
-        compare: null,
-        expandHint: ft("feat4_expand_hint", "See the data")
-      },
-      {
-        icon: ft("feat5_icon", "🤝"),
-        title: ft("feat5_title", "Referral & affiliate engine"),
-        desc: ft("feat5_desc", "Built-in viral growth: unique codes, dual rewards for referrer and referee, fraud-prevention with IP tracking. No third-party tool to wire up."),
-        detail: ft("feat5_detail", "<strong>Viral coefficient:</strong> referral-acquired customers spend ~41% more in their first 90 days than paid-traffic customers, and convert 2.1x faster on first order. Free acquisition, higher LTV."),
-        compare: null,
-        expandHint: ft("feat5_expand_hint", "See the data")
-      },
-      {
-        icon: ft("feat6_icon", "📈"),
-        title: ft("feat6_title", "Conversion-rate dashboard"),
-        desc: ft("feat6_desc", "See which competitions convert, where users drop off, which traffic source pays back. The reporting most platforms simply don't offer."),
-        detail: ft("feat6_detail", "<strong>What you see:</strong> per-competition funnel, traffic-source ROI, drop-off heatmaps, time-to-purchase distribution, and a single LTV chart by acquisition channel. Most operators run on gut feel. You won't."),
-        compare: null,
-        expandHint: ft("feat6_expand_hint", "See the data")
-      }
-    ]);
-    const expandedIdx = ref([false, false, false, false, false, false]);
-    const MONTHS = ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12"];
-    const metricKeys = ["revenue", "conversion", "repeat"];
-    const metrics = computed(() => ({
-      revenue: {
-        title: ft("metric_revenue_title", "Avg operator revenue, month-on-month"),
-        pillLabel: ft("metric_revenue_pill", "+247%"),
-        buttonLabel: ft("metric_revenue_button", "Revenue"),
-        us: [15, 18, 24, 32, 41, 55, 72, 90, 108, 124, 138, 147],
-        them: [15, 16, 17, 19, 20, 22, 23, 24, 25, 26, 27, 28],
-        fmt: (v2) => "£" + v2 + "k",
-        headlineEnd: 147,
-        headlinePrefix: "£",
-        headlineSuffix: "k",
-        headlineDecimals: 0
-      },
-      conversion: {
-        title: ft("metric_conversion_title", "Avg checkout conversion rate"),
-        pillLabel: ft("metric_conversion_pill", "+139%"),
-        buttonLabel: ft("metric_conversion_button", "Conversion %"),
-        us: [1.8, 1.9, 2.1, 2.4, 2.7, 3, 3.3, 3.5, 3.8, 4, 4.2, 4.3],
-        them: [1.5, 1.5, 1.6, 1.6, 1.7, 1.7, 1.8, 1.8, 1.8, 1.9, 1.9, 1.9],
-        fmt: (v2) => v2.toFixed(1) + "%",
-        headlineEnd: 4.3,
-        headlinePrefix: "",
-        headlineSuffix: "%",
-        headlineDecimals: 1
-      },
-      repeat: {
-        title: ft("metric_repeat_title", "90-day repeat-buyer rate"),
-        pillLabel: ft("metric_repeat_pill", "+217%"),
-        buttonLabel: ft("metric_repeat_button", "Repeat Buyers"),
-        us: [12, 14, 17, 19, 22, 25, 28, 30, 33, 35, 37, 38],
-        them: [11, 11, 12, 12, 12, 13, 13, 13, 14, 14, 14, 14],
-        fmt: (v2) => v2 + "%",
-        headlineEnd: 38,
-        headlinePrefix: "",
-        headlineSuffix: "%",
-        headlineDecimals: 0
-      }
-    }));
-    const legendUsLabel = computed(() => ft("legend_us", "CompEngine operators"));
-    const legendThemLabel = computed(() => ft("legend_them", "Typical WordPress operator"));
-    const chartMonth1 = computed(() => ft("chart_month1", "Month 1"));
-    const chartMonth6 = computed(() => ft("chart_month6", "Month 6"));
-    const chartMonth12 = computed(() => ft("chart_month12", "Month 12"));
-    const activeMetric = ref("revenue");
-    const currentMetric = computed(() => metrics.value[activeMetric.value]);
-    const growthChartValue = ref("£0");
-    const growthCanvas = ref(null);
-    let growthChart = null;
-    function tweenHeadline(fromVal, toVal, prefix, suffix, decimals, duration) {
-      const start = performance.now();
-      function tick(now) {
-        const t3 = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - t3, 3);
-        const v2 = fromVal + (toVal - fromVal) * eased;
-        growthChartValue.value = prefix + v2.toFixed(decimals) + suffix;
-        if (t3 < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-    function animateHeadlineIn() {
-      const m2 = currentMetric.value;
-      tweenHeadline(0, m2.headlineEnd, m2.headlinePrefix, m2.headlineSuffix, m2.headlineDecimals, 2400);
-    }
-    function buildGrowthChart() {
-      if (!growthCanvas.value) return;
-      const ctx = growthCanvas.value.getContext("2d");
-      const lineGrad = ctx.createLinearGradient(0, 0, growthCanvas.value.width || 400, 0);
-      lineGrad.addColorStop(0, "#5b7fc4");
-      lineGrad.addColorStop(0.35, "#b297db");
-      lineGrad.addColorStop(0.7, "#d97aa8");
-      lineGrad.addColorStop(1, "#f4a558");
-      const fillGrad = ctx.createLinearGradient(0, 0, 0, 220);
-      fillGrad.addColorStop(0, "rgba(244,165,88,0.32)");
-      fillGrad.addColorStop(1, "rgba(244,165,88,0)");
-      growthChart = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: MONTHS,
-          datasets: [
-            {
-              label: "CompEngine operators",
-              data: metrics.value.revenue.us,
-              borderColor: lineGrad,
-              borderWidth: 3,
-              backgroundColor: fillGrad,
-              fill: true,
-              tension: 0.4,
-              pointRadius: 0,
-              pointHoverRadius: 6,
-              pointHoverBackgroundColor: "#f4a558",
-              pointHoverBorderColor: "#1d1042",
-              pointHoverBorderWidth: 2
-            },
-            {
-              label: "Typical WordPress operator",
-              data: metrics.value.revenue.them,
-              borderColor: "rgba(178,151,219,0.55)",
-              borderWidth: 2,
-              borderDash: [6, 6],
-              backgroundColor: "transparent",
-              fill: false,
-              tension: 0.4,
-              pointRadius: 0,
-              pointHoverRadius: 5,
-              pointHoverBackgroundColor: "#b297db",
-              pointHoverBorderColor: "#1d1042",
-              pointHoverBorderWidth: 2
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: { mode: "index", intersect: false },
-          animation: { duration: 2400, easing: "easeOutCubic" },
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: "#1d1042",
-              borderColor: "#f4a558",
-              borderWidth: 1,
-              titleFont: { family: "Inter", weight: "700", size: 12 },
-              bodyFont: { family: "Inter", size: 13 },
-              padding: 12,
-              callbacks: {
-                title: (items) => "Month " + (items[0].dataIndex + 1),
-                label: (ctx2) => ctx2.dataset.label + ": " + metrics.value[activeMetric.value].fmt(ctx2.parsed.y)
-              }
-            }
-          },
-          scales: {
-            x: { display: false, grid: { display: false } },
-            y: { display: false, grid: { color: "rgba(178,151,219,0.08)", drawBorder: false } }
-          }
-        }
-      });
-    }
-    const statCards = computed(() => [
-      { target: 47, prefix: "+", suffix: "%", decimals: 0, label: ft("stat1_label", "Avg checkout conversion"), vs: ft("stat1_vs", "vs typical WordPress raffle stack"), path: "M 0,32 L 40,28 L 80,24 L 120,18 L 160,12 L 200,4" },
-      { target: 2.4, prefix: "", suffix: "x", decimals: 1, label: ft("stat2_label", "90-day repeat purchase rate"), vs: ft("stat2_vs", "CompEngine sites vs industry baseline"), path: "M 0,30 L 40,30 L 80,24 L 120,18 L 160,10 L 200,6" },
-      { target: 23, prefix: "+£", suffix: "", decimals: 0, label: ft("stat3_label", "Avg ticket value uplift"), vs: ft("stat3_vs", "via smart upsell modals at checkout"), path: "M 0,34 L 40,28 L 80,30 L 120,22 L 160,14 L 200,8" }
-    ]);
-    const statsAnimated = ref(false);
-    const statCounters = ref(["+0%", "0.0x", "+£0"]);
-    function animateStatsAndSparks() {
-      statsAnimated.value = true;
-      statCards.value.forEach((card, i2) => {
-        const startTime = performance.now();
-        const delay = 300 + i2 * 200;
-        function step(now) {
-          const t3 = Math.max(0, Math.min((now - startTime - delay) / 1500, 1));
-          const eased = 1 - Math.pow(1 - t3, 3);
-          statCounters.value[i2] = card.prefix + (card.target * eased).toFixed(card.decimals) + card.suffix;
-          if (t3 < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      });
-    }
-    const tickerLiveLabel = computed(() => ft("ticker_live_label", "Live"));
-    const BRANDS = ["BOLT", "APEX", "STAR DRAWS", "GOAT", "ZENITH", "NORTH", "BLAZE", "SUMMIT", "VYBE", "RUSH", "KINGS", "DAISY'S DRAWS", "PHAT STAX", "LUXE", "ANCHOR", "HORIZON", "BIG WINS", "LOCKDOWN", "ROYAL DRAWS", "CRAZY COW"];
-    const ACTIONS = [
-      { icon: "🎟️", t: ["just bought", "just snagged", "just secured"], v: [5, 10, 15, 20, 25, 50, 100], suffix: "tickets on" },
-      { icon: "🎉", t: ["just won", "just claimed"], v: ["£250", "£500", "£100", "£1,200", "£450", "£75", "£2,500"], suffix: "on" },
-      { icon: "✨", t: ["joined the wallet on", "signed up to"], v: [""], suffix: "" },
-      { icon: "💰", t: ["withdrew", "cashed out"], v: ["£250", "£500", "£140", "£890"], suffix: "from" },
-      { icon: "⚡", t: ["used an instant win on", "hit a scratchcard win on"], v: [""], suffix: "" }
-    ];
-    const NAMES = ["Sarah K", "James P", "Amira H", "Tom R", "Lia M", "Daniel B", "Sofia G", "Marcus T", "Aisha N", "Ben C", "Holly W", "Connor F", "Zara K", "Owen H", "Maddie L"];
-    const TIME_OFFSETS = ["just now", "3s ago", "8s ago", "15s ago", "22s ago", "34s ago", "48s ago", "1m ago", "2m ago"];
-    const activityItems = ref([]);
-    let activityIdCounter = 0;
-    let tickerStarted = false;
-    let tickerIntervalHandle = null;
-    let tickerKickoffHandle = null;
-    function spawnActivity() {
-      const name = NAMES[Math.floor(Math.random() * NAMES.length)];
-      const brand = BRANDS[Math.floor(Math.random() * BRANDS.length)];
-      const a2 = ACTIONS[Math.floor(Math.random() * ACTIONS.length)];
-      const verb = a2.t[Math.floor(Math.random() * a2.t.length)];
-      const val = a2.v[Math.floor(Math.random() * a2.v.length)];
-      const time = TIME_OFFSETS[Math.floor(Math.random() * TIME_OFFSETS.length)];
-      const id = ++activityIdCounter;
-      activityItems.value.push({ id, icon: a2.icon, name, verb, val, suffix: a2.suffix, brand, time });
-      setTimeout(() => {
-        activityItems.value = activityItems.value.filter((item) => item.id !== id);
-      }, 14500);
-    }
-    function startTicker() {
-      if (tickerStarted) return;
-      tickerStarted = true;
-      spawnActivity();
-      tickerKickoffHandle = setTimeout(spawnActivity, 1400);
-      tickerIntervalHandle = setInterval(spawnActivity, 2400);
-    }
-    watch(revealed, (isRevealed) => {
-      if (isRevealed) {
-        animateHeadlineIn();
-        animateStatsAndSparks();
-        startTicker();
-      }
-    });
-    onMounted(async () => {
-      await nextTick();
-      buildGrowthChart();
-    });
-    onUnmounted(() => {
-      if (growthChart) growthChart.destroy();
-      if (tickerIntervalHandle) clearInterval(tickerIntervalHandle);
-      if (tickerKickoffHandle) clearTimeout(tickerKickoffHandle);
-    });
-    return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({
-        ref_key: "sectionRef",
-        ref: sectionRef,
-        class: ["section reveal", { visible: unref(revealed) }],
-        id: "convert"
-      }, _attrs))}><div class="center"><div class="eyebrow"><span class="dot"></span>${ssrInterpolate(eyebrow.value)}</div><h2 class="h2">${ssrInterpolate(titleBefore.value)}<br><span class="grad-text">${ssrInterpolate(titleKeyword.value)}</span></h2><p class="lead center" style="${ssrRenderStyle({ "margin": "18px auto 0" })}">${ssrInterpolate(lead.value)}</p></div><div class="activity-ticker"><span class="activity-ticker-label">${ssrInterpolate(tickerLiveLabel.value)}</span><div class="activity-list"><!--[-->`);
-      ssrRenderList(activityItems.value, (item) => {
-        _push(`<div class="activity-item"><span class="activity-item-icon">${ssrInterpolate(item.icon)}</span><span class="activity-item-text"><strong>${ssrInterpolate(item.name)}</strong> ${ssrInterpolate(item.verb)}`);
-        if (item.val) {
-          _push(`<strong style="${ssrRenderStyle({ "color": "var(--text-0)" })}">${ssrInterpolate(item.val)}</strong>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`${ssrInterpolate(item.suffix ? " " + item.suffix : "")} <span class="brand">${ssrInterpolate(item.brand)}</span></span><span class="activity-item-time">· ${ssrInterpolate(item.time)}</span></div>`);
-      });
-      _push(`<!--]--></div></div><div class="convert-block" style="${ssrRenderStyle({ "margin-top": "32px" })}"><div class="convert-grid"><div class="convert-features"><!--[-->`);
-      ssrRenderList(convertFeatures.value, (f2, idx) => {
-        _push(`<div class="${ssrRenderClass([{ expanded: expandedIdx.value[idx] }, "convert-feature expandable"])}"><div class="convert-feature-icon">${ssrInterpolate(f2.icon)}</div><div class="feature-body"><div class="convert-feature-title">${ssrInterpolate(f2.title)}</div><div class="convert-feature-desc">${ssrInterpolate(f2.desc)}</div><div class="convert-feature-detail"><span>${f2.detail ?? ""}</span>`);
-        if (f2.compare) {
-          _push(`<div class="compare-strip"><div class="compare-strip-side"><strong>${ssrInterpolate(f2.compare.leftValue)}</strong>${ssrInterpolate(f2.compare.leftLabel)}<div class="meta">${ssrInterpolate(f2.compare.leftMeta)}</div></div><div class="compare-strip-side ours"><strong>${ssrInterpolate(f2.compare.rightValue)}</strong>${ssrInterpolate(f2.compare.rightLabel)}<div class="meta">${ssrInterpolate(f2.compare.rightMeta)}</div></div></div>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`</div><div class="convert-feature-expand-hint"><span class="chev">▾</span> ${ssrInterpolate(f2.expandHint)}</div></div></div>`);
-      });
-      _push(`<!--]--></div><div class="growth-chart"><div class="chart-toggle"><!--[-->`);
-      ssrRenderList(metricKeys, (m2) => {
-        _push(`<button class="${ssrRenderClass([{ active: activeMetric.value === m2 }, "metric-btn"])}">${ssrInterpolate(metrics.value[m2].buttonLabel)}</button>`);
-      });
-      _push(`<!--]--></div><div class="growth-chart-header"><div><div class="growth-chart-title">${ssrInterpolate(currentMetric.value.title)}</div><div class="growth-chart-value">${ssrInterpolate(growthChartValue.value)}</div></div><span class="growth-chart-pill">${ssrInterpolate(currentMetric.value.pillLabel)}</span></div><canvas></canvas><div class="chart-legend"><div class="chart-legend-item"><span class="chart-legend-swatch"></span> ${ssrInterpolate(legendUsLabel.value)}</div><div class="chart-legend-item"><span class="chart-legend-swatch dashed"></span> ${ssrInterpolate(legendThemLabel.value)}</div></div><div style="${ssrRenderStyle({ "display": "flex", "justify-content": "space-between", "margin-top": "10px", "font-size": "11px", "color": "var(--text-3)", "letter-spacing": "0.05em" })}"><span>${ssrInterpolate(chartMonth1.value)}</span><span>${ssrInterpolate(chartMonth6.value)}</span><span>${ssrInterpolate(chartMonth12.value)}</span></div></div></div><div class="team-callout"><div class="team-callout-icons"><span class="team-avatar t1">MK</span><span class="team-avatar t2">CR</span><span class="team-avatar t3">UX</span><span class="team-avatar t4">EN</span></div><div><strong style="${ssrRenderStyle({ "color": "var(--text-0)" })}">${ssrInterpolate(teamCalloutBold.value)}</strong>  ${ssrInterpolate(teamCalloutText.value)}</div></div><div class="convert-stats"><!--[-->`);
-      ssrRenderList(statCards.value, (card, i2) => {
-        _push(`<div class="stat-card"><div class="stat-arrow">↗</div><div class="stat-value">${ssrInterpolate(statCounters.value[i2])}</div><div class="stat-label">${ssrInterpolate(card.label)}</div><div class="stat-vs">${ssrInterpolate(card.vs)}</div><svg class="stat-spark" viewBox="0 0 200 40" preserveAspectRatio="none">`);
-        if (i2 === 0) {
-          _push(`<defs><linearGradient id="growthLineGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#5b7fc4"></stop><stop offset="35%" stop-color="#b297db"></stop><stop offset="70%" stop-color="#d97aa8"></stop><stop offset="100%" stop-color="#f4a558"></stop></linearGradient></defs>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`<path class="${ssrRenderClass([{ animate: statsAnimated.value }, "stat-spark-line"])}"${ssrRenderAttr("d", card.path)} fill="none" stroke="url(#growthLineGrad)" stroke-width="2.5" stroke-linecap="round"></path></svg></div>`);
-      });
-      _push(`<!--]--></div></div></section>`);
-    };
-  }
-};
+const UltraConvert = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["ssrRender", _sfc_ssrRender$9]]);
+const _sfc_main$g = {};
+function _sfc_ssrRender$8(_ctx, _push, _parent, _attrs) {
+  _push(`<section${ssrRenderAttrs(mergeProps({
+    id: "certified-draws",
+    class: "cv"
+  }, _attrs))}><div class="wrap"><div class="sec-head"><span class="eyebrow"><i class="dot"></i>Independently verifiable · GLI-certified RNG · UK VCOC compliant</span><h2>Every winner, <span class="grad">provably fair.</span></h2><p class="lead">Drawn by a GLI-certified RNG. Logged to a SHA-256 hash chain you can verify yourself.</p></div><div class="card theatre" id="theatre"><div class="th-head"><div><small class="muted">Live draw · demo</small><b id="th-prize">BMW M3 Competition Pack</b><span class="muted small">75,000 tickets · STAR DRAWS · 18 May 2026</span></div><span class="tag green" id="th-status"><i class="dot green"></i>GLI RNG ready</span></div><div class="th-stage"><div class="ticket-big" id="ticket-big"><span class="tk-l">TICKET</span><div class="tumblers" id="tumblers"></div><span class="tk-r">STAR DRAWS</span></div><div class="confetti" id="th-confetti" aria-hidden="true"></div><div class="th-winner" id="th-winner"><i class="ic" data-i="check-c"></i><b>Winner: J. T***</b><span>Ticket #4,182 · Drawn 18 May 2026 14:02</span></div></div><div class="chain" id="chain" aria-label="Hash chain"><div class="blk"><small>Block 1</small><code>9c1e…a04b</code></div><i></i><div class="blk"><small>Block 2</small><code>4f77…2be1</code></div><i></i><div class="blk"><small>Block 3</small><code>b30d…7c9f</code></div><i></i><div class="blk"><small>Block 4</small><code>e2a8…51d3</code></div><i></i><div class="blk now"><small>This draw</small><code id="th-hash">sha256: …</code></div></div><div class="th-foot"><button type="button" class="btn btn-primary" id="th-draw" data-track="draws_run_demo">Run the draw</button><button type="button" class="btn btn-ghost" id="th-verify-toggle" aria-expanded="false" aria-controls="verify-wrap" data-track="draws_open_verify">Verify a real draw yourself</button></div></div><div class="verify-wrap" id="verify-wrap" hidden><p class="lead" style="${ssrRenderStyle({ "margin": "28px 0 18px" })}">Each card lists the hashes recorded against a real draw. Click Copy on any hash, paste it into that card&#39;s Verify box, and we&#39;ll reveal the exact winner, ticket number, prize, and draw timestamp it was recorded against. Or click any hash row to auto-fill the verifier.</p><div class="draws" id="draws"></div></div></div></section>`);
+}
 const _sfc_setup$g = _sfc_main$g.setup;
 _sfc_main$g.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Platform/NextGenPlatform.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraCertifiedDraws.vue");
   return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
 };
-const _sfc_main$f = {
-  __name: "CertifiedDraws",
-  __ssrInlineRender: true,
-  setup(__props) {
-    const getText = inject("getText");
-    const { sectionRef, revealed } = useReveal();
-    function ft(key, fallback) {
-      return getText(`cert.${key}`, fallback);
-    }
-    const eyebrow = computed(() => ft("eyebrow", "Independently verifiable · GLI-certified RNG · UK VCOC compliant"));
-    const titleBefore = computed(() => ft("title_before", "Every winner."));
-    const titleKeyword = computed(() => ft("title_keyword", "Cryptographically proven."));
-    const lead = computed(() => ft("lead", "Every main prize winner is drawn by our GLI-certified random number generator. Each draw is logged to a tamper-evident SHA-256 hash chain you can verify yourself."));
-    const explainerText = computed(() => ft("explainer_text", "<strong>How to test this yourself:</strong> Each card below lists the hashes recorded against a real draw. Click <strong>Copy</strong> on any hash, paste it into that card's <strong>Verify</strong> box, and we'll reveal the exact winner, ticket number, prize, and draw timestamp it was recorded against. Or click any hash row to auto-fill the verifier."));
-    const verifyPlaceholder = computed(() => ft("verify_placeholder", "Paste a hash to reveal the winner…"));
-    const verifyBtnLabel = computed(() => ft("verify_btn", "Verify"));
-    const trySampleLabel = computed(() => ft("try_sample_label", "try a sample hash"));
-    const verifyHintSuffix = computed(() => ft("verify_hint_suffix", "from this draw."));
-    const hashChainLabel = computed(() => ft("hash_chain_label", "SHA-256 hash chain"));
-    const certMiniLabel = computed(() => ft("cert_mini_label", "🔐 GLI-certified"));
-    const verifiedTitle = computed(() => ft("verified_title", "Hash verified · winner record"));
-    const DRAWS = [
-      {
-        title: "BMW M3 Competition Pack",
-        meta: "Drawn 18 May 2026 · STAR DRAWS",
-        image: "bmw",
-        emoji: "🏎️",
-        label: "BMW M3 · £75k prize",
-        hashes: [
-          { seq: 1, full: "a3f9b2c47e1d8f053a9c6b8d2e4f1a5c7d9b3e6f8c2a4d6e1f3b5a7c9d8e2f4c", winner: { name: "Sarah K.", ticket: "#04827", prize: "BMW M3 Competition Pack", timestamp: "18 May 2026 · 21:02:14 UTC", block: "#4,201" } },
-          { seq: 2, full: "b1e2c8d4a5f3e7b9c1d6f2e8a4b7c9d5e3f1a8b6c4d2e9f7a3b5c8d1e6f4a2cd", winner: { name: "James P.", ticket: "#00193", prize: "£500 cash (instant win)", timestamp: "18 May 2026 · 21:03:02 UTC", block: "#4,202" } },
-          { seq: 3, full: "c8d4e2f6a1b3c5d7e9f2a4b6c8d1e3f5a7b9c2d4e6f8a1b3c5d7e9f2a4b6c8e1", winner: { name: "Amira H.", ticket: "#11240", prize: "£250 site credit", timestamp: "18 May 2026 · 21:04:48 UTC", block: "#4,203" } }
-        ]
-      },
-      {
-        title: 'Apple iMac Pro 32"',
-        meta: "Drawn 14 May 2026 · BLAZE",
-        image: "imac",
-        emoji: "🖥️",
-        label: "Apple iMac · £4,999 prize",
-        hashes: [
-          { seq: 1, full: "f4a8c2e6b9d3f5a7c1b4e6d8f2a5c7b3e9d1f4a8c6b2e5d7f1a4c8b6e3d5f9a2", winner: { name: "Tom R.", ticket: "#08312", prize: 'Apple iMac Pro 32"', timestamp: "14 May 2026 · 19:30:11 UTC", block: "#3,847" } },
-          { seq: 2, full: "b7d3f5a1c4e8b2d6f3a5c7b1e9d4f6a2c8b5e7d1f3a9c4b6e2d8f5a1c7b3e9d4", winner: { name: "Lia M.", ticket: "#02541", prize: "£200 cash", timestamp: "14 May 2026 · 19:31:02 UTC", block: "#3,848" } },
-          { seq: 3, full: "c2e5b8d4f1a7c3e6b9d2f5a8c1b4e7d3f6a9c2b5e8d1f4a7c3b6e9d2f5a8c1b4", winner: { name: "Daniel B.", ticket: "#19874", prize: "12-month £200 site credit", timestamp: "14 May 2026 · 19:31:48 UTC", block: "#3,849" } }
-        ]
-      },
-      {
-        title: "Maldives Trip for Two",
-        meta: "Drawn 10 May 2026 · KINGS",
-        image: "maldives",
-        emoji: "🏝️",
-        label: "Maldives · £12k prize",
-        hashes: [
-          { seq: 1, full: "3d7f9a2c5e8b1d4f6a3c9e2b5d8f1a4c7e0b3d6f9a2c5e8b1d4f6a3c9e2b5d8f", winner: { name: "Sofia G.", ticket: "#07631", prize: "Maldives Trip for 2", timestamp: "10 May 2026 · 20:00:42 UTC", block: "#3,612" } },
-          { seq: 2, full: "7b2e5d8a3c6f9b1d4e7a2c5f8b3d6e9a4c7f1b4e7d2a5c8f3b6e9d2a5c8f3b6e", winner: { name: "Marcus T.", ticket: "#03210", prize: "£1,000 cash", timestamp: "10 May 2026 · 20:01:33 UTC", block: "#3,613" } },
-          { seq: 3, full: "4a8c1e5b2d7f3a6c9e4b1d8f5a2c7e0b3d6f9a4c7e2b5d8f1a4c7e0b3d6f9a4c", winner: { name: "Aisha N.", ticket: "#15893", prize: "£250 site credit", timestamp: "10 May 2026 · 20:02:21 UTC", block: "#3,614" } }
-        ]
-      },
-      {
-        title: "Tesla Model Y",
-        meta: "Drawn 06 May 2026 · APEX",
-        image: "tesla",
-        emoji: "⚡",
-        label: "Tesla Model Y · £52k prize",
-        hashes: [
-          { seq: 1, full: "9e3b7a1d5f8c2b6e4a9d7f1c3b8e2a5d6f9c4b1e7a3d8f5c2b6e9a4d1f7c3b8e", winner: { name: "Ben C.", ticket: "#23015", prize: "Tesla Model Y Long Range", timestamp: "06 May 2026 · 21:15:08 UTC", block: "#3,401" } },
-          { seq: 2, full: "5c8a2f4d7b1e9c3a6f2d5b8e1c4a7f9d3b6e2c5a8f4d1b7e3c6a9f2d5b8e1c4a", winner: { name: "Holly W.", ticket: "#11402", prize: "£750 cash", timestamp: "06 May 2026 · 21:16:00 UTC", block: "#3,402" } }
-        ]
-      },
-      {
-        title: "Rolex Submariner Date",
-        meta: "Drawn 02 May 2026 · LUXE",
-        image: "rolex",
-        emoji: "⌚",
-        label: "Rolex · £10,950 prize",
-        hashes: [
-          { seq: 1, full: "e2a5b9c8d1f3a7b4e6c2d9f5a8b1c4e7d3f6a2b5c8e1d4f7a3b6c9e2d5f8a1b4", winner: { name: "Connor F.", ticket: "#06294", prize: "Rolex Submariner Date", timestamp: "02 May 2026 · 20:30:11 UTC", block: "#3,188" } },
-          { seq: 2, full: "8f1d4a7b2e5c8d3f6a9b4e1c7d2f5a8b3e6c9d4f1a7b2e5c8d3f6a9b4e1c7d2f", winner: { name: "Zara K.", ticket: "#18027", prize: "£500 site credit", timestamp: "02 May 2026 · 20:31:04 UTC", block: "#3,189" } }
-        ]
-      },
-      {
-        title: "£25,000 Tax-Free Cash",
-        meta: "Drawn 28 Apr 2026 · BIG WINS",
-        image: "cash",
-        emoji: "💰",
-        label: "£25,000 · cash prize",
-        hashes: [
-          { seq: 1, full: "d6f3a9c2b5e8d1f4a7c3b6e9d2f5a8c1b4e7d3f6a9c2b5e8d1f4a7c3b6e9d2f5", winner: { name: "Owen H.", ticket: "#09146", prize: "£25,000 tax-free", timestamp: "28 Apr 2026 · 21:00:18 UTC", block: "#3,002" } },
-          { seq: 2, full: "a8b3e6c9d2f5a8b1c4e7d3f6a9c2b5e8d1f4a7c3b6e9d2f5a8c1b4e7d3f6a9c2", winner: { name: "Maddie L.", ticket: "#21477", prize: "£200 cash", timestamp: "28 Apr 2026 · 21:01:05 UTC", block: "#3,003" } },
-          { seq: 3, full: "c4e7d3f6a9c2b5e8d1f4a7c3b6e9d2f5a8c1b4e7d3f6a9c2b5e8d1f4a7c3b6e9", winner: { name: "Charlie R.", ticket: "#14820", prize: "£100 site credit", timestamp: "28 Apr 2026 · 21:01:52 UTC", block: "#3,004" } }
-        ]
-      }
-    ];
-    function abbreviate(hash) {
-      return hash.slice(0, 8) + "…" + hash.slice(-5);
-    }
-    const verifyInputs = reactive(DRAWS.map(() => ""));
-    const verifyResults = reactive(DRAWS.map(() => ({ shown: false, success: false, message: "", winner: null })));
-    const copyActive = reactive({});
-    return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({
-        ref_key: "sectionRef",
-        ref: sectionRef,
-        class: ["section reveal", { visible: unref(revealed) }],
-        id: "certified-draws"
-      }, _attrs))}><div class="center"><div class="eyebrow"><span class="dot"></span>${ssrInterpolate(eyebrow.value)}</div><h2 class="h2">${ssrInterpolate(titleBefore.value)} <span class="grad-text">${ssrInterpolate(titleKeyword.value)}</span></h2><p class="lead center" style="${ssrRenderStyle({ "margin": "18px auto 0" })}">${ssrInterpolate(lead.value)}</p></div><div class="draws-explainer"><div class="draws-explainer-icon">🔐</div><div>${explainerText.value ?? ""}</div></div><div class="draws-grid"><!--[-->`);
-      ssrRenderList(DRAWS, (draw, drawIdx) => {
-        _push(`<div class="draw-card"><div class="${ssrRenderClass(["draw-image", draw.image])}"><span class="draw-image-emoji">${ssrInterpolate(draw.emoji)}</span><div class="draw-image-label">${ssrInterpolate(draw.label)}</div></div><div class="draw-card-body"><div class="draw-card-title">${ssrInterpolate(draw.title)}</div><div class="draw-card-meta">${ssrInterpolate(draw.meta)} · <strong>${ssrInterpolate(draw.hashes.length)} certified hashes</strong></div><div class="hash-list"><div class="hash-list-label">${ssrInterpolate(hashChainLabel.value)} <span class="cert-mini">${ssrInterpolate(certMiniLabel.value)}</span></div><!--[-->`);
-        ssrRenderList(draw.hashes, (h2, hIdx) => {
-          _push(`<div class="hash-row" title="Click to auto-fill"><span class="hash-seq">#${ssrInterpolate(h2.seq)}</span><code class="hash-text">${ssrInterpolate(abbreviate(h2.full))}</code><button class="${ssrRenderClass([{ copied: copyActive[`${drawIdx}-${hIdx}`] === "copied" }, "copy-btn"])}">${ssrInterpolate(copyActive[`${drawIdx}-${hIdx}`] === "copied" ? "Copied!" : copyActive[`${drawIdx}-${hIdx}`] === "fail" ? "Copy fail" : "Copy")}</button></div>`);
-        });
-        _push(`<!--]--></div><div class="verify-row"><div class="verify-input"><input type="text" class="verify-field"${ssrRenderAttr("placeholder", verifyPlaceholder.value)}${ssrRenderAttr("value", verifyInputs[drawIdx])} spellcheck="false"><button class="verify-btn">${ssrInterpolate(verifyBtnLabel.value)}</button></div><div class="verify-hint"> Or <a class="try-sample" href="#">${ssrInterpolate(trySampleLabel.value)}</a> ${ssrInterpolate(verifyHintSuffix.value)}</div><div class="${ssrRenderClass([{ shown: verifyResults[drawIdx].shown }, "verify-result"])}"><div class="${ssrRenderClass([{
-          success: verifyResults[drawIdx].success,
-          error: !verifyResults[drawIdx].success && verifyResults[drawIdx].shown
-        }, "verify-result-inner"])}">`);
-        if (verifyResults[drawIdx].success && verifyResults[drawIdx].winner) {
-          _push(`<!--[--><div class="verify-result-tick">${ssrInterpolate(verifiedTitle.value)}</div><div class="verify-result-row"><span class="k">Winner</span><span class="v">${ssrInterpolate(verifyResults[drawIdx].winner.name)}</span></div><div class="verify-result-row"><span class="k">Ticket</span><span class="v">${ssrInterpolate(verifyResults[drawIdx].winner.ticket)}</span></div><div class="verify-result-row"><span class="k">Prize</span><span class="v">${ssrInterpolate(verifyResults[drawIdx].winner.prize)}</span></div><div class="verify-result-row"><span class="k">Draw timestamp</span><span class="v">${ssrInterpolate(verifyResults[drawIdx].winner.timestamp)}</span></div><div class="verify-result-row"><span class="k">Chain block</span><span class="v mono">${ssrInterpolate(verifyResults[drawIdx].winner.block)}</span></div><!--]-->`);
-        } else if (verifyResults[drawIdx].shown) {
-          _push(`<div class="verify-result-fail">${ssrInterpolate(verifyResults[drawIdx].message)}</div>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`</div></div></div></div></div>`);
-      });
-      _push(`<!--]--></div></section>`);
-    };
-  }
-};
+const UltraCertifiedDraws = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["ssrRender", _sfc_ssrRender$8]]);
+const _sfc_main$f = {};
+function _sfc_ssrRender$7(_ctx, _push, _parent, _attrs) {
+  _push(`<section${ssrRenderAttrs(mergeProps({
+    id: "why-fee",
+    class: "cv"
+  }, _attrs))}><div class="wrap"><div class="sec-head center"><h2>Why our pricing is what it is.</h2><p class="sub">The cheapest platform isn&#39;t the best deal. The most expensive isn&#39;t either.</p></div><div class="gauge-wrap" id="gauge"><svg class="gauge" viewBox="0 0 400 230" role="img" aria-label="Per-order fee gauge: suspiciously cheap at £0, CompEngine at 5 to 10p, overpaying at 17p and above"><defs><linearGradient id="ce-gauge" x1="0" x2="1"><stop offset="0" stop-color="#8978b1"></stop><stop offset=".35" stop-color="#f4a558"></stop><stop offset=".65" stop-color="#ec8a82"></stop><stop offset="1" stop-color="#8978b1"></stop></linearGradient></defs><path class="track" d="M40 200 A160 160 0 0 1 360 200"></path><path class="fill" d="M40 200 A160 160 0 0 1 360 200"></path><path class="sweet" d="M126 87 A160 160 0 0 1 274 87"></path><text class="gl" x="40" y="226" text-anchor="start">£0 / order</text><text class="gl" x="200" y="34" text-anchor="middle">5–10p</text><text class="gl" x="360" y="226" text-anchor="end">17p+</text><g class="needle" id="needle"><line x1="200" y1="200" x2="200" y2="70"></line><circle cx="200" cy="200" r="9"></circle></g><text class="gv" x="200" y="178" text-anchor="middle">per order</text></svg><div class="gauge-legend"><span><i style="${ssrRenderStyle({ "background": "#8978b1" })}"></i>Suspiciously cheap</span><span><i style="${ssrRenderStyle({ "background": "var(--orange)" })}"></i>CompEngine</span><span><i style="${ssrRenderStyle({ "background": "#8978b1" })}"></i>Overpaying</span></div></div><div class="fee-cols"><div class="card fee warn"><h3><i class="ic" data-i="warn"></i>Suspiciously cheap</h3><p class="intro">When £0-per-order is the headline… ask where the engineering budget comes from.</p><ul><li><i class="ic" data-i="minus"></i>Venture-funded burn — fine until the runway ends</li><li><i class="ic" data-i="minus"></i>RNG certification renewals skipped</li><li><i class="ic" data-i="minus"></i>Changelog stalls 12 months after launch</li></ul><p class="close">Cheap is expensive when the platform stops shipping.</p></div><div class="card fee mid"><h3><i class="ic" data-i="spark"></i>CompEngine — priced to keep shipping</h3><p class="intro">Your fee funds the next feature. And the one after that.</p><ul><li><i class="ic" data-i="check"></i><span><b>24 features shipped</b> in the last 12 months, included for everyone</span></li><li><i class="ic" data-i="check"></i>Never an upcharge, never a &quot;Pro tier&quot;</li><li><i class="ic" data-i="check"></i>GLI recertification and pen tests funded</li><li><i class="ic" data-i="check"></i>Fixed-fee options when you scale</li></ul><p class="close">Your fee pays for the platform getting better while you sleep.</p></div><div class="card fee over"><h3><i class="ic" data-i="arrow-up"></i>Overpaying</h3><p class="intro">When the headline is a high per-order fee… you&#39;re funding agency overhead.</p><ul><li><i class="ic" data-i="minus"></i>Per-order rates that scale painfully with success</li><li><i class="ic" data-i="minus"></i>Game library locked to fixed presets</li><li><i class="ic" data-i="minus"></i>Per-customer onboarding overhead baked into your bill</li></ul><p class="close">You&#39;re paying for their growth, not yours.</p></div></div></div></section>`);
+}
 const _sfc_setup$f = _sfc_main$f.setup;
 _sfc_main$f.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Draws/CertifiedDraws.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraWhyFee.vue");
   return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
 };
-const _sfc_main$e = {
-  __name: "WhyOurFee",
-  __ssrInlineRender: true,
-  setup(__props) {
-    const getText = inject("getText");
-    const { sectionRef, revealed } = useReveal();
-    function ft(key, fallback) {
-      return getText(`fee.${key}`, fallback);
-    }
-    const eyebrow = computed(() => ft("eyebrow", "Why our pricing is what it is"));
-    const titleBefore = computed(() => ft("title_before", "The cheapest platform isn't the best deal."));
-    const titleKeyword = computed(() => ft("title_keyword", "The most expensive isn't either."));
-    const lead = computed(() => ft("lead", "Below a certain price, platforms can't fund the engineering you'll need on draw night. Above it, you're paying for an agency markup. We're priced for the only thing that compounds your revenue — shipping the next feature, and the one after that."));
-    const cheapIcon = computed(() => ft("cheap_icon", "⚠️"));
-    const cheapTag = computed(() => ft("cheap_tag", "Suspiciously cheap"));
-    const cheapH3 = computed(() => ft("cheap_h3", "When £0-per-order is the headline…"));
-    const cheapP = computed(() => ft("cheap_p", "…ask where the engineering budget comes from. Somebody is paying for it. Eventually it'll be you."));
-    const cheapItems = computed(() => [
-      ft("cheap_li1", "Often venture-funded burn — fine until the runway ends"),
-      ft("cheap_li2", `A "Pro tier" appears once you're operationally locked in`),
-      ft("cheap_li3", "Skeleton support team, founder-replies-on-weekends model"),
-      ft("cheap_li4", "No published independent pen-test budget"),
-      ft("cheap_li5", "RNG certification renewals are an expense the cheap option skips"),
-      ft("cheap_li6", "Changelog stalls 12 months after launch — count the dates")
-    ]);
-    const cheapBottom = computed(() => ft("cheap_bottom", "Cheap is expensive when the platform stops shipping."));
-    const usIcon = computed(() => ft("us_icon", "✦"));
-    const usTag = computed(() => ft("us_tag", "CompEngine — priced to keep shipping"));
-    const usH3 = computed(() => ft("us_h3", "Your fee funds the next feature."));
-    const usP = computed(() => ft("us_p", "And the one after that. Five years of consistent shipping. Every new feature included for every operator, automatically, the day it goes live."));
-    const usItems = computed(() => [
-      ft("us_li1", 'Every new feature included — never an upcharge, never a "Pro tier"'),
-      ft("us_li2", "<strong>24 features shipped</strong> in the last 12 months, included for everyone"),
-      ft("us_li3", "GLI recertification cycle funded — your seal stays current"),
-      ft("us_li4", "Independent penetration test on a defined cycle"),
-      ft("us_li5", "The team you talk to ships the next feature themselves"),
-      ft("us_li6", "VCOC compliance updates automatic — no upgrade required")
-    ]);
-    const usBottom = computed(() => ft("us_bottom", "Your fee pays for the platform getting better while you sleep."));
-    const expensiveIcon = computed(() => ft("expensive_icon", "↑"));
-    const expensiveTag = computed(() => ft("expensive_tag", "Overpaying"));
-    const expensiveH3 = computed(() => ft("expensive_h3", "When the headline is a high per-order fee…"));
-    const expensiveP = computed(() => ft("expensive_p", "…you're funding the platform's agency overhead more than its engineering pipeline."));
-    const expensiveItems = computed(() => [
-      ft("expensive_li1", "Per-order rates much higher than ours, scaling painfully with success"),
-      ft("expensive_li2", "Legacy infrastructure that hasn't been re-architected in years"),
-      ft("expensive_li3", "Game library locked to fixed presets — operators all look identical"),
-      ft("expensive_li4", "No Game Studio — your site looks like every other competitor's"),
-      ft("expensive_li5", '"Closed-source as a security advantage" — auditors hate that argument'),
-      ft("expensive_li6", "Per-customer onboarding overhead baked into your bill")
-    ]);
-    const expensiveBottom = computed(() => ft("expensive_bottom", "You're paying for their growth, not yours."));
-    return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({
-        ref_key: "sectionRef",
-        ref: sectionRef,
-        class: ["section reveal", { visible: unref(revealed) }],
-        id: "why-fee"
-      }, _attrs))}><div class="center"><div class="eyebrow"><span class="dot"></span>${ssrInterpolate(eyebrow.value)}</div><h2 class="h2">${ssrInterpolate(titleBefore.value)}<br><span class="grad-text">${ssrInterpolate(titleKeyword.value)}</span></h2><p class="lead center" style="${ssrRenderStyle({ "margin": "18px auto 0" })}">${ssrInterpolate(lead.value)}</p></div><div class="fee-grid"><div class="fee-col cheap"><div class="fee-col-tag"><span>${ssrInterpolate(cheapIcon.value)}</span>${ssrInterpolate(cheapTag.value)}</div><h3>${ssrInterpolate(cheapH3.value)}</h3><p>${ssrInterpolate(cheapP.value)}</p><ul><!--[-->`);
-      ssrRenderList(cheapItems.value, (item, i2) => {
-        _push(`<li>${item ?? ""}</li>`);
-      });
-      _push(`<!--]--></ul><div class="fee-col-bottom">${ssrInterpolate(cheapBottom.value)}</div></div><div class="fee-col us"><div class="fee-col-tag"><span>${ssrInterpolate(usIcon.value)}</span>${ssrInterpolate(usTag.value)}</div><h3>${ssrInterpolate(usH3.value)}</h3><p>${ssrInterpolate(usP.value)}</p><ul><!--[-->`);
-      ssrRenderList(usItems.value, (item, i2) => {
-        _push(`<li>${item ?? ""}</li>`);
-      });
-      _push(`<!--]--></ul><div class="fee-col-bottom">${ssrInterpolate(usBottom.value)}</div></div><div class="fee-col expensive"><div class="fee-col-tag"><span>${ssrInterpolate(expensiveIcon.value)}</span>${ssrInterpolate(expensiveTag.value)}</div><h3>${ssrInterpolate(expensiveH3.value)}</h3><p>${ssrInterpolate(expensiveP.value)}</p><ul><!--[-->`);
-      ssrRenderList(expensiveItems.value, (item, i2) => {
-        _push(`<li>${item ?? ""}</li>`);
-      });
-      _push(`<!--]--></ul><div class="fee-col-bottom">${ssrInterpolate(expensiveBottom.value)}</div></div></div></section>`);
-    };
-  }
-};
+const UltraWhyFee = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["ssrRender", _sfc_ssrRender$7]]);
+const _sfc_main$e = {};
+function _sfc_ssrRender$6(_ctx, _push, _parent, _attrs) {
+  _push(`<section${ssrRenderAttrs(mergeProps({
+    id: "comparison",
+    class: "cv"
+  }, _attrs))}><div class="wrap"><div class="sec-head"><h2>Side by side.</h2><p class="sub">How we stack up.</p></div><div class="seg" role="group" aria-label="Compare against"><button type="button" data-cmp="saas" aria-pressed="true" data-track="comparison_vs_saas">vs Other SaaS</button><button type="button" data-cmp="wp" aria-pressed="false" data-track="comparison_vs_wordpress">vs WordPress + plugins</button></div><div class="cmp" id="cmp"><table><thead><tr><th>What matters</th><th class="ce">CompEngine</th><th id="cmp-other-head">Other SaaS</th></tr></thead><tbody id="cmp-body"></tbody></table></div><p class="assume" id="cmp-assume"></p></div></section>`);
+}
 const _sfc_setup$e = _sfc_main$e.setup;
 _sfc_main$e.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Fee/WhyOurFee.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraComparison.vue");
   return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
 };
-const _sfc_main$d = {
-  __name: "ComparisonTable",
-  __ssrInlineRender: true,
-  setup(__props) {
-    const getText = inject("getText", (key, fallback = "") => fallback);
-    const { sectionRef, revealed } = useReveal();
-    function ct(key, fallback) {
-      return getText(`cmp.${key}`, fallback);
-    }
-    const eyebrow = computed(() => ct("eyebrow", "Side by side"));
-    const titleMain = computed(() => ct("title", "How we stack up."));
-    const lead = computed(() => ct("lead", "Pick what you're considering. We'll show you the differences that actually move the needle."));
-    const TABLES = {
-      rafflex: {
-        tabLabel: ct("tab_rafflex", "vs RaffleX"),
-        name: ct("tab_rafflex_name", "RaffleX"),
-        rows: [
-          ["Years operating in this category", "5+ years", "4+ years"],
-          ["Per-order fee", "5–10p", "17p"],
-          ["Game customisation", "Game Studio — build your own", "7+ fixed presets"],
-          ["Independent penetration test", "Yes — published", "Not published"],
-          ["Separate Cash + Site Credit wallets", "Yes", "Not advertised"],
-          ["RNG / draw certification", "GLI", "GLI Verified"],
-          ["VCOC alignment in product", "Built in from launch", "Added recently"],
-          ["Public order / ticket numbers (30d)", "245k orders / 13.25M tickets", "Not published"]
-        ]
-      },
-      flat: {
-        tabLabel: ct("tab_flat", "vs flat-fee platforms"),
-        name: ct("tab_flat_name", "Other UK platforms with big flat fees"),
-        rows: [
-          ["Years operating in this category", "5+ years", "Newer entrants (typically <2 yrs)"],
-          ["Entry pricing", "5–10p per order — pay only when you sell", "£499/month from day one, before a ticket is sold"],
-          ["Pricing for small operators (<5k orders/mo)", "£25–£500/month", "£499/month flat"],
-          ["Pricing for scaling operators (50k+ orders/mo)", "£2,000/month flat", "£1,299–£1,499/month flat"],
-          ["Game customisation", "Game Studio — build your own", "Fixed reveal animations"],
-          ["Wallet model", "Cash + Site Credit (separate)", "Single wallet (mixed funds)"],
-          ["Track record at real volume", "245k orders / 13.25M tickets last 30d", "Limited public operating numbers"],
-          ["UK VCOC signatory", "Yes — from launch", "Yes (typical)"]
-        ]
-      },
-      wp: {
-        tabLabel: ct("tab_wp", "vs WordPress + plugins"),
-        name: ct("tab_wp_name", "WordPress + plugins"),
-        rows: [
-          ["Setup", "Hosted platform, zero plugins", "25+ plugins, fragile stack"],
-          ["Performance", "Single-page app, instant browsing", "Plugin-throttled, full reloads"],
-          ["Payment integration", "UK-licensed gateway, fully integrated", "Bolt-on payment plugin"],
-          ["Compliance with UK VCOC", "System-enforced from launch", "Manual, plugin-dependent"],
-          ["Hosting costs at scale", "Included", "£2k+/mo dedicated servers (real customer case)"],
-          ["Security updates", "Continuous, managed", "You patch every plugin yourself"],
-          ["Free-entry compliance", "Built in, automated", "Manual, hand-rolled"]
-        ]
-      }
-    };
-    const TAB_KEYS = ["rafflex", "flat", "wp"];
-    const activeTab = ref("rafflex");
-    const currentTable = computed(() => TABLES[activeTab.value]);
-    const sourcesNote = computed(() => ct("sources", "Sources: rafflex.io homepage (May 2026); typical UK flat-fee platform pricing observed at May 2026; CompEngine internal numbers (May 2026 rolling-30-day)."));
-    return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({
-        ref_key: "sectionRef",
-        ref: sectionRef,
-        class: ["section reveal", { visible: unref(revealed) }],
-        id: "comparison"
-      }, _attrs))}><div class="center"><div class="eyebrow"><span class="dot"></span>${ssrInterpolate(eyebrow.value)}</div><h2 class="h2">${ssrInterpolate(titleMain.value)}</h2><p class="lead center" style="${ssrRenderStyle({ "margin": "18px auto 0" })}">${ssrInterpolate(lead.value)}</p></div><div style="${ssrRenderStyle({ "margin-top": "40px" })}"><div class="cmp-tabs"><!--[-->`);
-      ssrRenderList(TAB_KEYS, (key) => {
-        _push(`<button class="${ssrRenderClass([{ active: activeTab.value === key }, "cmp-tab"])}">${ssrInterpolate(TABLES[key].tabLabel)}</button>`);
-      });
-      _push(`<!--]--></div><div style="${ssrRenderStyle({ "overflow-x": "auto" })}"><table class="cmp-table"><thead><tr><th style="${ssrRenderStyle({ "width": "34%" })}">Feature</th><th style="${ssrRenderStyle({ "width": "33%", "color": "var(--orange)" })}">CompEngine</th><th style="${ssrRenderStyle({ "width": "33%" })}">${ssrInterpolate(currentTable.value.name)}</th></tr></thead><tbody><!--[-->`);
-      ssrRenderList(currentTable.value.rows, (row, i2) => {
-        _push(`<tr><td>${ssrInterpolate(row[0])}</td><td class="us">${ssrInterpolate(row[1])}</td><td class="them">${ssrInterpolate(row[2])}</td></tr>`);
-      });
-      _push(`<!--]--></tbody></table><p style="${ssrRenderStyle({ "font-size": "13px", "color": "var(--text-3)", "margin-top": "14px" })}">${ssrInterpolate(sourcesNote.value)}</p></div></div></section>`);
-    };
-  }
-};
+const UltraComparison = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["ssrRender", _sfc_ssrRender$6]]);
+const _sfc_main$d = {};
+function _sfc_ssrRender$5(_ctx, _push, _parent, _attrs) {
+  _push(`<section${ssrRenderAttrs(mergeProps({
+    class: "ce-roadmap cv",
+    "aria-labelledby": "roadmap-h"
+  }, _attrs))}><div class="wrap"><div class="sec-head"><span class="eyebrow"><i class="dot"></i>What&#39;s coming next</span><h2 id="roadmap-h">The AI roadmap is <span class="grad">already being built.</span></h2><p class="lead">We&#39;re integrating machine learning into the parts of your business that move money: demand forecasting, customer segmentation, revenue attribution. Public release in phases — existing operators get every feature automatically.</p></div><div class="road"><div class="card"><i class="ic" data-i="forecast"></i><h3>Demand Forecasting</h3><p>Predict ticket demand per draw type, adjusting prize structures before you publish.</p><span class="tag">Coming soon — included for all operators</span></div><div class="card"><i class="ic" data-i="target"></i><h3>Smart Targeting</h3><p>Segment customers by lifetime value and re-engage with dynamically generated offers.</p><span class="tag">Coming soon — included for all operators</span></div><div class="card"><i class="ic" data-i="insight"></i><h3>Revenue Insights</h3><p>ML-attributed revenue per game type, acquisition channel, and promotional mechanic.</p><span class="tag">Coming soon — included for all operators</span></div><div class="card"><i class="ic" data-i="pen"></i><h3>AI Content Assist</h3><p>Competition titles, rules copy, and email subject lines — generated and A/B tested automatically.</p><span class="tag">Coming soon — included for all operators</span></div></div></div></section>`);
+}
 const _sfc_setup$d = _sfc_main$d.setup;
 _sfc_main$d.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Comparison/ComparisonTable.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraRoadmap.vue");
   return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
 };
+const UltraRoadmap = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["ssrRender", _sfc_ssrRender$5]]);
+function initPackageBuilder() {
+  const root = document.getElementById("pb");
+  const modal = document.getElementById("pb-modal");
+  if (!root || !modal) return null;
+  const CONFIG = {
+    flatMonthly: 2e3,
+    // £/month Enterprise flat fee
+    zeroUpfrontRate: 20,
+    // pence per order, £0 build fee (template only)
+    paygRange: "5–10p",
+    // the Pay As You Go per-order range
+    templateSetup: 999,
+    // £ + VAT, template build on the 5–10p plans
+    customSetup: 6e3,
+    // £ + VAT, custom build (all plans)
+    serverSupport: 200
+    // £ + VAT / month — applies to EVERY plan
+  };
+  const state = { build: null, plan: null };
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const dialog = modal.querySelector(".pb-dialog");
+  const panels = root.querySelectorAll(".pb-panel");
+  const steps = root.querySelectorAll(".pb-step");
+  const restart = document.getElementById("pb-restart");
+  const plansEl = document.getElementById("pb-plans");
+  const sub2 = document.getElementById("pb-step2-sub");
+  const sumCard = document.getElementById("pb-sum-card");
+  const book = document.getElementById("pb-book");
+  const cleanups = [];
+  const on = (target, ev, fn, opts) => {
+    target.addEventListener(ev, fn, opts);
+    cleanups.push(() => target.removeEventListener(ev, fn, opts));
+  };
+  const gbp = (n2) => "£" + Math.round(n2).toLocaleString("en-GB");
+  const setupFor = () => state.build === "custom" ? CONFIG.customSetup : CONFIG.templateSetup;
+  const announce = (text) => document.dispatchEvent(new CustomEvent("ce:package", { detail: text }));
+  function goTo(n2) {
+    panels.forEach((p2) => p2.classList.toggle("on", +p2.dataset.panel === n2));
+    steps.forEach((s2) => {
+      const i2 = +s2.dataset.step;
+      s2.classList.toggle("active", i2 === n2);
+      s2.classList.toggle("done", i2 < n2);
+    });
+    restart.hidden = n2 === 1;
+    if (n2 > 1) modal.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+  }
+  root.querySelectorAll("[data-build]").forEach((btn) => {
+    on(btn, "click", () => {
+      state.build = btn.dataset.build;
+      root.querySelectorAll("[data-build]").forEach((b2) => b2.classList.toggle("sel", b2 === btn));
+      renderPlans();
+      goTo(2);
+    });
+  });
+  function planList() {
+    const list = [{
+      id: "payg",
+      title: "Pay As You Go",
+      icon: "📈",
+      blurb: "Your platform cost is charged per paid order, so it rises and falls with your sales. No minimum spend.",
+      rate: CONFIG.paygRange,
+      rateSub: " per order",
+      upfront: setupFor(),
+      upfrontLabel: gbp(setupFor()) + " + VAT build fee",
+      bullets: [
+        "Platform cost tracks your sales, up or down",
+        "No per-order minimum and no tie-in",
+        "Charged on paid orders only, never free entries"
+      ],
+      flag: "Most operators start here"
+    }];
+    if (state.build === "template") {
+      list.push({
+        id: "zero",
+        title: "Zero Upfront",
+        icon: "🚀",
+        blurb: "No build fee to get started. You pay 20p on each paid order instead, so the build is covered as you sell.",
+        rate: CONFIG.zeroUpfrontRate + "p",
+        rateSub: " per order",
+        upfront: 0,
+        upfrontLabel: "£0 build fee",
+        zero: true,
+        bullets: [
+          "£0 build fee to get started",
+          "The same platform and features as every plan",
+          "We carry the risk with you"
+        ],
+        flag: "Launching with no budget"
+      });
+    }
+    list.push({
+      id: "flat",
+      title: "Enterprise Flat",
+      icon: "🏆",
+      blurb: "A fixed platform fee with no per-order charges, however much you sell. Your platform cost stops moving.",
+      rate: gbp(CONFIG.flatMonthly),
+      rateSub: " / month",
+      upfront: setupFor(),
+      upfrontLabel: gbp(setupFor()) + " + VAT build fee",
+      highlight: "No per-order fees at all",
+      bullets: [
+        "Your platform cost never rises with volume",
+        "Dedicated account manager",
+        "Priority support and onboarding"
+      ],
+      flag: "Best value at scale"
+    });
+    return list;
+  }
+  function renderPlans() {
+    sub2.textContent = state.build === "custom" ? "Your custom design is a one-off " + gbp(CONFIG.customSetup) + " + VAT. After that, choose how the platform itself is charged." : "Two of these carry a " + gbp(CONFIG.templateSetup) + " + VAT build fee. One has a £0 build fee. Your call.";
+    const plans = planList();
+    plansEl.className = "pb-choices" + (plans.length > 2 ? " three" : "");
+    plansEl.innerHTML = plans.map((p2) => `
+        <button class="pb-choice" type="button" data-plan="${p2.id}">
+          ${p2.flag ? `<span class="pb-flag ${p2.id === "payg" ? "" : "quiet"}">${p2.flag}</span>` : ""}
+          <div class="pb-ico">${p2.icon}</div>
+          <h4>${p2.title}</h4>
+          <div class="pb-blurb">${p2.blurb}</div>
+          <div class="pb-rate">${p2.rate}<small>${p2.rateSub}</small></div>
+          <span class="pb-up${p2.zero ? " zero" : ""}">${p2.upfrontLabel}</span>
+          ${p2.highlight ? `<span class="pb-hi">${p2.highlight}</span>` : ""}
+          <ul>${p2.bullets.map((b2) => `<li>${b2}</li>`).join("")}</ul>
+          <span class="pb-go">Choose ${p2.title} <span class="arw">&rarr;</span></span>
+        </button>`).join("");
+    plansEl.querySelectorAll("[data-plan]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.plan = btn.dataset.plan;
+        plansEl.querySelectorAll("[data-plan]").forEach((b2) => b2.classList.toggle("sel", b2 === btn));
+        renderSummary();
+        goTo(3);
+      });
+    });
+  }
+  function renderSummary() {
+    const plan = planList().find((p2) => p2.id === state.plan);
+    const upfront = plan.upfront;
+    const buildTxt = state.build === "custom" ? "Custom Design" : "Template Build";
+    const rateTxt = state.plan === "flat" ? gbp(CONFIG.flatMonthly) + " + VAT / month" : state.plan === "zero" ? CONFIG.zeroUpfrontRate + "p + VAT per paid order" : CONFIG.paygRange + " + VAT per paid order";
+    const rateSub = state.plan === "flat" ? "no per-order charges at all" : "charged on paid orders only";
+    sumCard.innerHTML = `
+        <div class="pb-sum-rows">
+          <div class="pb-sum-row"><span class="k">Your build</span><span class="v">${buildTxt}<em>${state.build === "custom" ? "A fully unique design, 4–6 weeks" : "Proven layout, live in 1–2 weeks — lowest cost to launch"}</em></span></div>
+          <div class="pb-sum-row"><span class="k">Your plan</span><span class="v">${plan.title}</span></div>
+          <div class="pb-sum-row"><span class="k">Platform rate</span><span class="v">${rateTxt}<em>${rateSub}</em></span></div>
+          <div class="pb-sum-row"><span class="k">Server &amp; support</span><span class="v">${gbp(CONFIG.serverSupport)} + VAT / month<em>hosting, monitoring and support — all plans</em></span></div>
+          <div class="pb-sum-row total"><span class="k">Build fee</span><span class="v">${upfront === 0 ? "£0 build fee" : gbp(upfront) + " + VAT"}<em>${upfront === 0 ? "covered by your per-order rate" : "one-off, paid before we start"}</em></span></div>
+        </div>`;
+    const summary = `${buildTxt} · ${plan.title} · ${rateTxt}`;
+    const tag = document.getElementById("pb-cta-tag");
+    if (tag) {
+      tag.innerHTML = `Your package: <strong>${summary}</strong> — mention it when you book and we'll have the numbers ready.`;
+      tag.hidden = false;
+    }
+    announce(summary);
+  }
+  root.querySelectorAll("[data-back]").forEach((b2) => on(b2, "click", () => goTo(+b2.dataset.back)));
+  function reset() {
+    state.build = null;
+    state.plan = null;
+    root.querySelectorAll(".pb-choice").forEach((c2) => c2.classList.remove("sel"));
+    const tag = document.getElementById("pb-cta-tag");
+    if (tag) tag.hidden = true;
+    announce("");
+    goTo(1);
+  }
+  on(restart, "click", reset);
+  let lastFocus = null;
+  function openModal() {
+    lastFocus = document.activeElement;
+    reset();
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    dialog.scrollTop = 0;
+    modal.scrollTop = 0;
+    const exit = document.getElementById("exit");
+    if (exit) {
+      exit.classList.remove("on");
+      exit.setAttribute("aria-hidden", "true");
+    }
+    const first = dialog.querySelector("[data-build]");
+    (first || dialog).focus({ preventScroll: true });
+  }
+  function closeModal() {
+    modal.hidden = true;
+    document.body.style.overflow = "";
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  }
+  ["pb-open", "sticky-pkg", "exit-open"].forEach((id) => {
+    const b2 = document.getElementById(id);
+    if (b2) on(b2, "click", openModal);
+  });
+  modal.querySelectorAll("[data-pb-close]").forEach((el) => on(el, "click", closeModal));
+  on(document, "keydown", (e2) => {
+    if (e2.key === "Escape" && !modal.hidden) closeModal();
+  });
+  on(dialog, "keydown", (e2) => {
+    if (e2.key !== "Tab") return;
+    const f2 = [...dialog.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')].filter((el) => el.offsetParent !== null);
+    if (!f2.length) return;
+    const first = f2[0], last = f2[f2.length - 1];
+    if (e2.shiftKey && document.activeElement === first) {
+      e2.preventDefault();
+      last.focus();
+    } else if (!e2.shiftKey && document.activeElement === last) {
+      e2.preventDefault();
+      first.focus();
+    }
+  });
+  if (book) {
+    on(book, "click", (e2) => {
+      e2.preventDefault();
+      closeModal();
+      const target = document.getElementById("booking");
+      if (target) target.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
+      setTimeout(() => {
+        const f2 = document.getElementById("f-name");
+        if (f2) f2.focus({ preventScroll: true });
+      }, reduced ? 0 : 700);
+    });
+  }
+  dialog.querySelectorAll('a[href^="#"]').forEach((a2) => {
+    if (a2 === book) return;
+    on(a2, "click", () => setTimeout(closeModal, 0));
+  });
+  return {
+    open: openModal,
+    close: closeModal,
+    destroy() {
+      cleanups.forEach((c2) => c2());
+      document.body.style.overflow = "";
+    }
+  };
+}
 const _sfc_main$c = {
-  __name: "AIFeatures",
+  __name: "UltraPricing",
   __ssrInlineRender: true,
   setup(__props) {
-    const getText = inject("getText", (key, fallback = "") => fallback);
-    const { sectionRef, revealed } = useReveal();
-    function at(key, fallback) {
-      return getText(`ai.${key}`, fallback);
-    }
-    const eyebrow = computed(() => at("eyebrow", "What's coming next"));
-    const titleBefore = computed(() => at("title_before", "The AI roadmap is"));
-    const titleKeyword = computed(() => at("title_keyword", "already being built."));
-    const lead = computed(() => at("lead", "We're integrating machine learning into the parts of your business that move money: demand forecasting, customer segmentation, revenue attribution. Public release in phases — existing operators get every feature automatically."));
-    const AI_CARDS = [
-      { emoji: "🤖", title: at("card1_title", "Demand Forecasting"), text: at("card1_text", "Predict ticket demand per draw type, adjusting prize structures before you publish.") },
-      { emoji: "🎯", title: at("card2_title", "Smart Targeting"), text: at("card2_text", "Segment customers by lifetime value and re-engage with dynamically generated offers.") },
-      { emoji: "📊", title: at("card3_title", "Revenue Insights"), text: at("card3_text", "ML-attributed revenue per game type, acquisition channel, and promotional mechanic.") },
-      { emoji: "✍️", title: at("card4_title", "AI Content Assist"), text: at("card4_text", "Competition titles, rules copy, and email subject lines — generated and A/B tested automatically.") }
-    ];
+    const clientReady = ref(false);
+    let builder = null;
+    onMounted(async () => {
+      clientReady.value = true;
+      await nextTick();
+      builder = initPackageBuilder();
+    });
+    onBeforeUnmount(() => {
+      if (builder) builder.destroy();
+    });
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({
-        ref_key: "sectionRef",
-        ref: sectionRef,
-        class: ["section reveal", { visible: unref(revealed) }]
-      }, _attrs))} data-v-1f1f301e><div class="ai-block" data-v-1f1f301e><div class="center" data-v-1f1f301e><div class="eyebrow" data-v-1f1f301e><span class="dot" data-v-1f1f301e></span>${ssrInterpolate(eyebrow.value)}</div><h2 class="h2" data-v-1f1f301e>${ssrInterpolate(titleBefore.value)} <span class="grad-text" data-v-1f1f301e>${ssrInterpolate(titleKeyword.value)}</span></h2><p class="lead center" style="${ssrRenderStyle({ "margin": "14px auto 0" })}" data-v-1f1f301e>${ssrInterpolate(lead.value)}</p></div><div class="ai-grid" data-v-1f1f301e><!--[-->`);
-      ssrRenderList(AI_CARDS, (card, i2) => {
-        _push(`<div class="ai-card" data-v-1f1f301e><div class="ai-emoji" data-v-1f1f301e>${ssrInterpolate(card.emoji)}</div><h5 data-v-1f1f301e>${ssrInterpolate(card.title)}</h5><p class="ai-card-text" data-v-1f1f301e>${ssrInterpolate(card.text)}</p></div>`);
-      });
-      _push(`<!--]--></div><div style="${ssrRenderStyle({ "text-align": "center", "margin-top": "30px" })}" data-v-1f1f301e><span class="price-tag" style="${ssrRenderStyle({ "position": "static", "display": "inline-block" })}" data-v-1f1f301e>COMING SOON — included for all operators</span></div></div></section>`);
+      _push(`<!--[--><div class="kinetic alt" aria-hidden="true"><div class="k-track" id="k-track2"></div></div><section id="pricing" class="cv"><div class="wrap"><div class="sec-head center"><span class="eyebrow"><i class="dot"></i>Simple, transparent pricing</span><h2>Packages from <span class="grad">5p per order.</span></h2><p class="lead">Template builds and fully custom designs. Build your package in under a minute and see every number — build fee, per-order rate, what runs monthly. No &quot;call us for pricing&quot;.</p><p class="price-intro">Pay 5–10p per order while you&#39;re growing. Switch to flat-rate Enterprise when volume makes it cheaper. Most operators make that switch at around 20,000 orders per month.</p><div class="pb-launch"><span class="pb-clickme"><span class="cm-txt">Click me!</span><svg class="cm-arrow" viewBox="0 0 56 58" aria-hidden="true"><path d="M6 8 C34 10, 46 24, 40 46" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"></path><path d="M32 37 L40 49 L48 36" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><button class="pb-open" type="button" id="pb-open" data-track="pricing_open_builder">Click here to view packages <span class="arw">→</span></button></div><p class="pb-hint">No sign-up and no details needed — you&#39;ll see the full package before you speak to anyone.</p></div><div class="card includes"><b>Every package includes:</b><ul><li><i class="ic" data-i="check"></i>All game types and instant wins</li><li><i class="ic" data-i="check"></i>Entry lists</li><li><i class="ic" data-i="check"></i>Upsells</li><li><i class="ic" data-i="check"></i>Responsible Play options</li><li><i class="ic" data-i="check"></i>Legal compliance — Terms &amp; Conditions</li><li><i class="ic" data-i="check"></i>All future games and features</li><li><i class="ic" data-i="check"></i>Gateway integration</li><li><i class="ic" data-i="check"></i>Website notifications</li><li><i class="ic" data-i="check"></i>Free site migration — users, wallets and competitions</li><li><i class="ic" data-i="check"></i>No limits</li></ul></div></div></section>`);
+      if (clientReady.value) {
+        ssrRenderTeleport(_push, (_push2) => {
+          _push2(`<div class="pb-modal" id="pb-modal" hidden><div class="pb-backdrop" data-pb-close></div><div class="pb-dialog" role="dialog" aria-modal="true" aria-labelledby="pb-dialog-title" tabindex="-1"><h2 class="pb-sr" id="pb-dialog-title">Build your package</h2><button class="pb-x" type="button" data-pb-close aria-label="Close">×</button><div class="pb-includes"><div class="inc-statement"><p class="inc-big">Every package includes <span class="grad-text">every feature and game</span>.</p><p class="inc-sub">Every game type, every instant win, every tool in the platform — plus everything we build from here. No tiers, no locked features, nothing to upgrade to. The only differences between the packages below are the design and how you pay.</p></div><div class="pb-wrap" id="pb"><div class="pb-head"><div class="pb-steps"><div class="pb-step active" data-step="1"><span class="n">1</span> Your build</div><span class="pb-sep">→</span><div class="pb-step" data-step="2"><span class="n">2</span> How you pay</div><span class="pb-sep">→</span><div class="pb-step" data-step="3"><span class="n">3</span> Your package</div></div><button class="pb-restart" id="pb-restart" type="button" hidden>Start over</button></div><div class="pb-body"><div class="pb-panel on" data-panel="1"><h3 class="pb-q">First — how do you want your site built?</h3><p class="pb-sub">Same engine, same games, same support either way. The difference is whether you&#39;re keeping your costs down or standing entirely apart.</p><div class="pb-allinc"><span class="tick">✓</span> Every package includes <strong>every feature and game</strong></div><div class="pb-choices pb-lean"><button class="pb-choice" type="button" data-build="template"><div class="pb-ico">⚡</div><h4>Template Build</h4><div class="pb-rate">From 5–10p<small> + VAT per order</small></div><div class="pb-blurb">To keep your costs down. A proven competition layout in your branding and colours — live in 1–2 weeks, without paying for design work from scratch.</div><span class="pb-cta"><span class="pb-clickme"><span class="cm-txt">Click me!</span><svg class="cm-arrow" viewBox="0 0 56 58" aria-hidden="true"><path d="M6 8 C34 10, 46 24, 40 46" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"></path><path d="M32 37 L40 49 L48 36" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span class="pb-go">Choose Template Build <span class="arw">→</span></span></span></button><button class="pb-choice" type="button" data-build="custom"><div class="pb-ico">🎨</div><h4>Custom Design</h4><div class="pb-rate">From £6,000<small> + VAT</small></div><div class="pb-plus">+ 5–10p + VAT per order</div><div class="pb-blurb">For operators who want a fully unique design. Drawn from a blank page around your brand, so your site looks like nobody else&#39;s.</div><span class="pb-cta"><span class="pb-clickme"><span class="cm-txt">Click me!</span><svg class="cm-arrow" viewBox="0 0 56 58" aria-hidden="true"><path d="M6 8 C34 10, 46 24, 40 46" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"></path><path d="M32 37 L40 49 L48 36" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span class="pb-go">Choose Custom Design <span class="arw">→</span></span></span></button></div><span class="pb-hint">No sign-up and no details needed — you&#39;ll see the full package before you speak to anyone.</span></div><div class="pb-panel" data-panel="2"><h3 class="pb-q">How do you want to pay for the platform?</h3><p class="pb-sub" id="pb-step2-sub"></p><div class="pb-allinc"><span class="tick">✓</span> Every package includes <strong>every feature and game</strong></div><div class="pb-choices three" id="pb-plans"></div><p class="pb-note" style="${ssrRenderStyle({ "text-align": "center", "max-width": "640px", "margin": "22px auto 0" })}">Every plan also carries a £200 + VAT a month server &amp; support fee — hosting, monitoring, updates and a real person to call.</p><div class="pb-backwrap"><button class="pb-back" type="button" data-back="1">← Change build type</button></div></div><div class="pb-panel" data-panel="3"><h3 class="pb-q">Your package</h3><p class="pb-sub">Build fee, platform rate and support — the lot. Nothing new appears on the call.</p><div class="pb-summary"><div class="pb-sum-card" id="pb-sum-card"></div><div class="pb-actions"><a href="#booking" class="btn btn-primary btn-large" id="pb-book" data-track="pricing_builder_book">Book my call with this package →</a><a href="#game-studio" class="btn btn-ghost btn-large">Try Game Studio first</a></div><p class="pb-note">All fees exclude VAT. The £200 a month server &amp; support fee starts when your site goes live, not when you sign. Per-order fees are charged on paid orders only — free postal entries are never charged for. Your exact per-order rate is confirmed in writing before you sign; nothing is taken until you do.</p></div><div class="pb-backwrap"><button class="pb-back" type="button" data-back="2">← Change plan</button></div></div></div></div></div></div></div>`);
+        }, "body", false, _parent);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`<!--]-->`);
     };
   }
 };
 const _sfc_setup$c = _sfc_main$c.setup;
 _sfc_main$c.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Platform/AIFeatures.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraPricing.vue");
   return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
 };
-const AIFeatures = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-1f1f301e"]]);
-const _sfc_main$b = {
-  __name: "PricingCards",
-  __ssrInlineRender: true,
-  setup(__props) {
-    const getText = inject("getText", (key, fallback = "") => fallback);
-    const { sectionRef, revealed } = useReveal();
-    function pt(key, fallback) {
-      return getText(`pricing.${key}`, fallback);
-    }
-    const eyebrow = computed(() => pt("eyebrow", "Pricing"));
-    const titleBefore = computed(() => pt("title_before", "Two tiers."));
-    const titleKeyword = computed(() => pt("title_keyword", "No tricks."));
-    const lead = computed(() => pt("lead", "Pay 5–10p per order while you're growing. Switch to flat-rate Enterprise when volume makes it cheaper. Most operators make that switch at around 20,000 orders per month."));
-    const plans = computed(() => {
-      const plan1Features = [];
-      const plan2Features = [];
-      for (let i2 = 1; i2 <= 10; i2++) {
-        const f2 = getText(`pricing.plan1_feature${i2}`, "");
-        if (f2 && f2.trim()) plan1Features.push(f2);
-      }
-      if (plan1Features.length === 0) {
-        plan1Features.push(
-          "All game types — including Game Studio",
-          "Full analytics & reporting dashboard",
-          "Personalised onboarding handover",
-          "All future features included automatically",
-          "1–2 week average launch time"
-        );
-      }
-      for (let i2 = 1; i2 <= 10; i2++) {
-        const f2 = getText(`pricing.plan2_feature${i2}`, "");
-        if (f2 && f2.trim()) plan2Features.push(f2);
-      }
-      if (plan2Features.length === 0) {
-        plan2Features.push(
-          "Everything in Pay As You Go",
-          "Fixed monthly cost — no per-order charges",
-          "Dedicated account manager",
-          "Priority 24/7 support",
-          "Custom contract & SLA"
-        );
-      }
-      return [
-        {
-          name: pt("plan1_name", "Pay As You Go"),
-          price: pt("plan1_price", "5–10p"),
-          priceSuffix: pt("plan1_price_suffix", "&nbsp;per order"),
-          priceSub: pt("plan1_subtext", "No monthly minimum. Scale freely."),
-          description: pt("plan1_description", "Pay only when customers order. Perfect from first launch through to ~20k orders/month."),
-          features: plan1Features,
-          popular: false,
-          badge: "",
-          buttonText: pt("plan1_button", "Get started"),
-          action: pt("plan1_action", "calendly")
-        },
-        {
-          name: pt("plan2_name", "Enterprise"),
-          price: pt("plan2_price", "£2,000"),
-          priceSuffix: pt("plan2_price_suffix", "&nbsp;/ month"),
-          priceSub: pt("plan2_subtext", "or starts at 5p / order — whichever is lower."),
-          description: pt("plan2_description", "A flat rate that makes financial planning simple. Locked in when volume means per-order is more expensive."),
-          features: plan2Features,
-          popular: true,
-          badge: pt("plan2_badge", "Most operators"),
-          buttonText: pt("plan2_button", "Book a demo"),
-          action: pt("plan2_action", "calendly")
-        }
-      ];
-    });
-    onMounted(() => {
-      const link = document.createElement("link");
-      link.href = "https://assets.calendly.com/assets/external/widget.css";
-      link.rel = "stylesheet";
-      document.head.appendChild(link);
-      const script = document.createElement("script");
-      script.src = "https://assets.calendly.com/assets/external/widget.js";
-      script.async = true;
-      document.head.appendChild(script);
-    });
-    return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({
-        ref_key: "sectionRef",
-        ref: sectionRef,
-        class: ["section reveal", { visible: unref(revealed) }],
-        id: "pricing"
-      }, _attrs))}><div class="center"><div class="eyebrow"><span class="dot"></span>${ssrInterpolate(eyebrow.value)}</div><h2 class="h2">${ssrInterpolate(titleBefore.value)} <span class="grad-text">${ssrInterpolate(titleKeyword.value)}</span></h2><p class="lead center" style="${ssrRenderStyle({ "margin": "18px auto 0" })}">${ssrInterpolate(lead.value)}</p></div><div class="pricing-grid"><!--[-->`);
-      ssrRenderList(plans.value, (plan, idx) => {
-        _push(`<div class="${ssrRenderClass([{ popular: plan.popular }, "price-card"])}">`);
-        if (plan.badge) {
-          _push(`<div class="price-tag">${ssrInterpolate(plan.badge)}</div>`);
-        } else {
-          _push(`<!---->`);
-        }
-        _push(`<h3>${ssrInterpolate(plan.name)}</h3><p style="${ssrRenderStyle({ "font-size": "13px", "color": "var(--text-3)", "margin": "6px 0 0" })}">${ssrInterpolate(plan.description)}</p><div class="price"><span>${plan.price + plan.priceSuffix}</span></div><div class="price-tag-sub">${ssrInterpolate(plan.priceSub)}</div><ul><!--[-->`);
-        ssrRenderList(plan.features, (feat, fi) => {
-          _push(`<li>${ssrInterpolate(feat)}</li>`);
-        });
-        _push(`<!--]--></ul><button class="btn btn-orange" style="${ssrRenderStyle({ "width": "100%" })}">${ssrInterpolate(plan.buttonText)}</button></div>`);
-      });
-      _push(`<!--]--></div></section>`);
-    };
-  }
-};
+const _sfc_main$b = {};
+function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs) {
+  _push(`<section${ssrRenderAttrs(mergeProps({
+    id: "faq",
+    class: "cv"
+  }, _attrs))}><div class="wrap"><div class="sec-head"><h2>Questions we get before every call.</h2><p class="lead">If yours isn&#39;t here, it&#39;ll be answered in the first five minutes of the demo.</p></div><div class="faq" id="faq-list"></div></div></section>`);
+}
 const _sfc_setup$b = _sfc_main$b.setup;
 _sfc_main$b.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Pricing/PricingCards.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraFaq.vue");
   return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
 };
-const _sfc_main$a = {
-  __name: "FAQSection",
-  __ssrInlineRender: true,
-  setup(__props) {
-    const getText = inject("getText", (key, fallback = "") => fallback);
-    const siteTexts = inject("siteTexts");
-    const { sectionRef, revealed } = useReveal();
-    function fq(key, fallback) {
-      return getText(`faq.${key}`, fallback);
-    }
-    const eyebrow = computed(() => fq("eyebrow", "FAQ"));
-    const titleBefore = computed(() => fq("title_before", "Questions we get"));
-    const titleKeyword = computed(() => fq("title_keyword", "before every call."));
-    const lead = computed(() => fq("lead", "If yours isn't here, it'll be answered in the first five minutes of the demo."));
-    const FAQS_FALLBACK = [
-      {
-        question: 'What does "5–10p per order" actually mean?',
-        answer: "Each time a customer places an order on your platform — buying tickets, entries, or a bundle — we charge between 5p and 10p. The exact rate depends on your volume tier. There's no monthly minimum, no setup fee, and no charge for page views, registrations, or anything that isn't an order. Most operators start at 10p and reach 5p within their first three months."
-      },
-      {
-        question: "What happens when I need help?",
-        answer: "You talk to the people who built the platform. We have no first-line support outsourcing — every person on the support team can read the code. On draw nights, there's someone monitoring in real time. Our average response time for urgent issues is under 8 minutes."
-      },
-      {
-        question: "Can I customise the look and feel?",
-        answer: "Yes — extensively. Game Studio lets you configure every visual and mechanical aspect of each game type. Beyond that, you control colours, typography, layout, and all copy. Your site doesn't have to look like any other competition platform on the market."
-      },
-      {
-        question: "Is CompEngine compliant with the UK VCOC?",
-        answer: "Yes. CompEngine was designed with VCOC compliance as a constraint, not an afterthought. Free-entry routes are built in and automated. Age verification is integrated. Wallet segregation (Cash vs Site Credit) is enforced at the platform level. When VCOC guidance changes, the update ships automatically to all operators."
-      },
-      {
-        question: "What games can I offer?",
-        answer: "Slots, Scratch Cards, Spin-the-Wheel, Bingo, Coin Drop, and Balloon Pop — each fully configurable in Game Studio. You can run multiple game types simultaneously, set different reveal mechanics per draw, and preview exactly how each game will look before you publish."
-      },
-      {
-        question: "How does the wallet system work?",
-        answer: "We operate two completely separate wallet balances per customer: Cash (withdrawable, funded by real money) and Site Credit (non-withdrawable, funded by bonuses and winnings you specify). The separation is enforced at the database level — it's impossible to accidentally mix them. This matters for VCOC compliance and for your own accounting."
-      },
-      {
-        question: "What does GLI certification mean for my operators?",
-        answer: "GLI (Gaming Laboratories International) is an independent testing body that verifies our RNG is statistically fair and that draw results can't be manipulated. The certification is renewed on a defined cycle — the cost is part of our operating budget, not an extra charge. You can display the GLI seal on your platform."
-      },
-      {
-        question: "How long does it take to launch?",
-        answer: "Most operators are live within 1–2 weeks of their onboarding call. The onboarding process covers domain setup, payment gateway connection, game configuration, and a test draw. We've done it in 4 days for operators with an urgent deadline."
-      },
-      {
-        question: "Can I see my own data?",
-        answer: "Yes — your analytics dashboard shows orders, revenue, ticket counts, game performance, customer lifetime value, and draw results in real time. You can export everything. You own your data. We don't aggregate it across operators or sell insights derived from it."
-      }
-    ];
-    const faqs = computed(() => {
-      var _a;
-      if (siteTexts.loading || !((_a = siteTexts.data) == null ? void 0 : _a.faq)) {
-        return FAQS_FALLBACK;
-      }
-      const faqData = siteTexts.data.faq;
-      const questionKeys = Object.keys(faqData).filter((key) => /^faq\.q\d+$/.test(key)).sort((a2, b2) => {
-        var _a2, _b;
-        return parseInt(((_a2 = a2.match(/\d+/)) == null ? void 0 : _a2[0]) || "0") - parseInt(((_b = b2.match(/\d+/)) == null ? void 0 : _b[0]) || "0");
-      });
-      if (questionKeys.length === 0) return FAQS_FALLBACK;
-      return questionKeys.map((qKey) => {
-        var _a2;
-        const num = (_a2 = qKey.match(/\d+/)) == null ? void 0 : _a2[0];
-        return {
-          question: faqData[qKey] || "",
-          answer: faqData[`faq.a${num}`] || ""
-        };
-      });
-    });
-    const openIdx = ref(null);
-    return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({
-        ref_key: "sectionRef",
-        ref: sectionRef,
-        class: ["section reveal", { visible: unref(revealed) }],
-        id: "faq"
-      }, _attrs))}><div class="center"><div class="eyebrow"><span class="dot"></span>${ssrInterpolate(eyebrow.value)}</div><h2 class="h2">${ssrInterpolate(titleBefore.value)} <span class="grad-text">${ssrInterpolate(titleKeyword.value)}</span></h2><p class="lead center" style="${ssrRenderStyle({ "margin": "14px auto 0" })}">${ssrInterpolate(lead.value)}</p></div><div class="faq-list"><!--[-->`);
-      ssrRenderList(faqs.value, (item, i2) => {
-        _push(`<div class="${ssrRenderClass([{ open: openIdx.value === i2 }, "faq-item"])}"><div class="faq-q"><span>${ssrInterpolate(item.question)}</span><span class="chev">+</span></div><div class="faq-a">${ssrInterpolate(item.answer)}</div></div>`);
-      });
-      _push(`<!--]--></div></section>`);
-    };
-  }
-};
+const UltraFaq = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["ssrRender", _sfc_ssrRender$4]]);
+const _sfc_main$a = {};
+function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs) {
+  _push(`<section${ssrRenderAttrs(mergeProps({
+    id: "booking",
+    class: "cv"
+  }, _attrs))}><div class="wrap"><div class="book"><div class="copy"><h2>Get started today.</h2><p class="sub">Ready to launch your competition on the UK&#39;s most intelligent platform?</p><p>30 minutes. A live demo on your brief. No sales deck, no NDAs, no obligation. Just the platform running with your prize, your game type, your brand — so you can see exactly what you&#39;d be launching.</p><div class="ticks"><span><i class="ic" data-i="check-c"></i>Live in 1–2 weeks</span><span><i class="ic" data-i="check-c"></i>Free site migration</span><span><i class="ic" data-i="check-c"></i>Every feature included</span></div><p id="pb-cta-tag" aria-live="polite"></p></div><form class="card form" id="lead-form" novalidate><div class="fields" style="${ssrRenderStyle({ "display": "grid", "gap": "12px" })}"><div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required><span class="msg"></span></div><div class="field"><label for="f-biz">Business / site name</label><input id="f-biz" name="business" type="text" autocomplete="organization" required><span class="msg"></span></div><div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required><span class="msg"></span></div><div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="07xxx xxxxxx" required><span class="msg"></span></div><div class="field"><label for="f-platform">Current platform</label><select id="f-platform" name="current_platform" required><option value="">Choose one</option><option>WordPress + plugins</option><option>Another SaaS platform</option><option>Agency-built site</option><option>Nothing yet</option></select><span class="msg"></span></div><div class="field"><label for="f-orders">Monthly orders</label><select id="f-orders" name="monthly_orders" required><option value="">Choose one</option><option>Not live yet</option><option>Under 1,000</option><option>1,000–5,000</option><option>5,000–20,000</option><option>20,000+</option></select><span class="msg"></span></div><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="utm_term"><input type="hidden" name="gclid"><input type="hidden" name="fbclid"><input type="hidden" name="landing_variant"><input type="hidden" name="package" id="f-package"><button type="submit" class="btn btn-primary btn-lg" data-track="booking_form_submit">Book my 30-min demo →</button><p class="alt">Prefer to pick a time now? <a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" data-calendly data-track="booking_open_calendar">Open the calendar</a></p><div class="mini-trust"><span><i class="ic" data-i="shield"></i>GLI certified</span><span><i class="ic" data-i="shield"></i>Pen tested</span><span><i class="ic" data-i="shield"></i>VCOC signatory</span></div></div><div class="thanks"><i class="ic" data-i="check-c"></i><h3>Got it. Pick your slot.</h3><p class="muted">We&#39;ve saved your details — choose a 30-minute time that suits you.</p><a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-calendly data-track="booking_thanks_calendly">Choose a time on Calendly</a></div></form></div><p class="trust-note">Entering a competition powered by CompEngine? Every draw is GLI-certified. Every winner is verifiable. Every order runs through a UK-licensed payment gateway. If something goes wrong, the operator has a real platform behind them — not a stack of plugins.</p></div></section>`);
+}
 const _sfc_setup$a = _sfc_main$a.setup;
 _sfc_main$a.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/FAQ/FAQSection.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraBooking.vue");
   return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
 };
-const _sfc_main$9 = {
-  __name: "BookingSection",
-  __ssrInlineRender: true,
-  setup(__props) {
-    const getText = inject("getText", (key, fallback = "") => fallback);
-    const { sectionRef, revealed } = useReveal();
-    function bt(key, fallback) {
-      return getText(`cta.${key}`, fallback);
-    }
-    const eyebrow = computed(() => bt("eyebrow", "Get started today"));
-    const titleBefore = computed(() => bt("title_before", "Ready to launch the UK's"));
-    const titleKeyword = computed(() => bt("title_keyword", "fairest competition platform?"));
-    const lead = computed(() => bt("lead", "30 minutes. A live demo on your brief. No sales deck, no NDAs, no obligation. Just the platform running with your prize, your game type, your brand — so you can see exactly what you'd be launching."));
-    const btn1 = computed(() => bt("btn1", "Book a 30-min demo →"));
-    const btn2 = computed(() => bt("btn2", "Talk to the team"));
-    const subtext = computed(() => bt("subtext", "Typical response under 4 hours · No obligation · Cancel any time"));
-    return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({
-        ref_key: "sectionRef",
-        ref: sectionRef,
-        class: ["section reveal", { visible: unref(revealed) }],
-        id: "booking"
-      }, _attrs))}><div class="final-cta"><div class="eyebrow" style="${ssrRenderStyle({ "justify-content": "center" })}"><span class="dot"></span>${ssrInterpolate(eyebrow.value)}</div><h2 class="h2" style="${ssrRenderStyle({ "margin-top": "18px" })}">${ssrInterpolate(titleBefore.value)}<br><span class="grad-text">${ssrInterpolate(titleKeyword.value)}</span></h2><p class="lead center" style="${ssrRenderStyle({ "margin": "18px auto 0", "max-width": "600px" })}">${ssrInterpolate(lead.value)}</p><div style="${ssrRenderStyle({ "display": "flex", "gap": "14px", "justify-content": "center", "margin-top": "34px", "flex-wrap": "wrap" })}"><button class="btn btn-orange">${ssrInterpolate(btn1.value)}</button><button class="btn btn-ghost">${ssrInterpolate(btn2.value)}</button></div><p style="${ssrRenderStyle({ "font-size": "12px", "color": "var(--text-3)", "margin-top": "20px" })}">${ssrInterpolate(subtext.value)}</p></div></section>`);
-    };
-  }
-};
+const UltraBooking = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["ssrRender", _sfc_ssrRender$3]]);
+const _sfc_main$9 = {};
+function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs) {
+  _push(`<footer${ssrRenderAttrs(mergeProps({ class: "ce-footer" }, _attrs))}><div class="wrap"><a href="#hero" class="logo"><span class="gear"><img src="/images/logo.svg" alt=""><span class="gear-svg" data-gear></span></span><span>© 2026 CompEngine. Built quietly in the UK.</span></a><div class="links"><a href="#game-studio">Games</a><a href="#ecosystem">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="/about">About</a><a href="/blog">Blog</a><a href="#booking">Contact</a></div><div class="links"><a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" data-calendly data-track="footer_book_demo">Book a demo</a><a href="#booking" data-track="footer_launch">Launch your platform</a></div></div></footer>`);
+}
 const _sfc_setup$9 = _sfc_main$9.setup;
 _sfc_main$9.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Booking/BookingSection.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraFooter.vue");
   return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
 };
-const _sfc_main$8 = {
-  __name: "MobileStickyBar",
-  __ssrInlineRender: true,
-  setup(__props) {
-    const getText = inject("getText");
-    const shown = ref(false);
-    const barText = computed(() => getText("mobile_cta.text", "Launch your platform"));
-    const barBtn = computed(() => getText("mobile_cta.btn", "Book a demo"));
-    function updateVisibility() {
-      const scrollY = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight;
-      const viewHeight = window.innerHeight;
-      const nearBottom = scrollY + viewHeight > docHeight - 700;
-      shown.value = scrollY > 600 && !nearBottom;
-    }
-    onMounted(() => {
-      window.addEventListener("scroll", updateVisibility, { passive: true });
-    });
-    onUnmounted(() => {
-      window.removeEventListener("scroll", updateVisibility);
-    });
-    return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({
-        class: ["mobile-cta-bar", { shown: shown.value }]
-      }, _attrs))}><div class="mobile-cta-text"><svg class="gear" viewBox="0 0 100 100" aria-hidden="true"><use href="#gear-logo"></use></svg><span>${ssrInterpolate(barText.value)}</span></div><button class="btn btn-orange">${ssrInterpolate(barBtn.value)}</button></div>`);
-    };
-  }
-};
+const UltraFooter = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["ssrRender", _sfc_ssrRender$2]]);
+const _sfc_main$8 = {};
+function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs) {
+  _push(`<!--[--><div class="ce-sticky" id="sticky" aria-hidden="true"><div class="row"><a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" class="btn btn-primary" data-calendly data-track="sticky_book_demo">Book a Demo</a><button type="button" class="btn btn-ghost" id="sticky-pkg" data-track="sticky_open_builder">Packages</button></div><div class="mini-trust"><span><i class="ic" data-i="shield"></i>GLI</span><span><i class="ic" data-i="shield"></i>Pen tested</span><span><i class="ic" data-i="shield"></i>VCOC</span></div></div><div class="ce-exit" id="exit" role="dialog" aria-label="Before you go" aria-hidden="true"><button type="button" class="x" id="exit-x" aria-label="Dismiss"><i class="ic" data-i="x"></i></button><b>Before you go — see the full package price in 60 seconds</b><span class="muted small">Three questions. No email required.</span><button type="button" class="btn btn-primary" id="exit-open" data-track="exit_open_builder">Open the package builder</button></div><!--]-->`);
+}
 const _sfc_setup$8 = _sfc_main$8.setup;
 _sfc_main$8.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/CTA/MobileStickyBar.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Ultra/UltraSticky.vue");
   return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
 };
+const UltraSticky = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["ssrRender", _sfc_ssrRender$1]]);
+function initUltraHome(opts) {
+  opts = opts || {};
+  opts.orders = +opts.orders || 15e5;
+  opts.tickets = +opts.tickets || 12e7;
+  var alive = true, cleanups = [];
+  function on(t3, ev, fn, o2) {
+    t3.addEventListener(ev, fn, o2);
+    cleanups.push(function() {
+      t3.removeEventListener(ev, fn, o2);
+    });
+  }
+  function compact(n2) {
+    n2 = +n2 || 0;
+    if (n2 >= 1e6) return String(Math.round(n2 / 1e5) / 10).replace(/\.0$/, "") + "M";
+    if (n2 >= 1e3) return Math.round(n2 / 1e3) + "k";
+    return String(n2);
+  }
+  var HERO_VARIANTS = {
+    A: { h1: 'The <span class="grad">Ultimate Competition</span> Platform' },
+    B: { h1: 'Launch a competition site that <span class="grad">actually converts.</span>' }
+  };
+  var CALENDLY = "https://calendly.com/contact-compengine/30min";
+  var UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid", "landing_variant", "package"];
+  var OPERATORS = [["Top Banana", "topbanana"], ["WestCoast", "westcoast"], ["Jolly", "jolly"], ["Vincere", "vincere"], ["Podium", "podium"], ["S2A", "s2a"], ["Auwins", "auwins"], ["MixItUp", "mixitup"], ["MadMac", "madmac"], ["MPComps", "mpower"], ["Wrights", "wrights"], ["MsMoneyPenny", "msmoneypenny"], ["AutoComps", "autocomps"], ["Prize Hunter", "prizehunter"], ["Vortex", "vortex"], ["Padel Comps", "padel"], ["Luxsy Wins", "luxsy"], ["LuckyDucky", "luckyducky"], ["Karma", "karma"], ["WinThisNow", "winthisnow"], ["Deluxe Comps", "deluxe"], ["CrazyCat", "crazycat"], ["Lightning", "lightning"], ["SunnyGiveaways", "sunnygiveaways"], ["SmashDrop", "smashdrop"], ["Winner Winner", "winnerwinner"], ["Ritas", "ritas"], ["Belter Competition", "belter"], ["House of Hope", "hope"], ["Prize Party", "prizeparty"]];
+  var $2 = function(s2, r2) {
+    return (r2 || document).querySelector(s2);
+  };
+  var $$ = function(s2, r2) {
+    return Array.prototype.slice.call((r2 || document).querySelectorAll(s2));
+  };
+  var root = $2("#ce-home");
+  var RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var isDesktop = function() {
+    return window.matchMedia("(min-width: 1024px)").matches;
+  };
+  var hasHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  function once(el, cb, opts2) {
+    if (!("IntersectionObserver" in window)) {
+      cb(el);
+      return;
+    }
+    var io = new IntersectionObserver(function(es) {
+      es.forEach(function(e2) {
+        if (e2.isIntersecting) {
+          io.unobserve(e2.target);
+          cb(e2.target);
+        }
+      });
+    }, opts2 || { threshold: 0.25 });
+    io.observe(el);
+  }
+  function fmt(n2) {
+    return Math.round(n2).toLocaleString("en-GB");
+  }
+  function esc(s2) {
+    return String(s2).replace(/[&<>"]/g, function(c2) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c2];
+    });
+  }
+  var S2 = function(d2, extra) {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d2 + "</svg>";
+  };
+  var ICONS = {
+    menu: S2('<path d="M4 7h16M4 12h16M4 17h16"/>'),
+    x: S2('<path d="M6 6l12 12M18 6L6 18"/>'),
+    check: S2('<path d="M5 12.5l4.5 4.5L19 7"/>'),
+    "check-c": S2('<circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5"/>'),
+    shield: S2('<path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9.5 12l2 2 3.5-4"/>'),
+    trend: S2('<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>'),
+    cert: S2('<circle cx="12" cy="9" r="5.5"/><path d="M9 13.5L7.5 21l4.5-2.5L16.5 21 15 13.5"/><path d="M10 9l1.5 1.5L14 7.5"/>'),
+    lock: S2('<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>'),
+    doc: S2('<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/>'),
+    award: S2('<path d="M12 3l2.6 5.3 5.9.9-4.2 4.1 1 5.8L12 16.4 6.7 19.1l1-5.8L3.5 9.2l5.9-.9z"/>'),
+    "chev-l": S2('<path d="M15 5l-7 7 7 7"/>'),
+    "chev-r": S2('<path d="M9 5l7 7-7 7"/>'),
+    "arrow-r": S2('<path d="M4 12h16M13 5l7 7-7 7"/>'),
+    "arrow-up": S2('<path d="M12 20V4M5 11l7-7 7 7"/>'),
+    bell: S2('<path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/>'),
+    warn: S2('<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18.5v.5"/>'),
+    minus: S2('<path d="M6 12h12"/>'),
+    spark: S2('<path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/>'),
+    forecast: S2('<path d="M3 20h18"/><path d="M5 16l4-5 4 3 6-8"/><path d="M15 6h4v4"/>'),
+    target: S2('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'),
+    insight: S2('<rect x="3" y="12" width="4" height="8"/><rect x="10" y="7" width="4" height="13"/><rect x="17" y="3" width="4" height="17"/>'),
+    pen: S2('<path d="M4 20l4-1L19 8l-3-3L5 16z"/><path d="M14 7l3 3"/>'),
+    car: S2('<path d="M4 15l2-6h12l2 6"/><rect x="3" y="15" width="18" height="4" rx="1"/><circle cx="7.5" cy="19" r="1.5"/><circle cx="16.5" cy="19" r="1.5"/>'),
+    monitor: S2('<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>'),
+    plane: S2('<path d="M3 13l18-9-5 17-4-6z"/><path d="M12 15l9-11"/>'),
+    watch: S2('<circle cx="12" cy="12" r="6"/><path d="M12 9v3l2 1M9 6l.5-3h5l.5 3M9 18l.5 3h5l.5-3"/>'),
+    cash: S2('<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 9h.01M18 15h.01"/>'),
+    gift: S2('<rect x="3" y="9" width="18" height="12" rx="2"/><path d="M3 13h18M12 9v12M12 9c-2-4-6-4-6-1s4 1 6 1zm0 0c2-4 6-4 6-1s-4 1-6 1z"/>'),
+    trophy: S2('<path d="M7 4h10v5a5 5 0 01-10 0z"/><path d="M7 6H4a3 3 0 003 3M17 6h3a3 3 0 01-3 3M12 14v4M8 20h8"/>'),
+    diamond: S2('<path d="M6 4h12l4 5-10 12L2 9z"/><path d="M2 9h20M9 4l3 5 3-5M9 9l3 12 3-12"/>'),
+    star: S2('<path d="M12 3l2.6 5.3 5.9.9-4.2 4.1 1 5.8L12 16.4 6.7 19.1l1-5.8L3.5 9.2l5.9-.9z"/>'),
+    fish: S2('<path d="M3 12c3-4 7-6 11-6 3 2 5 4 7 6-2 2-4 4-7 6-4 0-8-2-11-6z"/><path d="M14 12h.01M3 12l3-4M3 12l3 4"/>'),
+    tent: S2('<path d="M3 20L12 4l9 16z"/><path d="M12 4v16M8 20l4-7 4 7"/>'),
+    dice: S2('<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8.5 8.5h.01M15.5 8.5h.01M12 12h.01M8.5 15.5h.01M15.5 15.5h.01"/>'),
+    copy: S2('<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 011-1h10"/>'),
+    gear: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm9 4l-2.3-1.2.5-2.5-2.2-1.4-1.9 1.7L13 7.5 12 5l-1 2.5-2.1 1.1L7 6.9 4.8 8.3l.5 2.5L3 12l2.3 1.2-.5 2.5 2.2 1.4 1.9-1.7 2.1 1.1L12 19l1-2.5 2.1-1.1 1.9 1.7 2.2-1.4-.5-2.5z" fill-rule="evenodd"/></svg>'
+  };
+  $$(".ic[data-i]").forEach(function(el) {
+    el.innerHTML = ICONS[el.getAttribute("data-i")] || "";
+  });
+  function gearPath(cx, cy, rOut, rIn, teeth) {
+    var pts = [], n2 = teeth * 2, i2, a2, r2;
+    for (i2 = 0; i2 < n2 * 2; i2++) {
+      a2 = Math.PI * 2 * i2 / (n2 * 2);
+      r2 = Math.floor(i2 / 2) % 2 === 0 ? rOut : rIn;
+      pts.push((cx + r2 * Math.cos(a2)).toFixed(2) + " " + (cy + r2 * Math.sin(a2)).toFixed(2));
+    }
+    return "M" + pts.join("L") + "Z";
+  }
+  var GEAR_SVG = '<svg viewBox="0 0 100 100" aria-hidden="true"><path d="' + gearPath(50, 50, 46, 38, 10) + '" fill="none" stroke="url(#ce-gg)" stroke-width="5" stroke-linejoin="round"/><circle cx="50" cy="50" r="17" fill="none" stroke="url(#ce-gg)" stroke-width="5"/></svg>';
+  $$("[data-gear]").forEach(function(el) {
+    el.innerHTML = GEAR_SVG;
+    el.style.display = "block";
+    el.style.width = "100%";
+    el.style.height = "100%";
+  });
+  var SYM = {
+    cherry: '<svg viewBox="0 0 40 40"><path d="M14 22c-2-7 4-13 12-15" fill="none" stroke="#7ad37a" stroke-width="3" stroke-linecap="round"/><circle cx="13" cy="27" r="8" fill="#ff4d6d"/><circle cx="26" cy="29" r="7" fill="#ff6b81"/><circle cx="10.5" cy="24.5" r="2" fill="#fff" opacity=".6"/></svg>',
+    lemon: '<svg viewBox="0 0 40 40"><ellipse cx="20" cy="22" rx="14" ry="10" fill="#ffd93b"/><path d="M6 22h28" stroke="#f4a558" stroke-width="1.5" opacity=".5"/><circle cx="12" cy="18" r="2" fill="#fff" opacity=".6"/></svg>',
+    seven: '<svg viewBox="0 0 40 40"><path d="M9 9h22l-12 24h-7l10-18H9z" fill="#ff5a6b" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>',
+    star: '<svg viewBox="0 0 40 40"><path d="M20 4l4.7 9.6 10.6 1.5-7.7 7.5 1.8 10.5L20 28.1l-9.4 5 1.8-10.5-7.7-7.5 10.6-1.5z" fill="#f4a558"/></svg>',
+    bell: '<svg viewBox="0 0 40 40"><path d="M10 28V19a10 10 0 0120 0v9l3 3H7z" fill="#ffcf5c"/><path d="M16 33h8" stroke="#ffcf5c" stroke-width="4" stroke-linecap="round"/></svg>',
+    diamond: '<svg viewBox="0 0 40 40"><path d="M11 8h18l7 9-16 17L4 17z" fill="#8fd3ff"/><path d="M4 17h32M11 8l9 9 9-9M20 17l-5 17M20 17l5 17" stroke="#fff" stroke-width="1.5" opacity=".7" fill="none"/></svg>'
+  };
+  var SYMS = ["cherry", "lemon", "seven", "star", "bell", "diamond"];
+  window.ceTrack = function(name, payload) {
+    payload = payload || {};
+    try {
+      if (typeof window.gtag === "function") window.gtag("event", name, payload);
+      if (typeof window.fbq === "function") window.fbq("trackCustom", name, payload);
+      if (typeof window.gtag !== "function" && typeof window.fbq !== "function") console.debug("[ceTrack]", name, payload);
+    } catch (e2) {
+    }
+  };
+  document.addEventListener("click", function(e2) {
+    var t3 = e2.target.closest("[data-track]");
+    if (t3) window.ceTrack(t3.getAttribute("data-track"), { href: t3.getAttribute("href") || void 0 });
+  });
+  var depthFired = {};
+  function scrollDepth() {
+    var h2 = document.documentElement.scrollHeight - window.innerHeight;
+    if (h2 <= 0) return;
+    var p2 = window.scrollY / h2 * 100;
+    [25, 50, 75, 100].forEach(function(m2) {
+      if (p2 >= m2 - 0.5 && !depthFired[m2]) {
+        depthFired[m2] = true;
+        window.ceTrack("scroll_" + m2);
+      }
+    });
+  }
+  var params = new URLSearchParams(window.location.search);
+  var utm = {};
+  try {
+    utm = JSON.parse(sessionStorage.getItem("ce_utm") || "{}");
+  } catch (e2) {
+    utm = {};
+  }
+  UTM_KEYS.forEach(function(k) {
+    if (params.get(k)) utm[k] = params.get(k);
+  });
+  var variant = (params.get("v") || "A").toUpperCase();
+  if (!HERO_VARIANTS[variant]) variant = "A";
+  utm.landing_variant = variant;
+  try {
+    sessionStorage.setItem("ce_utm", JSON.stringify(utm));
+  } catch (e2) {
+  }
+  function fillHidden() {
+    UTM_KEYS.forEach(function(k) {
+      var f2 = $2('#lead-form [name="' + k + '"]');
+      if (f2 && utm[k]) f2.value = utm[k];
+    });
+  }
+  function calendlyUrl() {
+    var u2 = new URL(CALENDLY);
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(function(k) {
+      if (utm[k]) u2.searchParams.set(k, utm[k]);
+    });
+    if (utm.gclid) u2.searchParams.set("gclid", utm.gclid);
+    if (utm.fbclid) u2.searchParams.set("fbclid", utm.fbclid);
+    if (utm.landing_variant) u2.searchParams.set("utm_content", utm.utm_content ? utm.utm_content + "_" + utm.landing_variant : "v" + utm.landing_variant);
+    if (utm.package) u2.searchParams.set("a1", utm.package);
+    return u2.toString();
+  }
+  function refreshCalendly() {
+    var url = calendlyUrl();
+    $$("[data-calendly]").forEach(function(a2) {
+      a2.href = url;
+    });
+  }
+  fillHidden();
+  refreshCalendly();
+  (function hero() {
+    var h1 = $2("#hero-h1");
+    h1.innerHTML = HERO_VARIANTS[variant].h1;
+    h1.setAttribute("data-variant", variant);
+    if (params.get("cta")) $2("#hero-cta").textContent = params.get("cta").slice(0, 40);
+    var frag = document.createDocumentFragment();
+    Array.prototype.slice.call(h1.childNodes).forEach(function(node) {
+      var grad = node.nodeType === 1 && node.classList.contains("grad");
+      var text = node.textContent;
+      text.split(/(\s+)/).forEach(function(part) {
+        if (!part) return;
+        if (/^\s+$/.test(part)) {
+          frag.appendChild(document.createTextNode(" "));
+          return;
+        }
+        var w2 = document.createElement("span");
+        w2.className = "w" + (grad ? " grad" : "");
+        w2.textContent = part;
+        frag.appendChild(w2);
+      });
+    });
+    h1.innerHTML = "";
+    h1.appendChild(frag);
+    if (!RM) {
+      var words = $$(".w", h1);
+      words.forEach(function(w2, i2) {
+        w2.style.opacity = "0";
+        w2.style.transform = "translateY(14px)";
+        w2.style.transition = "opacity .5s ease " + i2 * 70 + "ms, transform .5s cubic-bezier(.2,.8,.2,1) " + i2 * 70 + "ms";
+      });
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          words.forEach(function(w2) {
+            w2.style.opacity = "1";
+            w2.style.transform = "none";
+          });
+        });
+      });
+    }
+  })();
+  function makeSlot(el, opts2) {
+    opts2 = opts2 || {};
+    var strip = "";
+    for (var r2 = 0; r2 < 8; r2++) SYMS.forEach(function(s2) {
+      strip += '<div class="sym">' + SYM[s2] + "</div>";
+    });
+    el.innerHTML = '<div class="slot-head"><span class="slot-logo">' + ICONS.gear + '</span><div style="min-width:0"><div class="slot-title">LUCKY SLOTS</div><div class="slot-sub">Match 3 in a row to win!</div></div></div><div class="reels">' + [0, 1, 2].map(function() {
+      return '<div class="reel"><div class="strip">' + strip + "</div></div>";
+    }).join("") + '</div><div class="slot-foot"><button type="button" class="slot-btn">Spin</button><span class="slot-inv">' + ICONS.gift + '</span></div><div class="slot-msg"></div>';
+    var reels = $$(".reel .strip", el), btn = $2(".slot-btn", el), msg = $2(".slot-msg", el), title = $2(".slot-title", el), sub = $2(".slot-sub", el), inv = $2(".slot-inv", el), logo = $2(".slot-logo", el);
+    var pos = [0, 1, 2], busy = false, spins = 0;
+    reels.forEach(function(s2, i2) {
+      s2.style.transform = "translateY(" + -pos[i2] * 100 / 48 + "%)";
+    });
+    function setPos(i2, p2, animate, dur) {
+      var st = reels[i2];
+      st.style.transition = animate ? "transform " + dur + "ms cubic-bezier(.15,.85,.25,1)" : "none";
+      st.style.transform = "translateY(" + -p2 * 100 / 48 + "%)";
+    }
+    function spin() {
+      if (busy) return;
+      busy = true;
+      spins++;
+      btn.disabled = true;
+      msg.classList.remove("on");
+      var win = spins % 3 === 0 || Math.random() < 0.3;
+      var target = win ? [1, 1, 1].map(function() {
+        return Math.floor(Math.random() * 6);
+      }) : [0, 1, 2].map(function() {
+        return Math.floor(Math.random() * 6);
+      });
+      if (win) {
+        var t3 = Math.floor(Math.random() * 6);
+        target = [t3, t3, t3];
+      } else if (target[0] === target[1] && target[1] === target[2]) target[2] = (target[2] + 1) % 6;
+      reels.forEach(function(st, i2) {
+        var cur = pos[i2] % 6;
+        setPos(i2, cur, false, 0);
+        void st.offsetHeight;
+        var dist = ((target[i2] - cur) % 6 + 6) % 6 + 6 * (3 + i2);
+        var np = cur + dist;
+        pos[i2] = np;
+        if (RM) {
+          setPos(i2, np, false, 0);
+        } else {
+          setPos(i2, np, true, 1100 + i2 * 350);
+        }
+      });
+      var total = RM ? 50 : 1100 + 2 * 350 + 100;
+      setTimeout(function() {
+        msg.textContent = win ? "You win!" : "So close";
+        msg.style.color = win ? "var(--slot-primary)" : "var(--slot-title)";
+        msg.classList.add("on");
+        setTimeout(function() {
+          msg.classList.remove("on");
+        }, 1400);
+        busy = false;
+        btn.disabled = false;
+        if (opts2.onSpin) opts2.onSpin(win);
+      }, total);
+    }
+    btn.addEventListener("click", function() {
+      spin();
+      window.ceTrack((opts2.track || "slot") + "_spin");
+    });
+    return {
+      el,
+      spin,
+      setTheme: function(t3) {
+        el.style.setProperty("--slot-primary", t3.primary);
+        el.style.setProperty("--slot-accent", t3.accent);
+        el.style.setProperty("--slot-machine", t3.machine);
+        el.style.setProperty("--slot-title", t3.title);
+      },
+      setTitle: function(s2) {
+        title.textContent = s2;
+      },
+      setSub: function(s2) {
+        sub.textContent = s2;
+      },
+      setBtn: function(s2) {
+        btn.textContent = s2;
+      },
+      setIcon: function(n2) {
+        inv.innerHTML = ICONS[n2] || ICONS.gift;
+      },
+      logo: function(on2) {
+        logo.classList.toggle("on", !!on2);
+      }
+    };
+  }
+  makeSlot($2('[data-slot="hero"]'), { track: "hero_slot" });
+  makeSlot($2('[data-slot="bento"]'), { track: "ecosystem_slot" });
+  (function tilt() {
+    var vis = $2("#hero-visual"), phone = $2("#phone");
+    if (!hasHover || RM) return;
+    vis.addEventListener("mousemove", function(e2) {
+      var r2 = vis.getBoundingClientRect();
+      var x = (e2.clientX - r2.left) / r2.width - 0.5;
+      var y2 = (e2.clientY - r2.top) / r2.height - 0.5;
+      phone.style.transform = "perspective(1100px) rotateY(" + (-18 + x * 22) + "deg) rotateX(" + (7 - y2 * 16) + "deg) rotateZ(-2deg)";
+    });
+    vis.addEventListener("mouseleave", function() {
+      phone.style.transform = "";
+    });
+  })();
+  (function scrollFx() {
+    var prog = $2("#progress"), gear = $2("#big-gear"), sticky = $2("#sticky"), hero = $2("#hero"), ticking = false;
+    function update() {
+      ticking = false;
+      var y2 = window.scrollY, h2 = document.documentElement.scrollHeight - window.innerHeight;
+      prog.style.transform = "scaleX(" + (h2 > 0 ? Math.min(1, y2 / h2) : 0) + ")";
+      if (!RM) gear.style.transform = "rotate(" + y2 * 0.06 + "deg)";
+      var past = y2 > hero.offsetTop + hero.offsetHeight - 80;
+      root.classList.toggle("scrolled", past);
+      sticky.classList.toggle("on", past);
+      sticky.setAttribute("aria-hidden", past ? "false" : "true");
+      scrollDepth();
+    }
+    window.addEventListener("scroll", function() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }, { passive: true });
+    update();
+  })();
+  function countUp(el, target, format, dur) {
+    var start = performance.now();
+    dur = dur || 1600;
+    var render3 = function(v2) {
+      var s2 = format === "plus" ? fmt(v2) + "+" : format === "money" ? "£" + fmt(v2) : fmt(v2);
+      if (el.dataset.prefix) s2 = el.dataset.prefix + s2;
+      if (el.dataset.suffix) s2 = s2 + el.dataset.suffix;
+      el.textContent = s2;
+    };
+    if (RM) {
+      render3(target);
+      return;
+    }
+    (function step(now) {
+      var p2 = Math.min(1, (now - start) / dur);
+      var e2 = 1 - Math.pow(1 - p2, 3);
+      render3(target * e2);
+      if (p2 < 1) requestAnimationFrame(step);
+    })(start);
+  }
+  $$("#counters [data-target]").forEach(function(el) {
+    once(el, function() {
+      countUp(el, +el.dataset.target, el.dataset.format);
+    });
+  });
+  (function marquee() {
+    var mk = function(o2) {
+      var name = o2[0], slug = o2[1];
+      var initials = name.split(/\s+/).map(function(w2) {
+        return w2[0];
+      }).join("").slice(0, 2).toUpperCase();
+      return '<span class="op"><img src="/images/tenant-icons/' + slug + '.png" alt="" loading="lazy" onerror="this.remove()"><i>' + initials + "</i>" + esc(name) + "</span>";
+    };
+    var a2 = OPERATORS.slice(0, 15).map(mk).join(""), b2 = OPERATORS.slice(15).map(mk).join("");
+    $2("#marquee-a").innerHTML = a2 + a2;
+    $2("#marquee-b").innerHTML = b2 + b2;
+  })();
+  (function bento() {
+    var grid = $2("#bento"), cards = $$(".card", grid);
+    if (!RM) grid.classList.add("armed");
+    var i2 = 0;
+    cards.forEach(function(c2) {
+      once(c2, function(el) {
+        var d2 = i2++ % 4 * 90;
+        setTimeout(function() {
+          el.classList.add("in");
+        }, RM ? 0 : d2);
+      }, { threshold: 0.2 });
+    });
+    var gridEl = $2("#scratch-grid"), TILES = [["cash", "Cash prize"], ["gift", "Site credit"], ["x", "No luck"], ["star", "Free entry"], ["cash", "Cash prize"], ["dice", "Spin again"]];
+    function build() {
+      gridEl.innerHTML = TILES.map(function(t3) {
+        return '<div class="tile' + (t3[0] === "cash" ? " win" : "") + '"><span><span class="ic" style="width:22px;height:22px;display:block;margin:0 auto 2px">' + ICONS[t3[0]] + "</span>" + t3[1] + "</span><canvas></canvas></div>";
+      }).join("");
+      $$(".tile", gridEl).forEach(initTile);
+    }
+    function initTile(tile) {
+      var cv = $2("canvas", tile), ctx = cv.getContext("2d"), down = false, cleared = false;
+      function size() {
+        var r2 = tile.getBoundingClientRect();
+        if (!r2.width) return;
+        cv.width = Math.round(r2.width);
+        cv.height = Math.round(r2.height);
+        var g2 = ctx.createLinearGradient(0, 0, cv.width, cv.height);
+        g2.addColorStop(0, "#8a5fb8");
+        g2.addColorStop(1, "#4839a0");
+        ctx.fillStyle = g2;
+        ctx.fillRect(0, 0, cv.width, cv.height);
+        ctx.fillStyle = "rgba(255,255,255,0.75)";
+        ctx.font = "700 11px Inter, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("SCRATCH", cv.width / 2, cv.height / 2 + 4);
+      }
+      size();
+      if (!cv.width) once(tile, size, { threshold: 0.01 });
+      function pt(e2) {
+        var r2 = cv.getBoundingClientRect();
+        var p2 = e2.touches ? e2.touches[0] : e2;
+        return [(p2.clientX - r2.left) * (cv.width / r2.width), (p2.clientY - r2.top) * (cv.height / r2.height)];
+      }
+      function scratch(e2) {
+        if (!down || cleared) return;
+        e2.preventDefault();
+        var p2 = pt(e2);
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.beginPath();
+        ctx.arc(p2[0], p2[1], 14, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      function check() {
+        if (cleared || !cv.width) return;
+        var d2 = ctx.getImageData(0, 0, cv.width, cv.height).data, n2 = 0, t3 = 0;
+        for (var i3 = 3; i3 < d2.length; i3 += 32) {
+          t3++;
+          if (d2[i3] === 0) n2++;
+        }
+        if (n2 / t3 > 0.5) {
+          cleared = true;
+          cv.style.transition = "opacity .4s";
+          cv.style.opacity = "0";
+          setTimeout(function() {
+            cv.remove();
+          }, 400);
+          window.ceTrack("ecosystem_scratch_reveal");
+        }
+      }
+      var start = function(e2) {
+        down = true;
+        scratch(e2);
+      }, endp = function() {
+        if (down) {
+          down = false;
+          check();
+        }
+      };
+      cv.addEventListener("mousedown", start);
+      cv.addEventListener("mousemove", scratch);
+      window.addEventListener("mouseup", endp);
+      cv.addEventListener("touchstart", start, { passive: false });
+      cv.addEventListener("touchmove", scratch, { passive: false });
+      cv.addEventListener("touchend", endp);
+      tile.revealAll = function() {
+        cleared = true;
+        cv.remove();
+      };
+    }
+    $2("#scratch-reveal").addEventListener("click", function() {
+      $$(".tile", gridEl).forEach(function(t3) {
+        t3.revealAll && t3.revealAll();
+      });
+      window.ceTrack("ecosystem_scratch_reveal_all");
+    });
+    $2("#scratch-reset").addEventListener("click", function() {
+      build();
+      window.ceTrack("ecosystem_scratch_reset");
+    });
+    build();
+  })();
+  (function convert() {
+    $2("#fb-checks").innerHTML = Array.apply(null, Array(14)).map(function(_2, i2) {
+      return '<i style="--n:' + i2 + '"><span class="ic">' + ICONS.check + "</span></i>";
+    }).join("");
+    $$("[data-reveal]").forEach(function(c2) {
+      once(c2, function(el) {
+        el.classList.add("in");
+        $$("[data-count]", el).forEach(function(n2) {
+          countUp(n2, +n2.dataset.count, "num", 1400);
+        });
+      }, { threshold: 0.35 });
+    });
+    once($2("#rev-chart"), function(el) {
+      el.classList.add("in");
+    }, { threshold: 0.4 });
+  })();
+  (function draws() {
+    var W = function(name, ticket, prize, ts, block) {
+      return { name, ticket, prize, timestamp: ts, block };
+    };
+    var DRAWS = [
+      { slug: "bmw", prize: "BMW M3 Competition Pack", value: "£75k", type: "STAR DRAWS", date: "18 May 2026", icon: "car", ph: "linear-gradient(135deg,#1e3a8a,#4839a0)", hashes: [
+        { full: "a3f9b2c47e1d8f053a9c6b8d2e4f1a5c7d9b3e6f8c2a4d6e1f3b5a7c9d8e2f4c", winner: W("Sarah K.", "#04827", "BMW M3 Competition Pack", "18 May 2026 · 21:02:14 UTC", "#4,201") },
+        { full: "b1e2c8d4a5f3e7b9c1d6f2e8a4b7c9d5e3f1a8b6c4d2e9f7a3b5c8d1e6f4a2cd", winner: W("James P.", "#00193", "£500 cash (instant win)", "18 May 2026 · 21:03:02 UTC", "#4,202") },
+        { full: "c8d4e2f6a1b3c5d7e9f2a4b6c8d1e3f5a7b9c2d4e6f8a1b3c5d7e9f2a4b6c8e1", winner: W("Amira H.", "#11240", "£250 site credit", "18 May 2026 · 21:04:48 UTC", "#4,203") }
+      ] },
+      { slug: "imac", prize: 'Apple iMac Pro 32"', value: "£4,999", type: "BLAZE", date: "14 May 2026", icon: "monitor", ph: "linear-gradient(135deg,#3b3b5c,#4839a0)", hashes: [
+        { full: "f4a8c2e6b9d3f5a7c1b4e6d8f2a5c7b3e9d1f4a8c6b2e5d7f1a4c8b6e3d5f9a2", winner: W("Tom R.", "#08312", 'Apple iMac Pro 32"', "14 May 2026 · 19:30:11 UTC", "#3,847") },
+        { full: "b7d3f5a1c4e8b2d6f3a5c7b1e9d4f6a2c8b5e7d1f3a9c4b6e2d8f5a1c7b3e9d4", winner: W("Lia M.", "#02541", "£200 cash", "14 May 2026 · 19:31:02 UTC", "#3,848") },
+        { full: "c2e5b8d4f1a7c3e6b9d2f5a8c1b4e7d3f6a9c2b5e8d1f4a7c3b6e9d2f5a8c1b4", winner: W("Daniel B.", "#19874", "12-month £200 site credit", "14 May 2026 · 19:31:48 UTC", "#3,849") }
+      ] },
+      { slug: "maldives", prize: "Maldives Trip for Two", value: "£12k", type: "KINGS", date: "10 May 2026", icon: "plane", ph: "linear-gradient(135deg,#0e7490,#4839a0)", hashes: [
+        { full: "3d7f9a2c5e8b1d4f6a3c9e2b5d8f1a4c7e0b3d6f9a2c5e8b1d4f6a3c9e2b5d8f", winner: W("Sofia G.", "#07631", "Maldives Trip for 2", "10 May 2026 · 20:00:42 UTC", "#3,612") },
+        { full: "7b2e5d8a3c6f9b1d4e7a2c5f8b3d6e9a4c7f1b4e7d2a5c8f3b6e9d2a5c8f3b6e", winner: W("Marcus T.", "#03210", "£1,000 cash", "10 May 2026 · 20:01:33 UTC", "#3,613") },
+        { full: "4a8c1e5b2d7f3a6c9e4b1d8f5a2c7e0b3d6f9a4c7e2b5d8f1a4c7e0b3d6f9a4c", winner: W("Aisha N.", "#15893", "£250 site credit", "10 May 2026 · 20:02:21 UTC", "#3,614") }
+      ] },
+      { slug: "tesla", prize: "Tesla Model Y", value: "£52k", type: "APEX", date: "06 May 2026", icon: "car", ph: "linear-gradient(135deg,#7f1d1d,#4839a0)", hashes: [
+        { full: "9e3b7a1d5f8c2b6e4a9d7f1c3b8e2a5d6f9c4b1e7a3d8f5c2b6e9a4d1f7c3b8e", winner: W("Ben C.", "#23015", "Tesla Model Y Long Range", "06 May 2026 · 21:15:08 UTC", "#3,401") },
+        { full: "5c8a2f4d7b1e9c3a6f2d5b8e1c4a7f9d3b6e2c5a8f4d1b7e3c6a9f2d5b8e1c4a", winner: W("Holly W.", "#11402", "£750 cash", "06 May 2026 · 21:16:00 UTC", "#3,402") }
+      ] },
+      { slug: "rolex", prize: "Rolex Submariner Date", value: "£10,950", type: "LUXE", date: "02 May 2026", icon: "watch", ph: "linear-gradient(135deg,#065f46,#4839a0)", hashes: [
+        { full: "e2a5b9c8d1f3a7b4e6c2d9f5a8b1c4e7d3f6a2b5c8e1d4f7a3b6c9e2d5f8a1b4", winner: W("Connor F.", "#06294", "Rolex Submariner Date", "02 May 2026 · 20:30:11 UTC", "#3,188") },
+        { full: "8f1d4a7b2e5c8d3f6a9b4e1c7d2f5a8b3e6c9d4f1a7b2e5c8d3f6a9b4e1c7d2f", winner: W("Zara K.", "#18027", "£500 site credit", "02 May 2026 · 20:31:04 UTC", "#3,189") }
+      ] },
+      { slug: "cash", prize: "£25,000 Tax-Free Cash", value: "£25k", type: "BIG WINS", date: "28 Apr 2026", icon: "cash", ph: "linear-gradient(135deg,#92400e,#4839a0)", hashes: [
+        { full: "d6f3a9c2b5e8d1f4a7c3b6e9d2f5a8c1b4e7d3f6a9c2b5e8d1f4a7c3b6e9d2f5", winner: W("Owen H.", "#09146", "£25,000 tax-free", "28 Apr 2026 · 21:00:18 UTC", "#3,002") },
+        { full: "a8b3e6c9d2f5a8b1c4e7d3f6a9c2b5e8d1f4a7c3b6e9d2f5a8c1b4e7d3f6a9c2", winner: W("Maddie L.", "#21477", "£200 cash", "28 Apr 2026 · 21:01:05 UTC", "#3,003") },
+        { full: "c4e7d3f6a9c2b5e8d1f4a7c3b6e9d2f5a8c1b4e7d3f6a9c2b5e8d1f4a7c3b6e9", winner: W("Charlie R.", "#14820", "£100 site credit", "28 Apr 2026 · 21:01:52 UTC", "#3,004") }
+      ] }
+    ];
+    var LABELS = ["Main", "Instant", "Instant"];
+    var host = $2("#draws");
+    if (!host) return;
+    host.innerHTML = DRAWS.map(function(d2, i2) {
+      return '<div class="card draw" data-i="' + i2 + '"><div class="photo" style="--ph:' + d2.ph + '"><img src="/images/draws/' + d2.slug + '.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="ic">' + ICONS[d2.icon] + '</span><span class="tag type">' + d2.type + '</span><div class="prize">' + esc(d2.prize) + "<small>" + d2.value + '</small></div></div><div class="body"><div class="meta"><span>Drawn ' + d2.date + '</span><span>GLI RNG · SHA-256</span></div><div class="hashes">' + d2.hashes.map(function(h2, k) {
+        return '<div class="hrow" data-h="' + h2.full + '" role="button" tabindex="0" title="Click to fill the verifier"><span class="lbl">' + LABELS[k] + "</span><code>" + h2.full.slice(0, 8) + "…" + h2.full.slice(-5) + '</code><button type="button" class="copy" data-copy="' + h2.full + '">Copy</button></div>';
+      }).join("") + '</div><form class="verify"><input type="text" placeholder="Paste a hash to verify" aria-label="Paste a hash to verify" autocomplete="off" spellcheck="false"><button type="submit" class="btn btn-ghost btn-sm" data-track="draws_verify">Verify</button></form><span class="vmsg" aria-live="polite"></span><div class="reveal"><span class="ic">' + ICONS["check-c"] + '</span><b class="rv-name"></b><span class="rv-ticket"></span><span class="rv-time"></span><span class="tnum" data-full></span><button type="button" class="btn btn-ghost btn-sm close">Close</button></div></div></div>';
+    }).join("");
+    on(host, "click", function(e2) {
+      var copy = e2.target.closest(".copy");
+      if (copy) {
+        e2.stopPropagation();
+        var h2 = copy.dataset.copy;
+        var done = function() {
+          copy.textContent = "Copied";
+          copy.classList.add("done");
+          setTimeout(function() {
+            copy.textContent = "Copy";
+            copy.classList.remove("done");
+          }, 1500);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(h2).then(done, done);
+        else done();
+        window.ceTrack("draws_copy_hash");
+        return;
+      }
+      var row = e2.target.closest(".hrow");
+      if (row) {
+        var card = row.closest(".draw");
+        var inp = $2(".verify input", card);
+        inp.value = row.dataset.h;
+        inp.focus();
+        return;
+      }
+      var close = e2.target.closest(".reveal .close");
+      if (close) {
+        var c2 = close.closest(".draw");
+        c2.classList.remove("ok");
+        $2(".verify input", c2).value = "";
+      }
+    });
+    on(host, "keydown", function(e2) {
+      var row = e2.target.closest(".hrow");
+      if (row && (e2.key === "Enter" || e2.key === " ")) {
+        e2.preventDefault();
+        row.click();
+      }
+    });
+    on(host, "submit", function(e2) {
+      e2.preventDefault();
+      var card = e2.target.closest(".draw"), d2 = DRAWS[+card.dataset.i], inp = $2("input", e2.target), v2 = inp.value.trim().toLowerCase(), msg = $2(".vmsg", card);
+      card.classList.remove("bad");
+      void card.offsetWidth;
+      var hit = d2.hashes.filter(function(h2) {
+        return h2.full === v2;
+      })[0];
+      if (hit) {
+        var w2 = hit.winner;
+        $2(".rv-name", card).textContent = "Winner: " + w2.name;
+        $2(".rv-ticket", card).textContent = "Ticket " + w2.ticket + " · " + w2.prize;
+        $2(".rv-time", card).textContent = "Drawn " + w2.timestamp + " · block " + w2.block;
+        $2("[data-full]", card).textContent = v2;
+        msg.textContent = "";
+        card.classList.add("ok");
+        window.ceTrack("draws_verify_ok");
+      } else {
+        card.classList.add("bad");
+        msg.textContent = v2 ? "No draw matches that hash. Copy one from this card and try again." : "Paste a hash first.";
+        window.ceTrack("draws_verify_fail");
+      }
+    });
+  })();
+  (function comparison() {
+    var ROWS = [
+      ["Years operating in this category", "5+ years", "4+ years", "n/a — depends on the agency"],
+      ["Per-order fee", "5–10p", "17p", "plugin licences + hosting + dev time"],
+      ["Game customisation", "Game Studio, build your own", "7+ fixed presets", "theme-dependent"],
+      ["Independent penetration test", "Yes, published", "Not published", "your responsibility"],
+      ["Separate Cash + Site Credit wallets", "Yes", "Not advertised", "plugin-dependent"],
+      ["RNG / draw certification", "GLI", "GLI Verified", "none"],
+      ["VCOC alignment in product", "Built in from launch", "Added recently", "manual"],
+      ["Public order / ticket numbers (30d)", "<span data-cmp-live></span>", "Not published", "n/a"]
+    ];
+    var body = $2("#cmp-body"), head = $2("#cmp-other-head"), wrap3 = $2("#cmp"), note = $2("#cmp-assume");
+    var live = function() {
+      return fmt(opts.orders) + " orders · " + fmt(opts.tickets) + " tickets";
+    };
+    function render3(mode) {
+      body.innerHTML = ROWS.map(function(r2) {
+        var ce = r2[1].indexOf("data-cmp-live") > -1 ? live() : r2[1];
+        var other = mode === "saas" ? r2[2] : r2[3];
+        var ok = /^(Yes|GLI$|Built in|5\+|Game Studio)/.test(ce);
+        return "<tr><td>" + r2[0] + '</td><td class="ce">' + (ok ? '<span class="ic ok">' + ICONS.check + "</span>" : "") + ce + '</td><td class="other">' + other + "</td></tr>";
+      }).join("");
+      head.textContent = mode === "saas" ? "Other SaaS" : "WordPress + plugins";
+      note.textContent = mode === "saas" ? "CompEngine figures are rolling 30-day numbers; Other SaaS values are taken from public pricing and marketing pages." : "WordPress + plugins varies by theme, plugin stack and developer, so no figures are stated.";
+    }
+    $$(".seg button").forEach(function(b2) {
+      b2.addEventListener("click", function() {
+        $$(".seg button").forEach(function(x) {
+          x.setAttribute("aria-pressed", x === b2 ? "true" : "false");
+        });
+        wrap3.classList.add("swap");
+        setTimeout(function() {
+          render3(b2.dataset.cmp);
+          wrap3.classList.remove("swap");
+        }, RM ? 0 : 220);
+      });
+    });
+    render3("saas");
+  })();
+  (function faq() {
+    var Q = [
+      ["How do I start a competition website?", "Book a 30-minute demo and tell us your prize and game type. We handle domain setup, payment gateway connection, and game configuration from there — most operators are live within 1–2 weeks."],
+      ["What types of competitions do you offer?", "Raffles, instant-win games (Slots, Scratch Cards, Spin-the-Wheel, Bingo, Coin Drop, Ticket Eater, Fishing, Football, Balloon Pop), and compliant free-entry competitions — all configurable in Game Studio."],
+      ["How do I stay compliant?", "CompEngine is built around UK VCOC compliance — free-entry routes, age verification, and separate Cash/Site Credit wallets are enforced at the platform level, and compliance updates ship automatically to every operator."],
+      ["How quickly can I launch?", "Most operators are live within 1–2 weeks of their onboarding call. We've done it in 4 days for operators with an urgent deadline."],
+      ["Can I export my data?", "Yes — your analytics dashboard shows orders, revenue, ticket counts, and customer lifetime value in real time, and you can export everything. You own your data; we never aggregate or sell it."],
+      ["Do you integrate a payment gateway that accepts Apple & Google Pay?", "Yes — our UK-licensed payment gateway integration supports Apple Pay and Google Pay alongside standard card payments, so customers can check out in one tap."],
+      ["Is the website secure?", "Yes — built on enterprise-grade infrastructure with a UK-licensed payment gateway, continuous security monitoring, and independent penetration testing on a defined cycle."],
+      ["Are there any limits on tickets or instant wins?", "No — CompEngine has no hard limits on ticket volume or instant-win prize counts, so your competitions can scale with demand."],
+      ["Can you build a mobile app?", "Yes — native iOS and Android apps are available, complete with push notifications to keep your audience engaged."]
+    ];
+    var list = $2("#faq-list");
+    list.innerHTML = Q.map(function(q, i2) {
+      return '<div class="faq-item' + (i2 === 0 ? " open" : "") + '"><h3><button type="button" class="faq-q" aria-expanded="' + (i2 === 0) + '" aria-controls="faq-a-' + i2 + '" id="faq-q-' + i2 + '">' + esc(q[0]) + '<span class="ic">' + ICONS.x.replace("M6 6l12 12M18 6L6 18", "M12 5v14M5 12h14") + '</span></button></h3><div class="faq-a" id="faq-a-' + i2 + '" role="region" aria-labelledby="faq-q-' + i2 + '"><div><p>' + esc(q[1]) + "</p></div></div></div>";
+    }).join("");
+    list.addEventListener("click", function(e2) {
+      var b2 = e2.target.closest(".faq-q");
+      if (!b2) return;
+      var item = b2.closest(".faq-item"), open = item.classList.contains("open");
+      $$(".faq-item", list).forEach(function(it) {
+        it.classList.remove("open");
+        $2(".faq-q", it).setAttribute("aria-expanded", "false");
+      });
+      if (!open) {
+        item.classList.add("open");
+        b2.setAttribute("aria-expanded", "true");
+        window.ceTrack("faq_open", { q: b2.textContent.trim() });
+      }
+    });
+  })();
+  (function lead() {
+    var form = $2("#lead-form"), busy = false;
+    function setErr(input, msg) {
+      var f2 = input.closest(".field");
+      f2.classList.toggle("err", !!msg);
+      $2(".msg", f2).textContent = msg || "";
+    }
+    function validate() {
+      var ok = true;
+      var rules = [
+        ["#f-name", function(v2) {
+          return v2.length >= 2;
+        }, "Add your name."],
+        ["#f-biz", function(v2) {
+          return v2.length >= 2;
+        }, "Add your business or site name."],
+        ["#f-email", function(v2) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v2);
+        }, "Enter a valid email so we can send the invite."],
+        ["#f-phone", function(v2) {
+          var d2 = v2.replace(/[\s\-().]/g, "");
+          return /^(\+44\d{9,10}|0\d{9,10})$/.test(d2);
+        }, "Enter a UK number, e.g. 07xxx xxxxxx or +44."],
+        ["#f-platform", function(v2) {
+          return !!v2;
+        }, "Pick the closest option."],
+        ["#f-orders", function(v2) {
+          return !!v2;
+        }, "Pick a rough volume."]
+      ];
+      rules.forEach(function(r2) {
+        var el = $2(r2[0]);
+        var v2 = el.value.trim();
+        var pass = r2[1](v2);
+        setErr(el, pass ? "" : r2[2]);
+        if (!pass && ok) {
+          ok = false;
+          el.focus();
+        }
+      });
+      return ok;
+    }
+    $$("input, select", form).forEach(function(el) {
+      el.addEventListener("input", function() {
+        if (el.closest(".field").classList.contains("err")) validate();
+      });
+    });
+    form.addEventListener("submit", function(e2) {
+      e2.preventDefault();
+      if (busy || !validate()) return;
+      busy = true;
+      var btn = $2('button[type="submit"]', form);
+      btn.disabled = true;
+      btn.textContent = "Sending…";
+      var data = {};
+      $$("input, select", form).forEach(function(el) {
+        if (el.name) data[el.name] = el.value;
+      });
+      data.page = location.href;
+      data.submitted_at = (/* @__PURE__ */ new Date()).toISOString();
+      var finish = function(ok) {
+        busy = false;
+        btn.disabled = false;
+        btn.textContent = "Book my 30-min demo →";
+        form.classList.add("done");
+        refreshCalendly();
+        window.ceTrack(ok ? "booking_lead_saved" : "booking_lead_fallback", { orders: data.monthly_orders });
+        if (!ok) {
+          var w2 = window.open(calendlyUrl(), "_blank", "noopener");
+          if (!w2) $2(".thanks .btn", form).focus();
+        } else $2(".thanks .btn", form).focus();
+      };
+      axios.post("/api/leads", data).then(function() {
+        finish(true);
+      }).catch(function() {
+        finish(false);
+      });
+    });
+  })();
+  on(document, "ce:package", function(e2) {
+    var s2 = e2 && e2.detail || "";
+    var f2 = $2("#f-package");
+    if (f2) f2.value = s2;
+    if (s2) utm.package = s2;
+    else delete utm.package;
+    try {
+      sessionStorage.setItem("ce_utm", JSON.stringify(utm));
+    } catch (err) {
+    }
+    refreshCalendly();
+  });
+  (function exitIntent() {
+    var box = $2("#exit");
+    if (!hasHover) return;
+    var shown = false;
+    try {
+      shown = sessionStorage.getItem("ce_exit") === "1";
+    } catch (e2) {
+    }
+    if (shown) return;
+    function show() {
+      if (shown || !isDesktop() || $2("#pb-modal").classList.contains("open")) return;
+      var h2 = document.documentElement.scrollHeight - window.innerHeight;
+      if (h2 <= 0 || window.scrollY / h2 < 0.4) return;
+      shown = true;
+      try {
+        sessionStorage.setItem("ce_exit", "1");
+      } catch (e2) {
+      }
+      box.classList.add("on");
+      box.setAttribute("aria-hidden", "false");
+      window.ceTrack("exit_intent_shown");
+    }
+    document.addEventListener("mouseleave", function(e2) {
+      if (e2.clientY <= 0) show();
+    });
+    $2("#exit-x").addEventListener("click", function() {
+      box.classList.remove("on");
+      box.setAttribute("aria-hidden", "true");
+    });
+  })();
+  (function nav() {
+    var b2 = $2("#burger"), m2 = $2("#mobile-menu");
+    b2.addEventListener("click", function() {
+      var o2 = m2.classList.toggle("open");
+      b2.setAttribute("aria-expanded", o2 ? "true" : "false");
+    });
+    m2.addEventListener("click", function(e2) {
+      if (e2.target.tagName === "A") {
+        m2.classList.remove("open");
+        b2.setAttribute("aria-expanded", "false");
+      }
+    });
+  })();
+  $$(".more-btn").forEach(function(b2) {
+    b2.addEventListener("click", function() {
+      var c2 = b2.closest(".card"), open = c2.classList.toggle("expanded");
+      b2.textContent = open ? "Less" : "More";
+      b2.setAttribute("aria-expanded", open ? "true" : "false");
+      window.ceTrack("ecosystem_more", { card: $2("h3", c2).textContent });
+    });
+  });
+  (function fx() {
+    if (!hasHover || RM) return;
+    $$(".card").forEach(function(c2) {
+      c2.addEventListener("pointerenter", function() {
+        c2.classList.add("lit");
+      });
+      c2.addEventListener("pointerleave", function() {
+        c2.classList.remove("lit");
+      });
+      c2.addEventListener("pointermove", function(e2) {
+        var r2 = c2.getBoundingClientRect();
+        c2.style.setProperty("--mx", e2.clientX - r2.left + "px");
+        c2.style.setProperty("--my", e2.clientY - r2.top + "px");
+      });
+    });
+    $$(".btn-primary").forEach(function(b2) {
+      if (b2.closest(".ce-sticky")) return;
+      b2.classList.add("mag");
+      if (!b2.querySelector("span")) {
+        var s2 = document.createElement("span");
+        while (b2.firstChild) s2.appendChild(b2.firstChild);
+        b2.appendChild(s2);
+      }
+      var inner = b2.querySelector("span");
+      b2.addEventListener("pointermove", function(e2) {
+        var r2 = b2.getBoundingClientRect();
+        var dx = e2.clientX - (r2.left + r2.width / 2), dy = e2.clientY - (r2.top + r2.height / 2);
+        b2.style.transform = "translate(" + dx * 0.18 + "px," + dy * 0.25 + "px)";
+        inner.style.transform = "translate(" + dx * 0.08 + "px," + dy * 0.1 + "px)";
+      });
+      b2.addEventListener("pointerleave", function() {
+        b2.style.transform = "";
+        inner.style.transform = "";
+      });
+    });
+  })();
+  (function aurora() {
+    var cv = $2("#aurora");
+    if (!cv || RM) return;
+    var ctx = cv.getContext("2d"), W = cv.width, H = cv.height, t3 = 0, on2 = false, raf;
+    var blobs = [
+      { c: [244, 165, 88], r: 62, sx: 0.9, sy: 0.7, ox: 0.28, oy: 0.3, a: 0.95 },
+      { c: [217, 122, 168], r: 58, sx: 0.6, sy: 1.1, ox: 0.7, oy: 0.35, a: 0.9 },
+      { c: [91, 127, 196], r: 66, sx: 0.8, sy: 0.5, ox: 0.6, oy: 0.75, a: 0.95 },
+      { c: [178, 151, 219], r: 50, sx: 1.2, sy: 0.9, ox: 0.3, oy: 0.7, a: 0.8 }
+    ];
+    function frame() {
+      t3 += 8e-3;
+      ctx.clearRect(0, 0, W, H);
+      blobs.forEach(function(b2, i2) {
+        var x = W * (b2.ox + 0.18 * Math.sin(t3 * b2.sx + i2)), y2 = H * (b2.oy + 0.16 * Math.cos(t3 * b2.sy + i2 * 1.7));
+        var g2 = ctx.createRadialGradient(x, y2, 0, x, y2, b2.r);
+        g2.addColorStop(0, "rgba(" + b2.c.join(",") + "," + b2.a + ")");
+        g2.addColorStop(1, "rgba(" + b2.c.join(",") + ",0)");
+        ctx.fillStyle = g2;
+        ctx.beginPath();
+        ctx.arc(x, y2, b2.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      if (on2) raf = requestAnimationFrame(frame);
+    }
+    if ("IntersectionObserver" in window) new IntersectionObserver(function(es) {
+      es.forEach(function(e2) {
+        on2 = e2.isIntersecting;
+        if (on2) {
+          cancelAnimationFrame(raf);
+          frame();
+        }
+      });
+    }).observe(cv);
+    else {
+      on2 = true;
+      frame();
+    }
+    $2(".mesh").style.display = "none";
+  })();
+  (function livePulse() {
+    var DEMO_DRIFT = true;
+    var COMPS = ["BMW M3 Competition Pack", 'Apple iMac Pro 32"', "Maldives Trip for Two", "Tesla Model Y", "Rolex Submariner Date", "£25,000 Tax-Free Cash", "£500 Site Credit", "10× Instant Wins"];
+    var WHERE = ["Manchester", "Leeds", "Glasgow", "Birmingham", "Cardiff", "Liverpool", "Bristol", "Newcastle", "Belfast", "Sheffield", "Nottingham", "Southampton"];
+    var QTY = [5, 10, 10, 15, 20, 25, 30, 50, 100];
+    var list = $2("#feed-list"), push = $2("#push"), pushTxt = $2("#push-txt"), ordersEl = $2('[data-live="orders_30d"]'), ticketsEl = $2('[data-live="tickets_30d"]');
+    $2("#push .ic").innerHTML = ICONS.bell;
+    var rows = [], pushTimer, orders = null, tickets = null, heroVisible = true, LIVE = [];
+    axios.get("/api/activity/recent").then(function(r2) {
+      var ev = r2 && r2.data && r2.data.events;
+      if (ev && ev.length) LIVE = ev.filter(function(e2) {
+        return e2 && e2.brand;
+      });
+    }).catch(function() {
+    });
+    function pick(a2) {
+      return a2[Math.floor(Math.random() * a2.length)];
+    }
+    function ago(ts) {
+      var s2 = Math.max(0, Math.round((Date.now() - ts) / 1e3));
+      return s2 < 4 ? "just now" : s2 < 60 ? s2 + "s ago" : Math.round(s2 / 60) + "m ago";
+    }
+    function render3() {
+      rows.forEach(function(r2) {
+        r2.el.querySelector(".when").textContent = ago(r2.ts);
+      });
+    }
+    function addRow(o2) {
+      var el = document.createElement("div");
+      el.className = "feed-row";
+      el.innerHTML = '<span class="qty"><span class="ic">' + ICONS.doc + "</span>" + o2.tickets + ' tickets</span><span class="what"><b>' + esc(o2.comp) + "</b> · " + esc(o2.where) + '</span><span class="when">just now</span>';
+      list.insertBefore(el, list.firstChild);
+      rows.unshift({ el, ts: o2.ts || Date.now() });
+      while (rows.length > 3) {
+        var old = rows.pop();
+        old.el.classList.add("out");
+        (function(x) {
+          setTimeout(function() {
+            x.remove();
+          }, 400);
+        })(old.el);
+      }
+    }
+    function bump(el, n2, cur) {
+      if (cur === null) return cur;
+      cur += n2;
+      el.textContent = fmt(cur);
+      el.classList.remove("tick");
+      void el.offsetWidth;
+      el.classList.add("tick");
+      var b2 = document.createElement("span");
+      b2.className = "bump";
+      b2.textContent = "+" + fmt(n2);
+      el.parentNode.appendChild(b2);
+      setTimeout(function() {
+        b2.remove();
+      }, 1300);
+      return cur;
+    }
+    function showPush(o2) {
+      pushTxt.textContent = o2.tickets + " tickets · " + o2.comp;
+      push.classList.add("on");
+      clearTimeout(pushTimer);
+      pushTimer = setTimeout(function() {
+        push.classList.remove("on");
+      }, 2600);
+    }
+    window.ceLiveOrder = function(o2) {
+      o2 = o2 || {};
+      if (LIVE.length && !o2.comp) {
+        var ev = pick(LIVE);
+        var n2 = parseInt(String(ev.val || "").replace(/[^0-9]/g, ""), 10);
+        if (/ticket/i.test(ev.suffix || "") && n2) o2.tickets = n2;
+        o2.comp = String(ev.brand || "").replace(/\w\S*/g, function(w2) {
+          return w2.charAt(0) + w2.slice(1).toLowerCase();
+        });
+        o2.where = [ev.verb, ev.val, ev.suffix].filter(Boolean).join(" ");
+      }
+      o2.tickets = o2.tickets || pick(QTY);
+      o2.comp = o2.comp || pick(COMPS);
+      o2.where = o2.where || pick(WHERE);
+      o2.ts = Date.now();
+      addRow(o2);
+      if (heroVisible && !RM) showPush(o2);
+      if (orders !== null && !RM) {
+        orders = bump(ordersEl, 1, orders);
+        tickets = bump(ticketsEl, o2.tickets, tickets);
+      }
+      window.ceTrack("live_order_shown", { demo: DEMO_DRIFT });
+    };
+    var seed = [{ tickets: 25, comp: "BMW M3 Competition Pack", where: "Leeds", ts: Date.now() - 9e3 }, { tickets: 10, comp: "Rolex Submariner Date", where: "Glasgow", ts: Date.now() - 27e3 }, { tickets: 50, comp: "£25,000 Tax-Free Cash", where: "Manchester", ts: Date.now() - 51e3 }];
+    seed.reverse().forEach(addRow);
+    render3();
+    var feedIv = setInterval(render3, 5e3);
+    cleanups.push(function() {
+      clearInterval(feedIv);
+    });
+    setTimeout(function() {
+      orders = +ordersEl.dataset.target;
+      tickets = +ticketsEl.dataset.target;
+    }, 2600);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function(es) {
+        es.forEach(function(e2) {
+          heroVisible = e2.isIntersecting;
+        });
+      }, { threshold: 0.2 }).observe($2("#hero-visual"));
+    }
+    if (!RM) {
+      (function loop() {
+        var wait = 3500 + Math.random() * 4500;
+        setTimeout(function() {
+          if (!alive) return;
+          if (!document.hidden) window.ceLiveOrder();
+          loop();
+        }, wait);
+      })();
+      setTimeout(function() {
+        window.ceLiveOrder();
+      }, 1800);
+    }
+  })();
+  (function ticketStorm() {
+    var cv = $2("#tickets");
+    if (!cv || RM) return;
+    var ctx = cv.getContext("2d"), W = 0, H = 0, DPR = Math.min(2, window.devicePixelRatio || 1), on2 = false, raf, mx = 0, my = 0;
+    var COLS = [[244, 165, 88], [236, 138, 130], [217, 122, 168], [178, 151, 219], [91, 127, 196]];
+    var N = isDesktop() ? 34 : 14, T2 = [], F = 700;
+    function reset(t3, far) {
+      t3.x = (Math.random() - 0.5) * 1.6;
+      t3.y = (Math.random() - 0.5) * 1.4;
+      t3.z = far ? 900 + Math.random() * 500 : Math.random() * 1400;
+      t3.r = Math.random() * Math.PI * 2;
+      t3.vr = (Math.random() - 0.5) * 0.01;
+      t3.vz = 0.6 + Math.random() * 1.1;
+      t3.c = COLS[Math.floor(Math.random() * COLS.length)];
+      t3.w = 120 + Math.random() * 60;
+      return t3;
+    }
+    for (var i2 = 0; i2 < N; i2++) T2.push(reset({}, false));
+    function size() {
+      var r2 = cv.getBoundingClientRect();
+      W = r2.width;
+      H = r2.height;
+      cv.width = W * DPR;
+      cv.height = H * DPR;
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    }
+    function ticket(x, y2, w2, h2, r2, a2, c2) {
+      ctx.save();
+      ctx.translate(x, y2);
+      ctx.rotate(r2);
+      ctx.globalAlpha = a2;
+      var g2 = ctx.createLinearGradient(-w2 / 2, 0, w2 / 2, 0);
+      g2.addColorStop(0, "rgb(" + c2.join(",") + ")");
+      g2.addColorStop(1, "rgba(" + c2.join(",") + ",0.55)");
+      ctx.fillStyle = g2;
+      ctx.beginPath();
+      ctx.roundRect(-w2 / 2, -h2 / 2, w2, h2, h2 * 0.18);
+      ctx.fill();
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.beginPath();
+      ctx.arc(-w2 / 2, 0, h2 * 0.16, 0, Math.PI * 2);
+      ctx.arc(w2 / 2, 0, h2 * 0.16, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalCompositeOperation = "source-over";
+      ctx.strokeStyle = "rgba(20,8,46,0.45)";
+      ctx.lineWidth = Math.max(1, h2 * 0.03);
+      ctx.setLineDash([h2 * 0.08, h2 * 0.08]);
+      ctx.beginPath();
+      ctx.moveTo(w2 * 0.22, -h2 / 2 + h2 * 0.1);
+      ctx.lineTo(w2 * 0.22, h2 / 2 - h2 * 0.1);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = "rgba(20,8,46,0.5)";
+      ctx.fillRect(-w2 * 0.36, -h2 * 0.12, w2 * 0.42, h2 * 0.08);
+      ctx.fillRect(-w2 * 0.36, h2 * 0.06, w2 * 0.28, h2 * 0.08);
+      ctx.restore();
+    }
+    function frame() {
+      ctx.clearRect(0, 0, W, H);
+      T2.sort(function(a3, b2) {
+        return b2.z - a3.z;
+      });
+      for (var i3 = 0; i3 < T2.length; i3++) {
+        var t3 = T2[i3];
+        t3.z -= t3.vz;
+        t3.r += t3.vr;
+        if (t3.z < -80) reset(t3, true);
+        var s2 = F / (F + t3.z), px = W / 2 + (t3.x * W * 0.9 + mx * 40) * s2, py = H / 2 + (t3.y * H * 0.9 + my * 30) * s2;
+        var a2 = Math.max(0, Math.min(0.55, s2 * 0.75)) * (t3.z < 60 ? Math.max(0, (t3.z + 80) / 140) : 1);
+        if (a2 <= 0.01) continue;
+        ticket(px, py, t3.w * s2, t3.w * 0.45 * s2, t3.r, a2, t3.c);
+      }
+      if (on2) raf = requestAnimationFrame(frame);
+    }
+    size();
+    window.addEventListener("resize", size);
+    if (hasHover) window.addEventListener("mousemove", function(e2) {
+      mx = (e2.clientX / window.innerWidth - 0.5) * 2;
+      my = (e2.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
+    if ("IntersectionObserver" in window) new IntersectionObserver(function(es) {
+      es.forEach(function(e2) {
+        on2 = e2.isIntersecting && !document.hidden;
+        if (on2) {
+          cancelAnimationFrame(raf);
+          frame();
+        }
+      });
+    }).observe(cv);
+    else {
+      on2 = true;
+      frame();
+    }
+    document.addEventListener("visibilitychange", function() {
+      if (document.hidden) on2 = false;
+      else if (!on2) {
+        on2 = true;
+        frame();
+      }
+    });
+  })();
+  (function kinetic() {
+    var ITEMS = ["GLI Certified", "200+ Operators", compact(opts.tickets) + " Tickets / 30d", "Live in 1–2 Weeks", "VCOC Signatory", "5+ Years", "Nine Games", "One Onboarding Call", compact(opts.orders) + " Orders / 30d", "Pen Tested"];
+    function build(id, offset) {
+      var el = $2(id);
+      if (!el) return;
+      var html = "";
+      for (var k = 0; k < 2; k++) ITEMS.forEach(function(t3, i2) {
+        var f2 = (i2 + offset) % 2 === 0;
+        html += "<span>" + (f2 ? "<b>" + t3 + "</b>" : t3) + "<i></i></span>";
+      });
+      el.innerHTML = html;
+    }
+    build("#k-track", 0);
+    build("#k-track2", 1);
+  })();
+  (function theatre() {
+    var th = $2("#theatre");
+    if (!th) return;
+    var tum = $2("#tumblers"), status = $2("#th-status"), winner = $2("#th-winner"), hashEl = $2("#th-hash"), conf = $2("#th-confetti"), btn = $2("#th-draw");
+    var DIGITS = "04182", FULL = "a3f9b2c4d17e8f0a5b6c9d2e4f1a7b3c8d5e2f9a0b4c6d1e7f3a9b5c2d8e4f1c", busy = false, timers = [];
+    var strip = "";
+    for (var r2 = 0; r2 < 3; r2++) for (var d2 = 0; d2 < 10; d2++) strip += "<i>" + d2 + "</i>";
+    tum.innerHTML = DIGITS.split("").map(function() {
+      return '<div class="tumbler"><div class="strip">' + strip + "</div></div>";
+    }).join("");
+    var tumblers = $$(".tumbler", tum), blocks = $$(".chain .blk", th), links = $$(".chain > i", th);
+    function later(fn, ms) {
+      timers.push(setTimeout(fn, RM ? 0 : ms));
+    }
+    function setStrip(t3, idx, animate, dur) {
+      var s2 = $2(".strip", t3);
+      s2.style.transition = animate ? "transform " + dur + "ms cubic-bezier(.15,.85,.25,1)" : "none";
+      s2.style.transform = "translateY(" + -idx * 100 / 30 + "%)";
+    }
+    function burst() {
+      if (RM) return;
+      var cols = ["#f4a558", "#ec8a82", "#d97aa8", "#b297db", "#5b7fc4", "#4fd18b"], html = "";
+      for (var i2 = 0; i2 < 70; i2++) {
+        var a2 = Math.random() * Math.PI * 2, d3 = 120 + Math.random() * 260;
+        html += '<i style="background:' + cols[i2 % 6] + ";--dx:" + (Math.cos(a2) * d3).toFixed(0) + "px;--dy:" + (Math.sin(a2) * d3 - 80).toFixed(0) + "px;--r:" + (Math.random() * 720 - 360).toFixed(0) + "deg;animation-delay:" + (Math.random() * 150).toFixed(0) + 'ms"></i>';
+      }
+      conf.innerHTML = html;
+      conf.classList.remove("go");
+      void conf.offsetWidth;
+      conf.classList.add("go");
+    }
+    function reset() {
+      timers.forEach(clearTimeout);
+      timers = [];
+      tumblers.forEach(function(t3) {
+        t3.classList.remove("lock");
+        setStrip(t3, 0, false, 0);
+      });
+      winner.classList.remove("on");
+      hashEl.textContent = "sha256: …";
+      blocks.forEach(function(b2) {
+        b2.classList.remove("lit");
+      });
+      links.forEach(function(l2) {
+        l2.classList.remove("lit");
+      });
+      status.innerHTML = '<i class="dot green"></i>GLI RNG ready';
+      status.className = "tag green";
+    }
+    function run() {
+      if (busy) return;
+      busy = true;
+      reset();
+      btn.disabled = true;
+      status.innerHTML = '<i class="dot"></i>Seeding GLI RNG…';
+      status.className = "tag";
+      tumblers.forEach(function(t3, i2) {
+        var target = +DIGITS[i2] + 20;
+        later(function() {
+          setStrip(t3, target, !RM, 1500 + i2 * 380);
+        }, 200);
+        later(function() {
+          t3.classList.add("lock");
+        }, 200 + 1500 + i2 * 380);
+      });
+      var end = 200 + 1500 + (tumblers.length - 1) * 380 + 150;
+      later(function() {
+        status.innerHTML = '<i class="dot green"></i>Winner drawn · ticket #4,182';
+        status.className = "tag green";
+        burst();
+        winner.classList.add("on");
+      }, end);
+      later(function() {
+        var i2 = 0;
+        (function type() {
+          if (i2 <= FULL.length) {
+            hashEl.textContent = "sha256: " + FULL.slice(0, i2);
+            i2 += 3;
+            timers.push(setTimeout(type, RM ? 0 : 18));
+          }
+        })();
+      }, end + 500);
+      blocks.forEach(function(b2, k) {
+        later(function() {
+          b2.classList.add("lit");
+          if (links[k]) links[k].classList.add("lit");
+        }, end + 900 + k * 260);
+      });
+      later(function() {
+        busy = false;
+        btn.disabled = false;
+        btn.textContent = "Run it again";
+      }, end + 900 + blocks.length * 260 + 400);
+      window.ceTrack("draws_demo_run");
+    }
+    btn.addEventListener("click", run);
+    once(th, function() {
+      later(run, 500);
+    }, { threshold: 0.45 });
+    $2("#th-verify-toggle").addEventListener("click", function() {
+      var w2 = $2("#verify-wrap"), open = w2.hidden;
+      w2.hidden = !open;
+      this.setAttribute("aria-expanded", open ? "true" : "false");
+      this.textContent = open ? "Hide the verifier" : "Verify a real draw yourself";
+      if (open) setTimeout(function() {
+        w2.scrollIntoView({ behavior: RM ? "auto" : "smooth", block: "start" });
+      }, 50);
+    });
+  })();
+  (function() {
+    var g2 = $2("#gauge");
+    if (g2) once(g2, function(el) {
+      el.classList.add("in");
+    }, { threshold: 0.5 });
+  })();
+  (function adminDemo() {
+    var box = $2("#admin");
+    if (!box) return;
+    var cur = $2("#ad-cursor"), steps = $$(".ad-steps span", box), title = $2("#ad-title"), price = $2("#ad-price"), qty = $2("#ad-qty"), tog = $2("#ad-toggle"), prize = $2("#ad-prize"), pub = $2("#ad-publish"), live = $2("#ad-live"), conf = $2("#ad-confetti");
+    var timers = [], running = false, visible = false, loopT;
+    function later(fn, ms) {
+      timers.push(setTimeout(fn, RM ? 0 : ms));
+    }
+    function moveTo(el, dx, dy) {
+      var b2 = box.getBoundingClientRect(), r2 = el.getBoundingClientRect();
+      cur.style.transform = "translate(" + (r2.left - b2.left + (dx || r2.width / 2)) + "px," + (r2.top - b2.top + (dy || r2.height / 2)) + "px)";
+    }
+    function click() {
+      cur.classList.remove("click");
+      void cur.offsetWidth;
+      cur.classList.add("click");
+    }
+    function type(el, text, t0, cb) {
+      el.classList.add("typing");
+      el.textContent = "";
+      text.split("").forEach(function(ch, i2) {
+        later(function() {
+          el.textContent += ch;
+        }, t0 + i2 * 45);
+      });
+      later(function() {
+        el.classList.remove("typing");
+      }, t0 + text.length * 45 + 200);
+    }
+    function step(n2) {
+      steps.forEach(function(s2, i2) {
+        s2.classList.toggle("on", i2 === n2);
+        s2.classList.toggle("done", i2 < n2);
+      });
+    }
+    function burst() {
+      if (RM) return;
+      var cols = ["#f4a558", "#ec8a82", "#d97aa8", "#b297db", "#5b7fc4", "#4fd18b"], html = "";
+      for (var i2 = 0; i2 < 40; i2++) {
+        var a2 = Math.random() * Math.PI * 2, d2 = 80 + Math.random() * 160;
+        html += '<i style="background:' + cols[i2 % 6] + ";--dx:" + (Math.cos(a2) * d2).toFixed(0) + "px;--dy:" + (Math.sin(a2) * d2 - 60).toFixed(0) + "px;--r:" + (Math.random() * 720 - 360).toFixed(0) + "deg;animation-delay:" + (Math.random() * 120).toFixed(0) + 'ms"></i>';
+      }
+      conf.innerHTML = html;
+      conf.classList.remove("go");
+      void conf.offsetWidth;
+      conf.classList.add("go");
+    }
+    function reset() {
+      timers.forEach(clearTimeout);
+      timers = [];
+      step(0);
+      [title, price, qty].forEach(function(e2) {
+        e2.textContent = "";
+        e2.classList.remove("typing");
+      });
+      tog.classList.remove("on");
+      prize.classList.remove("on");
+      live.classList.remove("on");
+      pub.classList.remove("pressed");
+      cur.classList.remove("on");
+    }
+    function run() {
+      if (running) return;
+      running = true;
+      reset();
+      if (RM) {
+        title.textContent = "BMW M3 Competition Pack";
+        price.textContent = "£2.99";
+        qty.textContent = "75,000";
+        tog.classList.add("on");
+        prize.classList.add("on");
+        live.classList.add("on");
+        step(2);
+        running = false;
+        return;
+      }
+      later(function() {
+        cur.classList.add("on");
+        moveTo(title, 24, 20);
+      }, 100);
+      later(function() {
+        click();
+      }, 800);
+      type(title, "BMW M3 Competition Pack", 950);
+      later(function() {
+        moveTo(price, 24, 20);
+      }, 2300);
+      later(function() {
+        click();
+      }, 2900);
+      type(price, "£2.99", 3e3);
+      later(function() {
+        moveTo(qty, 24, 20);
+      }, 3500);
+      later(function() {
+        click();
+      }, 4100);
+      type(qty, "75,000", 4200);
+      later(function() {
+        step(1);
+        moveTo(tog, 19, 11);
+      }, 4800);
+      later(function() {
+        click();
+        tog.classList.add("on");
+      }, 5400);
+      later(function() {
+        moveTo(prize);
+      }, 5800);
+      later(function() {
+        click();
+        prize.classList.add("on");
+      }, 6400);
+      later(function() {
+        step(2);
+        moveTo(pub);
+      }, 6900);
+      later(function() {
+        click();
+        pub.classList.add("pressed");
+      }, 7600);
+      later(function() {
+        pub.classList.remove("pressed");
+        live.classList.add("on");
+        burst();
+        cur.classList.remove("on");
+      }, 7900);
+      later(function() {
+        running = false;
+        if (visible) loopT = setTimeout(run, 4e3);
+      }, 8400);
+    }
+    $2("#ad-replay").addEventListener("click", function() {
+      clearTimeout(loopT);
+      running = false;
+      run();
+    });
+    if ("IntersectionObserver" in window) new IntersectionObserver(function(es) {
+      es.forEach(function(e2) {
+        visible = e2.isIntersecting;
+        if (visible && !running) {
+          clearTimeout(loopT);
+          loopT = setTimeout(run, 400);
+        }
+        if (!visible) clearTimeout(loopT);
+      });
+    }, { threshold: 0.4 }).observe(box);
+    else run();
+  })();
+  return function destroy() {
+    alive = false;
+    cleanups.forEach(function(c2) {
+      try {
+        c2();
+      } catch (e2) {
+      }
+    });
+    document.body.style.overflow = "";
+  };
+}
 const _sfc_main$7 = {
   __name: "Home",
   __ssrInlineRender: true,
   setup(__props) {
+    const getText = inject("getText", (key, fallback = "") => fallback);
+    const orders = parseInt(getText("stats.value_orders", "1500000"), 10) || 15e5;
+    const tickets = parseInt(getText("stats.value_tickets", "120000000"), 10) || 12e7;
+    let destroyFx = null;
     onMounted(() => {
+      destroyFx = initUltraHome({ orders, tickets });
       const hash = window.location.hash;
       if (hash) {
         setTimeout(() => {
-          const element = document.getElementById(hash.substring(1));
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-          }
-        }, 100);
+          const el = document.getElementById(hash.substring(1));
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 150);
       }
+    });
+    onBeforeUnmount(() => {
+      if (destroyFx) destroyFx();
     });
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<title${_scopeId}>Competition Engine - Ultimate Competition Platform</title><meta name="description" content="Build, manage, and scale engaging competitions with Competition Engine — the ultimate competition platform built for operators. No code needed." head-key="description"${_scopeId}>`);
+            _push2(`<title${_scopeId}>Competition Engine - Ultimate Competition Platform</title><meta name="description" content="CompEngine — the UK competition platform. Game Studio, GLI-certified draws, separate wallets, compliant free entry. Book a 30-min demo." head-key="description"${_scopeId}>`);
           } else {
             return [
               createVNode("title", null, "Competition Engine - Ultimate Competition Platform"),
               createVNode("meta", {
                 name: "description",
-                content: "Build, manage, and scale engaging competitions with Competition Engine — the ultimate competition platform built for operators. No code needed.",
+                content: "CompEngine — the UK competition platform. Game Studio, GLI-certified draws, separate wallets, compliant free entry. Book a 30-min demo.",
                 "head-key": "description"
               })
             ];
@@ -15876,159 +18013,30 @@ const _sfc_main$7 = {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(AppLayout, null, {
-        default: withCtx((_2, _push2, _parent2, _scopeId) => {
-          if (_push2) {
-            _push2(`<div class="ce-home"${_scopeId}><div class="bg-fx"${_scopeId}></div><svg width="0" height="0" style="${ssrRenderStyle({ "position": "absolute" })}" aria-hidden="true"${_scopeId}><defs${_scopeId}><linearGradient id="gearGrad" x1="0%" y1="0%" x2="100%" y2="100%"${_scopeId}><stop offset="0%" stop-color="#5b7fc4"${_scopeId}></stop><stop offset="22%" stop-color="#8a5fb8"${_scopeId}></stop><stop offset="45%" stop-color="#b297db"${_scopeId}></stop><stop offset="68%" stop-color="#d97aa8"${_scopeId}></stop><stop offset="85%" stop-color="#ec8a82"${_scopeId}></stop><stop offset="100%" stop-color="#f4a558"${_scopeId}></stop></linearGradient><symbol id="gear-logo" viewBox="0 0 100 100"${_scopeId}><path fill="none" stroke="url(#gearGrad)" stroke-width="3.5" stroke-linejoin="round" d="
-                            M 50 4
-                            L 56 4 L 58 14
-                            A 36 36 0 0 1 65 16
-                            L 71 8 L 76 12
-                            L 73 21
-                            A 36 36 0 0 1 79 25
-                            L 88 22 L 92 27
-                            L 86 35
-                            A 36 36 0 0 1 88 42
-                            L 96 44 L 96 50 L 96 56
-                            L 88 58
-                            A 36 36 0 0 1 86 65
-                            L 92 73 L 88 78
-                            L 79 75
-                            A 36 36 0 0 1 73 79
-                            L 76 88 L 71 92
-                            L 65 84
-                            A 36 36 0 0 1 58 86
-                            L 56 96 L 50 96 L 44 96
-                            L 42 86
-                            A 36 36 0 0 1 35 84
-                            L 29 92 L 24 88
-                            L 27 79
-                            A 36 36 0 0 1 21 75
-                            L 12 78 L 8 73
-                            L 14 65
-                            A 36 36 0 0 1 12 58
-                            L 4 56 L 4 50 L 4 44
-                            L 12 42
-                            A 36 36 0 0 1 14 35
-                            L 8 27 L 12 22
-                            L 21 25
-                            A 36 36 0 0 1 27 21
-                            L 24 12 L 29 8
-                            L 35 16
-                            A 36 36 0 0 1 42 14
-                            L 44 4 Z
-                        "${_scopeId}></path><circle cx="50" cy="50" r="32" fill="none" stroke="url(#gearGrad)" stroke-width="1.5" opacity="0.9"${_scopeId}></circle><circle cx="50" cy="50" r="28" fill="none" stroke="url(#gearGrad)" stroke-width="1" opacity="0.55"${_scopeId}></circle></symbol></defs></svg>`);
-            _push2(ssrRenderComponent(_sfc_main$w, null, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$v, null, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$u, null, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(GameConfigurator, null, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(EcosystemFeatures, null, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$g, null, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$f, null, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$e, null, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$d, null, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(AIFeatures, null, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$b, null, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$a, null, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$9, null, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$8, null, null, _parent2, _scopeId));
-            _push2(`</div>`);
-          } else {
-            return [
-              createVNode("div", { class: "ce-home" }, [
-                createVNode("div", { class: "bg-fx" }),
-                (openBlock(), createBlock("svg", {
-                  width: "0",
-                  height: "0",
-                  style: { "position": "absolute" },
-                  "aria-hidden": "true"
-                }, [
-                  createVNode("defs", null, [
-                    createVNode("linearGradient", {
-                      id: "gearGrad",
-                      x1: "0%",
-                      y1: "0%",
-                      x2: "100%",
-                      y2: "100%"
-                    }, [
-                      createVNode("stop", {
-                        offset: "0%",
-                        "stop-color": "#5b7fc4"
-                      }),
-                      createVNode("stop", {
-                        offset: "22%",
-                        "stop-color": "#8a5fb8"
-                      }),
-                      createVNode("stop", {
-                        offset: "45%",
-                        "stop-color": "#b297db"
-                      }),
-                      createVNode("stop", {
-                        offset: "68%",
-                        "stop-color": "#d97aa8"
-                      }),
-                      createVNode("stop", {
-                        offset: "85%",
-                        "stop-color": "#ec8a82"
-                      }),
-                      createVNode("stop", {
-                        offset: "100%",
-                        "stop-color": "#f4a558"
-                      })
-                    ]),
-                    createVNode("symbol", {
-                      id: "gear-logo",
-                      viewBox: "0 0 100 100"
-                    }, [
-                      createVNode("path", {
-                        fill: "none",
-                        stroke: "url(#gearGrad)",
-                        "stroke-width": "3.5",
-                        "stroke-linejoin": "round",
-                        d: "\n                            M 50 4\n                            L 56 4 L 58 14\n                            A 36 36 0 0 1 65 16\n                            L 71 8 L 76 12\n                            L 73 21\n                            A 36 36 0 0 1 79 25\n                            L 88 22 L 92 27\n                            L 86 35\n                            A 36 36 0 0 1 88 42\n                            L 96 44 L 96 50 L 96 56\n                            L 88 58\n                            A 36 36 0 0 1 86 65\n                            L 92 73 L 88 78\n                            L 79 75\n                            A 36 36 0 0 1 73 79\n                            L 76 88 L 71 92\n                            L 65 84\n                            A 36 36 0 0 1 58 86\n                            L 56 96 L 50 96 L 44 96\n                            L 42 86\n                            A 36 36 0 0 1 35 84\n                            L 29 92 L 24 88\n                            L 27 79\n                            A 36 36 0 0 1 21 75\n                            L 12 78 L 8 73\n                            L 14 65\n                            A 36 36 0 0 1 12 58\n                            L 4 56 L 4 50 L 4 44\n                            L 12 42\n                            A 36 36 0 0 1 14 35\n                            L 8 27 L 12 22\n                            L 21 25\n                            A 36 36 0 0 1 27 21\n                            L 24 12 L 29 8\n                            L 35 16\n                            A 36 36 0 0 1 42 14\n                            L 44 4 Z\n                        "
-                      }),
-                      createVNode("circle", {
-                        cx: "50",
-                        cy: "50",
-                        r: "32",
-                        fill: "none",
-                        stroke: "url(#gearGrad)",
-                        "stroke-width": "1.5",
-                        opacity: "0.9"
-                      }),
-                      createVNode("circle", {
-                        cx: "50",
-                        cy: "50",
-                        r: "28",
-                        fill: "none",
-                        stroke: "url(#gearGrad)",
-                        "stroke-width": "1",
-                        opacity: "0.55"
-                      })
-                    ])
-                  ])
-                ])),
-                createVNode(_sfc_main$w),
-                createVNode(_sfc_main$v),
-                createVNode(_sfc_main$u),
-                createVNode(GameConfigurator),
-                createVNode(EcosystemFeatures),
-                createVNode(_sfc_main$g),
-                createVNode(_sfc_main$f),
-                createVNode(_sfc_main$e),
-                createVNode(_sfc_main$d),
-                createVNode(AIFeatures),
-                createVNode(_sfc_main$b),
-                createVNode(_sfc_main$a),
-                createVNode(_sfc_main$9),
-                createVNode(_sfc_main$8)
-              ])
-            ];
-          }
-        }),
-        _: 1
-      }, _parent));
-      _push(`<!--]-->`);
+      _push(`<div class="ce-home" id="ce-home"><div class="haze" aria-hidden="true"></div><div class="progress" id="progress" aria-hidden="true"></div><svg width="0" height="0" style="${ssrRenderStyle({ "position": "absolute" })}" aria-hidden="true"><defs><linearGradient id="ce-gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b7fc4"></stop><stop offset=".25" stop-color="#8a5fb8"></stop><stop offset=".5" stop-color="#b297db"></stop><stop offset=".72" stop-color="#d97aa8"></stop><stop offset=".88" stop-color="#ec8a82"></stop><stop offset="1" stop-color="#f4a558"></stop></linearGradient><linearGradient id="ce-spark-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4a558" stop-opacity=".35"></stop><stop offset="1" stop-color="#f4a558" stop-opacity="0"></stop></linearGradient><linearGradient id="ce-chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4a558" stop-opacity=".28"></stop><stop offset="1" stop-color="#f4a558" stop-opacity="0"></stop></linearGradient></defs></svg><div class="page">`);
+      _push(ssrRenderComponent(_sfc_main$A, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$z, {
+        orders: unref(orders),
+        tickets: unref(tickets)
+      }, null, _parent));
+      _push(ssrRenderComponent(UltraLogoWall, null, null, _parent));
+      _push(`</div></div><div class="ce-legacy">`);
+      _push(ssrRenderComponent(GameConfigurator, null, null, _parent));
+      _push(`</div><div class="ce-home"><div class="page">`);
+      _push(ssrRenderComponent(UltraEcosystem, null, null, _parent));
+      _push(ssrRenderComponent(UltraEasy, null, null, _parent));
+      _push(ssrRenderComponent(UltraConvert, null, null, _parent));
+      _push(ssrRenderComponent(UltraCertifiedDraws, null, null, _parent));
+      _push(ssrRenderComponent(UltraWhyFee, null, null, _parent));
+      _push(ssrRenderComponent(UltraComparison, null, null, _parent));
+      _push(ssrRenderComponent(UltraRoadmap, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$c, null, null, _parent));
+      _push(ssrRenderComponent(UltraFaq, null, null, _parent));
+      _push(ssrRenderComponent(UltraBooking, null, null, _parent));
+      _push(ssrRenderComponent(UltraFooter, null, null, _parent));
+      _push(`</div>`);
+      _push(ssrRenderComponent(UltraSticky, null, null, _parent));
+      _push(`</div><!--]-->`);
     };
   }
 };
@@ -16038,7 +18046,7 @@ _sfc_main$7.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Home.vue");
   return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
 };
-const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$7
 }, Symbol.toStringTag, { value: "Module" }));
@@ -16217,12 +18225,12 @@ const _sfc_main$3 = {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="p-6"${_scopeId}><h2 class="text-lg font-medium text-gray-900"${_scopeId}> Are you sure you want to delete your account? </h2><p class="mt-1 text-sm text-gray-600"${_scopeId}> Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account. </p><div class="mt-6"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$T, {
+            _push2(ssrRenderComponent(_sfc_main$Z, {
               for: "password",
               value: "Password",
               class: "sr-only"
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$R, {
+            _push2(ssrRenderComponent(_sfc_main$X, {
               id: "password",
               ref_key: "passwordInput",
               ref: passwordInput,
@@ -16233,7 +18241,7 @@ const _sfc_main$3 = {
               placeholder: "Password",
               onKeyup: deleteUser
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$U, {
+            _push2(ssrRenderComponent(_sfc_main$_, {
               message: unref(form).errors.password,
               class: "mt-2"
             }, null, _parent2, _scopeId));
@@ -16273,12 +18281,12 @@ const _sfc_main$3 = {
                 createVNode("h2", { class: "text-lg font-medium text-gray-900" }, " Are you sure you want to delete your account? "),
                 createVNode("p", { class: "mt-1 text-sm text-gray-600" }, " Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account. "),
                 createVNode("div", { class: "mt-6" }, [
-                  createVNode(_sfc_main$T, {
+                  createVNode(_sfc_main$Z, {
                     for: "password",
                     value: "Password",
                     class: "sr-only"
                   }),
-                  createVNode(_sfc_main$R, {
+                  createVNode(_sfc_main$X, {
                     id: "password",
                     ref_key: "passwordInput",
                     ref: passwordInput,
@@ -16289,7 +18297,7 @@ const _sfc_main$3 = {
                     placeholder: "Password",
                     onKeyup: withKeys(deleteUser, ["enter"])
                   }, null, 8, ["modelValue", "onUpdate:modelValue"]),
-                  createVNode(_sfc_main$U, {
+                  createVNode(_sfc_main$_, {
                     message: unref(form).errors.password,
                     class: "mt-2"
                   }, null, 8, ["message"])
@@ -16328,7 +18336,7 @@ _sfc_main$3.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Profile/Partials/DeleteUserForm.vue");
   return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
 };
-const __vite_glob_0_17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_19 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$3
 }, Symbol.toStringTag, { value: "Module" }));
@@ -16345,11 +18353,11 @@ const _sfc_main$2 = {
     });
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<section${ssrRenderAttrs(_attrs)}><header><h2 class="text-lg font-medium text-gray-900"> Update Password </h2><p class="mt-1 text-sm text-gray-600"> Ensure your account is using a long, random password to stay secure. </p></header><form class="mt-6 space-y-6"><div>`);
-      _push(ssrRenderComponent(_sfc_main$T, {
+      _push(ssrRenderComponent(_sfc_main$Z, {
         for: "current_password",
         value: "Current Password"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$R, {
+      _push(ssrRenderComponent(_sfc_main$X, {
         id: "current_password",
         ref_key: "currentPasswordInput",
         ref: currentPasswordInput,
@@ -16359,16 +18367,16 @@ const _sfc_main$2 = {
         class: "mt-1 block w-full",
         autocomplete: "current-password"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$U, {
+      _push(ssrRenderComponent(_sfc_main$_, {
         message: unref(form).errors.current_password,
         class: "mt-2"
       }, null, _parent));
       _push(`</div><div>`);
-      _push(ssrRenderComponent(_sfc_main$T, {
+      _push(ssrRenderComponent(_sfc_main$Z, {
         for: "password",
         value: "New Password"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$R, {
+      _push(ssrRenderComponent(_sfc_main$X, {
         id: "password",
         ref_key: "passwordInput",
         ref: passwordInput,
@@ -16378,16 +18386,16 @@ const _sfc_main$2 = {
         class: "mt-1 block w-full",
         autocomplete: "new-password"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$U, {
+      _push(ssrRenderComponent(_sfc_main$_, {
         message: unref(form).errors.password,
         class: "mt-2"
       }, null, _parent));
       _push(`</div><div>`);
-      _push(ssrRenderComponent(_sfc_main$T, {
+      _push(ssrRenderComponent(_sfc_main$Z, {
         for: "password_confirmation",
         value: "Confirm Password"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$R, {
+      _push(ssrRenderComponent(_sfc_main$X, {
         id: "password_confirmation",
         modelValue: unref(form).password_confirmation,
         "onUpdate:modelValue": ($event) => unref(form).password_confirmation = $event,
@@ -16395,7 +18403,7 @@ const _sfc_main$2 = {
         class: "mt-1 block w-full",
         autocomplete: "new-password"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$U, {
+      _push(ssrRenderComponent(_sfc_main$_, {
         message: unref(form).errors.password_confirmation,
         class: "mt-2"
       }, null, _parent));
@@ -16429,7 +18437,7 @@ _sfc_main$2.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue");
   return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
 };
-const __vite_glob_0_18 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_20 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$2
 }, Symbol.toStringTag, { value: "Module" }));
@@ -16452,11 +18460,11 @@ const _sfc_main$1 = {
     });
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<section${ssrRenderAttrs(_attrs)}><header><h2 class="text-lg font-medium text-gray-900"> Profile Information </h2><p class="mt-1 text-sm text-gray-600"> Update your account&#39;s profile information and email address. </p></header><form class="mt-6 space-y-6"><div>`);
-      _push(ssrRenderComponent(_sfc_main$T, {
+      _push(ssrRenderComponent(_sfc_main$Z, {
         for: "name",
         value: "Name"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$R, {
+      _push(ssrRenderComponent(_sfc_main$X, {
         id: "name",
         type: "text",
         class: "mt-1 block w-full",
@@ -16466,16 +18474,16 @@ const _sfc_main$1 = {
         autofocus: "",
         autocomplete: "name"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$U, {
+      _push(ssrRenderComponent(_sfc_main$_, {
         class: "mt-2",
         message: unref(form).errors.name
       }, null, _parent));
       _push(`</div><div>`);
-      _push(ssrRenderComponent(_sfc_main$T, {
+      _push(ssrRenderComponent(_sfc_main$Z, {
         for: "email",
         value: "Email"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$R, {
+      _push(ssrRenderComponent(_sfc_main$X, {
         id: "email",
         type: "email",
         class: "mt-1 block w-full",
@@ -16484,7 +18492,7 @@ const _sfc_main$1 = {
         required: "",
         autocomplete: "username"
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$U, {
+      _push(ssrRenderComponent(_sfc_main$_, {
         class: "mt-2",
         message: unref(form).errors.email
       }, null, _parent));
@@ -16542,7 +18550,7 @@ _sfc_main$1.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue");
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
-const __vite_glob_0_19 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_21 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$1
 }, Symbol.toStringTag, { value: "Module" }));
@@ -16561,7 +18569,7 @@ const _sfc_main = {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), { title: "Profile" }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$A, null, {
+      _push(ssrRenderComponent(_sfc_main$G, null, {
         header: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<h2 class="text-xl font-semibold leading-tight text-gray-800"${_scopeId}> Profile </h2>`);
@@ -16618,7 +18626,7 @@ _sfc_main.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Profile/Edit.vue");
   return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
 };
-const __vite_glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_18 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main
 }, Symbol.toStringTag, { value: "Module" }));
@@ -16991,7 +18999,7 @@ createServer(
     page,
     render: renderToString,
     resolve: (name) => {
-      const pages = /* @__PURE__ */ Object.assign({ "./Pages/About.vue": __vite_glob_0_0, "./Pages/Auth/ConfirmPassword.vue": __vite_glob_0_1, "./Pages/Auth/ForgotPassword.vue": __vite_glob_0_2, "./Pages/Auth/Login.vue": __vite_glob_0_3, "./Pages/Auth/Register.vue": __vite_glob_0_4, "./Pages/Auth/ResetPassword.vue": __vite_glob_0_5, "./Pages/Auth/VerifyEmail.vue": __vite_glob_0_6, "./Pages/Blog.vue": __vite_glob_0_7, "./Pages/BlogShow.vue": __vite_glob_0_8, "./Pages/Changelog.vue": __vite_glob_0_9, "./Pages/Changelog/Password.vue": __vite_glob_0_10, "./Pages/Contact.vue": __vite_glob_0_11, "./Pages/Dashboard.vue": __vite_glob_0_12, "./Pages/Documentation/Password.vue": __vite_glob_0_13, "./Pages/Documentation/Show.vue": __vite_glob_0_14, "./Pages/Home.vue": __vite_glob_0_15, "./Pages/Profile/Edit.vue": __vite_glob_0_16, "./Pages/Profile/Partials/DeleteUserForm.vue": __vite_glob_0_17, "./Pages/Profile/Partials/UpdatePasswordForm.vue": __vite_glob_0_18, "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": __vite_glob_0_19 });
+      const pages = /* @__PURE__ */ Object.assign({ "./Pages/About.vue": __vite_glob_0_0, "./Pages/Auth/ConfirmPassword.vue": __vite_glob_0_1, "./Pages/Auth/ForgotPassword.vue": __vite_glob_0_2, "./Pages/Auth/Login.vue": __vite_glob_0_3, "./Pages/Auth/Register.vue": __vite_glob_0_4, "./Pages/Auth/ResetPassword.vue": __vite_glob_0_5, "./Pages/Auth/VerifyEmail.vue": __vite_glob_0_6, "./Pages/Blog.vue": __vite_glob_0_7, "./Pages/BlogShow.vue": __vite_glob_0_8, "./Pages/Changelog.vue": __vite_glob_0_9, "./Pages/Changelog/Password.vue": __vite_glob_0_10, "./Pages/Contact.vue": __vite_glob_0_11, "./Pages/Dashboard.vue": __vite_glob_0_12, "./Pages/DevDocs/Password.vue": __vite_glob_0_13, "./Pages/DevDocs/Show.vue": __vite_glob_0_14, "./Pages/Documentation/Password.vue": __vite_glob_0_15, "./Pages/Documentation/Show.vue": __vite_glob_0_16, "./Pages/Home.vue": __vite_glob_0_17, "./Pages/Profile/Edit.vue": __vite_glob_0_18, "./Pages/Profile/Partials/DeleteUserForm.vue": __vite_glob_0_19, "./Pages/Profile/Partials/UpdatePasswordForm.vue": __vite_glob_0_20, "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": __vite_glob_0_21 });
       return pages[`./Pages/${name}.vue`];
     },
     setup({ App, props, plugin }) {
