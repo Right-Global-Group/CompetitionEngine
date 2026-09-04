@@ -6,6 +6,7 @@
  */
 let installed = false;
 let allowed = false;
+const MASTER = 0.35;   // edit-mode volume: the games ship loud
 const contexts = new Set();
 const originals = {};
 
@@ -18,12 +19,13 @@ export function installAudioGate() {
         originals.play = mp.play;
         mp.play = function () {
             if (!allowed && !this.muted) { try { this.pause(); } catch (e) { /* */ } return Promise.resolve(); }
+            if (!this.__ceVol) { try { this.volume = Math.min(this.volume, 1) * MASTER; } catch (e) { /* */ } this.__ceVol = true; }
             return originals.play.apply(this, arguments);
         };
     }
     if (window.speechSynthesis) {
         originals.speak = window.speechSynthesis.speak;
-        window.speechSynthesis.speak = function (u) { if (!allowed) return; return originals.speak.call(window.speechSynthesis, u); };
+        window.speechSynthesis.speak = function (u) { if (!allowed) return; try { u.volume = (u.volume == null ? 1 : u.volume) * MASTER * 1.4; } catch (e) { /* */ } return originals.speak.call(window.speechSynthesis, u); };
     }
     const AC = window.AudioContext || window.webkitAudioContext;
     if (AC) {
@@ -36,6 +38,19 @@ export function installAudioGate() {
         const Gated = class extends AC {
             constructor(...args) { super(...args); contexts.add(this); if (!allowed) { try { this.suspend(); } catch (e) { /* */ } } }
         };
+        // everything that reaches the speakers goes through one master gain per context
+        if (window.AudioNode && window.AudioDestinationNode) {
+            originals.connect = AudioNode.prototype.connect;
+            AudioNode.prototype.connect = function (dest, ...rest) {
+                if (dest instanceof AudioDestinationNode) {
+                    const ctx = this.context;
+                    if (!ctx.__ceMaster) { ctx.__ceMaster = ctx.createGain(); ctx.__ceMaster.gain.value = MASTER; originals.connect.call(ctx.__ceMaster, dest); }
+                    if (this === ctx.__ceMaster) return originals.connect.call(this, dest, ...rest);
+                    return originals.connect.call(this, ctx.__ceMaster, ...rest);
+                }
+                return originals.connect.call(this, dest, ...rest);
+            };
+        }
         window.AudioContext = Gated;
         if (window.webkitAudioContext) window.webkitAudioContext = Gated;
     }

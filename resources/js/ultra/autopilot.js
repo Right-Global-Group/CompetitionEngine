@@ -17,7 +17,7 @@ const PLANS = {
     spinny: { every: 7500, tick: (r) => { if (lobby(r)) return; click(r, '.static-highlight-segment'); } },
     scratchy: { every: 6500, tick: (r, n, st) => { if (lobby(r)) return; if (clickText(r, /reveal all/i)) { st.revealed = true; return; } if (st.revealed && clickText(r, /replay/i)) { st.revealed = false; return; } } },
     bingo: { every: 5000, tick: (r, n, st) => { if (lobby(r)) return; if (clickText(r, /reveal/i)) { st.revealed = true; return; } if (st.revealed) return 'done'; } },
-    coindrop: { every: 4200, tick: (r, n) => { if (lobby(r)) return; if (!click(r, '.drop-button:not([disabled])')) return n > 2 ? 'done' : undefined; } },
+    coindrop: { every: 4200, tick: (r, n) => { if (lobby(r)) return; if (!click(r, '.drop-button:not([disabled])') && !clickText(r, /^drop coin/i)) return n > 2 ? 'done' : undefined; } },
     popgame: { every: 1100, tick: (r, n) => { if (lobby(r)) return; if (!click(r, '.pop-item-container:not(.popped)')) return n > 2 ? 'done' : undefined; } },
     football: {
         every: 1300,

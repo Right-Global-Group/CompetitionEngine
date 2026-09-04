@@ -247,7 +247,7 @@ $$('[data-slot]').forEach(function (el) { makeSlot(el, { track: el.getAttribute(
    MINI DEMO SITE in the hero phone — carousel + slow auto-scroll
    ============================================================ */
 (function demoSite() {
-  var site = $('#site'), car = $('#site-carousel'); if (!site) return;
+  var site = $('#site'), car = $('#site-carousel'), view = $('#site-view'), scroll = $('#site-scroll'); if (!site) return;
   // 3D hero carousel
   if (car) {
     var slides = $$('.hslide', car), dots = $$('.dots i', car), n = slides.length, k = 0;
@@ -255,34 +255,42 @@ $$('[data-slot]').forEach(function (el) { makeSlot(el, { track: el.getAttribute(
     var iv = setInterval(function () { if (document.hidden) return; k = (k + 1) % n; place(); }, 3400);
     cleanups.push(function () { clearInterval(iv); });
   }
-  // the same site, three brands: shows operators their own site, not ours
-  var BRANDS = [
-    { key: 'ritas', name: "Rita's Riches", logo: '/images/tenant-icons/ritas.png' },
-    { key: 'vortex', name: 'Vortex', logo: '/images/tenant-icons/vortex.png' },
-    { key: 'yours', name: 'Your Brand', logo: '' }
-  ];
-  var logo = $('#site-logo'), name = $('#site-name'), bi = 0;
-  var brand = function () { var b = BRANDS[bi]; site.setAttribute('data-brand', b.key); if (name) name.textContent = b.name; if (logo) { logo.hidden = !b.logo; if (b.logo) logo.src = b.logo; } };
-  var biv = setInterval(function () { if (document.hidden) return; bi = (bi + 1) % BRANDS.length; brand(); }, 11000);
-  cleanups.push(function () { clearInterval(biv); });
-  // slow auto-scroll: down, pause, back up
-  if (RM) return;
-  var dir = 1, pause = 140, raf, on = false;
+  // colour changer: swatches + custom pickers recolour the storefront
+  var setColours = function (p, a) { if (p) site.style.setProperty('--sp', p); if (a) site.style.setProperty('--sa', a); };
+  $$('.sc-swatch').forEach(function (b) {
+    on(b, 'click', function () {
+      $$('.sc-swatch').forEach(function (x) { x.classList.toggle('on', x === b); });
+      setColours(b.dataset.p, b.dataset.a);
+      var pi = $('#sc-primary'), ai = $('#sc-accent'); if (pi) pi.value = b.dataset.p; if (ai) ai.value = b.dataset.a;
+    });
+  });
+  ['#sc-primary', '#sc-accent'].forEach(function (sel, i) {
+    var inp = $(sel); if (!inp) return;
+    on(inp, 'input', function () { $$('.sc-swatch').forEach(function (x) { x.classList.remove('on'); }); setColours(i === 0 ? inp.value : null, i === 1 ? inp.value : null); });
+    on(inp, 'change', function () { window.ceTrack('hero_colour_custom', { which: i === 0 ? 'primary' : 'accent' }); });
+  });
+  // slow auto-scroll (transform-based: Safari rounds scrollTop, so scrolling half a pixel never moves)
+  if (RM || !view || !scroll) return;
+  var pos = 0, dir = 1, pause = 70, raf, on_ = true;
   function step() {
-    if (!alive || !on) return;
-    var max = site.scrollHeight - site.clientHeight;
-    if (max > 0) {
-      if (pause > 0) pause--;
-      else {
-        site.scrollTop += dir * 0.5;
-        if (dir > 0 && site.scrollTop >= max - 0.5) { dir = -1; pause = 100; }
-        else if (dir < 0 && site.scrollTop <= 0.5) { dir = 1; pause = 170; }
+    if (!alive) return;
+    if (on_ && !document.hidden) {
+      var max = scroll.offsetHeight - view.clientHeight;
+      if (max > 0) {
+        if (pause > 0) pause--;
+        else {
+          pos += dir * 0.5;
+          if (dir > 0 && pos >= max) { pos = max; dir = -1; pause = 100; }
+          else if (dir < 0 && pos <= 0) { pos = 0; dir = 1; pause = 170; }
+        }
+        scroll.style.transform = 'translateY(' + (-pos).toFixed(1) + 'px)';
       }
     }
     raf = requestAnimationFrame(step);
   }
-  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (e) { on = e.isIntersecting; cancelAnimationFrame(raf); if (on) raf = requestAnimationFrame(step); }); }).observe(site);
-  else { on = true; raf = requestAnimationFrame(step); }
+  raf = requestAnimationFrame(step);
+  cleanups.push(function () { cancelAnimationFrame(raf); });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (e) { on_ = e.isIntersecting; }); }).observe(site);
 })();
 
 /* Phone tilt (desktop pointer only) */

@@ -326,6 +326,7 @@
   "resources/js/ultra/autopilot.js": [],
   "resources/js/ultra/homeFx.js": [],
   "resources/js/ultra/packageBuilder.js": [],
+  "resources/js/ultra/studioState.js": [],
   "resources/js/utils/prizeLabel.ts": [
     "/build/assets/prizeLabel-Z9qw9N7H.js"
   ],

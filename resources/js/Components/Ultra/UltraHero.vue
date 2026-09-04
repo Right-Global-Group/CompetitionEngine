@@ -1,5 +1,14 @@
 <script setup>
 defineProps({ orders: { type: Number, default: 1500000 }, tickets: { type: Number, default: 120000000 } });
+// primary / accent pairs for the demo storefront colour changer
+const COLOURS = [
+    ['#f4a558', '#d97aa8', 'Sunset'],
+    ['#e94560', '#ffd700', 'Red and gold'],
+    ['#a855f7', '#db07f2', 'Purple neon'],
+    ['#22c55e', '#a3e635', 'Green'],
+    ['#0ea5e9', '#67e8f9', 'Ocean'],
+    ['#f97316', '#fde047', 'Orange'],
+];
 </script>
 
 <template>
@@ -24,11 +33,12 @@ defineProps({ orders: { type: Number, default: 1500000 }, tickets: { type: Numbe
         <div class="big-gear" id="big-gear" aria-hidden="true"><span class="gear-svg" data-gear></span></div>
         <div class="phone-wrap"><div class="phone" id="phone"><span class="glare"></span><div class="push" id="push" aria-hidden="true"><span class="ic"></span><div><b>New order</b><span id="push-txt"></span></div></div><span class="btn-side"></span><span class="btn-side l"></span><span class="btn-side l2"></span>
           <div class="phone-bar"><span>9:41</span><span>yourbrand.co.uk</span><span>●●●</span></div>
-          <div class="site" id="site" data-brand="ritas" aria-hidden="true">
+          <div class="site" id="site" aria-hidden="true">
             <div class="site-head">
-              <span class="site-brand"><img id="site-logo" src="/images/tenant-icons/ritas.png" alt="" @error="$event.target.hidden = true"><b id="site-name">Rita's Riches</b></span>
+              <span class="site-brand"><i class="site-mark"></i><b id="site-name">Your Brand</b></span>
               <span class="site-nav"><i>Home</i><i>Comps</i><i>Winners</i><i class="cart">🛒<em>3</em></i></span>
             </div>
+            <div class="site-view" id="site-view"><div class="site-scroll" id="site-scroll">
             <div class="site-hero" id="site-carousel">
               <div class="hslide is-active"><img src="/images/draws/bmw.jpg" alt="" loading="lazy"><div class="hcap"><small>Win this week</small><b>BMW M3<br>Competition</b><span>£2.99 per ticket · draws Friday 8pm</span><em>Enter now →</em></div></div>
               <div class="hslide is-next"><img src="/images/draws/tesla.jpg" alt="" loading="lazy"><div class="hcap"><small>New</small><b>Tesla<br>Model Y</b><span>£2.99 per ticket · 71% sold</span><em>Enter now →</em></div></div>
@@ -78,8 +88,17 @@ defineProps({ orders: { type: Number, default: 1500000 }, tickets: { type: Numbe
             <div class="site-sec"><b>Instant wins</b><span>Play now</span></div>
             <div class="site-iw"><span>🎰 Slots</span><span>🎫 Scratch</span><span>🎡 Spinny</span><span>🪙 Coin Drop</span><span>⚽ Football</span></div>
             <div class="site-foot">GLI-certified draws · UK-licensed payments · free entry route</div>
+            </div></div>
           </div>
         </div><div class="phone-shadow" aria-hidden="true"></div></div>
+        <div class="site-colours" id="site-colours" aria-label="Try your colours">
+          <span class="hand sc-hand">try your colours</span>
+          <div class="sc-card">
+            <button v-for="c in COLOURS" :key="c[0]" type="button" class="sc-swatch" :class="{ on: c[0] === '#f4a558' }" :style="{ '--p': c[0], '--a': c[1] }" :data-p="c[0]" :data-a="c[1]" :aria-label="c[2]" data-track="hero_colour_swatch"></button>
+            <label class="sc-custom" title="Pick your own primary colour"><input type="color" id="sc-primary" value="#f4a558" aria-label="Primary colour"><span>Primary</span></label>
+            <label class="sc-custom" title="Pick your own accent colour"><input type="color" id="sc-accent" value="#d97aa8" aria-label="Accent colour"><span>Accent</span></label>
+          </div>
+        </div>
       </div>
     </div>
     <div class="counters" id="counters">

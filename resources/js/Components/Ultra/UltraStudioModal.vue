@@ -10,6 +10,7 @@ import SchemaForm from '@/Components/Studio/SchemaForm.vue';
 import GameEmbed from '@/Components/Ultra/GameEmbed.vue';
 import { STUDIO_SCHEMAS, schemaFor, defaultsFor } from '@/games/studioSchemas';
 import { setAudioAllowed } from '@/ultra/audioGate';
+import { studioOpen } from '@/ultra/studioState';
 
 const props = defineProps({ modelValue: { type: Boolean, default: false }, game: { type: String, default: 'slots' } });
 const emit = defineEmits(['update:modelValue', 'change']);
@@ -29,13 +30,14 @@ function pick(key) { current.value = key; if (typeof window.ceTrack === 'functio
 watch(() => props.game, (g) => { if (g) current.value = g; });
 watch(() => props.modelValue, (open) => {
     document.body.style.overflow = open ? 'hidden' : '';
+    studioOpen.value = open;
     setAudioAllowed(open);       // sound only while the visitor is in edit mode
     document.body.classList.toggle('studio-open', open);
     if (open && typeof window.ceTrack === 'function') window.ceTrack('studio_open', { game: current.value });
 });
 const onKey = (e) => { if (e.key === 'Escape' && props.modelValue) close(); };
 if (typeof window !== 'undefined') window.addEventListener('keydown', onKey);
-onBeforeUnmount(() => { if (typeof window !== 'undefined') window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; document.body.classList.remove('studio-open'); setAudioAllowed(false); });
+onBeforeUnmount(() => { if (typeof window !== 'undefined') window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; document.body.classList.remove('studio-open'); studioOpen.value = false; setAudioAllowed(false); });
 </script>
 
 <template>

@@ -10,6 +10,7 @@ import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick, defineAsync
 import { gamePlayers, demoCategories, makeDemoTickets } from '@/games/registry';
 import { assetsFor } from '@/games/studioSchemas';
 import { startAutopilot } from '@/ultra/autopilot';
+import { studioOpen } from '@/ultra/studioState';
 
 const props = defineProps({
     game: { type: String, required: true },
@@ -29,6 +30,9 @@ const Player = shallowRef(null);
 let ro = null, stopPilot = null, remountTimer = null;
 
 const assets = computed(() => assetsFor(props.game, props.config));
+// tiles step aside while the studio is open: no CPU, no sound behind the dialog
+const paused = computed(() => props.mode === 'tile' && studioOpen.value);
+watch(paused, (p) => { if (p) stop(); else { epoch.value++; arm(); } });
 const tickets = makeDemoTickets(props.game === 'popgame' ? 30 : 10);
 
 function fit() {
@@ -75,7 +79,7 @@ defineExpose({ restart: () => { epoch.value++; arm(); } });
   <div ref="box" class="gbox" :class="'gbox-' + mode" :style="{ '--gw': FRAME_W + 'px', zoom: zoom }">
     <div ref="play" class="gplay" :class="[mode === 'tile' ? 'embed-tile' : 'embed-preview']">
       <component
-        v-if="Player"
+        v-if="Player && !paused"
         :is="Player"
         :key="epoch"
         :modelValue="true"

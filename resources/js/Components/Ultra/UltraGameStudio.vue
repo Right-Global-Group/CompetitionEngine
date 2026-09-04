@@ -11,6 +11,7 @@ import { defaultsFor } from '@/games/studioSchemas';
 
 const CALENDLY = 'https://calendly.com/contact-compengine/30min';
 const CYCLE_MS = 4200;
+const CYCLE_MS_PHONE = 9000;   // give each game time to play before the carousel moves on
 
 const GAMES = [
     { key: 'slots',       name: 'Slots',        tag: 'Match 3 to win', icon: 'spark' },
@@ -42,7 +43,7 @@ function focus(i) {
     cur.value = i;
     clearTimeout(cycleTimer);
     if (isPhone() && !studioOpen.value) tileEls.value[i]?.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
-    if (visible && !reduced()) cycleTimer = setTimeout(() => focus((cur.value + 1) % GAMES.length), CYCLE_MS);
+    if (visible && !reduced()) cycleTimer = setTimeout(() => focus((cur.value + 1) % GAMES.length), isPhone() ? CYCLE_MS_PHONE : CYCLE_MS);
 }
 function openStudio(key) {
     studioGame.value = key;
@@ -57,10 +58,10 @@ function onTileClick(e, key) { if (e.target && e.target.closest && e.target.clos
 onMounted(() => {
     tileIo = new IntersectionObserver((entries) => {
         entries.forEach((e) => { if (e.isIntersecting) { active.value[+e.target.dataset.i] = true; tileIo.unobserve(e.target); } });
-    }, { rootMargin: '360px 0px' });
+    }, { rootMargin: '600px 4000px' });   // mount every tile as the wall approaches, including the ones off to the side on phones
     tileEls.value.forEach((el) => el && tileIo.observe(el));
     wallIo = new IntersectionObserver((entries) => {
-        entries.forEach((e) => { visible = e.isIntersecting; if (visible) focus(cur.value > -1 ? cur.value : 0); else clearTimeout(cycleTimer); });
+        entries.forEach((e) => { visible = e.isIntersecting; if (visible) { active.value = active.value.map(() => true); focus(cur.value > -1 ? cur.value : 0); } else clearTimeout(cycleTimer); });
     }, { threshold: 0.15 });
     if (wallEl.value) wallIo.observe(wallEl.value);
 });
