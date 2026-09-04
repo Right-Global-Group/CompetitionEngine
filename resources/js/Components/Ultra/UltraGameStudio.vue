@@ -51,6 +51,8 @@ function openStudio(key) {
     if (typeof window.ceTrack === 'function') window.ceTrack('game_studio_open', { game: key });
 }
 function onStudioChange({ game, config }) { Object.assign(configs[game], config); }
+// the autopilot presses the games' own buttons with synthetic clicks; those must not open the studio
+function onTileClick(e, key) { if (e.target && e.target.closest && e.target.closest('.gplay')) return; openStudio(key); }
 
 onMounted(() => {
     tileIo = new IntersectionObserver((entries) => {
@@ -91,7 +93,7 @@ onBeforeUnmount(() => { clearTimeout(cycleTimer); tileIo?.disconnect(); wallIo?.
         :class="{ on: cur === i }"
         :aria-label="'Customise ' + g.name"
         :data-track="'gamewall_' + g.key"
-        @click="openStudio(g.key)" @keydown.enter.prevent="openStudio(g.key)" @keydown.space.prevent="openStudio(g.key)"
+        @click="onTileClick($event, g.key)" @keydown.enter.prevent="openStudio(g.key)" @keydown.space.prevent="openStudio(g.key)"
       >
         <span class="lbl"><span class="lbl-name"><i class="ic" :data-i="g.icon"></i>{{ g.name }}</span><small>{{ g.tag }}</small></span>
         <div class="gv">

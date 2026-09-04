@@ -315,6 +315,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   __name: "TicketRevealModal",
   __ssrInlineRender: true,
   props: {
+    demoMode: { type: Boolean },
     modelValue: { type: Boolean },
     tickets: {},
     playedTickets: {}
@@ -370,9 +371,9 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
       const _component_UiButton = resolveComponent("UiButton");
       ssrRenderTeleport(_push, (_push2) => {
         if (__props.modelValue) {
-          _push2(`<div class="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4" tabindex="0" data-v-459f2b5a><div class="bg-gray-900 rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden" data-v-459f2b5a><div class="bg-primary p-6 flex justify-between items-center" data-v-459f2b5a><div data-v-459f2b5a><h2 class="text-2xl font-bold text-white" data-v-459f2b5a>All Your Tickets</h2><p class="text-white/80 mt-1" data-v-459f2b5a>${ssrInterpolate(__props.tickets.length)} total tickets</p></div><div class="flex items-center gap-4" data-v-459f2b5a>`);
+          _push2(`<div class="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4" tabindex="0" data-v-764939f9><div class="bg-gray-900 rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden" data-v-764939f9><div class="bg-primary p-6 flex justify-between items-center" data-v-764939f9><div data-v-764939f9><h2 class="text-2xl font-bold text-white" data-v-764939f9>All Your Tickets</h2><p class="text-white/80 mt-1" data-v-764939f9>${ssrInterpolate(__props.tickets.length)} total tickets</p></div><div class="flex items-center gap-4" data-v-764939f9>`);
           if (totalWinners.value.length > 0) {
-            _push2(`<div class="text-right" data-v-459f2b5a><div class="text-white/70 text-xs uppercase tracking-wide" data-v-459f2b5a>Total Won</div><div class="text-yellow-300 font-bold text-xl" data-v-459f2b5a>£${ssrInterpolate(Number(totalWinValue.value).toFixed(2))}</div></div>`);
+            _push2(`<div class="text-right" data-v-764939f9><div class="text-white/70 text-xs uppercase tracking-wide" data-v-764939f9>Total Won</div><div class="text-yellow-300 font-bold text-xl" data-v-764939f9>£${ssrInterpolate(Number(totalWinValue.value).toFixed(2))}</div></div>`);
           } else {
             _push2(`<!---->`);
           }
@@ -392,19 +393,19 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
             }),
             _: 1
           }, _parent));
-          _push2(`</div></div><div class="p-6 overflow-y-auto max-h-[calc(90vh-120px)]" data-v-459f2b5a>`);
+          _push2(`</div></div><div class="p-6 overflow-y-auto max-h-[calc(90vh-120px)]" data-v-764939f9>`);
           if (unplayedTickets.value.length > 0) {
-            _push2(`<div class="mb-8" data-v-459f2b5a><h3 class="text-xl font-semibold text-white mb-4 flex items-center" data-v-459f2b5a><span class="w-3 h-3 bg-blue-500 rounded-full mr-2" data-v-459f2b5a></span> Available Tickets (${ssrInterpolate(unplayedTickets.value.length)}) </h3><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" data-v-459f2b5a><!--[-->`);
+            _push2(`<div class="mb-8" data-v-764939f9><h3 class="text-xl font-semibold text-white mb-4 flex items-center" data-v-764939f9><span class="w-3 h-3 bg-blue-500 rounded-full mr-2" data-v-764939f9></span> Available Tickets (${ssrInterpolate(unplayedTickets.value.length)}) </h3><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" data-v-764939f9><!--[-->`);
             ssrRenderList(unplayedTickets.value, (ticket) => {
               var _a, _b, _c;
-              _push2(`<div class="bg-primary rounded-lg p-4 text-center shadow-lg hover:shadow-xl transition-shadow duration-200" data-v-459f2b5a><div class="text-white font-bold text-lg mb-1" data-v-459f2b5a>#${ssrInterpolate(ticket.number || ticket.ticketId)}</div>`);
+              _push2(`<div class="bg-primary rounded-lg p-4 text-center shadow-lg hover:shadow-xl transition-shadow duration-200" data-v-764939f9><div class="text-white font-bold text-lg mb-1" data-v-764939f9>#${ssrInterpolate(ticket.number || ticket.ticketId)}</div>`);
               if (currentTenant.value !== "madmac") {
-                _push2(`<div class="text-white/70 text-sm" data-v-459f2b5a>Ready to spin</div>`);
+                _push2(`<div class="text-white/70 text-sm" data-v-764939f9>Ready to spin</div>`);
               } else {
                 _push2(`<!---->`);
               }
               if (ticket.isWinner) {
-                _push2(`<div class="mt-2 text-xs text-yellow-300 font-medium" data-v-459f2b5a> 🎁 `);
+                _push2(`<div class="mt-2 text-xs text-yellow-300 font-medium" data-v-764939f9> 🎁 `);
                 if (((_a = ticket.instant_win) == null ? void 0 : _a.prize_type) === "ticket_bundle") {
                   _push2(`<!--[-->${ssrInterpolate(Math.floor(((_b = ticket.instant_win) == null ? void 0 : _b.value) || 0))} Free Ticket${ssrInterpolate((((_c = ticket.instant_win) == null ? void 0 : _c.value) || 0) !== 1 ? "s" : "")}<!--]-->`);
                 } else {
@@ -421,29 +422,29 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
             _push2(`<!---->`);
           }
           if (playedWinners.value.length > 0) {
-            _push2(`<div class="mb-8" data-v-459f2b5a><h3 class="text-xl font-semibold text-white mb-4 flex items-center" data-v-459f2b5a><span class="w-3 h-3 bg-green-500 rounded-full mr-2" data-v-459f2b5a></span> Winners (${ssrInterpolate(playedWinners.value.length)}) </h3><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" data-v-459f2b5a><!--[-->`);
+            _push2(`<div class="mb-8" data-v-764939f9><h3 class="text-xl font-semibold text-white mb-4 flex items-center" data-v-764939f9><span class="w-3 h-3 bg-green-500 rounded-full mr-2" data-v-764939f9></span> Winners (${ssrInterpolate(playedWinners.value.length)}) </h3><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" data-v-764939f9><!--[-->`);
             ssrRenderList(playedWinners.value, (ticket) => {
-              _push2(`<div class="bg-green-600 rounded-lg p-4 text-center shadow-lg border-2 border-green-400" data-v-459f2b5a><div class="text-white font-bold text-lg mb-1" data-v-459f2b5a>#${ssrInterpolate(ticket.number || ticket.ticketId)}</div><div class="text-white/90 text-sm mb-2" data-v-459f2b5a>🏆 WINNER</div><div class="text-yellow-200 text-xs font-medium" data-v-459f2b5a>${ssrInterpolate(ticket.prize)}</div></div>`);
+              _push2(`<div class="bg-green-600 rounded-lg p-4 text-center shadow-lg border-2 border-green-400" data-v-764939f9><div class="text-white font-bold text-lg mb-1" data-v-764939f9>#${ssrInterpolate(ticket.number || ticket.ticketId)}</div><div class="text-white/90 text-sm mb-2" data-v-764939f9>🏆 WINNER</div><div class="text-yellow-200 text-xs font-medium" data-v-764939f9>${ssrInterpolate(ticket.prize)}</div></div>`);
             });
             _push2(`<!--]--></div></div>`);
           } else {
             _push2(`<!---->`);
           }
           if (playedLosers.value.length > 0) {
-            _push2(`<div class="mb-4" data-v-459f2b5a><h3 class="text-xl font-semibold text-white mb-4 flex items-center" data-v-459f2b5a><span class="w-3 h-3 bg-gray-500 rounded-full mr-2" data-v-459f2b5a></span> Used Tickets (${ssrInterpolate(playedLosers.value.length)}) </h3><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" data-v-459f2b5a><!--[-->`);
+            _push2(`<div class="mb-4" data-v-764939f9><h3 class="text-xl font-semibold text-white mb-4 flex items-center" data-v-764939f9><span class="w-3 h-3 bg-gray-500 rounded-full mr-2" data-v-764939f9></span> Used Tickets (${ssrInterpolate(playedLosers.value.length)}) </h3><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" data-v-764939f9><!--[-->`);
             ssrRenderList(playedLosers.value, (ticket) => {
-              _push2(`<div class="bg-secondary rounded-lg p-4 text-center shadow-lg opacity-75" data-v-459f2b5a><div class="text-white font-bold text-lg mb-1" data-v-459f2b5a>#${ssrInterpolate(ticket.number || ticket.ticketId)}</div><div class="text-white/70 text-sm" data-v-459f2b5a>No prize</div></div>`);
+              _push2(`<div class="bg-secondary rounded-lg p-4 text-center shadow-lg opacity-75" data-v-764939f9><div class="text-white font-bold text-lg mb-1" data-v-764939f9>#${ssrInterpolate(ticket.number || ticket.ticketId)}</div><div class="text-white/70 text-sm" data-v-764939f9>No prize</div></div>`);
             });
             _push2(`<!--]--></div></div>`);
           } else {
             _push2(`<!---->`);
           }
           if (__props.tickets.length === 0) {
-            _push2(`<div class="text-center py-12" data-v-459f2b5a><div class="text-6xl mb-4" data-v-459f2b5a>🎫</div><h3 class="text-xl font-semibold text-white mb-2" data-v-459f2b5a>No Tickets Available</h3><p class="text-white/70" data-v-459f2b5a>You don&#39;t have any tickets to reveal.</p></div>`);
+            _push2(`<div class="text-center py-12" data-v-764939f9><div class="text-6xl mb-4" data-v-764939f9>🎫</div><h3 class="text-xl font-semibold text-white mb-2" data-v-764939f9>No Tickets Available</h3><p class="text-white/70" data-v-764939f9>You don&#39;t have any tickets to reveal.</p></div>`);
           } else {
             _push2(`<!---->`);
           }
-          _push2(`</div><div class="bg-gray-800 px-6 py-4 flex justify-between items-center" data-v-459f2b5a><div class="text-white/70 text-sm" data-v-459f2b5a>${ssrInterpolate(unplayedTickets.value.length)} remaining • ${ssrInterpolate(playedWinners.value.length)} won • ${ssrInterpolate(playedLosers.value.length)} used</div>`);
+          _push2(`</div><div class="bg-gray-800 px-6 py-4 flex justify-between items-center" data-v-764939f9><div class="text-white/70 text-sm" data-v-764939f9>${ssrInterpolate(unplayedTickets.value.length)} remaining • ${ssrInterpolate(playedWinners.value.length)} won • ${ssrInterpolate(playedLosers.value.length)} used</div>`);
           _push2(ssrRenderComponent(_component_UiButton, {
             onClick: close,
             class: "bg-primary hover:bg-primary/80 text-white px-6 py-2 rounded-lg font-medium transition-colors"
@@ -463,7 +464,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
         } else {
           _push2(`<!---->`);
         }
-      }, "body", false, _parent);
+      }, "body", props.demoMode, _parent);
     };
   }
 });
@@ -473,7 +474,7 @@ _sfc_main$1.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/TicketRevealModal.vue");
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
-const TicketRevealModal = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-459f2b5a"]]);
+const TicketRevealModal = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-764939f9"]]);
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "SpinnyModal",
   __ssrInlineRender: true,
@@ -647,9 +648,9 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       _push(`<!--[-->`);
       ssrRenderTeleport(_push, (_push2) => {
         if (__props.modelValue) {
-          _push2(`<div class="${ssrRenderClass(["z-[9999] flex flex-col items-center justify-center", __props.demoMode ? "relative max-w-full max-h-[80vh] mx-auto" : "fixed inset-0 bg-black/80"])}" data-v-cf729e6b>`);
+          _push2(`<div class="${ssrRenderClass(["z-[9999] flex flex-col items-center justify-center", __props.demoMode ? "relative max-w-full max-h-[80vh] mx-auto" : "fixed inset-0 bg-black/80"])}" data-v-1ab07cea>`);
           if (__props.demoMode) {
-            _push2(`<div class="mb-4 flex items-center space-x-3 bg-gray-800 rounded-lg p-2" data-v-cf729e6b><span class="text-white text-sm font-medium" data-v-cf729e6b>Preview Mode:</span>`);
+            _push2(`<div class="mb-4 flex items-center space-x-3 bg-gray-800 rounded-lg p-2" data-v-1ab07cea><span class="text-white text-sm font-medium" data-v-1ab07cea>Preview Mode:</span>`);
             _push2(ssrRenderComponent(_component_UiButton, {
               onClick: togglePreviewMode,
               class: ["px-3 py-1 rounded text-sm font-medium transition-colors", actualPreviewMode.value === "mobile" ? "bg-blue-500 text-white" : "bg-gray-600 text-gray-300 hover:bg-gray-500"]
@@ -684,16 +685,16 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           } else {
             _push2(`<!---->`);
           }
-          _push2(`<div class="${ssrRenderClass([containerClasses.value, { "demo-mode": __props.demoMode }])}" style="${ssrRenderStyle(modalStyle.value)}" data-v-cf729e6b>`);
+          _push2(`<div class="${ssrRenderClass([containerClasses.value, { "demo-mode": __props.demoMode }])}" style="${ssrRenderStyle(modalStyle.value)}" data-v-1ab07cea>`);
           if (__props.demoMode) {
             _push2(`<!--[-->`);
             if (actualPreviewMode.value === "mobile") {
-              _push2(`<div class="h-8 bg-black flex items-center justify-between px-4 text-white text-sm" data-v-cf729e6b><span data-v-cf729e6b>9:41</span><div class="flex space-x-1" data-v-cf729e6b><div class="w-4 h-2 border border-white rounded-sm" data-v-cf729e6b></div><div class="w-1 h-2 bg-white rounded-sm" data-v-cf729e6b></div></div></div>`);
+              _push2(`<div class="h-8 bg-black flex items-center justify-between px-4 text-white text-sm" data-v-1ab07cea><span data-v-1ab07cea>9:41</span><div class="flex space-x-1" data-v-1ab07cea><div class="w-4 h-2 border border-white rounded-sm" data-v-1ab07cea></div><div class="w-1 h-2 bg-white rounded-sm" data-v-1ab07cea></div></div></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (actualPreviewMode.value === "desktop") {
-              _push2(`<div class="h-10 bg-gray-700 flex items-center justify-between px-4 text-white text-sm border-b border-gray-600" data-v-cf729e6b><div class="flex items-center space-x-2" data-v-cf729e6b><div class="flex space-x-1" data-v-cf729e6b><div class="w-3 h-3 bg-red-500 rounded-full" data-v-cf729e6b></div><div class="w-3 h-3 bg-yellow-500 rounded-full" data-v-cf729e6b></div><div class="w-3 h-3 bg-green-500 rounded-full" data-v-cf729e6b></div></div><span class="ml-4 text-gray-300" data-v-cf729e6b> Spin Games - Spin to Win</span></div><div class="text-gray-400 text-xs" data-v-cf729e6b>Chrome</div></div>`);
+              _push2(`<div class="h-10 bg-gray-700 flex items-center justify-between px-4 text-white text-sm border-b border-gray-600" data-v-1ab07cea><div class="flex items-center space-x-2" data-v-1ab07cea><div class="flex space-x-1" data-v-1ab07cea><div class="w-3 h-3 bg-red-500 rounded-full" data-v-1ab07cea></div><div class="w-3 h-3 bg-yellow-500 rounded-full" data-v-1ab07cea></div><div class="w-3 h-3 bg-green-500 rounded-full" data-v-1ab07cea></div></div><span class="ml-4 text-gray-300" data-v-1ab07cea> Spin Games - Spin to Win</span></div><div class="text-gray-400 text-xs" data-v-1ab07cea>Chrome</div></div>`);
             } else {
               _push2(`<!---->`);
             }
@@ -734,9 +735,9 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
               default: withCtx((_, _push3, _parent2, _scopeId) => {
                 if (_push3) {
                   if (isLoadingTickets.value) {
-                    _push3(`<span data-v-cf729e6b${_scopeId}>⏳ Loading...</span>`);
+                    _push3(`<span data-v-1ab07cea${_scopeId}>⏳ Loading...</span>`);
                   } else {
-                    _push3(`<span data-v-cf729e6b${_scopeId}>🎫 Reveal All</span>`);
+                    _push3(`<span data-v-1ab07cea${_scopeId}>🎫 Reveal All</span>`);
                   }
                 } else {
                   return [
@@ -750,7 +751,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             _push2(`<!---->`);
           }
           if (winCounter.value > 0) {
-            _push2(`<div class="${ssrRenderClass(["absolute z-50 transition-all duration-500", __props.demoMode ? "top-2 left-2" : "top-20 left-4", showWinNotification.value ? "animate-bounce" : ""])}" data-v-cf729e6b><div class="win-counter-badge" data-v-cf729e6b><div class="win-counter-icon" data-v-cf729e6b>🎉</div><div class="win-counter-number" data-v-cf729e6b>${ssrInterpolate(winCounter.value)}</div></div></div>`);
+            _push2(`<div class="${ssrRenderClass(["absolute z-50 transition-all duration-500", __props.demoMode ? "top-2 left-2" : "top-20 left-4", showWinNotification.value ? "animate-bounce" : ""])}" data-v-1ab07cea><div class="win-counter-badge" data-v-1ab07cea><div class="win-counter-icon" data-v-1ab07cea>🎉</div><div class="win-counter-number" data-v-1ab07cea>${ssrInterpolate(winCounter.value)}</div></div></div>`);
           } else {
             _push2(`<!---->`);
           }
@@ -758,11 +759,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             backgroundImage: __props.assets.background ? `url(${__props.assets.background})` : "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
             backgroundSize: "cover",
             backgroundPosition: "center"
-          })}" data-v-cf729e6b><div class="${ssrRenderClass(["absolute left-4 right-4 z-10", __props.demoMode ? "top-4" : "top-8"])}" data-v-cf729e6b>`);
+          })}" data-v-1ab07cea><div class="${ssrRenderClass(["absolute left-4 right-4 z-10", __props.demoMode ? "top-4" : "top-8"])}" data-v-1ab07cea>`);
           if (__props.assets.header) {
-            _push2(`<img${ssrRenderAttr("src", __props.assets.header)} alt="Header" class="${ssrRenderClass(["w-full object-contain", __props.demoMode && actualPreviewMode.value === "mobile" ? "h-12" : __props.demoMode && actualPreviewMode.value === "desktop" ? "h-20" : isMobileDevice.value ? "h-16" : "h-24"])}" data-v-cf729e6b>`);
+            _push2(`<img${ssrRenderAttr("src", __props.assets.header)} alt="Header" class="${ssrRenderClass(["w-full object-contain", __props.demoMode && actualPreviewMode.value === "mobile" ? "h-12" : __props.demoMode && actualPreviewMode.value === "desktop" ? "h-20" : isMobileDevice.value ? "h-16" : "h-24"])}" data-v-1ab07cea>`);
           } else {
-            _push2(`<div class="text-center" data-v-cf729e6b><p class="text-red-400 text-sm" data-v-cf729e6b>!! Great Prizes To Be Won !!</p></div>`);
+            _push2(`<div class="text-center" data-v-1ab07cea><p class="text-red-400 text-sm" data-v-1ab07cea>!! Great Prizes To Be Won !!</p></div>`);
           }
           _push2(`</div>`);
           _push2(ssrRenderComponent(SpinGame, {
@@ -775,23 +776,23 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             onPrizeWon,
             class: "flex-1"
           }, null, _parent));
-          _push2(`<div class="${ssrRenderClass(["absolute right-4 bg-white/20 backdrop-blur-sm rounded px-3 py-1 z-10", __props.demoMode ? "top-20" : "top-24"])}" data-v-cf729e6b><span class="text-white text-sm font-semibold" data-v-cf729e6b>${ssrInterpolate(spinsLeft.value)} Spin${ssrInterpolate(spinsLeft.value === 1 ? "" : "s")} left</span></div>`);
+          _push2(`<div class="${ssrRenderClass(["absolute right-4 bg-white/20 backdrop-blur-sm rounded px-3 py-1 z-10", __props.demoMode ? "top-20" : "top-24"])}" data-v-1ab07cea><span class="text-white text-sm font-semibold" data-v-1ab07cea>${ssrInterpolate(spinsLeft.value)} Spin${ssrInterpolate(spinsLeft.value === 1 ? "" : "s")} left</span></div>`);
           if (!hideFloatingCard.value) {
-            _push2(`<div class="${ssrRenderClass(["absolute inset-0 flex items-start justify-center pointer-events-none z-20 transition-all duration-500", __props.demoMode && actualPreviewMode.value === "mobile" ? "pt-36" : __props.demoMode && actualPreviewMode.value === "desktop" ? "pt-38" : !__props.demoMode && isMobileDevice.value ? "pt-50" : "pt-60"])}" data-v-cf729e6b><div class="floating-credit-card" data-v-cf729e6b><div class="credit-card-3d" data-v-cf729e6b><div class="credit-card-front" data-v-cf729e6b><div class="card-gradient" style="${ssrRenderStyle({ background: `linear-gradient(135deg, ${__props.assets.walletColor || "#8b5cf6"} 0%, ${__props.assets.walletColor || "#8b5cf6"} 100%)` })}" data-v-cf729e6b><div class="card-header-section" data-v-cf729e6b><div class="brand-title" data-v-cf729e6b><h3 class="brand-text" data-v-cf729e6b>${ssrInterpolate(__props.assets.walletText || "SPIN WALLET")}</h3></div><div class="card-chip" data-v-cf729e6b></div></div><div class="card-body" data-v-cf729e6b><div class="prize-message" data-v-cf729e6b>Win Incredible Prizes</div></div><div class="card-footer" data-v-cf729e6b><div class="card-number" data-v-cf729e6b>**** 1234</div></div><div class="card-shine-effect" data-v-cf729e6b></div></div></div></div></div></div>`);
+            _push2(`<div class="${ssrRenderClass(["absolute inset-0 flex items-start justify-center pointer-events-none z-20 transition-all duration-500", __props.demoMode && actualPreviewMode.value === "mobile" ? "pt-36" : __props.demoMode && actualPreviewMode.value === "desktop" ? "pt-38" : !__props.demoMode && isMobileDevice.value ? "pt-50" : "pt-60"])}" data-v-1ab07cea><div class="floating-credit-card" data-v-1ab07cea><div class="credit-card-3d" data-v-1ab07cea><div class="credit-card-front" data-v-1ab07cea><div class="card-gradient" style="${ssrRenderStyle({ background: `linear-gradient(135deg, ${__props.assets.walletColor || "#8b5cf6"} 0%, ${__props.assets.walletColor || "#8b5cf6"} 100%)` })}" data-v-1ab07cea><div class="card-header-section" data-v-1ab07cea><div class="brand-title" data-v-1ab07cea><h3 class="brand-text" data-v-1ab07cea>${ssrInterpolate(__props.assets.walletText || "SPIN WALLET")}</h3></div><div class="card-chip" data-v-1ab07cea></div></div><div class="card-body" data-v-1ab07cea><div class="prize-message" data-v-1ab07cea>Win Incredible Prizes</div></div><div class="card-footer" data-v-1ab07cea><div class="card-number" data-v-1ab07cea>**** 1234</div></div><div class="card-shine-effect" data-v-1ab07cea></div></div></div></div></div></div>`);
           } else {
             _push2(`<!---->`);
           }
           if (showWinnerCard.value) {
-            _push2(`<div class="${ssrRenderClass(["fixed z-[60] flex items-start justify-center pointer-events-none", "inset-0", isMobileDevice.value || __props.demoMode && actualPreviewMode.value === "mobile" ? "pt-32" : "pt-24"])}" style="${ssrRenderStyle({ "background": "rgba(0, 0, 0, 0.3)" })}" data-v-cf729e6b><div style="${ssrRenderStyle(winnerCardSize.value)}" class="${ssrRenderClass([{
+            _push2(`<div class="${ssrRenderClass(["fixed z-[60] flex items-start justify-center pointer-events-none", "inset-0", isMobileDevice.value || __props.demoMode && actualPreviewMode.value === "mobile" ? "pt-32" : "pt-24"])}" style="${ssrRenderStyle({ "background": "rgba(0, 0, 0, 0.3)" })}" data-v-1ab07cea><div style="${ssrRenderStyle(winnerCardSize.value)}" class="${ssrRenderClass([{
               "slide-to-corner": isCardAnimatingToCorner.value && !isMobileDevice.value && !(__props.demoMode && actualPreviewMode.value === "mobile"),
               "slide-to-corner-mobile": isCardAnimatingToCorner.value && (isMobileDevice.value || __props.demoMode && actualPreviewMode.value === "mobile")
-            }, "winner-card-container"])}" data-v-cf729e6b><div class="winner-card" data-v-cf729e6b><div class="card-inner" data-v-cf729e6b><div class="card-front" data-v-cf729e6b><div class="card-content" style="${ssrRenderStyle({ background: `linear-gradient(135deg, ${__props.assets.walletColor || "#8b5cf6"} 0%, ${__props.assets.walletColor || "#8b5cf6"} 100%)` })}" data-v-cf729e6b><div class="card-header" data-v-cf729e6b><div class="brand-section" data-v-cf729e6b><h2 class="brand-text" data-v-cf729e6b>${ssrInterpolate(__props.assets.walletText || "SPIN WALLET")}</h2></div><div class="card-chip" data-v-cf729e6b></div></div><div class="prize-section" data-v-cf729e6b><div class="prize-amount" data-v-cf729e6b>${ssrInterpolate(currentPrize.value)}</div></div><div class="card-footer" data-v-cf729e6b><div class="card-number" data-v-cf729e6b>**** 1234</div></div></div></div></div></div></div></div>`);
+            }, "winner-card-container"])}" data-v-1ab07cea><div class="winner-card" data-v-1ab07cea><div class="card-inner" data-v-1ab07cea><div class="card-front" data-v-1ab07cea><div class="card-content" style="${ssrRenderStyle({ background: `linear-gradient(135deg, ${__props.assets.walletColor || "#8b5cf6"} 0%, ${__props.assets.walletColor || "#8b5cf6"} 100%)` })}" data-v-1ab07cea><div class="card-header" data-v-1ab07cea><div class="brand-section" data-v-1ab07cea><h2 class="brand-text" data-v-1ab07cea>${ssrInterpolate(__props.assets.walletText || "SPIN WALLET")}</h2></div><div class="card-chip" data-v-1ab07cea></div></div><div class="prize-section" data-v-1ab07cea><div class="prize-amount" data-v-1ab07cea>${ssrInterpolate(currentPrize.value)}</div></div><div class="card-footer" data-v-1ab07cea><div class="card-number" data-v-1ab07cea>**** 1234</div></div></div></div></div></div></div></div>`);
           } else {
             _push2(`<!---->`);
           }
           _push2(`</div></div>`);
           if (__props.demoMode) {
-            _push2(`<div class="mt-2 text-center text-gray-400 text-xs" data-v-cf729e6b>${ssrInterpolate(actualPreviewMode.value === "mobile" ? "📱 Mobile Preview (375x667)" : "💻 Desktop Preview (800x600)")}</div>`);
+            _push2(`<div class="mt-2 text-center text-gray-400 text-xs" data-v-1ab07cea>${ssrInterpolate(actualPreviewMode.value === "mobile" ? "📱 Mobile Preview (375x667)" : "💻 Desktop Preview (800x600)")}</div>`);
           } else {
             _push2(`<!---->`);
           }
@@ -804,7 +805,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         modelValue: showTicketReveal.value,
         "onUpdate:modelValue": ($event) => showTicketReveal.value = $event,
         tickets: allTickets.value,
-        playedTickets: playedTickets.value
+        playedTickets: playedTickets.value,
+        demoMode: __props.demoMode
       }, null, _parent));
       _push(`<!--]-->`);
     };
@@ -816,7 +818,7 @@ _sfc_main.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/SpinnyModal.vue");
   return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
 };
-const SpinnyModal = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-cf729e6b"]]);
+const SpinnyModal = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-1ab07cea"]]);
 export {
   SpinnyModal as default
 };

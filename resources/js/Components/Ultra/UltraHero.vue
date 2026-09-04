@@ -24,29 +24,59 @@ defineProps({ orders: { type: Number, default: 1500000 }, tickets: { type: Numbe
         <div class="big-gear" id="big-gear" aria-hidden="true"><span class="gear-svg" data-gear></span></div>
         <div class="phone-wrap"><div class="phone" id="phone"><span class="glare"></span><div class="push" id="push" aria-hidden="true"><span class="ic"></span><div><b>New order</b><span id="push-txt"></span></div></div><span class="btn-side"></span><span class="btn-side l"></span><span class="btn-side l2"></span>
           <div class="phone-bar"><span>9:41</span><span>yourbrand.co.uk</span><span>●●●</span></div>
-          <div class="site" id="site" aria-hidden="true">
-            <div class="site-head"><b>YOUR<span>BRAND</span></b><span class="site-menu"><i></i><i></i><i></i></span></div>
-            <div class="site-carousel" id="site-carousel">
-              <div class="slide on"><img src="/images/draws/bmw.jpg" alt="" loading="lazy"><div class="cap"><small>Win this week</small><b>BMW M3 Competition Pack</b><span>£2.99 a ticket · draws Friday 8pm</span><em>Enter now</em></div></div>
-              <div class="slide"><img src="/images/draws/tesla.jpg" alt="" loading="lazy"><div class="cap"><small>Win this week</small><b>Tesla Model Y</b><span>£3.49 a ticket · 71% sold</span><em>Enter now</em></div></div>
-              <div class="slide"><img src="/images/draws/cash.jpg" alt="" loading="lazy"><div class="cap"><small>Win this week</small><b>£25,000 Tax-Free Cash</b><span>£0.99 a ticket · draws tonight</span><em>Enter now</em></div></div>
+          <div class="site" id="site" data-brand="ritas" aria-hidden="true">
+            <div class="site-head">
+              <span class="site-brand"><img id="site-logo" src="/images/tenant-icons/ritas.png" alt="" @error="$event.target.hidden = true"><b id="site-name">Rita's Riches</b></span>
+              <span class="site-nav"><i>Home</i><i>Comps</i><i>Winners</i><i class="cart">🛒<em>3</em></i></span>
+            </div>
+            <div class="site-hero" id="site-carousel">
+              <div class="hslide is-active"><img src="/images/draws/bmw.jpg" alt="" loading="lazy"><div class="hcap"><small>Win this week</small><b>BMW M3<br>Competition</b><span>£2.99 per ticket · draws Friday 8pm</span><em>Enter now →</em></div></div>
+              <div class="hslide is-next"><img src="/images/draws/tesla.jpg" alt="" loading="lazy"><div class="hcap"><small>New</small><b>Tesla<br>Model Y</b><span>£2.99 per ticket · 71% sold</span><em>Enter now →</em></div></div>
+              <div class="hslide is-prev"><img src="/images/draws/cash.jpg" alt="" loading="lazy"><div class="hcap"><small>Tonight</small><b>£25,000<br>Tax-Free Cash</b><span>£0.99 per ticket · draws 8pm</span><em>Enter now →</em></div></div>
               <div class="dots"><i class="on"></i><i></i><i></i></div>
             </div>
+            <div class="site-sec belt-head"><b><i class="live"></i>Live winners</b><span>Hall of fame</span></div>
+            <div class="site-belt"><div class="belt-track">
+              <div class="wcard"><i>SK</i><div><b>Sarah K.</b><span>won <strong>BMW M3</strong></span></div><small>#04827</small></div>
+              <div class="wcard"><i>JP</i><div><b>James P.</b><span>won <strong>£500 Cash</strong></span></div><small>#00193</small></div>
+              <div class="wcard"><i>AH</i><div><b>Amira H.</b><span>won <strong>Rolex Submariner</strong></span></div><small>#11240</small></div>
+              <div class="wcard"><i>TR</i><div><b>Tom R.</b><span>won <strong>iMac Pro</strong></span></div><small>#08312</small></div>
+              <div class="wcard"><i>LM</i><div><b>Lia M.</b><span>won <strong>£200 Cash</strong></span></div><small>#02541</small></div>
+              <div class="wcard"><i>SK</i><div><b>Sarah K.</b><span>won <strong>BMW M3</strong></span></div><small>#04827</small></div>
+              <div class="wcard"><i>JP</i><div><b>James P.</b><span>won <strong>£500 Cash</strong></span></div><small>#00193</small></div>
+              <div class="wcard"><i>AH</i><div><b>Amira H.</b><span>won <strong>Rolex Submariner</strong></span></div><small>#11240</small></div>
+              <div class="wcard"><i>TR</i><div><b>Tom R.</b><span>won <strong>iMac Pro</strong></span></div><small>#08312</small></div>
+              <div class="wcard"><i>LM</i><div><b>Lia M.</b><span>won <strong>£200 Cash</strong></span></div><small>#02541</small></div>
+            </div></div>
             <div class="site-sec"><b>Live competitions</b><span>View all</span></div>
             <div class="site-grid">
-              <div class="comp"><img src="/images/draws/rolex.jpg" alt="" loading="lazy"><b>Rolex Submariner Date</b><span>£1.49 · <em>37% sold</em></span><i style="--p:37%"></i></div>
-              <div class="comp"><img src="/images/draws/imac.jpg" alt="" loading="lazy"><b>Apple iMac Pro 32"</b><span>£0.79 · <em>58% sold</em></span><i style="--p:58%"></i></div>
-              <div class="comp"><img src="/images/draws/maldives.jpg" alt="" loading="lazy"><b>Maldives Trip for Two</b><span>£2.49 · <em>81% sold</em></span><i style="--p:81%"></i></div>
-              <div class="comp"><img src="/images/draws/cash.jpg" alt="" loading="lazy"><b>£10,000 Cash</b><span>£0.99 · <em>64% sold</em></span><i style="--p:64%"></i></div>
+              <div class="pcard">
+                <div class="pimg"><img src="/images/draws/rolex.jpg" alt="" loading="lazy"><span class="cat">Luxury</span><span class="sale">-25%</span><span class="price"><s>£1.99</s>£1.49</span></div>
+                <b class="ptitle">Rolex Submariner Date</b>
+                <div class="psold"><i style="--p:37%"></i><small>37% sold · ends Sunday</small></div>
+                <div class="pqa"><span class="qty"><i>−</i><b>5</b><i>+</i></span><button type="button">Quick add</button></div>
+              </div>
+              <div class="pcard">
+                <div class="pimg"><img src="/images/draws/maldives.jpg" alt="" loading="lazy"><span class="cat">Holiday</span><span class="sale">-20%</span><span class="price"><s>£2.49</s>£1.99</span></div>
+                <b class="ptitle">Maldives Trip for Two</b>
+                <div class="psold"><i style="--p:81%"></i><small>81% sold · 640 left</small></div>
+                <div class="pqa"><span class="qty"><i>−</i><b>10</b><i>+</i></span><button type="button">Quick add</button></div>
+              </div>
+              <div class="pcard">
+                <div class="pimg"><img src="/images/draws/imac.jpg" alt="" loading="lazy"><span class="cat">Tech</span><span class="price">£0.79</span></div>
+                <b class="ptitle">Apple iMac Pro 32"</b>
+                <div class="psold"><i style="--p:58%"></i><small>58% sold</small></div>
+                <div class="pqa"><span class="qty"><i>−</i><b>5</b><i>+</i></span><button type="button">Quick add</button></div>
+              </div>
+              <div class="pcard">
+                <div class="pimg"><img src="/images/draws/cash.jpg" alt="" loading="lazy"><span class="cat">Cash</span><span class="sale">Hot</span><span class="price">£0.99</span></div>
+                <b class="ptitle">£10,000 Cash</b>
+                <div class="psold"><i style="--p:64%"></i><small>64% sold</small></div>
+                <div class="pqa"><span class="qty"><i>−</i><b>5</b><i>+</i></span><button type="button">Quick add</button></div>
+              </div>
             </div>
             <div class="site-sec"><b>Instant wins</b><span>Play now</span></div>
             <div class="site-iw"><span>🎰 Slots</span><span>🎫 Scratch</span><span>🎡 Spinny</span><span>🪙 Coin Drop</span><span>⚽ Football</span></div>
-            <div class="site-sec"><b>Recent winners</b></div>
-            <div class="site-win">
-              <div><i>SK</i><span><b>Sarah K.</b> won the BMW M3</span><small>2h ago</small></div>
-              <div><i>JP</i><span><b>James P.</b> won £500 cash</span><small>5h ago</small></div>
-              <div><i>AH</i><span><b>Amira H.</b> won a Rolex Submariner</span><small>1d ago</small></div>
-            </div>
             <div class="site-foot">GLI-certified draws · UK-licensed payments · free entry route</div>
           </div>
         </div><div class="phone-shadow" aria-hidden="true"></div></div>

@@ -1122,7 +1122,7 @@ onMounted(() => {
         </Transition>
 
         <!-- Win Popup -->
-        <Teleport to="body">
+        <Teleport to="body" :disabled="demoMode">
             <div
                 v-if="showPopup && popupPrize"
                 class="fixed inset-0 flex items-center justify-center z-[100000] pointer-events-none"

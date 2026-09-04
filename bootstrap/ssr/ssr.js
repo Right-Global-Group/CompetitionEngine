@@ -9701,7 +9701,7 @@ const _sfc_main$w = {
   props: { orders: { type: Number, default: 15e5 }, tickets: { type: Number, default: 12e7 } },
   setup(__props) {
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(mergeProps({ id: "hero" }, _attrs))}><canvas class="tickets" id="tickets" aria-hidden="true"></canvas><div class="wrap"><div class="hero-grid"><div class="hero-copy"><span class="eyebrow"><i class="dot"></i>Proven. Certified. UK Voluntary Code Signatory.</span><h1 id="hero-h1">The <span class="grad">Ultimate Competition</span> Platform</h1><p class="sub" id="hero-sub">Build Competitions beyond presets. Create unique competition experiences for your customers.</p><div class="cta-row"><a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" class="btn btn-primary btn-lg" id="hero-cta" data-track="hero_book_demo" data-calendly>Book a Demo</a><a href="#game-studio" class="btn btn-ghost btn-lg" data-track="hero_game_studio">Game Studio</a></div><div class="cta-note hand"><svg viewBox="0 0 30 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 2c2 10 6 18 20 22"></path><path d="M18 20l6 4-1 6"></path></svg>30 mins. No sales deck.</div><div class="proof"><i class="ic" data-i="trend"></i><span>Operators on CompEngine grow revenue <b>+47%</b> on average in their first 90 days</span></div><div class="mini-trust"><span><i class="ic" data-i="shield"></i>GLI certified</span><span><i class="ic" data-i="shield"></i>Pen tested</span><span><i class="ic" data-i="shield"></i>VCOC signatory</span></div></div><div class="hero-visual" id="hero-visual"><div class="mesh" aria-hidden="true"></div><canvas class="aurora" id="aurora" width="160" height="160" aria-hidden="true"></canvas><div class="big-gear" id="big-gear" aria-hidden="true"><span class="gear-svg" data-gear></span></div><div class="phone-wrap"><div class="phone" id="phone"><span class="glare"></span><div class="push" id="push" aria-hidden="true"><span class="ic"></span><div><b>New order</b><span id="push-txt"></span></div></div><span class="btn-side"></span><span class="btn-side l"></span><span class="btn-side l2"></span><div class="phone-bar"><span>9:41</span><span>yourbrand.co.uk</span><span>●●●</span></div><div class="site" id="site" aria-hidden="true"><div class="site-head"><b>YOUR<span>BRAND</span></b><span class="site-menu"><i></i><i></i><i></i></span></div><div class="site-carousel" id="site-carousel"><div class="slide on"><img src="/images/draws/bmw.jpg" alt="" loading="lazy"><div class="cap"><small>Win this week</small><b>BMW M3 Competition Pack</b><span>£2.99 a ticket · draws Friday 8pm</span><em>Enter now</em></div></div><div class="slide"><img src="/images/draws/tesla.jpg" alt="" loading="lazy"><div class="cap"><small>Win this week</small><b>Tesla Model Y</b><span>£3.49 a ticket · 71% sold</span><em>Enter now</em></div></div><div class="slide"><img src="/images/draws/cash.jpg" alt="" loading="lazy"><div class="cap"><small>Win this week</small><b>£25,000 Tax-Free Cash</b><span>£0.99 a ticket · draws tonight</span><em>Enter now</em></div></div><div class="dots"><i class="on"></i><i></i><i></i></div></div><div class="site-sec"><b>Live competitions</b><span>View all</span></div><div class="site-grid"><div class="comp"><img src="/images/draws/rolex.jpg" alt="" loading="lazy"><b>Rolex Submariner Date</b><span>£1.49 · <em>37% sold</em></span><i style="${ssrRenderStyle({ "--p": "37%" })}"></i></div><div class="comp"><img src="/images/draws/imac.jpg" alt="" loading="lazy"><b>Apple iMac Pro 32&quot;</b><span>£0.79 · <em>58% sold</em></span><i style="${ssrRenderStyle({ "--p": "58%" })}"></i></div><div class="comp"><img src="/images/draws/maldives.jpg" alt="" loading="lazy"><b>Maldives Trip for Two</b><span>£2.49 · <em>81% sold</em></span><i style="${ssrRenderStyle({ "--p": "81%" })}"></i></div><div class="comp"><img src="/images/draws/cash.jpg" alt="" loading="lazy"><b>£10,000 Cash</b><span>£0.99 · <em>64% sold</em></span><i style="${ssrRenderStyle({ "--p": "64%" })}"></i></div></div><div class="site-sec"><b>Instant wins</b><span>Play now</span></div><div class="site-iw"><span>🎰 Slots</span><span>🎫 Scratch</span><span>🎡 Spinny</span><span>🪙 Coin Drop</span><span>⚽ Football</span></div><div class="site-sec"><b>Recent winners</b></div><div class="site-win"><div><i>SK</i><span><b>Sarah K.</b> won the BMW M3</span><small>2h ago</small></div><div><i>JP</i><span><b>James P.</b> won £500 cash</span><small>5h ago</small></div><div><i>AH</i><span><b>Amira H.</b> won a Rolex Submariner</span><small>1d ago</small></div></div><div class="site-foot">GLI-certified draws · UK-licensed payments · free entry route</div></div></div><div class="phone-shadow" aria-hidden="true"></div></div></div></div><div class="counters" id="counters"><div class="counter"><b class="tnum" data-live="orders_30d"${ssrRenderAttr("data-target", __props.orders)} data-format="num">0</b><span>orders · last 30d</span></div><div class="counter"><b class="tnum" data-live="tickets_30d"${ssrRenderAttr("data-target", __props.tickets)} data-format="num">0</b><span>tickets · last 30d</span></div><div class="counter"><b class="tnum" data-live="years" data-target="5" data-format="plus">0</b><span>yrs operating</span></div></div><div class="feed card" id="feed" aria-live="polite" aria-label="Live orders"><div class="feed-head"><span class="tag green"><i class="dot green"></i>Live orders</span><span class="muted small" id="feed-rate">across CompEngine sites</span></div><div class="feed-list" id="feed-list"></div></div></div></section>`);
+      _push(`<section${ssrRenderAttrs(mergeProps({ id: "hero" }, _attrs))}><canvas class="tickets" id="tickets" aria-hidden="true"></canvas><div class="wrap"><div class="hero-grid"><div class="hero-copy"><span class="eyebrow"><i class="dot"></i>Proven. Certified. UK Voluntary Code Signatory.</span><h1 id="hero-h1">The <span class="grad">Ultimate Competition</span> Platform</h1><p class="sub" id="hero-sub">Build Competitions beyond presets. Create unique competition experiences for your customers.</p><div class="cta-row"><a href="https://calendly.com/contact-compengine/30min" target="_blank" rel="noopener" class="btn btn-primary btn-lg" id="hero-cta" data-track="hero_book_demo" data-calendly>Book a Demo</a><a href="#game-studio" class="btn btn-ghost btn-lg" data-track="hero_game_studio">Game Studio</a></div><div class="cta-note hand"><svg viewBox="0 0 30 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 2c2 10 6 18 20 22"></path><path d="M18 20l6 4-1 6"></path></svg>30 mins. No sales deck.</div><div class="proof"><i class="ic" data-i="trend"></i><span>Operators on CompEngine grow revenue <b>+47%</b> on average in their first 90 days</span></div><div class="mini-trust"><span><i class="ic" data-i="shield"></i>GLI certified</span><span><i class="ic" data-i="shield"></i>Pen tested</span><span><i class="ic" data-i="shield"></i>VCOC signatory</span></div></div><div class="hero-visual" id="hero-visual"><div class="mesh" aria-hidden="true"></div><canvas class="aurora" id="aurora" width="160" height="160" aria-hidden="true"></canvas><div class="big-gear" id="big-gear" aria-hidden="true"><span class="gear-svg" data-gear></span></div><div class="phone-wrap"><div class="phone" id="phone"><span class="glare"></span><div class="push" id="push" aria-hidden="true"><span class="ic"></span><div><b>New order</b><span id="push-txt"></span></div></div><span class="btn-side"></span><span class="btn-side l"></span><span class="btn-side l2"></span><div class="phone-bar"><span>9:41</span><span>yourbrand.co.uk</span><span>●●●</span></div><div class="site" id="site" data-brand="ritas" aria-hidden="true"><div class="site-head"><span class="site-brand"><img id="site-logo" src="/images/tenant-icons/ritas.png" alt=""><b id="site-name">Rita&#39;s Riches</b></span><span class="site-nav"><i>Home</i><i>Comps</i><i>Winners</i><i class="cart">🛒<em>3</em></i></span></div><div class="site-hero" id="site-carousel"><div class="hslide is-active"><img src="/images/draws/bmw.jpg" alt="" loading="lazy"><div class="hcap"><small>Win this week</small><b>BMW M3<br>Competition</b><span>£2.99 per ticket · draws Friday 8pm</span><em>Enter now →</em></div></div><div class="hslide is-next"><img src="/images/draws/tesla.jpg" alt="" loading="lazy"><div class="hcap"><small>New</small><b>Tesla<br>Model Y</b><span>£2.99 per ticket · 71% sold</span><em>Enter now →</em></div></div><div class="hslide is-prev"><img src="/images/draws/cash.jpg" alt="" loading="lazy"><div class="hcap"><small>Tonight</small><b>£25,000<br>Tax-Free Cash</b><span>£0.99 per ticket · draws 8pm</span><em>Enter now →</em></div></div><div class="dots"><i class="on"></i><i></i><i></i></div></div><div class="site-sec belt-head"><b><i class="live"></i>Live winners</b><span>Hall of fame</span></div><div class="site-belt"><div class="belt-track"><div class="wcard"><i>SK</i><div><b>Sarah K.</b><span>won <strong>BMW M3</strong></span></div><small>#04827</small></div><div class="wcard"><i>JP</i><div><b>James P.</b><span>won <strong>£500 Cash</strong></span></div><small>#00193</small></div><div class="wcard"><i>AH</i><div><b>Amira H.</b><span>won <strong>Rolex Submariner</strong></span></div><small>#11240</small></div><div class="wcard"><i>TR</i><div><b>Tom R.</b><span>won <strong>iMac Pro</strong></span></div><small>#08312</small></div><div class="wcard"><i>LM</i><div><b>Lia M.</b><span>won <strong>£200 Cash</strong></span></div><small>#02541</small></div><div class="wcard"><i>SK</i><div><b>Sarah K.</b><span>won <strong>BMW M3</strong></span></div><small>#04827</small></div><div class="wcard"><i>JP</i><div><b>James P.</b><span>won <strong>£500 Cash</strong></span></div><small>#00193</small></div><div class="wcard"><i>AH</i><div><b>Amira H.</b><span>won <strong>Rolex Submariner</strong></span></div><small>#11240</small></div><div class="wcard"><i>TR</i><div><b>Tom R.</b><span>won <strong>iMac Pro</strong></span></div><small>#08312</small></div><div class="wcard"><i>LM</i><div><b>Lia M.</b><span>won <strong>£200 Cash</strong></span></div><small>#02541</small></div></div></div><div class="site-sec"><b>Live competitions</b><span>View all</span></div><div class="site-grid"><div class="pcard"><div class="pimg"><img src="/images/draws/rolex.jpg" alt="" loading="lazy"><span class="cat">Luxury</span><span class="sale">-25%</span><span class="price"><s>£1.99</s>£1.49</span></div><b class="ptitle">Rolex Submariner Date</b><div class="psold"><i style="${ssrRenderStyle({ "--p": "37%" })}"></i><small>37% sold · ends Sunday</small></div><div class="pqa"><span class="qty"><i>−</i><b>5</b><i>+</i></span><button type="button">Quick add</button></div></div><div class="pcard"><div class="pimg"><img src="/images/draws/maldives.jpg" alt="" loading="lazy"><span class="cat">Holiday</span><span class="sale">-20%</span><span class="price"><s>£2.49</s>£1.99</span></div><b class="ptitle">Maldives Trip for Two</b><div class="psold"><i style="${ssrRenderStyle({ "--p": "81%" })}"></i><small>81% sold · 640 left</small></div><div class="pqa"><span class="qty"><i>−</i><b>10</b><i>+</i></span><button type="button">Quick add</button></div></div><div class="pcard"><div class="pimg"><img src="/images/draws/imac.jpg" alt="" loading="lazy"><span class="cat">Tech</span><span class="price">£0.79</span></div><b class="ptitle">Apple iMac Pro 32&quot;</b><div class="psold"><i style="${ssrRenderStyle({ "--p": "58%" })}"></i><small>58% sold</small></div><div class="pqa"><span class="qty"><i>−</i><b>5</b><i>+</i></span><button type="button">Quick add</button></div></div><div class="pcard"><div class="pimg"><img src="/images/draws/cash.jpg" alt="" loading="lazy"><span class="cat">Cash</span><span class="sale">Hot</span><span class="price">£0.99</span></div><b class="ptitle">£10,000 Cash</b><div class="psold"><i style="${ssrRenderStyle({ "--p": "64%" })}"></i><small>64% sold</small></div><div class="pqa"><span class="qty"><i>−</i><b>5</b><i>+</i></span><button type="button">Quick add</button></div></div></div><div class="site-sec"><b>Instant wins</b><span>Play now</span></div><div class="site-iw"><span>🎰 Slots</span><span>🎫 Scratch</span><span>🎡 Spinny</span><span>🪙 Coin Drop</span><span>⚽ Football</span></div><div class="site-foot">GLI-certified draws · UK-licensed payments · free entry route</div></div></div><div class="phone-shadow" aria-hidden="true"></div></div></div></div><div class="counters" id="counters"><div class="counter"><b class="tnum" data-live="orders_30d"${ssrRenderAttr("data-target", __props.orders)} data-format="num">0</b><span>orders · last 30d</span></div><div class="counter"><b class="tnum" data-live="tickets_30d"${ssrRenderAttr("data-target", __props.tickets)} data-format="num">0</b><span>tickets · last 30d</span></div><div class="counter"><b class="tnum" data-live="years" data-target="5" data-format="plus">0</b><span>yrs operating</span></div></div><div class="feed card" id="feed" aria-live="polite" aria-label="Live orders"><div class="feed-head"><span class="tag green"><i class="dot green"></i>Live orders</span><span class="muted small" id="feed-rate">across CompEngine sites</span></div><div class="feed-list" id="feed-list"></div></div></div></section>`);
     };
   }
 };
@@ -9724,9 +9724,9 @@ _sfc_main$v.setup = (props, ctx) => {
 const UltraLogoWall = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["ssrRender", _sfc_ssrRender$b]]);
 const gamePlayers = {
   slots: () => import("./assets/SlotsModal-wswDreW4.js"),
-  scratchy: () => import("./assets/ScratchyModal-D1CkCzpl.js"),
-  spinny: () => import("./assets/SpinnyModal-COVDxCXm.js"),
-  bingo: () => import("./assets/BingoModal-BvrWLnZJ.js"),
+  scratchy: () => import("./assets/ScratchyModal-ulMMwY_v.js"),
+  spinny: () => import("./assets/SpinnyModal-Bi9DX8mh.js"),
+  bingo: () => import("./assets/BingoModal-2P2UM3Tb.js"),
   coindrop: () => import("./assets/CoinDropModal-3H0gaBbU.js"),
   popgame: () => import("./assets/PopGameModal-BuT_tcuE.js"),
   football: () => import("./assets/FootballModal-Bl6Ev3Y6.js"),
@@ -12076,19 +12076,21 @@ function assetsFor(key, config3) {
   for (const f2 of schemaFor(key)) out[f2.prop] = cfg[f2.key] !== void 0 ? cfg[f2.key] : f2.default;
   return out;
 }
-const visible = (el) => !!el && el.offsetParent !== null && !el.disabled;
+const visible = (el) => !!el && el.getClientRects().length > 0 && !el.disabled;
+const lobby = (root) => clickText(root, /^(play\b|let'?s\b|start\b|kick off|cast off|feed)/i);
+const fire = (el) => el.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
 const click = (root, sel) => {
   const el = root.querySelector(sel);
   if (visible(el)) {
-    el.click();
+    fire(el);
     return true;
   }
   return false;
 };
 const clickText = (root, re) => {
-  const el = [...root.querySelectorAll("button")].find((b2) => re.test(b2.textContent || "") && visible(b2));
+  const el = [...root.querySelectorAll("button")].find((b2) => re.test((b2.textContent || "").trim()) && visible(b2));
   if (el) {
-    el.click();
+    fire(el);
     return true;
   }
   return false;
@@ -12096,23 +12098,39 @@ const clickText = (root, re) => {
 const pointer = (el, type, x, y2) => el.dispatchEvent(new PointerEvent(type, { bubbles: true, cancelable: true, clientX: x, clientY: y2, pointerId: 1, pointerType: "mouse", isPrimary: true, button: 0 }));
 const PLANS = {
   slots: { every: 5200, tick: (r2) => {
+    if (lobby(r2)) return;
     click(r2, ".controls button");
   } },
   spinny: { every: 7500, tick: (r2) => {
-    click(r2, ".static-highlight-segment") || click(r2, "svg");
+    if (lobby(r2)) return;
+    click(r2, ".static-highlight-segment");
   } },
-  scratchy: { every: 7e3, tick: (r2, n2) => {
-    if (n2 % 2 === 0) clickText(r2, /reveal all/i);
-    else clickText(r2, /replay/i);
+  scratchy: { every: 6500, tick: (r2, n2, st) => {
+    if (lobby(r2)) return;
+    if (clickText(r2, /reveal all/i)) {
+      st.revealed = true;
+      return;
+    }
+    if (st.revealed && clickText(r2, /replay/i)) {
+      st.revealed = false;
+      return;
+    }
   } },
-  bingo: { every: 6e3, tick: (r2, n2) => {
-    if (!clickText(r2, /reveal/i)) return n2 > 1 ? "done" : void 0;
+  bingo: { every: 5e3, tick: (r2, n2, st) => {
+    if (lobby(r2)) return;
+    if (clickText(r2, /reveal/i)) {
+      st.revealed = true;
+      return;
+    }
+    if (st.revealed) return "done";
   } },
-  coindrop: { every: 4200, tick: (r2) => {
-    if (!click(r2, ".drop-button:not([disabled])")) return "done";
+  coindrop: { every: 4200, tick: (r2, n2) => {
+    if (lobby(r2)) return;
+    if (!click(r2, ".drop-button:not([disabled])")) return n2 > 2 ? "done" : void 0;
   } },
-  popgame: { every: 1100, tick: (r2) => {
-    if (!click(r2, ".pop-item-container:not(.popped)")) return "done";
+  popgame: { every: 1100, tick: (r2, n2) => {
+    if (lobby(r2)) return;
+    if (!click(r2, ".pop-item-container:not(.popped)")) return n2 > 2 ? "done" : void 0;
   } },
   football: {
     every: 1300,
@@ -12540,6 +12558,84 @@ _sfc_main$n.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Studio/SchemaForm.vue");
   return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
 };
+let installed = false;
+let allowed = false;
+const contexts = /* @__PURE__ */ new Set();
+const originals = {};
+function installAudioGate() {
+  if (installed || typeof window === "undefined") return;
+  installed = true;
+  const mp = window.HTMLMediaElement && window.HTMLMediaElement.prototype;
+  if (mp && mp.play) {
+    originals.play = mp.play;
+    mp.play = function() {
+      if (!allowed && !this.muted) {
+        try {
+          this.pause();
+        } catch (e2) {
+        }
+        return Promise.resolve();
+      }
+      return originals.play.apply(this, arguments);
+    };
+  }
+  if (window.speechSynthesis) {
+    originals.speak = window.speechSynthesis.speak;
+    window.speechSynthesis.speak = function(u2) {
+      if (!allowed) return;
+      return originals.speak.call(window.speechSynthesis, u2);
+    };
+  }
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (AC) {
+    originals.resume = AC.prototype.resume;
+    AC.prototype.resume = function() {
+      contexts.add(this);
+      if (!allowed) {
+        try {
+          this.suspend();
+        } catch (e2) {
+        }
+        return Promise.resolve();
+      }
+      return originals.resume.apply(this, arguments);
+    };
+    const Gated = class extends AC {
+      constructor(...args) {
+        super(...args);
+        contexts.add(this);
+        if (!allowed) {
+          try {
+            this.suspend();
+          } catch (e2) {
+          }
+        }
+      }
+    };
+    window.AudioContext = Gated;
+    if (window.webkitAudioContext) window.webkitAudioContext = Gated;
+  }
+}
+function setAudioAllowed(on) {
+  allowed = !!on;
+  if (allowed) return;
+  try {
+    window.speechSynthesis && window.speechSynthesis.cancel();
+  } catch (e2) {
+  }
+  contexts.forEach((c2) => {
+    try {
+      c2.suspend();
+    } catch (e2) {
+    }
+  });
+  try {
+    document.querySelectorAll("audio, video").forEach((m2) => {
+      if (!m2.muted) m2.pause();
+    });
+  } catch (e2) {
+  }
+}
 const CALENDLY$1 = "https://calendly.com/contact-compengine/30min";
 const _sfc_main$m = {
   __name: "UltraStudioModal",
@@ -12573,6 +12669,8 @@ const _sfc_main$m = {
     });
     watch(() => props.modelValue, (open) => {
       document.body.style.overflow = open ? "hidden" : "";
+      setAudioAllowed(open);
+      document.body.classList.toggle("studio-open", open);
       if (open && typeof window.ceTrack === "function") window.ceTrack("studio_open", { game: current.value });
     });
     const onKey = (e2) => {
@@ -12582,6 +12680,8 @@ const _sfc_main$m = {
     onBeforeUnmount(() => {
       if (typeof window !== "undefined") window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      document.body.classList.remove("studio-open");
+      setAudioAllowed(false);
     });
     return (_ctx, _push, _parent, _attrs) => {
       ssrRenderTeleport(_push, (_push2) => {
@@ -13466,23 +13566,49 @@ function initUltraHome(opts) {
     var site = $2("#site"), car = $2("#site-carousel");
     if (!site) return;
     if (car) {
-      var slides = $$(".slide", car), dots = $$(".dots i", car), k = 0;
-      var iv = setInterval(function() {
-        if (document.hidden) return;
-        k = (k + 1) % slides.length;
+      var slides = $$(".hslide", car), dots = $$(".dots i", car), n2 = slides.length, k = 0;
+      var place = function() {
         slides.forEach(function(s2, i2) {
-          s2.classList.toggle("on", i2 === k);
+          s2.className = "hslide " + (i2 === k ? "is-active" : i2 === (k + 1) % n2 ? "is-next" : "is-prev");
         });
         dots.forEach(function(d2, i2) {
           d2.classList.toggle("on", i2 === k);
         });
-      }, 3200);
+      };
+      var iv = setInterval(function() {
+        if (document.hidden) return;
+        k = (k + 1) % n2;
+        place();
+      }, 3400);
       cleanups.push(function() {
         clearInterval(iv);
       });
     }
+    var BRANDS = [
+      { key: "ritas", name: "Rita's Riches", logo: "/images/tenant-icons/ritas.png" },
+      { key: "vortex", name: "Vortex", logo: "/images/tenant-icons/vortex.png" },
+      { key: "yours", name: "Your Brand", logo: "" }
+    ];
+    var logo = $2("#site-logo"), name = $2("#site-name"), bi = 0;
+    var brand = function() {
+      var b2 = BRANDS[bi];
+      site.setAttribute("data-brand", b2.key);
+      if (name) name.textContent = b2.name;
+      if (logo) {
+        logo.hidden = !b2.logo;
+        if (b2.logo) logo.src = b2.logo;
+      }
+    };
+    var biv = setInterval(function() {
+      if (document.hidden) return;
+      bi = (bi + 1) % BRANDS.length;
+      brand();
+    }, 11e3);
+    cleanups.push(function() {
+      clearInterval(biv);
+    });
     if (RM) return;
-    var dir = 1, pause = 120, raf, on2 = false;
+    var dir = 1, pause = 140, raf, on2 = false;
     function step() {
       if (!alive || !on2) return;
       var max = site.scrollHeight - site.clientHeight;
@@ -13495,7 +13621,7 @@ function initUltraHome(opts) {
             pause = 100;
           } else if (dir < 0 && site.scrollTop <= 0.5) {
             dir = 1;
-            pause = 150;
+            pause = 170;
           }
         }
       }
@@ -14640,6 +14766,8 @@ const _sfc_main$8 = {
     const tickets = parseInt(getText("stats.value_tickets", "120000000"), 10) || 12e7;
     let destroyFx = null;
     onMounted(() => {
+      installAudioGate();
+      setAudioAllowed(false);
       destroyFx = initUltraHome({ orders, tickets });
       const hash = window.location.hash;
       if (hash) {

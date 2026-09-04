@@ -375,7 +375,7 @@ onUnmounted(() => window.removeEventListener('keydown', onEsc));
         </transition>
     </Teleport>
 
-    <TicketRevealModal v-model="showTicketReveal" :tickets="allTickets" :playedTickets="playedTickets" />
+    <TicketRevealModal v-model="showTicketReveal" :tickets="allTickets" :playedTickets="playedTickets" :demoMode="demoMode" />
 </template>
 
 <style scoped>

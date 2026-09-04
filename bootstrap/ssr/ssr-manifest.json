@@ -6,12 +6,12 @@
   "node_modules/gsap/gsap-core.js": [],
   "node_modules/gsap/index.js": [],
   "node_modules/swiper/modules/pagination.css": [
-    "/build/assets/ScratchyModal-D1CkCzpl.js",
-    "/build/assets/ScratchyModal-BRsoqRMA.css"
+    "/build/assets/ScratchyModal-ulMMwY_v.js",
+    "/build/assets/ScratchyModal-DOiE-VMj.css"
   ],
   "node_modules/swiper/swiper.css": [
-    "/build/assets/ScratchyModal-D1CkCzpl.js",
-    "/build/assets/ScratchyModal-BRsoqRMA.css"
+    "/build/assets/ScratchyModal-ulMMwY_v.js",
+    "/build/assets/ScratchyModal-DOiE-VMj.css"
   ],
   "resources/css/home-ultra.css": [],
   "resources/js/Components/ApplicationLogo.vue": [],
@@ -20,28 +20,28 @@
   "resources/js/Components/Dropdown.vue": [],
   "resources/js/Components/DropdownLink.vue": [],
   "resources/js/Components/Games/BingoGame.vue": [
-    "/build/assets/BingoModal-BvrWLnZJ.js",
-    "/build/assets/BingoModal-DdfhFkrL.css"
+    "/build/assets/BingoModal-2P2UM3Tb.js",
+    "/build/assets/BingoModal-BkIS4520.css"
   ],
   "resources/js/Components/Games/BingoGame.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/BingoModal-BvrWLnZJ.js",
-    "/build/assets/BingoModal-DdfhFkrL.css"
+    "/build/assets/BingoModal-2P2UM3Tb.js",
+    "/build/assets/BingoModal-BkIS4520.css"
   ],
-  "resources/js/Components/Games/BingoGame.vue?vue&type=style&index=0&scoped=f0bbb734&lang.css": [
-    "/build/assets/BingoModal-BvrWLnZJ.js",
-    "/build/assets/BingoModal-DdfhFkrL.css"
+  "resources/js/Components/Games/BingoGame.vue?vue&type=style&index=0&scoped=f776846c&lang.css": [
+    "/build/assets/BingoModal-2P2UM3Tb.js",
+    "/build/assets/BingoModal-BkIS4520.css"
   ],
   "resources/js/Components/Games/BingoModal.vue": [
-    "/build/assets/BingoModal-BvrWLnZJ.js",
-    "/build/assets/BingoModal-DdfhFkrL.css"
+    "/build/assets/BingoModal-2P2UM3Tb.js",
+    "/build/assets/BingoModal-BkIS4520.css"
   ],
   "resources/js/Components/Games/BingoModal.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/BingoModal-BvrWLnZJ.js",
-    "/build/assets/BingoModal-DdfhFkrL.css"
+    "/build/assets/BingoModal-2P2UM3Tb.js",
+    "/build/assets/BingoModal-BkIS4520.css"
   ],
   "resources/js/Components/Games/BingoModal.vue?vue&type=style&index=0&scoped=a24bbc6f&lang.css": [
-    "/build/assets/BingoModal-BvrWLnZJ.js",
-    "/build/assets/BingoModal-DdfhFkrL.css"
+    "/build/assets/BingoModal-2P2UM3Tb.js",
+    "/build/assets/BingoModal-BkIS4520.css"
   ],
   "resources/js/Components/Games/CoinDropGame.vue": [
     "/build/assets/CoinDropModal-3H0gaBbU.js",
@@ -116,28 +116,28 @@
     "/build/assets/PopGameModal-CjRmNxK_.css"
   ],
   "resources/js/Components/Games/ScratchyGame.vue": [
-    "/build/assets/ScratchyModal-D1CkCzpl.js",
-    "/build/assets/ScratchyModal-BRsoqRMA.css"
+    "/build/assets/ScratchyModal-ulMMwY_v.js",
+    "/build/assets/ScratchyModal-DOiE-VMj.css"
   ],
   "resources/js/Components/Games/ScratchyGame.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/ScratchyModal-D1CkCzpl.js",
-    "/build/assets/ScratchyModal-BRsoqRMA.css"
+    "/build/assets/ScratchyModal-ulMMwY_v.js",
+    "/build/assets/ScratchyModal-DOiE-VMj.css"
   ],
   "resources/js/Components/Games/ScratchyGame.vue?vue&type=style&index=0&scoped=1299a941&lang.css": [
-    "/build/assets/ScratchyModal-D1CkCzpl.js",
-    "/build/assets/ScratchyModal-BRsoqRMA.css"
+    "/build/assets/ScratchyModal-ulMMwY_v.js",
+    "/build/assets/ScratchyModal-DOiE-VMj.css"
   ],
   "resources/js/Components/Games/ScratchyModal.vue": [
-    "/build/assets/ScratchyModal-D1CkCzpl.js",
-    "/build/assets/ScratchyModal-BRsoqRMA.css"
+    "/build/assets/ScratchyModal-ulMMwY_v.js",
+    "/build/assets/ScratchyModal-DOiE-VMj.css"
   ],
   "resources/js/Components/Games/ScratchyModal.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/ScratchyModal-D1CkCzpl.js",
-    "/build/assets/ScratchyModal-BRsoqRMA.css"
+    "/build/assets/ScratchyModal-ulMMwY_v.js",
+    "/build/assets/ScratchyModal-DOiE-VMj.css"
   ],
-  "resources/js/Components/Games/ScratchyModal.vue?vue&type=style&index=0&scoped=508775cf&lang.css": [
-    "/build/assets/ScratchyModal-D1CkCzpl.js",
-    "/build/assets/ScratchyModal-BRsoqRMA.css"
+  "resources/js/Components/Games/ScratchyModal.vue?vue&type=style&index=0&scoped=026f2c60&lang.css": [
+    "/build/assets/ScratchyModal-ulMMwY_v.js",
+    "/build/assets/ScratchyModal-DOiE-VMj.css"
   ],
   "resources/js/Components/Games/SlotsGame.vue": [
     "/build/assets/SlotsModal-wswDreW4.js",
@@ -188,28 +188,28 @@
     "/build/assets/SlotsModal-D4y36vlD.css"
   ],
   "resources/js/Components/Games/SpinGame.vue": [
-    "/build/assets/SpinnyModal-COVDxCXm.js",
-    "/build/assets/SpinnyModal-BD6IF27j.css"
+    "/build/assets/SpinnyModal-Bi9DX8mh.js",
+    "/build/assets/SpinnyModal-mAFryMtb.css"
   ],
   "resources/js/Components/Games/SpinGame.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/SpinnyModal-COVDxCXm.js",
-    "/build/assets/SpinnyModal-BD6IF27j.css"
+    "/build/assets/SpinnyModal-Bi9DX8mh.js",
+    "/build/assets/SpinnyModal-mAFryMtb.css"
   ],
   "resources/js/Components/Games/SpinGame.vue?vue&type=style&index=0&scoped=4c9c7034&lang.css": [
-    "/build/assets/SpinnyModal-COVDxCXm.js",
-    "/build/assets/SpinnyModal-BD6IF27j.css"
+    "/build/assets/SpinnyModal-Bi9DX8mh.js",
+    "/build/assets/SpinnyModal-mAFryMtb.css"
   ],
   "resources/js/Components/Games/SpinnyModal.vue": [
-    "/build/assets/SpinnyModal-COVDxCXm.js",
-    "/build/assets/SpinnyModal-BD6IF27j.css"
+    "/build/assets/SpinnyModal-Bi9DX8mh.js",
+    "/build/assets/SpinnyModal-mAFryMtb.css"
   ],
   "resources/js/Components/Games/SpinnyModal.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/SpinnyModal-COVDxCXm.js",
-    "/build/assets/SpinnyModal-BD6IF27j.css"
+    "/build/assets/SpinnyModal-Bi9DX8mh.js",
+    "/build/assets/SpinnyModal-mAFryMtb.css"
   ],
-  "resources/js/Components/Games/SpinnyModal.vue?vue&type=style&index=0&scoped=cf729e6b&lang.css": [
-    "/build/assets/SpinnyModal-COVDxCXm.js",
-    "/build/assets/SpinnyModal-BD6IF27j.css"
+  "resources/js/Components/Games/SpinnyModal.vue?vue&type=style&index=0&scoped=1ab07cea&lang.css": [
+    "/build/assets/SpinnyModal-Bi9DX8mh.js",
+    "/build/assets/SpinnyModal-mAFryMtb.css"
   ],
   "resources/js/Components/Games/TicketEaterModal.vue": [
     "/build/assets/TicketEaterModal-BvuwjVCL.js",
@@ -224,16 +224,16 @@
     "/build/assets/TicketEaterModal-lLfID6WS.css"
   ],
   "resources/js/Components/Games/TicketRevealModal.vue": [
-    "/build/assets/SpinnyModal-COVDxCXm.js",
-    "/build/assets/SpinnyModal-BD6IF27j.css"
+    "/build/assets/SpinnyModal-Bi9DX8mh.js",
+    "/build/assets/SpinnyModal-mAFryMtb.css"
   ],
   "resources/js/Components/Games/TicketRevealModal.vue?vue&type=script&setup=true&lang.ts": [
-    "/build/assets/SpinnyModal-COVDxCXm.js",
-    "/build/assets/SpinnyModal-BD6IF27j.css"
+    "/build/assets/SpinnyModal-Bi9DX8mh.js",
+    "/build/assets/SpinnyModal-mAFryMtb.css"
   ],
-  "resources/js/Components/Games/TicketRevealModal.vue?vue&type=style&index=0&scoped=459f2b5a&lang.css": [
-    "/build/assets/SpinnyModal-COVDxCXm.js",
-    "/build/assets/SpinnyModal-BD6IF27j.css"
+  "resources/js/Components/Games/TicketRevealModal.vue?vue&type=style&index=0&scoped=764939f9&lang.css": [
+    "/build/assets/SpinnyModal-Bi9DX8mh.js",
+    "/build/assets/SpinnyModal-mAFryMtb.css"
   ],
   "resources/js/Components/InputError.vue": [],
   "resources/js/Components/InputLabel.vue": [],
@@ -322,6 +322,7 @@
   ],
   "resources/js/games/studioSchemas.js": [],
   "resources/js/ssr.js": [],
+  "resources/js/ultra/audioGate.js": [],
   "resources/js/ultra/autopilot.js": [],
   "resources/js/ultra/homeFx.js": [],
   "resources/js/ultra/packageBuilder.js": [],

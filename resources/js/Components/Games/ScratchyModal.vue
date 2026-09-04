@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, computed, ref, watch } from 'vue';
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 import ScratchyGame from './ScratchyGame.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Autoplay, Navigation } from 'swiper/modules';

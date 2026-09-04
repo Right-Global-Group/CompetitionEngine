@@ -248,13 +248,26 @@ $$('[data-slot]').forEach(function (el) { makeSlot(el, { track: el.getAttribute(
    ============================================================ */
 (function demoSite() {
   var site = $('#site'), car = $('#site-carousel'); if (!site) return;
+  // 3D hero carousel
   if (car) {
-    var slides = $$('.slide', car), dots = $$('.dots i', car), k = 0;
-    var iv = setInterval(function () { if (document.hidden) return; k = (k + 1) % slides.length; slides.forEach(function (s, i) { s.classList.toggle('on', i === k); }); dots.forEach(function (d, i) { d.classList.toggle('on', i === k); }); }, 3200);
+    var slides = $$('.hslide', car), dots = $$('.dots i', car), n = slides.length, k = 0;
+    var place = function () { slides.forEach(function (s, i) { s.className = 'hslide ' + (i === k ? 'is-active' : i === (k + 1) % n ? 'is-next' : 'is-prev'); }); dots.forEach(function (d, i) { d.classList.toggle('on', i === k); }); };
+    var iv = setInterval(function () { if (document.hidden) return; k = (k + 1) % n; place(); }, 3400);
     cleanups.push(function () { clearInterval(iv); });
   }
+  // the same site, three brands: shows operators their own site, not ours
+  var BRANDS = [
+    { key: 'ritas', name: "Rita's Riches", logo: '/images/tenant-icons/ritas.png' },
+    { key: 'vortex', name: 'Vortex', logo: '/images/tenant-icons/vortex.png' },
+    { key: 'yours', name: 'Your Brand', logo: '' }
+  ];
+  var logo = $('#site-logo'), name = $('#site-name'), bi = 0;
+  var brand = function () { var b = BRANDS[bi]; site.setAttribute('data-brand', b.key); if (name) name.textContent = b.name; if (logo) { logo.hidden = !b.logo; if (b.logo) logo.src = b.logo; } };
+  var biv = setInterval(function () { if (document.hidden) return; bi = (bi + 1) % BRANDS.length; brand(); }, 11000);
+  cleanups.push(function () { clearInterval(biv); });
+  // slow auto-scroll: down, pause, back up
   if (RM) return;
-  var dir = 1, pause = 120, raf, on = false;
+  var dir = 1, pause = 140, raf, on = false;
   function step() {
     if (!alive || !on) return;
     var max = site.scrollHeight - site.clientHeight;
@@ -263,7 +276,7 @@ $$('[data-slot]').forEach(function (el) { makeSlot(el, { track: el.getAttribute(
       else {
         site.scrollTop += dir * 0.5;
         if (dir > 0 && site.scrollTop >= max - 0.5) { dir = -1; pause = 100; }
-        else if (dir < 0 && site.scrollTop <= 0.5) { dir = 1; pause = 150; }
+        else if (dir < 0 && site.scrollTop <= 0.5) { dir = 1; pause = 170; }
       }
     }
     raf = requestAnimationFrame(step);

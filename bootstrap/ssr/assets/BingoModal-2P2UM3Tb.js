@@ -283,79 +283,79 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
           padding: __props.demoMode ? "8px" : "20px 10px",
           overflow: "auto"
         }
-      }, _attrs))} data-v-f0bbb734>`);
+      }, _attrs))} data-v-f776846c>`);
       if (__props.assets.header) {
-        _push(`<div class="text-center mb-4 flex-shrink-0" data-v-f0bbb734><img${ssrRenderAttr("src", __props.assets.header)} alt="Header" class="${ssrRenderClass([__props.demoMode ? "max-h-[60px] object-contain" : "", "max-w-[280px] mx-auto"])}" data-v-f0bbb734></div>`);
+        _push(`<div class="text-center mb-4 flex-shrink-0" data-v-f776846c><img${ssrRenderAttr("src", __props.assets.header)} alt="Header" class="${ssrRenderClass([__props.demoMode ? "max-h-[60px] object-contain" : "", "max-w-[280px] mx-auto"])}" data-v-f776846c></div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`<div class="flex flex-wrap justify-center gap-2 mb-4 flex-shrink-0" data-v-f0bbb734><div class="${ssrRenderClass([__props.demoMode ? "text-sm" : "text-lg", "total-winnings-display px-4 py-2 rounded-full backdrop-blur-md text-white font-bold"])}" style="${ssrRenderStyle({
+      _push(`<div class="flex flex-wrap justify-center gap-2 mb-4 flex-shrink-0" data-v-f776846c><div class="${ssrRenderClass([__props.demoMode ? "text-sm" : "text-lg", "total-winnings-display px-4 py-2 rounded-full backdrop-blur-md text-white font-bold"])}" style="${ssrRenderStyle({
         background: "rgba(0, 0, 0, 0.5)",
         border: "2px solid rgba(255, 255, 255, 0.3)"
-      })}" data-v-f0bbb734> Total Winnings: £${ssrInterpolate(totalWinnings.value.toFixed(2))}</div>`);
+      })}" data-v-f776846c> Total Winnings: £${ssrInterpolate(totalWinnings.value.toFixed(2))}</div>`);
       if (totalPrizes.value > 0) {
         _push(`<div class="${ssrRenderClass([__props.demoMode ? "text-sm" : "text-lg", "px-4 py-2 rounded-full backdrop-blur-md text-white font-bold"])}" style="${ssrRenderStyle({
           background: "rgba(0, 0, 0, 0.5)",
           border: "2px solid rgba(255, 255, 255, 0.3)"
-        })}" data-v-f0bbb734> Prizes: ${ssrInterpolate(totalPrizes.value)}</div>`);
+        })}" data-v-f776846c> Prizes: ${ssrInterpolate(totalPrizes.value)}</div>`);
       } else {
         _push(`<!---->`);
       }
       _push(`</div>`);
       if (!allRevealed.value && !showEndState.value) {
-        _push(`<div class="flex justify-center mb-4 flex-shrink-0" data-v-f0bbb734><button${ssrIncludeBooleanAttr(allRevealed.value) ? " disabled" : ""} class="px-6 py-2 rounded-full font-bold text-sm text-white transition-all" style="${ssrRenderStyle({
+        _push(`<div class="flex justify-center mb-4 flex-shrink-0" data-v-f776846c><button${ssrIncludeBooleanAttr(allRevealed.value) ? " disabled" : ""} class="px-6 py-2 rounded-full font-bold text-sm text-white transition-all" style="${ssrRenderStyle({
           background: `linear-gradient(135deg, ${colors.value.frameColor}, ${colors.value.frameGlow})`,
           cursor: "pointer"
-        })}" data-v-f0bbb734>${ssrInterpolate(isRevealingAll.value ? "Skip" : "Reveal All")}</button></div>`);
+        })}" data-v-f776846c>${ssrInterpolate(isRevealingAll.value ? "Skip" : "Reveal All")}</button></div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`<div class="bingo-grid grid grid-cols-3 gap-1.5 w-full mx-auto" data-v-f0bbb734><!--[-->`);
+      _push(`<div class="bingo-grid grid grid-cols-3 gap-1.5 w-full mx-auto" data-v-f776846c><!--[-->`);
       ssrRenderList(visibleCards.value, (card, cardIndex) => {
         _push(`<div${ssrRenderAttr("data-card-index", cardIndex)} class="bingo-card relative rounded-lg overflow-hidden" style="${ssrRenderStyle({
           border: `2px solid ${colors.value.frameColor}`,
           boxShadow: `0 0 6px ${colors.value.frameGlow}40`,
           background: colors.value.squareBg
-        })}" data-v-f0bbb734><div class="bingo-caption text-center py-0.5 px-1 font-bold text-[10px] leading-tight" style="${ssrRenderStyle({
+        })}" data-v-f776846c><div class="bingo-caption text-center py-0.5 px-1 font-bold text-[10px] leading-tight" style="${ssrRenderStyle({
           background: card.revealed ? card.isWinner ? `linear-gradient(145deg, ${colors.value.winnerGlow}, ${colors.value.winnerBg})` : `linear-gradient(145deg, ${colors.value.bgEnd}, ${colors.value.bgStart})` : `linear-gradient(145deg, ${colors.value.bgEnd}, ${colors.value.bgStart})`,
           color: colors.value.squareText,
           borderBottom: `1px solid ${colors.value.frameColor}`,
           height: "28px"
-        })}" data-v-f0bbb734>`);
+        })}" data-v-f776846c>`);
         if (card.revealed && card.isWinner) {
-          _push(`<!--[--><div class="text-[9px]" data-v-f0bbb734>WIN!</div>`);
+          _push(`<!--[--><div class="text-[9px]" data-v-f776846c>WIN!</div>`);
           if (!card.prizeNoAutoCredit) {
-            _push(`<div data-v-f0bbb734>£${ssrInterpolate(Number(card.prizeValue).toFixed(2))}</div>`);
+            _push(`<div data-v-f776846c>£${ssrInterpolate(Number(card.prizeValue).toFixed(2))}</div>`);
           } else {
-            _push(`<div class="text-[8px]" data-v-f0bbb734>${ssrInterpolate(card.prizeName)}</div>`);
+            _push(`<div class="text-[8px]" data-v-f776846c>${ssrInterpolate(card.prizeName)}</div>`);
           }
           _push(`<!--]-->`);
         } else {
-          _push(`<div class="pt-0.5" data-v-f0bbb734>#${ssrInterpolate(card.ticket.number)}</div>`);
+          _push(`<div class="pt-0.5" data-v-f776846c>#${ssrInterpolate(card.ticket.number)}</div>`);
         }
-        _push(`</div><div class="relative p-1" data-v-f0bbb734><div class="grid grid-cols-3 gap-0.5" data-v-f0bbb734><!--[-->`);
+        _push(`</div><div class="relative p-1" data-v-f776846c><div class="grid grid-cols-3 gap-0.5" data-v-f776846c><!--[-->`);
         ssrRenderList(card.numbers, (num, idx) => {
           _push(`<div class="bingo-square bingo-square-tall flex items-center justify-center rounded font-bold text-xs md:text-sm" style="${ssrRenderStyle({
             background: showDiamond(card, idx) ? isWinningSquare(card, idx) ? `linear-gradient(145deg, ${colors.value.winnerGlow}, ${colors.value.winnerBg})` : `linear-gradient(145deg, ${colors.value.diamond1}, ${colors.value.diamond2})` : colors.value.squareBg,
             color: showDiamond(card, idx) ? "#fff" : colors.value.squareText,
             border: `1px solid ${colors.value.frameColor}40`
-          })}" data-v-f0bbb734>`);
+          })}" data-v-f776846c>`);
           if (showDiamond(card, idx)) {
-            _push(`<span class="diamond-emoji text-sm md:text-base" data-v-f0bbb734>${ssrInterpolate(diamondEmoji.value)}</span>`);
+            _push(`<span class="diamond-emoji text-sm md:text-base" data-v-f776846c>${ssrInterpolate(diamondEmoji.value)}</span>`);
           } else if (card.revealed) {
-            _push(`<span data-v-f0bbb734>${ssrInterpolate(num)}</span>`);
+            _push(`<span data-v-f776846c>${ssrInterpolate(num)}</span>`);
           } else {
-            _push(`<span data-v-f0bbb734>${ssrInterpolate(num)}</span>`);
+            _push(`<span data-v-f776846c>${ssrInterpolate(num)}</span>`);
           }
           _push(`</div>`);
         });
         _push(`<!--]--></div>`);
         if (card.revealed && card.isWinner && card.diamondPositions.length === 9 && card.revealedSquares.size === 9) {
-          _push(`<div class="absolute inset-0.5 flex flex-col items-center justify-center rounded pointer-events-none" style="${ssrRenderStyle({ "background": "rgba(0,0,0,0.85)", "z-index": "10" })}" data-v-f0bbb734><span class="text-yellow-400 font-black text-sm md:text-xl drop-shadow-lg animate-pulse" data-v-f0bbb734>FULL HOUSE!</span>`);
+          _push(`<div class="absolute inset-0.5 flex flex-col items-center justify-center rounded pointer-events-none" style="${ssrRenderStyle({ "background": "rgba(0,0,0,0.85)", "z-index": "10" })}" data-v-f776846c><span class="text-yellow-400 font-black text-sm md:text-xl drop-shadow-lg animate-pulse" data-v-f776846c>FULL HOUSE!</span>`);
           if (!card.prizeNoAutoCredit) {
-            _push(`<span class="text-white font-semibold text-xs md:text-base" data-v-f0bbb734>£${ssrInterpolate(Number(card.prizeValue).toFixed(2))}</span>`);
+            _push(`<span class="text-white font-semibold text-xs md:text-base" data-v-f776846c>£${ssrInterpolate(Number(card.prizeValue).toFixed(2))}</span>`);
           } else {
-            _push(`<span class="text-white font-semibold text-xs md:text-base" data-v-f0bbb734>${ssrInterpolate(card.prizeName)}</span>`);
+            _push(`<span class="text-white font-semibold text-xs md:text-base" data-v-f776846c>${ssrInterpolate(card.prizeName)}</span>`);
           }
           _push(`</div>`);
         } else {
@@ -365,11 +365,11 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
         if (!card.revealed && __props.assets.cardCover) {
           _push(`<div class="bingo-cover-overlay absolute inset-0 cursor-pointer hover:opacity-90 transition-opacity flex items-center justify-center rounded-lg z-20" style="${ssrRenderStyle({
             background: `url(${__props.assets.cardCover}) center/cover no-repeat`
-          })}" data-v-f0bbb734><span class="sr-only" data-v-f0bbb734>Tap to reveal</span></div>`);
+          })}" data-v-f776846c><span class="sr-only" data-v-f776846c>Tap to reveal</span></div>`);
         } else if (!card.revealed) {
           _push(`<div class="bingo-cover-overlay absolute left-0 right-0 bottom-0 cursor-pointer flex items-center justify-center text-white font-bold text-[10px] z-20" style="${ssrRenderStyle([{ "top": "28px" }, {
             background: `linear-gradient(145deg, ${colors.value.bgStart}, ${colors.value.bgEnd})`
-          }])}" data-v-f0bbb734><span class="tap-text" data-v-f0bbb734>TAP TO REVEAL</span></div>`);
+          }])}" data-v-f776846c><span class="tap-text" data-v-f776846c>TAP TO REVEAL</span></div>`);
         } else {
           _push(`<!---->`);
         }
@@ -377,42 +377,42 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
       });
       _push(`<!--]--></div>`);
       if (cards.value.length > CARD_DISPLAY_LIMIT && !showAllCards.value) {
-        _push(`<div class="flex justify-center my-3" data-v-f0bbb734><button class="px-6 py-2 rounded-full font-bold text-sm text-white transition-all" style="${ssrRenderStyle({ background: `linear-gradient(135deg, ${colors.value.frameColor}, ${colors.value.frameGlow})` })}" data-v-f0bbb734> Show all ${ssrInterpolate(cards.value.length)} tickets </button></div>`);
+        _push(`<div class="flex justify-center my-3" data-v-f776846c><button class="px-6 py-2 rounded-full font-bold text-sm text-white transition-all" style="${ssrRenderStyle({ background: `linear-gradient(135deg, ${colors.value.frameColor}, ${colors.value.frameGlow})` })}" data-v-f776846c> Show all ${ssrInterpolate(cards.value.length)} tickets </button></div>`);
       } else {
         _push(`<!---->`);
       }
       if (showEndState.value) {
-        _push(`<div class="absolute inset-0 flex flex-col items-center justify-center z-30 rounded-lg" style="${ssrRenderStyle({ "background": "rgba(0,0,0,0.9)" })}" data-v-f0bbb734>`);
+        _push(`<div class="absolute inset-0 flex flex-col items-center justify-center z-30 rounded-lg" style="${ssrRenderStyle({ "background": "rgba(0,0,0,0.9)" })}" data-v-f776846c>`);
         if (totalPrizes.value > 0) {
-          _push(`<div class="text-center" data-v-f0bbb734><div class="text-yellow-400 text-4xl font-black mb-2 animate-pulse" data-v-f0bbb734>CONGRATULATIONS!</div><div class="text-white text-lg mb-1" data-v-f0bbb734>You won <span class="text-yellow-400 font-bold" data-v-f0bbb734>${ssrInterpolate(totalPrizes.value)}</span> ${ssrInterpolate(totalPrizes.value === 1 ? "prize" : "prizes")}!</div><div class="text-3xl font-black mt-2 prize-amount" data-v-f0bbb734>£${ssrInterpolate(totalWinnings.value.toFixed(2))}</div></div>`);
+          _push(`<div class="text-center" data-v-f776846c><div class="text-yellow-400 text-4xl font-black mb-2 animate-pulse" data-v-f776846c>CONGRATULATIONS!</div><div class="text-white text-lg mb-1" data-v-f776846c>You won <span class="text-yellow-400 font-bold" data-v-f776846c>${ssrInterpolate(totalPrizes.value)}</span> ${ssrInterpolate(totalPrizes.value === 1 ? "prize" : "prizes")}!</div><div class="text-3xl font-black mt-2 prize-amount" data-v-f776846c>£${ssrInterpolate(totalWinnings.value.toFixed(2))}</div></div>`);
         } else {
-          _push(`<div class="text-center" data-v-f0bbb734><div class="text-gray-400 text-2xl font-bold mb-2" data-v-f0bbb734>Better luck next time!</div><div class="text-gray-500 text-sm" data-v-f0bbb734>No prizes this round</div></div>`);
+          _push(`<div class="text-center" data-v-f776846c><div class="text-gray-400 text-2xl font-bold mb-2" data-v-f776846c>Better luck next time!</div><div class="text-gray-500 text-sm" data-v-f776846c>No prizes this round</div></div>`);
         }
-        _push(`<button class="mt-6 px-6 py-2 rounded-full font-bold text-sm text-white bg-white/20 hover:bg-white/30 transition-colors" data-v-f0bbb734> Close </button></div>`);
+        _push(`<button class="mt-6 px-6 py-2 rounded-full font-bold text-sm text-white bg-white/20 hover:bg-white/30 transition-colors" data-v-f776846c> Close </button></div>`);
       } else {
         _push(`<!---->`);
       }
       ssrRenderTeleport(_push, (_push2) => {
         if (showPopup.value && popupPrize.value) {
-          _push2(`<div class="fixed inset-0 flex items-center justify-center z-[100000] pointer-events-none" data-v-f0bbb734><div class="win-popup-content text-center p-8 rounded-2xl shadow-2xl" style="${ssrRenderStyle({
+          _push2(`<div class="fixed inset-0 flex items-center justify-center z-[100000] pointer-events-none" data-v-f776846c><div class="win-popup-content text-center p-8 rounded-2xl shadow-2xl" style="${ssrRenderStyle({
             background: `linear-gradient(135deg, ${colors.value.popupStart}, ${colors.value.popupEnd})`,
             boxShadow: `0 10px 40px rgba(0,0,0,0.3), 0 0 80px ${colors.value.popupStart}80`,
             border: "3px solid rgba(255,255,255,0.3)"
-          })}" data-v-f0bbb734><div class="text-white text-2xl font-black tracking-wider mb-2" data-v-f0bbb734>${ssrInterpolate(popupPrize.value.isFullHouse ? "FULL HOUSE!" : "YOU WON!")}</div>`);
+          })}" data-v-f776846c><div class="text-white text-2xl font-black tracking-wider mb-2" data-v-f776846c>${ssrInterpolate(popupPrize.value.isFullHouse ? "FULL HOUSE!" : "YOU WON!")}</div>`);
           if (!popupPrize.value.noAutoCredit) {
-            _push2(`<div class="text-5xl font-black prize-amount" data-v-f0bbb734> £${ssrInterpolate(popupPrize.value.value.toFixed(2))}</div>`);
+            _push2(`<div class="text-5xl font-black prize-amount" data-v-f776846c> £${ssrInterpolate(popupPrize.value.value.toFixed(2))}</div>`);
           } else {
-            _push2(`<div class="text-3xl font-black prize-amount" data-v-f0bbb734>${ssrInterpolate(popupPrize.value.prizeName)}</div>`);
+            _push2(`<div class="text-3xl font-black prize-amount" data-v-f776846c>${ssrInterpolate(popupPrize.value.prizeName)}</div>`);
           }
-          _push2(`<div class="sparkle-container absolute inset-0 pointer-events-none overflow-hidden" data-v-f0bbb734><!--[-->`);
+          _push2(`<div class="sparkle-container absolute inset-0 pointer-events-none overflow-hidden" data-v-f776846c><!--[-->`);
           ssrRenderList(6, (i) => {
-            _push2(`<div class="sparkle" style="${ssrRenderStyle({ "--delay": `${i * 0.1}s`, "--angle": `${i * 60}deg` })}" data-v-f0bbb734></div>`);
+            _push2(`<div class="sparkle" style="${ssrRenderStyle({ "--delay": `${i * 0.1}s`, "--angle": `${i * 60}deg` })}" data-v-f776846c></div>`);
           });
           _push2(`<!--]--></div></div></div>`);
         } else {
           _push2(`<!---->`);
         }
-      }, "body", false, _parent);
+      }, "body", __props.demoMode, _parent);
       _push(`</div>`);
     };
   }
@@ -423,7 +423,7 @@ _sfc_main$1.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Games/BingoGame.vue");
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
-const BingoGame = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-f0bbb734"]]);
+const BingoGame = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-f776846c"]]);
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "BingoModal",
   __ssrInlineRender: true,

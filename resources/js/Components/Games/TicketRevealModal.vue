@@ -9,6 +9,7 @@ interface Ticket {
 }
 
 interface Props {
+    demoMode?: boolean;
     modelValue: boolean;
     tickets: Ticket[];
     playedTickets: number[];
@@ -77,7 +78,7 @@ const totalWinValue = computed(() => {
 </script>
 
 <template>
-    <Teleport to="body">
+    <Teleport to="body" :disabled="props.demoMode">
         <transition name="fade">
             <div v-if="modelValue" class="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4"
                 @click.self="close" @keydown="onEsc" tabindex="0">

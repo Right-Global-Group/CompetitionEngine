@@ -20,6 +20,7 @@ import UltraFooter from '@/Components/Ultra/UltraFooter.vue';
 import UltraSticky from '@/Components/Ultra/UltraSticky.vue';
 
 import { initUltraHome } from '@/ultra/homeFx';
+import { installAudioGate, setAudioAllowed } from '@/ultra/audioGate';
 
 import '../../css/home-ultra.css';
 
@@ -32,6 +33,8 @@ const tickets = parseInt(getText('stats.value_tickets', '120000000'), 10) || 120
 let destroyFx = null;
 
 onMounted(() => {
+    installAudioGate();          // games in the tiles stay silent; the studio switches sound on
+    setAudioAllowed(false);
     destroyFx = initUltraHome({ orders, tickets });
 
     const hash = window.location.hash;
